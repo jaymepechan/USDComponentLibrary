@@ -1,0 +1,1368 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+
+
+<html>
+
+
+<head>
+
+
+   <title>Java Access Bridge API Specification</title>
+
+
+</head>
+
+
+
+
+
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#000077" 
+
+
+ALINK="#FF0000">
+
+
+
+
+
+<TABLE BORDER="0" WIDTH="100%">
+
+
+
+
+
+<TR>
+
+
+
+
+
+<TD WIDTH="60">
+
+
+   <IMG SRC="images/javalogo52x88.gif" ALT="Java" BORDER=0 WIDTH=52 HEIGHT=88>
+
+
+</TD>
+
+
+
+
+
+<TD align="center"><font size="+2"><b>Java<sup><font size="-2">TM</font></sup> Access Bridge</b></font><br>
+
+
+<b>for the Microsoft Windows Operating System</b>
+
+
+
+
+
+<p></p>
+
+
+
+
+
+<b>Version 2.0.1</b></p><br>
+
+
+<font size="+2"><b>API Specification</b></font>
+
+
+</TD>
+
+
+
+
+
+<TD valign="top"><a href="index.html">Contents</a>
+
+
+</TD>
+
+
+
+
+
+</TR>
+
+
+
+
+
+</TABLE>
+
+
+
+
+
+<!-- Body text begins here -->
+
+
+
+
+
+<hr noshade width="100%">
+
+
+
+
+
+<h3>API Files</h3>
+
+
+
+
+
+<p>
+
+
+The Java Access Bridge API can be found in three files: 
+
+
+
+
+
+<tt><a href="../code/AccessBridgeCalls.h">AccessBridgeCalls.h</a></tt>,
+
+
+<tt><a href="../code/AccessBridgePackages.h">AccessBridgePackages.h</a></tt>,
+
+
+and 
+
+
+<tt><a href="../code/AccessBridgeCallbacks.h">AccessBridgeCallbacks.h</a></tt>.
+
+
+
+
+
+These files correspond to the Java Access Bridge <a href="#API_calls">API
+
+
+calls</a>, the <a href="#API_data_structures">API data structures</a>,
+
+
+and the <a href="#API_callbacks">API callbacks</a>, respectively.<br></p>
+
+
+
+
+
+<h3><a NAME="API_calls"></a>API Calls</h3>
+
+
+
+
+
+<p>
+
+
+The Java Access Bridge API calls are contained in <tt><a 
+
+
+href="../code/AccessBridgeCalls.h">AccessBridgeCalls.h</a></tt>
+
+
+and to use them, you must also compile the file <tt><a href="../code/AccessBridgeCalls.h">AccessBridgeCalls.c</a></tt>,
+
+
+which is the glue to the API, loads <tt>WindowsAccessBridge.dll</tt>, and otherwise makes everything work.</p>
+
+
+
+
+
+<blockquote>
+
+
+
+
+
+<h4>Initialization/Shutdown Functions</h4>
+
+
+
+
+
+<pre>
+
+
+BOOL <b>initializeAccessBridge</b>();
+
+
+BOOL <b>shutdownAccessBridge</b>();
+
+
+</pre>
+
+
+
+
+
+<p>These two functions start things up, and shut them down (as the names
+
+
+would lead you to believe). You cannot use any other part of the
+
+
+Java Access Bridge API until you've called 
+
+
+<tt>initializeAccessBridge</tt>. Similarly, it is important to call <tt>shutdownAccessBridge</tt> when finished
+
+
+(before your application exits), so that proper memory cleanup can occur. Note however, calling <tt>shutdownAccessBridge</tt> is not a substitute
+
+
+for releasing any data structures being maintained on your behalf in the
+
+
+JavaVM; you must call <tt>ReleaseJavaObject</tt> (see below) to do that.</p>
+
+
+
+
+
+<h4>Gateway Functions</h4>
+
+
+
+
+
+<pre>
+
+
+BOOL <b>IsJavaWindow</b>(HWND window);
+
+
+BOOL <b>GetAccessibleContextFromHWND</b>(HWND target, long *vmID, AccessibleContext *ac);
+
+
+</pre>
+
+
+
+
+
+<p>The <tt>IsJavaWindow()</tt> function checks to see if the given window implements the Java Accessibility API. The <tt>GetAccessibleContextFromHWND()</tt> function gets the AccessibleContext and vmID for the given window.  Other Access Bridge functions require the 
+
+
+AccessibleContext and vmID.</p>
+
+
+
+
+
+<h4>Event-Handling Functions</h4>
+
+
+
+
+
+<pre>
+
+
+void <b>SetFocusGained</b>(AccessBridge_FocusGainedFP fp);
+
+
+void <b>SetFocusLost</b>(AccessBridge_FocusLostFP fp);
+
+
+...
+
+
+</pre>
+
+
+
+
+
+<p>These all take a function pointer to the function which will handle
+
+
+the event type.&nbsp; When you no longer are interested in receiving those
+
+
+types of events, call the function again, passing in NULL.&nbsp; Prototypes
+
+
+for the function pointers you need pass into these functions can be found
+
+
+in the file <tt><a href="../code/AccessBridgeCallbacks.h">AccessBridgeCallbacks.h</a></tt>
+
+
+and are described below in <a href="#API_callbacks">API callbacks</a>.</p>
+
+
+
+
+
+<h4>General Functions</h4>
+
+
+
+
+
+<pre>
+
+
+void <b>ReleaseJavaObject</b>(long vmID, Java_Object object);
+
+
+BOOL <b>GetVersionInfo</b>(long vmID, AccessBridgeVersionInfo *info);
+
+
+</pre>
+
+
+
+
+
+<p>The Java Access Bridge automatically maintains a reference to all Java
+
+
+objects in the Virtual Machine, so they are not garbage collected. To prevent
+
+
+memory leaks, you must call <tt>ReleaseJavaObject</tt> on all Java objects
+
+
+returned to you by the Java Access Bridge once you are finished with them. See <tt><a href="../code/JavaFerret.c">JavaFerret.c</a></tt> for an illustration
+
+
+of how to do this. In order to determine the functionality available,
+
+
+you can get version information from the <tt>GetVersionInfo</tt> call. Note that in order to determine the version of the Java virtual machine
+
+
+you need to pass in a valid vmID; otherwise all that is returned in the
+
+
+version of the <tt>WindowsAccessBridge.DLL</tt> file to which your application
+
+
+is connected.</p>
+
+
+
+
+
+<h4>Accessible Context Functions</h4>
+
+
+
+
+
+<pre>
+
+
+BOOL <b>GetAccessibleContextAt</b>(long vmID, AccessibleContext acParent,
+
+
+                               jint x, jint y, AccessibleContext *ac)
+
+
+BOOL <b>GetAccessibleContextWithFocus</b>(HWND window, long *vmID,
+
+
+                                     AccessibleContext *ac);
+
+
+
+
+
+BOOL <b>GetAccessibleContextInfo</b>(long vmID,
+
+
+                                AccessibleContext ac,
+
+
+                                AccessibleContextInfo *info);
+
+
+
+
+
+AccessibleContext <b>GetAccessibleChildFromContext</b>(long vmID,
+
+
+                                                    AccessibleContext ac,
+
+
+                                                   jint index);
+
+
+AccessibleContext <b>GetAccessibleParentFromContext</b>(long vmID,
+
+
+                                                    AccessibleContext ac);
+
+
+</pre>
+
+
+
+
+
+<p>These functions provide the core of the Java Accessibility API that
+
+
+is exposed by the Java Access Bridge.&nbsp; The first two allow you to
+
+
+obtain an AccessibleContext object - which is basically a magic cookie
+
+
+(really a Java Object reference) to the Accessible object in question,
+
+
+and a Java VM cookie. These two cookies are how you will reference
+
+
+objects through the Java Access Bridge.&nbsp; The rest of the Java Access
+
+
+Bridge API requires that you pass in these two parameters.</p>
+
+
+
+
+
+<p>The next function returns detailed information about the AccessibleContext
+
+
+object belonging to the JavaVM passed in. In order to improve performance,
+
+
+the various distinct methods in the Java Accessibility API are collected
+
+
+together into a few routines in the Java Access Bridge API, and returned
+
+
+in structs. These structs are defined in the file <tt><a 
+
+
+href="../code/AccessBridgePackages.h">AccessBridgePackages.h</a></tt>
+
+
+and are described below in <a href="#API_callbacks">API callbacks</a>.</p>
+
+
+
+
+
+<p>The last two functions in this section allow you to walk the GUI component
+
+
+heirarchy, retrieving the n<sup>th</sup> child, or the parent, of a particular
+
+
+GUI object.</p>
+
+
+
+
+
+<h4>Accessible Text Functions</h4>
+
+
+
+
+
+<pre>
+
+
+BOOL <b>GetAccessibleTextInfo</b>(long vmID, AccessibleText at,
+
+
+                             AccessibleTextInfo *textInfo,
+
+
+                             jint x, jint y);
+
+
+BOOL <b>GetAccessibleTextItems</b>(long vmID, AccessibleText at,
+
+
+                              AccessibleTextItemsInfo *textItems,
+
+
+                              jint index);
+
+
+BOOL <b>GetAccessibleTextSelectionInfo</b>(long vmID, AccessibleText at,
+
+
+                        AccessibleTextSelectionInfo *textSelection);
+
+
+char *<b>GetAccessibleTextAttributes</b>(long vmID, AccessibleText at,
+
+
+                                    jint index,
+
+
+                                    AccessibleTextAttributesInfo *attributes);
+
+
+BOOL <b>GetAccessibleTextRect</b>(long vmID, AccessibleText at,
+
+
+                             AccessibleTextRectInfo *rectInfo,
+
+
+                             jint index);
+
+
+BOOL <b>GetAccessibleTextRange</b>(long vmID, AccessibleText at,
+
+
+                              jint start, jint end,
+
+
+                              wchar_t *text, short len);
+
+
+BOOL <b>GetAccessibleTextLineBounds</b>(long vmID, AccessibleText at,
+
+
+                                   jint index, jint *startIndex,
+
+
+                                   jint *endIndex);
+
+
+</pre>
+
+
+
+
+
+<p>These functions get AccessibleText information provided by the Java
+
+
+Accessibility API, broken down into seven chunks for efficiency. An AccessibleContext has AccessibleText information contained within it
+
+
+if the flag <tt>accessibleText</tt> in the <b><tt>AccessibleContextInfo</tt></b>
+
+
+data structure is set to TRUE. The structs used in these functions
+
+
+are defined in the file <tt><a href="../code/AccessBridgePackages.h">AccessBridgePackages.h</a></tt>
+
+
+and are described below in <a href="#API_callbacks">API callbacks</a>.</p>
+
+
+
+
+
+<h4>Accessible Value Functions</h4>
+
+
+
+
+
+<pre>
+
+
+BOOL <b>GetCurrentAccessibleValueFromContext</b>(long vmID, AccessibleValue av,
+
+
+                                             wchar_t *value, short len);
+
+
+BOOL <b>GetMaximumAccessibleValueFromContext</b>(long vmID, AccessibleValue av,
+
+
+                                             wchar_ *value, short len);
+
+
+BOOL <b>GetMinimumAccessibleValueFromContext</b>(long vmID, AccessibleValue av,
+
+
+                                             wchar_ *value, short len);
+
+
+</pre>
+
+
+
+
+
+<p>These functions get AccessibleValue information provided by the Java
+
+
+Accessibility API.&nbsp; An AccessibleContext has AccessibleValue information
+
+
+contained within it if the flag <tt>accessibleValue</tt> in the <b><tt>AccessibleContextInfo</tt></b>
+
+
+data structure is set to TRUE. The values returned are strings (<tt>char *value</tt>) because there is no way to tell in advance if the value is
+
+
+an integer, a floating point value, or some other object which subclasses
+
+
+the Java language constructe <tt>java.lang.Number</tt>.</p>
+
+
+
+
+
+<h4>Accessible Selection Functions</h4>
+
+
+
+
+
+<pre>
+
+
+void <b>AddAccessibleSelectionFromContext</b>(long vmID, AccessibleSelection as, int i);
+
+
+void <b>ClearAccessibleSelectionFromContext</b>(long vmID, AccessibleSelection as);
+
+
+jobject <b>GetAccessibleSelectionFromContext</b>(long vmID, AccessibleSelection as, int i);
+
+
+int <b>GetAccessibleSelectionCountFromContext</b>(long vmID, AccessibleSelection as);
+
+
+BOOL <b>IsAccessibleChildSelectedFromContext</b>(long vmID, AccessibleSelection as, int i);
+
+
+void <b>RemoveAccessibleSelectionFromContext</b>(long vmID, AccessibleSelection as, int i);
+
+
+void <b>SelectAllAccessibleSelectionFromContext</b>(long vmID, AccessibleSelection as);
+
+
+</pre>
+
+
+
+
+
+<p>These functions get and manipulate AccessibleSelection information provided
+
+
+by the Java Accessibility API. An AccessibleContext has AccessibleSelection
+
+
+information contained within it if the flag <tt>accessibleSelection</tt>
+
+
+in the <b><tt>AccessibleContextInfo</tt></b> data structure is set to TRUE. The AccessibleSelection support is the first place where the user-interface
+
+
+can be manipulated - vs. simply being queried - through adding and removing
+
+
+items from a selection. Some of the functions use an index that is
+
+
+in 'child' coordinates, while other use 'selection' coordinates. For example, adding to and removing from a selection is done passing child
+
+
+indicies (e.g. add the 4th child to the selection). On the other
+
+
+hand, enumerating the selected children is done in 'selection' coordinates
+
+
+(e.g. get the AccessibleContext of the first thing selected).</p>
+
+
+
+
+
+</blockquote>
+
+
+
+
+
+<h3><a NAME="API_data_structures"></a>API Data Structures</h3>
+
+
+
+
+
+<p>The Java Access Bridge API data structures are contained in <tt><a 
+
+
+href="../code/AccessBridgePackages.h">AccessBridgePackages.h</a></tt>. There are data structures in this file that you do not need (and can ignore)
+
+
+- they are used as part of the inter-process communication mechanism of
+
+
+the two Java Access Bridge DLLs. The data structures of importance
+
+
+are defined below:</p>
+
+
+
+
+
+<blockquote>
+
+
+
+
+
+<pre>
+
+
+#define MAX_STRING_SIZE     1024
+
+
+#define SHORT_STRING_SIZE    256
+
+
+
+
+
+
+
+
+struct <b>AccessBridgeVersionInfo</b> {
+
+
+ wchar_t VMversion[SHORT_STRING_SIZE];                // version of the Java VM</tt>
+
+
+ wchar_t bridgeJavaClassVersion[SHORT_STRING_SIZE];   // version of the AccessBridge.class
+
+
+ wchar_t bridgeJavaDLLVersion[SHORT_STRING_SIZE];     // version of JavaAccessBridge.dll
+
+
+ wchar_t bridgeWinDLLVersion[SHORT_STRING_SIZE];      // version of WindowsAccessBridge.dll
+
+
+};
+
+
+
+
+
+struct <b>AccessibleContextInfo</b> {
+
+
+ wchar_ name[MAX_STRING_SIZE];        // the AccessibleName of the object
+
+
+ wchar_ description[MAX_STRING_SIZE]; // the AccessibleDescription of the object
+
+
+
+
+
+ wchar_ role[SHORT_STRING_SIZE];     // localized AccesibleRole string
+
+
+ wchar_ states[SHORT_STRING_SIZE];   // localized AccesibleStateSet string
+
+
+                                      // (comma separated)
+
+
+
+
+
+ jint indexInParent        // index of object in parent
+
+
+ jint childrenCount        // # of children, if any
+
+
+
+
+
+ jint x;          // screen coords in pixels
+
+
+ jint y;          // "
+
+
+ jint width;      // pixel width of object
+
+
+ jint height;     // pixel height of object
+
+
+
+
+
+ BOOL accessibleComponent;   // flags for various additional
+
+
+ BOOL accessibleAction;      //  Java Accessibility interfaces
+
+
+ BOOL accessibleSelection;   //  FALSE if this object doesn't
+
+
+ BOOL accessibleText;        //  implement the additional interface
+
+
+ BOOL accessibleValue;       //  in question
+
+
+};
+
+
+
+
+
+struct <b>AccessibleTextInfo</b> {
+
+
+ jint charCount;       // # of characters in this text object
+
+
+ jint caretIndex;      // index of caret
+
+
+ jint indexAtPoint;    // index at the passsed in point
+
+
+};
+
+
+
+
+
+struct <b>AccessibleTextItemsInfo</b> {
+
+
+ wchar_ letter;
+
+
+ wchar_ word[SHORT_STRING_SIZE];
+
+
+ wchar_ sentence[MAX_STRING_SIZE];
+
+
+};
+
+
+
+
+
+struct <b>AccessibleTextSelectionInfo</b> {
+
+
+ jint selectionStartIndex;
+
+
+ jint selectionEndIndex;
+
+
+ wchar_ selectedText[MAX_STRING_SIZE];
+
+
+};
+
+
+
+
+
+struct <b>AccessibleTextRectInfo</b> {
+
+
+ jint x;          // bounding rect of char at index
+
+
+ jint y;          // "
+
+
+ jint width;      // "
+
+
+ jint height;     // "
+
+
+};
+
+
+
+
+
+struct <b>AccessibleTextAttributesInfo</b> {</tt>
+
+
+ BOOL bold;
+
+
+ BOOL italic;
+
+
+ BOOL underline;
+
+
+ BOOL strikethrough;
+
+
+ BOOL superscript;
+
+
+ BOOL subscript;
+
+
+ wchar_t backgroundColor[SHORT_STRING_SIZE];
+
+
+ wchar_t foregroundColor[SHORT_STRING_SIZE];
+
+
+ wchar_t fontFamily[SHORT_STRING_SIZE];
+
+
+ jint fontSize;
+
+
+ jint alignment;
+
+
+ jint bidiLevel;
+
+
+ jfloat firstLineIndent;
+
+
+ jfloat leftIndent;
+
+
+ jfloat rightIndent;
+
+
+ jfloat lineSpacing;
+
+
+ jfloat spaceAbove;
+
+
+ jfloat spaceBelow;
+
+
+ wchar_t fullAttributesString[MAX_STRING_SIZE];
+
+
+};
+
+
+</pre>
+
+
+
+
+
+</blockquote>
+
+
+
+
+
+<h3><a NAME="API_callbacks"></a>API Callbacks</h3>
+
+
+
+
+
+<p>The Java Access Bridge API callbacks are contained in <tt><a 
+
+
+href="../code/AccessBridgeCallbacks.h">AccessBridgeCallbacks.h</a></tt>. Your event handling functions must match these prototypes. Note:
+
+
+all of the Java Access Bridge event handlers are defined and used in the
+
+
+<tt>JavaFerret</tt>
+
+
+example. You <b>must</b> call <b><tt>ReleaseJavaObject</tt></b> on
+
+
+every <tt>jobject</tt> returned via these event handlers once you are through
+
+
+with them, in order to prevent memory leaks in the Java VM.
+
+
+
+
+
+<blockquote>
+
+
+
+
+
+<pre>
+
+
+typedef void (*<b>AccessBridge_FocusGainedFP</b>) (long vmID,
+
+
+                                            jobject event,
+
+
+                                            jobject source);
+
+
+typedef void (*<b>AccessBridge_FocusLostFP</b>) (long vmID,
+
+
+                                          jobject event,
+
+
+                                          jobject source);
+
+
+typedef void (*<b>AccessBridge_CaretUpdateFP</b>) (long vmID,
+
+
+                                            jobject event,
+
+
+                                            jobject source);
+
+
+typedef void (*<b>AccessBridge_MouseClickedFP</b>) (long vmID,
+
+
+                                             jobject event,
+
+
+                                             jobject source);
+
+
+typedef void (*<b>AccessBridge_MouseEnteredFP</b>) (long vmID,
+
+
+                                             jobject event,
+
+
+                                             jobject source);
+
+
+typedef void (*<b>AccessBridge_MouseExitedFP</b>) (long vmID,
+
+
+                                            jobject event,
+
+
+                                            jobject source);
+
+
+typedef void (*<b>AccessBridge_MousePressedFP</b>) (long vmID,
+
+
+                                             jobject event,
+
+
+                                             jobject source);
+
+
+typedef void (*<b>AccessBridge_MouseReleasedFP</b>) (long vmID,
+
+
+                                              jobject event,
+
+
+                                              jobject source);
+
+
+typedef void (*<b>AccessBridge_MenuCanceledFP</b>) (long vmID,
+
+
+                                             jobject event,
+
+
+                                             jobject source);
+
+
+typedef void (*<b>AccessBridge_MenuDeselectedFP</b>) (long vmID,
+
+
+                                               jobject event,
+
+
+                                               jobject source);
+
+
+typedef void (*<b>AccessBridge_MenuSelectedFP</b>) (long vmID,
+
+
+                                             jobject event,
+
+
+                                             jobject source);
+
+
+typedef void (*<b>AccessBridge_PopupMenuCanceledFP</b>) (long vmID
+
+
+                                                  jobject event,
+
+
+                                                  jobject source);
+
+
+typedef void (*<b>AccessBridge_PopupMenuWillBecomeInvisibleFP</b>) (long vmID,
+
+
+                                                             jobject event,
+
+
+                                                             jobject source);
+
+
+typedef void (*<b>AccessBridge_PopupMenuWillBecomeVisibleFP</b>) (long vmID,
+
+
+                                                            jobject event,
+
+
+                                                            jobject source);
+
+
+typedef void (*<b>AccessBridge_PropertyNameChangeFP</b>) (long vmID,
+
+
+                                                   jobject event,
+
+
+                                                   jobject source,
+
+
+                                                   wchar_t *oldName,
+
+
+                                                   wchar_t *newName);
+
+
+typedef void (*<b>AccessBridge_PropertyDescriptionChangeFP</b>) (long vmID,
+
+
+                                                          jobject event,
+
+
+                                                          jobject source,
+
+
+                                                          wchar_t *oldDescription,
+
+
+                                                          wchar_t *newDescription);
+
+
+typedef void (*<b>AccessBridge_PropertyStateChangeFP</b>) (long vmID,
+
+
+                                                    jobject event,
+
+
+                                                    jobject source,
+
+
+                                                    wchar_t *oldState,
+
+
+                                                    wchar_t *newState);
+
+
+typedef void (*<b>AccessBridge_PropertyValueChangeFP</b>) (long vmID,
+
+
+                                                    jobject event,
+
+
+                                                    jobject source,
+
+
+                                                    wchar_t *oldValue,
+
+
+                                                    wchar_t *newValue);
+
+
+typedef void (*<b>AccessBridge_PropertySelectionChangeFP</b>) (long vmID,
+
+
+                                                        jobject event,
+
+
+                                                        jobject source);
+
+
+typedef void (*<b>AccessBridge_PropertyTextChangeFP</b>) (long vmID,
+
+
+                                                   jobject event,
+
+
+                                                   jobject source);
+
+
+typedef void (*<b>AccessBridge_PropertyCaretChangeFP</b>) (long vmID,
+
+
+                                                    jobject event,
+
+
+                                                    jobject source,
+
+
+                                                    int oldPosition,
+
+
+                                                    int newPosition);
+
+
+typedef void (*<b>AccessBridge_PropertyVisibleDataChangeFP</b>) (long vmID,
+
+
+                                                          jobject event,
+
+
+                                                          jobject source);
+
+
+typedef void (*<b>AccessBridge_PropertyChildChangeFP</b>) (long vmID,
+
+
+                                                    jobject event,
+
+
+                                                    jobject source,
+
+
+                                                    jobject oldChild,
+
+
+                                                    jobject newChild);
+
+
+typedef void (*<b>AccessBridge_PropertyActiveDescendentChangeFP</b>) (long vmID, jobject event,
+
+
+                                                               jobject source,
+
+
+                                                               jobject oldActiveDescendent,
+
+
+                                                               jobject newActiveDescendent);
+
+
+
+
+
+</blockquote>
+
+
+
+
+
+<HR SIZE=3 NOSHADE>
+
+
+
+
+
+<TABLE BORDER="0" WIDTH="100%">
+
+
+<TR VALIGN=TOP>
+
+
+<TD>
+
+
+<P><FONT SIZE="-2">
+
+
+
+
+
+   <A HREF="SMICopyright.html">Copyright &#169;</A> 2006
+
+
+
+
+
+   <A HREF="http://www.sun.com/">Sun Microsystems, Inc.</A>
+
+
+
+
+
+    All Rights Reserved.</FONT></P>
+
+
+
+
+
+   <FONT SIZE="-1">
+
+
+
+
+
+   Please send comments to: <a href="mailto:access@sun.com">access@sun.com</a> 
+
+
+
+
+
+   </FONT>
+
+
+</TD>
+
+
+<TD ALIGN=RIGHT>
+
+
+   <IMG SRC="images/sunlogo64x30.gif" ALT="Sun" BORDER=0 WIDTH=64 
+
+
+HEIGHT=30>
+
+
+</TD>
+
+
+</TR>
+
+
+</TABLE>
+
+
+
+
+
+</BODY>
+
+
+</HTML>
+
+

@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1261A97F-6A32-4840-9128-8C4A85BF4D6A}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.USD.ComponentLibrary.ComponentOne</RootNamespace>
+    <AssemblyName>Microsoft.USD.ComponentLibrary.ComponentOne</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\SupportLibs\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="C1.WPF.4, Version=4.0.20141.391, Culture=neutral, PublicKeyToken=2aa4ec5576d6c3ce, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\C1.WPF.4.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.WPF.DateTimeEditors.4, Version=4.0.20141.391, Culture=neutral, PublicKeyToken=2aa4ec5576d6c3ce, processorArchitecture=MSIL" />
+    <Reference Include="C1.WPF.Docking.4, Version=4.0.20141.391, Culture=neutral, PublicKeyToken=2aa4ec5576d6c3ce, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\C1.WPF.Docking.4.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.WPF.Schedule.4, Version=4.0.20141.391, Culture=neutral, PublicKeyToken=2aa4ec5576d6c3ce, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Crm.UnifiedServiceDesk.BaseControl, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\SupportLibs\Microsoft.Crm.UnifiedServiceDesk.BaseControl.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Crm.UnifiedServiceDesk.CommonUtility">
+      <HintPath>..\..\..\SupportLibs\Microsoft.Crm.UnifiedServiceDesk.CommonUtility.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Crm.UnifiedServiceDesk.Dynamics">
+      <HintPath>..\..\..\SupportLibs\Microsoft.Crm.UnifiedServiceDesk.Dynamics.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Uii.AifServices, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\SupportLibs\Microsoft.Uii.AifServices.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Uii.Common, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\SupportLibs\Microsoft.Uii.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Uii.Csr.Core">
+      <HintPath>..\..\..\SupportLibs\Microsoft.Uii.Csr.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Uii.Desktop.Core">
+      <HintPath>..\..\..\SupportLibs\Microsoft.Uii.Desktop.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Uii.Desktop.Cti.Core, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\SupportLibs\Microsoft.Uii.Desktop.Cti.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Uii.Desktop.SessionManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\SupportLibs\Microsoft.Uii.Desktop.SessionManager.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Uii.Desktop.UI.Controls">
+      <HintPath>..\..\..\SupportLibs\Microsoft.Uii.Desktop.UI.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Uii.Desktop.UI.Controls.Wpf">
+      <HintPath>..\..\..\SupportLibs\Microsoft.Uii.Desktop.UI.Controls.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Uii.Desktop.UI.Core">
+      <HintPath>..\..\..\SupportLibs\Microsoft.Uii.Desktop.UI.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Uii.Practices.CompositeUI, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\SupportLibs\Microsoft.Uii.Practices.CompositeUI.dll</HintPath>
+    </Reference>
+    <Reference Include="microsoft.xrm.sdk, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\SupportLibs\microsoft.xrm.sdk.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xrm.Tooling.Connector, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\SupportLibs\Microsoft.Xrm.Tooling.Connector.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="C1Layout.xaml.cs">
+      <DependentUpon>C1Layout.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="C1USDDockTabControl.cs" />
+    <Compile Include="C1USDDockTabItem.cs" />
+    <Compile Include="C1USDTabBasePanel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Scheduler\Scheduler.xaml.cs">
+      <DependentUpon>Scheduler.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Scheduler\SchedulerAppointment.cs" />
+    <Compile Include="C1UsdDockControl.cs" />
+    <Compile Include="USDDockingLayoutControl.xaml.cs">
+      <DependentUpon>USDDockingLayoutControl.xaml</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Properties\Licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="C1Layout.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Scheduler\Scheduler.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Styles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="USDDockingLayoutControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

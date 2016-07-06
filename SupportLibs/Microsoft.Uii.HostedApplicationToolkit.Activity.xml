@@ -1,0 +1,1445 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Uii.HostedApplicationToolkit.Activity</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.Activity.GetSecureCredential">
+            <summary>
+            Gets the credentials for an application using the SsoLookupService
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.GetSecureCredential.Execute(System.Activities.CodeActivityContext)">
+            <summary>
+            Execute
+            </summary>
+            <param name="executionContext"></param>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.GetSecureCredential.ApplicationName">
+            <summary>
+            InArgument
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.GetSecureCredential.UserCredentials">
+            <summary>
+            OutArgument
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.Activity.AddDynamicApp">
+            <summary>
+            Starts a dynamic application
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.Activity.HatActivityBase">
+            <summary>
+            Base class used by all UII activities
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.HatActivityBase.ExecuteImpl(System.Activities.CodeActivityContext,Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationBridgeService)">
+            <summary>
+            ExecuteImpl
+            </summary>
+            <param name="context"></param>
+            <param name="service"></param>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.HatActivityBase.Execute(System.Activities.CodeActivityContext)">
+            <summary>
+            Execute
+            </summary>
+            <param name="executionContext"></param>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.Activity.Audit">
+            <summary>
+            Sets the specified control value.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.Audit.Execute(System.Activities.CodeActivityContext)">
+            <summary>
+            Execute
+            </summary>
+            <param name="executionContext"></param>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.Audit.LogData">
+            <summary>
+            Gets or sets the log data.
+            </summary>
+            <value>
+            The log data.
+            </value>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.Audit.AuditFlag">
+            <summary>
+            Gets or sets the audit flag.
+            </summary>
+            <value>
+            The audit flag.
+            </value>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.Activity.CloseDynamicApp">
+            <summary>
+            Starts a dynamic application
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.CloseDynamicApp.ExecuteImpl(System.Activities.CodeActivityContext,Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationBridgeService)">
+            <summary>
+            ExecuteImpl
+            </summary>
+            <param name="context"></param>
+            <param name="service"></param>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.CloseDynamicApp.ApplicationName">
+            <summary>
+            Gets or sets the name of the application.
+            </summary>
+            <value>
+            The name of the application.
+            </value>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.Activity.ConfigReader">
+            <summary>
+            Retrieves the content from the specified control
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.ConfigReader.Execute(System.Activities.CodeActivityContext)">
+            <summary>
+            Execute
+            </summary>
+            <param name="executionContext"></param>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.ConfigReader.OptionKey">
+            <summary>
+            InArgument
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.ConfigReader.QueryResult">
+            <summary>
+            OutArgument
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.Activity.FocusApp">
+            <summary>
+            Starts a dynamic application
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.FocusApp.ExecuteImpl(System.Activities.CodeActivityContext,Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationBridgeService)">
+            <summary>
+            ExecuteImpl
+            </summary>
+            <param name="context"></param>
+            <param name="service"></param>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.FocusApp.ApplicationName">
+            <summary>
+            InArgument
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.Activity.ControlFinder">
+            <summary>
+            Locates a control within a hosted application.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.ControlFinder.ExecuteImpl(System.Activities.CodeActivityContext,Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationBridgeService)">
+            <summary>
+            ExecuteImpl
+            </summary>
+            <param name="context"></param>
+            <param name="service"></param>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.ControlFinder.ApplicationName">
+            <summary>
+            Application on which the control has to be found
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.ControlFinder.ControlName">
+            <summary>
+            Name of the control to be found
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.ControlFinder.Timeout">
+            <summary>
+            Time in milliseconds for which to keep looking
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.ControlFinder.SleepInterval">
+            <summary>
+            Interval for which the thread sleeps between lookups
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.ControlFinder.ControlFound">
+            <summary>
+            True if control is found, false otherwise
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.Activity.GetCredential">
+            <summary>
+            Gets the credentials for an application using the SsoLookupService
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.GetCredential.Execute(System.Activities.CodeActivityContext)">
+            <summary>
+            Execute
+            </summary>
+            <param name="executionContext"></param>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.GetCredential.ApplicationName">
+            <summary>
+            InArgument
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.GetCredential.UserName">
+            <summary>
+            OutArgument
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.GetCredential.Password">
+            <summary>
+            OutArgument pwd
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.Activity.DoAction">
+            <summary>
+            Fires an Action on a Application
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.DoAction.ExecuteImpl(System.Activities.CodeActivityContext,Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationBridgeService)">
+            <summary>
+            ExecuteImpl
+            </summary>
+            <param name="context"></param>
+            <param name="service"></param>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.DoAction.ApplicationName">
+            <summary>
+            Application on which the action has to be fired
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.DoAction.ActionName">
+            <summary>
+            Name of the action to be fired
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.DoAction.ActionData">
+            <summary>
+            Action data to be passed to the application
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.Activity.ExecuteControlAction">
+            <summary>
+            Issues a "DDA Execute" on the specified control name
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.ExecuteControlAction.ExecuteImpl(System.Activities.CodeActivityContext,Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationBridgeService)">
+            <summary>
+            ExecuteImpl
+            </summary>
+            <param name="context"></param>
+            <param name="service"></param>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.ExecuteControlAction.ApplicationName">
+            <summary>
+            InArgument
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.ExecuteControlAction.ControlName">
+            <summary>
+            InArgument
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.ExecuteControlAction.Async">
+            <summary>
+            InArgument
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.ExecuteControlAction.Data">
+            <summary>
+            InArgument data
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.Activity.GetActionData">
+            <summary>
+            Retrieves the Action data passed to action
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.GetActionData.ExecuteImpl(System.Activities.CodeActivityContext,Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationBridgeService)">
+            <summary>
+            ExecuteImpl
+            </summary>
+            <param name="context"></param>
+            <param name="service"></param>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.GetActionData.ActionData">
+            <summary>
+            OutArgument
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.Activity.GetContext">
+            <summary>
+            Get a value from the UII context
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.GetContext.ExecuteImpl(System.Activities.CodeActivityContext,Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationBridgeService)">
+            <summary>
+            ExecuteImpl
+            </summary>
+            <param name="context"></param>
+            <param name="service"></param>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.GetContext.ContextKey">
+            <summary>
+            Name of the context property
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.GetContext.ContextValue">
+            <summary>
+            Retrieved value of the context property
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.Activity.GetControlValue">
+            <summary>
+            Retrieves the content from the specified control
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.GetControlValue.ExecuteImpl(System.Activities.CodeActivityContext,Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationBridgeService)">
+            <summary>
+            ExecuteImpl
+            </summary>
+            <param name="context"></param>
+            <param name="service"></param>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.GetControlValue.ApplicationName">
+            <summary>
+            Name of the hosted application
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.GetControlValue.ControlName">
+            <summary>
+            Name of the control on the hosted application
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.GetControlValue.ControlValue">
+            <summary>
+            Name of the control on the hosted application
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.GetControlValue.Data">
+            <summary>
+            Additional Data property to customize the action
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.Activity.HostApplication">
+            <summary>
+            Starts a dynamic application
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.HostApplication.ExecuteImpl(System.Activities.CodeActivityContext,Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationBridgeService)">
+            <summary>
+            ExecuteImpl
+            </summary>
+            <param name="context"></param>
+            <param name="service"></param>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.HostApplication.ApplicationName">
+            <summary>
+            InArgument
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.Activity.InitstringReader">
+            <summary>
+            Retrieves the contents of the application's initstring
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.InitstringReader.ExecuteImpl(System.Activities.CodeActivityContext,Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationBridgeService)">
+            <summary>
+            ExecuteImpl
+            </summary>
+            <param name="context"></param>
+            <param name="service"></param>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.InitstringReader.ApplicationName">
+            <summary>
+            InArgument
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.InitstringReader.Xpath">
+            <summary>
+            InArgument
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.InitstringReader.QueryResult">
+            <summary>
+            OutArgument
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.Activity.Navigate">
+            <summary>
+            Navigates the Hosted Application to the given URL
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.Navigate.ExecuteImpl(System.Activities.CodeActivityContext,Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationBridgeService)">
+            <summary>
+            ExecuteImpl
+            </summary>
+            <param name="context"></param>
+            <param name="service"></param>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.Navigate.ApplicationName">
+            <summary>
+            Name of the hosted application
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.Navigate.Url">
+            <summary>
+            Url to navigate to
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.Navigate.TargetFrameName">
+            <summary>
+            Target Frame Name
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.Navigate.AdditionalHeaders">
+            <summary>
+            Additional Headers
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.Navigate.PostData">
+            <summary>
+            Post Data
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.Activity.RegisterActionForEvent">
+            <summary>
+            Registers the control/application with HAT to fire a UII action when an event is triggered
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.RegisterActionForEvent.ExecuteImpl(System.Activities.CodeActivityContext,Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationBridgeService)">
+            <summary>
+            ExecuteImpl
+            </summary>
+            <param name="context"></param>
+            <param name="service"></param>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.RegisterActionForEvent.ApplicationName">
+            <summary>
+            Name of the hosted application
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.RegisterActionForEvent.ControlName">
+            <summary>
+            Name of the control on the hosted application
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.RegisterActionForEvent.EventName">
+            <summary>
+            Name of the event that will fire the action
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.RegisterActionForEvent.ActionApplicationName">
+            <summary>
+            Name of the hosted application that has the action to fire
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.RegisterActionForEvent.ActionName">
+            <summary>
+            Name of the action
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.RegisterActionForEvent.Data">
+            <summary>
+            Additional Data property to customize the action
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.Activity.SetActionData">
+            <summary>
+            Sets the action data
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.SetActionData.ExecuteImpl(System.Activities.CodeActivityContext,Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationBridgeService)">
+            <summary>
+            ExecuteImpl
+            </summary>
+            <param name="context"></param>
+            <param name="service"></param>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.SetActionData.ActionData">
+            <summary>
+            Value to assign as the data parameter of current action
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.Activity.SetContext">
+            <summary>
+            Set a value in the UII context
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.SetContext.ExecuteImpl(System.Activities.CodeActivityContext,Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationBridgeService)">
+            <summary>
+            ExecuteImpl
+            </summary>
+            <param name="context"></param>
+            <param name="service"></param>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.SetContext.ContextKey">
+            <summary>
+            Name of the context property
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.SetContext.ContextValue">
+            <summary>
+            Retrieved value of the context property
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.Activity.SetControlValue">
+            <summary>
+            Sets the specified control value.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.SetControlValue.ExecuteImpl(System.Activities.CodeActivityContext,Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationBridgeService)">
+            <summary>
+            ExecuteImpl
+            </summary>
+            <param name="context"></param>
+            <param name="service"></param>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.SetControlValue.ApplicationName">
+            <summary>
+            Name of the hosted application
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.SetControlValue.ControlName">
+            <summary>
+            Name of the control on the hosted application
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.SetControlValue.ControlValue">
+            <summary>
+            Value to assign to the control on the hosted application
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.SetControlValue.Data">
+            <summary>
+            Additional Data property to customize the action
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.Activity.StartDynamicApp">
+            <summary>
+            Starts a dynamic application
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.StartDynamicApp.ExecuteImpl(System.Activities.CodeActivityContext,Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationBridgeService)">
+            <summary>
+            ExecuteImpl
+            </summary>
+            <param name="context"></param>
+            <param name="service"></param>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.StartDynamicApp.ApplicationName">
+            <summary>
+            InArgument
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.Activity.UnregisterActionForEvent">
+            <summary>
+            Unregisters the control/application with HAT to fire a UII action when an event is triggered
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.UnregisterActionForEvent.ExecuteImpl(System.Activities.CodeActivityContext,Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationBridgeService)">
+            <summary>
+            ExecuteImpl
+            </summary>
+            <param name="context"></param>
+            <param name="service"></param>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.UnregisterActionForEvent.ApplicationName">
+            <summary>
+            Name of the hosted application
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.UnregisterActionForEvent.ControlName">
+            <summary>
+            Name of the control on the hosted application
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.UnregisterActionForEvent.EventName">
+            <summary>
+            Name of the event that will fire the action
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.UnregisterActionForEvent.ActionApplicationName">
+            <summary>
+            Name of the hosted application that has the action to fire
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.UnregisterActionForEvent.ActionName">
+            <summary>
+            Name of the action
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.Activity.RegisterUnregisterControl">
+            <summary>
+            Interaction logic for RegisterUnregisterControl.xaml
+            </summary>
+            <summary>
+            RegisterUnregisterControl
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.RegisterUnregisterControl.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Uii.HostedApplicationToolkit.Activity.RegisterUnregisterControl"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.RegisterUnregisterControl.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.Activity.InArgumentToStringConverter">
+            <summary>
+            InArgument to string converter.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.InArgumentToStringConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts the InArgument value to string type.
+            </summary>
+            <param name="value">The value.</param>
+            <param name="targetType">Type of the target.</param>
+            <param name="parameter">The parameter.</param>
+            <param name="culture">The culture.</param>
+            <returns>An object of type string.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.InArgumentToStringConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts the string value to InArgument type.
+            </summary>
+            <param name="value">The value.</param>
+            <param name="targetType">Type of the target.</param>
+            <param name="parameter">The parameter.</param>
+            <param name="culture">The culture.</param>
+            <returns>An object of type InArgument.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.DteHelper.CreateBindCtx(System.Int32,System.Runtime.InteropServices.ComTypes.IBindCtx@)">
+            <summary>
+            Creates the bind CTX.
+            </summary>
+            <param name="reserved">The reserved.</param>
+            <param name="ppbc">The PPBC.</param>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.DteHelper.GetRunningObjectTable(System.Int32,System.Runtime.InteropServices.ComTypes.IRunningObjectTable@)">
+            <summary>
+            Gets the running object table.
+            </summary>
+            <param name="reserved">The reserved.</param>
+            <param name="prot">The prot.</param>
+        </member>
+        <member name="F:Microsoft.Uii.HostedApplicationToolkit.Activity.DteHelper.INITSTRING">
+            <summary>
+            The initstring value.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.HostedApplicationToolkit.Activity.DteHelper.dte2">
+            <summary>
+            The DTE object.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.DteHelper.GetCurrent">
+            <summary>
+            Gets the current DTE object.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:Microsoft.Uii.HostedApplicationToolkit.Activity.DteHelper.projects">
+            <summary>
+            The dictionary of projects.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.DteHelper.GetAdapterAppInitString(System.String)">
+            <summary>
+            Gets the adapter app init string.
+            </summary>
+            <param name="applicationName">Name of the application.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.DteHelper.GetAvailableEvents(System.String,System.String,System.Boolean)">
+            <summary>
+            Gets the available control/application events.
+            </summary>
+            <param name="dataDrivenAdapterType">Type of the data driven adapter.</param>
+            <param name="dataDrivenAdapterPrefix">The data driven adapter prefix.</param>
+            <param name="applicationEvents">if set to <c>true</c> gets application events.</param>
+            <returns>Collection of control event names.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.DteHelper.GetProjectInSolution(EnvDTE80.Solution2,System.String)">
+            <summary>
+            Gets the project in solution.
+            </summary>
+            <param name="solution">The solution.</param>
+            <param name="projectName">Name of the project being searched.</param>
+            <returns>The project being searched.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.DteHelper.GetProjectInProject(EnvDTE.Project,System.String)">
+            <summary>
+            Gets a specified project from project tree.
+            </summary>
+            <param name="project">The parent project.</param>
+            <param name="projectName">Name of the project being searched.</param>
+            <returns>The project being searched.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.DteHelper.GetProjectItemInProject(EnvDTE.Project,System.String)">
+            <summary>
+            Gets the project item in project.
+            </summary>
+            <param name="project">The project.</param>
+            <param name="itemName">Name of the project item being searched.</param>
+            <returns>The project item being searched</returns>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.DteHelper.GetAllHatProjects(EnvDTE.Project)">
+            <summary>
+            Gets all HAT projects in the given project.
+            </summary>
+            <param name="project">The project.</param>
+            <returns>List of all child projects in the given project.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.DteHelper.GetApplicationNames">
+            <summary>
+            Gets the application names.
+            </summary>
+            <returns>List of application names.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.DteHelper.GetControlNames(System.String)">
+            <summary>
+            Gets the control names.
+            </summary>
+            <param name="applicationName">Name of the application.</param>
+            <returns>List of control names.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.DteHelper.GetEventNames(System.String,System.String)">
+            <summary>
+            Gets the event names for the given control. When controlName is null or empty, gets all application event names.
+            </summary>
+            <param name="applicationName">Name of the application.</param>
+            <param name="controlName">Name of the control.</param>
+            <returns>Collection of event names.</returns>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.DteHelper.Dte2">
+            <summary>
+            Gets the dte object.
+            </summary>
+            <value>The dte object.</value>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.Activity.HatDesignerPropertyAttribute">
+            <summary>
+            Attribute for decorating UII Activity properties for the custom designer
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.HatDesignerPropertyAttribute.VisibleInPropertyDesigner">
+            <summary>
+            VisibleInPropertyDesigner
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.Utilities.GetIconAsDrawingBrush(System.Type,System.String)">
+            <summary>
+            Gets the icon as drawing brush.
+            </summary>
+            <param name="activityDesignerType">Type of the activity designer.</param>
+            <param name="iconPathAsEmbeddedResource">The icon path as embedded resource.</param>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.Activity.ApplicationNameControl">
+            <summary>
+            Interaction logic for ApplicationNameControl.xaml
+            </summary>
+            <summary>
+            ApplicationNameControl
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.ApplicationNameControl.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Uii.HostedApplicationToolkit.Activity.ApplicationNameControl"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.ApplicationNameControl.cmbApplicationName_SelectionChanged(System.Object,System.Windows.Controls.SelectionChangedEventArgs)">
+            <summary>
+            Handles the SelectionChanged event of the cmbApplicationName control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.Windows.Controls.SelectionChangedEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="F:Microsoft.Uii.HostedApplicationToolkit.Activity.ApplicationNameControl.SelectionChanged">
+            <summary>
+            Occurs when the selection of ApplicationName changes.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.ApplicationNameControl.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.ApplicationNameControl.ApplicationName">
+            <summary>
+            Gets the name of the application.
+            </summary>
+            <value>The name of the application.</value>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.Activity.AuditActivityDesigner">
+            <summary>
+            AuditActivityDesigner
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.AuditActivityDesigner.#ctor">
+            <summary>
+            AuditActivityDesigner
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.AuditActivityDesigner.SetIconImage">
+            <summary>
+            Sets the icon image.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.AuditActivityDesigner.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.Activity.CloseDynamicAppActivityDesigner">
+            <summary>
+            CloseDynamicAppActivityDesigner
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.CloseDynamicAppActivityDesigner.#ctor">
+            <summary>
+            CloseDynamicAppActivityDesigner
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.CloseDynamicAppActivityDesigner.SetIconImage">
+            <summary>
+            Sets the icon image.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.CloseDynamicAppActivityDesigner.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.Activity.ConfigReaderActivityDesigner">
+            <summary>
+            ConfigReaderActivityDesigner
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.ConfigReaderActivityDesigner.#ctor">
+            <summary>
+            ConfigReaderActivityDesigner
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.ConfigReaderActivityDesigner.SetIconImage">
+            <summary>
+            Sets the icon image.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.ConfigReaderActivityDesigner.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.Activity.ControlFinderActivityDesigner">
+            <summary>
+            ControlFinderActivityDesigner
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.ControlFinderActivityDesigner.#ctor">
+            <summary>
+            ControlFinderActivityDesigner
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.ControlFinderActivityDesigner.SetIconImage">
+            <summary>
+            Sets the icon image.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.ControlFinderActivityDesigner.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.Activity.AddDynamicAppActivityDesigner">
+            <summary>
+            AddDynamicAppActivityDesigner
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.AddDynamicAppActivityDesigner.#ctor">
+            <summary>
+            AddDynamicAppActivityDesigner
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.AddDynamicAppActivityDesigner.SetIconImage">
+            <summary>
+            Sets the icon image.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.AddDynamicAppActivityDesigner.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.Activity.UnregisterActionForEventActivityDesigner">
+            <summary>
+            UnregisterActionForEventActivityDesigner
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.UnregisterActionForEventActivityDesigner.#ctor">
+            <summary>
+            UnregisterActionForEventActivityDesigner
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.UnregisterActionForEventActivityDesigner.SetIconImage">
+            <summary>
+            Sets the icon image.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.UnregisterActionForEventActivityDesigner.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.Activity.StartDynamicAppActivityDesigner">
+            <summary>
+            StartDynamicAppActivityDesigner
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.StartDynamicAppActivityDesigner.#ctor">
+            <summary>
+            StartDynamicAppActivityDesigner
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.StartDynamicAppActivityDesigner.SetIconImage">
+            <summary>
+            Sets the icon image.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.StartDynamicAppActivityDesigner.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.Activity.SetControlValueActivityDesigner">
+            <summary>
+            SetControlValueActivityDesigner
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.SetControlValueActivityDesigner.#ctor">
+            <summary>
+            SetControlValueActivityDesigner
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.SetControlValueActivityDesigner.SetIconImage">
+            <summary>
+            Sets the icon image.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.SetControlValueActivityDesigner.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.Activity.SetContextActivityDesigner">
+            <summary>
+            SetContextActivityDesigner
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.SetContextActivityDesigner.#ctor">
+            <summary>
+            SetContextActivityDesigner
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.SetContextActivityDesigner.SetIconImage">
+            <summary>
+            Sets the icon image.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.SetContextActivityDesigner.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.Activity.SetActionDataActivityDesigner">
+            <summary>
+            SetActionDataActivityDesigner
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.SetActionDataActivityDesigner.#ctor">
+            <summary>
+            SetActionDataActivityDesigner
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.SetActionDataActivityDesigner.SetIconImage">
+            <summary>
+            Sets the icon image.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.SetActionDataActivityDesigner.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.Activity.RegisterActionForEventActivityDesigner">
+            <summary>
+            RegisterActionForEventActivityDesigner
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.RegisterActionForEventActivityDesigner.#ctor">
+            <summary>
+            RegisterActionForEventActivityDesigner
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.RegisterActionForEventActivityDesigner.SetIconImage">
+            <summary>
+            Sets the icon image.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.RegisterActionForEventActivityDesigner.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.Activity.NavigateActivityDesigner">
+            <summary>
+            NavigateActivityDesigner
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.NavigateActivityDesigner.#ctor">
+            <summary>
+            NavigateActivityDesigner
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.NavigateActivityDesigner.SetIconImage">
+            <summary>
+            Sets the icon image.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.NavigateActivityDesigner.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.Activity.InitstringReaderActivityDesigner">
+            <summary>
+            InitstringReaderActivityDesigner
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.InitstringReaderActivityDesigner.#ctor">
+            <summary>
+            InitstringReaderActivityDesigner
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.InitstringReaderActivityDesigner.SetIconImage">
+            <summary>
+            Sets the icon image.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.InitstringReaderActivityDesigner.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.Activity.HostApplicationActivityDesigner">
+            <summary>
+            HostApplicationActivityDesigner
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.HostApplicationActivityDesigner.#ctor">
+            <summary>
+            HostApplicationActivityDesigner
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.HostApplicationActivityDesigner.SetIconImage">
+            <summary>
+            Sets the icon image.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.HostApplicationActivityDesigner.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.Activity.GetSecureCredentialActivityDesigner">
+            <summary>
+            GetSecureCredentialActivityDesigner
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.GetSecureCredentialActivityDesigner.SetIconImage">
+            <summary>
+            Sets the icon image.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.GetSecureCredentialActivityDesigner.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.Activity.GetCredentialActivityDesigner">
+            <summary>
+            GetCredentialActivityDesigner
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.GetCredentialActivityDesigner.#ctor">
+            <summary>
+            GetCredentialActivityDesigner
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.GetCredentialActivityDesigner.SetIconImage">
+            <summary>
+            Sets the icon image.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.GetCredentialActivityDesigner.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.Activity.GetControlValueActivityDesigner">
+            <summary>
+            GetControlValueActivityDesigner
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.GetControlValueActivityDesigner.#ctor">
+            <summary>
+            GetControlValueActivityDesigner
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.GetControlValueActivityDesigner.SetIconImage">
+            <summary>
+            Sets the icon image.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.GetControlValueActivityDesigner.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.Activity.GetContextActivityDesigner">
+            <summary>
+            GetContextActivityDesigner
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.GetContextActivityDesigner.#ctor">
+            <summary>
+            GetContextActivityDesigner
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.GetContextActivityDesigner.SetIconImage">
+            <summary>
+            Sets the icon image.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.GetContextActivityDesigner.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.Activity.GetActionDataActivityDesigner">
+            <summary>
+            GetActionDataActivityDesigner
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.GetActionDataActivityDesigner.#ctor">
+            <summary>
+            GetActionDataActivityDesigner
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.GetActionDataActivityDesigner.SetIconImage">
+            <summary>
+            Sets the icon image.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.GetActionDataActivityDesigner.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.Activity.FocusAppActivityDesigner">
+            <summary>
+            FocusAppActivityDesigner
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.FocusAppActivityDesigner.#ctor">
+            <summary>
+            FocusAppActivityDesigner
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.FocusAppActivityDesigner.SetIconImage">
+            <summary>
+            Sets the icon image.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.FocusAppActivityDesigner.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.Activity.ExecuteControlActionActivityDesigner">
+            <summary>
+            ExecuteControlActionActivityDesigner
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.ExecuteControlActionActivityDesigner.#ctor">
+            <summary>
+            ExecuteControlActionActivityDesigner
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.ExecuteControlActionActivityDesigner.SetIconImage">
+            <summary>
+            Sets the icon image.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.ExecuteControlActionActivityDesigner.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.Activity.DoActionActivityDesigner">
+            <summary>
+            DoActionActivityDesigner
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.DoActionActivityDesigner.#ctor">
+            <summary>
+            DoActionActivityDesigner
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.DoActionActivityDesigner.SetIconImage">
+            <summary>
+            Sets the icon image.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.DoActionActivityDesigner.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.Activity.HatActivitiesCommonControl">
+            <summary>
+            Interaction logic for HatActivitiesCommonControl.xaml
+            </summary>
+            <summary>
+            HatActivitiesCommonControl
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.HatActivitiesCommonControl.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Uii.HostedApplicationToolkit.Activity.HatActivitiesCommonControl"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.HatActivitiesCommonControl.ctrlApplicationName_SelectionChanged(System.Object,System.Windows.Controls.SelectionChangedEventArgs)">
+            <summary>
+            Handles the SelectionChanged event of the ctrlApplicationName control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.Windows.Controls.SelectionChangedEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.Activity.HatActivitiesCommonControl.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.HatActivitiesCommonControl.ApplicationName">
+            <summary>
+            Gets the name of the application.
+            </summary>
+            <value>The name of the application.</value>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.HatActivitiesCommonControl.ControlName">
+            <summary>
+            Gets the name of the control.
+            </summary>
+            <value>The name of the control.</value>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.Activity.ExpressionComboBox">
+            <summary>
+            Extended ComboBox control having ExpressionTextBox in edit mode.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.HostedApplicationToolkit.Activity.ExpressionComboBox.ExpressionProperty">
+            <summary>
+            Expression DependencyProperty
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.HostedApplicationToolkit.Activity.ExpressionComboBox.ExpressionTypeProperty">
+            <summary>
+            ExpressionType DependencyProperty
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.HostedApplicationToolkit.Activity.ExpressionComboBox.HintTextProperty">
+            <summary>
+            HintText DependencyProperty
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.HostedApplicationToolkit.Activity.ExpressionComboBox.OwnerActivityProperty">
+            <summary>
+            OwnerActivity DependencyProperty
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.ExpressionComboBox.Expression">
+            <summary>
+            Gets or sets the expression.
+            </summary>
+            <value>The expression.</value>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.ExpressionComboBox.ExpressionType">
+            <summary>
+            Gets or sets the type of the expression.
+            </summary>
+            <value>The type of the expression.</value>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.ExpressionComboBox.HintText">
+            <summary>
+            Gets or sets the hint text.
+            </summary>
+            <value>The hint text.</value>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.ExpressionComboBox.OwnerActivity">
+            <summary>
+            Gets or sets the owner activity.
+            </summary>
+            <value>The owner activity.</value>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.Activity.Strings">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.Strings.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.Strings.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.Strings.ActionAppNameText">
+            <summary>
+              Looks up a localized string similar to Action App Name:.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.Strings.ActionDataOutText">
+            <summary>
+              Looks up a localized string similar to Action Data (Out):.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.Strings.ActionDataText">
+            <summary>
+              Looks up a localized string similar to Action Data:.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.Strings.ActionNameText">
+            <summary>
+              Looks up a localized string similar to Action Name:.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.Strings.ActionsNotDefined">
+            <summary>
+              Looks up a localized string similar to Default action is missing.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.Strings.AppIdNotEmpty">
+            <summary>
+              Looks up a localized string similar to The application ID needs to be Guid.Empty.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.Strings.ApplicationNameText">
+            <summary>
+              Looks up a localized string similar to Application Name:.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.Strings.ApplicationRecordText">
+            <summary>
+              Looks up a localized string similar to ApplicationRecord:.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.Strings.AppNotDynamic">
+            <summary>
+              Looks up a localized string similar to The operation is supported only for dynamic applications.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.Strings.AuditFlagText">
+            <summary>
+              Looks up a localized string similar to Audit Flag:.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.Strings.ContextKeyText">
+            <summary>
+              Looks up a localized string similar to Context Key:.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.Strings.ContextValueOutText">
+            <summary>
+              Looks up a localized string similar to Context Value (Out):.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.Strings.ContextValueText">
+            <summary>
+              Looks up a localized string similar to Context Value:.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.Strings.ControlFoundOutText">
+            <summary>
+              Looks up a localized string similar to Control Found (Out):.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.Strings.ControlNameText">
+            <summary>
+              Looks up a localized string similar to Control Name:.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.Strings.ControlValueOutText">
+            <summary>
+              Looks up a localized string similar to Control Value (Out):.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.Strings.ControlValueText">
+            <summary>
+              Looks up a localized string similar to Control Value:.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.Strings.EventNameText">
+            <summary>
+              Looks up a localized string similar to Event Name:.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.Strings.LogDataText">
+            <summary>
+              Looks up a localized string similar to Log Data:.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.Strings.OptionKeyText">
+            <summary>
+              Looks up a localized string similar to Option Key:.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.Strings.PasswordOutText">
+            <summary>
+              Looks up a localized string similar to Password (Out):.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.Strings.QueryResultOutText">
+            <summary>
+              Looks up a localized string similar to Query Result (Out):.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.Strings.UrlText">
+            <summary>
+              Looks up a localized string similar to Url:.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.Strings.UserNameOutText">
+            <summary>
+              Looks up a localized string similar to User Name (Out):.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.Activity.Strings.XpathText">
+            <summary>
+              Looks up a localized string similar to Xpath:.
+            </summary>
+        </member>
+    </members>
+</doc>

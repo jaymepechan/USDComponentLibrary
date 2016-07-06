@@ -1,0 +1,518 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Uii.Common.Logging.Providers</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Uii.Common.Logging.Providers.LoggingServerLogFile">
+            <summary>
+            The logging class to write to a log file in server side across process.
+            </summary>
+            <example>
+            Example of a config file using LoggingServerLogFile:
+            <code>
+            &lt;add name=&quot;LoggingLogFile&quot;
+            type=&quot;Microsoft.Uii.Common.Logging.Providers.LoggingServerLogFile, Microsoft.Uii.Common.Logging.Providers&quot;
+            logfile=&quot;x:\Logging\UII.log&quot;
+            appname=&quot;User Interface Integration&quot;/&gt;
+            </code>
+            </example>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.Providers.LoggingServerLogFile.Initialize(System.String,System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            This is the method used to initialize the logging listener
+            </summary>
+            <param name="name">The name of the listener.</param>
+            <param name="configValue">The configuration values (parameters) for the listener.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.Providers.LoggingServerLogFile.Error(System.String,System.String,System.String)">
+            <summary>
+            This method is used to log an error message.
+            </summary>
+            <param name="applicationName">The application name used in the log.</param>
+            <param name="message">The message used in the log.</param>
+            <param name="advanced">Advanced message information.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.Providers.LoggingServerLogFile.Warn(System.String,System.String)">
+            <summary>
+            This method is used to log a warning message.
+            </summary>
+            <param name="applicationName">The application name used in the log.</param>
+            <param name="message">The message used in the log.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.Providers.LoggingServerLogFile.Information(System.String,System.String)">
+            <summary>
+            This method is used to log an informational message.
+            </summary>
+            <param name="applicationName">The application name used in the log.</param>
+            <param name="message">The message used in the log.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.Providers.LoggingServerLogFile.Trace(System.String,System.String)">
+            <summary>
+            This method is used to log a trace message.
+            </summary>
+            <param name="applicationName">The application name used in the log.</param>
+            <param name="message">The message used in the log.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.Providers.LoggingServerLogFile.WriteToLogFile(System.String,System.String)">
+            <summary>
+            Write the application name and message to the file.
+            </summary>
+            <param name="applicationName">Name to give for the application in the Event log.</param>
+            <param name="message">The message to place in the Event log.</param>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Logging.Providers.LoggingServerLogFile.Tag">
+            <summary>
+            Gets or sets user-defined data associated with the object.
+            </summary>
+            <remarks>Not used...</remarks>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Logging.Providers.LoggingServerLogFile.ShowErrors">
+            <summary>
+            Boolean used to ensure errors are shown.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Common.Logging.ErrorMsg">
+            <summary>
+            Form displaying the error messages
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.ErrorMsg.#ctor">
+            <summary>
+            shows up the error msgs
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.ErrorMsg.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.ErrorMsg.Show(System.String)">
+            <summary>
+            Shows a dialog box with a specified msg but using a canned caption.
+            </summary>
+            <param name="msg">Message to display</param>
+            <returns>Dialog Result</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.ErrorMsg.Show(System.String,System.String)">
+            <summary>
+            Shows a dialog box with a specified msg but using a canned caption.
+            </summary>
+            <param name="msg">Message to display</param>
+            <param name="advanced">Message to be diplayed in the advanced error text box</param>
+            <returns>Dialog Result</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.ErrorMsg.Show(System.String,System.String,System.String)">
+            <summary>
+            Shows a dialog box with a specified msg, caption and extra info
+            </summary>
+            <param name="msg">Message</param>
+            <param name="caption">Caption</param>
+            <param name="advanced">Message to be displayed in the advanced test box</param>
+            <returns>Dialog Result</returns>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Logging.ErrorMsg.Showing">
+            <summary>
+             Gets and sets value indicating whether error message is currently being shown or not.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Common.Logging.Providers.LoggingErrorMessage">
+            <summary>
+            The logging Error Message (calls ErrorMsg, a UII error window) to display Error Message.
+            </summary>
+            <example>
+            Example of a config file using LoggingErrorMessage:
+            <code>
+            &lt;add name=&quot;LoggingErrorMessage&quot;
+            type=&quot;Microsoft.Uii.Common.Logging.Providers.LoggingErrorMessage, Microsoft.Uii.Common.Logging.Providers&quot;
+            /&gt;
+            </code>
+            </example>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.Providers.LoggingErrorMessage.Initialize(System.String,System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            This is the method used to initialize the logging listener
+            </summary>
+            <param name="name">The name of the listener.</param>
+            <param name="configValue">The configuration values (parameters) for the listener.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.Providers.LoggingErrorMessage.Error(System.String,System.String,System.String)">
+            <summary>
+            This method is used to log an error message.
+            </summary>
+            <param name="applicationName">The application name used in the log.</param>
+            <param name="message">The message used in the log.</param>
+            <param name="advanced">Advanced message information.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.Providers.LoggingErrorMessage.Warn(System.String,System.String)">
+            <summary>
+            This method is used to log a warning message.
+            </summary>
+            <param name="applicationName">The application name used in the log.</param>
+            <param name="message">The message used in the log.</param>
+            <remarks>Not implemented for Warning Messages.</remarks>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.Providers.LoggingErrorMessage.Information(System.String,System.String)">
+            <summary>
+            This method is used to log an informational message.
+            </summary>
+            <param name="applicationName">The application name used in the log.</param>
+            <param name="message">The message used in the log.</param>
+            <remarks>Not implemented for Warning Messages.</remarks>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.Providers.LoggingErrorMessage.Trace(System.String,System.String)">
+            <summary>
+            This method is used to log a trace message.
+            </summary>
+            <param name="applicationName">The application name used in the log.</param>
+            <param name="message">The message used in the log.</param>
+            <remarks>Not implemented for Warning Messages.</remarks>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Logging.Providers.LoggingErrorMessage.Tag">
+            <summary>
+            Gets or sets user-defined data associated with the object.
+            </summary>
+            <remarks>Not used...</remarks>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Logging.Providers.LoggingErrorMessage.ShowErrors">
+            <summary>
+            Boolean used to ensure errors are shown.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Common.Logging.Providers.LoggingEventLog">
+            <summary>
+            The logging class to write to a event log file
+            </summary>
+            <example>
+            Example of a config file using LoggingEventLog:
+            <code>
+            &lt;add name=&quot;LoggingEventLog&quot;
+            type=&quot;Microsoft.Uii.Common.Logging.Providers.LoggingEventLog, Microsoft.Uii.Common.Logging.Providers&quot; 
+            logname=&quot;Application&quot;
+            appname=&quot;User Interface Integration&quot;
+            /&gt;
+            </code>
+            </example>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.Providers.LoggingEventLog.Initialize(System.String,System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            This is the method used to initialize the logging listener
+            </summary>
+            <param name="name">The name of the listener.</param>
+            <param name="configValue">The configuration values (parameters) for the listener.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.Providers.LoggingEventLog.Error(System.String,System.String,System.String)">
+            <summary>
+            This method is used to log an error message.
+            </summary>
+            <param name="applicationName">The application name used in the log.</param>
+            <param name="message">The message used in the log.</param>
+            <param name="advanced">Advanced message information.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.Providers.LoggingEventLog.Warn(System.String,System.String)">
+            <summary>
+            This method is used to log a warning message.
+            </summary>
+            <param name="applicationName">The application name used in the log.</param>
+            <param name="message">The message used in the log.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.Providers.LoggingEventLog.Information(System.String,System.String)">
+            <summary>
+            This method is used to log an informational message.
+            </summary>
+            <param name="applicationName">The application name used in the log.</param>
+            <param name="message">The message used in the log.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.Providers.LoggingEventLog.Trace(System.String,System.String)">
+            <summary>
+            This method is used to log a trace message.
+            </summary>
+            <param name="applicationName">The application name used in the log.</param>
+            <param name="message">The message used in the log.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.Providers.LoggingEventLog.WriteToEventLog(System.String,System.String,System.Diagnostics.EventLogEntryType)">
+            <summary>
+            This creates if needed the event log and source and writes an event to it.
+            </summary>
+            <param name="applicationName">The name of the application creating the log.</param>
+            <param name="message">The message to place in the Event log.</param>
+            <param name="type">Enumeration of the event log type.</param>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Logging.Providers.LoggingEventLog.Tag">
+            <summary>
+            Gets or sets user-defined data associated with the object.
+            </summary>
+            <remarks>Not used...</remarks>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Logging.Providers.LoggingEventLog.ShowErrors">
+            <summary>
+            Boolean used to ensure errors are shown.  It is up to the actual
+            implementor/provider to use this or not.
+            </summary>
+            <remarks>Not used.</remarks>
+        </member>
+        <member name="T:Microsoft.Uii.Common.Logging.Providers.LoggingLogFile">
+            <summary>
+            The logging class to write to a log file.
+            </summary>
+            <example>
+            Example of a config file using LoggingLogFile:
+            <code>
+            &lt;add name=&quot;LoggingLogFile&quot;
+            type=&quot;Microsoft.Uii.Common.Logging.Providers.LoggingLogFile, Microsoft.Uii.Common.Logging.Providers&quot;
+            logfile=&quot;x:\Logging\UII.log&quot;
+            appname=&quot;User Interface Integration&quot;/&gt;
+            </code>
+            </example>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.Providers.LoggingLogFile.Initialize(System.String,System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            This is the method used to initialize the logging listener
+            </summary>
+            <param name="name">The name of the listener.</param>
+            <param name="configValue">The configuration values (parameters) for the listener.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.Providers.LoggingLogFile.HasEnvironmentVaribles(System.String,System.String@)">
+            <summary>
+            This is the method used to support environment variables
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.Providers.LoggingLogFile.HasFolderWritePermission(System.String)">
+            <summary>
+            This is the method used to check Folder Write Permission for given path
+            </summary>
+            <param name="LogFilePath">path</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.Providers.LoggingLogFile.Error(System.String,System.String,System.String)">
+            <summary>
+            This method is used to log an error message.
+            </summary>
+            <param name="applicationName">The application name used in the log.</param>
+            <param name="message">The message used in the log.</param>
+            <param name="advanced">Advanced message information.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.Providers.LoggingLogFile.Warn(System.String,System.String)">
+            <summary>
+            This method is used to log a warning message.
+            </summary>
+            <param name="applicationName">The application name used in the log.</param>
+            <param name="message">The message used in the log.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.Providers.LoggingLogFile.Information(System.String,System.String)">
+            <summary>
+            This method is used to log an informational message.
+            </summary>
+            <param name="applicationName">The application name used in the log.</param>
+            <param name="message">The message used in the log.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.Providers.LoggingLogFile.Trace(System.String,System.String)">
+            <summary>
+            This method is used to log a trace message.
+            </summary>
+            <param name="applicationName">The application name used in the log.</param>
+            <param name="message">The message used in the log.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.Providers.LoggingLogFile.WriteToLogFile(System.String,System.String)">
+            <summary>
+            Write the application name and message to the file.
+            </summary>
+            <param name="applicationName">Name to give for the application in the Event log.</param>
+            <param name="message">The message to place in the Event log.</param>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Logging.Providers.LoggingLogFile.Tag">
+            <summary>
+            Gets or sets user-defined data associated with the object.
+            </summary>
+            <remarks>Not used...</remarks>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Logging.Providers.LoggingLogFile.ShowErrors">
+            <summary>
+            Boolean used to ensure errors are shown.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Common.Logging.Providers.LoggingMessageBox">
+            <summary>
+            The logging class to write to show warning and information
+            messages in a MessageBox
+            </summary>
+            <example>
+            Example of a config file using LoggingMessageBox:
+            <code>
+            &lt;add name=&quot;LoggingMessageBox&quot;
+            type=&quot;Microsoft.Uii.Common.Logging.Providers.LoggingMessageBox, Microsoft.Uii.Common.Logging.Providers&quot;
+            /&gt;
+            </code>
+            </example>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.Providers.LoggingMessageBox.Initialize(System.String,System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            This is the method used to initialize the logging listener
+            </summary>
+            <param name="name">The name of the listener.</param>
+            <param name="configValue">The configuration values (parameters) for the listener.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.Providers.LoggingMessageBox.Error(System.String,System.String,System.String)">
+            <summary>
+            This method is used to log an error message.
+            </summary>
+            <param name="applicationName">The application name used in the log.</param>
+            <param name="message">The message used in the log.</param>
+            <param name="advanced">Advanced message information</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.Providers.LoggingMessageBox.Warn(System.String,System.String)">
+            <summary>
+            This method is used to log a warning message.
+            </summary>
+            <param name="applicationName">The application name used in the log.</param>
+            <param name="message">The message used in the log.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.Providers.LoggingMessageBox.Information(System.String,System.String)">
+            <summary>
+            This method is used to log an informational message.
+            </summary>
+            <param name="applicationName">The application name used in the log.</param>
+            <param name="message">The message used in the log.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.Providers.LoggingMessageBox.Trace(System.String,System.String)">
+            <summary>
+            This method is used to log a trace message.
+            </summary>
+            <param name="applicationName">The application name used in the log.</param>
+            <param name="message">The message used in the log.</param>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Logging.Providers.LoggingMessageBox.Tag">
+            <summary>
+            Gets or sets user-defined data associated with the object.
+            </summary>
+            <remarks>Not used...</remarks>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Logging.Providers.LoggingMessageBox.ShowErrors">
+            <summary>
+            Boolean used to ensure errors are shown.
+            </summary>
+            <remarks>Not used.</remarks>
+        </member>
+        <member name="T:Microsoft.Uii.Common.Logging.Providers.LoggingSmtp">
+            <summary>
+            The logging class to write messages to an Smpt server.
+            </summary>
+            <example>
+            Example of a config file using LoggingSmtp:
+            <code>
+            &lt;add name=&quot;LoggingSmtp&quot;
+            type=&quot;Microsoft.Uii.Common.Logging.Providers.LoggingSmtp, Microsoft.Uii.Common.Logging.Providers&quot; 
+            smtpServer=&quot;SmtpServerName&quot;
+            sendTo=&quot;CcfHelpdesk&quot;
+            sendFrom=&quot;CcfSmtpUser&quot;
+            sendOnError=&quot;true&quot;
+            sendOnWarn=&quot;false&quot;
+            sendOnInformation=&quot;false&quot;
+            sendOnTrace=&quot;false&quot; /&gt;
+            </code>
+            </example>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.Providers.LoggingSmtp.Initialize(System.String,System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            This is the method used to initialize the logging listener
+            </summary>
+            <param name="name">The name of the listener.</param>
+            <param name="configValue">The configuration values (parameters) for the listener.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.Providers.LoggingSmtp.Error(System.String,System.String,System.String)">
+            <summary>
+            This method is used to log an error message.
+            </summary>
+            <param name="applicationName">The application name used in the log.</param>
+            <param name="message">The message used in the log.</param>
+            <param name="advanced">Advanced message information.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.Providers.LoggingSmtp.Warn(System.String,System.String)">
+            <summary>
+            This method is used to log a warning message.
+            </summary>
+            <param name="applicationName">The application name used in the log.</param>
+            <param name="message">The message used in the log.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.Providers.LoggingSmtp.Information(System.String,System.String)">
+            <summary>
+            This method is used to log an informational message.
+            </summary>
+            <param name="applicationName">The application name used in the log.</param>
+            <param name="message">The message used in the log.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.Providers.LoggingSmtp.Trace(System.String,System.String)">
+            <summary>
+            This method is used to log a trace message.
+            </summary>
+            <param name="applicationName">The application name used in the log.</param>
+            <param name="message">The message used in the log.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.Providers.LoggingSmtp.SendViaSmtp(System.String,System.String,System.String)">
+            <summary>
+            The private method which actually send the email.
+            </summary>
+            <param name="mailType">The mail type being send (Error, Warn, Information, Trace)</param>
+            <param name="applicationName">The application name that through the log call.</param>
+            <param name="message">The message being sent my the log call.</param>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Logging.Providers.LoggingSmtp.Tag">
+            <summary>
+            Gets or sets user-defined data associated with the object.
+            </summary>
+            <remarks>Not used...</remarks>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Logging.Providers.LoggingSmtp.ShowErrors">
+            <summary>
+            Boolean used to ensure errors are shown.
+            </summary>
+            <remarks>Not used...use configuration setting 'sendOnError'</remarks>
+        </member>
+        <member name="T:Microsoft.Uii.Common.Logging.Providers.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Logging.Providers.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Logging.Providers.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Logging.Providers.Properties.Resources.Collapse_Error_18">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Logging.Providers.Properties.Resources.CopyDetails">
+            <summary>
+              Looks up a localized string similar to Copy Details.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Logging.Providers.Properties.Resources.Error">
+            <summary>
+              Looks up a localized string similar to Error.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Logging.Providers.Properties.Resources.Expand_Error_18">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Logging.Providers.Properties.Resources.HideErrorLog">
+            <summary>
+              Looks up a localized string similar to Hide Details.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Logging.Providers.Properties.Resources.showErrorLog">
+            <summary>
+              Looks up a localized string similar to Show Details.
+            </summary>
+        </member>
+    </members>
+</doc>

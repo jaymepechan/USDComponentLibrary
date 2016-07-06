@@ -1,0 +1,72 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.5 [en] (WinNT; I) [Netscape]">
+   <meta name="Author" content="Willie Walker">
+   <title>Java Accessibility:  The Bridge to Native Code</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#0000EE" vlink="#551A8B" alink="#FF0000">
+<a href="http://java.sun.com"><img SRC="images/java_header.gif" ALT="The Source for Java - java.sun.com" NOSAVE BORDER=0  align=LEFT></a>
+<div align=right><font size=+3>JAVA ACCESSIBILITY</font></div>
+
+<div align=right><font size=+2>Java Accessibility Bridge to Native Code</font></div>
+<!--- These are the Menu Items ---->
+<hr NOSHADE WIDTH="100%">
+<center>[<a href="index.html">Home</a>] [<a href="what.html">What are they?</a>]
+[<a href="guide.html">Overview of Features</a>] [<a href="api/com/sun/java/accessibility/util/package-summary.html">API
+Reference</a>]
+<br>[<a href="FAQ.html">FAQ</a>] [<a href="examples.html">Examples</a>]
+[<a href="../CHANGES.txt">Changes</a>] [<a href="compatibility.html">Compatibility
+table</a>] [<a href="http://java.sun.com/products/jfc">JFC Home Page</a>]</center>
+
+<hr NOSHADE WIDTH="100%">
+<h2>
+The Java Accessibility Bridge to Native Code&nbsp;
+<hr NOSHADE WIDTH="100%"></h2>
+In order for existing assistive technologies available on host systems
+(e.g. Microsoft Windows, Macintosh, OS/2) to provide access to Java applications,
+they need some way to communicate with the Java Accessibility support in
+those Java applications. The Java Accessibility Bridge supports that communication.
+This bridge is a class which contains "native methods."&nbsp; Part of the
+code for the class is actually supplied by a DLL on the host system - Solaris,
+OS/2, Microsoft Windows, Macintosh, etc. The assistive technology running
+on the host (e.g., a Macintosh screen reader) communicates with the Macintosh
+native DLL portion of the bridge class, which in turn communicates with
+the Java Virtual Machine, and from there to the Java Accessibility utility
+support and the Java Accessibility API on the individual user interface
+objects of the Java application it is providing access to.
+<p>A diagram of how all of these components work together is shown below.
+<ul>&nbsp;
+<center>
+<br><img SRC="images/Java_Accessibility_Bridge.gif" ALT="Diagram of howthe Java Accessibility bridge works" height=264 width=489>
+<br>&nbsp;<i>Figure: Diagram of How the Java Accessibility Bridge Works</i></center>
+</ul>
+For example, in order for a screen reader for Microsoft Windows to provide
+access to Java applications running on that system, that screen reader
+would make calls to the Java Accessibility Bridge for Microsoft Windows.
+If/when a the user launched a Java application, the bridge would inform
+the screen reader of this fact. Then the screen reader would query the
+bridge about the Java application and the bridge would in turn forward
+those queries on to the Java Accessibility Utilities that were loaded into
+the Java Virtual Machine, and in many cases on to the individual user interface
+object that implemented the Java Accessibility API. When those answers
+came back to the bridge, the bridge would forward them on to the screen
+reader for Microsoft Windows, which would then use the answers to tell
+the user what was going on in the Java application.
+<br>
+<hr SIZE=3 NOSHADE>
+<address>
+<img SRC="images/javalogo52x88.gif" ALT="Java Logo" NOSAVE  align=LEFT><font size=-1><a href="http://java.sun.com/share/copyright.html">Copyright&copy;
+</a>1995-99
+<a href="http://www.sun.com">Sun Microsystems, Inc. All Rights Reserved.</a></font></address>
+
+<address>
+<font size=-1>To submit comments or suggestions about <a href="http://www.sun.com/access/index.html">Java
+Accessibility</a>, please send mail to <i><a href="mailto:access@sun.com">access@sun.com</a></i>.</font></address>
+
+<br>&nbsp;
+<p>&nbsp;
+<p><a href="http://www.sun.com"><img SRC="images/smi_logo.gif" ALT="Sun MicroSystems" NOSAVE BORDER=0 height=43 width=120 align=RIGHT></a>
+</body>
+</html>

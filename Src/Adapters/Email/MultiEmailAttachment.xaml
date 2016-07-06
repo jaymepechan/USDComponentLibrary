@@ -1,0 +1,23 @@
+﻿<root:MicrosoftBase x:Class="Microsoft.USD.ComponentLibrary.Adapters.Email.MultiEmailAttachment"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Microsoft.USD.ComponentLibrary.Adapters.Email"
+             xmlns:root="clr-namespace:Microsoft.USD.ComponentLibrary"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <ListBox x:Name="FileList" Grid.Row="0" AllowDrop="True" PreviewDragOver="File_PreviewDragEnter" PreviewDragEnter="File_PreviewDragEnter" PreviewDrop="File_PreviewDrop">
+            
+        </ListBox>
+        <StackPanel Orientation="Horizontal" Grid.Row="1" >
+            <Button Content="Attach" x:Name="AttachButton" Click="AttachButton_Click" />
+            <Button Content="Cancel" x:Name="CancelButton" Click="CancelButton_Click" />
+        </StackPanel> 
+    </Grid>
+</root:MicrosoftBase>

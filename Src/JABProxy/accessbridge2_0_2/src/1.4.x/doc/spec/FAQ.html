@@ -1,0 +1,1007 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="Peter Korn">
+   <meta name="GENERATOR" content="Mozilla/4.5 [en] (WinNT; I) [Netscape]">
+   <title>Java Accessibility FAQ</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#0000EE" vlink="#551A8B" alink="#FF0000">
+<a href="http://java.sun.com"><img SRC="images/java_header.gif" ALT="The Source for Java - java.sun.com" NOSAVE BORDER=0  align=LEFT></a>
+<div align=right><font size=+3>JAVA ACCESSIBILITY</font></div>
+
+<div align=right><font size=+2>Java Accessibility FAQ</font></div>
+<!--- These are the Menu Items ---->
+<hr NOSHADE WIDTH="100%">
+<center>[<a href="index.html">Home</a>] [<a href="what.html">What are they?</a>]
+[<a href="guide.html">Overview of Features</a>] [<a href="api/com/sun/java/accessibility/util/package-summary.html">API
+Reference</a>]
+<br>[<a href="FAQ.html">FAQ</a>] [<a href="examples.html">Examples</a>]
+[<a href="../CHANGES.txt">Changes</a>] [<a href="compatibility.html">Compatibility
+table</a>] [<a href="http://java.sun.com/products/jfc">JFC Home Page</a>]</center>
+
+<hr NOSHADE WIDTH="100%">
+<br><img SRC="images/faq61x125.gif" ALT="FAQ" NOSAVE height=125 width=61 align=RIGHT>
+<h2>
+Java Accessibility FAQ<a NAME="top"></a></h2>
+
+<h3>
+Getting started with Java Accessibility</h3>
+
+<ul>
+<ul>
+<li>
+<a href="#What_does_Access_mean">What does 'Accessibility' mean?</a></li>
+
+<li>
+<a href="#More_info">Who do I contact for more information?</a></li>
+
+<li>
+<a href="#How_much_costs">How much does Java Accessibility cost?</a></li>
+
+<li>
+<a href="#What_is_Sun_doing">What is Sun doing to make Java accessible?</a></li>
+
+<li>
+<a href="#AAJ">What about Microsoft's 'Active Accessibility for Java'?</a></li>
+
+<li>
+<a href="#Microsoft_invited">Was Microsoft invited to take part in the
+design of Java Accessibility?</a></li>
+</ul>
+</ul>
+
+<h3>
+<b>Usage</b></h3>
+
+<ul>
+<ul>
+<li>
+<a href="#What_is_in_the_API">What is in the Java Accessibility API?</a></li>
+
+<li>
+<a href="#What_is_in_the_utilities_package">What is in the Java Accessibility
+Utilities package?</a></li>
+
+<li>
+<a href="#How_will_it_be_used">How will Java Accessibility be used?</a></li>
+
+<ul>
+<li>
+<a href="#used_by_developers">How will Java Accessibility be used by developers?</a></li>
+
+<li>
+<a href="#used_by_ATVs">How will Java Accessibility be used by Assistive
+Technology vendors?</a></li>
+</ul>
+
+<li>
+<a href="#Who_is_using">Who is using Java Accessibility?</a></li>
+
+<li>
+<a href="#Easy_to_use">Is Java Accessibility easy to use?</a></li>
+
+<li>
+<a href="#Guidelines_for_use">Are there guidelines for using the Java Accessibility
+API correctly?</a></li>
+</ul>
+</ul>
+
+<h3>
+<b>Certification</b></h3>
+
+<ul>
+<ul>
+<li>
+<a href="#100%_pure">How does Java Accessibility relate to the 100% Pure
+Java program?</a></li>
+
+<li>
+<a href="#Certification">Is there an "Accessible" certification process?</a></li>
+</ul>
+</ul>
+
+<h3>
+<b>Performance</b></h3>
+
+<ul>
+<ul>
+<li>
+<a href="#Better_on_certain_platforms">Does Java Accessibility run better
+on certain platforms?</a></li>
+
+<li>
+<a href="#Size_issues">Will developers have to worry about the size of
+Java Accessibility?</a></li>
+</ul>
+</ul>
+
+<h3>
+<b>Compatibility &amp; Development</b></h3>
+
+<ul>
+<ul>
+<li>
+<a href="#AWT">How does Java Accessibility affect Sun's AWT?</a></li>
+
+<li>
+<a href="#How_does_JFC_support">How do the Java Foundation Classes support
+Accessibility?</a></li>
+
+<li>
+<a href="#Design_right">How was Java Accessibility designed?</a></li>
+
+<li>
+<a href="#What_about_non_JFC">What about Java applications that aren't
+built using JFC?</a></li>
+
+<li>
+<a href="#Other_libraries">Do any class libraries other than those that
+come with JFC support Java Accessibility?</a></li>
+
+<li>
+<a href="#Compatibility_issues">Will there be any compatibility issues
+for accessible applications created with JDK 1.1 and JFC in future versions
+of the JDK?</a></li>
+
+<li>
+<a href="#Compatibility_table">Which version of the Java Accessibility
+Utilities should I use with specific versions of the JFC, the JDK, and
+the Java Plugin?</a></li>
+</ul>
+</ul>
+
+<h3>
+<b>Release &amp; Delivery Info.</b></h3>
+
+<ul>
+<ul>
+<li>
+<a href="#Where_can_I_download">Where can I download Java Accessibility?</a></li>
+
+<li>
+<a href="#When_start_developing">When can developers start using Java Accessibility?</a></li>
+</ul>
+</ul>
+
+<h3>
+<b>Use with Assistive Technologies</b></h3>
+
+<ul>
+<ul>
+<li>
+<a href="#Who_creates_the_JVM">Who creats the Java environment that I am
+running on my system?</a></li>
+
+<li>
+<a href="#What_control_does_Sun_have">What control does Sun have over the
+creation and distribution of Java environments?&nbsp; Of Java applications
+and applets?</a></li>
+
+<li>
+<a href="#What_are_the_different_kinds">Are there different kinds of Java
+applications and applets from the point of view of accessibility?</a></li>
+
+<li>
+<a href="#What_are_the_differences">What are the differences between these
+three kinds of Java applications/applets from the point of view of accessibility?</a></li>
+
+<li>
+<a href="#What_changes_with_respect">What changes with respect to accessibility
+in the forthcoming release of JDK 1.2?</a></li>
+
+<li>
+<a href="#How_do_native_SR_to_apps">How do native (e.g. Windows and Macintosh)
+screen readers provide access to Java applications and applets running
+on my system?</a></li>
+
+<li>
+<a href="#How_do_native_SR_to_applets">How do native (e.g. Windows and
+Macintosh) screen magnifiers provide access to Java applications and applets
+running on my system?</a></li>
+
+<li>
+<a href="#What_can_I_do_to_determine">What can I do to determine why my
+particular assistive technology isn't working with a specific Java application
+or applet?</a></li>
+</ul>
+</ul>
+
+<ul>&nbsp;
+<ul>
+<ul>
+<ul>&nbsp;</ul>
+</ul>
+</ul>
+<!----- Return to top line -----><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112><a href="#top">Question
+Index</a><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112>
+<h3>
+<a NAME="What_does_Access_mean"></a>What does 'Accessible' mean in this
+context?</h3>
+
+<ul>There are over 40 million Americans with disabilities, and far more
+worldwide.&nbsp; For many of these individuals, their disability makes
+it difficult to impossible to use computers and computer software as they
+are shipped from the manufacturer.&nbsp; These individuals need some form
+of computer accommodation which provides them with access to the same applications
+that everyone else can use use unaided.&nbsp; These accommodations include:
+screen readers which use synthesized speech to read the contents of a screen
+to a person who is blind; screen magnifiers which enlarge a portion or
+all of the screen sometimes as much as 16 times for a person with some
+sight but who would otherwise be unable to see the screen; on-screen keyboards
+with word prediction and speech recognition systems for people with physical
+impairments who cannot type on a standard keyboard.&nbsp; In order to ensure
+that these accommodations function properly on a computing platform, that
+platform needs to make the system and the software that runs on it accessible,
+either directly (e.g. a talking Web browser), or by ensuring that it works
+with assistive technologies on that platform (e.g. is compatible with screen
+readers).&nbsp; In the United states, there are a number of relevant laws
+designed to ensure that individuals with disabilities have full and equal
+access to computer technology in education and the workplace (see: <a href="http://java.sun.com/products/jfc/accessibility.html">http://java.sun.com/products/jfc/accessibility.html</a>).</ul>
+<!----- Return to top line -----><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112><a href="#top">Question
+Index</a><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112>
+<h3>
+<a NAME="More_info"></a>Who do I contact for more information?</h3>
+
+<ul>More information on Java Accessibility can be found at at Sun's Accessibility
+site: <a href="http://www.sun.com/access">http://www.sun.com/access</a>,
+as well as in the Java Foundation Classes site: <a href="http://java.sun.com/products/jfc">http://java.sun.com/products/jfc</a>.&nbsp;
+In addition, developers can find support for Java Accessibility questions
+through Sun's Java Developer Connection at <a href="http://java.sun.com/jdc">http://java.sun.com/jdc</a>.</ul>
+<!----- Return to top line -----><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112><a href="#top">Question
+Index</a><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112>
+<h3>
+<a NAME="How_much_costs"></a>How much does Java Accessibility cost?</h3>
+
+<ul>Nothing -- it is absolutely free.</ul>
+
+<ul>&nbsp;</ul>
+<!----- Return to top line -----><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112><a href="#top">Question
+Index</a><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112>
+<h3>
+<a NAME="What_is_Sun_doing"></a>What is Sun doing to make the Java Platform
+Accessible?</h3>
+
+<ul>Sun is broadly doing 4 things with Accessibility on the Java Platform:
+<p>1. We have developed an API (the Java Accessibility API) to allow Java
+applications to be compatible with screen access software.&nbsp; This API
+is available the Java package 'javax.accessibility', shipping as part of
+the Java Foundation Classes version 1.1, downloadable at <a href="http://java.sun.com/products/jfc">http://java.sun.com/products/jfc</a>
+and also shipping as part of the Java Platform implementation JDK 1.2,
+downloadable at <a href="http://java.sun.com/products/jdk/1.2">http://java.sun.com/products/jdk/1.2.</a>
+<p>2. We have developed a set of utilities for Assistive Technology vendors
+(the Java Accessibility Utilities package), that allows them to easily
+make queries of the system (things like&nbsp; "GetObjectAtPoint", "GetTopLevelWindows",
+etc.), which is available as a downloadable package to work in any Java
+VM from JDK 1.1 to the present.
+<p><a NAME="Java_Accessibility_Bridge"></a>3. We are developing a standard
+mechanism for getting the Java Accessibility API information out of the
+Java VM and to assistive technology running in the native host environment
+(the Java Accessibility Bridge).&nbsp; This mechanism will be based on
+JNI - Java Native Interfaces.
+<p>4. We developed the pluggable look &amp; feel architecture to support
+direct accessibility in the Java Foundation Classes (downloadable at <a href="http://java.sun.com/products/jfc">http://java.sun.com/products/jfc</a>).&nbsp;
+With the pluggable look and feel architecture, mainstream developers can
+build Java applications whose user interface is chosen by the user (who
+might choose an audio interface instead of, or in addition to, a visual
+interface).
+<br>&nbsp;</ul>
+<!----- Return to top line -----><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112><a href="#top">Question
+Index</a><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112>
+<h3>
+<a NAME="AAJ"></a>What about Microsoft's 'Active Accessibility for Java'?</h3>
+
+<ul>Microsoft has an accessibility interface for the Win32 platform called
+'Active Accessibility' which provides access to Microsoft Windows-specific
+information about applications running on that platform.&nbsp; Microsoft
+announced an API for extending Active Accessibility to Java applications
+built using AFC when running in Microsoft Internet Explorer on a Win32
+OS.&nbsp; This API contains a number of things that are only available
+in Microsoft Windows (e.g. pointers to Microsoft Windows help file entries).</ul>
+
+<p><br><!----- Return to top line -----><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112><a href="#top">Question
+Index</a><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112>
+<h3>
+<a NAME="Microsoft_invited"></a>Was Microsoft invited to take part in the
+design of Java Accessibility?</h3>
+
+<ul>Yes.&nbsp; As an important licensee, Microsoft was invited to collaborate
+on
+the design of Java Accessibility from the beginning, and took part in the
+Accessibility review of JDK 1.0.2 (report at: <a href="http://www.trace.wisc.edu/docs/java_access_rpt/report.htm">http://www.trace.wisc.edu/docs/java_access_rpt/report.htm</a>,
+contributed to by the Microsoft Accessibility team), and at every design
+meeting for Java Accessibility that comprised more than just Sun employees.</ul>
+<!----- Return to top line -----><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112><a href="#top">Question
+Index</a><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112>
+<ul>&nbsp;</ul>
+
+<h3>
+<a NAME="What_is_in_the_API"></a>What is in the Java Accessibility API?</h3>
+
+<ul><font color="#000000">The <a href="http://java.sun.com/products/jfc/swingdoc-api/javax/accessibility/package-summary.html">Java
+Accessibility API</a> defines the contract between mainstream Java applets/applications
+and Assistive Technologies through the <tt>Accessible</tt> interface.&nbsp;
+This interface contains a method to get the <tt>AccessibleContext</tt>
+class, which contains the core common set of Accessibility information
+that every user-interface object must provide.&nbsp; In addition, the Java
+Accessibility API defines a set of additional interfaces for providing
+access to specific types of user-interface objects.</font>
+<p><tt>interface AccessibleAction:</tt>
+<ul>For all user-interface objects.&nbsp; This interface provides the standard
+mechanism for retrieving all of the accessibility information about an
+object (by returning an instance of the <tt>AccessibleContext</tt> class
+for the object).&nbsp; All user-interface objects should implement interface
+<tt>Accessible</tt>
+and return the appropriate <tt>AccessibleContext</tt> when asked.</ul>
+<tt>class AccessibleContext:</tt>
+<ul>For all user-interface objects.&nbsp; This class provides methods for
+retireving the name and description of the object, the object's role and
+states, the objects parent and children, the objects locale, and property
+change listening a mechanism for tracking changes to this information.&nbsp;
+All user-interface objects should implement interface <tt>Accessible</tt>
+and return the appropriate <tt>AccessibleContext</tt> when asked.</ul>
+<tt>interface AccessibleAction:</tt>
+<ul>For objects that can perform one or more actions.&nbsp; This interface
+provides the standard mechanism for an assistive technology to determine
+what those actions are and tell the object to perform those actions. Any
+object that can be manipulated should provide this interface.</ul>
+<tt>interface AccessibleComponent:</tt>
+<ul>For objects that have a graphical representation.&nbsp; This interface
+provides the standard mechanism for an assistive technology to determine
+and set the attributes of the graphical representation of the object.&nbsp;
+Any object that is being rendered onto the screen should provide this interface.</ul>
+<tt>interface AccessibleSelection:</tt>
+<ul>For objects that allow their Accessible children to be selected.&nbsp;
+This interface provides the standard mechanism for an assistive technology
+to determine what the current selection is as well as manipulate that selection.&nbsp;
+Any object that contains children we can be selected should provide this
+interface.</ul>
+<tt>interface AccessibleText:</tt>
+<ul>For objects that present editable textual information on the display.&nbsp;
+This interface provides the standard mechanism for an assistive technology
+to access that text via its content as well as providing spatial location.&nbsp;
+Any object that contains editable text should provide this interface.</ul>
+<tt>interface AccessibleHypertext:</tt>
+<ul>For objects that present hyper textual information on the display.&nbsp;
+This interface extends the AccessibleText interface, and provides additional
+mechanism for an assistive technology to enumerate and activate the hyperlinks
+with that text.&nbsp; Any object that contains hypertext should provide
+this interface.</ul>
+<tt>interface AccessibleValue:</tt>
+<ul>For objects that contain a varying numerical value.&nbsp; This interface
+provides the standard mechanism for an assistive technology to determine
+and set the current value of the object, as well as the objects minimum
+and maximum values.&nbsp; Any object that contains a varying numerical
+value should provide this interface.</ul>
+
+<p><br>The Java Accessibility API is extensible, and additional specialized
+interfaces are planned for future version, including interface <tt>AccessibleTable</tt>,
+and interface <tt>AccessibleDocument.</tt></ul>
+<!----- Return to top line -----><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112><a href="#top">Question
+Index</a><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112>
+<ul>&nbsp;</ul>
+
+<h3>
+<a NAME="What_is_in_the_utilities_package"></a>What is in the Java Accessibility
+Utilities package?</h3>
+
+<ul>The Java Accessibility Utilities package contains two major pieces:
+<p>1. a set of utility classes (the com.sun.java.accessibility.util class
+package) for use by Assistive Technology Vendors which provides methods
+for listening to all AWT and JFC events in any running Java applications;
+for getting the object at any given point in any Java window on the screen;
+for enumerating the top-level Java windows that are open; for getting the
+current Java component that has the keyboard focus; and for retrieving
+the current mouse cursor location
+<p>2. example Java applications with full source code illustrating various
+techniques for providing access to Java applications via the Java Accessibility
+API
+<br>&nbsp;</ul>
+<!----- Return to top line -----><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112><a href="#top">Question
+Index</a><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112>
+<h3>
+<a NAME="How_will_it_be_used"></a>How will Java Accessibility be used...</h3>
+
+<ul>
+<h3>
+<a NAME="used_by_developers"></a>...by developers?</h3>
+
+<ul>Developers who want to write directly-accessible Java applications
+use the Java Foundation Classes and the pluggable look and feel architecture
+to design applications that are independent of the actual modality of the
+interface.&nbsp; In this way, a user can choose to use an interface of
+that users' choice (e.g. a low-vision interface, or an audio interface,
+etc.).
+<p>Developers who want to ensure that their Java applications will interoperate
+with assistive technologies, such as screen readers, Braille terminals,
+etc., use the Java Accessibility API in all of the user-interface components
+of their applications.&nbsp; If they are exclusively using the user-interface
+components of Java Foundation Classes to build their applications, most
+of their work to ensure compatibility is done; they need to simply ensure
+that appropriate names and descriptions are set on each of the user-interface
+components.&nbsp; If these developers are using user-interface components
+from other class libraries, or if they are developing their own custom
+user-interface components, they need to explicitly support the Java Accessibility
+API.</ul>
+
+<h3>
+<a NAME="used_by_ATVs"></a>...by Assistive Technology vendors?</h3>
+
+<ul>Vendors are building alternate user interfaces for the Java Foundation
+Classes to provide interfaces in non-traditional modalities, including
+the current development of low-vision and audio user interfaces for the
+JFC.
+<p>Vendors are also building Assistive Technologies in Java, such as the
+<a href="http://www.austin.ibm.com/sns/">IBM
+Special Needs Systems group</a>, which is building a screen reader for
+the Java platform that will provide blind access to Java applications which
+support the Java Accessibility API.
+<p>Finally, vendors of native Assistive Technologies (such as those found
+on the Macintosh, Microsoft Windows, and OS/2 platforms), will be utilizing
+the forthcoming Java Accessibility Bridge to provide access to Java applications
+running within those operating system environments.
+<br>&nbsp;</ul>
+</ul>
+<!----- Return to top line -----><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112><a href="#top">Question
+Index</a><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112>
+<h3>
+<a NAME="Who_is_using"></a>Who is using Java Accessibility?</h3>
+
+<ul>The many developers who are building products on top of the Java Foundation
+Classes are already automatically transparently using Java Accessibility
+to make their applications accessible.&nbsp; Assistive Technology vendors
+are currently building products on top of Java Accessibility, including
+the IBM Special Needs Services group, which has announced the development
+of a screen reader for the Java platform.</ul>
+<!----- Return to top line -----><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112><a href="#top">Question
+Index</a><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112>
+<h3>
+<a NAME="Easy_to_use"></a>Is Java Accessibility easy to use?</h3>
+
+<ul>Since it is built into the Java Foundation Classes, which is core to
+the Java Platform and thus don't need to be ported from a different environment,
+developers will find that the Java Accessibility is very easy to use -
+virtually all of the work is done for them.&nbsp; Furthermore, the accessibility
+information provided by the Accessibility Interfaces can be found in virtually
+any set of Java User Interface classes, so developers who want to make
+their own class libraries accessible via the Java Accessibility standard
+can do so easily, thereby ensuring that their class libraries and applications
+built using them can be accessible.</ul>
+<!----- Return to top line -----><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112><a href="#top">Question
+Index</a><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112>
+<h3>
+<a NAME="Guidelines_for_use"></a>Are there guidelines for using the Java
+Accessibility API correctly?</h3>
+
+<ul>The <a href="http://www.austin.ibm.com/sns/">IBM Special Needs Systems
+group</a> has been a close partner in the development of the Java Accessibility
+API, and they have developed a set of <a href="http://www.austin.ibm.com/sns/snsjavag.htm">Guidelines
+for Writing Accessible Applications</a> in the Java programming language.
+This document describes in detail how to use the Java Accessibility API
+and the Java Foundation Classes in order to develop mainstream applications
+that are fully accessible.</ul>
+<!----- Return to top line -----><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112><a href="#top">Question
+Index</a><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112>
+<h3>
+<a NAME="Certification"></a>Is there an "Accessible" certification process?</h3>
+
+<ul>Not at this time.&nbsp; To 100% certify that a Java application is
+accessible, one would have to certify that it is accessible by every possible
+alternative means of using a computer (e.g. screen reader, keyboard alternative,
+etc.), on a per-Assistive Technology basis.&nbsp; However, Sun is investigating
+ways to certify that an application fully implements the Java Accessibility
+interfaces, which will go a long way toward ensuring that it will work
+properly with Assistive Technologies.</ul>
+<!----- Return to top line -----><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112><a href="#top">Question
+Index</a><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112>
+<h3>
+<a NAME="100%_pure"></a>How does Java Accessibility relate to the 100%
+Pure Java program?</h3>
+
+<ul>The Java Accessibility API, which is implemented in the Java Foundation
+Classes, provides the building blocks that enable developers to easily
+create a accessible applications that are 100% Pure Java.</ul>
+<!----- Return to top line -----><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112><a href="#top">Question
+Index</a><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112>
+<h3>
+<a NAME="Better_on_certain_platforms"></a>Does Java Accessibility run better
+on certain platforms?</h3>
+
+<ul>No.&nbsp; Since Java Accessibility is designed to be truly cross-platform,
+developers can take advantage of its ease of use on all Java Compatible
+Platforms.
+<p>The <a href="#Java_Accessibility_Bridge">Java Accessibility Bridge</a>,
+which provides a mechanism for existing native Assistive Technologies to
+communicate with programs on the Java platform using the Java Accessibility
+API, requires platform-specific code and when released may function differently
+on different platforms.
+<br>&nbsp;</ul>
+<!----- Return to top line -----><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112><a href="#top">Question
+Index</a><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112>
+<h3>
+<a NAME="Size_issues"></a>Will developers have to worry about the size
+of Java Accessibility?</h3>
+
+<ul>No.&nbsp; The code itself is very small, even though it is quite comprehensive.&nbsp;
+Furthermore, because Java Accessibility is core to the Java Platform, it
+will already be every machine that supports the Java Foundation Classes
+as well as the next version of the JDK.</ul>
+<!----- Return to top line -----><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112><a href="#top">Question
+Index</a><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112>
+<h3>
+<a NAME="AWT"></a>How does Java Accessibility affect Sun's AWT?</h3>
+
+<ul>The Java Accessibility Utilities package includes a lot of accessibility
+support for AWT, providing mechanisms for externally monitoring all AWT
+events, and for externally retrieving the AWT object at any given point
+on the screen.&nbsp; AWT is not made fully accessible with this release
+of Java Accessibility, as that requires changes to AWT, which will not
+be part of the JDK 1.2 release in 1998.</ul>
+<!----- Return to top line -----><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112><a href="#top">Question
+Index</a><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112>
+<h3>
+<a NAME="How_does_JFC_support"></a>How do the Java Foundation Classes support
+Accessibility?</h3>
+
+<ul>In addition to including the Java Accessibility API, the Java Foundation
+Classes are build using the Pluggable Look &amp; Feel architecture.&nbsp;
+The Pluggable L&amp;F separates the Look &amp; Feel of a Java application
+from the underlying model and logic behind that application.&nbsp; While
+this make it easy to have custom looks for an applications (such as a "Macintosh"
+look and a "Windows" look), it more importantly means that standard applications
+built using the JFC can have instead an "audio" look, a "Braille" look,
+and so forth.&nbsp; With the JFC, for the first time in the history of
+the Assistive Technology industry, applications built using the JFC can
+be directly accessible via speech or Braille simply by having the user
+choose an audio or Braille UI factory for that application.&nbsp; This
+direct accessibility support means that alternative interfaces such as
+audio and Braille are first-class citizens, alongside their visual counterparts,
+rather than only being supported through interpretive layers such as screen
+readers and screen magnifiers.</ul>
+<!----- Return to top line -----><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112><a href="#top">Question
+Index</a><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112>
+<h3>
+<a NAME="Design_right"></a>How was Java Accessibility designed?</h3>
+
+<ul>The Java Accessibility API was created through an open design process
+based on input from experts in the assistive technology field, including
+developers who have implemented screen readers on four different platforms,
+the alternative keyboard interfaces standard that is part of X Windows,
+accessibility professors from Stanford and the University of Wisconsin-Madison,
+and engineers from Sun, IBM, Apple, and Microsoft.&nbsp; In addition, the
+IBM Special Needs Services group contributed source code to the implementation
+of the Java Accessibility API on a number of the user-interface components
+in the Java Foundation Classes, as well as proof-of-concept testing via
+the development of their screen reader.
+<p>The Pluggable Look and Feel architecture of the Java Foundation Classes
+was developed based on the input of many experts in user-interface design,
+and tested by the over 300,000 developers who have downloaded them during
+their development cycle.&nbsp; One of the key design reasons for making
+the Pluggable Look and Feel was to support direct accessibility in the
+modality of the user's choice.&nbsp; Several Assistive Technology developers
+are creating alternate user interfaces using the Pluggable Look and Feel
+architecture, and their input helped shape the design during its development.
+<br>&nbsp;</ul>
+<!----- Return to top line -----><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112><a href="#top">Question
+Index</a><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112>
+<h3>
+<a NAME="What_about_non_JFC"></a>What about Java applications that aren't
+built using JFC?</h3>
+
+<ul>These programs will automatically be somewhat accessible because they
+are build on top of AWT, to which the Java Accessibility Utilities provide
+some access.&nbsp; However, to be fully accessible, these applications
+should directly support the Java Accessibility interfaces, or be built
+on top of some other class libraries that support Java Accessibility.</ul>
+<!----- Return to top line -----><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112><a href="#top">Question
+Index</a><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112>
+<h3>
+<a NAME="Other_libraries"></a>Do any class libraries other than those that
+come with JFC support Java Accessibility?</h3>
+
+<ul>None have announced their support at this time, though a number of
+class library vendors and Java Bean developers are reviewing the Java Accessibility
+API, and several took part in the design of Java Accessibility.</ul>
+<!----- Return to top line -----><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112><a href="#top">Question
+Index</a><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112>
+<h3>
+<a NAME="Compatibility_issues"></a>Will there be any compatibility issues
+for accessible applications created with JDK 1.1 and JFC in future versions
+of the JDK?</h3>
+
+<ul>The JDK is backwards compatible which means that JFC applications created
+for JDK 1.1 and JFC will be able to run on JDK 1.2, to be released later
+this year. The only requirement is that developers use JFC 1.1 with Swing
+1.1 or better, as the names of both the Java Accessibility API package
+and the Swing package have changed.</ul>
+<!----- Return to top line -----><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112><a href="#top">Question
+Index</a><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112>
+<h3>
+<a NAME="Compatibility_table"></a>Which version of the Java Accessibility
+Utilities should I use with specific versions of the JFC, the JDK, and
+the Java Plugin?</h3>
+
+<ul>The <a href="compatibility.html">Java Accessibility Utilities compatibility
+table</a> shows which versions of the Java Accessibility Utilities package
+should be used with version of the JFC, JDK, and Java Plugin.</ul>
+<!----- Return to top line -----><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112><a href="#top">Question
+Index</a><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112>
+<h3>
+<a NAME="Where_can_I_download"></a>Where can I download Java Accessibility?</h3>
+
+<ul><font color="#000000">The Java Accessibility API is available for download
+as part of the Java Foundation Classes version 1.1, at <a href="http://java.sun.com/products/jfc">http://java.sun.com/products/jfc</a>.&nbsp;
+The Java Accessibility API is also available for download as part of the
+Java Developers Kit (JDK) version 1.2. JDK 1.2 can be found at the <a href="http://java.sun.com/products/jdk/1.2">JDK
+1.2 site</a>&nbsp;&nbsp; Information on downloading the
+</font>Java Accessibility
+Utilities package is available at <a href="http://www.sun.com/access">http://www.sun.com/access</a>.</ul>
+<!----- Return to top line -----><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112><a href="#top">Question
+Index</a><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112>
+<h3>
+<a NAME="When_start_developing"></a>When can developers start using Java
+Accessibility?</h3>
+
+<ul>We want developers to start using Java Accessibility, and using the
+Java Foundation Classes to write accessible Java applications immediately,
+as several licensees and partners already have.&nbsp; JDK 1.1 supports
+Java Accessibility and the Java Foundation Classes, which means that ISVs
+can not only develop accessible applications as well as Assistive Technologies
+for Java, but can deploy them now.</ul>
+<!----- Return to top line -----><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112><a href="#top">Question
+Index</a><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112>
+<h3>
+<a NAME="Who_creates_the_JVM"></a>Who creates the Java environment that
+I am running on my system?</h3>
+
+<ul>Independent software vendors, operating system vendors, hardware companies,
+etc. who have licensed the Java platform (known as "Java Platform licensees",
+of which there are over 120 at last count) each create and release for
+sale products which can execute programs written in the Java language (known
+as "Java Virtual Machines", or simply "Java VMs").&nbsp; These include
+Microsoft, which distributes Java VMs in Internet Explorer, the J++ environment,
+and other products; Netscape, which distributes a Java VM in Netscape Navigator
+and Netscape Communicator; IBM, which distributes a Java VM in OS/2 and
+for a number of their network computers; Apple, which distributes a Java
+VM in the Macintosh operating system; Silicon Graphics, which distributes
+a Java VM in their IRIX operating system; and Sun Microsystems, which distributes
+a Java VM in their Solaris operating system.&nbsp; In addition, Sun Microsystems
+makes available free reference implementations of the Java Platform for
+Solaris and for several of the Microsoft Windows environments (Windows
+95, Windows 98, and Windows NT 3.5, and 4.0).</ul>
+<!----- Return to top line -----><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112><a href="#top">Question
+Index</a><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112>
+<h3>
+<a NAME="What_control_does_Sun_have"></a>What control does Sun have over
+the creation and distribution of Java environments?&nbsp; Of Java applications
+and applets?</h3>
+
+<ul>All Java Platform licensees sign an agreement in which they agree (among
+other things) to only distribute a Java Platform which passes the Java
+Compatibility test suite.&nbsp; This test suite ensures the "write once,
+run anywhere" proposition which means that a Java program developed on
+(for example) a Solaris Java VM, will run properly on (for example) a Macintosh
+with the Apple Java VM, so long as that Java program uses only those APIs
+and language features of the Java Platform as defined by Sun Microsystems.
+<p>Sun Microsystems has no control over the creation and distribution of
+Java applications and applets.&nbsp; Anyone can write a program using the
+Java language.&nbsp; That program can then do anything that a program written
+in any other language can do.&nbsp; Specifically, it can use hardware specific
+features (e.g. tie itself to an operating system like Windows).&nbsp; It
+can also create a user-interface that is incompatible with assistive technologies
+like screen readers.
+<br>&nbsp;</ul>
+<!----- Return to top line -----><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112><a href="#top">Question
+Index</a><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112>
+<h3>
+<a NAME="What_are_the_different_kinds"></a>Are there different kinds of
+Java applications and applets from the point of view of accessibility?</h3>
+
+<ul>Yes.&nbsp; There are basically three different kinds of Java applications
+and applets from the point of view accessibility.&nbsp; They are:
+<br>&nbsp;
+<ol>
+<li>
+applications whose user-interface is created using <b>only</b> the Abstract
+Windowing Toolkit (or AWT); which provides a limited set of user-interface
+controls (things like menus and check boxes, etc.; but it doesn't contain
+things like tabbed panes and trees and floating palettes and toolbars).</li>
+
+<li>
+applications whose user-interface is created using <b>only</b> user-interface
+controls which implement the new Java Accessibility API, which provides
+for communication with assistive technologies such as screen readers, screen
+magnifiers, etc.&nbsp; The Swing user-interface toolkit which is part of
+the Java Foundation Classes is currently the only toolkit which supports
+the Java Accessibility API.&nbsp; Swing contains a much richer set of user-interface
+controls than it's predecessor, AWT.&nbsp; Specifically, it contains things
+like tabbed panes, trees, floating pallettes, and toolbars.&nbsp; In addition,
+Swing contains a number of powerful user-interface controls that weren't
+available in other platforms, such as hypertext viewers and tables.</li>
+
+<li>
+applications whose user-interface is created using one or more user-interface
+controls that don't come from either AWT or which implement the Java Accessibility
+API (such as those user-interface controls which were fairly commonly developed
+by a number of independent software vendors).</li>
+</ol>
+</ul>
+<!----- Return to top line -----><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112><a href="#top">Question
+Index</a><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112>
+<h3>
+<a NAME="What_are_the_differences"></a>What are the differences between
+these three kinds of Java applications/applets from the point of view of
+accessibility?</h3>
+
+<ul>In some implementations of the Java Platform (notably the reference
+implementations from Sun for Windows and Solaris; and the Apple implementation
+for Macintosh), the AWT user-interface controls are realized and rendered
+both in the Java VM, and on the host (or "native") environment.&nbsp; Specifically
+in the Microsoft Windows environment (for example), an AWT button is rendered
+as a Windows button; the same is the case with AWT check boxes, menus,
+text fields, etc.&nbsp; This has the unintentional (but good!) side effect
+of making those AWT user-interface controls (and those Java applications
+and applets which restrict themselves to those controls) accessible to
+native assistive technologies such as screen readers, so long as they are
+running in a Java VM which behaves this way with AWT user-interface controls.&nbsp;
+Existing screen access solutions that work with native user-interface controls
+should continue to work with Java applications/applets written using <b>only</b>
+the AWT components, when those Java programs are run in a Java VM that
+exposes AWT components as native components (such as the Sun Microsystems
+reference implementation for Windows and for Solaris, and the Apple Computer
+implementation for the Macintosh).
+<p>Java applications/applets written using <b>only</b> the Swing user-interface
+controls render them as "lightweight" controls - they have no native (e.g.
+Windows) peer, and so from the native host, they do not appear as actual
+user-interface controls (e.g. buttons, check boxes, etc.), but rather simply
+as pictures, perhaps with text rendered inside them (e.g. an "OK" button
+would appear as the text "OK", with some graphics drawn around it that
+to a sighted user will happen to be seen as a button).&nbsp; However, all
+Swing user-interface controls support the Java Accessibility API, and so
+assistive technologies can provide access to them, even though the native
+host doesn't recognize them as valid user-interface controls.
+<p>Java applications/applets written using any other set of user-interface
+controls will in all likelihood not be peered, and so assistive technologies
+will not see them as native controls.&nbsp; Furthermore, unless the Java
+application developers specifically supports the Java Accessibility API
+in the programs they create using these other user-interface controls,
+even those assistive technologies which use the Java Accessibility API
+won't be able to provide access to them.&nbsp; In the future, we expect
+that other user-interface toolkits will incorporate support for the Java
+Accessibility APIs, but currently Swing is the only such user-interface
+tookit.
+<br>&nbsp;</ul>
+<!----- Return to top line -----><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112><a href="#top">Question
+Index</a><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112>
+<h3>
+<a NAME="What_changes_with_respect"></a>What changes with respect to accessibility
+in JDK 1.2?</h3>
+
+<ul>JDK 1.2 contains, among a host of other features, three things important
+to accessibility.&nbsp; It contains the Java Accessibility API (which becomes
+a defined part of the Java Platform with this release), the Swing user-interface
+classes, and the Java2D graphics libraries.&nbsp; This means that in the
+future over time as the various Java Platform licensees upgrade to JDK
+1.2, their Java VMs will have these features built-in, and developers&nbsp;
+will start shipping Java applications and applets which utilize these new
+features.&nbsp; Developers can already ship Java applications and applets
+which depend upon the first two, as they can be downloaded to a JDK 1.1
+environment.
+<p>The first two new features of JDK 1.2 have been discussed before.&nbsp;
+The Java2D library is a new set of graphics primitives which supersede
+the older set contained in AWT.&nbsp; This new set is designed to meet
+the needs of graphics professionals.&nbsp; Previous to Java2D, all programs
+written in Java could display text in one of only three fonts: Times, Courier,
+and Helvetica - and then in only one of four styles: Normal, Bold, Italic,
+and Bold-Italic.&nbsp; This is because only those three fonts in those
+four styles were guaranteed to be on all systems that the Java platform
+ran on.&nbsp; Java2D introduces a new mechanism for rendering text: TrueType
+and Postscript fonts are rendered directly by the Java2D subsystem.&nbsp;
+This allows a Java program to make full use of not only the fonts installed
+on the host system (e.g. all installed Macintosh fonts), but also to dynamically
+render in fonts that may be stored on a server, and not installed on the
+client system (since it would be wrong for a Java applet to install new
+fonts dynamically onto a users system).&nbsp; In addition, since Java2D
+has complete control over font rendering, it provides additional functionality
+in the rendering of text unavailable before, including anti-aliasing for
+greater legibility, a host of type-effects, the ability to rendering text
+along a path (e.g. for maps), etc.&nbsp; Also text can be legibly rendered
+on top of other images.
+<p>In order to provide this rich text support, however, it is necessary
+for Java2D to bypass the text rendering subsystem of the host platform.&nbsp;
+Specifically, in the Sun Microsystems reference implementation of JDK 1.2
+for Windows, Java2D uses the DirectDraw APIs for rendering text and graphics
+directly to the video driver.&nbsp; This technique, just like digital video
+rendering techniques by QuickTime and Microsoft AVI players, will bypass
+the Off-Screen-Models of Windows screen readers, and may not be compatible
+with those Windows magnification tools which don't work with DirectDraw.&nbsp;
+Assistive technologies on the Windows platform will need to support the
+Java Accessibility API in order to provide access to text rendered using
+Java2D.
+<p><b>Note:</b> in JDK 1.2 those UI controls rendered using AWT (e.g. awt.Button,
+awt.TextField, etc.) continue to be peered controls and in the Sun Microsystems
+implementation for Windows will still be rendered as Windows controls (e.g.
+BUTTON, TEXTFIELD), and not rendered by Java2D.&nbsp; Specifically this
+means that any AWT-based Java program that worked with screen access solutions
+under JDK 1.1 should still work under JDK 1.2.&nbsp; However, newer Java
+programs (such as those which use the new Swing user-interface classes)
+will go from "pretty inaccessible" (text visible, but no knowledge of structure,
+layout, or semantic meaning) to "completely inaccessible" (the entire window
+becomes a picture) in the switch from JDK 1.1 to JDK 1.2 until such time
+as screen access solutions incorporate support for the Java Accessibility
+APIs.
+<br>&nbsp;</ul>
+<!----- Return to top line -----><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112><a href="#top">Question
+Index</a><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112>
+<h3>
+<a NAME="How_do_native_SR_to_apps"></a>How do native (e.g. Windows and
+Macintosh) screen readers provide access to Java applications and applets
+running on my system?</h3>
+
+<ul>Screen readers generally provide access to applications by presenting
+in speech and/or Braille the various elements that make up the user-interface
+of those applications.&nbsp; In Java, this is done in one of two ways:
+<br>&nbsp;
+<ul>
+<li>
+The first way is by providing access to the native/host user-interface
+elements in those cases where the Java application or applet uses the AWT
+user-interface elements and the Java VM in which the Java application or
+applet is running realizes AWT user-interface elements as native/host user-interface
+elements.&nbsp; In these cases, the screen reader isn't doing anything
+special for Java; as far as the screen reader is concerned the Java application
+or applet behaves in the same was as a native application, which the screen
+reader knows how to deal with.</li>
+
+<br>&nbsp;
+<li>
+The second way is by utilizing the <a href="bridge.html">AccessBridge</a>,
+and configuring the Java VM to load the AccessBridge whenever a Java application
+or applet is run.&nbsp; In these cases, the screen reader is specifically
+using the Java Accessibility API to provide rich access to those Java applications
+and applets which support accessibility.&nbsp; Note: a screen reader written
+in the Java language would load directly into the Java VM, and would communicate
+directly with Java applications and applets via the Java Accessibility
+without using the <a href="bridge.html">AccessBridge</a>.</li>
+</ul>
+</ul>
+<!----- Return to top line -----><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112><a href="#top">Question
+Index</a><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112>
+<h3>
+<a NAME="How_do_native_SR_to_applets"></a>How do native (e.g. Windows and
+Macintosh) screen magnifiers provide access to Java applications and applets
+running on my system?</h3>
+
+<ul>Screen magnifiers generally provide access to applications by magnifying
+each of the pixels in the video buffer of the host computer (so one pixel
+becomes four, or nine, or sixteen, etc.), with the physical screen showing
+a portion of the magnified, virtual screen (which can pan back and forth,
+up and down, "magnified portal" of the physical screen).&nbsp; In addition,
+screen magnifiers track changes in mouse location, selection, text caret,
+and the appearance/disappearance of menus and windows.&nbsp; In Java, this
+is done in one of two ways:
+<br>&nbsp;
+<ul>
+<li>
+The first way is by magnifying the video display as usual, and tracking
+changes&nbsp; to the native/host user-interface elements in those cases
+where the Java application or applet uses the AWT user-interface elements
+and the Java VM in which the Java application or applet is running realizes
+AWT user-interface elements as native/host user-interface elements.&nbsp;
+In these cases, the screen magnifier isn't doing anything special for Java;
+as far as the screen reader is concerned the Java application or applet
+behaves in the same was as a native application, which the screen reader
+knows how to deal with.</li>
+
+<br>&nbsp;
+<li>
+The second way is by magnifying the video display as usual, and further,
+by utilizing the <a href="bridge.html">AccessBridge</a>, configuring the
+Java VM to load the AccessBridge whenever a Java application or applet
+is run.&nbsp; In these cases, the screen magnifier is specifically using
+the Java Accessibility API to track changes in those Java applications
+and applets which support accessibility.</li>
+</ul>
+</ul>
+<!----- Return to top line -----><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112><a href="#top">Question
+Index</a><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112>
+<h3>
+<a NAME="What_can_I_do_to_determine"></a>What can I do to determine why
+my particular assistive technology isn't working with a specific Java application
+or applet?</h3>
+
+<ul>Go through the following steps:
+<ol>
+<li>
+Is the Java application/applet written using AWT?</li>
+
+<ul>
+<li>
+If so, then your problem probably lies with the Java VM you are using.&nbsp;
+Switch to a Java VM that renders AWT controls via their native peers, such
+as the Sun Microsystems reference Java VM, or the Java Plugin for Netscape
+and Internet Explorer</li>
+</ul>
+
+<li>
+If the application/applet isn't written using AWT, then is the Java application/applet
+written using the Java Foundation Classes?</li>
+
+<ul>
+<li>
+If so, then your problem may lies with the Java VM you are using.&nbsp;
+Make sure you are using a Java VM that supports loading assistive technologies
+- today only the Sun Microsystems Java VMs do this; in JDK 1.2 it becomes
+a formal part of the Java Platform specification, and all JDK 1.2 compliant
+Java VMs will support this.</li>
+
+<li>
+Otherwise, your problem may lie with your assistive technology.&nbsp; Contact
+the manufacturer of your assistive technology, and find out if they have
+a version that supports the Java Accessibility API.</li>
+</ul>
+
+<li>
+If the application/applet was written using neither AWT nor the Java Foundation
+Classes, then the Java application/applet was probably not written to be
+accessible.</li>
+
+<ul>
+<li>
+Contact the manufacturer of the Java application/applet, and find out if
+they have a version that supports the Java Accessibility API.</li>
+</ul>
+</ol>
+</ul>
+<!----- Return to top line -----><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112><a href="#top">Question
+Index</a><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112>
+<h3>
+<a NAME="Im_a_Java_Developer"></a>I'm a Java developer.&nbsp; What should
+I do to make my Java applications and applets accessible?</h3>
+
+<ul>If you <b>need</b> to deliver an accessible Java applet or application
+<b>immediately</b>,
+your only option is to use restrict your Java applet/application to the
+AWT user-interface components.&nbsp; This will allow the existing native
+screen access solutions to work with your Java applet or application in
+most common Java VMs.
+<p>For the future, to provide the best access to users via assistive technologies,
+and the most flexibility in the design of your user-interfaces, use only
+those user-interface components which implement the Java Accessibility
+API.&nbsp; The Swing user-interface classes which are part of the Java
+Foundation Classes for JDK 1.1, and are built-in to JDK 1.2, implement
+the Java Accessibility API.&nbsp; In fact, currently Swing is the only
+user-interface toolkit which implements the Java Accessibility API.&nbsp;
+If you want to use user-interface objects from any other toolkit (or ones
+you create yourself), you will need to implement the Java Accessibility
+API on those components.&nbsp; A number of books on the Java Foundation
+Classes describe how to do this, including “Java Foundation Classes” by
+Nelson (publisher McGraw-Hill), and “Java Swing” by Eckstein (publisher
+O’Reilly &amp; Associates).&nbsp; In addition to using only user-interface
+controls which support the Java Accessibility API, you should make sure
+that your Java application conforms to the <a href="http://www.austin.ibm.com/sns/snsjavag.htm">IBM
+Special Needs Systems guidelines on developing accessible Java applications</a>.
+<p>In addition, if you are delivering an applet that uses the Java Accessibility
+APIs in the near future, you must configure that applet to use the <a href="http://java.sun.com/products/plugin/">Java
+Plugin</a>, as the Java VM in the currently shipping versions of Netscape
+and Internet Explorer do not support loading of assistive technologies
+into the Java VM.
+<br>&nbsp;</ul>
+<!----- Return to top line -----><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112><a href="#top">Question
+Index</a><img SRC="images/bar.gif" ALT="" NOSAVE height=7 width=112>
+<ul>&nbsp;</ul>
+</ul>
+
+<hr SIZE=3 NOSHADE>
+<address>
+<img SRC="images/javalogo52x88.gif" ALT="Java Logo" NOSAVE  align=LEFT><font size=-1><a href="http://java.sun.com/share/copyright.html">Copyright&copy;
+</a>1995-99&nbsp;
+<a href="http://www.sun.com">Sun Microsystems, Inc. All Rights Reserved.</a></font></address>
+
+<address>
+<font size=-1>To submit comments or suggestions about <a href="http://www.sun.com/tech/access/index.html">Java
+Accessibility</a>, please send mail to <i><a href="mailto:access@sun.com">access@sun.com</a></i>.</font></address>
+
+<p><br><a href="http://www.sun.com"><img SRC="images/smi_logo.gif" ALT="Sun MicroSystems" NOSAVE BORDER=0 height=43 width=120 align=RIGHT></a>
+</body>
+</html>

@@ -1,0 +1,298 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.5 [en] (WinNT; I) [Netscape]">
+   <meta name="Author" content="Willie Walker">
+   <title>Java Accessibility:  The Java Accessibility API</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#0000EE" vlink="#551A8B" alink="#FF0000">
+<a href="http://java.sun.com"><img SRC="images/java_header.gif" ALT="The Source for Java - java.sun.com" NOSAVE BORDER=0  align=LEFT></a>
+<div align=right><font size=+3>JAVA ACCESSIBILITY</font></div>
+
+<div align=right><font size=+2>The Java Accessibility API Interfaces and
+Classes</font></div>
+
+<div align=right>Version 1.3</div>
+<!--- These are the Menu Items ---->
+<hr NOSHADE WIDTH="100%">
+<center>[<a href="index.html">Home</a>] [<a href="what.html">What are they?</a>]
+[<a href="guide.html">Overview of Features</a>] [<a href="api/com/sun/java/accessibility/util/package-summary.html">API
+Reference</a>]
+<br>[<a href="FAQ.html">FAQ</a>] [<a href="examples.html">Examples</a>]
+[<a href="../CHANGES.txt">Changes</a>] [<a href="compatibility.html">Compatibility
+table</a>] [<a href="http://java.sun.com/products/jfc">JFC Home Page</a>]</center>
+
+<hr NOSHADE WIDTH="100%">
+<br><b><font size=+2>Explanation of the Java Accessibility API Interfaces
+and Classes&nbsp;</font></b>
+<hr NOSHADE %>
+<br>The <a href="http://java.sun.com/products/jfc/swingdoc-api/javax/accessibility/package-summary.html">Java
+Accessibility API</a> defines a contract between individual user-interface
+components that make up a Java<sup><font size=-2>TM</font></sup> application
+and an assistive technology that is providing access to that Java application.&nbsp;
+If a Java application fully supports the Java Accessibility API, then it
+should be compatible with, and friendly toward, assistive technologies
+such as screen readers, screen magnifiers, etc.&nbsp; With a Java application
+that fully supports the Java Accessibility API, no screen reader off screen
+model would be necessary because the API provides all of the information
+normally contained in an off screen model.
+<p>The <a href="http://java.sun.com/products/jfc/swingdoc-api/javax/accessibility/package-summary.html">Java
+Accessibility API</a> package consists of 8 Java programming language interfaces,
+and 6 Java programming language classes. These are described below.
+<h3>
+<a href="http://java.sun.com/products/jfc/swingdoc-api/javax/accessibility/Accessible.html">Interface
+Accessible</a></h3>
+<a href="http://java.sun.com/products/jfc/swingdoc-api/javax/accessibility/Accessible.html">Interface
+Accessible</a> is the main interface of the Java Accessibility API.&nbsp;
+All components that support the Java Accessibility API must implement this
+interface.&nbsp; It contains a single method, <tt>getAccessibleContext</tt>,
+that returns an instance of the class <a href="#AccessibleContext">AccessibleContext</a>.&nbsp;
+Sun thinks that implementing this interface is the absolute minimum requirement
+of every object that is part of the user interface of a Java application,
+if that program is to be compatible with assistive technologies.
+<h3>
+<a NAME="AccessibleContext"></a><a href="http://java.sun.com/products/jfc/swingdoc-api/javax/accessibility/AccessibleContext.html">Class
+AccessibleContext</a></h3>
+<a href="http://java.sun.com/products/jfc/swingdoc-api/javax/accessibility/AccessibleContext.html">AccessibleContext</a>
+represents the minimum information all accessible objects return and is
+obtained by calling the <tt>getAccessibleContext</tt> method on an object
+that implements the <a href="#Accessible">Accessible</a> interface. This
+information includes the accessible name, description, <a href="#AccessibleRole">role</a>,
+and <a href="#AccessibleState">state</a> of the object, as well as information
+about the parent and children of the object.&nbsp; In addition, JavaBeans<sup><font size=-2>TM</font></sup>
+property change support is also included to allow assisitive technologies
+learn when the values of the accessible properties change.&nbsp; AccessibleContext
+also contains methods for obtaining more specific accessibility information
+about a component. If the component supports it, these methods will return
+an object that implements one or more of the following interfaces:
+<ul>
+<li>
+<b><a href="#AccessibleAction">AccessibleAction</a></b> - the object can
+perform one or more actions. This interface provides the standard mechanism
+for an assistive technology to determine what those actions are and tell
+the object to perform those actions. Any object that can be manipulated
+should return an object that implements this interface when the <tt>getAccessibleAction</tt>
+method is called on an AccessibleContext.</li>
+
+<li>
+<b><a href="#AccessibleComponent">AccessibleComponent</a></b> - the object
+has a graphical representation. This interface provides the standard mechanism
+for an assistive technology to determine and set the graphical representation
+of the object. Any object that is rendered on the screen should return
+an object that implements this interface when the <tt>getAccessibleComponent</tt>
+method is called on an AccessibleContext.</li>
+
+<li>
+<b><a href="#AccessibleSelection">AccessibleSelection</a></b> - the object
+allows its children to be selected. This interface provides the standard
+mechanism for an assistive technology to determine the currently selected
+children as well as modify the selection set. Any object that has children
+that can be selected should return an object that implements this interface
+when the <tt>getAccessibleSelection</tt> method is called on an AccessibleContext.</li>
+
+<li>
+<b><a href="#AccessibleText">AccessibleText</a></b> - the object presents
+editable textual information on the display. This interface provides the
+standard mechanism for an assistive technology to access that text via
+its content, attributes, and spatial location. Any object that contains
+editable text should return an object that implements this interface when
+the <tt>getAccessibleText</tt> method is called on an AccessibleContext.</li>
+
+<li>
+<b><a href="#AccessibleHypertext">AccessibleHypertext</a></b> - the object
+presents hypertext information on the display. This interface provides
+the standard mechanism for an assistive technology to access that hypertext
+via its content, attributes, and spatial location. Any object that contains
+hypertext should return an object that implements this interface when the
+<tt>getAccessibleText</tt>
+method is called on an AccessibleContext.</li>
+
+<li>
+<b><a href="#AccessibleValue">AccessibleValue</a></b> - the object supports
+a numerical value. This interface provides the standard mechanism for an
+assistive technology to determine and set the current value of the object,
+as well as the minimum and maximum values. Any object that supports a numerical
+value should return an object that implements this interface when the <tt>getAccessibleValue</tt>
+method is called on an AccessibleContext.</li>
+</ul>
+
+<h3>
+<a NAME="AccessibleRole"></a><a href="http://java.sun.com/products/jfc/swingdoc-api/javax/accessibility/AccessibleRole.html">Class
+AccessibleRole</a></h3>
+This class encapsulates the Accessible object's role in the user interface
+and is obtained by calling the <tt>getAccessibleRole</tt> method on an
+<a href="#AccessibleContext">AccessibleContext</a>.
+Accessible roles include "Check box", "Menu Item", "Panel", etc.&nbsp;
+These roles are identified by the constants in this class such as <tt>AccessibleRole.CHECK_BOX,
+AccessibleRole.MENU_ITEM,</tt> and <tt>AccessibleRole.PANEL</tt>.&nbsp;
+The constants in this class present a strongly typed enumeration of common
+object roles. A public constructor for this class has been purposely omitted
+and applications should use one of the constants from this class.&nbsp;
+Although this class pre-defines a large list of standard roles, it is extensible
+so additional programmer-defined roles can be added in the future without
+needing to modify the base class.
+<p>In addition, the <a href="http://java.sun.com/products/jfc/swingdoc-api/javax/accessibility/AccessibleRole.html">AccessibleRole</a>
+constants provide a method called <tt>toDisplayString</tt> that allows
+you to obtain the localized string for a role from the&nbsp; <a href="#AccessibleResourceBundle">AccessibleResourceBundle</a>
+class.&nbsp; As a result, programmers can use the constants defined in
+AccessibleRole to develop internationalized applications.
+<h3>
+<a NAME="AccessibleState"></a><a href="http://java.sun.com/products/jfc/swingdoc-api/javax/accessibility/AccessibleState.html">Class
+AccessibleState</a></h3>
+This class encapsulates a particular state of the Accessible object. Accessible
+states include things like "Armed", "Busy", "Checked", "Focused", etc.
+These roles are identified by the constants in this class such as <tt>AccessibleState.ARMED,
+AccessibleState.BUSY, AccessibleState.CHECKED,</tt> and <tt>AccessibleState.FOCUSED</tt>.&nbsp;&nbsp;
+The sum of all the states of an Accessible object is called the <a href="#AccessibleStateSet">AccessibleStateSet</a>,
+and can be obtained by calling the <tt>getAccessibleStateSet</tt> method
+on an <a href="#AccessibleContext">AccessibleContext</a>.
+<p>The constants in this class present a strongly typed enumeration of
+common object roles. A public constructor for this class has been purposely
+omitted and applications should use one of the constants from this class.&nbsp;
+Although this class pre-defines a large list of standard roles, it is extensible
+so additional, programmer-defined roles can be added in the future without
+needing to modify the base class.
+<p>Like <a href="#AccessibleRole">AccessibleRole</a>, the <a href="http://java.sun.com/products/jfc/swingdoc-api/javax/accessibility/AccessibleState.html">AccessibleState</a>
+constants provide a method called <tt>toDisplayString</tt> that allows
+you to obtain the localized string for a role from the&nbsp; <a href="#AccessibleResourceBundle">AccessibleResourceBundle</a>
+class.&nbsp; As a result, programmers can use the constants defined in
+AccessibleState to develop internationalized applications..
+<h3>
+<a NAME="AccessibleStateSet"></a><a href="http://java.sun.com/products/jfc/swingdoc-api/javax/accessibility/AccessibleStateSet.html">Class
+AccessibleStateSet</a></h3>
+This class encapsulates a collection of states of the Accessible object
+and is obtained by calling the <tt>getAccessibleStateSet</tt> method on
+an <a href="#AccessibleContext">AccessibleContext</a>. Since an object
+might have multiple states (e.g. it might be both "Checked" and "Focused"),
+this class is needed to encapsulate a collection of these states. Methods
+in the class provide for retrieving the individual <a href="#AccessibleState">AccessibleStates</a>
+on the state set.
+<h3>
+<a NAME="AccessibleBundle"></a><a href="http://java.sun.com/products/jfc/swingdoc-api/javax/accessibility/AccessibleBundle.html">Class
+AccessibleBundle</a></h3>
+This class is used to maintain a strongly typed enumeration.&nbsp; It is
+the super class of both the <a href="#AccessibleRole">AccessibleRole</a>
+and <a href="#AccessibleState">AccessibleState</a> classes.&nbsp;&nbsp;
+Programmers normally do not interact with this class directly, but will
+instead use the <a href="#AccessibleRole">AccessibleRole</a> and <a href="#AccessibleState">AccessibleState</a>
+classes.
+<h3>
+<a NAME="AccessibleResourceBundle"></a><a href="http://java.sun.com/products/jfc/swingdoc-api/javax/accessibility/AccessibleResourceBundle.html">Class
+AccessibleResourceBundle</a></h3>
+This class contains the localized strings for the <a href="#AccessibleRole">AccessibleRole</a>
+and <a href="#AccessibleState">AccessibleState</a> classes.&nbsp; Like
+<a href="#AccessibleBundle">AccessibleBundle</a>,
+programmers normally do not interact with this class directly, but will
+instead use the <a href="#AccessibleRole">AccessibleRole</a> and <a href="#AccessibleState">AccessibleState</a>
+classes.
+<h3>
+<a NAME="AccessibleAction"></a><a href="http://java.sun.com/products/jfc/swingdoc-api/javax/accessibility/AccessibleAction.html">Interface
+AccessibleAction</a></h3>
+The <a href="http://java.sun.com/products/jfc/swingdoc-api/javax/accessibility/AccessibleAction.html">AccessibleAction</a>
+interface should be supported by any object that can perform one or more
+actions. This interface provides the standard mechanism for an assistive
+technology to determine what those actions are as well as tell the object
+to perform those actions. Any object that can be manipulated should support
+this interface.
+<p>Applications can determine if an object supports the AccessibleAction
+interface by first obtaining its <a href="#AccessibleContext">AccessibleContext</a>
+(see <a href="#Accessible">Accessible</a>) and then calling the <tt>getAccessibleAction</tt>
+method of <a href="#AccessibleContext">AccessibleContext</a>. If the return
+value is not null, the object supports this interface.
+<h3>
+<a NAME="AccessibleComponent"></a><a href="http://java.sun.com/products/jfc/swingdoc-api/javax/accessibility/AccessibleComponent.html">Interface
+AccessibleComponent</a></h3>
+The <a href="http://java.sun.com/products/jfc/swingdoc-api/javax/accessibility/AccessibleComponent.html">AccessibleComponent</a>
+interface should be supported by any object that is rendered on the screen.
+This interface provides the standard mechanism for an assistive technology
+to determine and set the graphical representation of an object.
+<p>Applications can determine if an object supports the AccessibleComponent
+interface by first obtaining its <a href="#AccessibleContext">AccessibleContext</a>
+(see <a href="#Accessible">Accessible</a>) and then calling the <tt>getAccessibleComponent</tt>
+method of <a href="#AccessibleContext">AccessibleContext</a>. If the return
+value is not null, the object supports this interface.
+<h3>
+<a NAME="AccessibleSelection"></a><a href="http://java.sun.com/products/jfc/swingdoc-api/javax/accessibility/AccessibleSelection.html">Interface
+AccessibleSelection</a></h3>
+This <a href="http://java.sun.com/products/jfc/swingdoc-api/javax/accessibility/AccessibleSelection.html">AccessibleSelection</a>
+interface provides the standard mechanism for an assistive technology to
+determine what the current selected children are, as well as modify the
+selection set. Any object that has children that can be selected should
+support this the AccessibleSelection interface.
+<p>Applications can determine if an object supports the AccessibleSelection
+interface by first obtaining its <a href="#AccessibleContext">AccessibleContext</a>
+(see <a href="#Accessible">Accessible</a>) and then calling the <tt>getAccessibleSelection</tt>
+method of <a href="#AccessibleContext">AccessibleContext</a>. If the return
+value is not null, the object supports this interface.
+<h3>
+<a NAME="AccessibleText"></a><a href="http://java.sun.com/products/jfc/swingdoc-api/javax/accessibility/AccessibleText.html">Interface
+AccessibleText</a></h3>
+The <a href="http://java.sun.com/products/jfc/swingdoc-api/javax/accessibility/AccessibleText.html">AccessibleText</a>
+interface should be supported by any object that presents rich, editable
+text. Not all text displayed on the screen is rich and editable (e.g. text
+contained in buttons, labels, menus, etc., which users aren't expected
+to manipulate). However, objects containing editable text must implement
+interface AccessibleText if they are to interoperate with assistive technologies.
+<p>This interface provides support for going between pixel coordinates
+and the text at a given pixel coordinate, for retrieving the letter, word,
+and sentence at, before, or after a given position in the text. This interface
+provides support for retrieving the attributes of the character at a given
+position in the text (font, font size, style, etc.), as well as getting
+the selected text (if any), the length of the text, and the location of
+the text caret.
+<p>Applications can determine if an object supports the AccessibleText
+interface by first obtaining its <a href="#AccessibleContext">AccessibleContext</a>
+(see <a href="#Accessible">Accessible</a>) and then calling the <tt>getAccessibleText</tt>
+method of <a href="#AccessibleContext">AccessibleContext</a>. If the return
+value is not null, the object supports this interface.
+<h3>
+<a NAME="AccessibleHypertext"></a><a href="http://java.sun.com/products/jfc/swingdoc-api/javax/accessibility/AccessibleHypertext.html">Interface
+AccessibleHypertext</a></h3>
+The <a href="http://java.sun.com/products/jfc/swingdoc-api/javax/accessibility/AccessibleHypertext.html">AccessibleHypertext</a>
+interface should be supported by any object that presents hypertext information
+on the display. This interface provides the standard mechanism for an assistive
+technology to access that text via its content, attributes, and spatial
+location. It also provides standard mechanisms for manipulating <a href="#AccessibleHyperlink">hyperlinks</a>.
+Applications can determine if an object supports the AccessibleHypertext
+interface by first obtaining its <a href="#AccessibleContext">AccessibleContext</a>
+(see <a href="#Accessible">Accessible</a>) and then calling the AccessibleContext.getAccessibleText()
+method of <a href="#AccessibleContext">AccessibleContext</a>. If the return
+value is a class which extends AccessibleHypertext, then that object supports
+AccessibleHypertext.
+<h3>
+<a NAME="AccessibleHyperlink"></a><a href="http://java.sun.com/products/jfc/swingdoc-api/javax/accessibility/AccessibleHyperlink.html">Interface
+AccessibleHyperlink</a></h3>
+An object that is a hyperlink should support the <a href="http://java.sun.com/products/jfc/swingdoc-api/javax/accessibility/AccessibleHyperlink.html">AccessibleHyperlink</a>
+interface.&nbsp; An object that implements this interface will be returned
+by calling the getLink method on an <a href="#AccessibleHypertext">AccessibleHypertext</a>
+object.
+<h3>
+<a NAME="AccessibleValue"></a><a href="http://java.sun.com/products/jfc/swingdoc-api/javax/accessibility/AccessibleValue.html">Interface
+AccessibleValue</a></h3>
+The <a href="http://java.sun.com/products/jfc/swingdoc-api/javax/accessibility/AccessibleValue.html">AccessibleValue</a>
+interface should be supported by any object that supports a numerical value
+(e.g., a scroll bar). This interface provides the standard mechanism for
+an assistive technology to determine and set the numerical value as well
+as get the minimum and maximum values.
+<p>Applications can determine if an object supports the AccessibleValue
+interface by first obtaining its <a href="#AccessibleContext">AccessibleContext</a>
+(see <a href="#Accessible">Accessible</a>) and then calling the <tt>getAccessibleValue</tt>
+method of <a href="#AccessibleContext">AccessibleContext</a>. If the return
+value is not null, the object supports this interface.
+<p>
+<hr SIZE=3 NOSHADE>
+<address>
+<img SRC="images/javalogo52x88.gif" ALT="Java Logo" NOSAVE  align=LEFT><font size=-1><a href="http://java.sun.com/share/copyright.html">Copyright&copy;
+</a>1995-99
+<a href="http://www.sun.com">Sun Microsystems, Inc. All Rights Reserved.</a></font></address>
+
+<address>
+<font size=-1>To submit comments or suggestions about <a href="http://www.sun.com/access/index.html">Java
+Accessibility</a>, please send mail to <i><a href="mailto:access@sun.com">access@sun.com</a></i>.</font></address>
+
+<br>&nbsp;
+<p>&nbsp;
+<p><a href="http://www.sun.com"><img SRC="images/smi_logo.gif" ALT="Sun MicroSystems" NOSAVE BORDER=0 height=43 width=120 align=RIGHT></a>
+</body>
+</html>

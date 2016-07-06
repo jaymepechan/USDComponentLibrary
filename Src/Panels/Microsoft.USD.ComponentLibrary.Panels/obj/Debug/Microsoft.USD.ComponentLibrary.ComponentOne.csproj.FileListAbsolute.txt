@@ -1,0 +1,2 @@
+C:\OneDrive\DEVELOPMENT\USD\Microsoft.USD.ComponentLibrary\Panels\Microsoft.USD.ComponentLibrary.Panels\obj\Debug\Microsoft.USD.ComponentLibrary.ComponentOne.csprojResolveAssemblyReference.cache
+C:\OneDrive\DEVELOPMENT\USD\Microsoft.USD.ComponentLibrary\Panels\Microsoft.USD.ComponentLibrary.Panels\obj\Debug\Microsoft.USD.ComponentLibrary.ComponentOne_MarkupCompile.cache

@@ -1,0 +1,2331 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.DataDrivenAdapterBase">
+            <remarks>
+            Abstract Base class for the Data Driven Adapters.
+            Base Adapter class to manage access between the application, user interface, 
+            and automated entities within UII.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.DataDrivenAdapterBase.FindControl(System.String)">
+            <summary>
+            Reports whether the named control is available for use.
+            </summary>
+            <param name="controlName">Name of the Control</param>
+            <exception cref="T:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.DataDrivenAdapterException"></exception>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.DataDrivenAdapterBase.GetControlValue(System.String,System.String)">
+            <summary>
+            Returns the current value of the named control.
+            </summary>
+            <param name="controlName">Name of the Control</param>
+            <param name="Data">Additional Data to be passed for customizing the operation</param>
+            <exception cref="T:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.DataDrivenAdapterException"></exception>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.DataDrivenAdapterBase.SetControlValue(System.String,System.String,System.String)">
+            <summary>
+            Assigns a new value to the named control.
+            </summary>
+            <param name="controlName">Name of the Control</param>
+            <param name="controlValue">Value to be assigned</param>
+             <param name="Data">Additional Data to be passed for customizing the operation</param>
+            <exception cref="T:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.DataDrivenAdapterException"></exception>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.DataDrivenAdapterBase.ExecuteControlAction(System.String,System.Boolean,System.String)">
+            <summary>
+            Executes the designated action of the named control
+            </summary>
+            <param name="controlName">Name of the Control</param>
+            <param name="async">async</param>
+            <param name="Data">Additional Data to be passed for customizing the operation</param>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.DataDrivenAdapterBase.RegisterEventListener(System.String,System.String,System.EventHandler{Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.ControlChangedEventArgs})">
+            <summary>
+            Facilitates explicit DDA event listener registration.
+            </summary>
+            <param name="eventName">Name of the Event</param>
+            <param name="controlName">Event listener registration can be scoped at the DDA control level (specify blank or null to omit)</param>
+            <param name="listenerCallback">Callback associated with the listener</param>
+            <returns>Whether registration was successful (duplicate registration attempts should return false)</returns>
+            <exception cref="T:System.ArgumentNullException">eventName and listenerCallback must not be null</exception>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.DataDrivenAdapterBase.RegisterEventListener(System.String,System.String,System.EventHandler{Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.ControlChangedEventArgs},System.String)">
+            <summary>
+            Facilitates explicit DDA event listener registration.
+            </summary>
+            <param name="eventName">Name of the Event</param>
+            <param name="controlName">Event listener registration can be scoped at the DDA control level (specify blank or null to omit)</param>
+            <param name="listenerCallback">Callback associated with the listener</param>
+             <param name="Data">Additional Data to be passed for customizing the operation</param>
+            <returns>Whether registration was successful (duplicate registration attempts should return false)</returns>
+            <exception cref="T:System.ArgumentNullException">eventName and listenerCallback must not be null</exception>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.DataDrivenAdapterBase.UnregisterEventListener(System.String,System.String,System.EventHandler{Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.ControlChangedEventArgs})">
+            <summary>
+            Facilitates explicit DDA event listener unregistration. Called for every registered event on Dispose().
+            </summary>
+            <param name="eventName">Name of the Event</param>
+            <param name="controlName">Event listener registration can be scoped at the DDA control level (specify blank or null to omit)</param>
+            <param name="listenerCallback">Callback associated with the listener</param>        
+            <returns>Whether unregistration was successful (duplicate unregistration attempts return false)</returns>
+            <exception cref="T:System.ArgumentNullException">eventName and listenerCallback must not be null</exception>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.DataDrivenAdapterBase.GetAvailableApplicationEvents">
+            <summary>
+            Useful for reporting the list of application events propagated.
+            Intended for design-time use.
+            Custom implementation not required for run-time operation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.DataDrivenAdapterBase.GetAvailableControlEvents">
+            <summary>
+            Useful for reporting the list of control events propagated.
+            Intended for design-time use.
+            Custom implementation not required for run-time operation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.DataDrivenAdapterBase.GetControlNames">
+            <summary>
+            Returns the list of configured control names from the <Control/> tag under
+            the <DataDrivenAdapterBindings/> tag of the application initstring.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.DataDrivenAdapterBase.CreateInstance(System.String,System.Object)">
+            <summary>
+            Factory method used to instantiate specific derivations of the DataDrivenAdapterBase class.
+            </summary>
+            <param name="appInitStr">UII application initstring containing the <DataDrivenAdapterBindings/> tag</param>
+            <param name="appObj">Object to be used by the DDA to automate the target application UI</param>
+            <returns>Derived instance of the DataDrivenAdapterBase class</returns>
+            <exception cref="T:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.DataDrivenAdapterException"></exception>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.DataDrivenAdapterBase.Dispose">
+            <summary>
+            dispose method to suppress the finalization. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.DataDrivenAdapterBase.Finalize">
+            <summary>
+            Distructor DataDrivenAdapterBase
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.DataDrivenAdapterBase.Dispose(System.Boolean)">
+            <summary>
+            overriden dispose to unregister the event listeners. 
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.DataDrivenAdapterBase.#ctor(System.Xml.XmlDocument)">
+            <summary>
+            constructs the Datadriven adapter base with the application initialization string
+            </summary>
+            <param name="appInitStr"></param>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.DataDrivenAdapterBase.OperationHandler(Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.OperationType,System.String,System.String)">
+            <summary>
+            Calls to the DataDrivenAdapterBase API to manipulate the UI are dispatched to this handler.
+            Override to implement custom behavior.
+            </summary>
+            <param name="op">Type of the Operation to be performed on the control</param>
+            <param name="controlName">Name of the Control</param>
+            <param name="controlValue">Value to be assigned to the control</param>
+            <returns>Non-null for Find and Get OperationTypes, null for Set and Execute OperationTypes</returns>
+            <exception cref="T:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.DataDrivenAdapterException">Reference inner exception to determine cause</exception>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.DataDrivenAdapterBase.OperationHandler(Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.OperationType,System.String,System.String,System.String)">
+            <summary>
+            Calls to the DataDrivenAdapterBase API to manipulate the UI are dispatched to this handler.
+            Override to implement custom behavior.
+            </summary>
+            <param name="op">Type of the Operation to be performed on the control</param>
+            <param name="controlName">Name of the Control</param>
+            <param name="controlValue">Value to be assigned to the control</param>
+            <param name="Data">Additional Data to be passed for customizing the operation</param>
+            <returns>Non-null for Find and Get OperationTypes, null for Set and Execute OperationTypes</returns>
+            <exception cref="T:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.DataDrivenAdapterException">Reference inner exception to determine cause</exception>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.DataDrivenAdapterBase.RegisterEventListenerBase(System.String,System.String,System.EventHandler{Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.ControlChangedEventArgs})">
+            <summary>
+            Adds specified <paramref name="listenerCallback"/> to the internal list of registered listeners.
+            Returns true when registration was successful (duplicate registration attempts return false).
+            Once registered, RaiseEvent() can then be used to raise the event to the registered listeners.
+            </summary>
+            <param name="eventName">Name of the event</param>
+            <param name="controlName">Event listener registration can be scoped at the DDA control level (specify blank or null to omit)</param>
+            <param name="listenerCallback">Callback associated with the listener</param>
+            <returns>Whether registration was successful (duplicate registration attempts return false)</returns>
+            <exception cref="T:System.ArgumentNullException">EventName and ListenerCallback must not be null</exception>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.DataDrivenAdapterBase.UnregisterEventListenerBase(System.String,System.String,System.EventHandler{Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.ControlChangedEventArgs})">
+            <summary>
+            Removes specified <paramref name="listenerCallback"/> from the internal list of registered listeners.
+            Returns true when unregistration was successful (duplicate unregistration attempts return false).
+            Once unregistered, RaiseEvent() no longer can be used to raise the event.
+            </summary>
+            <param name="eventName">Name of the event</param>
+            <param name="controlName">Event listener registration can be scoped at the DDA control level (specify blank or null to omit)</param>
+            <param name="listenerCallback">Callback associated with the listener</param>
+            <returns>Whether unregistration was successful (duplicate unregistration attempts return false)</returns>
+            <exception cref="T:System.ArgumentNullException">EventName and ListenerCallback must not be null</exception>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.DataDrivenAdapterBase.RaiseEvent(System.Object,System.String,System.String,System.String)">
+            <summary>
+            Useful for raising events where necessary.
+            There is no synchronization context marshalling.
+            Events go out on the thread that raised them.
+            It is the listeners responsibility to perform an application-specific thread marshalling as required.
+            </summary>
+            <param name="sender">When null, defaults to "this"</param>
+            <param name="eventName">Event Designation</param>
+            <param name="controlName">Name of the control. Empty when not applicable to any named control</param>
+            <param name="controlValue">Populated with extra data associated with the event when necessary</param>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.DataDrivenAdapterBase.GetControlConfig(System.String)">
+            <summary>
+            Convenience method for retrieving subordinate nodes from a top-level XmlNode of a DDA control binding.
+            </summary>
+            <param name="controlName">Name of the control</param>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.DataDrivenAdapterBase.GetFirstDescendentUnderControlConfig(System.String,System.String)">
+            <summary>
+            Convenience method for retrieving the first descendent node from a top-level XmlNode of a DDA control binding.
+            </summary>
+            <param name="controlName">Name of the control</param>
+            <param name="descendentTagName">Tag Name of any descendent control</param>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.DataDrivenAdapterBase.GetAttributeValue(System.Xml.XmlNode,System.String,System.Int32)">
+            <summary>
+            Convenience overload for retriving an integer valued attribute from an XmlNode.
+            </summary>
+            <param name="node">XmlNode to retrieve the attribute value from</param>
+            <param name="attributeName">Name of the attribute to be retrieved</param>
+            <param name="defaultValue">Value to return if the named attribute does not exist</param>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.DataDrivenAdapterBase.GetAttributeValue(System.Xml.XmlNode,System.String,System.String)">
+            <summary>
+            Convenience overload for retrieving a string valued attribute from an XmlNode.
+            </summary>
+            <param name="node">XmlNode to retrieve the attribute value from</param>
+            <param name="attributeName">Name of the attribute to be retrieved</param>
+            <param name="defaultValue">Value to return if the named attribute does not exist</param>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.CompositingDataDrivenAdapter.#ctor(System.Xml.XmlNode,System.Object)">
+            <summary>
+            Public Constructor
+            </summary>
+            <param name="appInitStr">UII application initstring</param>
+            <param name="appObject">An instance of WebBrowserExtended that is hosting the target web application or the Window Handle for a Windows Application</param>
+            <exception cref="T:System.ArgumentNullException">Both constructor parameters must be non-null</exception>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.CompositingDataDrivenAdapter.OperationHandler(Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.OperationType,System.String,System.String,System.String)">
+            <summary>
+            Calls to the CompositeDataDrivenAdaptere API to manipulate the UI are dispatched to this handler.
+            Override to implement custom behavior.
+            </summary>
+            <param name="op">Type of the Operation to be performed on the control</param>
+            <param name="controlName">Name of the Control</param>
+            <param name="controlValue">Value to be assigned to the control</param>
+            <param name="Data">Data</param>
+            <returns>Non-null for Find and Get OperationTypes, null for Set and Execute OperationTypes</returns>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.CompositingDataDrivenAdapter.RegisterEventListener(System.String,System.String,System.EventHandler{Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.ControlChangedEventArgs},System.String)">
+            <summary>
+            Adds specified <paramref name="listenerCallback"/> to the internal list of registered listeners.
+            Returns true when registration was successful (duplicate registration attempts return false).
+            Once registered, RaiseEvent() can then be used to raise the event to the registered listeners.
+            </summary>
+            <param name="eventName">Name of the event</param>
+            <param name="controlName">Event listener registration can be scoped at the DDA control level (specify blank or null to omit)</param>
+            <param name="listenerCallback">Callback associated with the listener</param>
+            <param name="data">Data</param>
+            <returns>Whether registration was successful (duplicate registration attempts return false)</returns>
+            <exception cref="T:System.ArgumentNullException">EventName and ListenerCallback must not be null</exception>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.CompositingDataDrivenAdapter.UnregisterEventListener(System.String,System.String,System.EventHandler{Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.ControlChangedEventArgs})">
+            <summary>
+            Removes specified <paramref name="listenerCallback"/> from the internal list of registered listeners.
+            Returns true when unregistration was successful (duplicate unregistration attempts return false).
+            Once unregistered, RaiseEvent() no longer can be used to raise the event.
+            </summary>
+            <param name="eventName">Name of the event</param>
+            <param name="controlName">Event listener registration can be scoped at the DDA control level (specify blank or null to omit)</param>
+            <param name="listenerCallback">Callback associated with the listener</param>
+            <returns>Whether unregistration was successful (duplicate unregistration attempts return false)</returns>
+            <exception cref="T:System.ArgumentNullException">EventName and ListenerCallback must not be null</exception>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.CompositingDataDrivenAdapter.GetAvailableApplicationEvents">
+            <summary>
+            Useful for reporting the list of application events propagated.
+            Intended for design-time use.
+            Custom implementation not required for run-time operation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.CompositingDataDrivenAdapter.GetAvailableControlEvents">
+            <summary>
+            Useful for reporting the list of control events propagated.
+            Intended for design-time use.
+            Custom implementation not required for run-time operation.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.ControlChangedEventArgs">
+            <remarks>
+            EventArgs propagated by the DataDrivenAdapter events.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.ControlChangedEventArgs.ToString">
+            <summary>
+            ToString
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.ControlChangedEventArgs.#ctor(System.String,System.String,System.String)">
+            <summary>
+            </summary>
+            <param name="eventTypeName">event designation</param>
+            <param name="controlName">empty when not applicable to any named control</param>
+            <param name="controlValue">populated with extra data associated with the event when necessary</param>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.ControlChangedEventArgs.EventName">
+            <summary>
+            Event designation
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.ControlChangedEventArgs.ControlName">
+            <summary>
+            Empty when not applicable to any named control
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.ControlChangedEventArgs.ControlValue">
+            <summary>
+            Populated with extra data associated with the event when necessary
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.OperationType">
+            <summary>
+            Different Operations allowed on a UI Control
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.OperationType.FindControl">
+            <summary>
+            Find control on the UI
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.OperationType.GetControlValue">
+            <summary>
+            Get the value of the control on the UI
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.OperationType.SetControlValue">
+            <summary>
+            Set the valur of a control on the UI
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.OperationType.ExecuteControlAction">
+            <summary>
+            Execute the default control action
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.DataDrivenAdapterException">
+            <summary>
+            A DDA Exception
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.DataDrivenAdapterException.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.DataDrivenAdapterException.#ctor(System.String)">
+            <summary>
+            Constructor with string argument
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.DataDrivenAdapterException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            DataDrivenAdapterException
+            </summary>
+            <param name="info">info to be serialized</param>
+            <param name="context">data context</param>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.DataDrivenAdapterException.#ctor(Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.OperationType,System.String,System.String)">
+            <summary>
+            DataDrivenAdapterException
+            </summary>
+            <param name="op">Type of operation</param>
+            <param name="controlName">Name of the Control</param>
+            <param name="message">message to be passed</param>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.DataDrivenAdapterException.#ctor(System.String,System.Exception)">
+            <summary>
+            DataDrivenAdapterException construtor with msg and exception
+            </summary>
+            <param name="message">message to be passed</param>
+            <param name="inner">Exception</param>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.DataDrivenAdapterException.#ctor(Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.OperationType,System.String,System.Exception)">
+            <summary>
+            DataDrivenAdapterException(OperationType op, string controlName, Exception inner)
+            </summary>
+            <param name="op">Operation Type</param>
+            <param name="controlName">Name of the Control</param>
+            <param name="inner">Exception</param>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.DdaAutomationAdapter">
+            <summary>
+            This implements DDA-only capability for hosted applications
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.DdaAutomationAdapter.DdaActionFindControl">
+            <summary>
+            DdaActionFindControl
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.DdaAutomationAdapter.DdaActionGetControlValue">
+            <summary>
+            DdaActionGetControlValue
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.DdaAutomationAdapter.DdaActionSetControlValue">
+            <summary>
+            DdaActionSetControlValue
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.DdaAutomationAdapter.DdaActionExecuteControlAction">
+            <summary>
+            DdaActionExecuteControlAction
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.DdaAutomationAdapter.DdaActionAddDoActionEventTrigger">
+            <summary>
+            DdaActionAddDoActionEventTrigger
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.DdaAutomationAdapter.DdaActionRemoveDoActionEventTrigger">
+            <summary>
+            DdaActionRemoveDoActionEventTrigger
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.DdaAutomationAdapter.#ctor">
+            <summary>
+            Constructor for the DDA Automation Adapter base class
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.DdaAutomationAdapter.Initialize">
+            <summary>
+            The initializing method for the adapter where DDA instantiation occurs
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.DdaAutomationAdapter.DoAction(Microsoft.Uii.Csr.Action,Microsoft.Uii.Csr.RequestActionEventArgs)">
+            <summary>
+            DdaAutomationAdapter implementation of the Adapter DoAction method
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.DdaAutomationAdapter.Close">
+            <summary>
+            Cleans up any resources allocated by the DataDrivenAdapter on shutdown
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.DdaAutomationAdapter.GetDdaParameters(System.String,System.String@,System.String@,System.String@)">
+            <summary>
+            GetDdaParameters(string data, ref string controlName, ref string controlValue, ref string CustomData)
+            </summary>
+            <param name="data">data</param>
+            <param name="controlName">Name of the control</param>
+            <param name="controlValue">vlaue of the control</param>
+            <param name="CustomData">custom data</param>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.DdaAutomationAdapter.GetTriggerParameters(System.String,System.String@,System.String@,System.String@,System.String@,System.String@)">
+            <summary>
+            GetTriggerParameters
+            </summary>
+            <param name="data">data</param>
+            <param name="controlName">Name of the control</param>
+            <param name="eventName">name of the event</param>
+            <param name="actionAppName">appname action</param>
+            <param name="actionName">action name</param>
+            <param name="CustomData">custom data</param>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.DdaAutomationAdapter.DataDrivenAdapter">
+            <summary>
+            Associated DDA
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccEventArgs">
+            <summary>
+            Class containing details of the Java Accessbility events
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccEventArgs.ToString">
+            <summary>
+            ToString
+            </summary>
+            <returns>String</returns>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccEventArgs.#ctor(System.Type,System.String,System.IntPtr,System.Int32,System.Object,System.Object)">
+            <summary>
+            JavaAccEventArgs
+            </summary>
+            <param name="objectType">type of object</param>
+            <param name="eventTypeName">event type name</param>
+            <param name="source">source</param>
+            <param name="vMachineId">vMachineId</param>
+            <param name="oldObject">oldObject</param>
+            <param name="newObject">new Object</param>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccEventArgs.ObjectType">
+            <summary>
+            Type of object
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccEventArgs.EventTypeName">
+            <summary>
+            EventTypeName
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccEventArgs.Source">
+            <summary>
+            source
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccEventArgs.VMachineId">
+            <summary>
+            VMachineId
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccEventArgs.OldObject">
+            <summary>
+            OldObject
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccEventArgs.NewObject">
+            <summary>
+            new Object
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccEventArgs.Name">
+            <summary>
+            Name
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccEventArgs.Role">
+            <summary>
+            role
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccEventArgs.WindowCaption">
+            <summary>
+            WindowCaption
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccEventArgs.WindowClass">
+            <summary>
+            WindowClass
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccEventArgs.Value">
+            <summary>
+            value
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccEventArgs.WindowHandle">
+            <summary>
+            WindowHandle
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccEventListener">
+            <summary>
+            This class provides the functionality to listen to Java accessibility events
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccEventListener.SetEventHandlers">
+            <summary>
+            Set all the event handlers
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccEventListener.SetAccEventHandlers">
+            <summary>
+            Set the event handlers for java acc events 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccEventListener.SetJavaEventHandlers">
+            <summary>
+            Set the event handlers for java events
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccEventListener.FreeEventHandlers">
+            <summary>
+            Free all the event handlers
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccEventListener.CurrentDomain_DomainUnload(System.Object,System.EventArgs)">
+            <summary>
+            Handle the appdomain unload event and free the resources
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccEventListener.FireControlChangedEvent(System.IntPtr,System.Int32,System.String)">
+            <summary>
+            Fire the control changed event 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccEventListener.FireAccEvent``1(System.IntPtr,System.String,System.Int32,System.Type,``0,``0)">
+            <summary>
+            Fire the accessibility event
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccEventListener.FireRadioButtonEvents``1(System.IntPtr,System.Int32,``0,``0)">
+            <summary>
+            Fire radio button related events
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccEventListener.FireCheckBoxEvents``1(System.IntPtr,System.Int32,``0,``0)">
+            <summary>
+            Fire check box related events
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccEventListener.FireTreeNodeEvents``1(System.IntPtr,System.Int32,``0,``0)">
+            <summary>
+            Fire tree node related events
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccEventListener.FireEvent``1(System.IntPtr,System.String,System.IntPtr,System.Int32,``0,``0)">
+            <summary>
+            Fire both control changed and accessibility events
+            </summary>
+        </member>
+        <member name="E:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccEventListener.JavaAccEventOccurred">
+            <summary>
+            JavaAccEventOccurred event
+            </summary>
+        </member>
+        <member name="E:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccEventListener.JavaControlChanged">
+            <summary>
+            JavaControlChanged event
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccHelperMethods">
+            <summary>
+            This class provides a wrapper to using the Java Accessibility functionality
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccHelperMethods.InitializeJavaAccessBridge(System.Boolean)">
+            <summary>
+            initialize the access bridge
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccHelperMethods.CheckVersion">
+            <summary>
+            Check the version of java runtime as well as the version of java access bridge
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccHelperMethods.GetAccFromWindow(System.IntPtr,System.Int32@)">
+            <summary>
+            Get the top level accessible node/object from the window handle
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccHelperMethods.GetName(System.IntPtr,System.Int32)">
+            <summary>
+            Get the accessible name of the accessible object
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccHelperMethods.GetNextChildByName(System.String,System.Int32@,System.Int32,System.Boolean@,System.IntPtr,System.Int32)">
+            <summary>
+            Find using the name of a node in the accessibility tree
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccHelperMethods.GetNextChildByRole(System.String,System.Int32@,System.Int32,System.Boolean@,System.IntPtr,System.Int32)">
+            <summary>
+            Find using the role of a node in the accessibility tree
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccHelperMethods.GetVisibleChildrenCount(System.IntPtr,System.Int32)">
+            <summary>
+            Get the visible children count of the accessible context node
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccHelperMethods.GetChildrenCount(System.IntPtr,System.Int32)">
+            <summary>
+            Get the children count of the accessible context node
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccHelperMethods.GetValue(System.IntPtr,System.Int32)">
+            <summary>
+            Get the value for the accessible context 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccHelperMethods.GetAccessibleText(System.IntPtr,System.Int32)">
+            <summary>
+            Get the accessible text for the accessible context
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccHelperMethods.GetAccessibleValue(System.IntPtr,System.Int32)">
+            <summary>
+            Get the accessible value for the accessible context
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccHelperMethods.GetVirtualAccessibleName(System.IntPtr,System.Int32)">
+            <summary>
+            Get the virtual accessible name for the accessible context
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccHelperMethods.SetValue(System.IntPtr,System.Int32,System.String)">
+            <summary>
+            Set the value using SetControlValue method
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccHelperMethods.SetControlValue(System.IntPtr,System.Int32,System.String)">
+            <summary>
+            Set the value supplied in the string to the accessible context
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccHelperMethods.DoAction(System.IntPtr,System.Int32@,System.Int32,System.Boolean,System.String)">
+            <summary>
+            Execute the default action i.e. click action
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccHelperMethods.GetRoleID(System.IntPtr,System.Int32)">
+            <summary>
+            Get the accessibility role id
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccHelperMethods.GetRole(System.IntPtr,System.Int32)">
+            <summary>
+            Get the accessibility role
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccHelperMethods.BuildAccKey(System.IntPtr,System.Int32)">
+            <summary>
+            Build the key based on the accessible node
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccHelperMethods.SetAccSelection(System.IntPtr,System.Int32,System.String)">
+            <summary>
+            Set the accessible selection index
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccHelperMethods.GetAccSelection(System.IntPtr,System.Int32)">
+            <summary>
+            Get the accessible selection object 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccHelperMethods.GetAccSelectionName(System.IntPtr,System.Int32)">
+            <summary>
+            Get the accessible selection name
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccHelperMethods.ReleaseObject(System.IntPtr,System.Int32)">
+            <summary>
+            Release the java object
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccHelperMethods.GetHWNDFromAccessibleContext(System.IntPtr,System.Int32)">
+            <summary>
+            Get the window handle from an accessible node
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccHelperMethods.IsJavaAccException(System.Exception)">
+            <summary>
+            Identifies accessibility exceptions from java side
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccHelperMethods.IsJavaAccExceptionMaskable(System.Exception)">
+            <summary>
+            Checks whether the java accessibility exception is maskable
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccHelperMethods.GetAccNodeLabel(System.IntPtr,System.Int32)">
+            <summary>
+            Get the accessible node label
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccHelperMethods.ActivateAccHyperlink(System.IntPtr,System.Int32)">
+            <summary>
+            Activate the accessible hyperlink
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccHelperMethods.GetAccHyperlink(System.IntPtr,System.Int32)">
+            <summary>
+            Get the accessible hyper text
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccHelperMethods.GetAccTable(System.IntPtr,System.Int32)">
+            <summary>
+            Get accessible table
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccHelperMethods.GetAccTableCellInfo(System.IntPtr,System.Int32,System.Int32)">
+            <summary>
+            Get the accessible table cell information
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccHelperMethods.GetAccTableCellValue(System.IntPtr,System.Int32,System.String)">
+            <summary>
+            Get the accessible table cell value
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccHelperMethods.SetAccTableCellValue(System.IntPtr,System.Int32,System.String,System.String)">
+            <summary>
+            Set the accessible table cell value
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccHelperMethods.GetAccTableCellIndex(System.IntPtr,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Get accessible table cell index from row and column
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccHelperMethods.GetChildren(System.IntPtr,System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            Get the children of an accessible context node
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccHelperMethods.IsWow64ProcessMode(System.IntPtr)">
+            <summary>
+            Gets the Process Mode from it's Main window Handle
+            </summary>
+            <param name="hwnd">Main window Handle</param>
+            <returns>boolean</returns>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaAccNativeMethods">
+            <summary>
+            This class provides the native mathods of java access bridge
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaDataDrivenAdapter">
+            <summary>
+            Adapter for Java Applications to manage access between the application, 
+            user interface, and automated entities within UII.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaDataDrivenAdapter.#ctor(System.Xml.XmlDocument,System.Object)">
+            <summary>
+            Public Constructor
+            </summary>
+            <param name="appInitStr">UII application initstring</param>
+            <param name="appObj"></param>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaDataDrivenAdapter.Dispose(System.Boolean)">
+            <summary>
+            Dispose
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaDataDrivenAdapter.OperationHandler(Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.OperationType,System.String,System.String,System.String)">
+            <summary>
+            Calls to the JavaDataDrivenAdapter API to manipulate the UI are dispatched to this handler.
+            </summary>
+            <param name="op">Type of the Operation to be performed on the control</param>
+            <param name="controlName">Name of the Control</param>
+            <param name="controlValue">Value to be assigned to the control</param>
+            <param name="data">data</param>
+            <returns>Non-null for Find and Get OperationTypes, null for Set and Execute OperationTypes</returns>
+            <exception cref="T:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.DataDrivenAdapterException">Reference to the inner exception to determine cause</exception>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaDataDrivenAdapter.FindWindowFromControlName(System.String,System.Boolean)">
+            <summary>
+            Finds the handle of a control.
+            </summary>
+            <param name="controlName">Name of the control</param>
+            <param name="throwExceptionIfNotFound">If TRUE, throws DataDrivenAdapterException if the window is not found</param>
+            <returns>Handle of a control</returns>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaDataDrivenAdapter.FindAccObj(System.String,System.Int32@,System.Boolean)">
+            <summary>
+            Finds the Accessibility object using Control Name.
+            </summary>
+            <param name="controlName">Name of the control</param>
+            <param name="vmId">Java virtual machine Id</param>
+            <param name="throwExceptionIfNotFound">If TRUE, throws DataDrivenAdapterException if the control is not found</param>
+            <returns>Accessibility object for a Control</returns>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaDataDrivenAdapter.RegisterEventListener(System.String,System.String,System.EventHandler{Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.ControlChangedEventArgs},System.String)">
+            <summary>
+            Facilitates explicit JavaDDA event listener registration.
+            </summary>
+            <param name="eventName">Name of the Event</param>
+            <param name="controlName">Event listener registration can be scoped at the DDA control level</param>
+            <param name="listenerCallback">Callback associated with the listener</param>
+             <param name="data">data</param>
+            <returns>Whether registration was successful (duplicate registration attempts should return false)</returns>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaDataDrivenAdapter.UnregisterEventListener(System.String,System.String,System.EventHandler{Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.ControlChangedEventArgs})">
+            <summary>
+            Facilitates explicit JavaDDA event listener unregistration.
+            </summary>
+            <param name="eventName">Name of the Event</param>
+            <param name="controlName">Event listener registration can be scoped at the DDA control level</param>
+            <param name="listenerCallback">Callback associated with the listener</param>
+            <returns>Whether unregistration was successful (duplicate unregistration attempts return false)</returns>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaDataDrivenAdapter.GetAvailableControlEvents">
+            <summary>
+            Useful for reporting the list of control events propagated.
+            Intended for design-time use.
+            Custom implementation not required for run-time operation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaDataDrivenAdapter.KnownControls">
+            <summary>
+            Tables that maintain the association between control names and accessible element identifiers.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaDataDrivenAdapterConstants">
+            <summary>
+            Common class to store java data driven adapter constants
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaKnownControls">
+            <summary>
+            This class provides the functionality for registration/unregistration of UI controls
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaKnownControls.AddControlEvents(System.String,System.String)">
+            <summary>
+            Add the date time for the control event
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaKnownControls.UpdateControlEvents(System.String,System.String)">
+            <summary>
+            Update the date time for the control event
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaKnownControls.IsControlEventListed(System.String,System.String)">
+            <summary>
+            Evaluate if the control event is a new entry
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaKnownControls.UnregisterControlEvent(System.String,System.String)">
+            <summary>
+            Unregister the registered control event
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaKnownControls.GetControlEventDateTime(System.String,System.String)">
+            <summary>
+            Return control event datetime corresponding to the provided control event
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaKnownControls.RegisterControl(System.String,System.IntPtr)">
+            <summary>
+            Associate the window handle with the control
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaKnownControls.RegisterControl(System.String,System.IntPtr,System.Int32)">
+            <summary>
+            Associate the accessible object with the control
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaKnownControls.RegisterControl(System.String,System.String)">
+            <summary>
+            Register the discovered control
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaKnownControls.IsControlListed(System.String)">
+            <summary>
+            Evaluate if the discovered control is a new control
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaKnownControls.UnregisterControl(System.IntPtr,System.Int32)">
+            <summary>
+            Unregister the registered control
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaKnownControls.IsKnown(System.IntPtr,System.Int32)">
+            <summary>
+            Test whether the accessible object is already registered
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaKnownControls.GetControlName(System.IntPtr,System.Int32)">
+            <summary>
+            Return control name corresponding to the provided key
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.JavaKnownControls.StringifyHwnd(System.IntPtr)">
+            <summary>
+            Convert the handle to an integer
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Resources.DDA0100_UNABLE_TO_FIND_CONTROL_ON_UI">
+            <summary>
+              Looks up a localized string similar to Unable to find the selected control on the user interface. Please contact your system administrator..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Resources.DDA0101_NAMED_CONTROL_CONFIG_NOT_FOUND">
+            <summary>
+              Looks up a localized string similar to The named control configuration wasn&apos;t found. Please contact your system administrator..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Resources.DDA0102_CONTROLS_ELEMENT_NOT_FOUND">
+            <summary>
+              Looks up a localized string similar to No Data Driven Adapter &lt;Controls/&gt; configuration element was found. Please contact your system administrator..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Resources.DDA0103_DDABINDINGS_ELEMENT_NOT_FOUND">
+            <summary>
+              Looks up a localized string similar to No &lt;DataDrivenAdapterBindings/&gt; configuration element was found. Please contact your system administrator..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Resources.DDA0104_DUP_CONTROL_NAME_FOUND">
+            <summary>
+              Looks up a localized string similar to The control name isn&apos;t unique: {0}. Please contact your system administrator..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Resources.DDA0105_INCORRECT_APPOBJECT_TYPE">
+            <summary>
+              Looks up a localized string similar to The application object provided to the constructor is of an incorrect type.  Please contact your system administrator..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Resources.DDA0106_TYPE_NOT_SPECIFIED">
+            <summary>
+              Looks up a localized string similar to The &lt;Type/&gt; configuration element isn&apos;t specified.  Please contact your system administrator..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Resources.DDA0107_TYPE_UNABLE_TO_INSTANTIATE">
+            <summary>
+              Looks up a localized string similar to Unable to instantiate the specified Data Driven Adapter type.  Please contact your system administrator..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Resources.DDA0108_UNSUPPORTED_CONTROL_OPERATION">
+            <summary>
+              Looks up a localized string similar to The action you are trying to take is not supported on this control. Please contact your system administrator..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Resources.DDA0109_UNSUPPORTED_CONTROL_TYPE">
+            <summary>
+              Looks up a localized string similar to The control type is unsupported. Please contact your system administrator..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Resources.DDA0110_VALUE_MUST_BE_TRUE_OR_FALSE">
+            <summary>
+              Looks up a localized string similar to The value must be true or false. Please contact your system administrator..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Resources.DDA0200_WIN_NO_FIND_WINDOW_ELEMENT_FOUND">
+            <summary>
+              Looks up a localized string similar to No FindWindow element was found where expected. Please contact your system administrator..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Resources.DDA0201_WIN_NO_MENUITEM_PATH_ELEMENT_FOUND">
+            <summary>
+              Looks up a localized string similar to No MenuItem &lt;Path/&gt; element was found in the control configuration. Please contact your system administrator..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Resources.DDA0202_WIN_NO_PATH_ELEMENT_FOUND">
+            <summary>
+              Looks up a localized string similar to No &lt;Path/&gt; element was found where expected. Please contact your system administrator..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Resources.DDA0203_WIN_UNSUPPORTED_FINDWINDOW_ELEMENT">
+            <summary>
+              Looks up a localized string similar to An unsupported &lt;FindWindow/&gt; element was found. Please contact your system administrator..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Resources.DDA0204_WIN_UNSUPPORTED_PATH_ELEMENT">
+            <summary>
+              Looks up a localized string similar to An unsupported Path child element was found. Please contact your system administrator..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Resources.DDA0300_BAD_MATCHTYPE">
+            <summary>
+              Looks up a localized string similar to An invalid matchtype attribute was found. The value must be one of equals, startswith, endswith, or contains. Please contact your system administrator..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Resources.DDA0301_WEB_BUSYBROWSER">
+            <summary>
+              Looks up a localized string similar to The web browser is busy and can&apos;t be stopped. Please contact your system administrator..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Resources.DDA0303_WEB_HTML_ELEMENT_NOT_ANCHOR_ELEMENT">
+            <summary>
+              Looks up a localized string similar to The HTML element isn&apos;t a &lt;a/&gt; element. Please contact your system administrator..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Resources.DDA0304_WEB_HTML_ELEMENT_NOT_BUTTON_ELEMENT">
+            <summary>
+              Looks up a localized string similar to The HTML element isn&apos;t a &lt;button/&gt; element. Please contact your system administrator..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Resources.DDA0305_WEB_HTML_ELEMENT_NOT_INPUT_ELEMENT">
+            <summary>
+              Looks up a localized string similar to The HTML element isn&apos;t a &lt;input/&gt; element. Please contact your system administrator..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Resources.DDA0306_WEB_HTML_ELEMENT_NOT_SELECT_ELEMENT">
+            <summary>
+              Looks up a localized string similar to The HTML element isn&apos;t a &lt;select/&gt; element. Please contact your system administrator..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Resources.DDA0307_WEB_HTML_ELEMENT_NOT_TEXTAREA_ELEMENT">
+            <summary>
+              Looks up a localized string similar to The HTML element isn&apos;t a &lt;textarea/&gt; element. Please contact your system administrator..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Resources.DDA0308_WEB_MALFORMED_URL">
+            <summary>
+              Looks up a localized string similar to The URL is malformed. Please contact your system administrator..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Resources.DDA0309_WEB_UNRECOGNIZED_MATCH_PATH_ELEMENT">
+            <summary>
+              Looks up a localized string similar to There is an unrecognized match path element: {0}. Please contact your system administrator..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Resources.DDA0310_WEB_NO_URL_ELEMENT_FOUND">
+            <summary>
+              Looks up a localized string similar to No URL element was found in the control configuration. Please contact your system administrator..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Resources.DDA0311_WEB_UNSUPPORTED_HTML_ELEMENT">
+            <summary>
+              Looks up a localized string similar to An unsupported HTML element was found. Please contact your system administrator..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Resources.DDA0400_UNABLE_TO_FIND_CONTROL_ON_UI">
+            <summary>
+              Looks up a localized string similar to Unable to find the control on the user interface. Please contact your system administrator..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Resources.DDA0401_NAMED_CONTROL_CONFIG_NOT_FOUND">
+            <summary>
+              Looks up a localized string similar to The named control configuration wasn&apos;t found. Please contact your system administrator..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Resources.DDA0405_INCORRECT_APPOBJECT_TYPE">
+            <summary>
+              Looks up a localized string similar to The application object provided to the constructor is of an incorrect type. Please contact your system administrator..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Resources.DDA0408_UNSUPPORTED_CONTROL_OPERATION">
+            <summary>
+              Looks up a localized string similar to The action you are trying to take is not supported on this control. Please contact your system administrator..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Resources.DDA0409_UNSUPPORTED_CONTROL_TYPE">
+            <summary>
+              Looks up a localized string similar to This control type is not supported. Please contact your system administrator..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Resources.DDA0500_JAVA_NO_FIND_WINDOW_ELEMENT_FOUND">
+            <summary>
+              Looks up a localized string similar to No FindWindow element was found where expected. Please contact your system administrator..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Resources.DDA0502_JAVA_NO_PATH_ELEMENT_FOUND">
+            <summary>
+              Looks up a localized string similar to No &lt;Path/&gt; element was found where expected. Please contact your system administrator..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Resources.DDA0503_JAVA_UNSUPPORTED_FINDWINDOW_ELEMENT">
+            <summary>
+              Looks up a localized string similar to No &lt;DataDrivenAdapterBindings/&gt; configuration element was found. Please contact your system administrator..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Resources.DDA0504_JAVA_UNSUPPORTED_PATH_ELEMENT">
+            <summary>
+              Looks up a localized string similar to An Unsupported Path child element was found. Please contact your system administrator..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Resources.DDA0505_INCORRECT_CONTROL_VALUE_FORMAT">
+            <summary>
+              Looks up a localized string similar to A control value isn&apos;t in the correct format. Please contact your system administrator..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Resources.DDA0507_JAVA_ACCESS_BRIDGE_INIT_FAILED">
+            <summary>
+              Looks up a localized string similar to Failed to initialize Java access bridge. Please contact your system administrator..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Resources.DDA0508_JAVA_ACCESS_BRIDGE_NOT_FOUND">
+            <summary>
+              Looks up a localized string similar to Unable to find necessary components for Java interoperability. Please contact your system administrator..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Resources.DDA0509_UNSUPPORTED_JAVA_VM_VERSION">
+            <summary>
+              Looks up a localized string similar to An unsupported Java virtual machine version was detected. Please contact your system administrator..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Resources.DDA0510_UNSUPPORTED_JAVA_AB_VERSION">
+            <summary>
+              Looks up a localized string similar to An unsupported Java access bridge version was detected. Please contact your system administrator..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Resources.DDA0511_UNABLE_TO_RETRIEVE_JAVA_VERSION">
+            <summary>
+              Looks up a localized string similar to Unable to retrieve Java version. Please contact your system administrator..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Resources.DDA0512_EVENT_FIRE_ERROR">
+            <summary>
+              Looks up a localized string similar to An error occurred while listening to Java events. Please contact your system administrator..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Resources.DDA0513_UNABLE_TO_FREE_MEMORY">
+            <summary>
+              Looks up a localized string similar to Unable to free memory associated with the Java accessible node. Please contact your system administrator..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Resources.DDA0514_JAVA_LISTENER_INIT_FAILED">
+            <summary>
+              Looks up a localized string similar to An error occurred while initializing Java event handlers. Please contact your system administrator..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Resources.DDA0515_JAVA_LISTENER_RELEASE_FAILED">
+            <summary>
+              Looks up a localized string similar to An error occurred while releasing Java event handlers. Please contact your system administrator..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Resources.DDA0516_UNABLE_TO_FIND_WINDOW">
+            <summary>
+              Looks up a localized string similar to Unable to find the window. Please contact your system administrator..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Resources.DDA0600_COMPOSITE_DUP_EVENT_NAME_FOUND">
+            <summary>
+              Looks up a localized string similar to The composited event name isn&apos;t unique: {0}. Please contact your system administrator..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Resources.DDA0700_UIA_PATTERN_NOT_FOUND">
+            <summary>
+              Looks up a localized string similar to No matching pattern was found, or the specified pattern doesn&apos;t exist for the operation. Please contact your system administrator..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Resources.DDA0701_EVENTIDENTIFIER_NOT_FOUND">
+            <summary>
+              Looks up a localized string similar to No matching pattern was found, or the specified pattern doesn&apos;t exist for the operation. Please contact your system administrator..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Resources.DDA0702_UIA_PROPERTY_NOT_AVAILABLE">
+            <summary>
+              Looks up a localized string similar to The specified property isn&apos;t available for the UI element. Please contact your system administrator..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Resources.DDA0702_UIA_PROPERTY_PATTERN_NOT_AVAILABLE">
+            <summary>
+              Looks up a localized string similar to The specified property or pattern isn&apos;t available for the UI element. Please contact your system administrator..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Resources.FIND_ERROR_LEVEL">
+            <summary>
+              Looks up a localized string similar to Couldn&apos;t find control at Level # {0}. Please contact your system administrator..
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.AutomationEventArgsMapping">
+            <summary>
+            This Class Holds the Automation and EventArgs Mapping
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.AutomationEventArgsMapping.#ctor(System.Windows.Automation.AutomationEvent,System.Type)">
+            <summary>
+            Constructor to maintain the mapping
+            </summary>
+            <param name="aEvent"></param>
+            <param name="argsType"></param>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.AutomationEventArgsMapping.Event">
+            <summary>
+            Event Details
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.AutomationEventArgsMapping.EventArgsType">
+            <summary>
+            Args Type 
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.AutomationThreadParams">
+            <summary>
+            Thread Params for Set and Execute Call
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.AutomationThreadParams.#ctor">
+            <summary>
+            constructs the param
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.AutomationThreadParams.Element">
+             <summary>
+            Automation Element 
+             </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.AutomationThreadParams.waitHandle">
+            <summary>
+            Thread Handle
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.AutomationThreadParams.ControlName">
+            <summary>
+            ControlName to Set
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.AutomationThreadParams.ControlValue">
+            <summary>
+            ControlValue to Set
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.AutomationThreadParams.Data">
+            <summary>
+            Extensible data
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.AutomationThreadParams.ex">
+            <summary>
+            Caught Exception 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.AutomationThreadParams.throwExceptionIfNotFound">
+            <summary>
+            Throws exception flag 
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.UIADataDrivenAdapter">
+            <summary>    
+            Adapter for Windows Applications , Wpf Application and Web Application  to manage access between the application, 
+            user interface, and automated entities within UII.    
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.UIADataDrivenAdapter.PREFIX">
+            <summary>
+            The prefix used to identify this Data Driven Adapter.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.UIADataDrivenAdapter.OnAutomationEventHandler">
+            <summary>
+            EventHandlers for the UIAutomation Events
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.UIADataDrivenAdapter.#ctor(System.Xml.XmlDocument,System.Object)">
+            <summary>
+            Prepare the UIDDA with the initstring and the parent window
+            </summary>
+            <param name="appInitStr"></param>
+            <param name="appObj"></param>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.UIADataDrivenAdapter.RegisterEventListener(System.String,System.String,System.EventHandler{Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.ControlChangedEventArgs},System.String)">
+            <summary>
+            Registers for the Event Listener
+            </summary>
+            <param name="eventName">eventName</param>
+            <param name="controlName">name of the control</param>
+            <param name="listenerCallback">call back listener</param>
+            <param name="data">data</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.UIADataDrivenAdapter.UnregisterEventListener(System.String,System.String,System.EventHandler{Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.ControlChangedEventArgs})">
+            <summary>
+            UnRegisters the registered event listener
+            </summary>
+            <param name="eventName"></param>
+            <param name="controlName"></param>
+            <param name="listenerCallback"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.UIADataDrivenAdapter.OperationHandler(Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.OperationType,System.String,System.String,System.String)">
+            <summary>
+            Handing Operators to Get , Set , Find Execute Actions on Controls
+            </summary>
+            <param name="op"></param>
+            <param name="controlName"></param>
+            <param name="controlValue"></param>
+            <param name="data">Value used to customize the operations of the control</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.UIADataDrivenAdapter.GetUIAControl(System.Object)">
+            <summary>
+            Gets UIA Control Value
+            </summary>
+            <param name="objectThread"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.UIADataDrivenAdapter.GetUIAControlUsingPatterns(System.Object,System.String@,System.Boolean@,System.Windows.Automation.AutomationElement,System.String@)">
+            <summary>
+            Gets the UIA COntrol Value using Patterns
+            </summary>
+            <param name="objectThread"></param>
+            <param name="getText"></param>
+            <param name="patternIdentified"></param>
+            <param name="uiaElement"></param>
+            <param name="data"></param>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.UIADataDrivenAdapter.FindUIAControlAsync(System.Object)">
+            <summary>
+            Find UIA Element
+            </summary>
+            <param name="objectThread"></param>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.UIADataDrivenAdapter.SetUIAControl(System.Object)">
+            <summary>
+            Get UIAControl
+            </summary>
+            <param name="objectThread"></param>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.UIADataDrivenAdapter.ExecuteUIAControl(System.Object)">
+            <summary>
+            Execute UIA Control
+            </summary>
+            <param name="objectThread"></param>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.UIADataDrivenAdapter.FindUIAControl(System.String,System.Boolean)">
+            <summary>
+            This method traverse through the UIObject Tree and find the element in the TreeBinding
+            </summary>        
+            <param name="controlName"></param>
+            <param name="throwExceptionIfNotFound"></param>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.UIADataDrivenAdapter.BuildSearchCondition(System.Xml.XmlNode)">
+            <summary>
+            Builds the Nested Condition for Search
+            </summary>
+            <param name="xnUIAObject"></param>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.UIADataDrivenAdapter.BuildNotCondition(System.Xml.XmlNode)">
+            <summary>
+            Builds the NotCondition Logic and groups all the descendents condition
+            </summary>
+            <param name="xnNotCondition"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.UIADataDrivenAdapter.BuildOrCondition(System.Xml.XmlNode)">
+            <summary>
+            Builds the OrCondition Logic and groups all the descendents condition
+            </summary>
+            <param name="xnOrCondition"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.UIADataDrivenAdapter.BuildAndCondition(System.Xml.XmlNode)">
+            <summary>
+            Builds the AndCondition Logic and groups all the descendents condition
+            </summary>
+            <param name="xnAndCondition"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.UIADataDrivenAdapter.BuildPropertyCondition(System.Xml.XmlNode)">
+            <summary>
+            Builds the PropCondition Logic and groups all the descendents condition
+            </summary>
+            <param name="xnPropCondition"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.UIADataDrivenAdapter.ConvertStringtoObject(System.String,System.Type)">
+            <summary>
+            Converts the Binding String format to desired Type
+            </summary>
+            <param name="BindingText"></param>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.UIADataDrivenAdapter.ConvertObjecttoString(System.Object,System.Type)">
+            <summary>
+            Converts the object format to desired Binding String Type
+            </summary>
+            <param name="BindingObject"></param>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.UIADataDrivenAdapter.GetAvailableApplicationEvents">
+            <summary>
+            Useful for reporting the list of application events propagated.
+            Intended for design-time use.
+            Custom implementation not required for run-time operation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.UIADataDrivenAdapter.GetApplicationEvents">
+            <summary>
+            Useful for reporting the list of application events propagated.
+            Intended for design-time use.
+            Custom implementation not required for run-time operation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.UIADataDrivenAdapter.GetAvailableControlEvents">
+            <summary>
+            Useful for reporting the list of control events propagated.
+            Intended for design-time use.
+            Custom implementation not required for run-time operation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.UIADataDrivenAdapter.GetControlEvents">
+            <summary>
+            Useful for reporting the list of control events propagated.
+            Intended for design-time use.
+            Custom implementation not required for run-time operation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.UIADataDrivenAdapter.AutomationProperties">
+            <summary>
+            Maintains AutomationProperty - AutomationElementIdentifieers mapping
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.UIADataDrivenAdapter.AutomationPropReturnTypes">
+            <summary>
+            Captures the AutomationProperty - Return Type which will be used for conversion
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.UIADataDrivenAdapter.AutomationEventList">
+            <summary>
+            Captures the Events and its EventsArgs which will be used in Register/UnRegister classification
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.UIADataDrivenAdapter.RootAutomationElement">
+            <summary>
+            Captures the Root Automation Element from which the Treescope will be maintained. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.UIADataDrivenAdapter.MainWindowHandle">
+            <summary>
+            Captures the Main Window Handle. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.UIADataDrivenAdapter.ControlConfig">
+            <summary>
+            Stores the Control COnfiguration
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.UIADataDrivenAdapter.IsWebApp">
+            <summary>
+            Is Web Application
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.UIAHelperMethods.AutomationPropReturnTypes">
+            <summary>
+            Captures the Automation Property Return Types. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.UIAHelperMethods.AutomationEventList">
+            <summary>
+            Captures the Automation Event List. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.UIAHelperMethods.ControlTypeNames">
+            <summary>
+            Captures the Control Types and Programattic Name. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.UIAHelperMethods.GetAutomationElementIdentifiers">
+            <summary>
+            Maintains AutomationProperty - AutomationElementIdentifieers mapping
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.UIAHelperMethods.UpdateControlTypeNames">
+            <summary>
+            MaintainsControl Type and Programmatic Name mapping
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.UIAHelperMethods.GetXmlAttribute(System.Xml.XmlNode,System.String)">
+            <summary>
+            Verifies if the XmlAttribute is null
+            </summary>
+            <param name="xnPropCondition">Condition</param>
+            <param name="AttributeName">Attribute Name</param>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.UIAHelperMethods.GetPoint(System.String)">
+            <summary>
+            Converts input string to Point
+            </summary>
+            <param name="BindingText"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.UIAHelperMethods.GetRect(System.String)">
+            <summary>
+            Converts inputstring to Rect
+            </summary>
+            <param name="BindingText"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.UIAHelperMethods.GetControlType(System.String)">
+            <summary>
+            Gets the ControlType from the User Text
+            </summary>
+            <param name="BindingText"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.UIAHelperMethods.ProcessExpandCollapsePattern(System.Windows.Automation.AutomationElement,Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.OperationType,System.String)">
+            <summary>
+            Uses Expand Collapse Pattern for Get/Set/Execute Actions of Control
+            </summary>
+            <param name="uiaElement"></param>
+            <param name="opType"></param>
+            <param name="controlValue"></param>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.UIAHelperMethods.ProcessSelectionItemPattern(System.Windows.Automation.AutomationElement,Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.OperationType,System.String)">
+            <summary>
+            Uses Selection Item Pattern for Get/Set/Execute Actions of Control
+            </summary>
+            <param name="uiaElement"></param>
+            <param name="opType"></param>
+            <param name="controlValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.UIAHelperMethods.ProcessRangeValuePattern(System.Windows.Automation.AutomationElement,Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.OperationType,System.String)">
+            <summary>
+            Uses Range Value Pattern for Get/Set/Execute Actions of Control
+            </summary>
+            <param name="uiaElement"></param>
+            <param name="opType"></param>
+            <param name="controlValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.UIAHelperMethods.ProcessScrollPattern(System.Windows.Automation.AutomationElement,Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.OperationType,System.String)">
+            <summary>
+            Uses Scroll Pattern for Get/Set/Execute Actions of Control
+            </summary>
+            <param name="uiaElement"></param>
+            <param name="opType"></param>
+            <param name="controlValue">2 represents noamount</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.UIAHelperMethods.ProcessSelectionPattern(System.Windows.Automation.AutomationElement,Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.OperationType,System.String)">
+            <summary>
+            Uses Selection Pattern for Get/Set/Execute Actions of Control
+            </summary>
+            <param name="uiaElement"></param>
+            <param name="opType"></param>
+            <param name="controlValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.UIAHelperMethods.EscapeXml(System.String)">
+            <summary>
+            Escapes Xml metacharacters
+            </summary>
+            <param name="content">unescaped input</param>
+            <returns>escaped input</returns>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.UIAHelperMethods.UnEscapeXml(System.String)">
+            <summary>
+            Escapes Xml metacharacters
+            </summary>
+            <param name="content">unescaped input</param>
+            <returns>escaped input</returns>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.UIAHelperMethods.ProcessTogglePattern(System.Windows.Automation.AutomationElement,Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.OperationType,System.String)">
+            <summary>
+            Uses Toggle Pattern for Get/Set/Execute Actions of Control
+            </summary>
+            <param name="uiaElement"></param>
+            <param name="opType"></param>
+            <param name="controlValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.UIAHelperMethods.ProcessInvokePattern(System.Windows.Automation.AutomationElement,Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.OperationType,System.String)">
+            <summary>
+            Uses Invoke Pattern for Get/Set/Execute Actions of Control
+            </summary>
+            <param name="uiaElement"></param>
+            <param name="opType"></param>
+            <param name="controlValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.UIAHelperMethods.ProcessValuePattern(System.Windows.Automation.AutomationElement,Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.OperationType,System.String)">
+            <summary>
+            Uses Value Pattern for Get/Set/Execute Actions of Control
+            </summary>
+            <param name="uiaElement"></param>
+            <param name="opType"></param>
+            <param name="controlValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.UIAHelperMethods.ProcessTextPattern(System.Windows.Automation.AutomationElement,Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.OperationType,System.String)">
+            <summary>
+            Uses Text Pattern for Get/Set/Execute Actions of Control
+            </summary>
+            <param name="uiaElement"></param>
+            <param name="opType"></param>
+            <param name="controlValue"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.UIAHelperMethods.AutomationPropertiesList">
+            <summary>
+            AutomationPropertiesList to capture the Automation properties 
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.MsHtmlEventHandler">
+            <summary>
+            Delegate to handle event fired from IhtmlEvent
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.RaiseEventHandler">
+            <summary>
+            delegate to raise an event with the blow parameters.
+            </summary>
+            <param name="sender"></param>
+            <param name="eventName"></param>
+            <param name="controlName"></param>
+            <param name="controlValue"></param>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.MsHtmlEventSink">
+            <summary>
+            Html events listener
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.MsHtmlEventSink.Create(mshtml.IHTMLElement2,System.String,System.String,Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.RaiseEventHandler)">
+            <summary>
+            Creates and attaches an event sink to the provided <paramref name="htmlElement"/>
+            for the named <paramref name="eventName"/> event.
+            </summary>
+            <param name="htmlElement">event source</param>
+            <param name="eventName">event name</param>
+            <param name="controlName">DDA control name associated with the event</param>
+            <param name="raiseEventHandler">callback that handles the sourced event</param>
+            <returns>event sink instance, already attached to the <paramref name="htmlElement"/></returns>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.MsHtmlEventSink.Create(mshtml.IHTMLElement2,System.String)">
+            <summary>
+            Creates and attaches an event sink to the provided <paramref name="htmlElement"/>
+            for the named <paramref name="eventName"/> event.
+            </summary>
+            <param name="htmlElement">event source</param>
+            <param name="eventName">event name</param>
+            <returns>event sink instance, already attached to the <paramref name="htmlElement"/></returns>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.MsHtmlEventSink.Dispose">
+            <summary>
+            Detaches event sink from the event source.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.MsHtmlEventSink.Handlers">
+            <summary>
+            These listeners are notified when the event this instance represents is raised.
+            This listener type has access to the IHTMLEventObj, for fined grained mshtml event handling.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.WebDataDrivenAdapter">
+            <summary>
+            Data driven adapter for doing operations with controls on a web page
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.WebDataDrivenAdapter.PREFIX">
+            <summary>
+            The prefix used to identify this Data Driven Adapter.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.WebDataDrivenAdapter.#ctor(System.Xml.XmlDocument,System.Object)">
+            <summary>
+            Public Constructor
+            </summary>
+            <param name="appInitStr">UII application initstring</param>
+            <param name="appObj">An instance of WebBrowserExtended that is hosting the target web application</param>
+            <exception cref="T:System.ArgumentNullException">Both constructor parameters must be non-null</exception>
+            <exception cref="T:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.DataDrivenAdapterException">appObj type must be a WebBrowserExtended</exception>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.WebDataDrivenAdapter.RegisterEventListener(System.String,System.String,System.EventHandler{Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.ControlChangedEventArgs},System.String)">
+            <summary>
+            Facilitates explicit WebDDA event listener registration.
+            </summary>
+            <param name="eventName">Name of the Event</param>
+            <param name="controlName">Event listener registration can be scoped at the DDA control level (specify blank or null to omit)</param>
+            <param name="listenerCallback">Callback associated with the listener</param>
+            <param name="data">data</param>
+            <returns>Whether registration was successful (duplicate registration attempts should return false)</returns>
+            <exception cref="T:System.ArgumentNullException">EventName and ListenerCallback must not be null</exception>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.WebDataDrivenAdapter.UnregisterEventListener(System.String,System.String,System.EventHandler{Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.ControlChangedEventArgs})">
+            <summary>
+            Facilitates explicit WebDDA event listener unregistration. Called for every registered event on Dispose().
+            </summary>
+            <param name="eventName">Name of the Event</param>
+            <param name="controlName">Event listener registration can be scoped at the DDA control level (specify blank or null to omit)</param>
+            <param name="listenerCallback">Callback associated with the listener</param>
+            <returns>Whether unregistration was successful (duplicate unregistration attempts return false)</returns>
+            <exception cref="T:System.ArgumentNullException">EventName and ListenerCallback must not be null</exception>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.WebDataDrivenAdapter.GetAvailableApplicationEvents">
+            <summary>
+            Useful for reporting the list of application events propagated.
+            Intended for design-time use.
+            Custom implementation not required for run-time operation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.WebDataDrivenAdapter.GetApplicationEvents">
+            <summary>
+            Useful for reporting the list of application events propagated.
+            Intended for design-time use.
+            Custom implementation not required for run-time operation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.WebDataDrivenAdapter.GetAvailableControlEvents">
+            <summary>
+            Useful for reporting the list of control events propagated.
+            Intended for design-time use.
+            Custom implementation not required for run-time operation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.WebDataDrivenAdapter.GetControlEvents">
+            <summary>
+            Useful for reporting the list of control events propagated.
+            Intended for design-time use.
+            Custom implementation not required for run-time operation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.WebDataDrivenAdapter.FindControlHtmlElement(System.String,System.Boolean)">
+            <summary>
+            Potentially useful method for extenders to search for operable HTML elements.
+            </summary>
+            <param name="controlName">Control bindings to use to search for element</param>
+            <param name="throwExceptionIfNotFound">Requests an exception thrown when element cannot be found</param>
+            <returns>Target HTMLElement if found; null otherwise.</returns>
+            <exception cref="T:System.InvalidOperationException">thrown when no match path element found or when target
+            control is not found on the UI and throwExceptionIfNotFound=true</exception>
+            <exception cref="T:System.UnauthorizedAccessException">some accesses to the underlying IE document object
+            can throw this</exception>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.WebDataDrivenAdapter.OperationHandler(Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.OperationType,System.String,System.String,System.String)">
+            <summary>
+            Calls to the WebDataDrivenAdapter API to manipulate the UI are dispatched to this handler.
+            </summary>
+            <param name="op">Type of the Operation to be performed on the control</param>
+            <param name="controlName">Name of the Control</param>
+            <param name="controlValue">Value to be assigned to the control</param>
+            /// /// <param name="data">Value used to customize the operations of the control</param>
+            <returns>Non-null for Find and Get OperationTypes, null for Set and Execute OperationTypes</returns>
+            <exception cref="T:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.DataDrivenAdapterException">Reference inner exception to determine cause</exception>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.WebDataDrivenAdapter.WebBrowser">
+            <summary>
+            Obselete. Please use Browser property instead.
+            Instance of the web browser control provided to the constructor.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.WebDataDrivenAdapter.Browser">
+            <summary>
+            Instance of the web browser control provided to the constructor.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.WebDataDrivenAdapter.CurrentHtmlDocument">
+            <summary>
+            Convenience property returning the currently selected HtmlDocument.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.WebDataDrivenAdapter.WebBrowserHtmlDocument">
+            <summary>
+            Convenience property returning the HtmlDocument of the Browser object
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.WebDataDrivenAdapter.IsCurrentHtmlDocumentAvailable">
+            <summary>
+            Convenience property returning CurrentHtmlDocument availability.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.AccEventArgs">
+            <summary>
+            Accessibility event arguments
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.AccEventArgs.ToString">
+            <summary>
+            Overides the Tostring() method
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.AccEventArgs.#ctor(System.Int32,System.IntPtr,System.Int32,Accessibility.IAccessible,System.Int32)">
+            <summary>
+            AccEventArgs
+            </summary>
+            <param name="iEvent"></param>
+            <param name="hWndsender"></param>
+            <param name="idObject"></param>
+            <param name="accObj"></param>
+            <param name="childId"></param>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.AccEventArgs.WinEvent">
+            <summary>
+            Gets the winevent value.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.AccEventArgs.OleAccObjectId">
+            <summary>
+            Gets the OleAccobjectID.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.AccEventArgs.hWndSender">
+            <summary>
+            Gets the hWndSender value.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.AccEventArgs.WindowCaption">
+            <summary>
+            Gets the windowCaption.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.AccEventArgs.WindowClass">
+            <summary>
+            Gets the WindowClass value.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.AccEventArgs.AccObj">
+            <summary>
+            Gets the Accobj value.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.AccEventArgs.AccChildId">
+            <summary>
+            Gets the AccChildID value.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.AccEventArgs.Name">
+            <summary>
+            Gets the Acc object name.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.AccEventArgs.Role">
+            <summary>
+            Gets thwe Acc object Role.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.AccEventArgs.State">
+            <summary>
+            Gets the Acc object state.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.AccEventArgs.Value">
+            <summary>
+            Gets the Acc object value.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.AccEventArgs.AccExplorerLabel">
+            <summary>
+            Gets the Acc object Explorer label.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.AccEventArgs.AccLocation">
+            <summary>
+            Gets the Acc object Location
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.AccEventArgs.RelAccLocation">
+            <summary>
+            Gets the Acc object Relocation value.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.AccEventArgs.AutomationId">
+            <summary>
+            Gets the Automation ID value.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.AccEventListener">
+            <summary>
+            Event listener class that hooks windows events
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.AccEventListener.#ctor(System.IntPtr,Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.WinDataDrivenAdapter)">
+            <summary>
+            AccEventListener
+            </summary>
+            <param name="hWndMainWindow"></param>
+            <param name="winDda"></param>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.AccEventListener.Dispose">
+            <summary>
+            Dispose
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.AccEventListener.Dispose(System.Boolean)">
+            <summary>
+            Dispose virtual
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.AccEventListener.Finalize">
+            <summary>
+            Distructor
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.AccEventListener.EventHandler(System.IntPtr,System.Int32,System.IntPtr,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            This is the callback function that MSAA will call when events are raised in the external process
+            </summary>
+            <param name="hWinEventHook">Handle to an event hook function. This value is returned by 
+            SetWinEventHook when the hook function is installed and is specific to each instance of 
+            the hook function. </param>
+            <param name="iEvent">Specifies the event that occurred. This value is one of the event constants.</param>
+            <param name="hWnd">Handle to the window that generates the event, or NULL if no window is associated with the event.</param>
+            <param name="idObject">Identifies the object associated with the event. This is one of the MSAA object identifiers or a custom object ID.</param>
+            <param name="idChild">Identifies whether the event was triggered by an object or a child 
+            element of the object. If this value is CHILDID_SELF, the event was triggered by the object; 
+            otherwise, this value is the child ID of the MSAA element that triggered the event.</param>
+            <param name="dwEventThread">Identifies the thread that generated the event, or the thread that 
+            owns the current window. </param>
+            <param name="dwmsEventTime">Specifies the time, in milliseconds, that the event was generated.</param>
+        </member>
+        <member name="E:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.AccEventListener.AccEventOccurred">
+            <summary>
+            AccEventOccurred event
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.KnownControls">
+            <summary>
+            Known Controls
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.KnownControls.RegisterControl(System.String,Accessibility.IAccessible,System.Int32)">
+            <summary>
+            Associates controlName with the specified IAccessible,
+            using the internal IAccessible identification scheme.
+            </summary>
+            <param name="controlName"></param>
+            <param name="accObj"></param>
+            <param name="childId"></param>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.KnownControls.UnregisterControl(Accessibility.IAccessible,System.Int32)">
+            <summary>
+            Unassociates all controlNames with the specified IAccessible,
+            using the internal IAccessible identification scheme.
+            </summary>
+            <param name="accObj"></param>
+            <param name="childId"></param>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.KnownControls.IsKnown(Accessibility.IAccessible,System.Int32)">
+            <summary>
+            Tests whether the specified IAccessible has been associated with a controlName,
+            using the internal IAccessible identification scheme.
+            </summary>
+            <param name="accObj"></param>
+            <param name="childId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.KnownControls.IsKnown(System.String)">
+            <summary>
+            Tests whether the specified controlName has been associated with any sort of accessible element.
+            </summary>
+            <param name="controlName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.KnownControls.GetControlName(Accessibility.IAccessible,System.Int32)">
+            <summary>
+            Returns the associated controlName of the specified IAccessible, if previously registered.
+            </summary>
+            <param name="accObj"></param>
+            <param name="childId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.KnownControls.GetControlName(System.String)">
+            <summary>
+            Returns the associated controlname of the specified automation element, if previously registered.
+            </summary>
+            <param name="automationId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.KnownControls.RegisterControl(System.String,System.String)">
+            <summary>
+            Associates controlName with the specified automation element identifier.
+            </summary>
+            <param name="controlName"></param>
+            <param name="automationId"></param>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.KnownControls.UnregisterControl(System.String)">
+            <summary>
+            Unassociates all controlNames with the specified automation element identifier.
+            </summary>
+            <param name="automationId"></param>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.KnownControls.BuildAutomationId(Accessibility.IAccessible,System.Int32)">
+            <summary>
+            Internal scheme for building an automation element identifier for an IAccessible.
+            </summary>
+            <param name="accObj"></param>
+            <param name="childId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.OleAccHelperMethods">
+            <summary>
+            This class provides a wrapper to using the MSAA functionality
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.OleAccHelperMethods.GetAccExplorerLabel(Accessibility.IAccessible,System.Int32)">
+            <summary>
+            This is intended to simulate the string display by AccExplorer32.exe for each IAccessible node.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.OleAccHelperMethods.BuildIAccessibleKey(Accessibility.IAccessible,System.Int32)">
+            <summary>
+            This intended to be usable as a unique string representation of an IAccessible node.
+            This is necessary because it appears that two non-equal IAccessible object references can,
+            in fact, refer to the same IAccessible node.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.OleAccStateSystem">
+            <summary>
+            STATE_SYSTEM constants (OleAcc.h)
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.OleAccObjectId">
+            
+             <summary>Object identifiers are 32-bit values that identify categories of accessible objects
+             within an application. (WinUser.h)</summary>
+             
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.FindWindowMatchType">
+            <summary>
+            Defines the matching logic that the DDA uses to find a control
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.FindWindowMatchType.Ignore">
+            <summary>
+            Ignore
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.FindWindowMatchType.Equals">
+            <summary>
+            Exact match
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.FindWindowMatchType.StartsWith">
+            <summary>
+            Window class/name start with...
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.FindWindowMatchType.EndsWith">
+            <summary>
+            Window class/name ends with...
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.FindWindowMatchType.Contains">
+            <summary>
+            Window class/name contains...
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Win32HelperMethods">
+            <summary>
+            Helper methods that provide convenient access to the Win32NativeMethods
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Win32HelperMethods.FindWindowByCaptionAndClassText(System.IntPtr,System.Int32,System.Int32,System.String,Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.FindWindowMatchType,System.String,Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.FindWindowMatchType,System.Int32,System.Boolean)">
+            <summary>
+            Returns the handle of the window that has matching caption/class text through a BFS (Breadth-First Search)
+            of the window handle tree rooted at hWndParent.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Win32HelperMethods.FindWindowByControlId(System.IntPtr,System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Returns the handle of the window that has matching Control ID through a BFS (Breadth-First Search)
+            of the window handle tree rooted at hWndParent.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Win32HelperMethods.FindWindowByPosition(System.IntPtr,System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Returns the handle of the window whose upper left corner coordinates matches the position given
+            through a BFS (Breadth-First Search) of the window handle tree rooted at hWndParent.
+            The position, specified by the x, y parameters, are relative to the upper left corner coordinates
+            of the root window identified by hWndParent.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Win32HelperMethods.FindChildWindowViaEnumChildWindows(System.IntPtr,System.Int32,System.Int32,System.String,Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.FindWindowMatchType,System.String,Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.FindWindowMatchType,System.Int32,System.Boolean)">
+            <summary>
+            Returns the handle of the child matching window via EnumChildWindows.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Win32HelperMethods.FindTopWindowViaEnumWindows(System.Int32,System.Int32,System.String,Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.FindWindowMatchType,System.String,Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.FindWindowMatchType,System.Int32,System.Boolean)">
+            <summary>
+            Returns the handle of the top-level matching window via EnumWindows.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Win32HelperMethods.SetCheck(System.IntPtr,System.String)">
+            <summary>
+            Set the check state of a check box
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Win32HelperMethods.GetCheck(System.IntPtr)">
+            <summary>
+            Retrieves the check state of a check box--where possible
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Win32HelperMethods.GetWindowText(System.IntPtr)">
+            <summary>
+            An easier-to-use version of Win32NativeMethods.GetWindowText().
+            This copies the text of the specified window's title bar (if it has one) into a buffer.
+            If the specified window is a control, the text of the control is copied.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Win32HelperMethods.GetWindowClass(System.IntPtr)">
+            <summary>
+            An easier-to-use version of Win32NativeMethods.GetClassName().
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Win32HelperMethods.GetWindowTextAny(System.IntPtr)">
+            <summary>
+            An easy way to get the window's text.
+            This works with <b>any</b> control in another process.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Win32HelperMethods.SetWindowTextAny(System.IntPtr,System.String)">
+            <summary>
+            This is used to set the window text for <b>any</b> control in another process.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.WindowMessage">
+            <summary>
+            Window Messages (WinUser.h)
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.WindowStyleFlags">
+            <summary>
+            Window Styles (WinUser.h)
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.RedrawWindowFlags">
+            <summary>
+            RedrawWindow() flags (WinUser.h)
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.WinUserConstant">
+            <summary>
+            Miscellaneous WinUser.h constants
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.Win32NativeMethods">
+            <summary>
+            P/Invoke interoperability layer to Win32
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.WinDataDrivenAdapter">
+            <summary>
+            Adapter for Windows Applications to manage access between the application, 
+            user interface, and automated entities within UII.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.WinDataDrivenAdapter.PREFIX">
+            <summary>
+            The prefix used to identify this Data Driven Adapter.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.WinDataDrivenAdapter.#ctor(System.Xml.XmlDocument,System.Object)">
+            <summary>
+            Public Constructor
+            </summary>
+            <param name="appInitStr">UII application initstring</param>
+            <param name="appObj"></param>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.WinDataDrivenAdapter.Dispose(System.Boolean)">
+            <summary>
+            Dispose
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.WinDataDrivenAdapter.RegisterEventListener(System.String,System.String,System.EventHandler{Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.ControlChangedEventArgs},System.String)">
+            <summary>
+            Facilitates explicit WinDDA event listener registration.
+            </summary>
+            <param name="eventName">Name of the Event</param>
+            <param name="controlName">Event listener registration can be scoped at the DDA control level (specify blank or null to omit)</param>
+            <param name="listenerCallback">Callback associated with the listener</param>
+            <param name="data">data</param>
+            <returns>Whether registration was successful (duplicate registration attempts should return false)</returns>
+            <exception cref="T:System.ArgumentNullException">eventName and listenerCallback must not be null</exception>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.WinDataDrivenAdapter.UnregisterEventListener(System.String,System.String,System.EventHandler{Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.ControlChangedEventArgs})">
+            <summary>
+            Facilitates explicit WinDDA event listener unregistration. Called for every registered event on Dispose().
+            </summary>
+            <param name="eventName">Name of the Event</param>
+            <param name="controlName">Event listener registration can be scoped at the DDA control level (specify blank or null to omit)</param>
+            <param name="listenerCallback">Callback associated with the listener</param>
+            <returns>Whether unregistration was successful (duplicate unregistration attempts return false)</returns>
+            <exception cref="T:System.ArgumentNullException">eventName and listenerCallback must not be null</exception>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.WinDataDrivenAdapter.GetAvailableApplicationEvents">
+            <summary>
+            Useful for reporting the list of application events propagated.
+            Intended for design-time use.
+            Custom implementation not required for run-time operation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.WinDataDrivenAdapter.GetApplicationEvents">
+            <summary>
+            Useful for reporting the list of application events propagated.
+            Intended for design-time use.
+            Custom implementation not required for run-time operation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.WinDataDrivenAdapter.GetAvailableControlEvents">
+            <summary>
+            Useful for reporting the list of control events propagated.
+            Intended for design-time use.
+            Custom implementation not required for run-time operation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.WinDataDrivenAdapter.GetControlEvents">
+            <summary>
+            Useful for reporting the list of control events propagated.
+            Intended for design-time use.
+            Custom implementation not required for run-time operation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.WinDataDrivenAdapter.OperationHandler(Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.OperationType,System.String,System.String,System.String)">
+            <summary>
+            Calls to the WinataDrivenAdapter API to manipulate the UI are dispatched to this handler.
+            </summary>
+            <param name="op">Type of the Operation to be performed on the control</param>
+            <param name="controlName">Name of the Control</param>
+            <param name="controlValue">Value to be assigned to the control</param>
+            /// <param name="data">Value used to customize the operations of the control</param>
+            <returns>Non-null for Find and Get OperationTypes, null for Set and Execute OperationTypes</returns>
+            <exception cref="T:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.DataDrivenAdapterException">Reference inner exception to determine cause</exception>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.WinDataDrivenAdapter.FindAccEventsWindow(System.Boolean)">
+            <summary>
+            Finds the window to listen to the accessibility events
+            </summary>
+            <param name="throwExceptionIfNotFound">If TRUE, throws DataDrivenAdapterException if the window is not found</param>
+            <returns>Pointer to the window</returns>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.WinDataDrivenAdapter.FindWindowFromControlName(System.String,System.Boolean)">
+            <summary>
+            Finds the Window which contains the control.
+            </summary>
+            <param name="controlName">Name of the control</param>
+            <param name="throwExceptionIfNotFound">If TRUE, throws DataDrivenAdapterException if the window is not found</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.WinDataDrivenAdapter.FindAccObj(System.String,System.Boolean,System.Int32@)">
+            <summary>
+            Finds the Accessibility object using Control Name.
+            </summary>
+            <param name="controlName">Name of the control</param>
+            <param name="throwExceptionIfNotFound">If TRUE, throws DataDrivenAdapterException if the control is not found</param>
+            <param name="childId">Id of the next child control</param>
+            <returns>Accessibility object for a Control</returns>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.WinDataDrivenAdapter.FindMenuItem(System.String,System.Boolean,System.IntPtr@,System.Int32@,System.Int32@)">
+            <summary>
+            Finds Menu Item associate with a control
+            </summary>
+            <param name="controlName">Name of the menu item control</param>
+            <param name="throwExceptionIfNotFound">If TRUE, throws DataDrivenAdapterException if the control is not found</param>
+            <param name="hMenu">Handle for the menu item </param>
+            <param name="subMenuIndex">Id if menu item is a sub menu</param>
+            <param name="hMenuItemId">Id of the menu item control</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.WinDataDrivenAdapter.StartAccEventListenerIfNecessary">
+            <summary>
+            Operation intended to trigger the instantiation of AccEventListener
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.WinDataDrivenAdapter.KnownControls">
+            <summary>
+            Tables that maintain the association between control names and accessible element identifiers.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.WinDataDrivenAdapter.AccEventListener">
+            <summary>
+            Derived classes can subscribe to AccEventListener.AccEventOccurred to listen to all AccEvent traffic.
+            This is instantiated on first access.
+            </summary>
+        </member>
+    </members>
+</doc>

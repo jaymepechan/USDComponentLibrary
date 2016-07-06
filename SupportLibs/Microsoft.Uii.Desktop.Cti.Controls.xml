@@ -1,0 +1,329 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Uii.Desktop.Cti.Controls</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Uii.Desktop.Cti.Controls.CtiDesktopManager">
+            <summary>
+            Base class for implementing a Cti Desktop Manager.  
+            The Cti Desktop Manager is intended to provide business logic support for CTI solutions.  
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Controls.CtiDesktopManager.#ctor(System.Guid,System.String,System.String)">
+            <summary>
+            Base Init passing though from the hosted control
+            </summary>
+            <param name="appId">Application ID</param>
+            <param name="appName">Application Name</param>
+            <param name="appInit">Application Initialization string</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Controls.CtiDesktopManager.#ctor">
+            <summary>
+            Base Init of control
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.Cti.Controls.CtiDesktopManager.isCtiEnabled">
+            <summary>
+            Check for CTI enabled
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Controls.CtiDesktopManager.SetRootCtiInterface(Microsoft.Uii.Desktop.Cti.Core.ICtiControl)">
+            <summary>
+            Required Override, 
+            Set the Local CTI interface here and initliize the Agent and Call Manager
+            Then assgin your newly created agent and call state managers to CallStateManager and AgentStateManager
+            </summary>
+            <param name="ctiRoot">Core Cti Interface</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Controls.CtiDesktopManager.StartCtiInterface">
+            <summary>
+            Require override
+            Used to start the CTI Interface up 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Controls.CtiDesktopManager.UpdateState">
+            <summary>
+            Update call state and agent state.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Controls.CtiDesktopManager.CallStateManager">
+            <summary>
+            Base Call State Manager Object. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Controls.CtiDesktopManager.AgentStateManager">
+            <summary>
+            Base Agent State Manager. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Controls.CtiDesktopManager.CtiHostedControl">
+            <summary>
+            Hosted Control that hosts the Core CTI Feature set. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Controls.CtiDesktopManager.GetCtiAgentStateManager">
+            <summary>
+            Returns the Agent State Manager as a ICtiAgentStateManager Interface
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Controls.CtiDesktopManager.GetCtiCallStateManager">
+            <summary>
+            Returns the Call State Manager as a ICtiCallState Manager Interface
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Controls.CtiDesktopManager.IsCtiEnabled">
+            <summary>
+            Returns the status of the CTI system.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.Cti.Controls.CtiHostedControl">
+            <summary>
+            Cti Hosted Control Base Interface definition.
+            This is the base class for Hosted Control supporting Winform base Desktops
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Controls.CtiHostedControl.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Controls.CtiHostedControl.#ctor(System.Guid,System.String,System.String)">
+            <summary>
+            Default Constructor
+            </summary>
+            <param name="appId">ID of the application</param>
+            <param name="appName">Name of the application</param>
+            <param name="appInit">Init string for the application</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Controls.CtiHostedControl.GetAgentId">
+            <summary>
+            Get AgentID for the currently logging agent..
+            </summary>
+            <returns>ID of the currently logged in agent as a string</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Controls.CtiHostedControl.InitAndLogOn">
+            <summary>
+            Intilizae and Do Login Procedure to login to CTI
+            </summary>
+            <returns>true if sucessfull , false if not</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Controls.CtiHostedControl.CleanUpAndShutdown">
+            <summary>
+            This Function cleans up and shuts down any CTI specific functions
+            and should be called as part of shutdown
+            </summary>
+            <returns>true if sucessfull , false if not</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Controls.CtiHostedControl.LogOffAgent">
+            <summary>
+            Logs the current agent out.. 
+            to relogin, you need to call Init and Login
+            </summary>
+            <returns>true if sucessfull, false if not</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Controls.CtiHostedControl.SetAgentState(Microsoft.Uii.Desktop.Cti.Core.CtiStateRequest)">
+            <summary>
+            This command attempts to set the agent state to the requested state.
+            </summary>
+            <param name="stateChangeRequest">State Change Request</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Controls.CtiHostedControl.SetAgentMediaAddress(System.String)">
+            <summary>
+            Sets the agents media address
+            </summary>
+            <param name="mediaAddress"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Controls.CtiHostedControl.AnswerCall(Microsoft.Uii.Desktop.Cti.Core.CtiCommandRequest)">
+            <summary>
+            Answers the call identified by the CallID
+            </summary>
+            <param name="commandData">CallID and additional Command Data</param>
+            <returns>true if sucessfull, False if not</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Controls.CtiHostedControl.PickupCall(Microsoft.Uii.Desktop.Cti.Core.CtiCommandRequest)">
+            <summary>
+            Pick a call up off hold
+            </summary>
+            <param name="commandData">CallID and additional Command Data</param>
+            <returns>true if sucessfull, False if not</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Controls.CtiHostedControl.HoldCall(Microsoft.Uii.Desktop.Cti.Core.CtiCommandRequest)">
+            <summary>
+            Holds the call identified by the CallID
+            </summary>
+            <param name="commandData">CallID and additional Command Data</param>
+            <returns>true if sucessfull, False if not</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Controls.CtiHostedControl.HangUpCall(Microsoft.Uii.Desktop.Cti.Core.CtiCommandRequest)">
+            <summary>
+            Relase's the call identified by the CallID
+            </summary>
+            <param name="commandData">CallID and additional Command Data</param>
+            <returns>true if sucessfull, False if not</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Controls.CtiHostedControl.WrapCall(Microsoft.Uii.Desktop.Cti.Core.CtiCommandRequest)">
+            <summary>
+            Wraps the call identified by the CallID
+            
+            </summary>
+            <param name="commandData">CallID and additional Command Data</param>
+            <returns>true if sucessfull, False if not</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Controls.CtiHostedControl.RejectCall(Microsoft.Uii.Desktop.Cti.Core.CtiCommandRequest)">
+            <summary>
+            Rejects the call identified by the CallID
+            </summary>
+            <param name="commandData">CallID and additional Command Data</param>
+            <returns>true if sucessfull, False if not</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Controls.CtiHostedControl.SendChatMessage(Microsoft.Uii.Desktop.Cti.Core.CtiCommandRequest)">
+            <summary>
+            Sends a Chat message to the call identified by the call ID
+            </summary>
+            <param name="commandData">CallID and additional Command Data</param>
+            <returns>true if sucessfull, False if not</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Controls.CtiHostedControl.MakeOutboundCall(Microsoft.Uii.Desktop.Cti.Core.CtiCommandRequest)">
+            <summary>
+            Dials a out bound number.
+            </summary>
+            <param name="commandData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Controls.CtiHostedControl.PushUrl(Microsoft.Uii.Desktop.Cti.Core.CtiCommandRequest)">
+            <summary>
+            This Pushes a URL
+            </summary>
+            <param name="commandData">CallID and additional Command Data</param>
+            <returns>true if sucessfull, False if not</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Controls.CtiHostedControl.TransferCall(Microsoft.Uii.Desktop.Cti.Core.CtiCommandRequest)">
+            <summary>
+            Orders a Transfer Command
+            </summary>
+            <param name="commandData">CallID and additional Command Data</param>
+            <returns>true if sucessfull, False if not</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Controls.CtiHostedControl.ConferenceCall(Microsoft.Uii.Desktop.Cti.Core.CtiCommandRequest)">
+            <summary>
+            Orders a Conference Command
+            </summary>
+            <param name="commandData">CallID and additional Command Data</param>
+            <returns>true if sucessfull, False if not</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Controls.CtiHostedControl.SetCallVariable(Microsoft.Uii.Desktop.Cti.Core.CtiCommandRequest)">
+            <summary>
+            Sets a call State variable on the CTI object for the specified Call.
+            </summary>
+            <param name="commandData">CallID and Key / Value data in the Additional Params Data.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Controls.CtiHostedControl.ExecuteGenericCommand(System.String,Microsoft.Uii.Desktop.Cti.Core.CtiCommandRequest)">
+            <summary>
+            This is a generic command handler
+            if the command does not exist in the currnet interface it can be extended via this interface.
+            </summary>
+            <param name="commandName">Name of the Command to execute</param>
+            <param name="commandData">CallID and additional Command Data</param>
+            <returns>User defiend response</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Controls.CtiHostedControl.GetGlobalAgentConfigVars">
+            <summary>
+            This gets a system specific structure that contains the agent configuration enviroment variables. 
+            </summary>
+            <returns>Returns an object that contains agent configuration data.</returns>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.Cti.Controls.CtiHostedControl.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Controls.CtiHostedControl.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Controls.CtiHostedControl.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="E:Microsoft.Uii.Desktop.Cti.Controls.CtiHostedControl.AgentStateChangedEvent">
+            <summary>
+            Raised when a Agent State change Event  occures
+            </summary>
+        </member>
+        <member name="E:Microsoft.Uii.Desktop.Cti.Controls.CtiHostedControl.AgentLogMessageEvent">
+            <summary>
+            Raised when a Agent Log Event occures
+            </summary>
+        </member>
+        <member name="E:Microsoft.Uii.Desktop.Cti.Controls.CtiHostedControl.CallNewCallEvent">
+            <summary>
+            Raised when a New Call is generated
+            </summary>
+        </member>
+        <member name="E:Microsoft.Uii.Desktop.Cti.Controls.CtiHostedControl.CallDestructedEvent">
+            <summary>
+            Raised when a Call terminated is generated
+            </summary>
+        </member>
+        <member name="E:Microsoft.Uii.Desktop.Cti.Controls.CtiHostedControl.CallStateChangeEvent">
+            <summary>
+            Raised when a Call State Event is generated
+            </summary>
+        </member>
+        <member name="E:Microsoft.Uii.Desktop.Cti.Controls.CtiHostedControl.CallNewCallInfoEvent">
+            <summary>
+            Raised when a New Call Info Event is generated
+            </summary>
+        </member>
+        <member name="E:Microsoft.Uii.Desktop.Cti.Controls.CtiHostedControl.CallItemEvent">
+            <summary>
+            Raised when a Chat Item Event is generated
+            </summary>
+        </member>
+        <member name="E:Microsoft.Uii.Desktop.Cti.Controls.CtiHostedControl.CallMediaConnectedEvent">
+            <summary>
+            Raised when a the Medaia Endpoint connects. 
+            </summary>
+        </member>
+        <member name="E:Microsoft.Uii.Desktop.Cti.Controls.CtiHostedControl.GeneralCtiEvent">
+            <summary>
+            Event used to pass event data not coverd in the named events. 
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.Cti.Controls.Properties.Constants">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Controls.Properties.Constants.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Controls.Properties.Constants.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Controls.Properties.Constants.CONTEXT">
+            <summary>
+              Looks up a localized string similar to &lt;Context /&gt;.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Controls.Properties.Constants.DESKTOPMANAGERNAME">
+            <summary>
+              Looks up a localized string similar to DesktopManagerCore.
+            </summary>
+        </member>
+    </members>
+</doc>

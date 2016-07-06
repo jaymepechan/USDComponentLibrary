@@ -1,0 +1,159 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Crm.UnifiedServiceDesk.CRM2011_Utilites</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.CRM2011_Utilites.Crm2011AccessUtils">
+            <summary>
+            This class acts as an interface layer to talk to the Xrm.Page Object in the CRM browser.
+            It will also provide Prebuilt Hooks to talk to the UII javaScript Lib.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CRM2011_Utilites.Crm2011AccessUtils.browser">
+            <summary>
+            Private Var for accessing the WebBrowser. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CRM2011_Utilites.Crm2011AccessUtils.adapterName">
+            <summary>
+            Name of the Adapter that created this class
+            used in diagnosticis. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CRM2011_Utilites.Crm2011AccessUtils.#ctor(Microsoft.Uii.Csr.Browser.Web.WebBrowserExtended,System.String)">
+            <summary>
+            Creates the Crm2011 Utilites class, 
+            Required a pointer to the UII WebBrowserExtened class
+            </summary>
+            <param name="browser">Web Browser Object</param>
+            <param name="adapterName">Name of the Adapter</param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CRM2011_Utilites.Crm2011AccessUtils.SetStringFieldInCrmForm(System.String,System.String)">
+            <summary>
+            Sets a String Value in CRM By Field Name
+            </summary>
+            <param name="fieldName">Name of the Field</param>
+            <param name="newValue">Value to set</param>
+            <returns>True on Success</returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CRM2011_Utilites.Crm2011AccessUtils.Save">
+            <summary>
+            Sets a String Value in CRM By Field Name
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CRM2011_Utilites.Crm2011AccessUtils.SetSingleFieldLookupValue(System.String,System.String,System.String,System.Guid)">
+            <summary>
+            Sets a Lookup Field Value,  Single field only in this version. 
+            </summary>
+            <param name="fieldName">Field Name to set</param>
+            <param name="entityName">Entity Name ( contact / account / etc...)</param>
+            <param name="valueName">Name of the value of the lookup... "CustomerA"</param>
+            <param name="guRecId">Guid of the Name Value.. </param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CRM2011_Utilites.Crm2011AccessUtils.GetFieldFromCrmForm(System.String,System.String@)">
+            <summary>
+            Gets the value and type of the field from CRM
+            </summary>
+            <param name="fieldName">Field Name you are intersted in</param>
+            <param name="fieldType">Field Type out , unknown if not known. </param>
+            <returns>Value of the field.</returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CRM2011_Utilites.Crm2011AccessUtils.GetOptionsForPickListInCrmForm(System.String)">
+            <summary>
+            Returns the Options for PickLists from the CRM form
+            </summary>
+            <param name="fieldName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CRM2011_Utilites.Crm2011AccessUtils.RunXrmCommand(System.String)">
+            <summary>
+            Execute hte XRM Command on the current UI. 
+            </summary>
+            <param name="sCommand"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CRM2011_Utilites.Crm2011AccessUtils.UpdateUi">
+            <summary>
+             Updates the UI.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CRM2011_Utilites.Crm2011AccessUtils.GetElementByTagName(mshtml.IHTMLElement,System.String,System.String,System.String)">
+            <summary>
+            Checks though all elements in a given node, looking for the tag or attrib name specified. 
+            </summary>
+            <param name="elemParent"></param>
+            <param name="tagname"></param>
+            <param name="attribName"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CRM2011_Utilites.Crm2011AccessUtils.GetDocumentContainingId(mshtml.HTMLDocument,System.String)">
+            <summary>
+            Finds a Document containing the id requested. 
+            </summary>
+            <param name="doc"></param>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CRM2011_Utilites.Crm2011AccessUtils.CheckForValue(mshtml.HTMLDocument,System.String,System.Boolean@)">
+            <summary>
+            Checks for a value in a set of frames
+            </summary>
+            <param name="doc"></param>
+            <param name="id"></param>
+            <param name="bFoundRightFrame"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CRM2011_Utilites.Crm2011AccessUtils.PrefillCreateForm(System.String,System.String,System.String)">
+            <summary>
+            Prefill's the Create Form
+            </summary>
+            <param name="id"> ID</param>
+            <param name="logical_name"> Entity Logical Name</param>
+            <param name="name">Entity Name</param>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CRM2011_Utilites.Crm2011AccessUtils.HasCRMForm">
+            <summary>
+            gets HasCRMForm
+            </summary>
+        </member>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.CRM2011_Utilites.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CRM2011_Utilites.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CRM2011_Utilites.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CRM2011_Utilites.Properties.Resources.ADAPTER_NAME">
+            <summary>
+              Looks up a localized string similar to adapterName.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CRM2011_Utilites.Properties.Resources.ADAPTER_NAME_REQUIRED">
+            <summary>
+              Looks up a localized string similar to An Adapter name is required.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CRM2011_Utilites.Properties.Resources.BROWSER">
+            <summary>
+              Looks up a localized string similar to browser.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CRM2011_Utilites.Properties.Resources.POINTER_TO_WEBBROWSEREXTENDED_OBJECT_REQUIRED">
+            <summary>
+              Looks up a localized string similar to Pointer to the WebBrowserExtened Object is required.
+            </summary>
+        </member>
+    </members>
+</doc>

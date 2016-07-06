@@ -1,0 +1,395 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Uii.HostedApplicationToolkit.AutomationHosting</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AifBridgeService">
+            <summary>
+            Service used by HAT Activites to interact with AIF services
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AifBridgeService.#ctor">
+            <summary>
+            Default constructor for Aif Bridge Service
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AifBridgeService.GetCredentials(System.String)">
+            <summary>
+            Retireves credentials using the Sso Lookup Service
+            </summary>
+            <param name="applicationName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AifBridgeService.GetSecureCredentials(System.String)">
+            <summary>
+            Retrieves the credentials using the Secure SSO Service
+            </summary>
+            <param name="applicationName">Application Name</param>
+            <returns>Credential</returns>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AifBridgeService.GetConfig(System.String)">
+            <summary>
+            Retrive the option setting.
+            </summary>
+            <param name="optionKey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AifBridgeService.Log(System.String,Microsoft.Uii.Common.Entities.LogData)">
+            <summary>
+            Logs the data to the audit store
+            </summary>
+            <param name="auditFlag"></param>
+            <param name="logData"></param>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationAdapter">
+            <summary>
+            This implements WF/Automation capability for the hosted application
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationAdapter.DdaActionFindControl">
+            <summary>
+            DdaActionFindControl
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationAdapter.DdaActionGetControlValue">
+            <summary>
+            DdaActionGetControlValue
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationAdapter.DdaActionSetControlValue">
+            <summary>
+            DdaActionSetControlValue
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationAdapter.DdaActionExecuteControlAction">
+            <summary>
+            DdaActionExecuteControlAction
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationAdapter.DdaActionAddDoActionEventTrigger">
+            <summary>
+            DdaActionAddDoActionEventTrigger
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationAdapter.DdaActionRemoveDoActionEventTrigger">
+            <summary>
+            DdaActionRemoveDoActionEventTrigger
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationAdapter.DdaActionStartApplication">
+            <summary>
+            DdaActionStartApplication
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationAdapter.DdaActionHostApplication">
+            <summary>
+            DdaActionHostApplication
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationAdapter.DdaActionCloseApplication">
+            <summary>
+            DdaActionCloseApplication
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationAdapter.DdaActionFocusApplication">
+            <summary>
+            DdaActionFocusApplication
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationAdapter.DdaActionGetInitstring">
+            <summary>
+            DdaActionGetInitstring
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationAdapter.DdaActionAddApplication">
+            <summary>
+            DdaActionAddApplication
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationAdapter.#ctor">
+            <summary>
+            Constructor for the Automation Adapter base class
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationAdapter.AdapterFireActionFromAutomation(System.String,System.String,System.Object)">
+            <summary>
+            Implements requests from Automations to execute Actions (via the AutomationBridgeService).
+            Caller may not always be on the UI thread.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationAdapter.GetContextValue(System.String)">
+            <summary>
+            Retrieves the Context value associated with the specified key.
+            Caller may not always be on the UI thread.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationAdapter.SetContextValue(System.String,System.String)">
+            <summary>
+            Sets the Context key to the specified value.  The Context is updated only when the keyed value has changed.
+            Caller may not always be on the UI thread.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationAdapter.Initialize">
+            <summary>
+            The initializing method for the adapter
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationAdapter.DoAction(Microsoft.Uii.Csr.Action,Microsoft.Uii.Csr.RequestActionEventArgs)">
+            <summary>
+            AutomationAdapter implementation of the Adapter DoAction method
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationAdapter.GetInitstring(System.String)">
+            <summary>
+            Retrieves the applications initstring 
+            </summary>
+            <param name="xPath"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationAdapter.NotifyContextChange(Microsoft.Uii.Csr.Context)">
+            <summary>
+            Generates ContextChanged DDA event from NotifyContextChange AIF event
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationAdapter.SessionChange(System.Boolean,System.String@)">
+            <summary>
+            Generates Session[De]activated DDA events from SessionChange AIF event
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationAdapter.GetStateData(System.String@)">
+            <summary>
+            GetStateData
+            </summary>
+            <param name="state"></param>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationAdapter.SetStateData(System.String@)">
+            <summary>
+            SetStateData
+            </summary>
+            <param name="state"></param>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationAdapter.Close">
+            <summary>
+            Cleans up any resources allocated by the DataDrivenAdapter on application/session shutdown
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationAdapter.DataDrivenAdapter">
+            <summary>
+            DDA associated with the application
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationAdapter.SessionId">
+            <summary>
+            Identifies the session this application instance is on.
+            Not the same as SessionID in the HostedApplicationAdapter class.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationBridgeService">
+            <summary>
+            Service used by HAT activities to interact with HAT
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationBridgeService.GetContextValue(System.String)">
+            <summary>
+            Retrieves a value from the UII context.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationBridgeService.SetContextValue(System.String,System.String)">
+            <summary>
+            Sets a value in the UII context.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationBridgeService.DoAction(System.String,System.String,System.Object)">
+            <summary>
+            Invokes a UII DoAction.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationBridgeService.Navigate(System.String,System.String,System.String,System.Byte[],System.String)">
+            <summary>
+            Navigates to a particular URL
+            </summary>
+            <param name="applicationName"></param>
+            <param name="url"></param>
+            <param name="targetFrameName"></param>
+            <param name="postData"></param>
+            <param name="additionalHeaders"></param>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationBridgeService.FindControl(System.String,System.String)">
+            <summary>
+            Calls the corresponding method on the Data Driven Adapter configured for the hosted application.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationBridgeService.GetControlValue(System.String,System.String,System.String)">
+            <summary>
+            Calls the corresponding method on the Data Driven Adapter configured for the hosted application.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationBridgeService.SetControlValue(System.String,System.String,System.String,System.String)">
+            <summary>
+            Calls the corresponding method on the Data Driven Adapter configured for the hosted application.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationBridgeService.ExecuteControlAction(System.String,System.String,System.Boolean,System.String)">
+            <summary>
+            Calls the corresponding method on the Data Driven Adapter configured for the hosted application.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationBridgeService.AddDoActionEventTrigger(System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Adds an event trigger against the Data Driven Adapter configured for the hosted application.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationBridgeService.RemoveDoActionEventTrigger(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Removes an event trigger against the Data Driven Adapter configured for the hosted application.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationBridgeService.StartApplication(System.String)">
+            <summary>
+            Calls the corresponding method on the Data Driven Adapter configured for the hosted application.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationBridgeService.HostApplication(System.String)">
+            <summary>
+            Hosts an application
+            </summary>
+            <param name="applicationName"></param>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationBridgeService.CloseApplication(System.String)">
+            <summary>
+            Closes a dynamic application
+            </summary>
+            <param name="applicationName"></param>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationBridgeService.FocusApplication(System.String)">
+            <summary>
+            Sets focus on an application
+            </summary>
+            <param name="applicationName"></param>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationBridgeService.GetInitstring(System.String,System.String)">
+            <summary>
+            Gets the associated initstring
+            </summary>
+            <param name="applicationName"></param>
+            <param name="xPath"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationBridgeService.AddDynamicApplication(Microsoft.Uii.Common.Entities.ApplicationRecord)">
+            <summary>
+            Adds an application dynamically to the application host
+            </summary>
+            <param name="applicationRecord"></param>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationBridgeService.ActionData">
+            <summary>
+            This is the Data parameter of the currently executing DoAction.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationBridgeService.InstanceId">
+            <summary>
+            Gets or sets the instance id.
+            </summary>
+            <value>
+            The instance id.
+            </value>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationHostingException">
+            <summary>
+            AutomationHostingException
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationInstanceRecord">
+            <summary>
+            Running WF Automations have one of these records built to denote
+            the WF instance as an Automation and to link it to a particular Session
+            and AutomationAdapter instance. This facilitates the servicing of
+            subsequent requests made to UII during its lifetime. When the Automation
+            completes, this record is deleted.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.AutomationManager">
+            <summary>
+            A singleton class that wraps an instance of the Windows Workflow Foundation
+            runtime that provides various functionality necessary to manage Automation execution.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.CustomSyncContext">
+            <summary>
+            CustomSyncContext
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.CustomSyncContext.GetSynchronizationContext">
+            <summary>
+            Staic method to return custom synchronization context
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.CustomSyncContext.Post(System.Threading.SendOrPostCallback,System.Object)">
+            <summary>
+            Method to override the behaviour of Post to Send
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.Strings">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.Strings.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.Strings.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.Strings.AutomationAdapterPrefix">
+            <summary>
+              Looks up a localized string similar to AutomationAdapter (app={0},action={1}).
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.Strings.ExceptionWhileStarting">
+            <summary>
+              Looks up a localized string similar to {0}: Exception while starting action: {1}: {2}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.Strings.PostImplicitActionException">
+            <summary>
+              Looks up a localized string similar to {0}: Posted implicit action exception: {1}: {2}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.Strings.SessionUnavailable">
+            <summary>
+              Looks up a localized string similar to Session is unavailable (may have been recently closed).
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.Strings.WFAutomation">
+            <summary>
+              Looks up a localized string similar to WF/Automation {0} started: application={1},action={2},data={3},async={4}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.Strings.WFAutomationCompleted">
+            <summary>
+              Looks up a localized string similar to WF/Automation {0} completed (duration {1}ms){2}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.Strings.WFAutomationException">
+            <summary>
+              Looks up a localized string similar to WF/Automation {0} exception: {1}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.Strings.WFAutomationManagerStartUpCompleted">
+            <summary>
+              Looks up a localized string similar to WF/AutomationManager startup completed.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.Strings.WFAutomationTerminated">
+            <summary>
+              Looks up a localized string similar to WF/Automation {0} terminated (duration {1}ms){2}.
+            </summary>
+        </member>
+    </members>
+</doc>

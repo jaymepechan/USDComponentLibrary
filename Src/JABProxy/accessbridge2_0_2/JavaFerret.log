@@ -1,0 +1,2989 @@
+Starting JavaFerret.exe Tue Aug 11 01:59:59 PM
+
+
+
+****************************************
+Tue Aug 11 02:01:13 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  Selected Item : First Item
+    Description:  
+    Role:  label
+    Role in en_US locale:  label
+    States:  enabled,focusable,visible,showing
+    States in en_US locale:  enabled,focusable,visible,showing
+    Index in parent:  0
+    Children count:  0
+    Bounding rectangle:  [87, 239, 527, 270]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  
+    Parent role:  panel
+    Visible descendents count:  0
+
+****************************************
+Tue Aug 11 02:01:14 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  
+    Description:  
+    Role:  panel
+    Role in en_US locale:  panel
+    States:  enabled,focusable,visible,showing,opaque
+    States in en_US locale:  enabled,focusable,visible,showing,opaque
+    Index in parent:  0
+    Children count:  4
+    Bounding rectangle:  [8, 61, 811, 495]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  tab1
+    Parent role:  page tab
+    Visible descendents count:  4
+    Descendent 0 name:  Selected Item : First Item
+    Descendent 0 role:  label
+    Descendent 1 name:  This is a Swing Labal on Tab 1
+    Descendent 1 role:  label
+    Descendent 2 name:  Click Me
+    Descendent 2 role:  push button
+    Descendent 3 name:  This is a Swing Labal on Tab 1
+    Descendent 3 role:  combo box
+
+****************************************
+Tue Aug 11 02:01:14 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  Click Me
+    Description:  
+    Role:  push button
+    Role in en_US locale:  push button
+    States:  enabled,focusable,visible,showing,focused
+    States in en_US locale:  enabled,focusable,visible,showing,focused
+    Index in parent:  2
+    Children count:  0
+    Bounding rectangle:  [87, 167, 161, 195]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  
+    Parent role:  panel
+    Visible descendents count:  0
+
+AccessibleActions info:
+    Number of actions:  1
+    Action 0 name: click
+
+Accessible Value information:
+    Current Value:  0
+    Maximum Value:  1
+    Minimum Value:  0
+
+****************************************
+Tue Aug 11 02:01:15 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  
+    Description:  
+    Role:  panel
+    Role in en_US locale:  panel
+    States:  enabled,focusable,visible,showing,opaque
+    States in en_US locale:  enabled,focusable,visible,showing,opaque
+    Index in parent:  0
+    Children count:  4
+    Bounding rectangle:  [8, 61, 811, 495]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  tab1
+    Parent role:  page tab
+    Visible descendents count:  4
+    Descendent 0 name:  Selected Item : First Item
+    Descendent 0 role:  label
+    Descendent 1 name:  This is a Swing Labal on Tab 1
+    Descendent 1 role:  label
+    Descendent 2 name:  Click Me
+    Descendent 2 role:  push button
+    Descendent 3 name:  This is a Swing Labal on Tab 1
+    Descendent 3 role:  combo box
+
+****************************************
+Tue Aug 11 02:01:15 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  Selected Item : First Item
+    Description:  
+    Role:  label
+    Role in en_US locale:  label
+    States:  enabled,focusable,visible,showing
+    States in en_US locale:  enabled,focusable,visible,showing
+    Index in parent:  0
+    Children count:  0
+    Bounding rectangle:  [87, 239, 527, 270]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  
+    Parent role:  panel
+    Visible descendents count:  0
+
+****************************************
+Tue Aug 11 02:01:15 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  
+    Description:  
+    Role:  panel
+    Role in en_US locale:  panel
+    States:  enabled,focusable,visible,showing,opaque
+    States in en_US locale:  enabled,focusable,visible,showing,opaque
+    Index in parent:  0
+    Children count:  4
+    Bounding rectangle:  [8, 61, 811, 495]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  tab1
+    Parent role:  page tab
+    Visible descendents count:  4
+    Descendent 0 name:  Selected Item : First Item
+    Descendent 0 role:  label
+    Descendent 1 name:  This is a Swing Labal on Tab 1
+    Descendent 1 role:  label
+    Descendent 2 name:  Click Me
+    Descendent 2 role:  push button
+    Descendent 3 name:  This is a Swing Labal on Tab 1
+    Descendent 3 role:  combo box
+
+****************************************
+Tue Aug 11 02:01:23 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  
+    Description:  
+    Role:  panel
+    Role in en_US locale:  panel
+    States:  enabled,focusable,visible,showing,opaque
+    States in en_US locale:  enabled,focusable,visible,showing,opaque
+    Index in parent:  0
+    Children count:  4
+    Bounding rectangle:  [8, 61, 811, 495]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  tab1
+    Parent role:  page tab
+    Visible descendents count:  4
+    Descendent 0 name:  Selected Item : First Item
+    Descendent 0 role:  label
+    Descendent 1 name:  This is a Swing Labal on Tab 1
+    Descendent 1 role:  label
+    Descendent 2 name:  Click Me
+    Descendent 2 role:  push button
+    Descendent 3 name:  This is a Swing Labal on Tab 1
+    Descendent 3 role:  combo box
+
+****************************************
+Tue Aug 11 02:01:24 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  Selected Item : First Item
+    Description:  
+    Role:  label
+    Role in en_US locale:  label
+    States:  enabled,focusable,visible,showing
+    States in en_US locale:  enabled,focusable,visible,showing
+    Index in parent:  0
+    Children count:  0
+    Bounding rectangle:  [87, 239, 527, 270]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  
+    Parent role:  panel
+    Visible descendents count:  0
+
+****************************************
+Tue Aug 11 02:01:24 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  
+    Description:  
+    Role:  panel
+    Role in en_US locale:  panel
+    States:  enabled,focusable,visible,showing,opaque
+    States in en_US locale:  enabled,focusable,visible,showing,opaque
+    Index in parent:  0
+    Children count:  4
+    Bounding rectangle:  [8, 61, 811, 495]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  tab1
+    Parent role:  page tab
+    Visible descendents count:  4
+    Descendent 0 name:  Selected Item : First Item
+    Descendent 0 role:  label
+    Descendent 1 name:  This is a Swing Labal on Tab 1
+    Descendent 1 role:  label
+    Descendent 2 name:  Click Me
+    Descendent 2 role:  push button
+    Descendent 3 name:  This is a Swing Labal on Tab 1
+    Descendent 3 role:  combo box
+
+****************************************
+Tue Aug 11 02:01:24 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  Click Me
+    Description:  
+    Role:  push button
+    Role in en_US locale:  push button
+    States:  enabled,focusable,visible,showing,focused
+    States in en_US locale:  enabled,focusable,visible,showing,focused
+    Index in parent:  2
+    Children count:  0
+    Bounding rectangle:  [87, 167, 161, 195]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  
+    Parent role:  panel
+    Visible descendents count:  0
+
+AccessibleActions info:
+    Number of actions:  1
+    Action 0 name: click
+
+Accessible Value information:
+    Current Value:  0
+    Maximum Value:  1
+    Minimum Value:  0
+
+****************************************
+Tue Aug 11 02:01:27 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  
+    Description:  
+    Role:  panel
+    Role in en_US locale:  panel
+    States:  enabled,focusable,visible,showing,opaque
+    States in en_US locale:  enabled,focusable,visible,showing,opaque
+    Index in parent:  0
+    Children count:  4
+    Bounding rectangle:  [8, 61, 811, 495]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  tab1
+    Parent role:  page tab
+    Visible descendents count:  4
+    Descendent 0 name:  Selected Item : First Item
+    Descendent 0 role:  label
+    Descendent 1 name:  This is a Swing Labal on Tab 1
+    Descendent 1 role:  label
+    Descendent 2 name:  Click Me
+    Descendent 2 role:  push button
+    Descendent 3 name:  This is a Swing Labal on Tab 1
+    Descendent 3 role:  combo box
+
+****************************************
+Tue Aug 11 02:01:27 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  Selected Item : First Item
+    Description:  
+    Role:  label
+    Role in en_US locale:  label
+    States:  enabled,focusable,visible,showing
+    States in en_US locale:  enabled,focusable,visible,showing
+    Index in parent:  0
+    Children count:  0
+    Bounding rectangle:  [87, 239, 527, 270]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  
+    Parent role:  panel
+    Visible descendents count:  0
+
+****************************************
+Tue Aug 11 02:01:27 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  
+    Description:  
+    Role:  panel
+    Role in en_US locale:  panel
+    States:  enabled,focusable,visible,showing,opaque
+    States in en_US locale:  enabled,focusable,visible,showing,opaque
+    Index in parent:  0
+    Children count:  4
+    Bounding rectangle:  [8, 61, 811, 495]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  tab1
+    Parent role:  page tab
+    Visible descendents count:  4
+    Descendent 0 name:  Selected Item : First Item
+    Descendent 0 role:  label
+    Descendent 1 name:  This is a Swing Labal on Tab 1
+    Descendent 1 role:  label
+    Descendent 2 name:  Click Me
+    Descendent 2 role:  push button
+    Descendent 3 name:  This is a Swing Labal on Tab 1
+    Descendent 3 role:  combo box
+
+****************************************
+Tue Aug 11 02:01:41 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  
+    Description:  
+    Role:  panel
+    Role in en_US locale:  panel
+    States:  enabled,focusable,visible,showing,opaque
+    States in en_US locale:  enabled,focusable,visible,showing,opaque
+    Index in parent:  0
+    Children count:  4
+    Bounding rectangle:  [8, 61, 811, 495]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  tab1
+    Parent role:  page tab
+    Visible descendents count:  4
+    Descendent 0 name:  Selected Item : First Item
+    Descendent 0 role:  label
+    Descendent 1 name:  This is a Swing Labal on Tab 1
+    Descendent 1 role:  label
+    Descendent 2 name:  Click Me
+    Descendent 2 role:  push button
+    Descendent 3 name:  This is a Swing Labal on Tab 1
+    Descendent 3 role:  combo box
+
+****************************************
+Tue Aug 11 02:01:41 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  Selected Item : First Item
+    Description:  
+    Role:  label
+    Role in en_US locale:  label
+    States:  enabled,focusable,visible,showing
+    States in en_US locale:  enabled,focusable,visible,showing
+    Index in parent:  0
+    Children count:  0
+    Bounding rectangle:  [87, 239, 527, 270]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  
+    Parent role:  panel
+    Visible descendents count:  0
+
+****************************************
+Tue Aug 11 02:01:41 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  
+    Description:  
+    Role:  panel
+    Role in en_US locale:  panel
+    States:  enabled,focusable,visible,showing,opaque
+    States in en_US locale:  enabled,focusable,visible,showing,opaque
+    Index in parent:  0
+    Children count:  4
+    Bounding rectangle:  [8, 61, 811, 495]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  tab1
+    Parent role:  page tab
+    Visible descendents count:  4
+    Descendent 0 name:  Selected Item : First Item
+    Descendent 0 role:  label
+    Descendent 1 name:  This is a Swing Labal on Tab 1
+    Descendent 1 role:  label
+    Descendent 2 name:  Click Me
+    Descendent 2 role:  push button
+    Descendent 3 name:  This is a Swing Labal on Tab 1
+    Descendent 3 role:  combo box
+
+****************************************
+Tue Aug 11 02:01:41 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  Click Me
+    Description:  
+    Role:  push button
+    Role in en_US locale:  push button
+    States:  enabled,focusable,visible,showing
+    States in en_US locale:  enabled,focusable,visible,showing
+    Index in parent:  2
+    Children count:  0
+    Bounding rectangle:  [87, 167, 161, 195]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  
+    Parent role:  panel
+    Visible descendents count:  0
+
+AccessibleActions info:
+    Number of actions:  1
+    Action 0 name: click
+
+Accessible Value information:
+    Current Value:  0
+    Maximum Value:  1
+    Minimum Value:  0
+
+****************************************
+Tue Aug 11 02:01:41 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  
+    Description:  
+    Role:  panel
+    Role in en_US locale:  panel
+    States:  enabled,focusable,visible,showing,opaque
+    States in en_US locale:  enabled,focusable,visible,showing,opaque
+    Index in parent:  0
+    Children count:  4
+    Bounding rectangle:  [8, 61, 811, 495]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  tab1
+    Parent role:  page tab
+    Visible descendents count:  4
+    Descendent 0 name:  Selected Item : First Item
+    Descendent 0 role:  label
+    Descendent 1 name:  This is a Swing Labal on Tab 1
+    Descendent 1 role:  label
+    Descendent 2 name:  Click Me
+    Descendent 2 role:  push button
+    Descendent 3 name:  This is a Swing Labal on Tab 1
+    Descendent 3 role:  combo box
+
+****************************************
+Tue Aug 11 02:01:41 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  This is a Swing Labal on Tab 1
+    Description:  
+    Role:  label
+    Role in en_US locale:  label
+    States:  enabled,focusable,visible,showing
+    States in en_US locale:  enabled,focusable,visible,showing
+    Index in parent:  1
+    Children count:  0
+    Bounding rectangle:  [87, 121, 268, 138]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  
+    Parent role:  panel
+    Visible descendents count:  0
+
+****************************************
+Tue Aug 11 02:01:42 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  
+    Description:  
+    Role:  panel
+    Role in en_US locale:  panel
+    States:  enabled,focusable,visible,showing,opaque
+    States in en_US locale:  enabled,focusable,visible,showing,opaque
+    Index in parent:  0
+    Children count:  4
+    Bounding rectangle:  [8, 61, 811, 495]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  tab1
+    Parent role:  page tab
+    Visible descendents count:  4
+    Descendent 0 name:  Selected Item : First Item
+    Descendent 0 role:  label
+    Descendent 1 name:  This is a Swing Labal on Tab 1
+    Descendent 1 role:  label
+    Descendent 2 name:  Click Me
+    Descendent 2 role:  push button
+    Descendent 3 name:  This is a Swing Labal on Tab 1
+    Descendent 3 role:  combo box
+
+****************************************
+Tue Aug 11 02:01:42 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  
+    Description:  
+    Role:  panel
+    Role in en_US locale:  panel
+    States:  enabled,focusable,visible,showing,opaque
+    States in en_US locale:  enabled,focusable,visible,showing,opaque
+    Index in parent:  0
+    Children count:  4
+    Bounding rectangle:  [8, 61, 811, 495]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  tab1
+    Parent role:  page tab
+    Visible descendents count:  4
+    Descendent 0 name:  Selected Item : First Item
+    Descendent 0 role:  label
+    Descendent 1 name:  This is a Swing Labal on Tab 1
+    Descendent 1 role:  label
+    Descendent 2 name:  Click Me
+    Descendent 2 role:  push button
+    Descendent 3 name:  This is a Swing Labal on Tab 1
+    Descendent 3 role:  combo box
+
+****************************************
+Tue Aug 11 02:01:42 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  This is a Swing Labal on Tab 1
+    Description:  
+    Role:  label
+    Role in en_US locale:  label
+    States:  enabled,focusable,visible,showing
+    States in en_US locale:  enabled,focusable,visible,showing
+    Index in parent:  1
+    Children count:  0
+    Bounding rectangle:  [87, 121, 268, 138]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  
+    Parent role:  panel
+    Visible descendents count:  0
+
+****************************************
+Tue Aug 11 02:01:42 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  
+    Description:  
+    Role:  panel
+    Role in en_US locale:  panel
+    States:  enabled,focusable,visible,showing,opaque
+    States in en_US locale:  enabled,focusable,visible,showing,opaque
+    Index in parent:  0
+    Children count:  4
+    Bounding rectangle:  [8, 61, 811, 495]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  tab1
+    Parent role:  page tab
+    Visible descendents count:  4
+    Descendent 0 name:  Selected Item : First Item
+    Descendent 0 role:  label
+    Descendent 1 name:  This is a Swing Labal on Tab 1
+    Descendent 1 role:  label
+    Descendent 2 name:  Click Me
+    Descendent 2 role:  push button
+    Descendent 3 name:  This is a Swing Labal on Tab 1
+    Descendent 3 role:  combo box
+
+****************************************
+Tue Aug 11 02:01:42 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  Click Me
+    Description:  
+    Role:  push button
+    Role in en_US locale:  push button
+    States:  enabled,focusable,visible,showing
+    States in en_US locale:  enabled,focusable,visible,showing
+    Index in parent:  2
+    Children count:  0
+    Bounding rectangle:  [87, 167, 161, 195]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  
+    Parent role:  panel
+    Visible descendents count:  0
+
+AccessibleActions info:
+    Number of actions:  1
+    Action 0 name: click
+
+Accessible Value information:
+    Current Value:  0
+    Maximum Value:  1
+    Minimum Value:  0
+
+****************************************
+Tue Aug 11 02:01:47 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  This is a Swing Labal on Tab 1
+    Description:  
+    Role:  combo box
+    Role in en_US locale:  combo box
+    States:  enabled,focusable,visible,showing,collapsed
+    States in en_US locale:  enabled,focusable,visible,showing,collapsed
+    Index in parent:  3
+    Children count:  1
+    Bounding rectangle:  [167, 168, 527, 194]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  
+    Parent role:  panel
+    Visible descendents count:  0
+
+Accessible Selection information:
+    Selection count:  1
+    Selection 0 name: First Item
+    Selection 0 role: label
+    Index in parent of selection 0: 0
+
+AccessibleActions info:
+    Number of actions:  1
+    Action 0 name: togglePopup
+
+****************************************
+Tue Aug 11 02:01:51 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  
+    Description:  
+    Role:  panel
+    Role in en_US locale:  panel
+    States:  enabled,focusable,visible,showing,opaque
+    States in en_US locale:  enabled,focusable,visible,showing,opaque
+    Index in parent:  0
+    Children count:  4
+    Bounding rectangle:  [8, 61, 811, 495]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  tab1
+    Parent role:  page tab
+    Visible descendents count:  4
+    Descendent 0 name:  Selected Item : First Item
+    Descendent 0 role:  label
+    Descendent 1 name:  This is a Swing Labal on Tab 1
+    Descendent 1 role:  label
+    Descendent 2 name:  Click Me
+    Descendent 2 role:  push button
+    Descendent 3 name:  This is a Swing Labal on Tab 1
+    Descendent 3 role:  combo box
+
+****************************************
+Tue Aug 11 02:01:51 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  Click Me
+    Description:  
+    Role:  push button
+    Role in en_US locale:  push button
+    States:  enabled,focusable,visible,showing
+    States in en_US locale:  enabled,focusable,visible,showing
+    Index in parent:  2
+    Children count:  0
+    Bounding rectangle:  [87, 167, 161, 195]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  
+    Parent role:  panel
+    Visible descendents count:  0
+
+AccessibleActions info:
+    Number of actions:  1
+    Action 0 name: click
+
+Accessible Value information:
+    Current Value:  0
+    Maximum Value:  1
+    Minimum Value:  0
+
+****************************************
+Tue Aug 11 02:01:51 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  
+    Description:  
+    Role:  panel
+    Role in en_US locale:  panel
+    States:  enabled,focusable,visible,showing,opaque
+    States in en_US locale:  enabled,focusable,visible,showing,opaque
+    Index in parent:  0
+    Children count:  4
+    Bounding rectangle:  [8, 61, 811, 495]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  tab1
+    Parent role:  page tab
+    Visible descendents count:  4
+    Descendent 0 name:  Selected Item : First Item
+    Descendent 0 role:  label
+    Descendent 1 name:  This is a Swing Labal on Tab 1
+    Descendent 1 role:  label
+    Descendent 2 name:  Click Me
+    Descendent 2 role:  push button
+    Descendent 3 name:  This is a Swing Labal on Tab 1
+    Descendent 3 role:  combo box
+
+****************************************
+Tue Aug 11 02:01:51 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  Click Me
+    Description:  
+    Role:  push button
+    Role in en_US locale:  push button
+    States:  enabled,focusable,visible,showing
+    States in en_US locale:  enabled,focusable,visible,showing
+    Index in parent:  2
+    Children count:  0
+    Bounding rectangle:  [87, 167, 161, 195]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  
+    Parent role:  panel
+    Visible descendents count:  0
+
+AccessibleActions info:
+    Number of actions:  1
+    Action 0 name: click
+
+Accessible Value information:
+    Current Value:  0
+    Maximum Value:  1
+    Minimum Value:  0
+
+****************************************
+Tue Aug 11 02:01:53 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  
+    Description:  
+    Role:  panel
+    Role in en_US locale:  panel
+    States:  enabled,focusable,visible,showing,opaque
+    States in en_US locale:  enabled,focusable,visible,showing,opaque
+    Index in parent:  0
+    Children count:  4
+    Bounding rectangle:  [8, 61, 811, 495]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  tab1
+    Parent role:  page tab
+    Visible descendents count:  4
+    Descendent 0 name:  Selected Item : First Item
+    Descendent 0 role:  label
+    Descendent 1 name:  This is a Swing Labal on Tab 1
+    Descendent 1 role:  label
+    Descendent 2 name:  Click Me
+    Descendent 2 role:  push button
+    Descendent 3 name:  This is a Swing Labal on Tab 1
+    Descendent 3 role:  combo box
+
+****************************************
+Tue Aug 11 02:01:54 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  Click Me
+    Description:  
+    Role:  push button
+    Role in en_US locale:  push button
+    States:  enabled,focusable,visible,showing
+    States in en_US locale:  enabled,focusable,visible,showing
+    Index in parent:  2
+    Children count:  0
+    Bounding rectangle:  [87, 167, 161, 195]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  
+    Parent role:  panel
+    Visible descendents count:  0
+
+AccessibleActions info:
+    Number of actions:  1
+    Action 0 name: click
+
+Accessible Value information:
+    Current Value:  0
+    Maximum Value:  1
+    Minimum Value:  0
+
+****************************************
+Tue Aug 11 02:01:58 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  
+    Description:  
+    Role:  panel
+    Role in en_US locale:  panel
+    States:  enabled,focusable,visible,showing,opaque
+    States in en_US locale:  enabled,focusable,visible,showing,opaque
+    Index in parent:  0
+    Children count:  4
+    Bounding rectangle:  [8, 61, 811, 495]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  tab1
+    Parent role:  page tab
+    Visible descendents count:  4
+    Descendent 0 name:  Selected Item : First Item
+    Descendent 0 role:  label
+    Descendent 1 name:  This is a Swing Labal on Tab 1
+    Descendent 1 role:  label
+    Descendent 2 name:  Click Me
+    Descendent 2 role:  push button
+    Descendent 3 name:  This is a Swing Labal on Tab 1
+    Descendent 3 role:  combo box
+
+****************************************
+Tue Aug 11 02:01:58 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  Selected Item : First Item
+    Description:  
+    Role:  label
+    Role in en_US locale:  label
+    States:  enabled,focusable,visible,showing
+    States in en_US locale:  enabled,focusable,visible,showing
+    Index in parent:  0
+    Children count:  0
+    Bounding rectangle:  [87, 239, 527, 270]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  
+    Parent role:  panel
+    Visible descendents count:  0
+
+****************************************
+Tue Aug 11 02:01:58 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  
+    Description:  
+    Role:  panel
+    Role in en_US locale:  panel
+    States:  enabled,focusable,visible,showing,opaque
+    States in en_US locale:  enabled,focusable,visible,showing,opaque
+    Index in parent:  0
+    Children count:  4
+    Bounding rectangle:  [8, 61, 811, 495]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  tab1
+    Parent role:  page tab
+    Visible descendents count:  4
+    Descendent 0 name:  Selected Item : First Item
+    Descendent 0 role:  label
+    Descendent 1 name:  This is a Swing Labal on Tab 1
+    Descendent 1 role:  label
+    Descendent 2 name:  Click Me
+    Descendent 2 role:  push button
+    Descendent 3 name:  This is a Swing Labal on Tab 1
+    Descendent 3 role:  combo box
+
+****************************************
+Tue Aug 11 02:02:00 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  Selected Item : First Item
+    Description:  
+    Role:  label
+    Role in en_US locale:  label
+    States:  enabled,focusable,visible,showing
+    States in en_US locale:  enabled,focusable,visible,showing
+    Index in parent:  0
+    Children count:  0
+    Bounding rectangle:  [87, 239, 527, 270]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  
+    Parent role:  panel
+    Visible descendents count:  0
+
+****************************************
+Tue Aug 11 02:02:00 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  
+    Description:  
+    Role:  panel
+    Role in en_US locale:  panel
+    States:  enabled,focusable,visible,showing,opaque
+    States in en_US locale:  enabled,focusable,visible,showing,opaque
+    Index in parent:  0
+    Children count:  4
+    Bounding rectangle:  [8, 61, 811, 495]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  tab1
+    Parent role:  page tab
+    Visible descendents count:  4
+    Descendent 0 name:  Selected Item : First Item
+    Descendent 0 role:  label
+    Descendent 1 name:  This is a Swing Labal on Tab 1
+    Descendent 1 role:  label
+    Descendent 2 name:  Click Me
+    Descendent 2 role:  push button
+    Descendent 3 name:  This is a Swing Labal on Tab 1
+    Descendent 3 role:  combo box
+
+****************************************
+Tue Aug 11 02:02:00 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  This is a Swing Labal on Tab 1
+    Description:  
+    Role:  combo box
+    Role in en_US locale:  combo box
+    States:  enabled,focusable,visible,showing,collapsed
+    States in en_US locale:  enabled,focusable,visible,showing,collapsed
+    Index in parent:  3
+    Children count:  1
+    Bounding rectangle:  [167, 168, 527, 194]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  
+    Parent role:  panel
+    Visible descendents count:  0
+
+Accessible Selection information:
+    Selection count:  1
+    Selection 0 name: First Item
+    Selection 0 role: label
+    Index in parent of selection 0: 0
+
+AccessibleActions info:
+    Number of actions:  1
+    Action 0 name: togglePopup
+
+****************************************
+Tue Aug 11 02:02:00 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  
+    Description:  
+    Role:  panel
+    Role in en_US locale:  panel
+    States:  enabled,focusable,visible,showing,opaque
+    States in en_US locale:  enabled,focusable,visible,showing,opaque
+    Index in parent:  0
+    Children count:  4
+    Bounding rectangle:  [8, 61, 811, 495]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  tab1
+    Parent role:  page tab
+    Visible descendents count:  4
+    Descendent 0 name:  Selected Item : First Item
+    Descendent 0 role:  label
+    Descendent 1 name:  This is a Swing Labal on Tab 1
+    Descendent 1 role:  label
+    Descendent 2 name:  Click Me
+    Descendent 2 role:  push button
+    Descendent 3 name:  This is a Swing Labal on Tab 1
+    Descendent 3 role:  combo box
+
+****************************************
+Tue Aug 11 02:02:01 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  This is a Swing Labal on Tab 1
+    Description:  
+    Role:  combo box
+    Role in en_US locale:  combo box
+    States:  enabled,focusable,visible,showing,collapsed
+    States in en_US locale:  enabled,focusable,visible,showing,collapsed
+    Index in parent:  3
+    Children count:  1
+    Bounding rectangle:  [167, 168, 527, 194]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  
+    Parent role:  panel
+    Visible descendents count:  0
+
+Accessible Selection information:
+    Selection count:  1
+    Selection 0 name: First Item
+    Selection 0 role: label
+    Index in parent of selection 0: 0
+
+AccessibleActions info:
+    Number of actions:  1
+    Action 0 name: togglePopup
+
+****************************************
+Tue Aug 11 02:02:01 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  
+    Description:  
+    Role:  panel
+    Role in en_US locale:  panel
+    States:  enabled,focusable,visible,showing,opaque
+    States in en_US locale:  enabled,focusable,visible,showing,opaque
+    Index in parent:  0
+    Children count:  4
+    Bounding rectangle:  [8, 61, 811, 495]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  tab1
+    Parent role:  page tab
+    Visible descendents count:  4
+    Descendent 0 name:  Selected Item : First Item
+    Descendent 0 role:  label
+    Descendent 1 name:  This is a Swing Labal on Tab 1
+    Descendent 1 role:  label
+    Descendent 2 name:  Click Me
+    Descendent 2 role:  push button
+    Descendent 3 name:  This is a Swing Labal on Tab 1
+    Descendent 3 role:  combo box
+
+****************************************
+Tue Aug 11 02:02:01 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  Selected Item : First Item
+    Description:  
+    Role:  label
+    Role in en_US locale:  label
+    States:  enabled,focusable,visible,showing
+    States in en_US locale:  enabled,focusable,visible,showing
+    Index in parent:  0
+    Children count:  0
+    Bounding rectangle:  [87, 239, 527, 270]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  
+    Parent role:  panel
+    Visible descendents count:  0
+
+****************************************
+Tue Aug 11 02:02:01 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  
+    Description:  
+    Role:  panel
+    Role in en_US locale:  panel
+    States:  enabled,focusable,visible,showing,opaque
+    States in en_US locale:  enabled,focusable,visible,showing,opaque
+    Index in parent:  0
+    Children count:  4
+    Bounding rectangle:  [8, 61, 811, 495]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  tab1
+    Parent role:  page tab
+    Visible descendents count:  4
+    Descendent 0 name:  Selected Item : First Item
+    Descendent 0 role:  label
+    Descendent 1 name:  This is a Swing Labal on Tab 1
+    Descendent 1 role:  label
+    Descendent 2 name:  Click Me
+    Descendent 2 role:  push button
+    Descendent 3 name:  This is a Swing Labal on Tab 1
+    Descendent 3 role:  combo box
+
+****************************************
+Tue Aug 11 02:04:35 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  
+    Description:  
+    Role:  panel
+    Role in en_US locale:  panel
+    States:  enabled,focusable,visible,showing,opaque
+    States in en_US locale:  enabled,focusable,visible,showing,opaque
+    Index in parent:  0
+    Children count:  4
+    Bounding rectangle:  [8, 61, 811, 495]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  tab1
+    Parent role:  page tab
+    Visible descendents count:  4
+    Descendent 0 name:  Selected Item : First Item
+    Descendent 0 role:  label
+    Descendent 1 name:  This is a Swing Labal on Tab 1
+    Descendent 1 role:  label
+    Descendent 2 name:  Click Me
+    Descendent 2 role:  push button
+    Descendent 3 name:  This is a Swing Labal on Tab 1
+    Descendent 3 role:  combo box
+
+****************************************
+Tue Aug 11 02:04:35 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  This is a Swing Labal on Tab 1
+    Description:  
+    Role:  combo box
+    Role in en_US locale:  combo box
+    States:  enabled,focusable,visible,showing,collapsed
+    States in en_US locale:  enabled,focusable,visible,showing,collapsed
+    Index in parent:  3
+    Children count:  1
+    Bounding rectangle:  [167, 168, 527, 194]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  
+    Parent role:  panel
+    Visible descendents count:  0
+
+Accessible Selection information:
+    Selection count:  1
+    Selection 0 name: First Item
+    Selection 0 role: label
+    Index in parent of selection 0: 0
+
+AccessibleActions info:
+    Number of actions:  1
+    Action 0 name: togglePopup
+
+****************************************
+Tue Aug 11 02:04:35 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  
+    Description:  
+    Role:  panel
+    Role in en_US locale:  panel
+    States:  enabled,focusable,visible,showing,opaque
+    States in en_US locale:  enabled,focusable,visible,showing,opaque
+    Index in parent:  0
+    Children count:  4
+    Bounding rectangle:  [8, 61, 811, 495]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  tab1
+    Parent role:  page tab
+    Visible descendents count:  4
+    Descendent 0 name:  Selected Item : First Item
+    Descendent 0 role:  label
+    Descendent 1 name:  This is a Swing Labal on Tab 1
+    Descendent 1 role:  label
+    Descendent 2 name:  Click Me
+    Descendent 2 role:  push button
+    Descendent 3 name:  This is a Swing Labal on Tab 1
+    Descendent 3 role:  combo box
+
+****************************************
+Tue Aug 11 02:04:35 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  Click Me
+    Description:  
+    Role:  push button
+    Role in en_US locale:  push button
+    States:  enabled,focusable,visible,showing
+    States in en_US locale:  enabled,focusable,visible,showing
+    Index in parent:  2
+    Children count:  0
+    Bounding rectangle:  [87, 167, 161, 195]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  
+    Parent role:  panel
+    Visible descendents count:  0
+
+AccessibleActions info:
+    Number of actions:  1
+    Action 0 name: click
+
+Accessible Value information:
+    Current Value:  0
+    Maximum Value:  1
+    Minimum Value:  0
+
+****************************************
+Tue Aug 11 02:04:39 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  
+    Description:  
+    Role:  panel
+    Role in en_US locale:  panel
+    States:  enabled,focusable,visible,showing,opaque
+    States in en_US locale:  enabled,focusable,visible,showing,opaque
+    Index in parent:  0
+    Children count:  4
+    Bounding rectangle:  [8, 61, 811, 495]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  tab1
+    Parent role:  page tab
+    Visible descendents count:  4
+    Descendent 0 name:  Selected Item : First Item
+    Descendent 0 role:  label
+    Descendent 1 name:  This is a Swing Labal on Tab 1
+    Descendent 1 role:  label
+    Descendent 2 name:  Click Me
+    Descendent 2 role:  push button
+    Descendent 3 name:  This is a Swing Labal on Tab 1
+    Descendent 3 role:  combo box
+
+****************************************
+Tue Aug 11 02:04:39 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  This is a Swing Labal on Tab 1
+    Description:  
+    Role:  combo box
+    Role in en_US locale:  combo box
+    States:  enabled,focusable,visible,showing,collapsed
+    States in en_US locale:  enabled,focusable,visible,showing,collapsed
+    Index in parent:  3
+    Children count:  1
+    Bounding rectangle:  [167, 168, 527, 194]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  
+    Parent role:  panel
+    Visible descendents count:  0
+
+Accessible Selection information:
+    Selection count:  1
+    Selection 0 name: First Item
+    Selection 0 role: label
+    Index in parent of selection 0: 0
+
+AccessibleActions info:
+    Number of actions:  1
+    Action 0 name: togglePopup
+
+****************************************
+Tue Aug 11 02:04:40 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  
+    Description:  
+    Role:  panel
+    Role in en_US locale:  panel
+    States:  enabled,focusable,visible,showing,opaque
+    States in en_US locale:  enabled,focusable,visible,showing,opaque
+    Index in parent:  0
+    Children count:  4
+    Bounding rectangle:  [8, 61, 811, 495]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  tab1
+    Parent role:  page tab
+    Visible descendents count:  4
+    Descendent 0 name:  Selected Item : First Item
+    Descendent 0 role:  label
+    Descendent 1 name:  This is a Swing Labal on Tab 1
+    Descendent 1 role:  label
+    Descendent 2 name:  Click Me
+    Descendent 2 role:  push button
+    Descendent 3 name:  This is a Swing Labal on Tab 1
+    Descendent 3 role:  combo box
+
+****************************************
+Tue Aug 11 02:04:40 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  
+    Description:  
+    Role:  panel
+    Role in en_US locale:  panel
+    States:  enabled,focusable,visible,showing,opaque
+    States in en_US locale:  enabled,focusable,visible,showing,opaque
+    Index in parent:  0
+    Children count:  4
+    Bounding rectangle:  [8, 61, 811, 495]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  tab1
+    Parent role:  page tab
+    Visible descendents count:  4
+    Descendent 0 name:  Selected Item : First Item
+    Descendent 0 role:  label
+    Descendent 1 name:  This is a Swing Labal on Tab 1
+    Descendent 1 role:  label
+    Descendent 2 name:  Click Me
+    Descendent 2 role:  push button
+    Descendent 3 name:  This is a Swing Labal on Tab 1
+    Descendent 3 role:  combo box
+
+****************************************
+Tue Aug 11 02:04:40 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  This is a Swing Labal on Tab 1
+    Description:  
+    Role:  combo box
+    Role in en_US locale:  combo box
+    States:  enabled,focusable,visible,showing,collapsed
+    States in en_US locale:  enabled,focusable,visible,showing,collapsed
+    Index in parent:  3
+    Children count:  1
+    Bounding rectangle:  [167, 168, 527, 194]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  
+    Parent role:  panel
+    Visible descendents count:  0
+
+Accessible Selection information:
+    Selection count:  1
+    Selection 0 name: First Item
+    Selection 0 role: label
+    Index in parent of selection 0: 0
+
+AccessibleActions info:
+    Number of actions:  1
+    Action 0 name: togglePopup
+
+****************************************
+Tue Aug 11 02:04:40 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  
+    Description:  
+    Role:  push button
+    Role in en_US locale:  push button
+    States:  enabled,visible,showing,selectable,selected
+    States in en_US locale:  enabled,visible,showing,selectable,selected
+    Index in parent:  0
+    Children count:  0
+    Bounding rectangle:  [508, 168, 527, 194]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  This is a Swing Labal on Tab 1
+    Parent role:  combo box
+    Visible descendents count:  0
+
+AccessibleActions info:
+    Number of actions:  1
+    Action 0 name: click
+
+Accessible Value information:
+    Current Value:  0
+    Maximum Value:  1
+    Minimum Value:  0
+
+****************************************
+Tue Aug 11 02:04:40 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  
+    Description:  
+    Role:  panel
+    Role in en_US locale:  panel
+    States:  enabled,focusable,visible,showing,opaque
+    States in en_US locale:  enabled,focusable,visible,showing,opaque
+    Index in parent:  0
+    Children count:  4
+    Bounding rectangle:  [8, 61, 811, 495]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  tab1
+    Parent role:  page tab
+    Visible descendents count:  4
+    Descendent 0 name:  Selected Item : First Item
+    Descendent 0 role:  label
+    Descendent 1 name:  This is a Swing Labal on Tab 1
+    Descendent 1 role:  label
+    Descendent 2 name:  Click Me
+    Descendent 2 role:  push button
+    Descendent 3 name:  This is a Swing Labal on Tab 1
+    Descendent 3 role:  combo box
+
+****************************************
+Tue Aug 11 02:04:41 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  
+    Description:  
+    Role:  panel
+    Role in en_US locale:  panel
+    States:  enabled,focusable,visible,showing,opaque
+    States in en_US locale:  enabled,focusable,visible,showing,opaque
+    Index in parent:  0
+    Children count:  4
+    Bounding rectangle:  [8, 61, 811, 495]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  tab1
+    Parent role:  page tab
+    Visible descendents count:  4
+    Descendent 0 name:  Selected Item : First Item
+    Descendent 0 role:  label
+    Descendent 1 name:  This is a Swing Labal on Tab 1
+    Descendent 1 role:  label
+    Descendent 2 name:  Click Me
+    Descendent 2 role:  push button
+    Descendent 3 name:  This is a Swing Labal on Tab 1
+    Descendent 3 role:  combo box
+
+****************************************
+Tue Aug 11 02:04:42 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  This is a Swing Labal on Tab 1
+    Description:  
+    Role:  combo box
+    Role in en_US locale:  combo box
+    States:  enabled,focusable,visible,showing,collapsed
+    States in en_US locale:  enabled,focusable,visible,showing,collapsed
+    Index in parent:  3
+    Children count:  1
+    Bounding rectangle:  [167, 168, 527, 194]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  
+    Parent role:  panel
+    Visible descendents count:  0
+
+Accessible Selection information:
+    Selection count:  1
+    Selection 0 name: First Item
+    Selection 0 role: label
+    Index in parent of selection 0: 0
+
+AccessibleActions info:
+    Number of actions:  1
+    Action 0 name: togglePopup
+
+****************************************
+Tue Aug 11 02:04:42 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  
+    Description:  
+    Role:  panel
+    Role in en_US locale:  panel
+    States:  enabled,focusable,visible,showing,opaque
+    States in en_US locale:  enabled,focusable,visible,showing,opaque
+    Index in parent:  0
+    Children count:  4
+    Bounding rectangle:  [8, 61, 811, 495]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  tab1
+    Parent role:  page tab
+    Visible descendents count:  4
+    Descendent 0 name:  Selected Item : First Item
+    Descendent 0 role:  label
+    Descendent 1 name:  This is a Swing Labal on Tab 1
+    Descendent 1 role:  label
+    Descendent 2 name:  Click Me
+    Descendent 2 role:  push button
+    Descendent 3 name:  This is a Swing Labal on Tab 1
+    Descendent 3 role:  combo box
+
+****************************************
+Tue Aug 11 02:04:42 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  Click Me
+    Description:  
+    Role:  push button
+    Role in en_US locale:  push button
+    States:  enabled,focusable,visible,showing
+    States in en_US locale:  enabled,focusable,visible,showing
+    Index in parent:  2
+    Children count:  0
+    Bounding rectangle:  [87, 167, 161, 195]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  
+    Parent role:  panel
+    Visible descendents count:  0
+
+AccessibleActions info:
+    Number of actions:  1
+    Action 0 name: click
+
+Accessible Value information:
+    Current Value:  0
+    Maximum Value:  1
+    Minimum Value:  0
+
+****************************************
+Tue Aug 11 02:04:44 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  
+    Description:  
+    Role:  panel
+    Role in en_US locale:  panel
+    States:  enabled,focusable,visible,showing,opaque
+    States in en_US locale:  enabled,focusable,visible,showing,opaque
+    Index in parent:  0
+    Children count:  4
+    Bounding rectangle:  [8, 61, 811, 495]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  tab1
+    Parent role:  page tab
+    Visible descendents count:  4
+    Descendent 0 name:  Selected Item : First Item
+    Descendent 0 role:  label
+    Descendent 1 name:  This is a Swing Labal on Tab 1
+    Descendent 1 role:  label
+    Descendent 2 name:  Click Me
+    Descendent 2 role:  push button
+    Descendent 3 name:  This is a Swing Labal on Tab 1
+    Descendent 3 role:  combo box
+
+****************************************
+Tue Aug 11 02:04:44 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  Selected Item : First Item
+    Description:  
+    Role:  label
+    Role in en_US locale:  label
+    States:  enabled,focusable,visible,showing
+    States in en_US locale:  enabled,focusable,visible,showing
+    Index in parent:  0
+    Children count:  0
+    Bounding rectangle:  [87, 239, 527, 270]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  
+    Parent role:  panel
+    Visible descendents count:  0
+
+****************************************
+Tue Aug 11 02:04:51 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  
+    Description:  
+    Role:  panel
+    Role in en_US locale:  panel
+    States:  enabled,focusable,visible,showing,opaque
+    States in en_US locale:  enabled,focusable,visible,showing,opaque
+    Index in parent:  0
+    Children count:  4
+    Bounding rectangle:  [8, 61, 811, 495]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  tab1
+    Parent role:  page tab
+    Visible descendents count:  4
+    Descendent 0 name:  Selected Item : First Item
+    Descendent 0 role:  label
+    Descendent 1 name:  This is a Swing Labal on Tab 1
+    Descendent 1 role:  label
+    Descendent 2 name:  Click Me
+    Descendent 2 role:  push button
+    Descendent 3 name:  This is a Swing Labal on Tab 1
+    Descendent 3 role:  combo box
+
+****************************************
+Tue Aug 11 02:04:51 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  This is a Swing Labal on Tab 1
+    Description:  
+    Role:  label
+    Role in en_US locale:  label
+    States:  enabled,focusable,visible,showing
+    States in en_US locale:  enabled,focusable,visible,showing
+    Index in parent:  1
+    Children count:  0
+    Bounding rectangle:  [87, 121, 268, 138]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  
+    Parent role:  panel
+    Visible descendents count:  0
+
+****************************************
+Tue Aug 11 02:04:51 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  
+    Description:  
+    Role:  panel
+    Role in en_US locale:  panel
+    States:  enabled,focusable,visible,showing,opaque
+    States in en_US locale:  enabled,focusable,visible,showing,opaque
+    Index in parent:  0
+    Children count:  4
+    Bounding rectangle:  [8, 61, 811, 495]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  tab1
+    Parent role:  page tab
+    Visible descendents count:  4
+    Descendent 0 name:  Selected Item : First Item
+    Descendent 0 role:  label
+    Descendent 1 name:  This is a Swing Labal on Tab 1
+    Descendent 1 role:  label
+    Descendent 2 name:  Click Me
+    Descendent 2 role:  push button
+    Descendent 3 name:  This is a Swing Labal on Tab 1
+    Descendent 3 role:  combo box
+
+****************************************
+Tue Aug 11 02:04:52 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  Click Me
+    Description:  
+    Role:  push button
+    Role in en_US locale:  push button
+    States:  enabled,focusable,visible,showing
+    States in en_US locale:  enabled,focusable,visible,showing
+    Index in parent:  2
+    Children count:  0
+    Bounding rectangle:  [87, 167, 161, 195]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  
+    Parent role:  panel
+    Visible descendents count:  0
+
+AccessibleActions info:
+    Number of actions:  1
+    Action 0 name: click
+
+Accessible Value information:
+    Current Value:  0
+    Maximum Value:  1
+    Minimum Value:  0
+
+****************************************
+Tue Aug 11 02:05:01 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  
+    Description:  
+    Role:  panel
+    Role in en_US locale:  panel
+    States:  enabled,focusable,visible,showing,opaque
+    States in en_US locale:  enabled,focusable,visible,showing,opaque
+    Index in parent:  0
+    Children count:  4
+    Bounding rectangle:  [8, 61, 811, 495]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  tab1
+    Parent role:  page tab
+    Visible descendents count:  4
+    Descendent 0 name:  Selected Item : First Item
+    Descendent 0 role:  label
+    Descendent 1 name:  This is a Swing Labal on Tab 1
+    Descendent 1 role:  label
+    Descendent 2 name:  Click Me
+    Descendent 2 role:  push button
+    Descendent 3 name:  This is a Swing Labal on Tab 1
+    Descendent 3 role:  combo box
+
+****************************************
+Tue Aug 11 02:05:01 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  Selected Item : First Item
+    Description:  
+    Role:  label
+    Role in en_US locale:  label
+    States:  enabled,focusable,visible,showing
+    States in en_US locale:  enabled,focusable,visible,showing
+    Index in parent:  0
+    Children count:  0
+    Bounding rectangle:  [87, 239, 527, 270]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  
+    Parent role:  panel
+    Visible descendents count:  0
+
+****************************************
+Tue Aug 11 02:05:01 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  
+    Description:  
+    Role:  panel
+    Role in en_US locale:  panel
+    States:  enabled,focusable,visible,showing,opaque
+    States in en_US locale:  enabled,focusable,visible,showing,opaque
+    Index in parent:  0
+    Children count:  4
+    Bounding rectangle:  [8, 61, 811, 495]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  tab1
+    Parent role:  page tab
+    Visible descendents count:  4
+    Descendent 0 name:  Selected Item : First Item
+    Descendent 0 role:  label
+    Descendent 1 name:  This is a Swing Labal on Tab 1
+    Descendent 1 role:  label
+    Descendent 2 name:  Click Me
+    Descendent 2 role:  push button
+    Descendent 3 name:  This is a Swing Labal on Tab 1
+    Descendent 3 role:  combo box
+
+****************************************
+Tue Aug 11 02:05:24 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  
+    Description:  
+    Role:  panel
+    Role in en_US locale:  panel
+    States:  enabled,focusable,visible,showing,opaque
+    States in en_US locale:  enabled,focusable,visible,showing,opaque
+    Index in parent:  0
+    Children count:  4
+    Bounding rectangle:  [8, 61, 811, 495]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  tab1
+    Parent role:  page tab
+    Visible descendents count:  4
+    Descendent 0 name:  Selected Item : First Item
+    Descendent 0 role:  label
+    Descendent 1 name:  This is a Swing Labal on Tab 1
+    Descendent 1 role:  label
+    Descendent 2 name:  Click Me
+    Descendent 2 role:  push button
+    Descendent 3 name:  This is a Swing Labal on Tab 1
+    Descendent 3 role:  combo box
+
+****************************************
+Tue Aug 11 02:05:24 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  Selected Item : First Item
+    Description:  
+    Role:  label
+    Role in en_US locale:  label
+    States:  enabled,focusable,visible,showing
+    States in en_US locale:  enabled,focusable,visible,showing
+    Index in parent:  0
+    Children count:  0
+    Bounding rectangle:  [87, 239, 527, 270]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  
+    Parent role:  panel
+    Visible descendents count:  0
+
+****************************************
+Tue Aug 11 02:05:24 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  
+    Description:  
+    Role:  panel
+    Role in en_US locale:  panel
+    States:  enabled,focusable,visible,showing,opaque
+    States in en_US locale:  enabled,focusable,visible,showing,opaque
+    Index in parent:  0
+    Children count:  4
+    Bounding rectangle:  [8, 61, 811, 495]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  tab1
+    Parent role:  page tab
+    Visible descendents count:  4
+    Descendent 0 name:  Selected Item : First Item
+    Descendent 0 role:  label
+    Descendent 1 name:  This is a Swing Labal on Tab 1
+    Descendent 1 role:  label
+    Descendent 2 name:  Click Me
+    Descendent 2 role:  push button
+    Descendent 3 name:  This is a Swing Labal on Tab 1
+    Descendent 3 role:  combo box
+
+****************************************
+Tue Aug 11 02:05:24 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  This is a Swing Labal on Tab 1
+    Description:  
+    Role:  combo box
+    Role in en_US locale:  combo box
+    States:  enabled,focusable,visible,showing,collapsed
+    States in en_US locale:  enabled,focusable,visible,showing,collapsed
+    Index in parent:  3
+    Children count:  1
+    Bounding rectangle:  [167, 168, 527, 194]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  
+    Parent role:  panel
+    Visible descendents count:  0
+
+Accessible Selection information:
+    Selection count:  1
+    Selection 0 name: First Item
+    Selection 0 role: label
+    Index in parent of selection 0: 0
+
+AccessibleActions info:
+    Number of actions:  1
+    Action 0 name: togglePopup
+
+****************************************
+Tue Aug 11 02:05:24 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  
+    Description:  
+    Role:  panel
+    Role in en_US locale:  panel
+    States:  enabled,focusable,visible,showing,opaque
+    States in en_US locale:  enabled,focusable,visible,showing,opaque
+    Index in parent:  0
+    Children count:  4
+    Bounding rectangle:  [8, 61, 811, 495]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  tab1
+    Parent role:  page tab
+    Visible descendents count:  4
+    Descendent 0 name:  Selected Item : First Item
+    Descendent 0 role:  label
+    Descendent 1 name:  This is a Swing Labal on Tab 1
+    Descendent 1 role:  label
+    Descendent 2 name:  Click Me
+    Descendent 2 role:  push button
+    Descendent 3 name:  This is a Swing Labal on Tab 1
+    Descendent 3 role:  combo box
+
+****************************************
+Tue Aug 11 02:05:25 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  Click Me
+    Description:  
+    Role:  push button
+    Role in en_US locale:  push button
+    States:  enabled,focusable,visible,showing
+    States in en_US locale:  enabled,focusable,visible,showing
+    Index in parent:  2
+    Children count:  0
+    Bounding rectangle:  [87, 167, 161, 195]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  
+    Parent role:  panel
+    Visible descendents count:  0
+
+AccessibleActions info:
+    Number of actions:  1
+    Action 0 name: click
+
+Accessible Value information:
+    Current Value:  0
+    Maximum Value:  1
+    Minimum Value:  0
+
+****************************************
+Tue Aug 11 02:06:05 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  
+    Description:  
+    Role:  panel
+    Role in en_US locale:  panel
+    States:  enabled,focusable,visible,showing,opaque
+    States in en_US locale:  enabled,focusable,visible,showing,opaque
+    Index in parent:  0
+    Children count:  4
+    Bounding rectangle:  [8, 61, 811, 495]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  tab1
+    Parent role:  page tab
+    Visible descendents count:  4
+    Descendent 0 name:  Selected Item : First Item
+    Descendent 0 role:  label
+    Descendent 1 name:  This is a Swing Labal on Tab 1
+    Descendent 1 role:  label
+    Descendent 2 name:  Click Me
+    Descendent 2 role:  push button
+    Descendent 3 name:  This is a Swing Labal on Tab 1
+    Descendent 3 role:  combo box
+
+****************************************
+Tue Aug 11 02:06:08 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  Click Me
+    Description:  
+    Role:  push button
+    Role in en_US locale:  push button
+    States:  enabled,focusable,visible,showing
+    States in en_US locale:  enabled,focusable,visible,showing
+    Index in parent:  2
+    Children count:  0
+    Bounding rectangle:  [87, 167, 161, 195]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  
+    Parent role:  panel
+    Visible descendents count:  0
+
+AccessibleActions info:
+    Number of actions:  1
+    Action 0 name: click
+
+Accessible Value information:
+    Current Value:  0
+    Maximum Value:  1
+    Minimum Value:  0
+
+****************************************
+Tue Aug 11 02:06:15 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  
+    Description:  
+    Role:  panel
+    Role in en_US locale:  panel
+    States:  enabled,focusable,visible,showing,opaque
+    States in en_US locale:  enabled,focusable,visible,showing,opaque
+    Index in parent:  0
+    Children count:  4
+    Bounding rectangle:  [8, 61, 811, 495]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  tab1
+    Parent role:  page tab
+    Visible descendents count:  4
+    Descendent 0 name:  Selected Item : First Item
+    Descendent 0 role:  label
+    Descendent 1 name:  This is a Swing Labal on Tab 1
+    Descendent 1 role:  label
+    Descendent 2 name:  Click Me
+    Descendent 2 role:  push button
+    Descendent 3 name:  This is a Swing Labal on Tab 1
+    Descendent 3 role:  combo box
+
+****************************************
+Tue Aug 11 02:06:17 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  Click Me
+    Description:  
+    Role:  push button
+    Role in en_US locale:  push button
+    States:  enabled,focusable,visible,showing
+    States in en_US locale:  enabled,focusable,visible,showing
+    Index in parent:  2
+    Children count:  0
+    Bounding rectangle:  [87, 167, 161, 195]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  
+    Parent role:  panel
+    Visible descendents count:  0
+
+AccessibleActions info:
+    Number of actions:  1
+    Action 0 name: click
+
+Accessible Value information:
+    Current Value:  0
+    Maximum Value:  1
+    Minimum Value:  0
+
+****************************************
+Tue Aug 11 02:06:31 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  
+    Description:  
+    Role:  panel
+    Role in en_US locale:  panel
+    States:  enabled,focusable,visible,showing,opaque
+    States in en_US locale:  enabled,focusable,visible,showing,opaque
+    Index in parent:  0
+    Children count:  4
+    Bounding rectangle:  [8, 61, 811, 495]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  tab1
+    Parent role:  page tab
+    Visible descendents count:  4
+    Descendent 0 name:  Selected Item : First Item
+    Descendent 0 role:  label
+    Descendent 1 name:  This is a Swing Labal on Tab 1
+    Descendent 1 role:  label
+    Descendent 2 name:  Click Me
+    Descendent 2 role:  push button
+    Descendent 3 name:  This is a Swing Labal on Tab 1
+    Descendent 3 role:  combo box
+
+****************************************
+Tue Aug 11 02:06:33 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  Click Me
+    Description:  
+    Role:  push button
+    Role in en_US locale:  push button
+    States:  enabled,focusable,visible,showing
+    States in en_US locale:  enabled,focusable,visible,showing
+    Index in parent:  2
+    Children count:  0
+    Bounding rectangle:  [87, 167, 161, 195]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  
+    Parent role:  panel
+    Visible descendents count:  0
+
+AccessibleActions info:
+    Number of actions:  1
+    Action 0 name: click
+
+Accessible Value information:
+    Current Value:  0
+    Maximum Value:  1
+    Minimum Value:  0
+
+****************************************
+Tue Aug 11 02:06:41 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  
+    Description:  
+    Role:  panel
+    Role in en_US locale:  panel
+    States:  enabled,focusable,visible,showing,opaque
+    States in en_US locale:  enabled,focusable,visible,showing,opaque
+    Index in parent:  0
+    Children count:  4
+    Bounding rectangle:  [8, 61, 811, 495]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  tab1
+    Parent role:  page tab
+    Visible descendents count:  4
+    Descendent 0 name:  Selected Item : First Item
+    Descendent 0 role:  label
+    Descendent 1 name:  This is a Swing Labal on Tab 1
+    Descendent 1 role:  label
+    Descendent 2 name:  Click Me
+    Descendent 2 role:  push button
+    Descendent 3 name:  This is a Swing Labal on Tab 1
+    Descendent 3 role:  combo box
+
+****************************************
+Tue Aug 11 02:06:53 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  This is a Swing Labal on Tab 1
+    Description:  
+    Role:  label
+    Role in en_US locale:  label
+    States:  enabled,focusable,visible,showing
+    States in en_US locale:  enabled,focusable,visible,showing
+    Index in parent:  1
+    Children count:  0
+    Bounding rectangle:  [87, 121, 268, 138]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  
+    Parent role:  panel
+    Visible descendents count:  0
+
+****************************************
+Tue Aug 11 02:06:53 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  
+    Description:  
+    Role:  panel
+    Role in en_US locale:  panel
+    States:  enabled,focusable,visible,showing,opaque
+    States in en_US locale:  enabled,focusable,visible,showing,opaque
+    Index in parent:  0
+    Children count:  4
+    Bounding rectangle:  [8, 61, 811, 495]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  tab1
+    Parent role:  page tab
+    Visible descendents count:  4
+    Descendent 0 name:  Selected Item : First Item
+    Descendent 0 role:  label
+    Descendent 1 name:  This is a Swing Labal on Tab 1
+    Descendent 1 role:  label
+    Descendent 2 name:  Click Me
+    Descendent 2 role:  push button
+    Descendent 3 name:  This is a Swing Labal on Tab 1
+    Descendent 3 role:  combo box
+
+****************************************
+Tue Aug 11 02:06:53 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  
+    Description:  
+    Role:  page tab list
+    Role in en_US locale:  page tab list
+    States:  enabled,focusable,visible,showing
+    States in en_US locale:  enabled,focusable,visible,showing
+    Index in parent:  0
+    Children count:  2
+    Bounding rectangle:  [8, 31, 811, 495]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  
+    Parent role:  panel
+    Visible descendents count:  7
+    Descendent 0 name:  tab1
+    Descendent 0 role:  page tab
+    Descendent 1 name:  
+    Descendent 1 role:  panel
+    Descendent 2 name:  Selected Item : First Item
+    Descendent 2 role:  label
+    Descendent 3 name:  This is a Swing Labal on Tab 1
+    Descendent 3 role:  label
+    Descendent 4 name:  Click Me
+    Descendent 4 role:  push button
+    Descendent 5 name:  This is a Swing Labal on Tab 1
+    Descendent 5 role:  combo box
+    Descendent 6 name:  tab2
+    Descendent 6 role:  page tab
+
+Accessible Selection information:
+    Selection count:  1
+    Selection 0 name: tab1
+    Selection 0 role: page tab
+    Index in parent of selection 0: 0
+
+****************************************
+Tue Aug 11 02:07:00 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  
+    Description:  
+    Role:  page tab list
+    Role in en_US locale:  page tab list
+    States:  enabled,focusable,visible,showing
+    States in en_US locale:  enabled,focusable,visible,showing
+    Index in parent:  0
+    Children count:  2
+    Bounding rectangle:  [8, 31, 811, 495]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  
+    Parent role:  panel
+    Visible descendents count:  7
+    Descendent 0 name:  tab1
+    Descendent 0 role:  page tab
+    Descendent 1 name:  
+    Descendent 1 role:  panel
+    Descendent 2 name:  Selected Item : First Item
+    Descendent 2 role:  label
+    Descendent 3 name:  This is a Swing Labal on Tab 1
+    Descendent 3 role:  label
+    Descendent 4 name:  Click Me
+    Descendent 4 role:  push button
+    Descendent 5 name:  This is a Swing Labal on Tab 1
+    Descendent 5 role:  combo box
+    Descendent 6 name:  tab2
+    Descendent 6 role:  page tab
+
+Accessible Selection information:
+    Selection count:  1
+    Selection 0 name: tab1
+    Selection 0 role: page tab
+    Index in parent of selection 0: 0
+
+****************************************
+Tue Aug 11 02:07:01 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  
+    Description:  
+    Role:  page tab list
+    Role in en_US locale:  page tab list
+    States:  enabled,focusable,visible,showing
+    States in en_US locale:  enabled,focusable,visible,showing
+    Index in parent:  0
+    Children count:  2
+    Bounding rectangle:  [8, 31, 811, 495]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  
+    Parent role:  panel
+    Visible descendents count:  7
+    Descendent 0 name:  tab1
+    Descendent 0 role:  page tab
+    Descendent 1 name:  
+    Descendent 1 role:  panel
+    Descendent 2 name:  Selected Item : First Item
+    Descendent 2 role:  label
+    Descendent 3 name:  This is a Swing Labal on Tab 1
+    Descendent 3 role:  label
+    Descendent 4 name:  Click Me
+    Descendent 4 role:  push button
+    Descendent 5 name:  This is a Swing Labal on Tab 1
+    Descendent 5 role:  combo box
+    Descendent 6 name:  tab2
+    Descendent 6 role:  page tab
+
+Accessible Selection information:
+    Selection count:  1
+    Selection 0 name: tab1
+    Selection 0 role: page tab
+    Index in parent of selection 0: 0
+
+****************************************
+Tue Aug 11 02:07:01 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  
+    Description:  
+    Role:  panel
+    Role in en_US locale:  panel
+    States:  enabled,focusable,visible,showing,opaque
+    States in en_US locale:  enabled,focusable,visible,showing,opaque
+    Index in parent:  0
+    Children count:  4
+    Bounding rectangle:  [8, 61, 811, 495]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  tab1
+    Parent role:  page tab
+    Visible descendents count:  4
+    Descendent 0 name:  Selected Item : First Item
+    Descendent 0 role:  label
+    Descendent 1 name:  This is a Swing Labal on Tab 1
+    Descendent 1 role:  label
+    Descendent 2 name:  Click Me
+    Descendent 2 role:  push button
+    Descendent 3 name:  This is a Swing Labal on Tab 1
+    Descendent 3 role:  combo box
+
+****************************************
+Tue Aug 11 02:07:01 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  
+    Description:  
+    Role:  page tab list
+    Role in en_US locale:  page tab list
+    States:  enabled,focusable,visible,showing
+    States in en_US locale:  enabled,focusable,visible,showing
+    Index in parent:  0
+    Children count:  2
+    Bounding rectangle:  [8, 31, 811, 495]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  
+    Parent role:  panel
+    Visible descendents count:  7
+    Descendent 0 name:  tab1
+    Descendent 0 role:  page tab
+    Descendent 1 name:  
+    Descendent 1 role:  panel
+    Descendent 2 name:  Selected Item : First Item
+    Descendent 2 role:  label
+    Descendent 3 name:  This is a Swing Labal on Tab 1
+    Descendent 3 role:  label
+    Descendent 4 name:  Click Me
+    Descendent 4 role:  push button
+    Descendent 5 name:  This is a Swing Labal on Tab 1
+    Descendent 5 role:  combo box
+    Descendent 6 name:  tab2
+    Descendent 6 role:  page tab
+
+Accessible Selection information:
+    Selection count:  1
+    Selection 0 name: tab1
+    Selection 0 role: page tab
+    Index in parent of selection 0: 0
+
+****************************************
+Tue Aug 11 02:07:06 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  
+    Description:  
+    Role:  page tab list
+    Role in en_US locale:  page tab list
+    States:  enabled,focusable,visible,showing
+    States in en_US locale:  enabled,focusable,visible,showing
+    Index in parent:  0
+    Children count:  2
+    Bounding rectangle:  [8, 31, 811, 495]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  
+    Parent role:  panel
+    Visible descendents count:  7
+    Descendent 0 name:  tab1
+    Descendent 0 role:  page tab
+    Descendent 1 name:  
+    Descendent 1 role:  panel
+    Descendent 2 name:  Selected Item : First Item
+    Descendent 2 role:  label
+    Descendent 3 name:  This is a Swing Labal on Tab 1
+    Descendent 3 role:  label
+    Descendent 4 name:  Click Me
+    Descendent 4 role:  push button
+    Descendent 5 name:  This is a Swing Labal on Tab 1
+    Descendent 5 role:  combo box
+    Descendent 6 name:  tab2
+    Descendent 6 role:  page tab
+
+Accessible Selection information:
+    Selection count:  1
+    Selection 0 name: tab1
+    Selection 0 role: page tab
+    Index in parent of selection 0: 0
+
+****************************************
+Tue Aug 11 02:07:06 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  
+    Description:  
+    Role:  panel
+    Role in en_US locale:  panel
+    States:  enabled,focusable,visible,showing,opaque
+    States in en_US locale:  enabled,focusable,visible,showing,opaque
+    Index in parent:  0
+    Children count:  4
+    Bounding rectangle:  [8, 61, 811, 495]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  tab1
+    Parent role:  page tab
+    Visible descendents count:  4
+    Descendent 0 name:  Selected Item : First Item
+    Descendent 0 role:  label
+    Descendent 1 name:  This is a Swing Labal on Tab 1
+    Descendent 1 role:  label
+    Descendent 2 name:  Click Me
+    Descendent 2 role:  push button
+    Descendent 3 name:  This is a Swing Labal on Tab 1
+    Descendent 3 role:  combo box
+
+****************************************
+Tue Aug 11 02:27:27 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  
+    Description:  
+    Role:  panel
+    Role in en_US locale:  panel
+    States:  enabled,focusable,visible,showing,opaque
+    States in en_US locale:  enabled,focusable,visible,showing,opaque
+    Index in parent:  0
+    Children count:  4
+    Bounding rectangle:  [8, 61, 811, 495]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  tab1
+    Parent role:  page tab
+    Visible descendents count:  4
+    Descendent 0 name:  Selected Item : First Item
+    Descendent 0 role:  label
+    Descendent 1 name:  This is a Swing Labal on Tab 1
+    Descendent 1 role:  label
+    Descendent 2 name:  Click Me
+    Descendent 2 role:  push button
+    Descendent 3 name:  This is a Swing Labal on Tab 1
+    Descendent 3 role:  combo box
+
+****************************************
+Tue Aug 11 02:32:53 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  
+    Description:  
+    Role:  panel
+    Role in en_US locale:  panel
+    States:  enabled,focusable,visible,showing,opaque
+    States in en_US locale:  enabled,focusable,visible,showing,opaque
+    Index in parent:  0
+    Children count:  4
+    Bounding rectangle:  [8, 61, 811, 495]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  tab1
+    Parent role:  page tab
+    Visible descendents count:  4
+    Descendent 0 name:  Selected Item : First Item
+    Descendent 0 role:  label
+    Descendent 1 name:  This is a Swing Labal on Tab 1
+    Descendent 1 role:  label
+    Descendent 2 name:  Click Me
+    Descendent 2 role:  push button
+    Descendent 3 name:  This is a Swing Labal on Tab 1
+    Descendent 3 role:  combo box
+
+****************************************
+Tue Aug 11 02:32:54 PM
+
+Version Information:
+    Java virtual machine version: 1.8.0_51
+    Access Bridge Java class version: 1.8.0_51
+    Access Bridge Java DLL version: AccessBridge 2.0.2
+    Access Bridge Windows DLL version: AccessBridge 2.0.2
+
+AccessibleContext information at mouse point [0, 0]:
+    Name:  
+    Description:  
+    Role:  page tab list
+    Role in en_US locale:  page tab list
+    States:  enabled,focusable,visible,showing
+    States in en_US locale:  enabled,focusable,visible,showing
+    Index in parent:  0
+    Children count:  2
+    Bounding rectangle:  [8, 31, 811, 495]
+    Top-level window name:  Swing Simple Application
+    Top-level window role:  frame
+    Parent name:  
+    Parent role:  panel
+    Visible descendents count:  7
+    Descendent 0 name:  tab1
+    Descendent 0 role:  page tab
+    Descendent 1 name:  
+    Descendent 1 role:  panel
+    Descendent 2 name:  Selected Item : First Item
+    Descendent 2 role:  label
+    Descendent 3 name:  This is a Swing Labal on Tab 1
+    Descendent 3 role:  label
+    Descendent 4 name:  Click Me
+    Descendent 4 role:  push button
+    Descendent 5 name:  This is a Swing Labal on Tab 1
+    Descendent 5 role:  combo box
+    Descendent 6 name:  tab2
+    Descendent 6 role:  page tab
+
+Accessible Selection information:
+    Selection count:  1
+    Selection 0 name: tab1
+    Selection 0 role: page tab
+    Index in parent of selection 0: 0

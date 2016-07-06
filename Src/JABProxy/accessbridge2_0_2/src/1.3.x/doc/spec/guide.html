@@ -1,0 +1,126 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.5 [en] (WinNT; I) [Netscape]">
+   <meta name="Author" content="Willie Walker">
+   <title>Java Accessibility Utilities:  Overview of Java Accessibility</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#0000EE" vlink="#551A8B" alink="#FF0000">
+<a href="http://java.sun.com"><img SRC="images/java_header.gif" ALT="The Source for Java - java.sun.com" NOSAVE BORDER=0  align=LEFT></a>
+<div align=right><font size=+3>JAVA ACCESSIBILITY</font></div>
+
+<div align=right><font size=+2>Overview of the Java Accessibility Features</font></div>
+
+<div align=right>Version 1.3</div>
+<!--- These are the Menu Items ---->
+<hr NOSHADE WIDTH="100%">
+<center>[<a href="index.html">Home</a>] [<a href="what.html">What are they?</a>]
+[<a href="guide.html">Overview of Features</a>] [<a href="api/com/sun/java/accessibility/util/package-summary.html">API
+Reference</a>]
+<br>[<a href="FAQ.html">FAQ</a>] [<a href="examples.html">Examples</a>]
+[<a href="../CHANGES.txt">Changes</a>] [<a href="compatibility.html">Compatibility
+table</a>] [<a href="http://java.sun.com/products/jfc">JFC Home Page</a>]</center>
+
+<hr NOSHADE WIDTH="100%">
+<br><b><font size=+2>Overview of the Java Accessibility Features</font></b>
+<br>
+<hr NOSHADE WIDTH="100%">
+<br><!--- End menu Items ----><b><font size=+2>Introduction</font></b>
+<p>Java Accessibility is currently broken into two separate packages:&nbsp;
+the Java Accessibility API and the Java Accessibility Utilities.&nbsp;
+This release represents the Java Accessibility Utilities and contains classes
+designed to help assistive technologies take advantage of the Java Accessibility
+API.&nbsp; The Java Accessibility API is a cross platform, toolkit independent
+API designed to give assistive technologies direct access to the information
+in user interface objects, and is part of the <a href="http://java.sun.com/products/jfc">Java<sup><font size=-2>TM</font></sup>
+Foundation Classes</a>.
+<p>There are four areas in which Sun is currently building Accessibility
+support into the Java platform.&nbsp;&nbsp; The four sections below give
+a brief overview of the four areas of support for Java Accessibility that
+Sun is currently developing.
+<ul>
+<h3>
+<a href="core-api.html">The Java Accessibility API</a></h3>
+
+<ul>The Java Accessibility API defines a contract between individual user-interface
+components that make up a Java&nbsp; application and an assistive technology
+that is providing access to that Java application.&nbsp; If a Java application
+fully supports the Java Accessibility API, then it should be compatible
+with, and friendly toward, assistive technologies such as screen readers,
+screen magnifiers, etc.&nbsp; With a Java application that fully supports
+the Java Accessibility API, no off screen model would be necessary because
+the API provides all of the information normally contained in an off screen
+model.</ul>
+
+<h3>
+<a href="utility-api.html">The Java Accessibility Utilities</a></h3>
+
+<ul>In order to provide access to a Java application, an assistive technology
+requires more than the Java Accessibility API:&nbsp; it also requires support
+in locating the objects that implement the API as well as support for being
+loaded into the Java virtual machine, tracking events, etc.&nbsp; The Java
+Accessibility utility classes provide this assistance.</ul>
+
+<h3>
+<a href="bridge.html">The Java Accessibility Bridge to Native Code</a></h3>
+
+<ul>Java applications run on a wide variety of host operating systems,
+many of which already have assistive technologies available for them (e.g.
+Macintosh, OS/2, Windows).&nbsp; In order for these existing assistive
+technologies to provide access to programs written in the Java programming
+language, they need a bridge between themselves in their native environment(s)
+and the Java Accessibility support that is available from within the Java
+virtual machine (or Java VM).&nbsp; This bridge, by virtue of the fact
+that it has one end in the Java VM and the other on the native platform,
+will be slightly different for each platform it bridges to.&nbsp; Sun is
+currently developing both the Java programming language side of this bridge,
+and the Win32 side.&nbsp; In cooperation with assistive technology vendors
+and the various platform vendors, Sun intends to make similar bridges available
+for other platforms over time.</ul>
+
+<h3>
+<a href="pluggable.html">The Pluggable Look and Feel of the Java Foundation
+Classes</a></h3>
+
+<ul>The <a href="http://java.sun.com/products/jfc">Java Foundation Classes</a>
+(or JFC) are a collection of technologies that represent a new foundation
+upon which to build Java applications.&nbsp; The JFC is a core part of
+JDK1.2 and later releases, and is also available as a separate package
+for <a href="http://java.sun.com/products/jdk/1.1/index.html">JDK1.1</a>.&nbsp;
+The Java Accessibility API is one of the technologies of the JFC.&nbsp;
+Another is the "Swing" set of user-interface components, which is built
+using a Pluggable Look and Feel architecture.&nbsp; This architecture separates
+the implementation of the user-interface components from their presentation.&nbsp;
+On a component-by-component basis, the presentation is programmatically
+determined and can be chosen by the user.&nbsp; Instead of a visual presentation,
+a user could instead choose an audio presentation, or a tactile (e.g. Braille)
+presentation, or a combination of the two.&nbsp; With this support, a user
+wouldn't need a separate assistive technology product interpreting the
+visual presentation of the program on the screen.&nbsp; Instead, the user
+would have direct access to that program because it would interact with
+the user in his/her desired modality.</ul>
+</ul>
+<b><font size=+2><a href="ahead.html">The Road Ahead</a></font></b>
+<p>We are not finished with Java Accessibility, and are continuing to improve
+our current offerings as well as investigate new areas.&nbsp; The <a href="ahead.html">road
+ahead</a> will tell you more about our plans for the future.
+<p>
+<hr SIZE=3 NOSHADE>
+<address>
+<img SRC="images/javalogo52x88.gif" ALT="Java Logo" NOSAVE  align=LEFT><font size=-1><a href="http://java.sun.com/share/copyright.html">Copyright&copy;
+</a>1995-99
+<a href="http://www.sun.com">Sun
+Microsystems, Inc. All Rights Reserved.</a></font></address>
+
+<address>
+<font size=-1>To submit comments or suggestions about <a href="http://www.sun.com/access/index.html">Java
+Accessibility</a>, please send mail to <i><a href="mailto:access@sun.com">access@sun.com</a></i>.</font></address>
+
+<br>&nbsp;
+<p>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<p><a href="http://www.sun.com"><img SRC="images/smi_logo.gif" ALT="Sun MicroSystems" NOSAVE BORDER=0 height=43 width=120 align=RIGHT></a>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <title>Java Accessibility Utilities Monkey Example</title>
+</head>
+
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#000077" 
+ALINK="#FF0000">
+
+<TABLE BORDER="0" WIDTH="100%">
+<tr>
+<TD WIDTH="60">
+   <IMG SRC="images/javalogo52x88.gif" ALT="Java" BORDER=0 WIDTH=52 HEIGHT=88>
+</TD>
+<TD>
+<center>
+<h1>Java<sup><font size="-2">TM</font></sup> Accessibility Utilities</h1>
+Monkey Example
+</center>
+</TD>
+<TD ALIGN=RIGHT VALIGN=TOP>
+   <font size="-1"><a href="index.html">Java Accessibility Utilities</a></font>
+</TD>
+</TR>
+</TABLE>
+<!-- Body text begins here -->
+<HR SIZE=3 NOSHADE>
+<br>
+<h3>Starting Monkey</h3>
+If you have completed the actions listed in <a href="examples.html#before">
+Before Using the Examples</a>, Monkey starts automatically any time you 
+start a Java application. 
+
+<p><img SRC="images/Monkey.gif" ALT="Screen shot of Monkey" NOSAVE >
+<h3>
+Using Monkey</h3>
+In its "File" menu, Monkey provides a "Refresh Trees" item. When you select
+this, Monkey will ask the EventQueueMonitor for the current list of top
+level windows it has detected in the virtual machine. It will then display
+the component hierarchy of the top level windows using two different formats.
+On the left side of its window, Monkey will display the "true" component
+hierarchy. On the right hand side of its window, Monkey will display the
+hierarchy as though the objects are Accessible objects.&nbsp; If you right
+click on a node in the right hand side of its window, Monkey will display
+a popup menu that provides options for you to get additional accessible
+information from the object.&nbsp; The first option will provide you with
+information similar to that provided by the <a href="Ferret.html">Ferret</a>
+example.&nbsp; The second option allows you to manipulate the AccessibleActions
+of the object, the third option allows you to manipulate the 
+AccessibleSelections
+of the object, and the fourth option allows you to manipulate the 
+AccessibleHypertext
+links of the object. You can bring up an AccessibilityPanel without using
+the mouse by first selecting the table cell you are interested in, and
+then choosing the AccessibilityPanel from the Panels menu.
+<br><img SRC="images/ActionPanel.gif" ALT="Picture of the panel that allows you 
+to manipulate the object's AccessibleActions" NOSAVE ><img 
+SRC="images/SelectionPanel.gif" ALT="Picture of the panel that allows you to 
+manipulate the object's AccessibleSelection" NOSAVE ><img 
+SRC="images/Linker.gif" ALT="Picture of the panel that allows you to manipu late 
+the object's AccessibleHypertext" NOSAVE >
+<p>Depending upon when it starts, the initial list displayed by Monkey
+may not accurately reflect the current state of the Java virtual machine.
+To update the display, select the "Refresh Trees" item in Monkey's "File"
+menu.&nbsp; At any time, you can press the F1 key and Monkey will automatically
+refresh the trees as well.
+
+<!-- ============================================================== -->
+<HR SIZE=3 NOSHADE>
+
+<TABLE BORDER="0" WIDTH="100%">
+<TR VALIGN=TOP>
+<TD>
+
+<P><FONT SIZE="-2">
+
+   <A HREF="SMICopyright.html">Copyright &#169;</A> 1995-2001
+
+   <A HREF="http://www.sun.com/">Sun Microsystems, Inc.</A>
+
+    All Rights Reserved.</FONT></P>
+
+   <FONT SIZE="-1">
+
+   Please send comments to: <a href="mailto:access@sun.com">access@sun.com</a> 
+
+   </FONT>
+
+</TD>
+<TD ALIGN=RIGHT>
+   <IMG SRC="images/sunlogo64x30.gif" ALT="Sun" BORDER=0 WIDTH=64 HEIGHT=30>
+</TD>
+</TR>
+</TABLE>
+
+</BODY>
+</HTML>

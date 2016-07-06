@@ -1,0 +1,144 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.5 [en] (WinNT; I) [Netscape]">
+   <meta name="Author" content="Willie Walker">
+   <title>Java Accessibility Documentation:  AWTMonitor Example</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#0000EE" vlink="#551A8B" alink="#FF0000">
+<a href="http://java.sun.com"><img SRC="images/java_header.gif" ALT="The Source for Java - java.sun.com" NOSAVE BORDER=0  align=LEFT></a>
+<div align=right><font size=+3>JAVA ACCESSIBILITY</font></div>
+
+<div align=right><font size=+2>AWTMonitor Example</font></div>
+
+<div align=right>Version 1.3</div>
+
+<hr NOSHADE WIDTH="100%">
+<center><!--- These are the Menu Items ---->[<a href="index.html">Home</a>]
+[<a href="what.html">What are they?</a>] [<a href="guide.html">Overview
+of API Features</a>] [<a href="api/com/sun/java/accessibility/util/package-summary.html">API
+Reference</a>]
+<br>[<a href="FAQ.html">FAQ</a>] [<a href="examples.html">Examples</a>]
+[<a href="../CHANGES.txt">Changes</a>] [<a href="compatibility.html">Compatibility
+table</a>] [<a href="http://java.sun.com/products/jfc">JFC Home Page</a>]</center>
+
+<hr NOSHADE WIDTH="100%"><!--- End menu Items ----><!--- End menu Items ---->
+<p>The AWTMonitor example allows you to obtain information about AWT objects
+being displayed on the screen by a particular Java<sup><font size=-2>TM</font></sup>
+Virtual Machine. It does not require the <a href="http://java.sun.com/products/jfc">Java
+Foundation Classes</a> to run.
+<p>For those interested in detail on the additional accessibility features
+of the <a href="http://java.sun.com/products/jfc">Java Foundation Classes</a>,
+we recommend using <a href="JavaMonitor.html">JavaMonitor</a> instead of
+AWTMonitor. JavaMonitor provides all the capabilities of AWTMonitor, but
+also has additional support for the JFC classes.
+<p><img SRC="images/AWTM.gif" LOWSRC="images/AWTM.gif" ALT="Snap shot of AWT Monitor in action." NOSAVE height=403 width=508>
+<h3>
+Preparing To Run AWTMonitor with JDK1.1:</h3>
+To run AWTMonitor with JDK1.1, you need to have obtained and installed
+<a href="http://java.sun.com/products/jfc/index.html">JFC
+1.1 with Swing 1.1</a> and <a href="http://java.sun.com/products/jdk/1.1/">JDK1.1.6</a>.&nbsp;
+In addition, you need to be using the Java Accessibility Utilities Version
+1.1.
+<p>AWTMonitor is in the <tt>examples/AWTMonitor</tt> directory included
+with this release of the Java Accessibility Utilities (click <a href="../examples/AWTMonitor/AWTMonitor.java">here</a>
+to view the source). The compiled classes of AWTMonitor are also included
+in the <tt>jaccess-examples.jar</tt> file includes with this release.&nbsp;
+Before you can run it, you need to set up your environment appropriately
+by following these instructions:
+<blockquote>
+<li>
+Add the <tt>jaccess.jar</tt> and <tt>jaccess-examples.jar</tt> files to
+your CLASSPATH environment variable.</li>
+
+<li>
+Modify your <tt>$JDKHOME/lib/awt.properties</tt> file to include the following
+lines:</li>
+
+<blockquote>
+<pre>AWT.EventQueueClass=com.sun.java.accessibility.util.EventQueueMonitor
+AWT.assistive_technologies=AWTMonitor</pre>
+</blockquote>
+</blockquote>
+After you follow these instructions, you should be ready to run AWTMonitor.&nbsp;
+If you did not set up your CLASSPATH correctly you might get one of the
+following errors when running a Java<sup><font size=-2>TM</font></sup>
+application:
+<pre>Failed loading com.sun.java.accessibility.util.EventQueueMonitor:&nbsp;
+java.lang.ClassNotFoundException:&nbsp;
+com.sun.java.accessibility.util.EventQueueMonitor</pre>
+
+<pre>Error trying to newInstance AWTMonitor java.lang.ClassNotFoundException:&nbsp;
+AWTMonitor</pre>
+The first error means the <tt>jaccess.jar</tt> file is not in your CLASSPATH,
+and the second means the <tt>jaccess-examples.jar</tt> file is not in your
+CLASSPATH.
+<h3>
+Preparing to Run AWTMonitor with JDK1.2 or later:</h3>
+To run AWTMonitor with JDK1.2 or later you need to have obtained and installed
+<a href="http://java.sun.com/products/jdk/1.2">JDK1.2</a>
+or later. In addition, you need to be using the Java Accessibility Utilities
+Version 1.2 or later.
+<p>The AWTMonitor class is in the <tt>examples/AWTMonitor</tt> directory
+included with this release of the Java Accessibility Utilities (click <a href="../examples/AWTMonitor/AWTMonitor.java">here</a>
+to view the source). Before you can run it, you need to set up your environment
+appropriately by following these instructions:
+<blockquote>
+<li>
+Copy <tt>jaccess.jar</tt> and <tt>jaccess-examples.jar</tt> to the <tt>$JDKHOME/jre/lib/ext</tt>
+directory under your JDK1.2 or later installation.</li>
+
+<li>
+Modify (create one if it doesn't exist) your <tt>$JDKHOME/jre/lib/accessibility.properties</tt>
+file to include the following line:</li>
+
+<blockquote>
+<pre>assistive_technologies=AWTMonitor</pre>
+</blockquote>
+</blockquote>
+After you follow these instructions, you should be ready to run AWTMonitor.
+<h3>
+Running AWTMonitor with both JDK1.1, JDK1.2 and later:</h3>
+By following the instructions above, AWTMonitor will automatically be started
+any time you start a Java application.&nbsp; For example, you can run the
+SwingSet demo that comes as part of the demonstration applications for
+Swing.
+<h3>
+Using AWTMonitor:</h3>
+AWTMonitor provides a several rows of checkboxes at the top of its dialog
+box. These allow you to specify the classes of user interface events you
+can monitor in the Java Virtual Machine. AWTMonitor registers an interest
+in the events by using calls to the <a href="api/com/sun/java/accessibility/util/AWTEventMonitor.html">AWTEventMonitor</a>
+class from the Java Accessibility Utilities package whenever you click
+one of the checkboxes.
+<p>In the middle of the dialog box is a List of events that is updated
+as each event occurs. Items will be posted in this List only if you selecting
+the events you are interested in by manipulating the checkboxes at the
+top of the box.
+<p>In the bottom left of the dialog box is a small List box that represents
+the last object to have focus. It is updated each time the focus changes
+and contains a small sample of the information obtained from the Java Accessibility
+API. NOTE: This box will not be updated unless you select for Focus events.
+<p>In the lower right of the dialog box is a small List box that you can
+populate by moving the pointer over an object and pressing the F1 key.
+This uses calls to <tt><a href="api/com/sun/java/accessibility/util/EventQueueMonitor.html">EventQueueMonitor</a></tt>
+to obtain the current mouse position and obtain an accessible object from
+that point. It then calls a small number of methods from the java Accessibility
+API to display information about the object under the pointer. NOTE: This
+box will not be updated unless you select for key events.
+<br><!---- END Main text Area ---->
+<hr SIZE=3 NOSHADE>
+<address>
+<img SRC="images/javalogo52x88.gif" ALT="Java Logo" NOSAVE  align=LEFT><font size=-1><a href="http://java.sun.com/share/copyright.html">Copyright&copy;
+</a>1995-99
+
+<a href="http://www.sun.com">Sun Microsystems, Inc. All Rights Reserved.</a></font></address>
+
+<address>
+<font size=-1>To submit comments or suggestions about <a href="http://www.sun.com/access/index.html">Java
+Accessibility</a>, please send mail to <i><a href="mailto:access@sun.com">access@sun.com</a></i>.</font></address>
+
+<br><a href="http://www.sun.com"><img SRC="images/smi_logo.gif" ALT="Sun MicroSystems" NOSAVE BORDER=0  align=RIGHT></a>
+</body>
+</html>

@@ -1,0 +1,78 @@
+
+NOTES ON EVALUATING JAVA ACCESSIBILITY
+
+While you evaluate this release of the Java Accessibility Utilties, please 
+keep a few things in mind:
+
+- There are known problems (see below).
+- Even if you can't use the API, we still want your feedback on it.
+
+This file aims to help you give us meaningful feedback and avoid
+wasting your time on stuff that we already know is broken.  It has these
+sections:
+
+Please Don't Tell Us    
+	Lists stuff that might or might not work properly, but that we 
+	aren't currently seeking feedback on.
+
+Known Problems
+	Lists problems we are working on.
+
+How to Give Feedback
+	The e-mail address to use, and what to put in bug reports.
+
+-------------
+PLEASE DON'T TELL US
+-------------
+
+THINGS WE ALREADY KNOW ABOUT
+Please read the KNOWN PROBLEMS section in this file for information
+about bugs and problems we already know about.  Since we already know
+about them, there's no need to remind us they are there.
+
+-------------
+KNOWN PROBLEMS
+-------------
+
+There are no known problems with the Java Accessibility API.
+
+The split pane in the Monkey example cannot be adjusted if the
+Ferret example is running at the same time.
+
+Under Motif if you have "click-to-activate" set, you may need to
+move your mouse into the Java application you launched in order to
+get the assistive technologies to come up (their guiInitialized() method
+isn't getting called until that first mouse event occurs).
+
+--------------------
+HOW TO GIVE FEEDBACK
+--------------------
+Please send your feedback to this e-mail address:
+
+	access@sun.com
+
+If you've found a bug, you can help us greatly by including the
+following information in your e-mail:
+
+- A program or code snippet that shows the problem.
+
+- The platform you're using.
+
+- The setting of your CLASSPATH environment variable.
+
+- A backtrace, if appropriate.  This will tell us what the program is
+  doing when the bug occurs. To generate a backtrace, do this:
+  
+  1. Go to the shell window in which you entered the 'java' command.
+
+  2. Make sure it has the keyboard focus and that the interpreter
+     ('java' command) isn't a background process.
+
+  3. Enter the appropriate character:
+
+         Control-\		(Solaris)
+         Control-Break		(Win 95/NT)
+
+  4. A bunch of text should be displayed in the window.  Please
+     put a copy of it into your e-mail.
+	

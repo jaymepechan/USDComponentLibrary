@@ -1,0 +1,1639 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Uii.Desktop.Cti.Core</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Uii.Desktop.Cti.Core.CtiAgentStateManager">
+            <summary>
+            This is the base class for managing Agent State Actions
+            This class is intended to be overridden as necessary to provide implementation points for Custom CTI Commands
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.Cti.Core.ICtiAgentStateManager">
+            <summary>
+            Agent State Manager Interface. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.ICtiAgentStateManager.SetAgentMediaAddress(System.String)">
+            <summary>
+            This method is used to Set the Media endpoint of an agent desktop
+            This could be a TN, IPAddress or some other method.
+            The Implementation of which is up to the CTI Provider as defined in the CTI hosted Control. 
+            </summary>
+            <param name="mediaId">TN, IPAddress, or other Media Target Specifier</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.ICtiAgentStateManager.UpdateState">
+            <summary>
+            Triggers a StateUpdate event with the current state
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.ICtiAgentStateManager.SetAvailable">
+            <summary>
+            Sends a Command the CTI interface to set the Agnet State to Available
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.ICtiAgentStateManager.SetUnavailable(System.String)">
+            <summary>
+            Set the agent state for the ID of the current agnet to unavailable. 
+            </summary>
+            <param name="reasonCode">Text Reason for Unvalable. can be empty</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.ICtiAgentStateManager.SendAvailable">
+            <summary>
+            This notifies the calling system that the agent is available
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.ICtiAgentStateManager.SendLoggedOut">
+            <summary>
+            This Notifies the calling systemt that hte agent is logged out
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.ICtiAgentStateManager.SendUnavailable">
+            <summary>
+            Raise the unavaiable event
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.ICtiAgentStateManager.LoadGlobalAgentConfig">
+            <summary>
+            Loads the Global Agent config
+            </summary>
+        </member>
+        <member name="E:Microsoft.Uii.Desktop.Cti.Core.ICtiAgentStateManager.AgentAvailable">
+            <summary>
+            Raised when the agent goes into an Available State
+            </summary>
+        </member>
+        <member name="E:Microsoft.Uii.Desktop.Cti.Core.ICtiAgentStateManager.AgentNotAvailable">
+            <summary>
+            Raised when the agent goes into an UnAvailable State
+            </summary>
+        </member>
+        <member name="E:Microsoft.Uii.Desktop.Cti.Core.ICtiAgentStateManager.AgentLoggedOut">
+            <summary>
+            Raised when the agent goes into a Logged out State
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.ICtiAgentStateManager.GetCurrentAgentState">
+            <summary>
+            Gets the current Agent State. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.Cti.Core.CtiAgentStateManager.CtiInterface">
+            <summary>
+            This is a Pointer to the Main CTI Interface Object(ICti)
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.Cti.Core.CtiAgentStateManager.lastAgentState">
+            <summary>
+            Stores the Last Agent State
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.CtiAgentStateManager.#ctor(Microsoft.Uii.Desktop.Cti.Core.ICtiControl)">
+            <summary>
+            Constructs a new instance of the AgentStateManager Core Class,
+            this class requires a pointer the Hosted CtiInterface that is currently loaded. 
+            </summary>
+            <param name="ctiHostedControlInterface">CTI Hosted Control</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.CtiAgentStateManager.CtiInterface_AgentStateChanged(System.Object,Microsoft.Uii.Desktop.Cti.Core.CtiCoreEventArgs)">
+            <summary>
+            Event raised when a Agent Status Change event is detected
+            </summary>
+            <param name="sender"></param>
+            <param name="e">CTI Core EventArgs</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.CtiAgentStateManager.UpdateState">
+            <summary>
+            Update Agent State
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.CtiAgentStateManager.OnUpdateAgentStatusEvent(Microsoft.Uii.Desktop.Cti.Core.CtiCoreEventArgs)">
+            <summary>
+            This methods handles an update for the CTI platform Indicating that an Agent Change Event has occured.
+            This method should aways be overriden. 
+            </summary>
+            <param name="e">CTI Specific Inbound Event</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.CtiAgentStateManager.SetAgentMediaAddress(System.String)">
+            <summary>
+            This method is used to Set the Media endpoint of an agent desktop
+            This could be a TN, IPAddress or some other method.
+            The Implementation of which is up to the CTI Provider as defined in the CTI hosted Control. 
+            </summary>
+            <param name="mediaId">TN, IPAddress, or other Media Target Specifier</param>
+            <returns>true if sucessfull , false if not</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.CtiAgentStateManager.SetAvailable">
+            <summary>
+            Sends a Command the CTI interface to set the Agent State to Available
+            </summary>
+            <returns>true if sucessfull , false if not</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.CtiAgentStateManager.SetUnavailable(System.String)">
+            <summary>
+            Set the agent state for the ID of the current agent to unavailable. 
+            </summary>
+            <param name="reasonCode">Text Reason for Unvalable. can be empty</param>
+            <returns>true if sucessfull , false if not</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.CtiAgentStateManager.SendAvailable">
+            <summary>
+            This notifies the calling system that the agent is available
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.CtiAgentStateManager.SendLoggedOut">
+            <summary>
+            This Notifies the calling system that the agent is logged out
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.CtiAgentStateManager.SendUnavailable">
+            <summary>
+            Raise the unavaiable event
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.CtiAgentStateManager.LoadGlobalAgentConfig">
+            <summary>
+            Loads the Global Agent config
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.CtiAgentStateManager.AgentGlobalConfig">
+            <summary>
+            This object contains the agent configuration information. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.CtiAgentStateManager.CurrentAgentState">
+            <summary>
+            Carries the current Textual State.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.CtiAgentStateManager.CtiHostedControl">
+            <summary>
+            Pointer to the Hosted control provided during construction 
+            </summary>
+        </member>
+        <member name="E:Microsoft.Uii.Desktop.Cti.Core.CtiAgentStateManager.AgentAvailable">
+            <summary>
+            Raised when an agent available state is set
+            </summary>
+        </member>
+        <member name="E:Microsoft.Uii.Desktop.Cti.Core.CtiAgentStateManager.AgentNotAvailable">
+            <summary>
+            Raised when an agent not available state is set
+            </summary>
+        </member>
+        <member name="E:Microsoft.Uii.Desktop.Cti.Core.CtiAgentStateManager.AgentLoggedOut">
+            <summary>
+            Raised when an agent logged out state is set
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.CtiAgentStateManager.GetCurrentAgentState">
+            <summary>
+            returns the current agent state. 
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.Cti.Core.CtiCallActionOptions">
+            <summary>
+            This class is used to enable or disable call actions
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.CtiCallActionOptions.#ctor">
+            <summary>
+            Default contructor. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.CtiCallActionOptions.EnableDial">
+            <summary>
+            Enable the Dial Function
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.CtiCallActionOptions.EnableAnswer">
+            <summary>
+            Enable the Answer Function
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.CtiCallActionOptions.EnableHold">
+            <summary>
+            Enable the Hold Function
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.CtiCallActionOptions.EnableUNHold">
+            <summary>
+            Enable the Unhold function
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.CtiCallActionOptions.EnablePickup">
+            <summary>
+            Enable the Pickup Function
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.CtiCallActionOptions.EnableHangUp">
+            <summary>
+            Enable the Hangup Function
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.CtiCallActionOptions.EnableReject">
+            <summary>
+            Enable the Reject Function
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.CtiCallActionOptions.EnableTransfer">
+            <summary>
+            Enable the Transfer Function
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.CtiCallActionOptions.EnableWrap">
+            <summary>
+            Enable the Call Wrap Function
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.CtiCallActionOptions.EnableConference">
+            <summary>
+            Enable the Call Confrence Function
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.CtiCallActionOptions.AdditionalStates">
+            <summary>
+            Covers any additional properties that are necessary to be addeded to the Call Actions Options. 
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.Cti.Core.CtiCallStateManager">
+            <summary>
+            This is the abstract class interface for the CallState Manager.
+            This class is intended to be overridden as necessary to provide implementation points for Custom CTI Commands
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.Cti.Core.ICtiCallStateManager">
+            <summary>
+            This is an internal interface for the CTI subsystem. Not for developer use.
+            Utilize the base class instead
+            
+            Call State Manager Interface for extending Call State managers. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.ICtiCallStateManager.GetCallInfoData(System.Guid)">
+            <summary>
+            Returns Call Info Data based on the Call RefID
+            </summary>
+            <param name="ctiCallRefCallId">Call ID to access information on</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.ICtiCallStateManager.RaiseNewCallEvent(Microsoft.Uii.Desktop.Cti.Core.NewCallEventArgs)">
+            <summary>
+            Raises the New Call Event 
+            </summary>
+            <param name="newCallArgs"></param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.ICtiCallStateManager.RaiseCallStateChangeEvent(Microsoft.Uii.Desktop.Cti.Core.CtiCallEventArgs)">
+            <summary>
+            Raised by a call state change event. 
+            </summary>
+            <param name="stateChangeArgs"></param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.ICtiCallStateManager.GetCallVariable(System.Guid,System.String)">
+            <summary>
+            Gets a Call Call Data Item by Key
+            </summary>
+            <param name="key">Key name to pull from the call data</param>
+            <param name="ctiCallRefCallId">Call ID to access information on</param>
+            <remarks>Required Override.</remarks>
+            <returns>Value of the Key</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.ICtiCallStateManager.GetCallState(System.Guid)">
+            <summary>
+            Returns the current Call state
+            </summary>
+            <param name="ctiCallRefCallId">Call ID to access information on</param>
+            <returns>String Version of the call state</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.ICtiCallStateManager.SetCallVariables(System.Guid,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Sets Call Data items in the collection
+            Calls a method in the ICTI interface.
+            </summary>
+            <param name="ctiCallRefCallId">Call ID to access information on</param>
+            <param name="callVars">Dictionary of Name value pairs to add to the Call Vars</param>
+            <returns>True if sucessfull, false if not</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.ICtiCallStateManager.UpdateState">
+            <summary>
+            triggers a StateUpdate event with the current state.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.ICtiCallStateManager.AnswerCall(System.Guid)">
+            <summary>
+            Issues an answer call request to the Hosted CTI interface. 
+            </summary>
+            <param name="ctiCallRefCallId">Reference Id Identifying the Call</param>
+            <returns>True on Success, False on Failure</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.ICtiCallStateManager.PickupCall(System.Guid)">
+            <summary>
+            Issues a Pickup Call request to the Hosted CTI Interface. 
+            </summary>
+            <param name="ctiCallRefCallId">Reference Id Identifying the Call</param>
+            <returns>True on Success, False on Failure</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.ICtiCallStateManager.HoldCall(System.Guid)">
+            <summary>
+            Holds the call Specified by the Call ID
+            </summary>
+            <param name="ctiCallRefCallId">Reference Id Identifying the Call</param>
+            <returns>True on Success, False on Failure</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.ICtiCallStateManager.HangUpCall(System.Guid)">
+            <summary>
+            Hang up the call
+            </summary>
+            <param name="ctiCallRefCallId">Reference Id Identifying the Call</param>
+            <returns>True on Success, False on Failure</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.ICtiCallStateManager.RejectCall(System.Guid,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Reject call back to the queue
+            </summary>
+            <param name="ctiCallRefCallId">Reference Id Identifying the Call</param>
+            <param name="additionalData">Additional user defined data that can be passed to the method</param>
+            <returns>True on Success, False on Failure</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.ICtiCallStateManager.WrapUpCall(System.Guid,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Wrap up the call
+            </summary>
+            <param name="ctiCallRefCallId">Reference Id Identifying the Call</param>
+            <param name="additionalData">Additional user defined data that can be passed to the method</param>
+            <returns>True on Success, False on Failure</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.ICtiCallStateManager.SendChatMessage(System.Guid,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Send a chat message to the call 
+            </summary>
+            <param name="ctiCallRefCallId">Reference Id Identifying the Call</param>
+            <param name="additionalData">Additional user defined data that can be passed to the method</param>
+            <returns>True on Success, False on Failure</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.ICtiCallStateManager.DirectDialOut(System.String)">
+            <summary>
+            Do a Dial out
+            </summary>
+            <param name="numberToDial">Number to dial</param>
+            <returns>True on Success, False on Failure</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.ICtiCallStateManager.PushUrl(System.Guid,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Push a URL to the call
+            </summary>
+            <param name="ctiCallRefCallId">Reference Id Identifying the Call</param>
+            <param name="additionalData">Additional user defined data that can be passed to the method</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.ICtiCallStateManager.TransferCall(System.Guid,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Transfer's a Call
+            Use the Additional data to pass the nessessary data to the CTI Connector
+            </summary>
+            <param name="ctiCallRefCallId">Reference Id Identifying the Root Call</param>
+            <param name="additionalData">Additional user defined data that can be passed to the method</param>
+            <returns>True on Success, False on Failure</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.ICtiCallStateManager.ConferenceCall(System.Guid,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Conference's a Call
+            Use the Additional data to pass the nessessary data to the CTI Connector
+            </summary>
+            <param name="ctiCallRefCallId">Reference Id Identifying the Root Call</param>
+            <param name="additionalData">Additional user defined data that can be passed to the method</param>
+            <returns>True on Success, False on Failure</returns>
+        </member>
+        <member name="E:Microsoft.Uii.Desktop.Cti.Core.ICtiCallStateManager.CallManagerStateUpdate">
+            <summary>
+            Event raised when the state of the call changes
+            </summary>
+        </member>
+        <member name="E:Microsoft.Uii.Desktop.Cti.Core.ICtiCallStateManager.CallManagerStateNewCall">
+            <summary>
+            Event raised when a new call is received
+            </summary>
+        </member>
+        <member name="E:Microsoft.Uii.Desktop.Cti.Core.ICtiCallStateManager.CallItemEvent">
+            <summary>
+            Event raised when a Call Item Event is raised.
+            A Call Item Event could be a Inbound Chat event, Email event, vid event , etc..
+            This will pass the vender specific data to the up stream system to allow the call state manager to make a decision.
+            </summary>
+        </member>
+        <member name="E:Microsoft.Uii.Desktop.Cti.Core.ICtiCallStateManager.CallDestructed">
+            <summary>
+            Raised when a call destruct is received.. This is the last thing that is done prior to removing the call record.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.ICtiCallStateManager.CallersList">
+            <summary>
+            CTI callers list
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.ICtiCallStateManager.CallCount">
+            <summary>
+            Property for Count of calls that are currently in the system
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.ICtiCallStateManager.EnableAutoAnswer">
+            <summary>
+            If True, the system will automatically raise an “Answer” command when a new call event is received. 
+            Note : this will immediately answer the call. Some CTI solutions will not allow you to Reject a call after a call has been answered. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.ICtiCallStateManager.EnableOverrideAutoAnswerOnExistingCalls">
+            <summary>
+            If True,  if the user has 1+ calls on the desktop, a New Call will require the user to issue the “Answer” command manually , even if EnableAutoAnswer is set to true.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.ICtiCallStateManager.GetRootCtiInterface">
+            <summary>
+            returns the Core CTI Hosted control 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.Cti.Core.CtiCallStateManager.CtiInterface">
+            <summary>
+            This is a Pointer to the Main CTI Interface Object(Iti)
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.Cti.Core.CtiCallStateManager.callersList">
+            <summary>
+            Collection of calls that are being managed.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.Cti.Core.CtiCallStateManager.SetAutoAnswer">
+            <summary>
+            Enable Auto Answer
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.Cti.Core.CtiCallStateManager.OverRideAutoAnswerOnExistingCalls">
+            <summary>
+            Enable Override AA on existing Call
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.Cti.Core.CtiCallStateManager.lastCallState">
+            <summary>
+            Stores the last call state
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.CtiCallStateManager.#ctor(Microsoft.Uii.Desktop.Cti.Core.ICtiControl)">
+            <summary>
+            Base Constructor for Call State Manager.
+            </summary>
+            <param name="ctiHostedControlInterface"></param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.CtiCallStateManager.CtiInterface_CallItemEvent(System.Object,Microsoft.Uii.Desktop.Cti.Core.CtiCoreEventArgs)">
+            <summary>
+            Internal event handler.
+            </summary>
+            <param name="sender"></param>
+            <param name="e">Cti Core EventArgs</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.CtiCallStateManager.OnCallItemEvent(Microsoft.Uii.Desktop.Cti.Core.CtiCoreEventArgs)">
+            <summary>
+             Override point. This is an Event sink for Call Item Events from the CTI system.
+            </summary>
+            <param name="e">Inbound event data from CTI provider.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.CtiCallStateManager.CtiInterface_CallNewCallInfoEvent(System.Object,Microsoft.Uii.Desktop.Cti.Core.CtiCoreEventArgs)">
+            <summary>
+            Internal handler for Call New Call Info Event. 
+            </summary>
+            <param name="sender"></param>
+            <param name="e">Cti Core EventArgs</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.CtiCallStateManager.OnCallInfoEvent(Microsoft.Uii.Desktop.Cti.Core.CtiCoreEventArgs)">
+            <summary>
+            Required Override point. This is the Event Sink for the New Call Info Event.
+            </summary>
+            <param name="e">Cti Core EventArgs</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.CtiCallStateManager.CtiInterface_CallStateChangeEvent(System.Object,Microsoft.Uii.Desktop.Cti.Core.CtiCoreEventArgs)">
+            <summary>
+            Catch the Call State Changed event and hand it to the upstream system
+            </summary>
+            <param name="sender"></param>
+            <param name="e">Cti Core EventArgs</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.CtiCallStateManager.OnCallStateChanged(Microsoft.Uii.Desktop.Cti.Core.CtiCoreEventArgs)">
+            <summary>
+            Required Override point. This is the Event Sink for the Call Status Changed Event.
+            </summary>
+            <param name="e">Cti Core EventArgs</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.CtiCallStateManager.CtiInterface_CallDestructedEvent(System.Object,Microsoft.Uii.Desktop.Cti.Core.CtiCoreEventArgs)">
+            <summary>
+            Raised when we get a Call Closed / Killed Event. 
+            </summary>
+            <param name="sender"></param>
+            <param name="e">Cti Core EventArgs</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.CtiCallStateManager.OnCallDestructed(Microsoft.Uii.Desktop.Cti.Core.CtiCoreEventArgs)">
+            <summary>
+            Override point. This is the Event Sink for the Call Destructed Event.
+            </summary>
+            <param name="e">Cti Core EventArgs</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.CtiCallStateManager.CtiInterface_CallNewCallEvent(System.Object,Microsoft.Uii.Desktop.Cti.Core.CtiCoreEventArgs)">
+            <summary>
+            Handleer for the New Call Event
+            </summary>
+            <param name="sender"></param>
+            <param name="e">Cti Core EventArgs</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.CtiCallStateManager.NewCallEvent(Microsoft.Uii.Desktop.Cti.Core.CallInfoData,Microsoft.Uii.Desktop.Cti.Core.CtiCoreEventArgs)">
+            <summary>
+            This is the Event Sink for the New Call Event.
+            </summary>
+            <param name="callData">CallInfoData Object populated with call data</param>
+            <param name="e">Cti Core EventArgs</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.CtiCallStateManager.OnNewCallEvent(Microsoft.Uii.Desktop.Cti.Core.NewCallEventData)">
+            <summary>
+            Required Override point. This is the Event Sink for the New Call Event.
+            </summary>
+            <param name="callEventData">New call details</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.CtiCallStateManager.AddCallInfoItemToCallersList(Microsoft.Uii.Desktop.Cti.Core.CallInfoData)">
+            <summary>
+            Adds a CallInfoData Item to the CallersList 
+            </summary>
+            <param name="callData">CallInfoData Object populated with call data</param>
+            <returns>True on success, false on failure</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.CtiCallStateManager.UpdateCallInfoItemEntry(Microsoft.Uii.Desktop.Cti.Core.CallInfoData)">
+            <summary>
+            Updates a CallInfoData Item in the CallersList
+            </summary>
+            <param name="callData">CallInfoData Object populated with call data</param>
+            <returns>True on success, false on failure</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.CtiCallStateManager.GetCallInfoData(System.String)">
+            <summary>
+            Gets a CallInfoData object by the string version of the cti vendor call id
+            </summary>
+            <param name="vendorCallId">String version of the vendor call id</param>
+            <returns>Populated CallInfoData Object or null</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.CtiCallStateManager.GetCallInfoData(System.Guid)">
+            <summary>
+            Gets a CallInfoData object by Call Reference ID
+            </summary>
+            <param name="ctiCallRefCallId">Call Reference ID</param>
+            <returns>Populated CallInfoData Object or null</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.CtiCallStateManager.RemoveCall(Microsoft.Uii.Desktop.Cti.Core.CallInfoData)">
+            <summary>
+            Removes a Call from the Calls list by CallInfoData object. 
+            </summary>
+            <param name="callData">CallInfoData Object to remove</param>
+            <returns>True on success, false on failure</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.CtiCallStateManager.RemoveCall(System.String)">
+            <summary>
+            Removes a Call from the Calls list by the string version of the cti vendor call id
+            </summary>
+            <param name="vendorCallId">String version of the vendor call id</param>
+            <returns>True on success, false on failure</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.CtiCallStateManager.GetPreLoadedCtiCommandRequest(System.Guid)">
+            <summary>
+            Returns a preloaded CTI Command Request
+            </summary>
+            <param name="ctiCallRefCallID">Call Reference ID</param>
+            <returns>Populated CtiCommandRequest Object, or null</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.CtiCallStateManager.RaiseNewCallEvent(Microsoft.Uii.Desktop.Cti.Core.NewCallEventArgs)">
+            <summary>
+            Raises a New call event if there is a New Call event wired. 
+            </summary>
+            <param name="newCallArgs"></param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.CtiCallStateManager.UpdateState">
+            <summary>
+            updates the current state to new UI controls
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.CtiCallStateManager.RaiseCallStateChangeEvent(Microsoft.Uii.Desktop.Cti.Core.CtiCallEventArgs)">
+            <summary>
+            Raise State change event. 
+            </summary>
+            <param name="stateChangeArgs">CTI call EventArgs</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.CtiCallStateManager.IsCallActive(System.Guid)">
+            <summary>
+            Returns if the current call is active. 
+            Required override
+            </summary>
+            <param name="ctiCallRefCallId">Call Reference ID</param>
+            <returns>True on success, false on failure</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.CtiCallStateManager.AnswerCall(System.Guid)">
+            <summary>
+            Answer the call utilizing the Call Reference ID  
+            </summary>
+            <param name="ctiCallRefCallId">Call Reference ID</param>
+            <returns>True on success, false on failure</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.CtiCallStateManager.PickupCall(System.Guid)">
+            <summary>
+            Execute a pick up call request to the base interface. 
+            </summary>
+            <param name="ctiCallRefCallId">Call Reference ID</param>
+            <returns>True on success, false on failure</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.CtiCallStateManager.HoldCall(System.Guid)">
+            <summary>
+            Execute a Hold Call request to the base interface.
+            </summary>
+            <param name="ctiCallRefCallId">Call Reference ID</param>
+            <returns>True on success, false on failure</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.CtiCallStateManager.HangUpCall(System.Guid)">
+            <summary>
+            Execute a Hangup Call Request to the Base Interface
+            </summary>
+            <param name="ctiCallRefCallId">Call Reference ID</param>
+            <returns>True on success, false on failure</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.CtiCallStateManager.RejectCall(System.Guid,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Execute a Reject Call Command to the Base Interface
+            </summary>
+            <param name="ctiCallRefCallId">Call Reference ID</param>
+            <param name="additionalData">Additional Data associated with the command</param>
+            <returns>True on success, false on failure</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.CtiCallStateManager.WrapUpCall(System.Guid,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Execute a Wrap up call command to the base interface
+            </summary>
+            <param name="ctiCallRefCallId">Call Reference ID</param>
+            <param name="additionalData">Additional Data associated with the command</param>
+            <returns>True on success, false on failure</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.CtiCallStateManager.SendChatMessage(System.Guid,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Execute a Send Chat Message Command
+            </summary>
+            <param name="ctiCallRefCallId">Call Reference ID</param>
+            <param name="additionalData">Additional Data associated with the command</param>
+            <returns>True on success, false on failure</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.CtiCallStateManager.DirectDialOut(System.String)">
+            <summary>
+            Execute a Direct Dial out command 
+            </summary>
+            <param name="numberToDial">TN / Address to Call</param>
+            <returns>True on success, false on failure</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.CtiCallStateManager.PushUrl(System.Guid,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Execute a Push URL command 
+            </summary>
+            <param name="ctiCallRefCallId">Call Reference ID</param>
+            <param name="additionalData">Additional Data associated with the command</param>
+            <returns>True on success, false on failure</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.CtiCallStateManager.TransferCall(System.Guid,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Transfer's a Call
+            Use the Additional data to pass the nessessary data to the CTI Connector
+            </summary>
+            <param name="ctiCallRefCallId">Reference Id Identifying the Root Call</param>
+            <param name="additionalData">Additional user defined data that can be passed to the method</param>
+            <returns>True on Success, False on Failure</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.CtiCallStateManager.ConferenceCall(System.Guid,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Conference's a Call
+            Use the Additional data to pass the nessessary data to the CTI Connector
+            </summary>
+            <param name="ctiCallRefCallId">Reference Id Identifying the Root Call</param>
+            <param name="additionalData">Additional user defined data that can be passed to the method</param>
+            <returns>True on Success, False on Failure</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.CtiCallStateManager.GetCallVariable(System.Guid,System.String)">
+            <summary>
+            Required Override
+            This function is called to get a variable from the Call 
+            </summary>
+            <param name="key">Key to return</param>
+            <param name="ctiCallRefCallId">Call Reference ID</param>
+            <returns>String Version of the variable requested</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.CtiCallStateManager.SetCallVariables(System.Guid,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            This method is called to set call variables into a Call. 
+            This Method will also update the call variable in the additional params array of the CallInfoDataStructure for the call.
+            This method will call the SetCallVariable On the ICTI interface, passing in the native call ID and the Dictionary
+            </summary>
+            <param name="ctiCallRefCallId">Call Reference ID</param>
+            <param name="callVars">Dictionary of Name Value Pairs to set</param>
+            <returns>true if sucessfull, false if not</returns>
+            <seealso cref="T:Microsoft.Uii.Desktop.Cti.Core.CallInfoData"/>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.CtiCallStateManager.GetCallState(System.Guid)">
+            <summary>
+            Gets the current call state
+            </summary>
+            <param name="ctiCallRefCallId">Call Reference ID</param>
+            <returns>String Version of the call ID</returns>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.CtiCallStateManager.CallersList">
+            <summary>
+            Collection of calls that are being managed.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.CtiCallStateManager.CtiHostedControl">
+            <summary>
+            Pointer to the Core ICti Interface Object that was used to construct this Call State Manager 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.CtiCallStateManager.EnableAutoAnswer">
+            <summary>
+            Set Enable Auto Answer
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.CtiCallStateManager.EnableOverrideAutoAnswerOnExistingCalls">
+            <summary>
+            Set Override Auto Answer if there is more than 1 call active.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.CtiCallStateManager.GetCurrentActiveCallCount">
+            <summary>
+            Returns the count of active calls. 
+            </summary>
+        </member>
+        <member name="E:Microsoft.Uii.Desktop.Cti.Core.CtiCallStateManager.CallManagerStateUpdate">
+            <summary>
+            Raised when a call’s state changes
+            </summary>
+        </member>
+        <member name="E:Microsoft.Uii.Desktop.Cti.Core.CtiCallStateManager.CallManagerStateNewCall">
+            <summary>
+            Raised when a new call is received
+            </summary>
+        </member>
+        <member name="E:Microsoft.Uii.Desktop.Cti.Core.CtiCallStateManager.CallItemEvent">
+            <summary>
+            Raised when a new call item information event is received
+            </summary>
+        </member>
+        <member name="E:Microsoft.Uii.Desktop.Cti.Core.CtiCallStateManager.CallDestructed">
+            <summary>
+            Raised when a call is terminated
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.CtiCallStateManager.GetRootCtiInterface">
+            <summary>
+            Gets the Root CTI Hosted Control
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.CtiCallStateManager.CallCount">
+            <summary>
+            Gets the number of Calls currently in Local Call List.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.Cti.Core.StateRequestType">
+            <summary>
+            Status Request Type used by the SetAgentState Method
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.Cti.Core.StateRequestType.AGENT">
+            <summary>
+            State Request for the Agent Status
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.Cti.Core.StateRequestType.CALL">
+            <summary>
+            State Request for the Call Status. 
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.Cti.Core.LookupRequestKeys">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.LookupRequestKeys.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.LookupRequestKeys.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.LookupRequestKeys.ANI">
+            <summary>
+              Looks up a localized string similar to ANI.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.LookupRequestKeys.CALLTYPE">
+            <summary>
+              Looks up a localized string similar to CALLTYPE.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.LookupRequestKeys.CTICALLREFID">
+            <summary>
+              Looks up a localized string similar to CTICALLREFID.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.LookupRequestKeys.CTIDESKTOPMANAGERCONTROL">
+            <summary>
+              Looks up a localized string similar to CTIDESKTOPMANAGERCONTROL.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.LookupRequestKeys.DINS">
+            <summary>
+              Looks up a localized string similar to DINS.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.Cti.Core.Properties.Constants">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.Properties.Constants.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.Properties.Constants.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.Properties.Constants.CTILOOKUPACTIONNAME">
+            <summary>
+              Looks up a localized string similar to CtiLookupRequest.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.Cti.Core.Properties.ExceptionMessages">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.Properties.ExceptionMessages.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.Properties.ExceptionMessages.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.Properties.ExceptionMessages.AddCallInfoItemToCallersListException">
+            <summary>
+              Looks up a localized string similar to An exception triggered in Add Call Info Item to Callers List, Exception:.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.Properties.ExceptionMessages.AddLookupRequestItemException">
+            <summary>
+              Looks up a localized string similar to CTI CORE &gt;&gt; ADD LOOKUP ITEM FAILED &gt;&gt; {0}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.Properties.ExceptionMessages.GetCallInfoException">
+            <summary>
+              Looks up a localized string similar to Exception Triggered in Get Call Info Data from Callers List, Exception:.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.Properties.ExceptionMessages.RemoveCallException">
+            <summary>
+              Looks up a localized string similar to Exception Triggered in Remove Call from Callers List, Exception:.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.Properties.ExceptionMessages.RemoveLookupRequestItemException">
+            <summary>
+              Looks up a localized string similar to CTI CORE &gt;&gt; REMOVE LOOKUP ITEM FAILED &gt;&gt; {0}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.Properties.ExceptionMessages.UpdateCallInfoItemEntryException">
+            <summary>
+              Looks up a localized string similar to Exception Triggered in Update Item on Callers List, Exception:.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.Cti.Core.ICtiAgentStateControl">
+            <summary>
+            Specialized interface for describing a hosted control that is used for processing and or displaying Agent State information 
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.Cti.Core.ICtiEnabledControlConsumer">
+            <summary>
+            Described a hosted control that will accept pointers to the StateManagerCore and the AgentStateManager Core
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.ICtiEnabledControlConsumer.SetManagers(System.Object,System.Object)">
+            <summary>
+            Called by CTI as a control that implements this interface is initialized.
+            </summary>
+            <param name="agentManager">Pointer to the AgentStateManagerCore object</param>
+            <param name="callManager">Pointer to the CallStateManagerCore object</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.ICtiEnabledControlConsumer.SessionCloseEvent(Microsoft.Uii.Csr.SessionControllerEventArgs)">
+            <summary>
+            Called by CTI as a Session is closing
+            </summary>
+            <param name="args">Session Controller Event Arguments</param>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.ICtiEnabledControlConsumer.IsManagersSet">
+            <summary>
+            True if the SetManagers method has been called successfully, False if not
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.ICtiAgentStateControl.SetAgentState(System.Guid,System.String,System.String,System.Boolean)">
+            <summary>
+            Called to set the Agent state to a given state
+            </summary>
+            <param name="ctiCallRefCallId">Cti Call Reference ID</param>
+            <param name="overrideCtiLogic">Force the requested state</param>
+            <param name="requestedState">requested state to goto</param>
+            <param name="targetState">internal only</param>
+            <returns>true if set, false if not</returns>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.Cti.Core.AgentStateManagerEventArgs">
+            <summary>
+            Agent State Manager Events Argments. 
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.Cti.Core.CtiCallEventArgs">
+            <summary>
+            Event Arguments that contain information regarding a Call based event. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.CtiCallEventArgs.#ctor(System.Guid,System.String,Microsoft.Uii.Desktop.Cti.Core.CtiCallActionOptions)">
+            <summary>
+            External Call State Notification event.
+            </summary>
+            <param name="ctiRefCallId">Call Reference ID</param>
+            <param name="callState">New State of the call</param>
+            <param name="availableCallOptions">Available call options</param> 
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.CtiCallEventArgs.CtiRefCallId">
+            <summary>
+            Call Reference ID assigned by CTI for Internal tracking
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.CtiCallEventArgs.CallState">
+            <summary>
+            Text version of the call state. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.CtiCallEventArgs.AvailableCallOptions">
+            <summary>
+            Avaialable call options. 
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.Cti.Core.NewCallEventArgs">
+            <summary>
+            Event Arguments that contain information regarding a new call event
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.NewCallEventArgs.#ctor(System.Guid,Microsoft.Uii.Desktop.Cti.Core.CallInfoData)">
+            <summary>
+            Constructor for the New Call Event Arguments
+            </summary>
+            <param name="callInfo">CallInfoData Object</param>
+            <param name="ctiRefCallId">Call Reference ID</param>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.NewCallEventArgs.CtiRefCallId">
+            <summary>
+            Call Reference ID assigned by CTI for Internal tracking
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.NewCallEventArgs.CallInfo">
+            <summary>
+            CallInfoData Object, Preloaded with the initial CTI centric information 
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.Cti.Core.CallInfoData">
+            <summary>
+            Describes a call that is in process on a desktop. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.Cti.Core.CallInfoData.CtiRefCallID">
+            <summary>
+            Internal CTI Call Refeance ID
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.Cti.Core.CallInfoData.CtiRefCallState">
+            <summary>
+            Intenral CTI Call State 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.CallInfoData.SetCtiCallStateData(System.String)">
+            <summary>
+            This is an internal function for the CTI subsystem. Not for developer use.
+            </summary>
+            <param name="ctiReferenceCallState">Call State</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.CallInfoData.#ctor">
+            <summary>
+            This is an internal function for the CTI subsystem. Not for developer use.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.CallInfoData.CallReceived">
+            <summary>
+            DateTime Stamp indicating when a call was received by the system 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.CallInfoData.CallId">
+            <summary>
+            Vendor Call ID as a string
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.CallInfoData.CallType">
+            <summary>
+            Type of Call, this should be either CHAT , EMAIL , VOIP, VIDEO
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.CallInfoData.CurrentCallState">
+            <summary>
+            Current State of the Call
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.CallInfoData.CallerName">
+            <summary>
+            Name or Text associated with the call 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.CallInfoData.Ani">
+            <summary>
+            ANI of the call
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.CallInfoData.Dnis">
+            <summary>
+            DNIS for the Call
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.CallInfoData.IPAddress">
+            <summary>
+            IP Address Originating the call ( CHAT  based calls ) 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.CallInfoData.NewCallEventObject">
+            <summary>
+             New Call Event that is associated with the call.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.CallInfoData.AdditionalParameters">
+            <summary>
+            Additional Parameters and data associated with the call. 
+             Use this to store additional data or information beyond what the base object contains.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.CallInfoData.CallControlOptions">
+            <summary>
+            Call Control Options for the call. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.CallInfoData.CtiCallState">
+            <summary>
+            This is an internal function for the CTI subsystem. Not for developer use.
+            CTI Specific Call State – this is set by CTI as a call is processed.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.CallInfoData.GetCtiCallRefId">
+            <summary>
+            returns the internal Reference Id for the call.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.Cti.Core.NewCallEventData">
+            <summary>
+            New Call Details
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.NewCallEventData.CallInfo">
+            <summary>
+            Call that is in process on the desktop
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.NewCallEventData.EventData">
+            <summary>
+            Event Details for the call
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.Cti.Core.ICtiControl">
+            <summary>
+             This interface defines the core interfaces for CTI components. 
+             this interface will be used by the desktop to determine if a control is a CTI host control. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.ICtiControl.GetAgentId">
+            <summary>
+            Get AgentID for the currently logging agent..
+            </summary>
+            <returns>ID of the currently logged in agent as a string</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.ICtiControl.InitAndLogOn">
+            <summary>
+            Intilizae and Do Login Procedure to login to CTI
+            </summary>
+            <returns>true if sucessfull , false if not</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.ICtiControl.CleanUpAndShutdown">
+            <summary>
+            This Function cleans up and shuts down any CTI specific functions
+            and should be called as part of shutdown
+            </summary>
+            <returns>true if sucessfull , false if not</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.ICtiControl.LogOffAgent">
+            <summary>
+            Logs the current agent out.. 
+            to relogin, you need to call Init and Login
+            </summary>
+            <returns>true if sucessfull, false if not</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.ICtiControl.SetAgentState(Microsoft.Uii.Desktop.Cti.Core.CtiStateRequest)">
+            <summary>
+            This command attempts to set the agent state to the requested state.
+            </summary>
+            <param name="stateChangeRequest">State Change Request</param>
+            <returns>true if sucessfull , false if not</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.ICtiControl.SetAgentMediaAddress(System.String)">
+            <summary>
+            Sets the agents media address
+            </summary>
+            <param name="mediaAddress">Media Address</param>
+            <returns>true if sucessfull , false if not</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.ICtiControl.AnswerCall(Microsoft.Uii.Desktop.Cti.Core.CtiCommandRequest)">
+            <summary>
+            Answers the call identified by the CallID
+            </summary>
+            <param name="commandData">CallID and additional Command Data</param>
+            <returns>true if sucessfull, False if not</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.ICtiControl.PickupCall(Microsoft.Uii.Desktop.Cti.Core.CtiCommandRequest)">
+            <summary>
+            Pick a call up off hold
+            </summary>
+            <param name="commandData">CallID and additional Command Data</param>
+            <returns>true if sucessfull, False if not</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.ICtiControl.HoldCall(Microsoft.Uii.Desktop.Cti.Core.CtiCommandRequest)">
+            <summary>
+            Holds the call identified by the CallID
+            </summary>
+            <param name="commandData">CallID and additional Command Data</param>
+            <returns>true if sucessfull, False if not</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.ICtiControl.HangUpCall(Microsoft.Uii.Desktop.Cti.Core.CtiCommandRequest)">
+            <summary>
+            Relase's the call identified by the CallID
+            </summary>
+            <param name="commandData">CallID and additional Command Data</param>
+            <returns>true if sucessfull, False if not</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.ICtiControl.WrapCall(Microsoft.Uii.Desktop.Cti.Core.CtiCommandRequest)">
+            <summary>
+            Wraps the call identified by the CallID
+            
+            </summary>
+            <param name="commandData">CallID and additional Command Data</param>
+            <returns>true if sucessfull, False if not</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.ICtiControl.RejectCall(Microsoft.Uii.Desktop.Cti.Core.CtiCommandRequest)">
+            <summary>
+            Rejects the call identified by the CallID
+            </summary>
+            <param name="commandData">CallID and additional Command Data</param>
+            <returns>true if sucessfull, False if not</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.ICtiControl.SendChatMessage(Microsoft.Uii.Desktop.Cti.Core.CtiCommandRequest)">
+            <summary>
+            Sends a Chat message to the call identified by the call ID
+            </summary>
+            <param name="commandData">CallID and additional Command Data</param>
+            <returns>true if sucessfull, False if not</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.ICtiControl.MakeOutboundCall(Microsoft.Uii.Desktop.Cti.Core.CtiCommandRequest)">
+            <summary>
+            Dials a out bound number.
+            </summary>
+            <param name="commandData">Additional Command Data to do a New Call.
+            If used with  Number to Dial will be in a key called NumberToDial</param>
+            <returns>true if sucessfull , false if not</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.ICtiControl.PushUrl(Microsoft.Uii.Desktop.Cti.Core.CtiCommandRequest)">
+            <summary>
+            This Pushes a URL.
+            </summary>
+            <param name="commandData">CallID and additional Command Data</param>
+            <returns>true if sucessfull, False if not</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.ICtiControl.TransferCall(Microsoft.Uii.Desktop.Cti.Core.CtiCommandRequest)">
+            <summary>
+            Orders a Transfer command
+            </summary>
+            <param name="commandData">CallID and additional Command Data</param>
+            <returns>true if sucessfull, False if not</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.ICtiControl.ConferenceCall(Microsoft.Uii.Desktop.Cti.Core.CtiCommandRequest)">
+            <summary>
+            Orders a Conference command
+            </summary>
+            <param name="commandData">CallID and additional Command Data</param>
+            <returns>true if sucessfull, False if not</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.ICtiControl.SetCallVariable(Microsoft.Uii.Desktop.Cti.Core.CtiCommandRequest)">
+            <summary>
+            Sets a call State variable on the CTI object for the specified Call.
+            </summary>
+            <param name="commandData">CallID and Key / Value data in the Additional Params Data.</param>
+            <returns>true if sucessfull , false if not</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.ICtiControl.ExecuteGenericCommand(System.String,Microsoft.Uii.Desktop.Cti.Core.CtiCommandRequest)">
+            <summary>
+            This is a generic command handler
+            if the command does not exist in the currnet interface it can be extended via this interface.
+            </summary>
+            <param name="commandName">Name of the Command to execute</param>
+            <param name="commandData">CallID and additional Command Data</param>
+            <returns>User defiend response</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.ICtiControl.GetGlobalAgentConfigVars">
+            <summary>
+            This gets a system specific structure that contains the agent configuration enviroment variables. 
+            </summary>
+            <returns>Returns an object that contains agent configuration data.</returns>
+        </member>
+        <member name="E:Microsoft.Uii.Desktop.Cti.Core.ICtiControl.AgentStateChangedEvent">
+            <summary>
+            Raised when a Agent State change Event  occures
+            </summary>
+        </member>
+        <member name="E:Microsoft.Uii.Desktop.Cti.Core.ICtiControl.AgentLogMessageEvent">
+            <summary>
+            Raised when a Agent Log Event occures
+            </summary>
+        </member>
+        <member name="E:Microsoft.Uii.Desktop.Cti.Core.ICtiControl.CallNewCallEvent">
+            <summary>
+            Raised when a New Call is generated
+            </summary>
+        </member>
+        <member name="E:Microsoft.Uii.Desktop.Cti.Core.ICtiControl.CallDestructedEvent">
+            <summary>
+            Raised when a Call terminated is generated
+            </summary>
+        </member>
+        <member name="E:Microsoft.Uii.Desktop.Cti.Core.ICtiControl.CallStateChangeEvent">
+            <summary>
+            Raised when a Call State Event is generated
+            </summary>
+        </member>
+        <member name="E:Microsoft.Uii.Desktop.Cti.Core.ICtiControl.CallNewCallInfoEvent">
+            <summary>
+            Raised when a New Call Info Event is generated
+            </summary>
+        </member>
+        <member name="E:Microsoft.Uii.Desktop.Cti.Core.ICtiControl.CallItemEvent">
+            <summary>
+            Raised when a Chat Item Event is generated
+            </summary>
+        </member>
+        <member name="E:Microsoft.Uii.Desktop.Cti.Core.ICtiControl.CallMediaConnectedEvent">
+            <summary>
+            Raised when a the Medaia Endpoint connects. 
+            </summary>
+        </member>
+        <member name="E:Microsoft.Uii.Desktop.Cti.Core.ICtiControl.GeneralCtiEvent">
+            <summary>
+            Event used to pass event data not coverd in the named events. 
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.Cti.Core.CtiCoreEventArgs">
+            <summary>
+            This class is the event args object to contain event info, raised by the Core CTI system
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.CtiCoreEventArgs.#ctor(System.String,System.Object,System.String)">
+            <summary>
+            CosmoCom Event Packet
+            </summary>
+            <param name="eventName">Name / type of Event</param>
+            <param name="eventData">Base Event Object</param>
+            <param name="callId">string version of the vendor call id</param>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.CtiCoreEventArgs.EventName">
+            <summary>
+            Event Name of the Event
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.CtiCoreEventArgs.EventInfo">
+            <summary>
+            Event Object as a Base Event.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.CtiCoreEventArgs.VenderCallId">
+            <summary>
+            Vender Call Identifier 
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.Cti.Core.CtiStateRequest">
+            <summary>
+            Request Object for a State change request
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.Cti.Core.CtiCallIdBase">
+            <summary>
+            Base class for Call ID data 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.CtiCallIdBase.CtiCallId">
+            <summary>
+            Call ID to identify the call that is being addressed
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.CtiStateRequest.StateType">
+            <summary>
+            Type of State Request
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.CtiStateRequest.StateName">
+            <summary>
+            Name of the state
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.CtiStateRequest.StateId">
+            <summary>
+            Id of the state
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.CtiStateRequest.ReasonCodeId">
+            <summary>
+            Reason code id for the state
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.CtiStateRequest.ReasonCode">
+            <summary>
+            Reason code text for the state
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.Cti.Core.CtiCommandRequest">
+            <summary>
+            Request object insert call Id and additional data into request commands.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.CtiCommandRequest.#ctor">
+            <summary>
+            default constructor
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.CtiCommandRequest.AdditionalData">
+            <summary>
+            Additional data that can be appended to the Cti Command Request
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.Cti.Core.ICtiChat">
+            <summary>
+            Place holder to allow us to identify a CTI Chat Object. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.ICtiChat.GetCtiAgentStateManager">
+            <summary>
+            Returns a pointer to the <see cref="T:Microsoft.Uii.Desktop.Cti.Core.ICtiAgentStateManager"/> interface
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.Cti.Core.ICtiDesktopManager">
+            <summary>
+            Describes a hosted control that will act as the CTI Desktop manager for the CTI Subsystem. 
+            The desktop manager is responsible for the business logic and decoding of CTI events.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.ICtiDesktopManager.SetRootCtiInterface(Microsoft.Uii.Desktop.Cti.Core.ICtiControl)">
+            <summary>
+            Sets a pointer to the hosted control that has implemented the Cti core interface
+            </summary>
+            <param name="ctiRoot">Cti Hosted Control</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.ICtiDesktopManager.StartCtiInterface">
+            <summary>
+            Called by Cti as part of system start to initialize the CTI subsystem
+            </summary>
+            <returns>True if initialized, false if not</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.ICtiDesktopManager.UpdateState">
+            <summary>
+            called by the desktop to trigger the managers to fire a state update
+            and let new connected UI components know what the current state is.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.ICtiDesktopManager.GetCtiAgentStateManager">
+            <summary>
+            Returns a pointer to the <see cref="T:Microsoft.Uii.Desktop.Cti.Core.ICtiAgentStateManager"/> interface
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.ICtiDesktopManager.GetCtiCallStateManager">
+            <summary>
+            Returns a pointer to the <see cref="T:Microsoft.Uii.Desktop.Cti.Core.ICtiCallStateManager"/> interface
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.ICtiDesktopManager.IsCtiEnabled">
+            <summary>
+            Bool to check if CTI is alive. 
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.Cti.Core.ICtiEmail">
+            <summary>
+            Place holder to allow us to identify Cti Based Email Types. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.ICtiEmail.GetCtiAgentStateManager">
+            <summary>
+            Returns a pointer to the <see cref="T:Microsoft.Uii.Desktop.Cti.Core.ICtiAgentStateManager"/> interface
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.Cti.Core.CtiLookupRequest">
+            <summary>
+            Describes a customer lookup request, emitted by the CTI subsystem to a customer search provider.  
+            This class describes common data elements that the CTI system will provide as well as the ability to add custom data to the request. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.Cti.Core.CtiLookupRequest.Localitems">
+            <summary>
+            List of Lookup Request items
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.Cti.Core.CtiLookupRequest.CTILOOKUPACTIONNAME">
+            <summary>
+            Name of the Action that the CTI Subsystem will submit lookup requests too.  
+            The search control should register an action with this name.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.CtiLookupRequest.#ctor">
+            <summary>
+            Public Constructor
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.CtiLookupRequest.#ctor(System.Guid,System.String,System.String,System.String,System.String)">
+            <summary>
+            Creates a Lookup request object
+            </summary>
+            <param name="ctiCallRefId">Call Reference ID</param>
+            <param name="ctiDesktopManager">Name of the CtiDesktopManager control that emitted the request</param>
+            <param name="callType">Type of call that raised the request</param>
+            <param name="ani">ANI of the call</param>
+            <param name="dins">DNIS of the call</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.CtiLookupRequest.AddLookupRequestItem(System.String,System.String)">
+            <summary>
+            Add a new item to the Lookup request object
+            </summary>
+            <param name="keyName">Key Name</param>
+            <param name="value">Value</param>
+            <returns>true if succuessful</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.CtiLookupRequest.RemoveLookupRequestItem(System.String)">
+            <summary>
+            Removes an item from the Lookup request items list by keyname. 
+            </summary>
+            <param name="keyName">Key to Remove</param>
+            <returns>True if was able to remove it, False if not.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.CtiLookupRequest.GetRequiredLookupData(System.Guid@,System.String@,System.String@,System.String@,System.String@)">
+            <summary>
+            Retrieves the CTI Lookup command data from the Lookup Request object. 
+            This will populate the out variables with data used to construct the Lookup Request. 
+            </summary>
+            <param name="ctiCallRefId">Call Reference ID</param>
+            <param name="ctiDesktopManager">Name of the CtiDesktopManager control that emitted the request</param>
+            <param name="callType">Type of call</param>
+            <param name="ani">ANI of the call</param>
+            <param name="dins">DINS of the call</param>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.CtiLookupRequest.Items">
+            <summary>
+            List of <see cref="T:Microsoft.Uii.Desktop.Cti.Core.LookupRequestItem"/> Items that contain data to be passed to the search control
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.Cti.Core.LookupRequestItem">
+            <summary>
+            Describes a Lookup Request Item.  
+            This item contains some data that is passed from the CtiDesktop Manager to a search control as part of a CTI initiated lookup request.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.LookupRequestItem.#ctor">
+            <summary>
+            default constructor
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Cti.Core.LookupRequestItem.#ctor(System.String,System.String)">
+            <summary>
+            Preloaded Contructor
+            </summary>
+            <param name="key">Name of the item</param>
+            <param name="value">Value of the item</param>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.LookupRequestItem.Key">
+            <summary>
+            Name of the item
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.LookupRequestItem.Value">
+            <summary>
+            Value of the item
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.Cti.Core.Properties.CtiCallStates">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.Properties.CtiCallStates.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.Properties.CtiCallStates.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.Properties.CtiCallStates.DISCONNECTED">
+            <summary>
+              Looks up a localized string similar to Disconnected.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.Properties.CtiCallStates.OFFHOOK">
+            <summary>
+              Looks up a localized string similar to OffHook.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.Properties.CtiCallStates.ONHOLD">
+            <summary>
+              Looks up a localized string similar to OnHold.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.Properties.CtiCallStates.PICKUPPENDING">
+            <summary>
+              Looks up a localized string similar to ReadyForPickup.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.Properties.CtiCallStates.RINGING">
+            <summary>
+              Looks up a localized string similar to Ringing.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.Properties.CtiCallStates.WRAP">
+            <summary>
+              Looks up a localized string similar to Call Wrap.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.Cti.Core.Properties.CtiAgentStates">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.Properties.CtiAgentStates.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.Properties.CtiAgentStates.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.Properties.CtiAgentStates.AVAILABLE">
+            <summary>
+              Looks up a localized string similar to Available.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.Properties.CtiAgentStates.LOGGEDIN">
+            <summary>
+              Looks up a localized string similar to Logged In.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.Properties.CtiAgentStates.LOGGEDOUT">
+            <summary>
+              Looks up a localized string similar to Logged Out.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.Properties.CtiAgentStates.NOTAVAILABLE">
+            <summary>
+              Looks up a localized string similar to Not Available.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Cti.Core.Properties.CtiAgentStates.UNAVAILABLE">
+            <summary>
+              Looks up a localized string similar to Away.
+            </summary>
+        </member>
+    </members>
+</doc>

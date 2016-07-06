@@ -1,0 +1,244 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en"><html><head><title>Java Access Bridge "by hand" Setup Information</title></head><body bgcolor="#ffffff" text="#000000" link="#0000ff" vlink="#000077" alink="#ff0000">
+
+
+
+<table border="0" width="100%">
+
+<tbody><tr>
+
+<td width="60">
+
+   <img src="images/javalogo52x88.gif" alt="Java" border="0" width="52" height="88">
+
+</td>
+
+<td align="center">
+
+<font size="+2"><b>Java<sup><font size="-2">TM</font></sup> Access Bridge</b></font>
+
+<br><b>for the Microsoft Windows Operating System</b>
+
+<p><b>Version 2.0.1</b></p>
+
+<br><font size="+2"><b>Setup Information</b></font>
+
+</td>
+
+<td valign="top"><a href="index.html">Contents</a>
+
+</td>
+
+</tr>
+
+</tbody></table>
+
+
+
+<!-- Body text begins here -->
+
+<hr noshade="noshade" width="100%">
+
+
+
+<h3>Setting Up the Java Access Bridge</h3>
+
+<blockquote>The Java Access Bridge should only be installed by hand as
+
+a last resort. The recommended way to install the Java Access Bridge
+
+is to use the Java Access Bridge installer, which will locate the Java
+
+VMs installed on your system that support the Java Access Bridge,
+
+and then install the Java Access Bridge into those Java VMs that you identify.  The Java Access
+
+Bridge installer is a self-extracting executable file called AccessBridge-2_0_1.exe.
+
+<p>The instructions below describe what the Java Access Bridge installer
+
+does, allowing you to make those modifications by hand if necessary.&nbsp;
+
+Please note: the Java Access Bridge package includes three editions
+
+of the Java Accessibility Utilities file '<tt>jaccess.jar</tt>', which
+
+differs for Java 2 SDK 1.2, Java 2 SDK 1.3, and Java 2 SDK 1.4.  These files are named <tt>jaccess-1_2.jar</tt>, <tt>jaccess-1_3.jar</tt>, and <tt>jaccess-1_4.jar</tt>.
+
+Please use the <tt>jaccess-1_4.jar</tt> for Java 2 SDK 5.0.
+
+<br>&nbsp;</p></blockquote>
+
+
+
+<blockquote>
+
+<b><font size="+1">Using JDK 1.1 Environments</font></b><br>
+
+Version 1.0.2 of the Java Access Bridge is required for JDK 1.1 environments.  See <a href="compatibility.html">the compatibility table</a> for complete information.
+
+
+
+
+
+<p><b><font size="+1">Using Java Environments (Including SDK v1.2.2, v1.3.x, v1.4.x, and v5.0)</font></b>
+
+</p><p>To begin the installation, locate your Java platform extensions
+
+directory, which is the jre\lib\ext subdirectory under the directory in
+
+which your JDK is installed. Typical locations are:
+
+</p><p><tt>&nbsp; c:\Program Files\Java\jdk1.5.0\jre\lib\ext<br>
+
+&nbsp; c:\Program Files\Java\jre1.5.0_05\lib\ext<br>
+
+</tt>
+
+</p><p>Copy the following files into that directory:
+
+<br><tt>&nbsp; jaccess-1_2.jar</tt> for Java 2 platform edition 
+
+1.2.x,&nbsp; <i><b>or</b></i> <br><tt>&nbsp; jaccess-1_3.jar</tt> for Java 2 platform edition
+
+1.3.x,&nbsp; <i><b>or</b></i> <br><tt>&nbsp; jaccess-1_4.jar</tt> for Java 2 platform edition 1.4.x,&nbsp; <i><b>or</b></i><br>
+
+&nbsp;&nbsp;&nbsp; <tt>jaccess-1_4.jar</tt> for Java platform edition 1.5.x; &nbsp; <i><b>and</b></i> <br><tt>&nbsp; access-bridge.jar</tt>.&nbsp; 
+
+</p>The Java Virtual Machine consults a number of property files as it starts
+
+up.&nbsp; You will need to modify the&nbsp;<tt>c:\Program Files\Java\jre1.5.0_05\lib\ext\</tt><tt>accessibility.properties</tt>
+
+file in order to enable accessibility.&nbsp; The <a href="http://java.sun.com/products/jfc/jaccess-1.2/doc/examples.html">Java
+
+Accessibility Utilities examples</a> documentation explains how this all
+
+works. Add the following line to the <tt>accessibility.properties</tt>
+
+file:
+
+<p><tt>&nbsp; assistive_technologies=com.sun.java.accessibility.AccessBridge</tt>
+
+</p><p>This line tells the Java VM to load the <tt>AccessBridge</tt> assistive
+
+technology, which it finds in the standard extensions directory.  In addition,
+
+if you are using screen magnification technologies such as ZoomText from
+
+Ai Squared, you must also indicate the presence of screen magnification by
+
+adding the following line to the <tt>accessibility.properties</tt> file:
+
+</p><p><tt>&nbsp; screen_magnifier_present=true</tt>
+
+<br>&nbsp;</p></blockquote>
+
+<b><font size="+1">Compatibility Information</font></b>
+
+<blockquote>In the Java Foundation Classes 1.1 with Swing 1.1, the name
+
+of the packages containing both the Swing classes and the Java Accessibility
+
+API classes changed (from com.sun.java.swing and com.sun.java.accessibility
+
+to javax.swing and javax.accessibility respectively).&nbsp; Java applications
+
+and applets built with earlier versions of Swing and/or the Java Accessibility
+
+API will not work with the Java Accessibility Utilities version 1.1 and later, nor
+
+will they work with the Java Access Bridge.&nbsp; The <a href="compatibility.html">compatibility
+
+table</a> details the versions of the Java platform, Java Foundation Classes,
+
+Java Accessibility Utilities, Java Plugin, and Java Access Bridge that work
+
+with each other.
+
+<br>&nbsp;</blockquote>
+
+<b><font size="+1">Working From a Browser</font></b>
+
+<blockquote>The Java Plugin, at <a href="http://java.sun.com/products/plugin">http://java.sun.com/products/plugin</a>,
+
+provides a browser plug-in that contains the Sun Java VM.&nbsp; This VM
+
+includes the ability to replace the EventQueue in order to load assistive
+
+technologies (or, in the case of the JDK 1.2 version&nbsp; of the Java
+
+Plugin; load assistive technologies directly). The Java Plugin (version
+
+1.2.2 and later) includes the Java Foundation Classes (and thereby Swing
+
+and the Java Accessibility API).&nbsp; The Java Plugin is typically installed
+
+on your c:\ drive within your Program Files directory.&nbsp; It may be
+
+a separate, or second Java VM.&nbsp; The Java platform extensions directory
+
+is typically at:
+
+<p><tt>&nbsp; </tt><tt>c:\Program Files\Java\jre1.5.0_05\lib\ext</tt>
+
+</p><p>which is where you must put the <tt>accessbridge.jar</tt> and <tt>jaccess.jar</tt>
+
+files.&nbsp; The parent lib directory is where the <tt>accessibility.properties</tt>
+
+file is located, which must be likewise modified as above.
+
+<br>&nbsp;</p></blockquote>
+
+
+
+<hr size="3" noshade="noshade">
+
+
+
+<table border="0" width="100%">
+
+<tbody><tr valign="top">
+
+<td>
+
+<p><font size="-2">
+
+
+
+   <a href="SMICopyright.html">Copyright &copy;</a> 2006
+
+
+
+   <a href="http://www.sun.com/">Sun Microsystems, Inc.</a>
+
+
+
+    All Rights Reserved.</font></p>
+
+
+
+   <font size="-1">
+
+
+
+   Please send comments to: <a href="mailto:access@sun.com">access@sun.com</a> 
+
+
+
+   </font>
+
+</td>
+
+<td align="right">
+
+   <img src="images/sunlogo64x30.gif" alt="Sun" border="0" width="64" height="30">
+
+</td>
+
+</tr>
+
+</tbody></table>
+
+
+
+</body></html>
+

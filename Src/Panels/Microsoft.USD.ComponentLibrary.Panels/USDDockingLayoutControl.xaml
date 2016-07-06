@@ -1,0 +1,94 @@
+﻿<mypanel:PanelLayoutBase
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Microsoft.Crm.UnifiedServiceDesk.Dynamics;assembly=Microsoft.Crm.UnifiedServiceDesk.Dynamics"
+             xmlns:usd="clr-namespace:Microsoft.Crm.UnifiedServiceDesk.Dynamics.PanelLayouts;assembly=Microsoft.Crm.UnifiedServiceDesk.Dynamics"
+             xmlns:mypanel="clr-namespace:Microsoft.Crm.UnifiedServiceDesk.Dynamics.PanelLayouts;assembly=Microsoft.Crm.UnifiedServiceDesk.Dynamics"
+             xmlns:c1="http://schemas.componentone.com/wpf/C1Docking"
+             xmlns:c1Usd="clr-namespace:Microsoft.USD.ComponentLibrary.ComponentOne"
+             xmlns:c11="http://schemas.componentone.com/winfx/2006/xaml" x:Class="Microsoft.USD.ComponentLibrary.ComponentOne.USDDockControl"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="700">
+    <mypanel:PanelLayoutBase.Resources>
+        <ResourceDictionary >
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles\Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </mypanel:PanelLayoutBase.Resources>
+    <Grid x:Name="LayoutRoot">
+        <Grid.Resources>
+            <local:CRMImageConverter x:Key="CRMImageLoader" />
+            <Style x:Key="ImageLogo" TargetType="{x:Type Image}">
+                <Setter Property="FlowDirection" Value="LeftToRight"/>
+                <Setter Property="Width" Value="161" />
+                <Setter Property="Height" Value="25" />
+                <Setter Property="Margin" Value="0" />
+                <Setter Property="HorizontalAlignment" Value="Left" />
+                <Setter Property="VerticalAlignment" Value="Center" />
+            </Style>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" BorderBrush="#d8d8d8" BorderThickness="0,1,0,1">
+            <Grid Background="{DynamicResource WindowHeaderStyle}" Grid.Row="0"  Margin="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="0" Source="{Binding Source=msdyusd_Logo, Converter={StaticResource CRMImageLoader}}"  Style="{DynamicResource ImageLogo}"   />
+                <Rectangle Width="10" Grid.Column="1" />
+                <usd:USDDeckTabPanel x:Name="ToolbarPanel" Grid.Column="2" AutomationProperties.Name="Toolbar Panel" VerticalAlignment="Stretch" Focusable="False" Margin="1" />
+                <Grid Grid.Column="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="412"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.Background>
+                        <ImageBrush ImageSource="{Binding Source=msdyusd_Office15, Converter={StaticResource CRMImageLoader}}" Stretch="Fill" ></ImageBrush>
+                    </Grid.Background>
+                    <usd:USDStackPanel Grid.Column="0" x:Name="CtiPanel"  Orientation="Horizontal" Focusable="False" VerticalAlignment="Center" AutomationProperties.Name="Cti Panel" SelectedAppChanged="SelectedAppChangedHander"/>
+                    <usd:USDStackPanel Grid.Column="1" HorizontalAlignment="Right" x:Name="AboutPanel"  Orientation="Horizontal" Focusable="False" VerticalAlignment="Center" AutomationProperties.Name="AboutPanel"/>
+                </Grid>
+            </Grid>
+        </Border>
+        <Grid Grid.Row="1" VerticalAlignment="Stretch" Margin="0" Background="{DynamicResource WindowBackgroundStyle}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <usd:USDDeckTabPanel x:Name="SessionTabsPanel" Grid.Row="0" Margin="5,5,0,5" AutomationProperties.Name="Session Tabs Panel" Focusable="False" ClipToBounds="True" />
+            <Grid Name="main" Grid.Row="1" >
+                <c1Usd:C1UsdDockControl x:Name="mainLayout" ViewChanged="mainLayout_ViewChanged" PickerLoading="mainLayout_PickerLoading" Style="{StaticResource ResourceKey=MainLayoutC1UsdDockControlStyle}" >
+                    <c1:C1DockGroup x:Name="LeftPanelDockGroup" Dock="Left" DockMode="Docked" Style="{StaticResource ResourceKey=LeftC1DockGroupStyle}">
+                        <c1Usd:C1USDTabBasePanel  Dock="Top" ItemsChanged="SessionExplorerPanel_OnItemsChanged"  x:Name="SessionExplorerPanel" Style="{StaticResource ResourceKey=LeftC1USDTabBasePanelStyle}">
+                            <c1Usd:C1USDDockTabItem Visibility="Hidden" x:Name="HiddenSessionExplorerTab" AutomationProperties.Name="Hidden Session Explorer Panel Tab" />
+                        </c1Usd:C1USDTabBasePanel>
+                        <c1Usd:C1USDTabBasePanel ItemsChanged="LeftPanel2_OnItemsChanged"  Dock="Bottom" Style="{StaticResource ResourceKey=LeftC1USDTabBasePanelStyle}" x:Name="LeftPanel2">
+                            <c1Usd:C1USDDockTabItem Visibility="Hidden" x:Name="HiddenLeftPanel2Tab" AutomationProperties.Name="Hidden Left Panel 2 Tab"/>
+                        </c1Usd:C1USDTabBasePanel>
+                    </c1:C1DockGroup>
+                    <c1:C1DockGroup x:Name="MainPanelDockGroup" Dock="Right" DockMode="Docked" Style="{StaticResource ResourceKey=MainC1DockGroupStyle}">
+                        <c1Usd:C1USDTabBasePanel ItemsChanged="MainPanel_OnItemsChanged" x:Name="MainPanel" Style="{StaticResource ResourceKey=MainPanelC1USDTabBasePanelStyle}">
+                            <c1Usd:C1USDDockTabItem Visibility="Hidden" x:Name="HiddenMainPanelTab" AutomationProperties.Name="Hidden Main Panel Tab"/>
+                        </c1Usd:C1USDTabBasePanel>
+                        <c1Usd:C1USDTabBasePanel ItemsChanged="HiddenBasePanel_OnItemsChanged" x:Name="HiddenBasePanel" Dock="Bottom" DockMode="Hidden" />
+                    </c1:C1DockGroup>
+                </c1Usd:C1UsdDockControl>
+            </Grid >
+            <StatusBar Margin="0" Background="{DynamicResource WindowHeaderStyle}"  Grid.Row="2" Height="auto" VerticalAlignment="Bottom">
+                <StatusBarItem Background="{DynamicResource WindowHeaderStyle}" >
+                    <usd:USDStackPanel x:Name="StatusPanel" Orientation="Horizontal" AutomationProperties.Name="Status Panel" Margin="1" SelectedAppChanged="SelectedAppChangedHander" />
+                </StatusBarItem>
+            </StatusBar>
+        </Grid>
+    </Grid>
+</mypanel:PanelLayoutBase>

@@ -1,0 +1,353 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Uii.CrmEntityManager</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Uii.CrmEntityManager.AgentStateEntityManager">
+            <summary>
+            Class providing methods for writing/retrieving Session information to/from CRM Server
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.CrmEntityManager.AgentStateEntityManager.SetSessionTransferInformation(Microsoft.Xrm.Tooling.Connector.CrmServiceClient,System.Guid,System.String,System.String)">
+            <summary>
+            Sets the Session Transfer information when the session is to be transfered from one agent to another
+            </summary>
+            <param name="crmServiceClient">OrganizationServiceProxy instance</param>
+            <param name="toAgentId">Agent to which the session is to be transfered</param>
+            <param name="fromPhoneNumber">Phone number of the agent who is transferring the session</param>
+            <param name="sessionInformation">Xml string containing session specific information</param>
+        </member>
+        <member name="M:Microsoft.Uii.CrmEntityManager.AgentStateEntityManager.CreateSessionTransferInformation(Microsoft.Xrm.Tooling.Connector.CrmServiceClient,System.Guid,System.String,System.String)">
+            <summary>
+            Creates the session transfer information.
+            </summary>
+            <param name="crmServiceClient">OrganizationServiceProxy instance.</param>
+            <param name="toAgentId">To agent id.</param>
+            <param name="fromPhoneNumber">From phone number.</param>
+            <param name="sessionInformation">The session information.</param>
+        </member>
+        <member name="M:Microsoft.Uii.CrmEntityManager.AgentStateEntityManager.UpdateSessionTransferInformation(Microsoft.Xrm.Tooling.Connector.CrmServiceClient,System.String,System.String,Microsoft.Xrm.Sdk.Entity)">
+            <summary>
+            Updates the session transfer information.
+            </summary>
+            <param name="crmServiceClient">OrganizationServiceProxy instance.</param>
+            <param name="fromPhoneNumber">From phone number.</param>
+            <param name="sessionInformation">The session information.</param>
+            <param name="sessiontransfer">The sessiontransfer.</param>
+        </member>
+        <member name="M:Microsoft.Uii.CrmEntityManager.AgentStateEntityManager.GetSessionTransferInformation(Microsoft.Xrm.Tooling.Connector.CrmServiceClient,System.Guid)">
+            <summary>
+            Retrives the Session Transfer information
+            </summary>
+            <param name="crmServiceClient">CRM service</param>
+            <param name="toAgentId">Id of the Agent to which the call is transferred</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.CrmEntityManager.AgentStateEntityManager.SaveSessions(Microsoft.Xrm.Tooling.Connector.CrmServiceClient,System.Guid,System.String)">
+            <summary>
+            Save Session
+            </summary>
+            <param name="crmServiceClient">OrganizationServiceProxy proxy</param>
+            <param name="agentId">Agent Id</param>
+            <param name="sessionsState">String representation of the Session</param>
+        </member>
+        <member name="M:Microsoft.Uii.CrmEntityManager.AgentStateEntityManager.CreateSavedSessions(Microsoft.Xrm.Tooling.Connector.CrmServiceClient,System.String)">
+            <summary>
+            Creates the saved sessions.
+            </summary>
+            <param name="crmServiceClient">OrganizationServiceProxy instance.</param>
+            <param name="sessionsState">State of the sessions.</param>
+        </member>
+        <member name="M:Microsoft.Uii.CrmEntityManager.AgentStateEntityManager.UpdateSavedSessions(Microsoft.Xrm.Tooling.Connector.CrmServiceClient,System.String,Microsoft.Xrm.Sdk.Entity)">
+            <summary>
+            Updates the saved sessions.
+            </summary>
+            <param name="crmServiceClient">crmServiceClient instance.</param>
+            <param name="sessionsState">State of the sessions.</param>
+            <param name="savedsession">The savedsession.</param>
+        </member>
+        <member name="M:Microsoft.Uii.CrmEntityManager.AgentStateEntityManager.DeleteSavedSessions(Microsoft.Xrm.Tooling.Connector.CrmServiceClient,Microsoft.Xrm.Sdk.Entity)">
+            <summary>
+            Deletes the saved sessions.
+            </summary>
+            <param name="crmServiceClient">CrmServiceClient instance.</param>
+            <param name="savedsession">The savedsession.</param>
+        </member>
+        <member name="M:Microsoft.Uii.CrmEntityManager.AgentStateEntityManager.GetSavedSessions(Microsoft.Xrm.Tooling.Connector.CrmServiceClient,System.Guid)">
+            <summary>
+            Get saved Session
+            </summary>
+            <param name="crmServiceClient">CrmServiceClient Instance</param>
+            <param name="agentId">Agent Id</param>
+            <returns>String containing the saved session data</returns>
+        </member>
+        <member name="M:Microsoft.Uii.CrmEntityManager.AgentStateEntityManager.RetrievesavedSessionList(Microsoft.Xrm.Tooling.Connector.CrmServiceClient,System.Guid@)">
+            <summary>
+            Retrieve saved session
+            </summary>
+            <param name="crmServiceClient">OrganizationServiceProxy Instance</param>
+            <param name="agentId">Agent Id for which the session is to be retrieved</param>
+            <returns>Saved session for the Agent</returns>
+        </member>
+        <member name="M:Microsoft.Uii.CrmEntityManager.AgentStateEntityManager.GetAgentId(Microsoft.Xrm.Tooling.Connector.CrmServiceClient)">
+            <summary>
+            Get the Id of the current logged in agent
+            </summary>
+            <param name="crmServiceClient">OrganizationServiceProxy Instance</param>
+            <returns>Id of the Agent</returns>
+        </member>
+        <member name="M:Microsoft.Uii.CrmEntityManager.AgentStateEntityManager.GetAgentId(Microsoft.Xrm.Tooling.Connector.CrmServiceClient,System.String)">
+            <summary>
+            Gets the Agent Id based on phone number
+            </summary>
+            <param name="crmServiceClient">OrganizationServiceProxy instance</param>
+            <param name="phoneNumber">Phone number of the Agent</param>
+            <returns>Id of the Agent</returns>
+        </member>
+        <member name="T:Microsoft.Uii.CrmEntityManager.AuditEntityManager">
+            <summary>
+            Class providing implementation for writing Audit Entities to CRM
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.CrmEntityManager.AuditEntityManager.SaveAudit(Microsoft.Xrm.Tooling.Connector.CrmServiceClient,Microsoft.Uii.Common.Entities.LogData)">
+            <summary>
+            Saves the Audit Data into the Audit Entity on the CRM Server
+            </summary>
+            <param name="crmServiceClient">CrmServiceClient Instance</param>
+            <param name="logData">Details of data to be logged</param>
+        </member>
+        <member name="M:Microsoft.Uii.CrmEntityManager.AuditEntityManager.CreateAuditEntity(Microsoft.Uii.Common.Entities.LogData)">
+            <summary>
+            Builds a dynamic entity containing log data
+            </summary>
+            <param name="logData">Data to be logged</param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.Uii.CrmEntityManager.ContextEntityManager">
+            <summary>
+            Class containing methods for writing context information into the Context entity
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.CrmEntityManager.ContextEntityManager.CreateContext(Microsoft.Xrm.Tooling.Connector.CrmServiceClient,System.String)">
+            <summary>
+            Create Context
+            </summary>
+            <param name="crmServiceClient">OrganizationServiceProxy Proxy</param>
+            <param name="customerInformation">Customer context information</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.CrmEntityManager.ContextEntityManager.SetContext(Microsoft.Xrm.Tooling.Connector.CrmServiceClient,System.Guid,System.String)">
+            <summary>
+            Set Context
+            </summary>
+            <param name="crmServiceClient">OrganizationServiceProxy Proxy</param>
+            <param name="contextId">context id</param>
+            <param name="customerInformation">customer context</param>
+        </member>
+        <member name="M:Microsoft.Uii.CrmEntityManager.ContextEntityManager.DeleteContext(Microsoft.Xrm.Tooling.Connector.CrmServiceClient,System.Guid)">
+            <summary>
+            Deletes the context.
+            </summary>
+            <param name="crmServiceClient">OrganizationServiceProxy instance.</param>
+            <param name="contextId">The context id.</param>
+        </member>
+        <member name="M:Microsoft.Uii.CrmEntityManager.ContextEntityManager.GetContext(Microsoft.Xrm.Tooling.Connector.CrmServiceClient,System.Guid)">
+            <summary>
+            Retrieve the context
+            </summary>
+            <param name="crmServiceClient">OrganizationServiceProxy Proxy</param>
+            <param name="contextId">context id</param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.Uii.CrmEntityManager.ApplicationEntityManager">
+            <summary>
+             ApplicationEntityManager (previously known as CRMWrapper) is a façade over CRM SDK.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.CrmEntityManager.ApplicationEntityManager.ACTION_ENTITY_ALIAS">
+            <summary>bu
+            The alias for Action entity.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.CrmEntityManager.ApplicationEntityManager.GetApplications(Microsoft.Xrm.Tooling.Connector.CrmServiceClient,System.Guid)">
+            <summary>
+            Gets the applications.
+            </summary>
+            <param name="crmServiceClient">The organization service proxy.</param>
+            <param name="applicationId">The application id (when empty, gets all applications).</param>
+            <returns>A list of applications.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.CrmEntityManager.ApplicationEntityManager.GetApplications(Microsoft.Xrm.Tooling.Connector.CrmServiceClient)">
+            <summary>
+            Gets the applications.
+            </summary>
+            <param name="crmServiceClient">OrganizationServiceProxy instance.</param>
+            <returns>The collection of hosted applcations , keyed by Application Name</returns>
+        </member>
+        <member name="M:Microsoft.Uii.CrmEntityManager.ApplicationEntityManager.GetNonHostedApplications(Microsoft.Xrm.Tooling.Connector.CrmServiceClient)">
+            <summary>
+            Gets the non hosted applications.
+            </summary>
+            <param name="crmServiceClient">OrganizationServiceProxy instance.</param>
+            <returns>The collection of hosted applcations , keyed by Application Name</returns>
+        </member>
+        <member name="M:Microsoft.Uii.CrmEntityManager.ApplicationEntityManager.GetHostedApplicationList(Microsoft.Xrm.Tooling.Connector.CrmServiceClient,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Retrieves a list of hosted application names
+            </summary>
+            <param name="crmServiceClient">CRM Service</param>
+            <param name="activeOnly">true to retrive only active records, false for all</param>
+            <param name="includeExternalApplication">true to include external application</param>
+            <param name="includeWebApplication">true to include web application</param>
+            <param name="includeHostedControl">true to include hosted application</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.CrmEntityManager.ApplicationEntityManager.GetHostedApplicationDetails(Microsoft.Xrm.Tooling.Connector.CrmServiceClient,System.Guid)">
+            <summary>
+            Retrieves the Hosted Aplication details for a particular hosted application
+            </summary>
+            <param name="crmServiceClient">Crmservice instance</param>
+            <param name="applicationId">Id of the application for which details are requested</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.CrmEntityManager.ApplicationEntityManager.AddHostedApplication(Microsoft.Xrm.Tooling.Connector.CrmServiceClient,Microsoft.Uii.Common.Entities.ApplicationRecord)">
+            <summary>
+            Adds a hosted application
+            </summary>
+            <param name="crmServiceClient">Crm Service instance</param>
+            <param name="appRecord">Application Record containing hosted application details</param>
+        </member>
+        <member name="M:Microsoft.Uii.CrmEntityManager.ApplicationEntityManager.UpdateHostedApplication(Microsoft.Xrm.Tooling.Connector.CrmServiceClient,Microsoft.Uii.Common.Entities.ApplicationRecord)">
+            <summary>
+            Update the properties of an exisiting hosted application
+            </summary>
+            <param name="crmServiceClient">OrganizationServiceProxy instance</param>
+            <param name="appRecord">Application Record containing hosted application details</param>
+        </member>
+        <member name="M:Microsoft.Uii.CrmEntityManager.ApplicationEntityManager.GetApplicationRecords(System.Collections.Generic.IList{Microsoft.Xrm.Sdk.Entity},System.String)">
+            <summary>
+            Gets the application records.
+            </summary>
+            <param name="applications">The applications.</param>
+            <param name="entityAlias">The entity alias.</param>
+            <returns>List of ApplicationRecord.</returns>
+        </member>
+        <member name="T:Microsoft.Uii.CrmEntityManager.EntityBuilder">
+            <summary>
+            Utility helper class for mapping CRM types to custom entities
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.CrmEntityManager.EntityBuilder.BuildHostedControlApp(Microsoft.Xrm.Sdk.Entity)">
+            <summary>
+            Builds the hosted control app.
+            </summary>
+            <param name="apprecord">The UII hosted application.</param>
+            <returns>Hosted Control App Init String</returns>
+        </member>
+        <member name="M:Microsoft.Uii.CrmEntityManager.EntityBuilder.BuildRemoteApp(Microsoft.Xrm.Sdk.Entity)">
+            <summary>
+            Builds the Remote hosted app.
+            </summary>
+            <param name="apprecord">The UII Remote hosted application.</param>
+            <returns>Remote Hosted App Init String</returns>
+        </member>
+        <member name="M:Microsoft.Uii.CrmEntityManager.EntityBuilder.BuildExternalApp(Microsoft.Xrm.Sdk.Entity)">
+            <summary>
+            Builds the external app.
+            </summary>
+            <param name="apprecord">The UII hosted application.</param>
+            <returns>External Application App Init String</returns>
+        </member>
+        <member name="M:Microsoft.Uii.CrmEntityManager.EntityBuilder.BuildHostedWebApp(Microsoft.Xrm.Sdk.Entity)">
+            <summary>
+            Builds the hosted web app.
+            </summary>
+            <param name="apprecord">The UII hosted application.</param>
+            <returns>Hosted Web Application App Init String</returns>
+        </member>
+        <member name="M:Microsoft.Uii.CrmEntityManager.EntityBuilder.BuildHostedControlEntity(Microsoft.Xrm.Sdk.Entity,Microsoft.Uii.Common.Entities.ApplicationRecord)">
+            <summary>
+            Builds the hosted control entity.
+            </summary>
+            <param name="applicationEntity">The application entity.</param>
+            <param name="appRecord">The app record.</param>
+        </member>
+        <member name="T:Microsoft.Uii.CrmEntityManager.OptionEntityManager">
+            <summary>
+            Class providing methods for retrieving Options (General Settings) from CRM server
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.CrmEntityManager.OptionEntityManager.GetOptions(Microsoft.Xrm.Tooling.Connector.CrmServiceClient)">
+            <summary>
+            Gets the options.
+            </summary>
+            <param name="crmServiceClient">The CrmServiceClient instance.</param>
+            <returns>returns the collection</returns>
+        </member>
+        <member name="T:Microsoft.Uii.CrmEntityManager.WorkflowEntityManager">
+            <summary>
+            Class for retrieveing UII workflow and workflow steps from the server
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.CrmEntityManager.WorkflowEntityManager.GetWorkflowNames(Microsoft.Xrm.Tooling.Connector.CrmServiceClient)">
+            <summary>
+            Gets the workflow names.
+            </summary>
+            <param name="crmServiceClient">CrmServiceClient instance.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.CrmEntityManager.WorkflowEntityManager.GetQueryForWfSteps(System.Guid,System.String)">
+            <summary>
+            Get Query For WfSteps
+            </summary>
+            <param name="workflowId">workflow Id</param>
+            <param name="workflowStepMappingEntityAlias">workflowStepMappingEntityAlias</param>
+            <returns>Query Expression</returns>
+        </member>
+        <member name="M:Microsoft.Uii.CrmEntityManager.WorkflowEntityManager.AddLinkEntititesForWorkflowSteps(Microsoft.Xrm.Sdk.Query.QueryExpression,System.Guid,System.String)">
+            <summary>
+            Add LinkEntitites For WorkflowSteps
+            </summary>
+            <param name="query">query expression</param>
+            <param name="workflowId">workflow Id</param>
+            <param name="workflowStepMappingEntityAlias">workflowStepMappingEntityAlias</param>
+        </member>
+        <member name="M:Microsoft.Uii.CrmEntityManager.WorkflowEntityManager.AddLinkEntityForWorkFlow(Microsoft.Xrm.Sdk.Query.QueryExpression,System.Guid,System.String)">
+            <summary>
+            Add LinkEntitites For WorkflowSteps
+            </summary>
+            <param name="query">query expression</param>
+            <param name="workflowId">workflow Id</param>
+            <param name="workflowStepMappingEntityAlias">workflowStepMappingEntityAlias</param>
+        </member>
+        <member name="M:Microsoft.Uii.CrmEntityManager.WorkflowEntityManager.AddLinkEntityForActiveHostedApp(Microsoft.Xrm.Sdk.Query.QueryExpression)">
+            <summary>
+            Add Link Entity For Active HostedApp
+            </summary>
+            <param name="query"></param>
+        </member>
+        <member name="M:Microsoft.Uii.CrmEntityManager.WorkflowEntityManager.GetWorkflowSteps(Microsoft.Xrm.Tooling.Connector.CrmServiceClient,System.Guid)">
+            <summary>
+            Gets the work flow steps.
+            </summary>
+            <param name="crmServiceClient">CrmServiceClient instance.</param>
+            <param name="workflowId">The workflow id.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.CrmEntityManager.WorkflowEntityManager.BuildCcaWorkFlow(Microsoft.Xrm.Sdk.Entity)">
+            <summary>
+            Builds the Cca work flow.
+            </summary>
+            <param name="workflowEntity">The workflow entity.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.CrmEntityManager.WorkflowEntityManager.BuildCcaWorkFlowStep(Microsoft.Xrm.Sdk.Entity)">
+            <summary>
+            Builds the Cca work flow step.
+            </summary>
+            <param name="workflowStepEntity">The workflow step entity.</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

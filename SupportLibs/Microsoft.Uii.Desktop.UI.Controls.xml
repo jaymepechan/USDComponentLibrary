@@ -1,0 +1,553 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Uii.Desktop.UI.Controls</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Uii.Desktop.UI.Controls.DesktopApplicationUIBase">
+            <summary>
+            DesktopApplicationUIBase separates the details of hosting applications and their UI's from the
+            layout of the agent desktop form.
+            
+            It keeps a collection of IPanels and exposes itself as a collection
+            of IHostedApplication objects.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.UI.Controls.IApplicationUI">
+            <summary>
+            This Interface contains methods that must be implemented by any Desktop 
+            Application UI
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.IApplicationUI.AddPanel(Microsoft.Uii.Desktop.UI.Controls.IPanel)">
+            <summary>
+            Add a Panel to the list of known panels
+            which may be hosting applications.
+            </summary>
+            <param name="panel">Panel to add</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.IApplicationUI.RemovePanel(Microsoft.Uii.Desktop.UI.Controls.IPanel)">
+            <summary>
+            Remove a WpfPanel from the List of Known Panels.
+            </summary>
+            <param name="panel">Panel to remove.</param>
+            <returns>true if successfull False if not.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.IApplicationUI.NextPanel">
+            <summary>
+            Gets the panel after the one which has the current focus in the interface.
+            If there is only one panel, it is always returned.
+            </summary>
+            <returns>Next Panel</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.IApplicationUI.SetRedraw(System.Boolean)">
+            <summary>
+            Enable/Disable redrawing of the hosted app panels to make the UI
+            look cleaner when redrawing many items.
+            </summary>
+            <param name="redraw">True to redraw UI</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.IApplicationUI.AddApplication(System.String,System.Object,System.String,System.Boolean)">
+            <summary>
+            This adds a hosted application or any Windows Forms control to a Desktop
+            panel.  The panelName is used to identify which panel if there are more
+            than one.
+            </summary>
+            <param name="panelName">Panel Name to display application</param>
+            <param name="app">Hosted application instance</param>
+            <param name="initializationXml">Extra XML that may define how to initialize this window</param>
+            <param name="closeButton">For dynamic application, can have option to provide a close
+            button or not</param>
+            <returns>True if application added</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.IApplicationUI.SelectApplication(System.Guid)">
+            <summary>
+            This selects the UI panel and control which is hosting the given application.
+            </summary>
+            <param name="id">The id of the app to select</param>
+            <returns>True if application selected</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.IApplicationUI.RemoveApplication(System.Object)">
+            <summary>
+            Removes the passed in app from the UI, regardless of which panel it is in.
+            </summary>
+            <param name="app">Hosted Application object</param>
+            <returns>true if the app was found and removed</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.IApplicationUI.GetSelectedApplication">
+            <summary>
+            Gets the selected application regardless of how its hosted.
+            </summary>
+            <returns>Hosted Application of type IHostedApplication</returns>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Controls.IApplicationUI.Name">
+            <summary>
+            Gets or sets the panel name.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Controls.IApplicationUI.Applications">
+            <summary>
+            List of active applications across all panels.  This permits
+            the AppsUI class to act as an enumerator for IHostedApplications.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Controls.IApplicationUI.Length">
+            <summary>
+            Returns how many IHostedApplications are being used.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Controls.IApplicationUI.Item(System.Int32)">
+            <summary>
+            Allow AppsUI objects to be indexed and return IHostedApplication objects.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Controls.IApplicationUI.SelectedAppChanged">
+            <summary>
+            Event to handle application selection changes.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Controls.IApplicationUI.CloseApplicationClick">
+            <summary>
+            Event to handle application close.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.UI.Controls.DesktopApplicationUIBase.OpaqueLevel">
+            <summary>
+            Level of opaqueness to use when a panel is not active.
+            </summary>
+            <remarks>Used only for WpfPanels with the UseOpacity property set to true</remarks>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.UI.Controls.DesktopApplicationUIBase.applications">
+            <summary>
+            List of applications
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.UI.Controls.DesktopApplicationUIBase.floatingForms">
+            <summary>
+            This holds references to the floating forms
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.UI.Controls.DesktopApplicationUIBase.panels">
+            <summary>
+            List of active panels
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.DesktopApplicationUIBase.AddPanel(Microsoft.Uii.Desktop.UI.Controls.IPanel)">
+            <summary>
+            Add a IPanel to the list of known panels
+            which may be hosting applications.
+            </summary>
+            <param name="panel">Panel to Add</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.DesktopApplicationUIBase.RemovePanel(Microsoft.Uii.Desktop.UI.Controls.IPanel)">
+            <summary>
+            Remove a IPanel from the List of Known Panels.
+            </summary>
+            <param name="panel">Panel to remove.</param>
+            <returns>true if successfull False if not.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.DesktopApplicationUIBase.NextPanel">
+            <summary>
+            Gets the panel after the one which has the current focus in the interface.
+            If there is only one panel, it is always returned.
+            </summary>
+            <returns>Next Panel</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.DesktopApplicationUIBase.SetRedraw(System.Boolean)">
+            <summary>
+            Enable/Disable redrawing of the hosted app panels to make the UI
+            look cleaner when redrawing many items.
+            </summary>
+            <param name="redraw">True to redraw UI</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.DesktopApplicationUIBase.CreateFloatingPanel``1(System.Boolean,System.Boolean,System.String,System.Object,``0,System.String,System.Boolean)">
+            <summary>
+            Creates a new floating WpfPanel for hosting controls or applications.
+            </summary>
+            <param name="captionUsed">True if application using caption</param>
+            <param name="toolWindow">True if this should use a tool caption</param>
+            <param name="panelName">Panel name.</param>
+            <param name="app">Application to connect to panel.</param>
+            <param name="icon">Icon for the panel.  If the app implements IHostedApplication2 or above the icon is pulled from the application.</param>
+            <param name="initializationXml">Extra info that may define how the window is created</param>
+            <returns>A control reference to the panel.</returns>
+            <param name="closeButton">True if Application is closable</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.DesktopApplicationUIBase.AddApplication(System.String,System.Object,System.String,System.Boolean)">
+            <summary>
+            This adds a hosted application or any Windows Forms control to a 
+            panel.  The panelName is used to identify which panel if there are more
+            than one.
+            </summary>
+            <param name="panelName">Panel name to display application</param>
+            <param name="app">Hosted application to host</param>
+            <param name="initializationXml">Extra XML that may define how to initialize this window</param>
+            <param name="closeButton">For dynamic application, can have option to provide a close
+            button or not</param>
+            <returns>Returns panel instance</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.DesktopApplicationUIBase.SelectApplication(System.Guid)">
+            <summary>
+            This selects the UI panel and control which is hosting the given application.
+            </summary>
+            <param name="id">The id of the app to select</param>
+            <returns>True if application selected</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.DesktopApplicationUIBase.RemoveApplication(System.Object)">
+            <summary>
+            Removes the passed in app from the UI, regardless of which panel it is in.
+            </summary>
+            <param name="app">Hosted application to remove</param>
+            <returns>true if the app was found and removed</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.DesktopApplicationUIBase.GetSelectedApplication">
+            <summary>
+            Gets the selected application regardless of how its hosted.
+            </summary>
+            <returns>Selected Hosted application</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.DesktopApplicationUIBase.GetEnumerator">
+            <summary>
+            This is what is used for a 'foreach ( IHostedApplication app in appsUI )'
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Controls.DesktopApplicationUIBase.Panels">
+            <summary>
+            List of Panels
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Controls.DesktopApplicationUIBase.FloatingForms">
+            <summary>
+            List of Floating forms
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Controls.DesktopApplicationUIBase.AppWithFocus">
+            <summary>
+            Gets or Sets the application which has the focus
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Controls.DesktopApplicationUIBase.Name">
+            <summary>
+            Gets or sets the panel name.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Controls.DesktopApplicationUIBase.Applications">
+            <summary>
+            List of active applications across all panels.  This permits
+            the AppsUI class to act as an enumerator for IHostedApplications.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Controls.DesktopApplicationUIBase.Length">
+            <summary>
+            Returns how many IHostedApplications are being used.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Controls.DesktopApplicationUIBase.Item(System.Int32)">
+            <summary>
+            Allow AppsUI objects to be indexed and return IHostedApplication objects.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Controls.DesktopApplicationUIBase.SelectedAppChanged">
+            <summary>
+            Event to handle application selection changes.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Controls.DesktopApplicationUIBase.CloseApplicationClick">
+            <summary>
+            Event to handle application close.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.UI.Controls.PanelCloser">
+            <summary>
+            Summary description for PanelToolbar.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.UI.Controls.PanelCloser.app">
+            <summary>
+            Hosted Application
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.UI.Controls.PanelCloser.subToolBar">
+            <summary>
+            Toolbar
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.UI.Controls.PanelCloser.imageList">
+            <summary>
+            List of images
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.UI.Controls.PanelCloser.panel1">
+            <summary>
+            Panel to host app
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.UI.Controls.PanelCloser.BackButton">
+            <summary>
+            Back button in toolbar
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.UI.Controls.PanelCloser.ForwardButton">
+            <summary>
+            Forward button in toolbar
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.PanelCloser.#ctor">
+            <summary>
+            Default constructor to permit Visual Studio design tools to work
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.PanelCloser.#ctor(Microsoft.Uii.Csr.IHostedApplication)">
+            <summary>
+            Constructor used from UIConfiguration class to pass the app this toolbar
+            is working with.
+            </summary>
+            <param name="app">The hosted app this toolbar is associated with</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.PanelCloser.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.PanelCloser.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.PanelCloser.subToolBar_ButtonClick(System.Object,System.Windows.Forms.ToolBarButtonClickEventArgs)">
+            <summary>
+            Called whenever a button on the toolbar is pressed.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.PanelCloser.Back_Click(System.Object,System.EventArgs)">
+            <summary>
+            Moves the browser's display back to the previous page
+            </summary>
+            <param name="sender">Object Sender</param>
+            <param name="e">System.EventArgs e</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.PanelCloser.Forward_Click(System.Object,System.EventArgs)">
+            <summary>
+            Moves the browser's display forward to the page that hda been displayed before going back.
+            </summary>
+            <param name="sender">Object Sender</param>
+            <param name="e">System.EventArgs e</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.PanelCloser.PanelToolbar_Paint(System.Object,System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            Produces the pretty background of the toolbar.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.UI.Controls.SelectedAppChangedEventHandler">
+            <summary>
+            Delegate used to indicate to the UI when the user has changed the hosted
+            application they are using.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.UI.Controls.CloseApplicationClickEventHandler">
+            <summary>
+            Delegate used to indicate to the UI when the user has close an application.
+            </summary>
+            <param name="app">Hosted Application</param>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.UI.Controls.IPanel">
+            <summary>
+            This Interface Interface contains methods that must be implemented by any 
+            Panel that hosts applications
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.IPanel.IsApplicationOnPanel(System.Guid)">
+            <summary>
+            Checks if the passed id is an application on this WpfPanel.
+            </summary>
+            <param name="id">ID the application</param>
+            <returns>true if found on the panel</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.IPanel.Add(System.Object,System.Boolean)">
+            <summary>
+            Adds a hosted application or a user WinForms control to the
+            Panel.  If there are currenlty no app on this panel, then add
+            to DeckControl.  Else if there are more than one app on this
+            panel, then add to TabControl.
+            </summary>
+            <param name="child">The control or hosted app to add to the panel</param>
+            <param name="closeButton">True if a close button is provided for closing dynamic
+            hosted application, false otherwise</param>
+            <returns>The tabpage from the TabControl if one is used or the DeckControl</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.IPanel.Add(System.Object,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Adds a  hosted application or a user WinForms control to the
+            Panel.  If there are currenlty no app on this panel, then add
+            to DeckControl.  Else if there are more than one app on this
+            panel, then add to TabControl.
+            </summary>
+            <param name="child">The control or hosted app to add to the panel</param>
+            <param name="initializationXml">An XML string for the application being added.
+            This is used when determining how the app will appear in the panel, for
+            instance, is there a toolbar.
+            </param>
+            <param name="useToolbar">True if a toolbar is used no mater what, false
+            if the xml string should be parsed to see if one is used.
+            </param>
+            <param name="closeButton">True if a close button is provided for closing
+            dynamic hosted application, false otherwise</param>
+            <returns>The tabpage from the TabControl if one is used or the DeckControl</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.IPanel.Remove(System.Object)">
+            <summary>
+            Removes an application from the Panel.
+            </summary>
+            <param name="app">Hosted Application instance</param>
+            <returns>True if the app was removed, false if not found</returns>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Controls.IPanel.Floating">
+            <summary>
+            Used to determine if this pane is floating or tied into the agent
+            desktop UI.
+            </summary>
+        </member>
+        <member name="E:Microsoft.Uii.Desktop.UI.Controls.IPanel.SelectedAppChanged">
+            <summary>
+            Used when a tab page is selected to pass the event back to the main UI code
+            </summary>
+        </member>
+        <member name="E:Microsoft.Uii.Desktop.UI.Controls.IPanel.CloseApplicationClick">
+            <summary>
+            Used when close button is clicked on the application to pass the event
+            back to the main UI code.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.UI.Controls.Properties.Constants">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Controls.Properties.Constants.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Controls.Properties.Constants.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Controls.Properties.Constants.TOOLBAR_NODE">
+            <summary>
+              Looks up a localized string similar to descendant::toolbar.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.UI.Controls.Properties.Messages">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Controls.Properties.Messages.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Controls.Properties.Messages.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.UI.Controls.ButtonNavigator">
+            <summary>
+            The Button toolbar providing close button functionality for dynamic applications
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.ButtonNavigator.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.ButtonNavigator.#ctor(System.Object)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="app">The dynamic app</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.ButtonNavigator.subToolBar_ButtonClick(System.Object,System.Windows.Forms.ToolBarButtonClickEventArgs)">
+            <summary>
+            Called whenever a button on the toolbar is pressed
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.ButtonNavigator.PanelToolbar_Paint(System.Object,System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            Produces the pretty background of the toolbar.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.UI.Controls.ButtonNavigator.components">
+            <summary>
+            IContainer 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.UI.Controls.ButtonNavigator.app">
+            <summary>
+            Application object
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.UI.Controls.ButtonNavigator.imageList">
+            <summary>
+            List of images to load
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.UI.Controls.ButtonNavigator.subToolBar">
+            <summary>
+            Toolbar to load
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.UI.Controls.ButtonNavigator.CloseButton">
+            <summary>
+            Close button
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.UI.Controls.ButtonNavigator.panel1">
+            <summary>
+            Panel
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.ButtonNavigator.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.ButtonNavigator.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="E:Microsoft.Uii.Desktop.UI.Controls.ButtonNavigator.CloseButtonClick">
+            <summary>
+            Event for when the close button is clicked.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Controls.ButtonNavigator.Application">
+            <summary>
+            Application object
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.UI.Controls.ButtonNavigator.CloseButtonClickHandler">
+            <summary>
+            Raised when close button click happen
+            </summary>
+            <param name="application">Application to close</param>
+        </member>
+    </members>
+</doc>

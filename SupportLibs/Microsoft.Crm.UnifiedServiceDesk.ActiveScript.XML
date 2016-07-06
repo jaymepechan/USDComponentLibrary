@@ -1,0 +1,1707 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Crm.UnifiedServiceDesk.ActiveScript</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.HostTypeCollection">
+            <summary>
+            Represents a scriptable collection of host types.
+            </summary>
+            <remarks>
+            Host type collections provide convenient scriptable access to all the types defined in one
+            or more host assemblies. They are hierarchical collections where leaf nodes represent types
+            and parent nodes represent namespaces. For example, if an assembly contains a type named
+            "Acme.Gadgets.Button", the corresponding collection will have a property named "Acme" whose
+            value is an object with a property named "Gadgets" whose value is an object with a property
+            named "Button" whose value represents the <c>Acme.Gadgets.Button</c> host type. Use
+            <see cref="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.AddHostObject(System.String,System.Object)">AddHostObject</see> to expose a host
+            type collection to script code.
+            </remarks>
+        </member>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.PropertyBag">
+            <summary>
+            Provides a default <see cref="T:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.IPropertyBag"/> implementation.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.IPropertyBag">
+            <summary>
+            Represents a scriptable collection of named properties.
+            </summary>
+            <remarks>
+            If an object implementing this interface is added to a script engine (see
+            <see cref="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.AddHostObject(System.String,System.Object)">AddHostObject</see>), script code
+            will be able to access the properties stored in the collection as if they were members of
+            the object itself, using the the script language's native syntax for member access. No
+            other members of the object will be accessible. This interface also allows objects to
+            implement "expando" functionality for script languages that support it.
+            </remarks>
+        </member>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.IScriptableObject">
+            <summary>
+            Defines a method to be called when a host object is exposed to script code.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.IScriptableObject.OnExposedToScriptCode(Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine)">
+            <summary>
+            Notifies the host object that it has been exposed to script code.
+            </summary>
+            <param name="engine">The script engine in which the host object was exposed.</param>
+            <remarks>
+            This method may be called more than once for a given host object. The object may be
+            exposed in multiple script engines or many times in one script engine. Implementers
+            should avoid expensive operations within this method, or cache the results of such
+            operations for efficient retrieval during subsequent invocations.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.PropertyBag.#ctor">
+            <summary>
+            Initializes a new writable <see cref="T:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.PropertyBag"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.PropertyBag.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new <see cref="T:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.PropertyBag"/>.
+            </summary>
+            <param name="isReadOnly"><c>True</c> to make the <see cref="T:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.PropertyBag"/> read-only, <c>false</c> to make it writable.</param>
+            <remarks>
+            The host can modify a read-only <see cref="T:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.PropertyBag"/> by calling
+            <see cref="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.PropertyBag.SetPropertyNoCheck(System.String,System.Object)">SetPropertyNoCheck</see>.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.PropertyBag.SetPropertyNoCheck(System.String,System.Object)">
+            <summary>
+            Sets a property value without checking whether the <see cref="T:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.PropertyBag"/> is read-only.
+            </summary>
+            <param name="name">The name of the property to set.</param>
+            <param name="value">The property value.</param>
+            <remarks>
+            This operation is never exposed to script code.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.PropertyBag.ContainsKey(System.String)">
+            <summary>
+            Determines whether the <see cref="T:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.PropertyBag"/> contains a property with the specified name.
+            </summary>
+            <param name="key">The name of the property to locate.</param>
+            <returns><c>True</c> if the <see cref="T:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.PropertyBag"/> contains a property with the specified name, <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.PropertyBag.Add(System.String,System.Object)">
+            <summary>
+            Adds a property to the <see cref="T:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.PropertyBag"/>.
+            </summary>
+            <param name="key">The name of the property to add.</param>
+            <param name="value">The property value.</param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.PropertyBag.Remove(System.String)">
+            <summary>
+            Removes a property from the <see cref="T:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.PropertyBag"/>.
+            </summary>
+            <param name="key">The name of the property to remove.</param>
+            <returns><c>True</c> if the property was successfully found and removed, <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.PropertyBag.TryGetValue(System.String,System.Object@)">
+            <summary>
+            Looks up a property value in the <see cref="T:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.PropertyBag"/>.
+            </summary>
+            <param name="key">The name of the property to locate.</param>
+            <param name="value">The property value if the property was found, <c>null</c> otherwise.</param>
+            <returns><c>True</c> if the property was found, <c>false</c> otherwise.</returns>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.PropertyBag.Item(System.String)">
+            <summary>
+            Gets or sets a property value in the <see cref="T:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.PropertyBag"/>.
+            </summary>
+            <param name="key">The name of the property to get or set.</param>
+            <returns>The property value.</returns>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.PropertyBag.Keys">
+            <summary>
+            Gets a collection of property names from the <see cref="T:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.PropertyBag"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.PropertyBag.Values">
+            <summary>
+            Gets a collection of property values from the <see cref="T:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.PropertyBag"/>.
+            </summary>
+        </member>
+        <member name="E:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.PropertyBag.PropertyChanged">
+            <summary>
+            Occurs when a property is added or replaced, or when the collection is cleared.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.HostTypeCollection.#ctor">
+            <summary>
+            Initializes a new host type collection.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.HostTypeCollection.#ctor(System.Reflection.Assembly[])">
+            <summary>
+            Initializes a new host type collection with types from one or more assemblies.
+            </summary>
+            <param name="assemblies">The assemblies that contain the types with which to initialize the collection.</param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.HostTypeCollection.#ctor(System.String[])">
+            <summary>
+            Initializes a new host type collection with types from one or more assemblies. The assemblies
+            are specified by name.
+            </summary>
+            <param name="assemblyNames">The names of the assemblies that contain the types with which to initialize the collection.</param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.HostTypeCollection.AddAssembly(System.Reflection.Assembly)">
+            <summary>
+            Adds types from an assembly to a host type collection.
+            </summary>
+            <param name="assembly">The assembly that contains the types to add.</param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.HostTypeCollection.AddAssembly(System.String)">
+            <summary>
+            Adds types from an assembly to a host type collection. The assembly is specified by name.
+            </summary>
+            <param name="assemblyName">The name of the assembly that contains the types to add.</param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.HostTypeCollection.AddType(System.Type)">
+            <summary>
+            Adds a type to a host type collection.
+            </summary>
+            <param name="type">The type to add.</param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.HostTypeCollection.AddType(System.String,System.Type[])">
+            <summary>
+            Adds a type to a host type collection. The type is specified by name.
+            </summary>
+            <param name="typeName">The fully qualified name of the type to add.</param>
+            <param name="typeArgs">Optional generic type arguments.</param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.HostTypeCollection.AddType(System.String,System.String,System.Type[])">
+            <summary>
+            Adds a type to a host type collection. The type is specified by type name and assembly name.
+            </summary>
+            <param name="typeName">The fully qualified name of the type to add.</param>
+            <param name="assemblyName">The name of the assembly that contains the type to add.</param>
+            <param name="typeArgs">Optional generic type arguments.</param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.HostTypeCollection.GetNamespaceNode(System.String)">
+            <summary>
+            Locates a namespace within a host type collection.
+            </summary>
+            <param name="name">The full name of the namespace to locate.</param>
+            <returns>The node that represents the namespace if it was found, <c>null</c> otherwise.</returns>
+        </member>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.JScriptChakraEngine">
+            <summary>
+            Represents an instance of the JScript Chakra language engine.
+            </summary>
+            <remarks>
+            Chakra is the new high-performance version of JScript that is included with Microsoft
+            Windows Internet Explorer 9. ActiveScript support for Chakra is experimental; there are
+            known issues with some ActiveScript features.
+            </remarks>
+        </member>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.JScriptEngine">
+            <summary>
+            Represents an instance of the JScript language engine.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine">
+            <summary>
+            Provides the base implementation for all script engines.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.#ctor(System.String,System.String,Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngineFlags)">
+            <summary>
+            Initializes a new script engine instance.
+            </summary>
+            <param name="progID">The programmatic identifier (ProgID) of the Windows Script language engine class.</param>
+            <param name="name">A name to associate with the instance. Currently this name is used only as a label in presentation contexts such as debugger user interfaces.</param>
+            <param name="flags">A value that selects options for the operation.</param>
+            <remarks>
+            The <paramref name="progID"/> argument can be a class identifier (CLSID) in standard
+            GUID format with braces (e.g., "{F414C260-6AC0-11CF-B6D1-00AA00BBBB58}").
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.AddHostObject(System.String,System.Object)">
+            <summary>
+            Exposes a host object to script code.
+            </summary>
+            <param name="itemName">A name for the new global script item that will represent the object.</param>
+            <param name="target">The object to expose.</param>
+            <remarks>
+            For information about the mapping between host members and script-callable properties
+            and methods, see <see cref="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.AddHostObject(System.String,Microsoft.Crm.UnifiedServiceDesk.ActiveScript.HostItemFlags,System.Object)"/>.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.AddHostObject(System.String,Microsoft.Crm.UnifiedServiceDesk.ActiveScript.HostItemFlags,System.Object)">
+            <summary>
+            Exposes a host object to script code with the specified options.
+            </summary>
+            <param name="itemName">A name for the new global script item that will represent the object.</param>
+            <param name="flags">A value that selects options for the operation.</param>
+            <param name="target">The object to expose.</param>
+            <remarks>
+            Once a host object is exposed to script code, its members are accessible via the script
+            language's native syntax for member access. The following table provides details about
+            the mapping between host members and script-accessible properties and methods.
+            <para>
+            <list type="table">
+                <listheader>
+                    <term>Member Type</term>
+                    <term>Exposed As</term>
+                    <description>Remarks</description>
+                </listheader>
+                <item>
+                    <term><b>Constructor</b></term>
+                    <term>N/A</term>
+                    <description>
+                    To invoke a constructor from script code, call
+                    <see cref="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.HostFunctions.newObj``1(System.Object[])">HostFunctions.newObj(T)</see>.
+                    </description>
+                </item>
+                <item>
+                    <term><b>Property/Field</b></term>
+                    <term><b>Property</b></term>
+                    <description>N/A</description>
+                </item>
+                <item>
+                    <term><b>Method</b></term>
+                    <term><b>Method</b></term>
+                    <description>
+                    Overloaded host methods are merged into a single script-callable method. At
+                    runtime the correct host method is selected based on the argument types.
+                    </description>
+                </item>
+                <item>
+                    <term><b>Generic Method</b></term>
+                    <term><b>Method</b></term>
+                    <description>
+                    The ActiveScript library supports dynamic C#-like type inference when invoking
+                    generic methods. However, some methods require explicit type arguments. To call
+                    such a method from script code, you must place the required number of
+                    <see cref="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.AddHostType(System.String,Microsoft.Crm.UnifiedServiceDesk.ActiveScript.HostItemFlags,System.Type)">host type objects</see>
+                    at the beginning of the argument list. Doing so for methods that do not require
+                    explicit type arguments is optional.
+                    </description>
+                </item>
+                <item>
+                    <term><b>Extension Method</b></term>
+                    <term><b>Method</b></term>
+                    <description>
+                    Extension methods are available if the type that implements them has been
+                    exposed in the current script engine.
+                    </description>
+                </item>
+                <item>
+                    <term><b>Indexer</b></term>
+                    <term><b>Property</b></term>
+                    <description>
+                    Indexers appear as properties named "Item" that accept one or more index values
+                    as arguments. In addition, objects that implement <see cref="T:System.Collections.IList"/> expose
+                    properties with numeric names that match their valid indices. This includes
+                    one-dimensional host arrays and other collections. Multidimensional host arrays
+                    do not expose functional indexers; you must use
+                    <see href="http://msdn.microsoft.com/en-us/library/system.array.getvalue.aspx">Array.GetValue</see>
+                    and
+                    <see href="http://msdn.microsoft.com/en-us/library/system.array.setvalue.aspx">Array.SetValue</see>
+                    instead.
+                    </description>
+                </item>
+                <item>
+                    <term><b>Event</b></term>
+                    <term><b>Property</b></term>
+                    <description>
+                    Events are exposed as read-only properties of type <see cref="T:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.EventSource`1"/>.
+                    </description>
+                </item>
+            </list>
+            </para>
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.AddHostType(System.String,System.Type)">
+            <summary>
+            Exposes a host type to script code.
+            </summary>
+            <param name="itemName">A name for the new global script item that will represent the type.</param>
+            <param name="type">The type to expose.</param>
+            <remarks>
+            Host types are exposed to script code in the form of objects whose properties and
+            methods are bound to the type's static members and nested types. If the type has
+            generic parameters, the corresponding object will be invocable with type arguments to
+            yield a concrete type.
+            <para>
+            For more information about the mapping between host members and script-callable
+            properties and methods, see <see cref="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.AddHostObject(System.String,Microsoft.Crm.UnifiedServiceDesk.ActiveScript.HostItemFlags,System.Object)"/>.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.AddHostType(System.String,Microsoft.Crm.UnifiedServiceDesk.ActiveScript.HostItemFlags,System.Type)">
+            <summary>
+            Exposes a host type to script code with the specified options.
+            </summary>
+            <param name="itemName">A name for the new global script item that will represent the type.</param>
+            <param name="flags">A value that selects options for the operation.</param>
+            <param name="type">The type to expose.</param>
+            <remarks>
+            Host types are exposed to script code in the form of objects whose properties and
+            methods are bound to the type's static members and nested types. If the type has
+            generic parameters, the corresponding object will be invocable with type arguments to
+            yield a concrete type.
+            <para>
+            For more information about the mapping between host members and script-callable
+            properties and methods, see <see cref="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.AddHostObject(System.String,Microsoft.Crm.UnifiedServiceDesk.ActiveScript.HostItemFlags,System.Object)"/>.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.AddHostType(System.String,System.String,System.Type[])">
+            <summary>
+            Exposes a host type to script code. The type is specified by name.
+            </summary>
+            <param name="itemName">A name for the new global script item that will represent the type.</param>
+            <param name="typeName">The fully qualified name of the type to expose.</param>
+            <param name="typeArgs">Optional generic type arguments.</param>
+            <remarks>
+            Host types are exposed to script code in the form of objects whose properties and
+            methods are bound to the type's static members and nested types. If the type has
+            generic parameters, the corresponding object will be invocable with type arguments to
+            yield a concrete type.
+            <para>
+            For more information about the mapping between host members and script-callable
+            properties and methods, see <see cref="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.AddHostObject(System.String,Microsoft.Crm.UnifiedServiceDesk.ActiveScript.HostItemFlags,System.Object)"/>.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.AddHostType(System.String,Microsoft.Crm.UnifiedServiceDesk.ActiveScript.HostItemFlags,System.String,System.Type[])">
+            <summary>
+            Exposes a host type to script code with the specified options. The type is specified by name.
+            </summary>
+            <param name="itemName">A name for the new global script item that will represent the type.</param>
+            <param name="flags">A value that selects options for the operation.</param>
+            <param name="typeName">The fully qualified name of the type to expose.</param>
+            <param name="typeArgs">Optional generic type arguments.</param>
+            <remarks>
+            Host types are exposed to script code in the form of objects whose properties and
+            methods are bound to the type's static members and nested types. If the type has
+            generic parameters, the corresponding object will be invocable with type arguments to
+            yield a concrete type.
+            <para>
+            For more information about the mapping between host members and script-callable
+            properties and methods, see <see cref="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.AddHostObject(System.String,Microsoft.Crm.UnifiedServiceDesk.ActiveScript.HostItemFlags,System.Object)"/>.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.AddHostType(System.String,System.String,System.String,System.Type[])">
+            <summary>
+            Exposes a host type to script code. The type is specified by type name and assembly name.
+            </summary>
+            <param name="itemName">A name for the new global script item that will represent the type.</param>
+            <param name="typeName">The fully qualified name of the type to expose.</param>
+            <param name="assemblyName">The name of the assembly that contains the type to expose.</param>
+            <param name="typeArgs">Optional generic type arguments.</param>
+            <remarks>
+            Host types are exposed to script code in the form of objects whose properties and
+            methods are bound to the type's static members and nested types. If the type has
+            generic parameters, the corresponding object will be invocable with type arguments to
+            yield a concrete type.
+            <para>
+            For more information about the mapping between host members and script-callable
+            properties and methods, see <see cref="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.AddHostObject(System.String,Microsoft.Crm.UnifiedServiceDesk.ActiveScript.HostItemFlags,System.Object)"/>.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.AddHostType(System.String,Microsoft.Crm.UnifiedServiceDesk.ActiveScript.HostItemFlags,System.String,System.String,System.Type[])">
+            <summary>
+            Exposes a host type to script code with the specified options. The type is specified by
+            type name and assembly name.
+            </summary>
+            <param name="itemName">A name for the new global script item that will represent the type.</param>
+            <param name="flags">A value that selects options for the operation.</param>
+            <param name="typeName">The fully qualified name of the type to expose.</param>
+            <param name="assemblyName">The name of the assembly that contains the type to expose.</param>
+            <param name="typeArgs">Optional generic type arguments.</param>
+            <remarks>
+            Host types are exposed to script code in the form of objects whose properties and
+            methods are bound to the type's static members and nested types. If the type has
+            generic parameters, the corresponding object will be invocable with type arguments to
+            yield a concrete type.
+            <para>
+            For more information about the mapping between host members and script-callable
+            properties and methods, see <see cref="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.AddHostObject(System.String,Microsoft.Crm.UnifiedServiceDesk.ActiveScript.HostItemFlags,System.Object)"/>.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.Execute(System.String)">
+            <summary>
+            Executes script code.
+            </summary>
+            <param name="code">The script code to execute.</param>
+            <remarks>
+            In some script languages the distinction between statements and expressions is
+            significant but ambiguous for certain syntactic elements. This method always
+            interprets the specified script code as a statement.
+            <para>
+            If a debugger is attached, it will present the specified script code to the user as a
+            document with an automatically selected name. This document will not be discarded
+            after execution.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.Execute(System.String,System.String)">
+            <summary>
+            Executes script code with an associated document name.
+            </summary>
+            <param name="documentName">A document name for the script code. Currently this name is used only as a label in presentation contexts such as debugger user interfaces.</param>
+            <param name="code">The script code to execute.</param>
+            <remarks>
+            In some script languages the distinction between statements and expressions is
+            significant but ambiguous for certain syntactic elements. This method always
+            interprets the specified script code as a statement.
+            <para>
+            If a debugger is attached, it will present the specified script code to the user as a
+            document with the specified name. This document will not be discarded after execution.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.Execute(System.String,System.Boolean,System.String)">
+            <summary>
+            Executes script code with an associated document name, optionally discarding the document after execution.
+            </summary>
+            <param name="documentName">A document name for the script code. Currently this name is used only as a label in presentation contexts such as debugger user interfaces.</param>
+            <param name="discard"><c>True</c> to discard the script document after execution, <c>false</c> otherwise.</param>
+            <param name="code">The script code to execute.</param>
+            <remarks>
+            In some script languages the distinction between statements and expressions is
+            significant but ambiguous for certain syntactic elements. This method always
+            interprets the specified script code as a statement.
+            <para>
+            If a debugger is attached, it will present the specified script code to the user as a
+            document with the specified name. Discarding this document removes it from view but
+            has no effect on the script engine.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.ExecuteCommand(System.String)">
+            <summary>
+            Executes script code as a command.
+            </summary>
+            <param name="command">The script command to execute.</param>
+            <returns>The command output.</returns>
+            <remarks>
+            This method is similar to <see cref="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.Evaluate(System.String)"/> but optimized for command
+            consoles. The specified command must be limited to a single expression or statement.
+            Script engines can override this method to customize command execution as well as the
+            process of converting the result to a string for console output.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.Evaluate(System.String)">
+            <summary>
+            Evaluates script code.
+            </summary>
+            <param name="code">The script code to evaluate.</param>
+            <returns>The result value.</returns>
+            <remarks>
+            In some script languages the distinction between statements and expressions is
+            significant but ambiguous for certain syntactic elements. This method always
+            interprets the specified script code as an expression.
+            <para>
+            If a debugger is attached, it will present the specified script code to the user as a
+            document with an automatically selected name. This document will be discarded after
+            execution.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.Evaluate(System.String,System.String)">
+            <summary>
+            Evaluates script code with an associated document name.
+            </summary>
+            <param name="documentName">A document name for the script code. Currently this name is used only as a label in presentation contexts such as debugger user interfaces.</param>
+            <param name="code">The script code to evaluate.</param>
+            <returns>The result value.</returns>
+            <remarks>
+            In some script languages the distinction between statements and expressions is
+            significant but ambiguous for certain syntactic elements. This method always
+            interprets the specified script code as an expression.
+            <para>
+            If a debugger is attached, it will present the specified script code to the user as a
+            document with the specified name. This document will be discarded after execution.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.Evaluate(System.String,System.Boolean,System.String)">
+            <summary>
+            Evaluates script code with an associated document name, optionally discarding the document after execution.
+            </summary>
+            <param name="documentName">A document name for the script code. Currently this name is used only as a label in presentation contexts such as debugger user interfaces.</param>
+            <param name="discard"><c>True</c> to discard the script document after execution, <c>false</c> otherwise.</param>
+            <param name="code">The script code to evaluate.</param>
+            <returns>The result value.</returns>
+            <remarks>
+            In some script languages the distinction between statements and expressions is
+            significant but ambiguous for certain syntactic elements. This method always
+            interprets the specified script code as an expression.
+            <para>
+            If a debugger is attached, it will present the specified script code to the user as a
+            document with the specified name. Discarding this document removes it from view but
+            has no effect on the script engine.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.Interrupt">
+            <summary>
+            Interrupts script execution and causes the script engine to throw an exception. 
+            </summary>
+            <remarks>
+            This method can be called safely from any thread.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.Dispose">
+            <summary>
+            Releases all resources used by the script engine.
+            </summary>
+            <remarks>
+            Call <c>Dispose()</c> when you are finished using the script engine. <c>Dispose()</c>
+            leaves the script engine in an unusable state. After calling <c>Dispose()</c>, you must
+            release all references to the script engine so the garbage collector can reclaim the
+            memory that the script engine was occupying.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.Dispose(System.Boolean)">
+            <summary>
+            Releases the unmanaged resources used by the script engine and optionally releases the managed resources.
+            </summary>
+            <param name="disposing"><c>True</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
+            <remarks>
+            This method is called by the public <see cref="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.Dispose"/> method and the
+            <see cref="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.Finalize">Finalize</see> method. <see cref="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.Dispose"/> invokes the
+            protected <c>Dispose(Boolean)</c> method with the <paramref name="disposing"/>
+            parameter set to <c>true</c>. <see cref="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.Finalize">Finalize</see> invokes
+            <c>Dispose(Boolean)</c> with <paramref name="disposing"/> set to <c>false</c>.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.Finalize">
+            <summary>
+            Releases unmanaged resources and performs other cleanup operations before the script engine is reclaimed by garbage collection.
+            </summary>
+            <remarks>
+            This method overrides <see cref="M:System.Object.Finalize"/>. Application code should not
+            call this method; an object's <c>Finalize()</c> method is automatically invoked during
+            garbage collection, unless finalization by the garbage collector has been disabled by a
+            call to <see cref="M:System.GC.SuppressFinalize(System.Object)"/>.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.FileNameExtension">
+            <summary>
+            Gets the script engine's recommended file name extension for script files.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.AccessContext">
+            <summary>
+            Allows script code to access non-public host resources.
+            </summary>
+            <remarks>
+            By setting this property to a type you declare that script code running in the current
+            script engine is to be treated as if it were part of that type's implementation. Doing
+            so does not expose any host resources to script code, but it affects which host
+            resources are importable and which members of exposed resources are accessible.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.ContinuationCallback">
+            <summary>
+            Gets or sets a callback that can be used to halt script execution.
+            </summary>
+            <remarks>
+            During script execution the script engine periodically invokes this callback to
+            determine whether it should continue. If the callback returns <c>false</c>, the script
+            engine terminates script execution and throws an exception.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.Script">
+            <summary>
+            Allows the host to access script resources directly.
+            </summary>
+            <remarks>
+            The value of this property is an object that is bound to the script engine's root
+            namespace. It dynamically supports properties and methods that correspond to global
+            script objects and functions.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.JScriptEngine.#ctor">
+            <summary>
+            Initializes a new JScript language engine instance.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.JScriptEngine.#ctor(System.String)">
+            <summary>
+            Initializes a new JScript language engine instance with the specified name.
+            </summary>
+            <param name="name">A name to associate with the instance. Currently this name is used only as a label in presentation contexts such as debugger user interfaces.</param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.JScriptEngine.#ctor(Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngineFlags)">
+            <summary>
+            Initializes a new JScript language engine instance with the specified options.
+            </summary>
+            <param name="flags">A value that selects options for the operation.</param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.JScriptEngine.#ctor(System.String,Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngineFlags)">
+            <summary>
+            Initializes a new JScript language engine instance with the specified name and options.
+            </summary>
+            <param name="name">A name to associate with the instance. Currently this name is used only as a label in presentation contexts such as debugger user interfaces.</param>
+            <param name="flags">A value that selects options for the operation.</param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.JScriptEngine.#ctor(System.String,System.String,Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngineFlags)">
+            <summary>
+            Initializes a new JScript language engine instance with the specified programmatic
+            identifier, name, and options.
+            </summary>
+            <param name="progID">The programmatic identifier (ProgID) of the JScript language engine class.</param>
+            <param name="name">A name to associate with the instance. Currently this name is used only as a label in presentation contexts such as debugger user interfaces.</param>
+            <param name="flags">A value that selects options for the operation.</param>
+            <remarks>
+            The <paramref name="progID"/> argument can be a class identifier (CLSID) in standard
+            GUID format with braces (e.g., "{F414C260-6AC0-11CF-B6D1-00AA00BBBB58}").
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.JScriptEngine.ExecuteCommand(System.String)">
+            <summary>
+            Executes script code as a command.
+            </summary>
+            <param name="command">The script command to execute.</param>
+            <returns>The command output.</returns>
+            <remarks>
+            This method is similar to <see cref="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.Evaluate(System.String)"/> but optimized for
+            command consoles. The specified command must be limited to a single expression or
+            statement. Script engines can override this method to customize command execution as
+            well as the process of converting the result to a string for console output.
+            <para>
+            The <see cref="T:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.JScriptEngine"/> version of this method attempts to use
+            <see href="http://msdn.microsoft.com/en-us/library/k6xhc6yc(VS.85).aspx">toString</see>
+            to convert the return value.
+            </para>
+            </remarks>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.JScriptEngine.FileNameExtension">
+            <summary>
+            Gets the script engine's recommended file name extension for script files.
+            </summary>
+            <remarks>
+            <see cref="T:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.JScriptEngine"/> instances return "js" for this property.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.JScriptChakraEngine.#ctor">
+            <summary>
+            Initializes a new JScript Chakra language engine instance.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.JScriptChakraEngine.#ctor(System.String)">
+            <summary>
+            Initializes a new JScript Chakra language engine instance with the specified name.
+            </summary>
+            <param name="name">A name to associate with the instance. Currently this name is used only as a label in presentation contexts such as debugger user interfaces.</param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.JScriptChakraEngine.#ctor(Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngineFlags)">
+            <summary>
+            Initializes a new JScript Chakra language engine instance with the specified options.
+            </summary>
+            <param name="flags">A value that selects options for the operation.</param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.JScriptChakraEngine.#ctor(System.String,Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngineFlags)">
+            <summary>
+            Initializes a new JScript Chakra language engine instance with the specified name and options.
+            </summary>
+            <param name="name">A name to associate with the instance. Currently this name is used only as a label in presentation contexts such as debugger user interfaces.</param>
+            <param name="flags">A value that selects options for the operation.</param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.JScriptChakraEngine.#ctor(System.String,System.String,Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngineFlags)">
+            <summary>
+            Initializes a new JScript Chakra language engine instance with the specified programmatic
+            identifier, name, and options.
+            </summary>
+            <param name="progID">The programmatic identifier (ProgID) of the JScript Chakra language engine class.</param>
+            <param name="name">A name to associate with the instance. Currently this name is used only as a label in presentation contexts such as debugger user interfaces.</param>
+            <param name="flags">A value that selects options for the operation.</param>
+            <remarks>
+            The <paramref name="progID"/> argument can be a class identifier (CLSID) in standard
+            GUID format with braces (e.g., "{F414C260-6AC0-11CF-B6D1-00AA00BBBB58}").
+            </remarks>
+        </member>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngineFlags">
+            <summary>
+            Defines options for initializing a new script engine instance.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngineFlags.None">
+            <summary>
+            Indicates that no options are selected.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngineFlags.EnableDebugging">
+            <summary>
+            Indicates that script debugging features are to be enabled.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngineFlags.EnableJITDebugging">
+            <summary>
+            Indicates that Just-In-Time script debugging is to be enabled. This option is ignored if <see cref="F:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngineFlags.EnableDebugging"/> is not specified.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngineFlags.DisableSourceManagement">
+            <summary>
+            Indicates that smart source document management is to be disabled. This option is ignored if <see cref="F:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngineFlags.EnableDebugging"/> is not specified.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.HostItemFlags">
+            <summary>
+            Defines options for exposing host resources to script code.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.HostItemFlags.None">
+            <summary>
+            Indicates that no options are selected.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.HostItemFlags.GlobalMembers">
+            <summary>
+            Indicates that the host resource's members are to be exposed as global items in the script engine's root namespace.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.HostItemFlags.PrivateAccess">
+            <summary>
+            Indicates that the host resource's non-public members are to be exposed.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ContinuationCallback">
+            <summary>
+            Represents the method that indicates to a script engine whether script execution should continue.
+            </summary>
+            <returns><c>True</c> to continue script execution, <c>false</c> to interrupt it.</returns>
+            <seealso cref="P:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.ContinuationCallback"/>
+        </member>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.HostFunctions">
+            <summary>
+            Provides optional script-callable utility functions.
+            </summary>
+            <remarks>
+            Use <see cref="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.AddHostObject(System.String,System.Object)">AddHostObject</see> to expose a
+            <c>HostFunctions</c> instance to script code. Each instance can only be exposed in one
+            script engine.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.HostFunctions.#ctor">
+            <summary>
+            Initializes a new <see cref="T:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.HostFunctions"/> instance.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.HostFunctions.newObj">
+            <summary>
+            Creates an empty host object.
+            </summary>
+            <returns>A new empty host object.</returns>
+            <remarks>
+            This function is provided for script languages that support "expando" functionality.
+            It creates an object that supports dynamic property addition and removal. The host
+            can manipulate it via the <see cref="T:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.IPropertyBag"/> interface.
+            </remarks>
+            <example>
+            The following code creates an empty host object and adds several properties to it.
+            It assumes that an instance of <see cref="T:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.HostFunctions"/> is exposed under
+            the name "host"
+            (see <see cref="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.AddHostObject(System.String,System.Object)">AddHostObject</see>).
+            <code lang="JavaScript" title="JScript Example">
+            var item = host.newObj();
+            item.label = "Widget";
+            item.weight = 123.45;
+            </code>
+            </example>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.HostFunctions.newObj``1(System.Object[])">
+            <summary>
+            Creates a host object of the specified type.
+            </summary>
+            <typeparam name="T">The type of object to create.</typeparam>
+            <param name="args">Optional constructor arguments.</param>
+            <returns>A new host object of the specified type.</returns>
+            <remarks>
+            For information about the mapping between host members and script-callable properties
+            and methods, see
+            <see cref="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.AddHostObject(System.String,Microsoft.Crm.UnifiedServiceDesk.ActiveScript.HostItemFlags,System.Object)">AddHostObject</see>.
+            </remarks>
+            <example>
+            The following code imports the <see cref="T:System.Random"/> class, creates an
+            instance using the
+            <see href="http://msdn.microsoft.com/en-us/library/ctssatww.aspx">Random(Int32)</see>
+            constructor, and calls the <see cref="M:System.Random.NextDouble"/> method.
+            It assumes that an instance of <see cref="T:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ExtendedHostFunctions"/> is exposed under
+            the name "host"
+            (see <see cref="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.AddHostObject(System.String,System.Object)">AddHostObject</see>).
+            <code lang="JavaScript" title="JScript Example">
+            var RandomT = host.type("System.Random");
+            var random = host.newObj(RandomT, 100);
+            var value = random.NextDouble();
+            </code>
+            </example>
+            <seealso cref="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ExtendedHostFunctions.type(System.String,System.Object[])"/>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.HostFunctions.newArr``1(System.Int32[])">
+            <summary>
+            Creates a host array.
+            </summary>
+            <typeparam name="T">The element type of the array to create.</typeparam>
+            <param name="lengths">One or more integers representing the array dimension lengths.</param>
+            <returns>A new host array.</returns>
+            <remarks>
+            For information about the mapping between host members and script-callable properties
+            and methods, see
+            <see cref="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.AddHostObject(System.String,Microsoft.Crm.UnifiedServiceDesk.ActiveScript.HostItemFlags,System.Object)">AddHostObject</see>.
+            </remarks>
+            <example>
+            The following code creates a 5x3 host array of strings.
+            It assumes that an instance of <see cref="T:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ExtendedHostFunctions"/> is exposed under
+            the name "host"
+            (see <see cref="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.AddHostObject(System.String,System.Object)">AddHostObject</see>).
+            <code lang="JavaScript" title="JScript Example">
+            var StringT = host.type("System.String");
+            var array = host.newArr(StringT, 5, 3);
+            </code>
+            </example>
+            <seealso cref="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ExtendedHostFunctions.type(System.String,System.Object[])"/>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.HostFunctions.newVar``1(``0)">
+            <summary>
+            Creates a host variable of the specified type.
+            </summary>
+            <typeparam name="T">The type of variable to create.</typeparam>
+            <param name="initValue">An optional initial value for the variable.</param>
+            <returns>A new host variable of the specified type.</returns>
+            <remarks>
+            A host variable is a strongly typed object that holds a value of the specified type.
+            Host variables are useful for passing method arguments by reference. In addition to
+            being generally interchangeable with their stored values, host variables support the
+            following properties:
+            <para>
+            <list type="table">
+                <listheader>
+                    <term>Property</term>
+                    <term>Access</term>
+                    <description>Description</description>
+                </listheader>
+                <item>
+                    <term><c>value</c></term>
+                    <term>read-write</term>
+                    <description>The current value of the host variable.</description>
+                </item>
+                <item>
+                    <term><c>out</c></term>
+                    <term>read-only</term>
+                    <description>A reference to the host variable that can be passed as an <c><see href="http://msdn.microsoft.com/en-us/library/t3c3bfhx(VS.80).aspx">out</see></c> argument.</description>
+                </item>
+                <item>
+                    <term><c>ref</c></term>
+                    <term>read-only</term>
+                    <description>A reference to the host variable that can be passed as a <c><see href="http://msdn.microsoft.com/en-us/library/14akc2c7(VS.80).aspx">ref</see></c> argument.</description>
+                </item>
+            </list>
+            </para>
+            </remarks>
+            <example>
+            The following code demonstrates using a host variable to invoke a method with an
+            <c>out</c> parameter.
+            It assumes that an instance of <see cref="T:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ExtendedHostFunctions"/> is exposed under
+            the name "host"
+            (see <see cref="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.AddHostObject(System.String,System.Object)">AddHostObject</see>).
+            <code lang="JavaScript" title="JScript Example">
+            // import a dictionary type
+            var StringT = host.type("System.String");
+            var StringDictT = host.type("System.Collections.Generic.Dictionary", StringT, StringT);
+            // create and populate a dictionary
+            var dict = host.newObj(StringDictT);
+            dict.Add("foo", "bar");
+            dict.Add("baz", "qux");
+            // look up a dictionary entry */
+            var result = host.newVar(StringT);
+            var found = dict.TryGetValue("baz", result.out);
+            </code>
+            </example>
+            <seealso cref="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ExtendedHostFunctions.type(System.String,System.Object[])"/>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.HostFunctions.del``1(System.Object)">
+            <summary>
+            Creates a delegate that invokes a script function.
+            </summary>
+            <typeparam name="T">The type of delegate to create.</typeparam>
+            <param name="scriptFunc">The script function for which to create a delegate.</param>
+            <returns>A new delegate that invokes the specified script function.</returns>
+            <remarks>
+            If the delegate signature includes parameters passed by reference, the corresponding
+            arguments to the script function will be <see cref="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.HostFunctions.newVar``1(``0)">host variables</see>.
+            The script function can set the value of an output argument by assigning the
+            corresponding host variable's <c>value</c> property.
+            </remarks>
+            <example>
+            The following code demonstrates delegating a callback to a script function.
+            It assumes that an instance of <see cref="T:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ExtendedHostFunctions"/> is exposed under
+            the name "host"
+            (see <see cref="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.AddHostObject(System.String,System.Object)">AddHostObject</see>).
+            <code lang="JavaScript" title="JScript Example">
+            // create and populate an array of integers
+            var EnumerableT = host.type("System.Linq.Enumerable", "System.Core");
+            var array = EnumerableT.Range(1, 5).ToArray();
+            // import the callback type required to call Array.ForEach
+            var Int32T = host.type("System.Int32");
+            var CallbackT = host.type("System.Action", Int32T);
+            // use Array.ForEach to calculate a sum
+            var sum = 0;
+            var ArrayT = host.type("System.Array");
+            ArrayT.ForEach(array, host.del(CallbackT, function (value) { sum += value; }));
+            </code>
+            </example>
+            <seealso cref="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ExtendedHostFunctions.type(System.String,System.String,System.Object[])"/>
+            <seealso cref="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ExtendedHostFunctions.type(System.String,System.Object[])"/>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.HostFunctions.proc(System.Int32,System.Object)">
+            <summary>
+            Creates a delegate that invokes a script function and returns no value.
+            </summary>
+            <param name="argCount">The number of arguments to pass to the script function.</param>
+            <param name="scriptFunc">The script function for which to create a delegate.</param>
+            <returns>A new delegate that invokes the specified script function and returns no value.</returns>
+            <remarks>
+            This function creates a delegate that accepts <paramref name="argCount"/> arguments and
+            returns no value. The type of all parameters is <see cref="T:System.Object"/>. Such a
+            delegate is often useful in strongly typed contexts because of
+            <see href="http://msdn.microsoft.com/en-us/library/ms173174(VS.80).aspx">contravariance</see>.
+            </remarks>
+            <example>
+            The following code demonstrates delegating a callback to a script function.
+            It assumes that an instance of <see cref="T:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ExtendedHostFunctions"/> is exposed under
+            the name "host"
+            (see <see cref="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.AddHostObject(System.String,System.Object)">AddHostObject</see>).
+            <code lang="JavaScript" title="JScript Example">
+            // create and populate an array of strings
+            var StringT = host.type("System.String");
+            var array = host.newArr(StringT, 3);
+            array.SetValue("first", 0);
+            array.SetValue("second", 1);
+            array.SetValue("third", 2);
+            // use Array.ForEach to generate console output
+            var ArrayT = host.type("System.Array");
+            var ConsoleT = host.type("System.Console");
+            ArrayT.ForEach(array, host.proc(1, function (value) { ConsoleT.WriteLine(value); }));
+            </code>
+            </example>
+            <seealso cref="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ExtendedHostFunctions.type(System.String,System.Object[])"/>
+            <seealso cref="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.HostFunctions.newArr``1(System.Int32[])"/>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.HostFunctions.func``1(System.Int32,System.Object)">
+            <summary>
+            Creates a delegate that invokes a script function and returns a value of the specified type.
+            </summary>
+            <typeparam name="T">The return value type.</typeparam>
+            <param name="argCount">The number of arguments to pass to the script function.</param>
+            <param name="scriptFunc">The script function for which to create a delegate.</param>
+            <returns>A new delegate that invokes the specified script function and returns a value of the specified type.</returns>
+            <remarks>
+            This function creates a delegate that accepts <paramref name="argCount"/> arguments and
+            returns a value of the specified type. The type of all parameters is
+            <see cref="T:System.Object"/>. Such a delegate is often useful in strongly typed contexts
+            because of
+            <see href="http://msdn.microsoft.com/en-us/library/ms173174(VS.80).aspx">contravariance</see>.
+            </remarks>
+            <example>
+            The following code demonstrates delegating a callback to a script function.
+            It assumes that an instance of <see cref="T:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ExtendedHostFunctions"/> is exposed under
+            the name "host"
+            (see <see cref="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.AddHostObject(System.String,System.Object)">AddHostObject</see>).
+            <code lang="JavaScript" title="JScript Example">
+            // create and populate an array of strings
+            var StringT = host.type("System.String");
+            var array = host.newArr(StringT, 3);
+            array.SetValue("first", 0);
+            array.SetValue("second", 1);
+            array.SetValue("third", 2);
+            // import LINQ extensions
+            var EnumerableT = host.type("System.Linq.Enumerable", "System.Core");
+            // use LINQ to create an array of modified strings
+            var selector = host.func(StringT, 1, function (value) { return value.toUpperCase(); });
+            array = array.Select(selector).ToArray();
+            </code>
+            </example>
+            <seealso cref="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ExtendedHostFunctions.type(System.String,System.Object[])"/>
+            <seealso cref="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ExtendedHostFunctions.type(System.String,System.String,System.Object[])"/>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.HostFunctions.typeOf``1">
+            <summary>
+            Gets the <see cref="T:System.Type"/> for the specified host type. This version is invoked
+            if the specified object can be used as a type argument.
+            </summary>
+            <typeparam name="T">The host type for which to get the <see cref="T:System.Type"/>.</typeparam>
+            <returns>The <see cref="T:System.Type"/> for the specified host type.</returns>
+            <remarks>
+            This function is similar to the C#
+            <c><see href="http://msdn.microsoft.com/en-us/library/58918ffs(VS.71).aspx">typeof</see></c>
+            operator. It is overloaded with <see cref="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.HostFunctions.typeOf(System.Object)"/> and selected at runtime if
+            <typeparamref name="T"/> can be used as a type argument.
+            </remarks>
+            <example>
+            The following code retrieves the assembly-qualified name of a host type.
+            It assumes that an instance of <see cref="T:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ExtendedHostFunctions"/> is exposed under
+            the name "host"
+            (see <see cref="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.AddHostObject(System.String,System.Object)">AddHostObject</see>).
+            <code lang="JavaScript" title="JScript Example">
+            var StringT = host.type("System.String");
+            var name = host.typeOf(StringT).AssemblyQualifiedName;
+            </code>
+            </example>
+            <seealso cref="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ExtendedHostFunctions.type(System.String,System.Object[])"/>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.HostFunctions.typeOf(System.Object)">
+            <summary>
+            Gets the <see cref="T:System.Type"/> for the specified host type. This version is invoked
+            if the specified object cannot be used as a type argument.
+            </summary>
+            <param name="value">The host type for which to get the <see cref="T:System.Type"/>.</param>
+            <returns>The <see cref="T:System.Type"/> for the specified host type.</returns>
+            <remarks>
+            This function is similar to the C#
+            <c><see href="http://msdn.microsoft.com/en-us/library/58918ffs(VS.71).aspx">typeof</see></c>
+            operator. It is overloaded with <see cref="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.HostFunctions.typeOf``1"/> and selected at runtime if
+            <paramref name="value"/> cannot be used as a type argument. Note that this applies to
+            some host types; examples are static types and overloaded generic type groups.
+            </remarks>
+            <example>
+            The following code retrieves the assembly-qualified name of a host type.
+            It assumes that an instance of <see cref="T:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ExtendedHostFunctions"/> is exposed under
+            the name "host"
+            (see <see cref="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.AddHostObject(System.String,System.Object)">AddHostObject</see>).
+            <code lang="JavaScript" title="JScript Example">
+            var ConsoleT = host.type("System.Console");
+            var name = host.typeOf(ConsoleT).AssemblyQualifiedName;
+            </code>
+            </example>
+            <seealso cref="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ExtendedHostFunctions.type(System.String,System.Object[])"/>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.HostFunctions.isType``1(System.Object)">
+            <summary>
+            Determines whether an object is compatible with the specified host type.
+            </summary>
+            <typeparam name="T">The host type with which to test <paramref name="value"/> for compatibility.</typeparam>
+            <param name="value">The object to test for compatibility with the specified host type.</param>
+            <returns><c>True</c> if <paramref name="value"/> is compatible with the specified type, <c>false</c> otherwise.</returns>
+            <remarks>
+            This function is similar to the C#
+            <c><see href="http://msdn.microsoft.com/en-us/library/scekt9xw(VS.71).aspx">is</see></c>
+            operator.
+            </remarks>
+            <example>
+            The following code defines a function that determines whether an object implements
+            <see cref="T:System.IComparable"/>.
+            It assumes that an instance of <see cref="T:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ExtendedHostFunctions"/> is exposed under
+            the name "host"
+            (see <see cref="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.AddHostObject(System.String,System.Object)">AddHostObject</see>).
+            <code lang="JavaScript" title="JScript Example">
+            function isComparable(value)
+            {
+                var IComparableT = host.type("System.IComparable");
+                return host.isType(IComparableT, value);
+            }
+            </code>
+            </example>
+            <seealso cref="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ExtendedHostFunctions.type(System.String,System.Object[])"/>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.HostFunctions.asType``1(System.Object)">
+            <summary>
+            Casts an object to the specified host type, returning <c>null</c> if the cast fails.
+            </summary>
+            <typeparam name="T">The host type to which to cast <paramref name="value"/>.</typeparam>
+            <param name="value">The object to cast to the specified host type.</param>
+            <returns>The result of the cast if successful, <c>null</c> otherwise.</returns>
+            <remarks>
+            This function is similar to the C#
+            <c><see href="http://msdn.microsoft.com/en-us/library/cscsdfbt(VS.71).aspx">as</see></c>
+            operator.
+            </remarks>
+            <example>
+            The following code defines a function that disposes an object if it implements
+            <see cref="T:System.IDisposable"/>.
+            It assumes that an instance of <see cref="T:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ExtendedHostFunctions"/> is exposed under
+            the name "host"
+            (see <see cref="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.AddHostObject(System.String,System.Object)">AddHostObject</see>).
+            <code lang="JavaScript" title="JScript Example">
+            function dispose(value)
+            {
+                var IDisposableT = host.type("System.IDisposable");
+                var disposable = host.asType(IDisposableT, value);
+                if (disposable) {
+                    disposable.Dispose();
+                }
+            }
+            </code>
+            </example>
+            <seealso cref="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ExtendedHostFunctions.type(System.String,System.Object[])"/>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.HostFunctions.cast``1(System.Object)">
+            <summary>
+            Casts an object to the specified host type.
+            </summary>
+            <typeparam name="T">The host type to which to cast <paramref name="value"/>.</typeparam>
+            <param name="value">The object to cast to the specified host type.</param>
+            <returns>The result of the cast.</returns>
+            <remarks>
+            If the cast fails, this function throws an exception.
+            </remarks>
+            <example>
+            The following code casts a floating-point value to a 32-bit integer.
+            It assumes that an instance of <see cref="T:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ExtendedHostFunctions"/> is exposed under
+            the name "host"
+            (see <see cref="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.AddHostObject(System.String,System.Object)">AddHostObject</see>).
+            <code lang="JavaScript" title="JScript Example">
+            var Int32T = host.type("System.Int32");
+            var intValue = host.cast(Int32T, 12.5);
+            </code>
+            </example>
+            <seealso cref="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ExtendedHostFunctions.type(System.String,System.Object[])"/>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.HostFunctions.isTypeObj(System.Object)">
+            <summary>
+            Determines whether an object is a host type. This version is invoked if the specified
+            object cannot be used as a type argument.
+            </summary>
+            <param name="value">The object to test.</param>
+            <returns><c>True</c> if <paramref name="value"/> is a host type, <c>false</c> otherwise.</returns>
+            <remarks>
+            This function is overloaded with <see cref="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.HostFunctions.isTypeObj``1"/> and selected at runtime if
+            <paramref name="value"/> cannot be used as a type argument. Note that this applies to
+            some host types; examples are static types and overloaded generic type groups.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.HostFunctions.isTypeObj``1">
+            <summary>
+            Determines whether an object is a host type. This version is invoked if the specified
+            object can be used as a type argument.
+            </summary>
+            <typeparam name="T">The host type (ignored).</typeparam>
+            <returns><c>True</c>.</returns>
+            <remarks>
+            This function is overloaded with <see cref="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.HostFunctions.isTypeObj(System.Object)"/> and selected at
+            runtime if <typeparamref name="T"/> can be used as a type argument. Because type
+            arguments are always host types, this method ignores its type argument and always
+            returns <c>true</c>.
+            </remarks>
+        </member>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ExtendedHostFunctions">
+            <summary>
+            Provides optional script-callable utility functions. This extended version allows script
+            code to import host types.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ExtendedHostFunctions.#ctor">
+            <summary>
+            Initializes a new <see cref="T:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ExtendedHostFunctions"/> instance.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ExtendedHostFunctions.type(System.String,System.Object[])">
+            <summary>
+            Imports a host type by name.
+            </summary>
+            <param name="name">The fully qualified name of the host type to import.</param>
+            <param name="hostTypeArgs">Optional generic type arguments.</param>
+            <returns>The imported host type.</returns>
+            <remarks>
+            Host types are imported in the form of objects whose properties and methods are bound
+            to the host type's static members and nested types. If <paramref name="name"/> refers
+            to a generic type, the corresponding object will be invocable with type arguments to
+            yield a concrete type.
+            <para>
+            For more information about the mapping between host members and script-callable
+            properties and methods, see
+            <see cref="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.AddHostObject(System.String,Microsoft.Crm.UnifiedServiceDesk.ActiveScript.HostItemFlags,System.Object)">AddHostObject</see>.
+            </para>
+            </remarks>
+            <example>
+            The following code imports the
+            <see href="http://msdn.microsoft.com/en-us/library/xfhwa508.aspx">Dictionary</see>
+            generic type and uses it to create a string dictionary.
+            It assumes that an instance of <see cref="T:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ExtendedHostFunctions"/> is exposed under
+            the name "host"
+            (see <see cref="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.AddHostObject(System.String,System.Object)">AddHostObject</see>).
+            <code lang="JavaScript" title="JScript Example">
+            var DictT = host.type("System.Collections.Generic.Dictionary");
+            var StringT = host.type("System.String");
+            var dict = host.newObj(DictT(StringT, StringT));
+            </code>
+            Another way to create a string dictionary is to import the concrete type directly.
+            <code lang="JavaScript" title="JScript Example">
+            var StringT = host.type("System.String");
+            var StringDictT = host.type("System.Collections.Generic.Dictionary", StringT, StringT);
+            var dict = host.newObj(StringDictT);
+            </code>
+            </example>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ExtendedHostFunctions.type(System.String,System.String,System.Object[])">
+            <summary>
+            Imports a host type by name from the specified assembly.
+            </summary>
+            <param name="name">The fully qualified name of the host type to import.</param>
+            <param name="assemblyName">The name of the assembly that contains the host type to import.</param>
+            <param name="hostTypeArgs">Optional generic type arguments.</param>
+            <returns>The imported host type.</returns>
+            <remarks>
+            Host types are imported in the form of objects whose properties and methods are bound
+            to the host type's static members and nested types. If <paramref name="name"/> refers
+            to a generic type, the corresponding object will be invocable with type arguments to
+            yield a concrete type.
+            <para>
+            For more information about the mapping between host members and script-callable
+            properties and methods, see
+            <see cref="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.AddHostObject(System.String,Microsoft.Crm.UnifiedServiceDesk.ActiveScript.HostItemFlags,System.Object)">AddHostObject</see>.
+            </para>
+            </remarks>
+            <example>
+            The following code imports <see cref="T:System.Linq.Enumerable"/> and uses it to create
+            an array of strings.
+            It assumes that an instance of <see cref="T:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ExtendedHostFunctions"/> is exposed under
+            the name "host"
+            (see <see cref="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.AddHostObject(System.String,System.Object)">AddHostObject</see>).
+            <code lang="JavaScript" title="JScript Example">
+            var EnumerableT = host.type("System.Linq.Enumerable", "System.Core");
+            var Int32T = host.type("System.Int32");
+            var StringT = host.type("System.String");
+            var SelectorT = host.type("System.Func", Int32T, StringT);
+            var selector = host.del(SelectorT, function (num) { return StringT.Format("The number is {0}.", num); });
+            var array = EnumerableT.Range(0, 5).Select(selector).ToArray();
+            </code>
+            </example>
+            <seealso cref="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ExtendedHostFunctions.type(System.String,System.Object[])"/>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ExtendedHostFunctions.type(System.Type)">
+            <summary>
+            Imports the host type for the specified <see cref="T:System.Type"/>.
+            </summary>
+            <param name="type">The <see cref="T:System.Type"/> that specifies the host type to import.</param>
+            <returns>The imported host type.</returns>
+            <remarks>
+            Host types are imported in the form of objects whose properties and methods are bound
+            to the host type's static members and nested types. If <paramref name="type"/> refers
+            to a generic type, the corresponding object will be invocable with type arguments to
+            yield a concrete type.
+            <para>
+            For more information about the mapping between host members and script-callable
+            properties and methods, see
+            <see cref="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.AddHostObject(System.String,Microsoft.Crm.UnifiedServiceDesk.ActiveScript.HostItemFlags,System.Object)">AddHostObject</see>.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ExtendedHostFunctions.arrType``1(System.Int32)">
+            <summary>
+            Imports the host array type for the specified element type.
+            </summary>
+            <typeparam name="T">The element type for the host array type to import.</typeparam>
+            <param name="rank">The number of dimensions for the host array type to import.</param>
+            <returns>The imported host array type.</returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ExtendedHostFunctions.lib(System.String[])">
+            <summary>
+            Imports types from one or more host assemblies.
+            </summary>
+            <param name="assemblyNames">The names of the assemblies that contain the types to import.</param>
+            <returns>The imported host type collection.</returns>
+            <remarks>
+            Host type collections provide convenient scriptable access to all the types defined in one
+            or more host assemblies. They are hierarchical collections where leaf nodes represent types
+            and parent nodes represent namespaces. For example, if an assembly contains a type named
+            "Acme.Gadgets.Button", the corresponding collection will have a property named "Acme" whose
+            value is an object with a property named "Gadgets" whose value is an object with a property
+            named "Button" whose value represents the <c>Acme.Gadgets.Button</c> host type.
+            </remarks>
+            <example>
+            The following code imports types from several core assemblies and uses
+            <see cref="T:System.Linq.Enumerable"/> to create an array of integers.
+            It assumes that an instance of <see cref="T:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ExtendedHostFunctions"/> is exposed under
+            the name "host"
+            (see <see cref="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.AddHostObject(System.String,System.Object)">AddHostObject</see>).
+            <code lang="JavaScript" title="JScript Example">
+            var clr = host.lib("mscorlib", "System", "System.Core");
+            var array = clr.System.Linq.Enumerable.Range(0, 5).ToArray();
+            </code>
+            </example>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ExtendedHostFunctions.lib(Microsoft.Crm.UnifiedServiceDesk.ActiveScript.HostTypeCollection,System.String[])">
+            <summary>
+            Imports types from one or more host assemblies and merges them with an existing host type collection.
+            </summary>
+            <param name="collection">The host type collection with which to merge types from the specified assemblies.</param>
+            <param name="assemblyNames">The names of the assemblies that contain the types to import.</param>
+            <returns>A host type collection: <paramref name="collection"/> if it is not <c>null</c>, a new host type collection otherwise.</returns>
+            <remarks>
+            Host type collections provide convenient scriptable access to all the types defined in one
+            or more host assemblies. They are hierarchical collections where leaf nodes represent types
+            and parent nodes represent namespaces. For example, if an assembly contains a type named
+            "Acme.Gadgets.Button", the corresponding collection will have a property named "Acme" whose
+            value is an object with a property named "Gadgets" whose value is an object with a property
+            named "Button" whose value represents the <c>Acme.Gadgets.Button</c> host type.
+            </remarks>
+            <example>
+            The following code imports types from several core assemblies and uses
+            <see cref="T:System.Linq.Enumerable"/> to create an array of integers.
+            It assumes that an instance of <see cref="T:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ExtendedHostFunctions"/> is exposed under
+            the name "host"
+            (see <see cref="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.AddHostObject(System.String,System.Object)">AddHostObject</see>).
+            <code lang="JavaScript" title="JScript Example">
+            var clr = host.lib("mscorlib");
+            host.lib(clr, "System");
+            host.lib(clr, "System.Core");
+            var array = clr.System.Linq.Enumerable.Range(0, 5).ToArray();
+            </code>
+            </example>
+        </member>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.EventSource`1">
+            <summary>
+            Represents a host event source.
+            </summary>
+            <typeparam name="T">The event handler delegate type.</typeparam>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.EventSource`1.connect(System.Object)">
+            <summary>
+            Connects the host event source to the specified script handler function.
+            </summary>
+            <param name="scriptFunc">The script function that will handle the event.</param>
+            <returns>An <see cref="T:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.EventConnection`1"/> that represents the connection.</returns>
+        </member>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.EventConnection`1">
+            <summary>
+            Represents a connection between a host event source and a script handler function.
+            </summary>
+            <typeparam name="T">The event handler delegate type.</typeparam>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.EventConnection`1.disconnect">
+            <summary>
+            Disconnects the host event source from the script handler function.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.Properties.Resources.ARG_COUNT">
+            <summary>
+              Looks up a localized string similar to argCount.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.Properties.Resources.ASSEMBLY_NAME">
+            <summary>
+              Looks up a localized string similar to assemblyName.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.Properties.Resources.ASSIGNMENT_INVALID_TYPE_MISMATCH">
+            <summary>
+              Looks up a localized string similar to Assignment invalid due to type mismatch.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.Properties.Resources.CANNOT_ACCESS_STATIC_METHOD_IN_NON_STATIC_CONTEXT">
+            <summary>
+              Looks up a localized string similar to Cannot access static method &apos;{0}&apos; in non-static context.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.Properties.Resources.CANNOT_CREATE_TYPE_WRAPPER_FOR_MULTIPLE_CONCRETE_TYPE">
+            <summary>
+              Looks up a localized string similar to Cannot create type wrapper for multiple concrete types.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.Properties.Resources.CANNOT_CREATE_TYPE_WRAPPER_FOR_MULTIPLE_UNRELATED_TYPE">
+            <summary>
+              Looks up a localized string similar to Cannot create type wrapper for multiple unrelated types.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.Properties.Resources.ENGINE">
+            <summary>
+              Looks up a localized string similar to engine.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.Properties.Resources.EVENT_INFO">
+            <summary>
+              Looks up a localized string similar to eventInfo.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.Properties.Resources.GENERIC_HOST_TYPE">
+            <summary>
+              Looks up a localized string similar to GenericHostType:{0}{1}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.Properties.Resources.HOST_TYPE">
+            <summary>
+              Looks up a localized string similar to HostType:{0}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.Properties.Resources.HOST_TYPE_GROUP">
+            <summary>
+              Looks up a localized string similar to HostTypeGroup:{0}{1}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.Properties.Resources.HOST_VARIABLE">
+            <summary>
+              Looks up a localized string similar to HostVariable:{0}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.Properties.Resources.INVALID_ARGUMENT_COUNT">
+            <summary>
+              Looks up a localized string similar to Invalid argument count.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.Properties.Resources.INVALID_ASSEMBLY_NAME">
+            <summary>
+              Looks up a localized string similar to Invalid assembly name.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.Properties.Resources.INVALID_DELEGATE_TYPE">
+            <summary>
+              Looks up a localized string similar to Invalid delegate type.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.Properties.Resources.INVALID_DELEGATE_TYPE_INVOCATION_METHOD_NOT_FOUND">
+            <summary>
+              Looks up a localized string similar to Invalid delegate type (invocation method not found).
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.Properties.Resources.INVALID_DELEGATE_TYPE_PARAMETER_COUNT_TOO_LARGE">
+            <summary>
+              Looks up a localized string similar to Invalid delegate type (parameter count too large).
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.Properties.Resources.INVALID_EVENT_TYPE">
+            <summary>
+              Looks up a localized string similar to Invalid event type.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.Properties.Resources.INVALID_FIELD_ASSIGNMENT">
+            <summary>
+              Looks up a localized string similar to Invalid field assignment.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.Properties.Resources.INVALID_GENERIC_TYPE_ARGUMENT">
+            <summary>
+              Looks up a localized string similar to Invalid generic type argument.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.Properties.Resources.INVALID_HOST_TYPE">
+            <summary>
+              Looks up a localized string similar to Invalid host type.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.Properties.Resources.INVALID_MEMBER_INVOCATION_MODE">
+            <summary>
+              Looks up a localized string similar to Invalid member invocation mode.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.Properties.Resources.INVALID_PROPERTY_ASSIGNMENT">
+            <summary>
+              Looks up a localized string similar to Invalid property assignment.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.Properties.Resources.INVALID_SCRIPT_ENGINE">
+            <summary>
+              Looks up a localized string similar to Invalid script engine.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.Properties.Resources.INVALID_TYPE_NAME">
+            <summary>
+              Looks up a localized string similar to Invalid type name.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.Properties.Resources.INVOCATION_OF_METHOD_FAILED_UNRECOGNIZED_BINDING">
+            <summary>
+              Looks up a localized string similar to Invocation of method &apos;{0}&apos; failed (unrecognized binding).
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.Properties.Resources.NAMESPACE_CONFLICTS">
+            <summary>
+              Looks up a localized string similar to Namespace conflicts with &apos;{0}&apos; at &apos;{1}&apos;.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.Properties.Resources.NOT_FIND_MATCHING_GENERIC_TYPE_DEFINITION">
+            <summary>
+              Looks up a localized string similar to Could not find a matching generic type definition for &apos;{0}&apos;.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.Properties.Resources.NOT_IDENTIFY_UNIQUE_HOST_TYPE">
+            <summary>
+              Looks up a localized string similar to &apos;{0}&apos; does not identify a unique host type.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.Properties.Resources.OBJECT_DOES_NOT_SUPPORT_INVOCATION">
+            <summary>
+              Looks up a localized string similar to Object does not support invocation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.Properties.Resources.OBJECT_HAS_NO_PROPERTY">
+            <summary>
+              Looks up a localized string similar to Object has no property named &apos;{0}&apos;.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.Properties.Resources.OBJECT_HAS_NO_PROPERTY_FIELD">
+            <summary>
+              Looks up a localized string similar to Object has no property or field named &apos;{0}&apos;.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.Properties.Resources.OBJECT_HAS_NO_PROPERTY_FIELD_EVENT">
+            <summary>
+              Looks up a localized string similar to Object has no property, field, or event named &apos;{0}&apos;.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.Properties.Resources.OBJECT_IS_READ_ONLY">
+            <summary>
+              Looks up a localized string similar to Object is read-only.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.Properties.Resources.OBJECT_NOT_SUPPORT_DYNAMIC_FIELDS">
+            <summary>
+              Looks up a localized string similar to Object does not support dynamic fields.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.Properties.Resources.OBJECT_NOT_SUPPORT_DYNAMIC_MEMBERS">
+            <summary>
+              Looks up a localized string similar to Object does not support dynamic members.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.Properties.Resources.OBJECT_NOT_SUPPORT_DYNAMIC_PROPERTIES">
+            <summary>
+              Looks up a localized string similar to Object does not support dynamic properties.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.Properties.Resources.REQUIRES_SCRIPT_ENGINE">
+            <summary>
+              Looks up a localized string similar to Operation requires a script engine.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.Properties.Resources.REQUIRES_TYPE_ARGUMENTS">
+            <summary>
+              Looks up a localized string similar to &apos;{0}&apos; requires type arguments.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.Properties.Resources.SCRIPT_EXECUTION_INTERRUPTED_BY_HOST">
+            <summary>
+              Looks up a localized string similar to Script execution interrupted by host.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.Properties.Resources.STATIC_TYPE_CANNOT_USED_AS_TYPE_ARGUMENTS">
+            <summary>
+              Looks up a localized string similar to &apos;{0}&apos;: static types cannot be used as type arguments.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.Properties.Resources.String1">
+            <summary>
+              Looks up a localized string similar to .
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.Properties.Resources.TYPE_CONFLICTS_WITH_NAMESPACE">
+            <summary>
+              Looks up a localized string similar to Type conflicts with namespace at &apos;{0}&apos;.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.Properties.Resources.TYPE_CONFLICTS_WITH_NAMESPACE_FRIENDLY_NAME">
+            <summary>
+              Looks up a localized string similar to Type conflicts with &apos;{0}&apos; at &apos;{1}&apos;.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.Properties.Resources.TYPE_NAME">
+            <summary>
+              Looks up a localized string similar to typeName.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.Properties.Resources.UNSUPPORTED_VALUE_TYPE">
+            <summary>
+              Looks up a localized string similar to Unsupported value type.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.Properties.Resources.UNSUPPORTED_VARIABLE_TYPE">
+            <summary>
+              Looks up a localized string similar to Unsupported variable type.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.Properties.Resources.VALUE">
+            <summary>
+              Looks up a localized string similar to value.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.VBScriptEngine">
+            <summary>
+            Represents an instance of the VBScript language engine.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.VBScriptEngine.#ctor">
+            <summary>
+            Initializes a new VBScript language engine instance.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.VBScriptEngine.#ctor(System.String)">
+            <summary>
+            Initializes a new VBScript language engine instance with the specified name.
+            </summary>
+            <param name="name">A name to associate with the instance. Currently this name is used only as a label in presentation contexts such as debugger user interfaces.</param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.VBScriptEngine.#ctor(Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngineFlags)">
+            <summary>
+            Initializes a new VBScript language engine instance with the specified options.
+            </summary>
+            <param name="flags">A value that selects options for the operation.</param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.VBScriptEngine.#ctor(System.String,Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngineFlags)">
+            <summary>
+            Initializes a new VBScript language engine instance with the specified name and options.
+            </summary>
+            <param name="name">A name to associate with the instance. Currently this name is used only as a label in presentation contexts such as debugger user interfaces.</param>
+            <param name="flags">A value that selects options for the operation.</param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.VBScriptEngine.#ctor(System.String,System.String,Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngineFlags)">
+            <summary>
+            Initializes a new VBScript language engine instance with the specified programmatic
+            identifier, name, and options.
+            </summary>
+            <param name="progID">The programmatic identifier (ProgID) of the VBScript language engine class.</param>
+            <param name="name">A name to associate with the instance. Currently this name is used only as a label in presentation contexts such as debugger user interfaces.</param>
+            <param name="flags">A value that selects options for the operation.</param>
+            <remarks>
+            The <paramref name="progID"/> argument can be a class identifier (CLSID) in standard
+            GUID format with braces (e.g., "{F414C260-6AC0-11CF-B6D1-00AA00BBBB58}").
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.VBScriptEngine.ExecuteCommand(System.String)">
+            <summary>
+            Executes script code as a command.
+            </summary>
+            <param name="command">The script command to execute.</param>
+            <returns>The command output.</returns>
+            <remarks>
+            This method is similar to <see cref="M:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.ScriptEngine.Evaluate(System.String)"/> but optimized for
+            command consoles. The specified command must be limited to a single expression or
+            statement. Script engines can override this method to customize command execution as
+            well as the process of converting the result to a string for console output.
+            <para>
+            The <see cref="T:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.VBScriptEngine"/> version of this method supports both expressions and
+            statements. If the specified command begins with "eval " (not case-sensitive), the
+            engine executes the remainder as an expression and attempts to use
+            <see href="http://msdn.microsoft.com/en-us/library/0zk841e9(VS.85).aspx">CStr</see>
+            to convert the result value. Otherwise, it executes the command as a statement and does
+            not return a value.
+            </para>
+            </remarks>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.VBScriptEngine.FileNameExtension">
+            <summary>
+            Gets the script engine's recommended file name extension for script files.
+            </summary>
+            <remarks>
+            <see cref="T:Microsoft.Crm.UnifiedServiceDesk.ActiveScript.VBScriptEngine"/> instances return "vbs" for this property.
+            </remarks>
+        </member>
+    </members>
+</doc>

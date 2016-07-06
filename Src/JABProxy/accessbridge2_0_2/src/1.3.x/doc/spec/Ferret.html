@@ -1,0 +1,135 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.5 [en] (WinNT; I) [Netscape]">
+   <meta name="Author" content="Willie Walker">
+   <title>Java Accessibility Documentation:  Ferret Example</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#0000EE" vlink="#551A8B" alink="#FF0000">
+<a href="http://java.sun.com"><img SRC="images/java_header.gif" ALT="The Source for Java - java.sun.com" NOSAVE BORDER=0  align=LEFT></a>
+<div align=right><font size=+3>JAVA ACCESSIBILITY</font></div>
+
+<div align=right><font size=+2>Ferret Example</font></div>
+
+<div align=right>Version 1.3</div>
+
+<hr NOSHADE WIDTH="100%">
+<center><!--- These are the Menu Items ---->[<a href="index.html">Home</a>]
+[<a href="what.html">What are they?</a>] [<a href="guide.html">Overview
+of API Features</a>] [<a href="api/com/sun/java/accessibility/util/package-summary.html">API
+Reference</a>]
+<br>[<a href="FAQ.html">FAQ</a>] [<a href="examples.html">Examples</a>]
+[<a href="../CHANGES.txt">Changes</a>] [<a href="compatibility.html">Compatibility
+table</a>] [<a href="http://java.sun.com/products/jfc">JFC Home Page</a>]</center>
+
+<hr NOSHADE WIDTH="100%"><!--- End menu Items ---->
+<p>Based on user settings (in the Settings menu), Ferret tracks mouse movement,
+focus updates, and text caret movement in a particular Java<sup><font size=-2>TM</font></sup>
+Virtual Machine. If set to do so, when it detects that the mouse has stopped
+moving for a short period of time, it calls EventQueueMonitor's method,
+getAccessibleAt, to determine the Accessible object under the mouse. Once
+it has done so, it displays the Accessible information of that object.
+Similarly, if set to do so, when it detects that a new UI object has the
+focus, it displays the Accessible information for that new UI object. Further,
+if set to do so, it will display the Accessible information for the text
+object containing the caret when the caret moves. Finally, if set to do
+so, it will call EventQueueMonitor's method, getAccessibleAt, to determine
+the Accessible object under the mouse when the user the F1 key, and then
+display the Accessible information of that object.
+<p><img SRC="images/Ferret.gif" ALT="Snap shot of Ferret in action." NOSAVE >
+<h3>
+Preparing to Run Ferret with JDK1.1:</h3>
+To run Ferret with JDK1.1, you need to have obtained and installed <a href="http://java.sun.com/products/jfc/index.html">JFC
+1.1 with Swing 1.1</a> and <a href="http://java.sun.com/products/jdk/1.1/">JDK1.1.6</a>.&nbsp;
+In addition, you need to be using the Java Accessibility Utilities Version
+1.1.
+<p>The Ferret class is in the <tt>examples/Ferret</tt> directory included
+with this release of the Java Accessibility Utilities (click <a href="../examples/Ferret/Ferret.java">here</a>
+to view the source). The compiled classes of Ferret are also included in
+the <tt>jaccess-examples.jar</tt> file includes with this release.&nbsp;
+Before you can run Ferret, you need to set up your environment appropriately
+by following these instructions:
+<blockquote>
+<li>
+Add the <tt>jaccess.jar</tt> and <tt>jaccess-examples.jar</tt> files to
+your CLASSPATH environment variable.</li>
+
+<li>
+Modify your <tt>$JDKHOME/lib/awt.properties</tt> file to include the following
+lines:</li>
+
+<blockquote>
+<pre>AWT.EventQueueClass=com.sun.java.accessibility.util.EventQueueMonitor
+AWT.assistive_technologies=Ferret</pre>
+</blockquote>
+</blockquote>
+After you follow these instructions, you should be ready to run Ferret.&nbsp;
+If you did not set up your CLASSPATH correctly you might get one of the
+following errors when running a Java<sup><font size=-2>TM</font></sup>
+application:
+<pre>Failed loading com.sun.java.accessibility.util.EventQueueMonitor:&nbsp;
+java.lang.ClassNotFoundException:&nbsp;
+com.sun.java.accessibility.util.EventQueueMonitor</pre>
+
+<pre>Error trying to newInstance Ferret java.lang.ClassNotFoundException:&nbsp;
+
+Ferret</pre>
+The first error means the <tt>jaccess.jar</tt> file is not in your CLASSPATH,
+and the second means the <tt>jaccess-examples.jar</tt> file is not in your
+CLASSPATH.
+<h3>
+Running Ferret with JDK1.2 and later:</h3>
+To run Ferret with JDK1.2 you need to have obtained and installed <a href="http://java.sun.com/products/jdk/1.2">JDK1.2</a>
+or later. In addition, you need to be using the Java Accessibility Utilities
+Version 1.2 or later.
+<p>The Ferret class is in the <tt>examples/Ferret</tt> directory included
+with this release of the Java Accessibility Utilities (click <a href="../examples/AccessibilityMonitor/Ferret.java">here</a>
+to view the source). Before you can run it, you need to set up your environment
+appropriately by following these instructions:
+<blockquote>
+<li>
+Copy <tt>jaccess.jar</tt> and <tt>jaccess-examples.jar</tt> to the <tt>$JDKHOME/jre/lib/ext</tt>
+directory under your JDK1.2 or later installation.</li>
+
+<li>
+Modify (create one if it doesn't exist) your <tt>$JDKHOME/jre/lib/accessibility.properties</tt>
+file to include the following line:</li>
+
+<blockquote>
+<pre>assistive_technologies=Ferret</pre>
+</blockquote>
+</blockquote>
+After you follow these instructions, you should be ready to run Ferret.
+<h3>
+Running Ferret with JDK1.1, JDK1.2 or later:</h3>
+By following the instructions above, Ferret will automatically be started
+any time you start a Java application. For example, you can run the SwingSet
+demo that comes as part of the demonstration applications for Swing.
+<h3>
+Using Ferret:</h3>
+Choose the mechanism(s) you want to use Ferret by making selections from
+the Settings menu. Until you tell Ferret how to explore, it will remain
+quiescent. To automatically explore the Java Accessibility API of the object
+under the mouse as the mouse moves, choose "Track Mouse" from the Settings
+menu. To automatically explore the Java Accessibility API of the object
+receiving focus, choose "Track Focus" from the Settings menu. To automatically
+explore the Java Accessibility API of the text object in which caret movements
+are occuring, choose "TrackCaret". Finally, to explore the Java Accessibility
+API of objects under the mouse upon command when you hit the F1 key on
+your keyboard, choose "Update with F1 key" from the Settings menu.
+<br><!---- END Main text Area ---->
+<hr SIZE=3 NOSHADE>
+<address>
+<img SRC="images/javalogo52x88.gif" ALT="Java Logo" NOSAVE  align=LEFT><font size=-1><a href="http://java.sun.com/share/copyright.html">Copyright&copy;
+</a>1995-99
+<a href="http://www.sun.com">Sun
+Microsystems, Inc. All Rights Reserved.</a></font></address>
+
+<address>
+<font size=-1>To submit comments or suggestions about <a href="http://www.sun.com/access/index.html">Java
+Accessibility</a>, please send mail to <i><a href="mailto:access@sun.com">access@sun.com</a></i>.</font></address>
+
+<br><a href="http://www.sun.com"><img SRC="images/smi_logo.gif" ALT="Sun MicroSystems" NOSAVE BORDER=0  align=RIGHT></a>
+</body>
+</html>

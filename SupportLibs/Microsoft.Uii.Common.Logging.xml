@@ -1,0 +1,461 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Uii.Common.Logging</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Uii.Common.Logging.DiagnosticLogger">
+            <summary>
+            The logging class used by UII that implements a listening system to allow multiple listeners to hook in and log messages.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.Logging.DiagnosticLogger.tSwitch">
+            TraceSwitch to control logging traffic.
+            do not globalize these strings; developer oriented
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.DiagnosticLogger.TryInitialize">
+            <summary>
+            Provides for the explicit initialization of logging listeners, rather than defering to first use of the Logging class.
+            Use of this method is not required.
+            </summary>
+            <exception cref="T:System.Configuration.ConfigurationErrorsException">Configuration-related exceptions are wrapped in this common exception type.</exception>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.DiagnosticLogger.Error(System.String,System.String)">
+            <summary>
+            This is used to display messages that represent a problem.
+            It only displays when the TraceSwitch is assigned TraceError.
+            It takes the string passed in and sends it to any trace listener.
+            It also will display it in a list control if one has been made available or in the various logs.
+            </summary>
+            <param name="appName">Name to give for the application.</param>
+            <param name="message">The message to place in the log.</param>
+            <exception cref="T:System.Configuration.ConfigurationErrorsException">Configuration-related exceptions are wrapped in this common exception type.</exception>
+            <exception cref="T:System.InvalidOperationException">Logging listeners are not permitted to call methods of the Logging class.</exception>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.DiagnosticLogger.Error(System.String,System.String,System.Exception)">
+            <summary>
+            This is used to display messages that represent a problem.
+            It only displays when the TraceSwitch is assigned TraceError.
+            It takes the string passed in and sends it to any trace listener.
+            It also will display it in a list control if one has been made available or in the various logs.
+            </summary>
+            <param name="appName">Name to give for the application.</param>
+            <param name="message">The message to place in the log.</param>
+            <param name="exception">The exception used in writing out the error.</param>
+            <exception cref="T:System.Configuration.ConfigurationErrorsException">Configuration-related exceptions are wrapped in this common exception type.</exception>
+            <exception cref="T:System.InvalidOperationException">Logging listeners are not permitted to call methods of the Logging class.</exception>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.DiagnosticLogger.Error(System.String,System.String,System.Object[])">
+            <summary>
+            This is used to display messages that represent a problem.
+            It only displays when the TraceSwitch is assigned TraceError.
+            It takes the string passed in and sends it to any trace listener.
+            It also will display it in a list control if one has been made available or in the various logs.
+            </summary>
+            <param name="appName">Nmae to give for the application</param>
+            <param name="format">String format for the message to be placed in the log</param>
+            <param name="parameters">Parameters to be substituted into the stirng format.</param>
+            <exception cref="T:System.Configuration.ConfigurationErrorsException">Configuration-related exceptions are wrapped in this common exception type.</exception>
+            <exception cref="T:System.InvalidOperationException">Logging listeners are not permitted to call methods of the Logging class.</exception>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.DiagnosticLogger.Error(System.String,System.String,System.String)">
+            <summary>
+            This is used to display messages that represent a problem.
+            It only displays when the TraceSwitch is assigned TraceError.
+            It takes the string passed in and sends it to any trace listener.
+            It also will display it in a list control if one has been made available or in the various logs.
+            </summary>
+            <param name="appName">Name to give for the application.</param>
+            <param name="message">The message to place in the log.</param>
+            <param name="advanced">Advanced/additional information.</param>
+            <remarks>The ShowErrors check is done at the individual listener level.</remarks>
+            <exception cref="T:System.Configuration.ConfigurationErrorsException">Configuration-related exceptions are wrapped in this common exception type.</exception>
+            <exception cref="T:System.InvalidOperationException">Logging listeners are not permitted to call methods of the Logging class.</exception>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.DiagnosticLogger.Warn(System.String,System.String,System.Object[])">
+            <summary>
+            This is used to display messages that may represent a problem.
+            It only displays when the TraceSwitch is assigned TraceWarning.
+            It takes the string passed in and sends it to any trace listener.
+            It also will display it in a list control if one has been made available or in the various logs.
+            </summary>
+            <param name="appName">Name to give for the application</param>
+            <param name="format">String format of the message</param>
+            <param name="parameters">Parameters to be substituted into the string format</param>
+            <exception cref="T:System.Configuration.ConfigurationErrorsException">Configuration-related exceptions are wrapped in this common exception type.</exception>
+            <exception cref="T:System.InvalidOperationException">Logging listeners are not permitted to call methods of the Logging class.</exception>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.DiagnosticLogger.Warn(System.String,System.String)">
+            <summary>
+            This is used to display messages that may represent a problem.
+            It only displays when the TraceSwitch is assigned TraceWarning.
+            It takes the string passed in and sends it to any trace listener.
+            It also will display it in a list control if one has been made available or in the various logs.
+            </summary>
+            <param name="appName">Name to give for the application.</param>
+            <param name="message">The message to place in the log.</param>
+            <exception cref="T:System.Configuration.ConfigurationErrorsException">Configuration-related exceptions are wrapped in this common exception type.</exception>
+            <exception cref="T:System.InvalidOperationException">Logging listeners are not permitted to call methods of the Logging class.</exception>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.DiagnosticLogger.Info(System.String,System.String)">
+            <summary>
+            This is used to display messages that are useful, but do not represent a problem.
+            It only displays when the TraceSwitch is assigned TraceInfo.
+            It takes the string passed in and sends it to any trace listener.
+            It also will display it in a list control if one has been made available or in the various logs.
+            </summary>
+            <param name="appName">Name to give for the application</param>
+            <param name="message">The message to place in the log</param>
+            <exception cref="T:System.Configuration.ConfigurationErrorsException">Configuration-related exceptions are wrapped in this common exception type.</exception>
+            <exception cref="T:System.InvalidOperationException">Logging listeners are not permitted to call methods of the Logging class.</exception>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.DiagnosticLogger.Info(System.String,System.String,System.Object[])">
+            <summary>
+            This is used to display messages that are useful, but do not represent a problem.
+            It only displays when the TraceSwitch is assigned TraceInfo.
+            It takes the string passed in and sends it to any trace listener.
+            It also will display it in a list control if one has been made available or in the various logs.
+            </summary>
+            <param name="appName">Name to give for the application.</param>
+            <param name="format">String format of the message.</param>
+            <param name="parameters">Parameters to be substituted into the string format.</param>
+            <exception cref="T:System.Configuration.ConfigurationErrorsException">Configuration-related exceptions are wrapped in this common exception type.</exception>
+            <exception cref="T:System.InvalidOperationException">Logging listeners are not permitted to call methods of the Logging class.</exception>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.DiagnosticLogger.Information(System.String,System.String)">
+            <summary>
+            This is used to display messages that are useful, but do not represent a problem.
+            It only displays when the TraceSwitch is assigned TraceInfo.
+            It takes the string passed in and sends it to any trace listener.
+            It also will display it in a list control if one has been made available or in the various logs.
+            </summary>
+            <param name="appName">Name to give for the application.</param>
+            <param name="message">The message to place in the log.</param>
+            <exception cref="T:System.Configuration.ConfigurationErrorsException">Configuration-related exceptions are wrapped in this common exception type.</exception>
+            <exception cref="T:System.InvalidOperationException">Logging listeners are not permitted to call methods of the Logging class.</exception>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.DiagnosticLogger.Trace(System.String)">
+            <summary>
+            This is used to display messages for debugging but not normal operation.
+            It only displays when the TraceSwitch is assigned TraceVerbose.
+            It takes the string passed in and sends it to any trace listener.
+            It also will display it in a list control if one has been made available or in the various logs.
+            </summary>
+            <param name="message">The message to write out to the trace.</param>
+            <exception cref="T:System.Configuration.ConfigurationErrorsException">Configuration-related exceptions are wrapped in this common exception type.</exception>
+            <exception cref="T:System.InvalidOperationException">Logging listeners are not permitted to call methods of the Logging class.</exception>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.DiagnosticLogger.Trace(System.String,System.String,System.Object[])">
+            <summary>
+            This is used to display messages for debugging but not normal operation.
+            It only displays when the TraceSwitch is assigned TraceVerbose.
+            It takes the string passed in and sends it to any trace listener.
+            It also will display it in a list control if one has been made available or in the various logs.
+            </summary>
+            <param name="appName">Name to give for the application.</param>
+            <param name="format">String format of the message.</param>
+            <param name="parameters">Parameters to be substituted into the string format.</param>
+            <exception cref="T:System.Configuration.ConfigurationErrorsException">Configuration-related exceptions are wrapped in this common exception type.</exception>
+            <exception cref="T:System.InvalidOperationException">Logging listeners are not permitted to call methods of the Logging class.</exception>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.DiagnosticLogger.Trace(System.String,System.String)">
+            <summary>
+            This is used to display messages for debugging but not normal operation.
+            It only displays when the TraceSwitch is assigned TraceVerbose.
+            It takes the string passed in and sends it to any trace listener.
+            It also will display it in a list control if one has been made available or in the various logs.
+            </summary>
+            <param name="appName">Name to give for the application.</param>
+            <param name="message">The message to write out to the trace.</param>
+            <exception cref="T:System.Configuration.ConfigurationErrorsException">Configuration-related exceptions are wrapped in this common exception type.</exception>
+            <exception cref="T:System.InvalidOperationException">Logging listeners are not permitted to call methods of the Logging class.</exception>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Logging.DiagnosticLogger.ErrorCount">
+            <summary>
+            Gets or sets the error count. (Incremented by every call to one of the Error() overloads.)
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Logging.DiagnosticLogger.ShowErrors">
+            <summary>
+            If set to true, then all Logging.Error() messages will be displayed in a messagebox.
+            The default is false.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Logging.DiagnosticLogger.TraceSwitchLevel">
+            <summary>
+            Level of the TraceSwitch("Microsoft.Uii.Common.Logging").
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Common.Logging.ILogging">
+            <summary>
+            Interface for Logging listeners
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.ILogging.Initialize(System.String,System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            This is the method used to initialize the logging listener
+            </summary>
+            <param name="name">The name of the listener.</param>
+            <param name="configValue">The configuration values (parameters) for the listener.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.ILogging.Error(System.String,System.String,System.String)">
+            <summary>
+            This method is used to log an error message.
+            </summary>
+            <param name="applicationName">The application name used in the log.</param>
+            <param name="message">The message used in the log.</param>
+            <param name="advanced">Advanced message information.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.ILogging.Warn(System.String,System.String)">
+            <summary>
+            This method is used to log a warning message.
+            </summary>
+            <param name="applicationName">The application name used in the log.</param>
+            <param name="message">The message used in the log.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.ILogging.Information(System.String,System.String)">
+            <summary>
+            This method is used to log an informational message.
+            </summary>
+            <param name="applicationName">The application name used in the log.</param>
+            <param name="message">The message used in the log.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.ILogging.Trace(System.String,System.String)">
+            <summary>
+            This method is used to log a trace message.
+            </summary>
+            <param name="applicationName">The application name used in the log.</param>
+            <param name="message">The message used in the log.</param>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Logging.ILogging.Tag">
+            <summary>
+            Gets or sets user-defined data associated with the object.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Logging.ILogging.ShowErrors">
+            <summary>
+            Boolean used to ensure errors are shown.  It is up to the actual
+            implementor/provider to use this or not.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Common.Logging.Logging">
+            <summary>
+            The logging class used by UII that implements a listening system to allow multiple listeners to hook in and log messages.
+            A TraceSwitch, Microsoft.Uii.Common.Logging, is implemented to provide for the varying of log traffic.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.Logging.Logging.tSwitch">
+            TraceSwitch to control logging traffic.
+            do not globalize these strings; developer oriented
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.Logging.TryInitialize">
+            <summary>
+            Provides for the explicit initialization of logging listeners, rather than defering to first use of the Logging class.
+            Use of this method is not required.
+            </summary>
+            <exception cref="T:System.Configuration.ConfigurationErrorsException">Configuration-related exceptions are wrapped in this common exception type.</exception>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.Logging.Error(System.String,System.String)">
+            <summary>
+            This is used to display messages that represent a problem.
+            It only displays when the TraceSwitch is assigned TraceError.
+            It takes the string passed in and sends it to any trace listener.
+            It also will display it in a list control if one has been made available or in the various logs.
+            </summary>
+            <param name="appName">Name to give for the application.</param>
+            <param name="message">The message to place in the log.</param>
+            <exception cref="T:System.Configuration.ConfigurationErrorsException">Configuration-related exceptions are wrapped in this common exception type.</exception>
+            <exception cref="T:System.InvalidOperationException">Logging listeners are not permitted to call methods of the Logging class.</exception>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.Logging.Error(System.String,System.String,System.Exception)">
+            <summary>
+            This is used to display messages that represent a problem.
+            It only displays when the TraceSwitch is assigned TraceError.
+            It takes the string passed in and sends it to any trace listener.
+            It also will display it in a list control if one has been made available or in the various logs.
+            </summary>
+            <param name="appName">Name to give for the application.</param>
+            <param name="message">The message to place in the log.</param>
+            <param name="exception">The exception used in writing out the error.</param>
+            <exception cref="T:System.Configuration.ConfigurationErrorsException">Configuration-related exceptions are wrapped in this common exception type.</exception>
+            <exception cref="T:System.InvalidOperationException">Logging listeners are not permitted to call methods of the Logging class.</exception>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.Logging.Error(System.String,System.String,System.Object[])">
+            <summary>
+            This is used to display messages that represent a problem.
+            It only displays when the TraceSwitch is assigned TraceError.
+            It takes the string passed in and sends it to any trace listener.
+            It also will display it in a list control if one has been made available or in the various logs.
+            </summary>
+            <param name="appName">Nmae to give for the application</param>
+            <param name="format">String format for the message to be placed in the log</param>
+            <param name="parameters">Parameters to be substituted into the stirng format.</param>
+            <exception cref="T:System.Configuration.ConfigurationErrorsException">Configuration-related exceptions are wrapped in this common exception type.</exception>
+            <exception cref="T:System.InvalidOperationException">Logging listeners are not permitted to call methods of the Logging class.</exception>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.Logging.Error(System.String,System.String,System.String)">
+            <summary>
+            This is used to display messages that represent a problem.
+            It only displays when the TraceSwitch is assigned TraceError.
+            It takes the string passed in and sends it to any trace listener.
+            It also will display it in a list control if one has been made available or in the various logs.
+            </summary>
+            <param name="appName">Name to give for the application.</param>
+            <param name="message">The message to place in the log.</param>
+            <param name="advanced">Advanced/additional information.</param>
+            <remarks>The ShowErrors check is done at the individual listener level.</remarks>
+            <exception cref="T:System.Configuration.ConfigurationErrorsException">Configuration-related exceptions are wrapped in this common exception type.</exception>
+            <exception cref="T:System.InvalidOperationException">Logging listeners are not permitted to call methods of the Logging class.</exception>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.Logging.Warn(System.String,System.String,System.Object[])">
+            <summary>
+            This is used to display messages that may represent a problem.
+            It only displays when the TraceSwitch is assigned TraceWarning.
+            It takes the string passed in and sends it to any trace listener.
+            It also will display it in a list control if one has been made available or in the various logs.
+            </summary>
+            <param name="appName">Name to give for the application</param>
+            <param name="format">String format of the message</param>
+            <param name="parameters">Parameters to be substituted into the string format</param>
+            <exception cref="T:System.Configuration.ConfigurationErrorsException">Configuration-related exceptions are wrapped in this common exception type.</exception>
+            <exception cref="T:System.InvalidOperationException">Logging listeners are not permitted to call methods of the Logging class.</exception>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.Logging.Warn(System.String,System.String)">
+            <summary>
+            This is used to display messages that may represent a problem.
+            It only displays when the TraceSwitch is assigned TraceWarning.
+            It takes the string passed in and sends it to any trace listener.
+            It also will display it in a list control if one has been made available or in the various logs.
+            </summary>
+            <param name="appName">Name to give for the application.</param>
+            <param name="message">The message to place in the log.</param>
+            <exception cref="T:System.Configuration.ConfigurationErrorsException">Configuration-related exceptions are wrapped in this common exception type.</exception>
+            <exception cref="T:System.InvalidOperationException">Logging listeners are not permitted to call methods of the Logging class.</exception>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.Logging.Info(System.String,System.String)">
+            <summary>
+            This is used to display messages that are useful, but do not represent a problem.
+            It only displays when the TraceSwitch is assigned TraceInfo.
+            It takes the string passed in and sends it to any trace listener.
+            It also will display it in a list control if one has been made available or in the various logs.
+            </summary>
+            <param name="appName">Name to give for the application</param>
+            <param name="message">The message to place in the log</param>
+            <exception cref="T:System.Configuration.ConfigurationErrorsException">Configuration-related exceptions are wrapped in this common exception type.</exception>
+            <exception cref="T:System.InvalidOperationException">Logging listeners are not permitted to call methods of the Logging class.</exception>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.Logging.Info(System.String,System.String,System.Object[])">
+            <summary>
+            This is used to display messages that are useful, but do not represent a problem.
+            It only displays when the TraceSwitch is assigned TraceInfo.
+            It takes the string passed in and sends it to any trace listener.
+            It also will display it in a list control if one has been made available or in the various logs.
+            </summary>
+            <param name="appName">Name to give for the application.</param>
+            <param name="format">String format of the message.</param>
+            <param name="parameters">Parameters to be substituted into the string format.</param>
+            <exception cref="T:System.Configuration.ConfigurationErrorsException">Configuration-related exceptions are wrapped in this common exception type.</exception>
+            <exception cref="T:System.InvalidOperationException">Logging listeners are not permitted to call methods of the Logging class.</exception>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.Logging.Information(System.String,System.String)">
+            <summary>
+            This is used to display messages that are useful, but do not represent a problem.
+            It only displays when the TraceSwitch is assigned TraceInfo.
+            It takes the string passed in and sends it to any trace listener.
+            It also will display it in a list control if one has been made available or in the various logs.
+            </summary>
+            <param name="appName">Name to give for the application.</param>
+            <param name="message">The message to place in the log.</param>
+            <exception cref="T:System.Configuration.ConfigurationErrorsException">Configuration-related exceptions are wrapped in this common exception type.</exception>
+            <exception cref="T:System.InvalidOperationException">Logging listeners are not permitted to call methods of the Logging class.</exception>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.Logging.Trace(System.String)">
+            <summary>
+            This is used to display messages for debugging but not normal operation.
+            It only displays when the TraceSwitch is assigned TraceVerbose.
+            It takes the string passed in and sends it to any trace listener.
+            It also will display it in a list control if one has been made available or in the various logs.
+            </summary>
+            <param name="message">The message to write out to the trace.</param>
+            <exception cref="T:System.Configuration.ConfigurationErrorsException">Configuration-related exceptions are wrapped in this common exception type.</exception>
+            <exception cref="T:System.InvalidOperationException">Logging listeners are not permitted to call methods of the Logging class.</exception>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.Logging.Trace(System.String,System.String,System.Object[])">
+            <summary>
+            This is used to display messages for debugging but not normal operation.
+            It only displays when the TraceSwitch is assigned TraceVerbose.
+            It takes the string passed in and sends it to any trace listener.
+            It also will display it in a list control if one has been made available or in the various logs.
+            </summary>
+            <param name="appName">Name to give for the application.</param>
+            <param name="format">String format of the message.</param>
+            <param name="parameters">Parameters to be substituted into the string format.</param>
+            <exception cref="T:System.Configuration.ConfigurationErrorsException">Configuration-related exceptions are wrapped in this common exception type.</exception>
+            <exception cref="T:System.InvalidOperationException">Logging listeners are not permitted to call methods of the Logging class.</exception>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Logging.Logging.Trace(System.String,System.String)">
+            <summary>
+            This is used to display messages for debugging but not normal operation.
+            It only displays when the TraceSwitch is assigned TraceVerbose.
+            It takes the string passed in and sends it to any trace listener.
+            It also will display it in a list control if one has been made available or in the various logs.
+            </summary>
+            <param name="appName">Name to give for the application.</param>
+            <param name="message">The message to write out to the trace.</param>
+            <exception cref="T:System.Configuration.ConfigurationErrorsException">Configuration-related exceptions are wrapped in this common exception type.</exception>
+            <exception cref="T:System.InvalidOperationException">Logging listeners are not permitted to call methods of the Logging class.</exception>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Logging.Logging.ErrorCount">
+            <summary>
+            Gets or sets the error count. (Incremented by every call to one of the Error() overloads.)
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Logging.Logging.ShowErrors">
+            <summary>
+            If set to true, then all Logging.Error() messages will be displayed in a messagebox.
+            The default is false.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Logging.Logging.TraceSwitchLevel">
+            <summary>
+            Level of the TraceSwitch("Microsoft.Uii.Common.Logging").
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Logging.Logging.TSwitch">
+            <summary>
+            Returns the TSwitch object and verify for an invalid Trace Level value in config file.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Common.Logging.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Logging.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Logging.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Logging.Resources.LOG0100_UNABLETOCREATE">
+            <summary>
+              Looks up a localized string similar to The specified listener type couldn&apos;t be instantiated: {0}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Logging.Resources.LOG0103_INITERROR">
+            <summary>
+              Looks up a localized string similar to An error occurred while calling Initialize() on the specified listener type: {0}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Logging.Resources.LOG0104_NORECURSION">
+            <summary>
+              Looks up a localized string similar to Listeners can&apos;t call methods of the Logging class..
+            </summary>
+        </member>
+    </members>
+</doc>

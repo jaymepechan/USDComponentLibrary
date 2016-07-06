@@ -1,0 +1,138 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Uii.Common.Listeners</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Uii.Common.Listeners.Configuration.ListenerConfiguration">
+            <summary>
+            This class holds the configuration data for Listeners.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Listeners.Configuration.ListenerConfiguration.GetListeners">
+            <summary>
+            Gets the collection of listeners
+            </summary>
+            <returns>Collection of listeners</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Listeners.Configuration.ListenerConfiguration.GetConfig(System.String)">
+            <summary>
+            Returns configuration settings for a user-defined listeners configuration section.
+            </summary>
+            <param name="sectionName">The configuration section to read.</param>
+            <returns>The listener configuration settings for sectionName.</returns>
+            <exception cref="T:System.ApplicationException">Thrown when no configuration is found.</exception>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Listeners.Configuration.ListenerConfiguration.LoadValuesFromConfigurationXml(System.Xml.XmlNode)">
+            <summary>
+            Loads values from the configuration Xml node.
+            </summary>
+            <param name="node">The XmlNode that contains the configuration information 
+            from the configuration file. Provides direct access to the XML contents 
+            of the configuration section.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Listeners.Configuration.ListenerConfiguration.GetListeners(System.Xml.XmlNode)">
+            <summary>
+            Gets the listener definitions from providers node.
+            </summary>
+            <param name="node">The XmlNode that contains the configuration information 
+            from the configuration file. Provides direct access to the XML contents 
+            of the configuration section.
+            </param>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Listeners.Configuration.ListenerConfiguration.Listeners">
+            <summary>
+            The collection of listeners.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Common.Listeners.Configuration.Listener">
+            <summary>
+            Contains information about entries in the listeners section for a particular listener configuration
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Listeners.Configuration.Listener.CreateInstance">
+            <summary>
+            Returns an instantiated instance of the configured listener type
+            </summary>
+            <returns>Instantiated object</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Listeners.Configuration.Listener.#ctor(System.Xml.XmlAttributeCollection)">
+            <summary>
+            Constructs the listener instance based on the collection of Xml attributes 
+            in its configuration node.
+            </summary>
+            <param name="attributes">The Xml attributes of the provider defintion.</param>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Listeners.Configuration.Listener.Name">
+            <summary>
+            The name of the listener defintion.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Listeners.Configuration.Listener.Type">
+            <summary>
+            The type name of the listener definition.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Listeners.Configuration.Listener.Attributes">
+            <summary>
+            The attributes of the listener definitions.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Common.Listeners.Configuration.ListenerConfigurationHandler">
+            <summary>
+            This class is the configuration section handler for UII listeners. It 
+            implements the IConfigurationSectionHandler interface as required by all 
+            configuration section handlers
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Listeners.Configuration.ListenerConfigurationHandler.Create(System.Object,System.Object,System.Xml.XmlNode)">
+            <summary>
+            Implements IConfigurationSectionHandler to parse the Xml node of the 
+            configuration section. The actual parsing of the Xml is delegated to 
+            ListenerConfiguration LoadValuesFromConfigurationXml method. The 
+            returned object is added to the configuration collection and is 
+            accessed by ConfigurationSettings.GetConfig method.
+            </summary>
+            <param name="parent">The configuration settings in a corresponding 
+            parent configuration section. Not used.</param>
+            <param name="configContext">An HttpConfigurationContext when Create is 
+            called from the ASP.NET configuration system. Otherwise, this parameter 
+            is reserved and is a null reference. Not used.</param>
+            <param name="section">The XmlNode that contains the configuration information 
+            from the configuration file. Provides direct access to the XML contents 
+            of the configuration section.</param>
+            <returns>A ListenerConfiguration object.</returns>
+        </member>
+        <member name="T:Microsoft.Uii.Common.Listeners.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Listeners.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Listeners.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Listeners.Resources.LSN0100_CONFIGWEBSVC_ACCESS_ERROR">
+            <summary>
+              Looks up a localized string similar to LSN0100: An error occurred while attempting to access the configuration web service. (To disable, remove the &quot;ConfigurationArea&quot; AppSettings key.).
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Listeners.Resources.LSN0101_CONFIGWEBSRV_DESER_ERROR">
+            <summary>
+              Looks up a localized string similar to LSN0101: An error occurred while attempting to deserialize configuration data from the configuration web service..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Listeners.Resources.LSN0102_INVALIDOP">
+            <summary>
+              Looks up a localized string similar to LSN0102: An error occurred while attempting the listener configuration operation: {0}.
+            </summary>
+        </member>
+    </members>
+</doc>

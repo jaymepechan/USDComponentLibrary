@@ -1,0 +1,879 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Uii.AifServices</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Uii.AifServices.AifServiceBase">
+            <summary>
+            The base class for all the Aif Services except for Authentication
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.AifServices.AifServiceBase.OrganizationServiceProxy">
+            <summary>
+            Gets the organization service proxy.
+            </summary>
+            <value>The organization service proxy.</value>
+        </member>
+        <member name="P:Microsoft.Uii.AifServices.AifServiceBase.CrmServiceClient">
+            <summary>
+            Gets the Crm Service Client Instance.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.AifServices.AifServiceContainer">
+            <summary>
+            This is the container for all Aif Services.
+            This should be implemented as a singleton class.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.AifServices.AifServiceContainer.instance">
+            <summary>
+            The singleton instance for the class.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.AifServices.AifServiceContainer.synchronizationLock">
+            <summary>
+            Synchronization lock
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.AifServices.AifServiceContainer.servicesStore">
+            <summary>
+            Generic collection to hold all the services.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.AifServiceContainer.#ctor">
+            <summary>
+            Prevents a default instance of the <see cref="T:Microsoft.Uii.AifServices.AifServiceContainer"/> class from being created.
+            Initializes static members of the <see cref="T:Microsoft.Uii.AifServices.AifServiceContainer"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.AifServiceContainer.GetService``1">
+            <summary>
+            Gets the service.
+            </summary>
+            <typeparam name="T">type of the service</typeparam>
+            <returns>the object of type T</returns>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.AifServiceContainer.AddService``1(System.Type,``0)">
+            <summary>
+            Adds the service.
+            </summary>
+            <typeparam name="T">type of the service</typeparam>
+            <param name="type">Service type, interface.</param>
+            <param name="service">The service.</param>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.AifServiceContainer.DoInitialize">
+            <summary>
+            Does the initialize. 
+            Reads the settings from the config file and populates the the services in the local store.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.AifServiceContainer.PopulateDefaultServices">
+            <summary>
+            Populates the default services.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.AifServiceContainer.ReadServicesFromConfig">
+            <summary>
+            Reads the services information from the local config.
+            </summary>	
+        </member>
+        <member name="P:Microsoft.Uii.AifServices.AifServiceContainer.Instance">
+            <summary>
+            Gets the instance.
+            </summary>
+            <value>The instance.</value>
+        </member>
+        <member name="T:Microsoft.Uii.AifServices.Configuration.AifServiceCollection">
+            <summary> 
+            This class implements the AifServiceCollection.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.Configuration.AifServiceCollection.CreateNewElement">
+            <summary>
+            When overridden in a derived class, creates a new <see cref="T:System.Configuration.ConfigurationElement"/>.
+            </summary>
+            <returns>
+            A new <see cref="T:System.Configuration.ConfigurationElement"/>.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.Configuration.AifServiceCollection.GetElementKey(System.Configuration.ConfigurationElement)">
+            <summary>
+            Gets the element key for a specified configuration element when overridden in a derived class.
+            </summary>
+            <param name="element">The <see cref="T:System.Configuration.ConfigurationElement"/> to return the key for.</param>
+            <returns>
+            An <see cref="T:System.Object"/> that acts as the key for the specified <see cref="T:System.Configuration.ConfigurationElement"/>.
+            </returns>
+        </member>
+        <member name="T:Microsoft.Uii.AifServices.Configuration.AifServiceElement">
+            <summary>
+            The configuration element to hold the type of AIF service.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.AifServices.Configuration.AifServiceElement.Type">
+            <summary>
+            Gets Type of the service
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.AifServices.Configuration.AifServicesSection">
+            <summary>
+            This class implements the AifServiceSection.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.AifServices.Configuration.AifServicesSection.AifConfigSectionName">
+            <summary>
+            Aif services section name in the configuration file.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.AifServices.Configuration.AifServicesSection.Services">
+            <summary>
+            Gets the settings information for the target types
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.AifServices.AuditLogger">
+            <summary>
+            AuditLogger provides services for logging the audit related messages.
+            It caches the messages before updating the underlaying thing.
+            It uses asynchronous calls to web services.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.AifServices.AuditLogger.AuditFlagLogin">
+            <summary>
+            The default set of audit flags
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.AifServices.AuditLogger.AuditFlagSession">
+            <summary>
+            The default set of audit flags
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.AifServices.AuditLogger.AuditFlagAgentState">
+            <summary>
+            The default set of audit flags
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.AifServices.AuditLogger.AuditFlagHostedApplication">
+            <summary>
+            The default set of audit flags
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.AifServices.AuditLogger.AuditFlagAction">
+            <summary>
+            The default set of audit flags
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.AifServices.AuditLogger.AuditFlagWorkFlow">
+            <summary>
+            The default set of audit flags
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.AifServices.AuditLogger.AuditFlagNonHostedApplication">
+            <summary>
+            The default set of audit flags
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.AifServices.AuditLogger.AuditFlagInteraction">
+            <summary>
+            The default set of audit flags
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.AuditLogger.GetAuditFlag(System.String)">
+            <summary>
+            Retrieves the value for the specified audit flag.
+            </summary>
+            <param name="auditFlagName">Arbitrary audit flag identifier</param>
+            <returns>flag value (0 = logging off, 1 = logging on</returns>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.AuditLogger.SetAuditFlag(System.String,System.String)">
+            <summary>
+            Sets the value for the specified audit flag.
+            </summary>
+            <param name="auditFlagName">Arbitrary audit flag identifier</param>
+            <param name="auditFlagValue">0 = turn off logging, 1 = turn on logging</param>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.AuditLogger.Log(System.String,Microsoft.Uii.Common.Entities.LogData)">
+            <summary>
+            Logs the messages to the database using the AuditLog web service asynchronously.
+            Caching done based on the NoCache property.
+            Message will be logged only if GetAuditFlag(auditFlagName) returns non-zero.
+            Use SetAuditFlag(auditFlagName) to set.
+            </summary>
+            <param name="auditFlagName">Arbitrary audit flag identifier</param>
+            <param name="logData">Audit log record where ToString() will be used to extract contents</param>
+        </member>
+        <member name="P:Microsoft.Uii.AifServices.AuditLogger.CacheMaxSize">
+            <summary>
+            Maximum size of the the Audit Log cache.
+            Size change will take effect on next Log() call.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.AifServices.AuditLogger.NoCache">
+            <summary>
+            Indicates whether audit messages to be cached or not.
+            If true, no caching happens and all the messages will be
+            logged immediately. If false, messages are cached and
+            flushed to DB when the cache limit reached or certain
+            events happen such as session close.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.AifServices.ISecureSsoLookupService">
+            <summary>
+            SSO interface which uses secure string to store the password.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.ISecureSsoLookupService.GetCredentials(System.String)">
+            <summary>
+            Returns a credential object.
+            </summary>
+            <param name="applicationName">Name of the application which retrieves the data</param>
+            <returns>Credential</returns>
+        </member>
+        <member name="T:Microsoft.Uii.AifServices.AgentStateService">
+            <summary>
+            Agent State Service
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.AifServices.IAgentStateService">
+            <summary>
+            Interface for handling reading, creating, updating and deleting agent sessions
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.IAgentStateService.SetSessionTransferInformation(System.Guid,System.String,System.String)">
+            <summary>
+            Places session specific information into the database so that when a 
+            agent transfers a call to another agent, the session information 
+            can be reproduced for them.  This won't be able to cover all cases, 
+            but it will save call handling time.
+            </summary>
+            <param name="toAgentId">To agent id.</param>
+            <param name="fromPhoneNumber">From phone number.</param>
+            <param name="sessionInformation">The session information.</param>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.IAgentStateService.GetSessionTransferInformation(System.Guid)">
+            <summary>
+            Returns session information to assist in handling a transferred call.
+            </summary>
+            <param name="toAgentId">To agent id.</param>
+            <returns>session information to assist in handling a transferred call.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.IAgentStateService.SaveSessions(System.String)">
+            <summary>
+            Saves an agents session(s) information.
+            </summary>
+            <param name="sessionsState">State of the sessions.</param>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.IAgentStateService.GetSavedSessions(System.Guid)">
+            <summary>
+            Gets the saved session(s) for an agent.
+            </summary>
+            <param name="agentId">The agent id.</param>
+            <returns>the saved session(s) for an agent.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.IAgentStateService.GetAgentId">
+            <summary>
+            Gets the logged in agent's id.
+            </summary>
+            <returns>the logged in agent's id.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.IAgentStateService.GetAgentId(System.String)">
+            <summary>
+            Gets the logged in agent's id.
+            </summary>
+            <returns>the logged in agent's id.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.AgentStateService.SetSessionTransferInformation(System.Guid,System.String,System.String)">
+            <summary>
+            Places session specific information into the database so that when a
+            agent transfers a call to another agent, the session information
+            can be reproduced for them.  This won't be able to cover all cases,
+            but it will save call handling time.
+            </summary>
+            <param name="toAgentId">To agent id.</param>
+            <param name="fromPhoneNumber">From phone number.</param>
+            <param name="sessionInformation">The session information.</param>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.AgentStateService.GetSessionTransferInformation(System.Guid)">
+            <summary>
+            Returns session information to assist in handling a transfered call.
+            </summary>
+            <param name="toAgentId">To agent id.</param>
+            <returns>
+            session information to assist in handling a transferred call.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.AgentStateService.SaveSessions(System.String)">
+            <summary>
+            Saves an agents session(s) information.
+            </summary>
+            <param name="sessionsState">State of the sessions.</param>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.AgentStateService.GetSavedSessions(System.Guid)">
+            <summary>
+            Gets the saved session(s) for an agent.
+            </summary>
+            <param name="agentId">The agent id.</param>
+            <returns>the saved session(s) for an agent.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.AgentStateService.GetAgentId">
+            <summary>
+            Gets the logged in agent's id.
+            </summary>
+            <returns>the logged in agent's id.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.AgentStateService.GetAgentId(System.String)">
+            <summary>
+            Gets the agent's id based on Phone Number.
+            </summary>
+            <returns>the logged in agent's id.</returns>
+        </member>
+        <member name="T:Microsoft.Uii.AifServices.ApplicationService">
+            <summary>
+            This class provides methods for retrieving application data from the Server
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.AifServices.IApplicationService">
+            <summary>
+            Interface definition for IApplicationService
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.IApplicationService.GetApplications">
+            <summary>
+            Gets the applications.
+            </summary>
+            <returns>the list of hosted applications indexed by Name</returns>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.IApplicationService.GetNonHostedApplications">
+            <summary>
+            Gets the applications.
+            </summary>
+            <returns>the list of non hosted applications indexed by Name</returns>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.ApplicationService.GetApplications">
+            <summary>
+            Gets the applications.
+            </summary>
+            <returns>the list of hosted applications indexed by Name</returns>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.ApplicationService.GetNonHostedApplications">
+            <summary>
+            Gets the non-hosted applications.
+            </summary>
+            <returns>the list of non hosted applications indexed by Name</returns>
+        </member>
+        <member name="T:Microsoft.Uii.AifServices.AuditService">
+            <summary>
+            Saves audit data to the server
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.AifServices.IAuditService">
+            <summary>
+            Interface for implementing saving audit data to a repository
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.IAuditService.SaveAudit(System.Collections.Generic.IEnumerable{Microsoft.Uii.Common.Entities.LogData})">
+            <summary>
+            Saves the audit data to the repository as implemented by the inherited class.
+            </summary>
+            <param name="logCache">List of log data</param>
+        </member>
+        <member name="F:Microsoft.Uii.AifServices.AuditService._crmServiceClient">
+            <summary>
+            Custom CrmServiceClient
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.AuditService.SaveAudit(System.Collections.Generic.IEnumerable{Microsoft.Uii.Common.Entities.LogData})">
+            <summary>
+            Saves the audit data to CRM audit entity.
+            </summary>
+            <param name="logCache">List of data to be logged</param>
+        </member>
+        <member name="P:Microsoft.Uii.AifServices.AuditService.CrmServiceClient">
+            <summary>
+            Custom CrmServiceClient
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.AifServices.AuthenticationService">
+            <summary>
+            This class provides the default Authentication Service
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.AifServices.AuthenticationService.ORGANIZATION_SERVICE">
+            <summary>
+            The name of organization service.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.AifServices.AuthenticationService.DISCOVERY_SERVICE">
+            <summary>
+            The name of discovery service.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.AifServices.AuthenticationService.Region_NorthAmerica">
+            <summary>
+            Constant used in CrmServiceClient for North America online region
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.AifServices.AuthenticationService.Region_EMEA">
+             <summary>
+            Constant used in CrmServiceClient for EMEA online region
+             </summary>
+        </member>
+        <member name="F:Microsoft.Uii.AifServices.AuthenticationService.Region_APAC">
+             <summary>
+            Constant used in CrmServiceClient for APAC online region
+             </summary>
+        </member>
+        <member name="F:Microsoft.Uii.AifServices.AuthenticationService.Region_SouthAmerica">
+            <summary>
+            Constant used in CrmServiceClient for South America online region
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.AifServices.AuthenticationService.Region_Japan">
+            <summary>
+            Constant used in CrmServiceClient for Japan online region
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.AifServices.AuthenticationService.Region_Australia">
+            <summary>
+            Constant used in CrmServiceClient for Australia online region
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.AifServices.AuthenticationService.Region_NorthAmerica2">
+            <summary>
+            Constant used in CrmServiceClient for Govt Cloud online region
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.AifServices.AuthenticationService.Region_Canada">
+            <summary>
+            Constant used in CrmServiceClient for Canada online region
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.AifServices.AuthenticationService.Region_India">
+            <summary>
+            Constant used in CrmServiceClient for India online region
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.AifServices.AuthenticationService.discoveryServiceProxy">
+            <summary>
+            The Discovery Service Proxy Object.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.AifServices.AuthenticationService.whoAmI">
+            <summary>
+            Connected User
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.AifServices.AuthenticationService.crmServiceClient">
+            <summary>
+            contains a reference to CrmServiceClinet Object
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.AuthenticationService.GetClientCredentials(System.Net.NetworkCredential,System.Boolean)">
+            <summary>
+            Gets the client credentials.
+            </summary>
+            <param name="networkCredential">The network credential.</param>
+            <param name="customIdentityProvider">if set to <c>true</c> [custom identity provider].</param>
+            <returns>The client credentials object.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.AuthenticationService.GetClientCredentials(System.String,System.String)">
+            <summary>
+            Gets the client credentials.
+            </summary>
+            <param name="userName">The login user name.</param>
+            <param name="password">The password.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.AuthenticationService.ValidateConnect">
+            <summary>
+            Validates the connection with CRM service.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.AuthenticationService.getCrmOnlineRegion(System.Uri)">
+            <summary>
+            Retrives Organization Region name for Online instance 
+            </summary>
+            <param name="OrganizationServiceProxy"></param>
+            <returns>string Shortname </returns>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.AuthenticationService.getCrmOrg(System.Uri)">
+            <summary>
+            Returns the organization name from the Service Proxy Uri
+            </summary>
+            <param name="OrganizationServiceProxy">The org Service Proxy Uri</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.AuthenticationService.Connect(Microsoft.Xrm.Sdk.Client.OrganizationServiceProxy)">
+            <summary>
+            Connects using the specified OrganizationServiceProxy.
+            </summary>
+            <param name="organizationServiceProxy">The organization service proxy.</param>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.AuthenticationService.Connect(Microsoft.Xrm.Tooling.Connector.CrmServiceClient)">
+            <summary>
+            Connects using the specified CrmServiceClient.
+            </summary>
+            <param name="externalCrmServiceClient">The Crm Service Client.</param>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.AuthenticationService.Connect(System.Uri,System.Uri,System.ServiceModel.Description.ClientCredentials,System.ServiceModel.Description.ClientCredentials)">
+            <summary>
+            Connects the specified URI.
+            </summary>
+            <param name="organizationServiceUri">The organization service URI.</param>
+            <param name="homeRealmUri">The home realm URI. Not null for federation authentication.</param>
+            <param name="clientCredentials">The client credentials.</param>
+            <param name="deviceCredentials">The device credentials.</param>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.AuthenticationService.Connect(System.Uri,System.Net.NetworkCredential)">
+            <summary>
+            Connects the specified organization service URI.
+            </summary>
+            <param name="organizationServiceUri">The organization service URI.</param>
+            <param name="networkCredential">The network credential. When given <c>null</c> value, uses the current user network credentials.</param>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.AuthenticationService.Connect(System.Uri,System.Uri,System.Net.NetworkCredential,System.String,System.Boolean)">
+            <summary>
+            Connects the specified discovery service URI.
+            </summary>
+            <param name="discoveryServiceUri">The discovery service URI.</param>
+            <param name="homeRealmUri">The home realm URI. Not null for federation authentication.</param>
+            <param name="networkCredential">The network credential. When given <c>null</c> value, uses the current user network credentials.</param>
+            <param name="organizationName">Name of the organization.</param>
+            <param name="customIdentityProvider">Set to <c>true</c> when using custom credentials.</param>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.AuthenticationService.Connect(System.Uri,System.String,System.String,System.ServiceModel.Description.ClientCredentials,System.Boolean)">
+            <summary>
+            Connects to the specified organization service URI.
+            </summary>
+            <param name="organizationServiceUri">The organization service URI.</param>
+            <param name="liveId">The live id (email id).</param>
+            <param name="password">The password.</param>
+            <param name="deviceCredentials">The device credentials.</param>
+            <param name="isOffice365">Is Office365 Authenitcation</param>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.AuthenticationService.DiscoverOrganizations(System.Uri,System.Uri,System.ServiceModel.Description.ClientCredentials,System.ServiceModel.Description.ClientCredentials)">
+            <summary>
+            Discovers the organizations.
+            </summary>
+            <param name="discoveryServiceUri">The discovery service URI.</param>
+            <param name="homeRealmUri">The home realm URI. Not null for federation authentication.</param>
+            <param name="clientCredentials">The client credentials.</param>
+            <param name="deviceCredentials">The device credentials.</param>
+            <returns>A collection of organizations.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.AuthenticationService.DiscoverOrganizations(System.Uri,System.Uri,System.Net.NetworkCredential,System.Boolean)">
+            <summary>
+            Discovers the organizations.
+            </summary>
+            <param name="discoveryServiceUri">The discovery service URI.</param>
+            <param name="homeRealmUri">The home realm URI. Not null for federation authentication.</param>
+            <param name="networkCredential">The network credential. When given <c>null</c> value, uses the current user network credentials.</param>
+            <param name="customIdentityProvider">Set to <c>true</c> when using custom credentials.</param>
+            <returns>A collection of organizations.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.AuthenticationService.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.AuthenticationService.Dispose(System.Boolean)">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+            <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
+        </member>
+        <member name="P:Microsoft.Uii.AifServices.AuthenticationService.OrganizationServiceProxy">
+            <summary>
+            Gets the organization service proxy.
+            </summary>
+            <value>The organization service proxy.</value>
+        </member>
+        <member name="P:Microsoft.Uii.AifServices.AuthenticationService.CrmServiceClient">
+             <summary>
+             Gets the Crm Service Client
+             </summary>
+            <value>The Crm Service Client.</value>
+        </member>
+        <member name="P:Microsoft.Uii.AifServices.AuthenticationService.DiscoveryServiceProxy">
+            <summary>
+            Gets the discovery service proxy.
+            </summary>
+            <value>The discovery service proxy.</value>
+        </member>
+        <member name="P:Microsoft.Uii.AifServices.AuthenticationService.Connected">
+            <summary>
+            Gets whether a successful connection to the CRM server is established
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.AifServices.AuthenticationService.WhoAmI">
+            <summary>
+            Gets the details of the connected user.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.AifServices.ContextService">
+            <summary>
+            Aif service to handle CRUD operations on context entity
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.AifServices.IContextService">
+            <summary>
+            Interface definition for IContextService
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.IContextService.CreateContext(System.String)">
+            <summary>
+            Creates the context.
+            </summary>
+            <param name="customerInformation">The customer information.</param>
+            <returns>the context ID</returns>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.IContextService.SetContext(System.Guid,System.String)">
+            <summary>
+            Sets the context.
+            </summary>
+            <param name="contextId">The context id.</param>
+            <param name="customerInformation">The customer information.</param>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.IContextService.GetContext(System.Guid)">
+            <summary>
+            Gets the context.
+            </summary>
+            <param name="contextId">The context id.</param>
+            <returns>context information</returns>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.ContextService.CreateContext(System.String)">
+            <summary>
+            Creates the context.
+            </summary>
+            <param name="customerInformation">Customer information.</param>
+            <returns>the context ID</returns>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.ContextService.SetContext(System.Guid,System.String)">
+            <summary>
+            Sets the context.
+            </summary>
+            <param name="contextId">Context id.</param>
+            <param name="customerInformation">Customer information.</param>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.ContextService.GetContext(System.Guid)">
+            <summary>
+            Gets the context.
+            </summary>
+            <param name="contextId">Context id.</param>
+            <returns>context information</returns>
+        </member>
+        <member name="T:Microsoft.Uii.AifServices.OptionsService">
+            <summary>
+            This class provides the implementation for IOptionsService.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.AifServices.IOptionsService">
+            <summary>
+            The interface definition for IOptionsService.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.IOptionsService.GetOptionSetting(System.String)">
+            <summary>
+            Gets the option setting.
+            </summary>
+            <param name="itemName">Name of the item.</param>
+            <returns>returns the options setting for any given item. Null, if the item does not exist.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.IOptionsService.GetOptions">
+            <summary>
+            Gets the options.
+            </summary>
+            <returns>collection of settings</returns>
+        </member>
+        <member name="P:Microsoft.Uii.AifServices.IOptionsService.Item(System.String)">
+            <summary>
+            Gets the <see cref="T:Microsoft.Uii.Common.Entities.OptionRecord"/> with the specified name.
+            </summary>
+            <param name="name">Name of the OptionRecord</param>
+            <value></value>
+        </member>
+        <member name="F:Microsoft.Uii.AifServices.OptionsService.optionsCache">
+            <summary>
+            The local cache of Options.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.OptionsService.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Uii.AifServices.OptionsService"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.OptionsService.GetOptionSetting(System.String)">
+            <summary>
+            Gets the option setting.
+            </summary>
+            <param name="itemName">Name of the OptionRecord.</param>
+            <returns>returns the options setting for any given item. Null, if the item donot exist.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.OptionsService.GetOptions">
+            <summary>
+            Gets the options.
+            </summary>
+            <returns>collection of settings</returns>
+        </member>
+        <member name="P:Microsoft.Uii.AifServices.OptionsService.Item(System.String)">
+            <summary>
+            Gets the <see cref="T:Microsoft.Uii.Common.Entities.OptionRecord"/> with the specified name.
+            </summary>
+            <param name="name">Name of the OptionRecord</param>
+            <value></value>
+        </member>
+        <member name="T:Microsoft.Uii.AifServices.WorkflowService">
+            <summary>
+            Retrieves the workflow related information from the server
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.AifServices.IWorkflowService">
+            <summary>
+            Interface for Workflow Service
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.IWorkflowService.GetWorkflowNames">
+            <summary>
+            Retrive a list of Workflows
+            </summary>
+            <returns>List of workflow as a Xml string</returns>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.IWorkflowService.GetWorkflowSteps(System.Guid)">
+            <summary>
+            Retrieve a list of steps for a workflow
+            </summary>
+            <param name="workFlowId">Workflow Id</param>
+            <returns>Workflow steps as a Xml string</returns>
+        </member>
+        <member name="F:Microsoft.Uii.AifServices.WorkflowService.workflowNames">
+            <summary>
+            Cached list of workflows available to the agent.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.AifServices.WorkflowService.workflowSteps">
+            <summary>
+            Cached collection of workflows and workflow steps.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.WorkflowService.GetWorkflowNames">
+            <summary>
+            Retrives a list of workflows available to the agent
+            </summary>
+            <returns>Xml string containing the list of workflows</returns>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.WorkflowService.GetWorkflowSteps(System.Guid)">
+            <summary>
+            Retrieves a list of workflow steps for a workflow
+            </summary>
+            <param name="workflowId">Workflow Id</param>
+            <returns>Returns an Xml string containing the workflow steps</returns>
+        </member>
+        <member name="T:Microsoft.Uii.AifServices.ISsoLookupService">
+            <summary>
+            SSO service interface
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.ISsoLookupService.GetCredentials(System.String)">
+            <summary>
+            Return the username/password for the Application
+            </summary>
+            <param name="applicationName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.Uii.AifServices.Credential">
+            <summary>
+            Represents a user credential used to log into an application.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.AifServices.Credential.#ctor(System.String,System.Security.SecureString,System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="userName"></param>
+            <param name="password"></param>
+            <param name="domain"></param>
+            <param name="extensions"></param>
+        </member>
+        <member name="P:Microsoft.Uii.AifServices.Credential.UserName">
+            <summary>
+            User String
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.AifServices.Credential.Domain">
+            <summary>
+            Domain
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.AifServices.Credential.Password">
+            <summary>
+            Password
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.AifServices.Credential.Extensions">
+            <summary>
+            Additional extension data used to add any additional data. This data is stored in strings.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.AifServices.Resource">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.AifServices.Resource.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.AifServices.Resource.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.AifServices.Resource.GetOptionsError">
+            <summary>
+              Looks up a localized string similar to Try to update the local store again by calling the GetOptions function..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.AifServices.Resource.InvalidCredential">
+            <summary>
+              Looks up a localized string similar to Not a valid {0} credential..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.AifServices.Resource.InvalidOrganizationName">
+            <summary>
+              Looks up a localized string similar to The organization name is invalid..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.AifServices.Resource.InvalidServiceUri">
+            <summary>
+              Looks up a localized string similar to Not a valid {0} service URI..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.AifServices.Resource.NoOrganizationsFound">
+            <summary>
+              Looks up a localized string similar to No organizations found..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.AifServices.Resource.OrganizationDoesntExist">
+            <summary>
+              Looks up a localized string similar to The specified organization doesn&apos;t exist..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.AifServices.Resource.OrganizationProxyNotInitialized">
+            <summary>
+              Looks up a localized string similar to The organization service proxy isn&apos;t  initialized correctly..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.AifServices.Resource.ResponseNotInitialized">
+            <summary>
+              Looks up a localized string similar to The organization&apos;s response isn&apos;t  initialized correctly..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.AifServices.Resource.UnableToCreateServiceConfiguration">
+            <summary>
+              Looks up a localized string similar to The service configuration couldn&apos;t be created for the service URL..
+            </summary>
+        </member>
+    </members>
+</doc>

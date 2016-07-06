@@ -1,0 +1,183 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Crm.UnifiedServiceDesk.BaseControl</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.BaseControl.ICrmServiceConsumer">
+            <summary>
+            ICrmServiceConsumer
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.BaseControl.ICrmServiceConsumer.SetCrmServices(Microsoft.Xrm.Tooling.Connector.CrmServiceClient)">
+            <summary>
+            SetCrmServices
+            </summary>
+            <param name="CrmAdapter"></param>
+        </member>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.BaseControl.ICrmUtilityHostedControl">
+            <summary>
+             Identifies the Global CRM utility Hosted Control. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.BaseControl.ICrmUtilityHostedControl.SetStartupCrmInterface(Microsoft.Xrm.Tooling.Connector.CrmServiceClient)">
+            <summary>
+            Sets the startup service used if there is only one CRM connection. 
+            </summary>
+            <param name="managementSvc"></param>
+        </member>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.BaseControl.IDesktopCoreAccess">
+            <summary>
+            Ineterface for Desktop Core Access
+            </summary>
+        </member>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.BaseControl.IDesktopFeatureAccess">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.BaseControl.IDesktopFeatureAccess.GetPanel(System.String)">
+            <summary>
+            get panel
+            </summary>
+            <param name="panelName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.BaseControl.IDesktopFeatureAccess.CreateDynamicApplication(Microsoft.Uii.Common.Entities.ApplicationRecord)">
+            <summary>
+            Create Dynamic Application
+            </summary>
+            <param name="record"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.BaseControl.IDesktopFeatureAccess.GetVisableApplicationOnPanel(System.String,System.String@)">
+            <summary>
+            Get Visable Application On Panel
+            </summary>
+            <param name="panelName"></param>
+            <param name="VisableAppNameOnPanel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.BaseControl.IDesktopFeatureAccess.AddPanel(Microsoft.Uii.Desktop.UI.Controls.IPanel)">
+            <summary>
+            Add Panel
+            </summary>
+            <param name="panel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.BaseControl.IDesktopFeatureAccess.RemovePanel(Microsoft.Uii.Desktop.UI.Controls.IPanel)">
+            <summary>
+            Remove Panel
+            </summary>
+            <param name="panel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.BaseControl.IDesktopFeatureAccess.SendApplicationToUnknownPanel(Microsoft.Uii.Desktop.UI.Controls.IPanel,Microsoft.Uii.Csr.IHostedApplication)">
+            <summary>
+            Send Application To Unknown Panel
+            </summary>
+            <param name="panel"></param>
+            <param name="app"></param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.BaseControl.IDesktopFeatureAccess.MoveApplicationToPanel(Microsoft.Uii.Csr.IHostedApplication,System.String)">
+            <summary>
+            Move Application To Panel
+            </summary>
+            <param name="app"></param>
+            <param name="toPanelName"></param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.BaseControl.IDesktopFeatureAccess.PropogateResources">
+            <summary>
+            Propogate Resources
+            </summary>
+        </member>
+        <member name="E:Microsoft.Crm.UnifiedServiceDesk.BaseControl.IDesktopFeatureAccess.AfterAddSessionEvent">
+            <summary>
+            event for AfterAddSessionEvent
+            </summary>
+        </member>
+        <member name="E:Microsoft.Crm.UnifiedServiceDesk.BaseControl.IDesktopFeatureAccess.AfterInitializeOfCoreInterfacesEvent">
+            <summary>
+            event for AfterInitializeOfCoreInterfacesEvent
+            </summary>
+        </member>
+        <member name="E:Microsoft.Crm.UnifiedServiceDesk.BaseControl.IDesktopFeatureAccess.AfterSessionCloseEventEvent">
+            <summary>
+            event for AfterSessionCloseEventEvent
+            </summary>
+        </member>
+        <member name="E:Microsoft.Crm.UnifiedServiceDesk.BaseControl.IDesktopFeatureAccess.AfterSessionHideEventEvent">
+            <summary>
+            event for AfterSessionHideEventEvent
+            </summary>
+        </member>
+        <member name="E:Microsoft.Crm.UnifiedServiceDesk.BaseControl.IDesktopFeatureAccess.AfterSessionShowEventEvent">
+            <summary>
+            event for AfterSessionShowEventEvent
+            </summary>
+        </member>
+        <member name="E:Microsoft.Crm.UnifiedServiceDesk.BaseControl.IDesktopFeatureAccess.AfterWorkflowStartedEventEvent">
+            <summary>
+            event for AfterWorkflowStartedEventEvent
+            </summary>
+        </member>
+        <member name="E:Microsoft.Crm.UnifiedServiceDesk.BaseControl.IDesktopFeatureAccess.AfterWorkflowStatusChangeEvent">
+            <summary>
+            event for AfterWorkflowStatusChangeEvent
+            </summary>
+        </member>
+        <member name="E:Microsoft.Crm.UnifiedServiceDesk.BaseControl.IDesktopFeatureAccess.AfterSessionCreatedEvent">
+            <summary>
+            event for AfterSessionCreatedEvent
+            </summary>
+        </member>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.BaseControl.AfterAddSessionEventArgs">
+            <summary>
+            After Add Session Event Args
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.BaseControl.AfterAddSessionEventArgs.IsGlobalSession">
+            <summary>
+            IsGlobalSession
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.BaseControl.AfterAddSessionEventArgs.#ctor(System.Boolean)">
+            <summary>
+            After Add Session Event Args
+            </summary>
+            <param name="isGlobalSession"></param>
+        </member>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.BaseControl.AfterInitializeOfCoreInterfacesEventArgs">
+            <summary>
+             After Initialize Of Core Interfaces Event Args
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.BaseControl.AfterInitializeOfCoreInterfacesEventArgs.GlobalInterfaces">
+            <summary>
+            Global Interfaces
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.BaseControl.AfterInitializeOfCoreInterfacesEventArgs.#ctor(Microsoft.Uii.Desktop.Core.GlobalInterfaces)">
+            <summary>
+            After Initialize Of Core Interfaces Event Args
+            </summary>
+            <param name="globalInterfaces"></param>
+        </member>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.BaseControl.SessionEventArgs">
+            <summary>
+            Session Event Args
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.BaseControl.SessionEventArgs.Session">
+            <summary>
+            Session
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.BaseControl.SessionEventArgs.#ctor(Microsoft.Uii.Csr.Session)">
+            <summary>
+            Session Event Args
+            </summary>
+            <param name="session"></param>
+        </member>
+    </members>
+</doc>

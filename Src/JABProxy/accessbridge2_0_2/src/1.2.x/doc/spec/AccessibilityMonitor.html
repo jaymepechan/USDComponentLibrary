@@ -1,0 +1,107 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <title>Java Accessibility Utilities AccessibilityMonitor Example</title>
+</head>
+
+
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#000077" ALINK="#FF0000">
+
+<TABLE BORDER="0" WIDTH="100%">
+<tr>
+<TD WIDTH="60">
+   <IMG SRC="images/javalogo52x88.gif" ALT="Java" BORDER=0 WIDTH=52 HEIGHT=88>
+</TD>
+<TD>
+<center>
+<h1>Java<sup><font size="-2">TM</font></sup> Accessibility Utilities</h1>
+AccessibilityMonitor Example
+</center>
+</TD>
+<TD ALIGN=RIGHT VALIGN=TOP>
+   <font size="-1"><a href="index.html">Java Accessibility Utilities</a></font>
+</TD>
+</TR>
+</TABLE>
+<!-- Body text begins here -->
+
+<HR SIZE=3 NOSHADE>
+<br>
+<h3>Starting AccessibilityMonitor</h3>
+If you have completed the actions listed in <a href="examples.html#before">
+Before Using the Examples</a>, AccessibilityMonitor starts automatically any 
+time you start a Java application. 
+
+<p><img SRC="images/AM.gif" ALT="Screen shot of AccessibilityMonitor" NOSAVE >
+<h3>
+Using AccessibilityMonitor</h3>
+AccessibilityMonitor contains at the top a check box, which, when checked,
+causes AccessibilityMonitor to monitor all PropertyChange events on all
+of the non-transient Accessible user interface objects in the Java Virtual
+Machine. Transient user interface objects are those which are only created
+in response to a query of their parent (or a more distant ancestor), but
+which don't otherwise have a life of their own in the Java Virtual Machine
+(for example cells of a table or list, which aren't actual AWT components
+except for the brief moment in time during which they are drawn to the
+screen). Transient objects contain the AccessibleState.TRANSIENT state
+in their AccessibleStateSet.&nbsp; AccessibilityMonitor registers an interest
+in the events by using calls to the AccessibilityEventMonitor class from
+the Java Accessibility Utilities package whenever you click on the "Accessibility
+PropertyChange Events" checkbox.
+<p>The bulk of the window contains a table listing the PropertyChange events
+that is updated periodically as the events occur. The first column of the
+table contains the Accessible Name of the object which generated the event
+(these will often be blank as many objects [generally container objects]
+don't have Accessible names). The second column contains the name of the
+property which changed (generating the event). The third and fourth columns
+contain string representations of the old and new values (respectively)
+of that property.
+<p><img SRC="images/ActionPanel.gif" ALT="Picture of the panel that allows you to manipulate the object's AccessibleActions" NOSAVE ><img SRC="images/SelectionPanel.gif" ALT="Picture of the panel that allows you to manipulate the object's AccessibleSelection" NOSAVE ><img SRC="images/Linker.gif" ALT="Picture of the panel that allows you to manipulate the object's AccessibleHypertext" NOSAVE >
+<p>Holding down the right-most mouse button on an event in either the first
+or second row of the table will display a popup menu that provides options
+for you to get additional accessible information from the object.&nbsp;
+The first option will provide you with information similar to that provided
+by the <a href="Ferret.html">Ferret</a> example.&nbsp; The second option
+allows you to manipulate the AccessibleActions of the object, the third
+option allows you to manipulate the AccessibleSelections of the object,
+and the fourth option allows you to manipulate the AccessibleHypertext
+links of the object.&nbsp;&nbsp; If you hold down the right-most mouse
+button on either the third or fourth column, the same menu will appear
+if and only if either the value (old or new) represents an Accessible object
+itself (e.g. if the AccessibleChild property is the type of event, then
+the event represents either the birth or death of an AccessibleChild of
+the object which generated the event), and the panels which come up are
+for that old or new Accessible object. You can bring up an AccessibilityPanel
+without using the mouse by first selecting the table cell you are interested
+in, and then choosing the AccessibilityPanel from the Panels menu.
+<br>&nbsp;
+<!-- ============================================================== -->
+<HR SIZE=3 NOSHADE>
+
+<TABLE BORDER="0" WIDTH="100%">
+<TR VALIGN=TOP>
+<TD>
+
+<P><FONT SIZE="-2">
+
+   <A HREF="SMICopyright.html">Copyright &#169;</A> 1995-2001
+
+   <A HREF="http://www.sun.com/">Sun Microsystems, Inc.</A>
+
+    All Rights Reserved.</FONT></P>
+
+   <FONT SIZE="-1">
+
+   Please send comments to: <a href="mailto:access@sun.com">access@sun.com</a> 
+
+   </FONT>
+
+</TD>
+<TD ALIGN=RIGHT>
+   <IMG SRC="images/sunlogo64x30.gif" ALT="Sun" BORDER=0 WIDTH=64 HEIGHT=30>
+</TD>
+</TR>
+</TABLE>
+
+</BODY>
+</HTML>

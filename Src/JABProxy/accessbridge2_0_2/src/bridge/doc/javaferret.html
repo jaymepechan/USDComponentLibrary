@@ -1,0 +1,484 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en"><html><head><title>Java Access Bridge Example: Java Ferret</title></head><body alink="#ff0000" vlink="#000077" link="#0000ff" style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);">
+
+
+
+<table border="0" width="100%">
+
+
+
+<tbody><tr>
+
+<td width="60">
+
+   <img src="images/javalogo52x88.gif" alt="Java" border="0" width="52" height="88">
+
+</td>
+
+<td align="center">
+
+<font size="+2"><b>Java<sup><font size="-2">TM</font></sup> Access Bridge</b></font>
+
+<br><b>for the Microsoft Windows Operating System</b>
+
+<p><b>Version 2.0.1</b></p>
+
+<br><font size="+2"><b>Java Ferret Example</b></font>
+
+</td>
+
+<td valign="top"><a href="index.html">Contents</a>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+
+
+
+
+<!-- Body text begins here -->
+
+<hr noshade="noshade" width="100%">
+
+
+
+<h2>
+
+Setup</h2>
+
+
+
+Configure your Java VM environment as directed in the <a href="setup.html">Setup
+
+and Compatibility Info</a> page.
+
+<br>
+
+&nbsp;
+
+<h2>
+
+Trying It Out</h2>
+
+
+
+Now that your system is configured, any time you launch a Java application
+
+or applet using the configured Java VM, the Java Access Bridge is 
+
+automatically
+
+launched as well.&nbsp; Then, to use <tt>JavaFerret</tt>, launch the
+
+<tt>JavaFerret</tt>
+
+Windows application.&nbsp; For example, to launch <tt>JavaFerret</tt> with the <tt>SwingSet2 Demo</tt>
+
+Swing program, using Windows Explorer: <br>
+
+
+
+
+
+<p><tt>&nbsp; Go to C:\Program Files\Java\jdk1.5.0_02\demo\jfc\SwingSet2</tt>
+
+<br><tt>&nbsp; Double click on the file SwingSet2.jar</tt>
+
+</p>
+
+<p>In Windows Explorer:
+
+</p>
+
+<p><tt>&nbsp; Go to C:\Program Files\Java Access Bridge</tt>
+
+<br><tt>&nbsp; Double click on the file JavaFerret.exe</tt>
+
+</p>
+
+<p>You now have two windows open: the <tt>SwingSet2Demo</tt> Java application
+
+window, and the <tt>JavaFerret</tt> window.&nbsp; JavaFerret has three
+
+interesting menus: "UpdateSettings" "JavaEvents" and 
+
+"AccessibilityEvents".&nbsp;
+
+The items in these menus allow you to query Java applications in a variety
+
+of ways.
+
+<br>&nbsp;
+
+</p>
+
+<h3>
+
+UpdateSettings Menu</h3>
+
+
+
+
+
+<blockquote>
+
+<h3>
+
+Update from Mouse</h3>
+
+Determines the (x,y) coordinate of the mouse (assuming the <tt>JavaFerret</tt>
+
+window is topmost) when the mouse has stopped moving, and then queries
+
+the Java Access Bridge for the Accessible object underneath the mouse,
+
+dumping the output into the scrolling window.
+
+  <h3>
+
+Update with F2 (Mouse HWND)</h3>
+
+
+
+Determines the (x,y) coordinate of the mouse (assuming the <tt>JavaFerret</tt>
+
+window is topmost), and then queries the Java Access Bridge for the Accessible
+
+object of the HWND underneath the mouse, dumping the output into the scrolling
+
+window.
+
+
+
+<h3>
+
+Update with F1 (Mouse Point)</h3>
+
+Determines the (x,y) coordinate of the mouse (assuming the <tt>JavaFerret</tt>
+
+window is topmost), and then queries the Java Access Bridge for the Accessible
+
+object underneath the mouse, dumping the output into the scrolling window.
+
+<br>&nbsp;
+
+  <br>
+
+</blockquote>
+
+<h3>JavaEvents Menu</h3>
+
+
+
+
+
+<blockquote>
+
+<h3>
+
+Track Mouse Events</h3>
+
+Register with the Java Access Bridge for all Java 'Mouse Entered' events,
+
+and upon receiving one, query the object which was entered by the mouse
+
+and dump the output into the scrolling window. <b>Note: </b>If the mouse is 
+
+moved quickly, there may be some delay before the displayed information is 
+
+updated.
+
+<br>&nbsp;
+
+<h3>
+
+Track Focus Events</h3>
+
+Register with the Java Access Bridge for all Java 'Focus Gained' events,
+
+and upon receiving one, query the object which received the focus and dump
+
+the output into the scrolling window.
+
+<br>&nbsp;
+
+<h3>
+
+Track Caret Events</h3>
+
+Register with the Java Access Bridge for all Java 'Caret Update' events,
+
+and upon receiving one, query the object in which the caret was updated,
+
+and dump the output into the scrolling window.&nbsp; <b>Note: </b>Since objects
+
+that contain carets are virtually by definition objects which are rich
+
+text objects, this won't seem as responsive as the other event tracking
+
+options.&nbsp; In real use, one would make fewer calls of the Java Access
+
+Bridge in Caret Update situations (e.g. just get the new letter, word,
+
+sentence at the caret location), which would be significantly faster.
+
+<br>&nbsp;
+
+<h3>
+
+Track Menu Selected | Deselected | Canceled Events</h3>
+
+Register with the Java Access Bridge for the various Menu events, and upon
+
+receiving one, query the object in which the caret was updated, and dump
+
+the output into the scrolling window.
+
+<br>&nbsp;
+
+<h3>
+
+Track Popup Visible | Invisible | Canceled Events</h3>
+
+Register with the Java Access Bridge for the various Popup Menu events,
+
+and upon receiving one, query the object in which the caret was updated,
+
+and dump the output into the scrolling window.
+
+<br>&nbsp;
+
+<h3>
+
+Track Shutdown Events</h3>
+
+Register with the Java Access Bridge to receive a 'Property Changed' event
+
+when a Java application terminates.</blockquote>
+
+
+
+
+
+<h3>AccessibilityEvents Menu</h3>
+
+
+
+
+
+<blockquote>
+
+<h3>
+
+Track Name Property Events</h3>
+
+Register with the Java Access Bridge for all Java 'Property Changed' events
+
+specifically on Accessible objects in which the "Name" property has changed,
+
+and upon receiving one, dump the output into the scrolling window, along
+
+with information about the property that changed.
+
+<br>&nbsp;
+
+<h3>
+
+Track Description Property Events</h3>
+
+Register with the Java Access Bridge for all Java 'Property Changed' events
+
+specifically on Accessible objects in which the "Description" property
+
+has changed, and upon receiving one, dump the output into the scrolling
+
+window, along with information about the property that changed.
+
+<br>&nbsp;
+
+<h3>
+
+Track State Property Events</h3>
+
+Register with the Java Access Bridge for all Java 'Property Changed' events
+
+specifically on Accessible objects in which the "State" property has changed,
+
+and upon receiving one, dump the output into the scrolling window, along
+
+with information about the property that changed.
+
+<br>&nbsp;
+
+<h3>
+
+Track Value Property Events</h3>
+
+Register with the Java Access Bridge for all Java 'Property Changed' events
+
+specifically on Accessible objects in which the "Value" property has changed,
+
+and upon receiving one, dump the output into the scrolling window, along
+
+with information about the property that changed.
+
+<br>&nbsp;
+
+<h3>
+
+Track Selection Property Events</h3>
+
+Register with the Java Access Bridge for all Java 'Property Changed' events
+
+specifically on Accessible objects in which the "Selection" property has
+
+changed, and upon receiving one, dump the output into the scrolling window,
+
+along with information about the property that changed.
+
+<br>&nbsp;
+
+<h3>
+
+Track Text Property Events</h3>
+
+Register with the Java Access Bridge for all Java 'Property Changed' events
+
+specifically on Accessible objects in which the "Text" property has changed,
+
+and upon receiving one, dump the output into the scrolling window, along
+
+with information about the property that changed.
+
+<br>&nbsp;
+
+<h3>
+
+Track Caret Property Events</h3>
+
+Register with the Java Access Bridge for all Java 'Property Changed' events
+
+specifically on Accessible objects in which the "Caret" property has changed,
+
+and upon receiving one, dump the output into the scrolling window, along
+
+with information about the property that changed.
+
+<br>&nbsp;
+
+<h3>
+
+Track Visible Data Property Events</h3>
+
+Register with the Java Access Bridge for all Java 'Property Changed' events
+
+specifically on Accessible objects in which the "VisibleData" property
+
+has changed, and upon receiving one, dump the output into the scrolling
+
+window, along with information about the property that changed.
+
+<br>&nbsp;
+
+<h3>
+
+Track Child Property Events</h3>
+
+Register with the Java Access Bridge for all Java 'Property Changed' events
+
+specifically on Accessible objects in which the "Child" property has changed,
+
+and upon receiving one, dump the output into the scrolling window, along
+
+with information about the property that changed.
+
+<br>&nbsp;
+
+<h3>
+
+Track ActiveDescendent Property Events</h3>
+
+Register with the Java Access Bridge for all Java 'Property Changed' events
+
+specifically on Accessible objects in which the "ActiveDescendent" property
+
+has changed, and upon receiving one, dump the output into the scrolling
+
+window, along with information about the property that changed.<br>&nbsp;
+
+<h3>
+
+Track Table Model Change Property Events</h3>
+
+Register with the Java Access Bridge for all 'Property Changed' events
+
+specifically on Accessible objects in which the "TableModelChange" property
+
+has changed, and upon receiving one, dump the output into the scrolling
+
+window, along with information about the property that changed.</blockquote>
+
+
+
+<hr size="3" noshade="noshade">
+
+
+
+<table border="0" width="100%">
+
+
+
+<tbody><tr valign="top">
+
+<td>
+
+<p><font size="-2">
+
+
+
+   <a href="SMICopyright.html">Copyright &copy;</a> 2006
+
+
+
+   <a href="http://www.sun.com/">Sun Microsystems, Inc.</a>
+
+
+
+    All Rights Reserved.</font></p>
+
+
+
+   <font size="-1">
+
+
+
+   Please send comments to: <a href="mailto:access@sun.com">access@sun.com</a> 
+
+
+
+   </font>
+
+</td>
+
+<td align="right">
+
+   <img src="images/sunlogo64x30.gif" alt="Sun" border="0" width="64" height="30">
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+
+
+
+
+</body></html>
+

@@ -1,0 +1,54 @@
+﻿<USD:DynamicsBaseHostedControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:USD="clr-namespace:Microsoft.Crm.UnifiedServiceDesk.Dynamics;assembly=Microsoft.Crm.UnifiedServiceDesk.Dynamics"
+             xmlns:Custom="http://schemas.componentone.com/wpf/Schedule" x:Class="Microsoft.USD.ComponentLibrary.ComponentOne.Scheduler"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="600">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="auto" />
+        </Grid.ColumnDefinitions>
+        <ToolBarTray x:Name="ProgrammableToolbarTray" Grid.Row="0" Focusable="false"/>
+       <Custom:C1Scheduler Grid.Row="2" x:Name="scheduler" UserEditingAppointment="scheduler_UserEditingAppointment"  UserAddingAppointment="scheduler_UserAddingAppointment" LayoutUpdated="scheduler_LayoutUpdated" >
+            <Custom:NestedPropertySetter 
+    			PropertyName="DataStorage.AppointmentStorage.Mappings.AppointmentProperties.MappingName"
+    			Value="Properties"/>
+            <Custom:NestedPropertySetter 
+    			PropertyName="DataStorage.AppointmentStorage.Mappings.Body.MappingName"
+    			Value="Body"/>
+            <Custom:NestedPropertySetter 
+    			PropertyName="DataStorage.AppointmentStorage.Mappings.End.MappingName"
+    			Value="End"/>
+            <Custom:NestedPropertySetter 
+    			PropertyName="DataStorage.AppointmentStorage.Mappings.IdMapping.MappingName"
+    			Value="Id"/>
+            <Custom:NestedPropertySetter 
+    			PropertyName="DataStorage.AppointmentStorage.Mappings.Location.MappingName"
+    			Value="Location"/>
+            <Custom:NestedPropertySetter 
+    			PropertyName="DataStorage.AppointmentStorage.Mappings.Start.MappingName"
+    			Value="Start"/>
+            <Custom:NestedPropertySetter 
+    			PropertyName="DataStorage.AppointmentStorage.Mappings.Subject.MappingName"
+    			Value="Subject"/>
+        </Custom:C1Scheduler>
+        <Custom:C1Calendar x:Name="calendar"
+                           Width="195"
+			    VerticalAlignment="Stretch" 
+                           Grid.Column="1"
+                           Grid.Row="2"
+				SelectedDates="{Binding Path=VisibleDates, ElementName=scheduler, Mode=OneWay}"
+				MaxSelectionCount="35"
+				BoldedDates="{Binding Path=BoldedDates, ElementName=scheduler, Mode=Default}"/>
+    </Grid>
+</USD:DynamicsBaseHostedControl>

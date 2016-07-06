@@ -1,0 +1,1846 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Crm.UnifiedServiceDesk.CommonUtility</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Communication.MonitoringProcessManager">
+            <summary>
+            Manages the named pipe communication channels and messging. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Communication.MonitoringProcessManager.MonitoringProcessManagerInstance">
+            <summary>
+            Singleton instance.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Communication.MonitoringProcessManager.#ctor">
+            <summary>
+            Default private constructor. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Communication.MonitoringProcessManager.Initialize">
+            <summary>
+            Launches usdmp.exe and establishes the communication channel.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Communication.MonitoringProcessManager.StartNamedPipeClient">
+            <summary>
+            Initializes the namedpipe client instance, connects to the namedpipe server and subscribes for the events.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Communication.MonitoringProcessManager.OnConnectionDisconnectHandler(System.Object,Microsoft.Usd.Common.Communications.Pipes.DisconnectReason)">
+            <summary>
+            Event handler which will be invoked in case of namedpipe disconnect or connection failure. 
+            </summary>
+            <param name="sender">object type.</param>
+            <param name="e">DisconnectReason type</param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Communication.MonitoringProcessManager.LaunchMonitoringProcess(System.String)">
+            <summary>
+            Kick starts the monitoring process exe. 
+            </summary>
+            <param name="usdmpExe"></param>
+            <returns>bool type.</returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Communication.MonitoringProcessManager.StartMonitoring(System.Int32)">
+            <summary>
+            Sends processId to usdmp to start monitoring. 
+            </summary>
+            <param name="windowHandle">windowHandle</param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Communication.MonitoringProcessManager.StopMonitoring(System.Int32)">
+            <summary>
+            Sends processId to usdmp to stop monitoring.
+            </summary>
+            <param name="windowHandle">windowHandle </param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Communication.MonitoringProcessManager.PostMessage(Microsoft.Usd.Common.Communications.Pipes.Messages.UsdMessage)">
+            <summary>
+            
+            </summary>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Communication.MonitoringProcessManager.PipeName">
+            <summary>
+            NamedPipe name. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Communication.MonitoringProcessManager.IsReady">
+            <summary>
+            Is ready to send messages to usdmp.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Communication.MonitoringProcessManager.CurrentInstance">
+            <summary>
+            /returns Singleton instance of MonitoringProcessManagerInstance type. 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.USDPerfMarkers">
+            <summary>
+            USD Performance constants
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.USDPerfMarkers.USD_BOOT">
+            <summary>
+            Usd boot
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.USDPerfMarkers.USD_BUTTON_CLICK">
+            <summary>
+            Logged when event handler for toolbar button click starts.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.USDPerfMarkers.USD_GENERIC_PAGE_LOAD">
+            <summary>
+            Geneneric browser page load which is routed.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.USDPerfMarkers.USD_CRM_PAGE_LOAD">
+            <summary>
+            CRM Page Load which is routed
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.USDPerfMarkers.USD_CRM_PAGE_LOAD_END">
+            <summary>
+            CRM Page Load End which is routed
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.USDPerfMarkers.USD_TURBO_CRM_PAGE_LOADED">
+            <summary>
+            CRM Page Load Turbo End which is routed
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.USDPerfMarkers.USD_PAGE_LOAD">
+            <summary>
+            Page Load which is not routed
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.USDPerfMarkers.USD_SCRIPTLET_ACTION">
+            <summary>
+            Logged when Scriptlet Action is starting
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.USDPerfMarkers.USD_ACTION">
+            <summary>
+            Logged when USD  actions are fired
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.USDPerfMarkers.USD_SUB_ACTION">
+            <summary>
+            Logged when USD sub actions are fired
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.USDPerfMarkers.USD_EVENT">
+            <summary>
+            Logged when USD events are fired
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.USDPerfMarkers.USD_SESSION_TAB_ACTION">
+            <summary>
+            Logged when Session Tab action fires
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.USDPerfMarkers.USD_KMCONTROL_ACTIONS">
+            <summary>
+            Logged when KM Control action fires
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.USDPerfMarkers.USD_RIBBON_ACTION">
+            <summary>
+            Logged when CRM Ribbon action fires
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.USDPerfMarkers.USD_CRMDIALOG_ACTION">
+             <summary>
+            Logged when CRM Dialog action fires
+             </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.USDPerfMarkers.USD_TOOLBAR_ACTION">
+             <summary>
+            Logged when Toolbar Control action fires
+             </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.USDPerfMarkers.USD_ENTITY_SEARCH">
+            <summary>
+            Logged when entity Search is starting.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.USDPerfMarkers.USD_GLOBAL_ACTION">
+            <summary>
+            CRM global USD actions
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.USDPerfMarkers.USD_AGENTSCRIPT_DOACTION">
+            <summary>
+            Agent Script actions 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.USDPerfMarkers.USD_AGENTSCRIPT_TASK_ACTION">
+            <summary>
+            Agent Script Task actions 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.USDPerfMarkers.USD_AGENTSCRIPT_ANSWER_ACTION">
+            <summary>
+            Agent Script Task actions 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.USDPerfMarkers.USD_DYNAMICBASE_CONTROL_DOACTION">
+            <summary>
+            Logged when  Dynamicbasehostedcontrol doaction fires
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.USDPerfMarkers.USD_WINDOW_NAVIGATION_ACTION">
+            <summary>
+            Logged when  Navigation rule fires.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.USDAuditAndDiagnosticsSettingsConstants">
+            <summary>
+            USD AuditAndDiagnostics Settings constants
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.USDAuditAndDiagnosticsSettingsConstants.EntityName">
+            <summary>
+            USD Constant for msdyusd_auditanddiagnosticssetting
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.USDAuditAndDiagnosticsSettingsConstants.ActivityTrackingforEvents">
+            <summary>
+            USD constant for  msdyusd_ATforEvents
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.USDAuditAndDiagnosticsSettingsConstants.ActivityTrackingforWindowsNavRules">
+            <summary>
+            USD constant for  msdyusd_ATforWindowsNavRules
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.USDAuditAndDiagnosticsSettingsConstants.ActivityTrackingforActionCalls">
+            <summary>
+            USD constant for  msdyusd_ATforSubActionCalls
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.USDAuditAndDiagnosticsSettingsConstants.ActivityTrackingforSubActionCalls">
+            <summary>
+            USD constant for  msdyusd_ATforEvents
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.USDAuditAndDiagnosticsSettingsConstants.ActivityTrackingforAgentScripts">
+            <summary>
+            USD constant for  msdyusd_ATforHostedControl
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.USDAuditAndDiagnosticsSettingsConstants.ActivityTrackingforHostedControl">
+            <summary>
+            USD constant for  msdyusd_ATforEvents
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.USDAuditAndDiagnosticsSettingsConstants.Name">
+            <summary>
+            USD constant for  msdyusd_name
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.USDAuditAndDiagnosticsSettingsConstants.DiagnosticVerbosityLevel">
+            <summary>
+            USD constant for  msdyusd_DGTVerbosityLevel
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.USDAuditAndDiagnosticsSettingsConstants.ActivityTrackingEnabled">
+            <summary>
+            USD constant for  msdyusd_ATEnabled
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.USDAuditAndDiagnosticsSettingsConstants.DiagnosticTrackingEnabled">
+            <summary>
+            USD constant for  msdyusd_DGTEnabled
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.USDAuditAndDiagnosticsSettingsConstants.ActivityTrackingforCustomerSession">
+            <summary>
+            USD constant for  msdyusd_ATforCustomerSession
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.USDAuditAndDiagnosticsSettingsConstants.ActivityTrackingforAgentLogin">
+            <summary>
+            USD constant for  msdyusd_ATforAgentLogin
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.USDAuditAndDiagnosticsSettingsConstants.ActivityTrackingforUIIAction">
+            <summary>
+            USD constant for  msdyusd_ATforUIIAction
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.USDAuditAndDiagnosticsSettingsConstants.UserSchemaSettings">
+            <summary>
+            USD constant for  msdyusd_userschemasettings
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.USDAuditAndDiagnosticsSettingsConstants.AuditCacheMaxSize">
+            <summary>
+            USD constant for  msdyusd_CacheSize
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.USDAuditAndDiagnosticsSettingsConstants.EnableAuditCache">
+            <summary>
+            USD constant for  msdyusd_EnableCaching
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.USDAuditAndDiagnosticsSettingsConstants.TraceSourceSwitchLevel">
+            <summary>
+            USD constant for  msdyusd_switchlevel
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.USDAuditAndDiagnosticsSettingsConstants.TraceSourceAssemblyURI">
+            <summary>
+            USD constant for  uii_assemblyuri
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.USDAuditAndDiagnosticsSettingsConstants.TraceSourcAssemblyType">
+            <summary>
+            USD constant for  uii_assemblytype
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.USDAuditAndDiagnosticsSettingsConstants.TraceListenerId">
+            <summary>
+            USD constant for  uii_assemblytype
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.USDAuditAndDiagnosticsSettingsConstants.TraceSourceSettingsEntityName">
+            <summary>
+            USD Constant for msdyusd_auditanddiagnosticssetting
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.USDAuditAndDiagnosticsSettingsConstants.TraceSourceSettingId">
+            <summary>
+            USD Constant for Trace Source SettingId
+            </summary>
+        </member>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.MonitoringProcessErrorConstants">
+            <summary>
+            Enum for error constants associated with monitoring process
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.MonitoringProcessErrorConstants.UsdmpExeNotFound">
+            <summary>
+            Error constant for UsdmpExeNotFound
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.MonitoringProcessErrorConstants.UsdmpExeSignatureInvalid">
+            <summary>
+            Error constant for UsdmpExeSignatureInvalid
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.MonitoringProcessErrorConstants.ErrorCreatingNamedPipe">
+            <summary>
+            Error constant for ErrorCreatingNamedPipe
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.MonitoringProcessErrorConstants.DisconnectedDueToBrokenPipe">
+            <summary>
+            Error constant for DisconnectedDueToBrokenPipe
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.MonitoringProcessErrorConstants.ConnectionTimedOut">
+            <summary>
+            Error constant for ConnectionTimedOut
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.MonitoringProcessErrorConstants.DisconnectedDueToUnknownReason">
+            <summary>
+            Error constant for DisconnectedDueToUnknownReason
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.MonitoringProcessErrorConstants.ErrorLaunchingUsdmp">
+            <summary>
+            Error constant for ErrorLaunchingUsdmp
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.MonitoringProcessErrorConstants.UnauthorizedAccess">
+            <summary>
+            Error constant for UnauthorizedAccess
+            </summary>
+        </member>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.EnumHelper">
+            <summary>
+            Helper class to retrieve description
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.EnumHelper.GetLogMessage(Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.MonitoringProcessErrorConstants)">
+            <summary>
+            Extension method to get log msg
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.LogMessageAttribute">
+            <summary>
+            CustomAttribute to fetch log message
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.LogMessageAttribute.#ctor(System.String)">
+            <summary>
+            ctor
+            </summary>
+            <param name="key">This is the key in resource file</param>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Constants.LogMessageAttribute.Key">
+            <summary>
+            property to fetch key
+            </summary>
+        </member>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.Verbosity">
+            <summary>
+            enum for verbosity
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.Verbosity.ERROR">
+            <summary>
+            log for ERROR
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.Verbosity.WARNING">
+            <summary>
+            log for WARNING
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.Verbosity.INFO">
+            <summary>
+            log for INFO
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.Verbosity.VERBOSE">
+            <summary>
+            log for VERBOSE
+            </summary>
+        </member>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.AuditAndDiagnosticsConfiguration">
+            <Summary>
+             Define the AuditAndDiagnosticsSettings entity class to maintain the AuditAndDiagnosticsSettings data during the runtime in USD.
+            </Summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.AuditAndDiagnosticsConfiguration.#ctor">
+            <summary>
+             iniliaze the initializeAuditAndDiagnosticsSettings if no auditanddiagnostics object is found for the current user 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.AuditAndDiagnosticsConfiguration.#ctor(Microsoft.Xrm.Sdk.EntityCollection)">
+            <summary>
+            method to iniliaze the AuditAndDiagnosticsSettings if a auditanddiagnostics object is found for the current user
+            </summary>
+            <param name="_auditAndDiagnosticsConfiguration"></param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.AuditAndDiagnosticsConfiguration.GetAuditFlagValueFromAuditAndDiagnostics(System.String)">
+            <summary>
+            Method to get USD Audit flag is enabled or not
+            </summary>
+            <param name="auditFlag"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.AuditAndDiagnosticsConfiguration.GetMappedAuditFlagName(System.String)">
+            <summary>
+            Method to get USD Audit Flag name
+            </summary>
+            <param name="auditFlagName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.AuditAndDiagnosticsConfiguration.SetTraceSourceSettings(Microsoft.Xrm.Sdk.EntityCollection)">
+            <summary>
+            Set trace source settings 
+            </summary>
+            <param name="auditAndDiagnosticsEntityCollection"></param>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.AuditAndDiagnosticsConfiguration.ATForEvents">
+            <summary>
+            The entity or item for which the activity tracking should be enabled
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.AuditAndDiagnosticsConfiguration.ATForWindowsNavRules">
+            <summary>
+            Activity Tracking For WindowsNavRules
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.AuditAndDiagnosticsConfiguration.ATForActionCalls">
+            <summary>
+            Activity Tracking For action calls
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.AuditAndDiagnosticsConfiguration.ATForSubActionCalls">
+            <summary>
+            Activity Tracking For sub actioncalls
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.AuditAndDiagnosticsConfiguration.ATForAgentScripts">
+            <summary>
+            Activity Tracking For agent scripts
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.AuditAndDiagnosticsConfiguration.ATForHostedControl">
+            <summary>
+            Activity Tracking For hosted control
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.AuditAndDiagnosticsConfiguration.ATforCustomerSession">
+            <summary>
+            Activity Tracking for Customer Session
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.AuditAndDiagnosticsConfiguration.ATforAgentLogin">
+            <summary>
+            Activity Tracking for Agent Login
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.AuditAndDiagnosticsConfiguration.ATforUIIAction">
+            <summary>
+            Activity Tracking for UII Action
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.AuditAndDiagnosticsConfiguration.DiagnosticsVerbosityLevel">
+            <summary>
+            The entity or item for which the diagnostics tracking should be enabled
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.AuditAndDiagnosticsConfiguration.Name">
+            <summary>
+            Entity Name . 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.AuditAndDiagnosticsConfiguration.ActivityTrackingEnabled">
+            <summary>
+            whether activity tracking for agent  is enabled or not
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.AuditAndDiagnosticsConfiguration.DiagnosticTrackingEnabled">
+            <summary>
+            whether Diagnostic tracking for agent  is enabled or not
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.AuditAndDiagnosticsConfiguration.IsUiiSettingsEnabled">
+            <summary>
+            whether Diagnostic tracking for agent  is enabled or not
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.AuditAndDiagnosticsConfiguration.UserSchemaSettings">
+            <summary>
+            List of User schema attributes
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.AuditAndDiagnosticsConfiguration.TraceSourceSettings">
+            <summary>
+            List of TelemertyTraceSourceSetting attributes
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.AuditAndDiagnosticsConfiguration.EnableAuditCache">
+            <summary>
+            Enable AuditCache
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.AuditAndDiagnosticsConfiguration.AuditCacheMaxSize">
+            <summary>
+            Audit cache Max Size
+            </summary>
+        </member>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.TraceSourceSettings">
+            <Summary>
+             Define the TelemertyTraceSourceSetting entity class to maintain the TelemertyTraceSourceSetting data during the runtime in USD.
+            </Summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.TraceSourceSettings.#ctor">
+            <summary>
+            TraceSourceSettings
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.TraceSourceSettings.Name">
+            <summary>
+            Trace source Name
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.TraceSourceSettings.Id">
+            <summary>
+            Trace source Id
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.TraceSourceSettings.SwitchLevel">
+            <summary>
+            Trace source SwitchLevel
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.TraceSourceSettings.ListenerTypeNames">
+             <summary>
+             Trace source Listener Type Names
+             </summary>
+            
+        </member>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.StructKeyValuePair`2">
+            <summary>
+            Custom key value pair with a setter for both key and value members
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.StructKeyValuePair`2.#ctor(`0,`1)">
+            <summary>
+            StructKeyValuePair
+            </summary>
+            <param name="k"></param>
+            <param name="v"></param>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.StructKeyValuePair`2.Key">
+            <summary>
+             Key
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.StructKeyValuePair`2.Value">
+            <summary>
+            Value
+            </summary>
+        </member>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.IUsdConfiguraitonManager">
+            <summary>
+            Usd Configuration Manager Interface
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.IUsdConfiguraitonManager.RefreshUserSettingsFromServer">
+            <summary>
+            Refresh from Server
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.IUsdConfiguraitonManager.RefreshCachedEntry(System.String)">
+            <summary>
+            Refresh Cached entity
+            </summary>
+            <param name="ent">entity</param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.IUsdConfiguraitonManager.GetConfigurationXml(System.String)">
+            <summary>
+            Retrieves the Configuration Xml
+            </summary>
+            <param name="entityName">Entity Name</param>
+            <returns>Configuration xml</returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.IUsdConfiguraitonManager.ReadCachableEntity(System.String,System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Read the Cached Entity.
+            </summary>
+            <param name="entityName">name of the Entity</param>
+            <param name="orderedField">name of the field to Order By</param>
+            <param name="configurationLinkedTable">Configuration Link Table</param>
+            <param name="configurationLinkedId">Configuration Id</param>
+            <param name="statuscode">status</param>
+            <returns></returns>
+        </member>
+        <member name="E:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.IUsdConfiguraitonManager.UsdConfigDataLoaded">
+            <summary>
+            Raised when Usd data has completed loading
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.IUsdConfiguraitonManager.IsUsdConfigDataReady">
+            <summary>
+            if True,  then config data is ready,  if false, data is not ready. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.IUsdConfiguraitonManager.CrmManagementSvc">
+            <summary>
+            Management connection to CRM 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.IUsdConfiguraitonManager.UserProfileService">
+            <summary>
+            CRM user Profile object. 
+            </summary>
+        </member>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdDataLoadEventArgs">
+            <summary>
+            Argument array used by USD when it is notifying of loading actions.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdDataLoadEventArgs.majorMessage">
+            <summary>
+            Gets and Sets Major Message Property
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdDataLoadEventArgs.appMessage">
+            <summary>
+             Gets and Sets Application Message Property
+            </summary>
+        </member>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdConfigurationManager">
+            <summary>
+            This class presents a service interface to access CRM and USD Configuration data. 
+            
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdConfigurationManager.RefreshUserSettingsFromServer">
+            <summary>
+            Refresh User Settings. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdConfigurationManager.GetConfigurationXml(System.String)">
+            <summary>
+            Retrieve the configuration xml
+            </summary>
+            <param name="entityName">entity nam</param>
+            <returns>Configuration Xml</returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdConfigurationManager.RefreshCachedEntry(System.String)">
+            <summary>
+            Refresh User Settings. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdConfigurationManager.ReadCachableEntity(System.String,System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Read from the Chached entity
+            </summary>
+            <param name="entityName">Name of the Cached entity</param>
+            <param name="orderedField">name of the field to Order By</param>
+            <param name="configurationLinkedTable">name of the Configuartion linked table</param>
+            <param name="configurationLinkedId">Confguration Link ID </param>
+            <param name="statuscode">Status</param>
+            <returns></returns>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdConfigurationManager.configLoader">
+            <summary>
+            USD Configuration Loader. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdConfigurationManager.diagLogger">
+            <summary>
+            Trace logger for the Dynamics NameSpace.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdConfigurationManager.dtExecutionTime">
+            <summary>
+            Running Execution Time. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdConfigurationManager.#ctor(Microsoft.Xrm.Tooling.Connector.CrmServiceClient,Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.ProfileOperations)">
+            <summary>
+            Constructor for the provide service. 
+            </summary>
+            <param name="crmManagementSvc">Crm Service Client instance</param>
+            <param name="userProfileOps">User profile Options instance</param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdConfigurationManager.LoadUsdConfig">
+            <summary>
+            Starts the loading of USD's configuration 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdConfigurationManager.configLoader_OnFailedLoadConfigurationFromServer(System.Object,Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.LoadConfigurationEventArgs)">
+            <summary>
+            Raised when a error occurs loading CRM Information. 
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdConfigurationManager.configLoader_OnCompletedLoadConfigurationFromServer(System.Object,Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.LoadConfigurationEventArgs)">
+            <summary>
+            Raised when the Loader completes
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdConfigurationManager.configLoader_OnUpdateProgressLoadConfigurationFromServer(System.Object,Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.LoadConfigurationEventArgs)">
+            <summary>
+            Raised when a progress alert is raised from the loader. 
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdConfigurationManager.configLoader_OnBeginLoadConfigurationFromServer(System.Object,Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.LoadConfigurationEventArgs)">
+            <summary>
+            Raised when the Configuration data load begins. 
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="E:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdConfigurationManager.UsdConfigDataLoaded">
+            <summary>
+            Raised when USD Data has completed loading. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdConfigurationManager.CrmManagementSvc">
+            <summary>
+            Management connection to CRM 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdConfigurationManager.UserProfileService">
+            <summary>
+            USD User Profile object. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdConfigurationManager.IsUsdConfigDataReady">
+            <summary>
+            if True,  then config data is ready,  if false, data is not ready. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdConfigurationManager.ConfigurationData">
+            <summary>
+            Array of configuration items. 
+            </summary>
+        </member>
+        <member name="E:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdConfigurationManager.UsdLoadingMessageUpdate">
+            <summary>
+            Raised to notify a caller that the UI splash Screen should be updated. 
+            </summary>
+        </member>
+        <member name="E:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdConfigurationManager.UsdLoadFailure">
+            <summary>
+            Raised to notify a caller of a critical failure
+            </summary>
+        </member>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdConfigurationLoader">
+            <summary>
+            This class is responsible for loading information from the cache or CRM into USD configuration 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdConfigurationLoader.ConfigurationData">
+            <summary>
+            Array of configuration items. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdConfigurationLoader.crmManagementSvc">
+            <summary>
+            Management connection to CRM 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdConfigurationLoader.diagLogger">
+            <summary>
+            Diagnostic Logger to log data to CRM. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdConfigurationLoader._worker">
+            <summary>
+            Background processor for information retrieval . 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdConfigurationLoader._usrProfile">
+            <summary>
+            User Profile Information. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdConfigurationLoader._UsdSolutionName">
+            <summary>
+            name of the USD Solution. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdConfigurationLoader._UsdMinSolutionVersion">
+            <summary>
+            Minimum Solution version for USD. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdConfigurationLoader._UsdSolutionVersion">
+            <summary>
+            Version of USD installed on server.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdConfigurationLoader.HasStatusCodeList">
+            <summary>
+            List of entities where status code matters. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdConfigurationLoader.#ctor(Microsoft.Xrm.Tooling.Connector.CrmServiceClient,Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.ProfileOperations,Microsoft.Crm.UnifiedServiceDesk.CommonUtility.TraceLogger)">
+            <summary>
+            default constructor
+            </summary>
+            <param name="crmSvc">CRM management service</param>
+            <param name="userProfileService">User profile options</param>
+            <param name="logger">Trace Logger to use. </param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdConfigurationLoader.RefreshUserSettingsFromServer">
+            <summary>
+            Update the User Settings object. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdConfigurationLoader.ReadCachableEntity(System.String,System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="entityName">This is the name of the configuration entity</param>
+            <param name="orderedField">This is the field that is the ordering:  example: msdyusd_order</param>
+            <param name="configurationLinkedTable">This is the link table to the configuration entity for configuration driven entities.  An example is: msdyusd_configuration_scriptlet</param>
+            <param name="configurationLinkedId">This is the id used to link to the configuration table.  example: msdyusd_scriptletid</param>
+            <param name="statuscode">does this entity have a statuscode field</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdConfigurationLoader.worker_RunWorkerCompleted(System.Object,System.ComponentModel.RunWorkerCompletedEventArgs)">
+            <summary>
+            raised when the worker completes
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdConfigurationLoader.BeginLoadUSDConfiguration">
+            <summary>
+            Starts the configuration loading process. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdConfigurationLoader.worker_ProgressChanged(System.Object,System.ComponentModel.ProgressChangedEventArgs)">
+            <summary>
+            Raised when progress update is received 
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdConfigurationLoader.worker_DoWork(System.Object,System.ComponentModel.DoWorkEventArgs)">
+            <summary>
+            Called to start the background worker process. 
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdConfigurationLoader.LoadConfiguration">
+            <summary>
+            Checks the local cache against the server to determine if a cache update is required. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdConfigurationLoader.LoadConfigurationFromCache">
+            <summary>
+            This process will de-serialize the cache object and load it into config. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdConfigurationLoader.AddNewEntities">
+            <summary>
+            Add entries to relevant dictionaries for loading data of entities
+            that were added as part of USD 1.3
+            Entites are: CustomizationFiles, TelemterySettings
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdConfigurationLoader.LoadInitalConfigurationFromCRM">
+            <summary>
+            Begins the query process for communicating to CRM. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdConfigurationLoader.GetEntityDisplayName(System.String)">
+            <summary>
+            Get the name of the entity. 
+            </summary>
+            <param name="entityname"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdConfigurationLoader.AddEntityDataToConfigData(System.String,System.String,System.Boolean,System.Int32)">
+            <summary>
+            format the entity structure into the array 
+            </summary>
+            <param name="entityName"></param>
+            <param name="entityPrimaryIdfield"></param>
+            <param name="orderd"></param>
+            <param name="statusCode"></param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdConfigurationLoader.ReadEntityDataToConfigDataFromBatchRequest(System.String,System.String,System.Guid,System.Boolean,System.Int32)">
+            <summary>
+            format the entity structure into the array 
+            </summary>
+            <param name="entityName"></param>
+            <param name="entityPrimaryIdfield"></param>
+            <param name="batchId"></param>
+            <param name="orderd"></param>
+            <param name="statusCode"></param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdConfigurationLoader.ProcessEntityDataToConfigDataFromBatchRequest(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.Dictionary{System.String,System.Object}},System.Boolean,System.Int32)">
+            <summary>
+            format the entity structure into the array 
+            </summary>
+            <param name="entityName"></param>
+            <param name="entityPrimaryIdfield"></param>
+            <param name="entityDataByFetchSearchbyBatch"></param>
+            <param name="orderd"></param>
+            <param name="statusCode"></param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdConfigurationLoader.AddToUSDCacheConfig(System.String,Microsoft.Xrm.Sdk.EntityCollection)">
+            <summary>
+            Adds the result to USD Collections 
+            </summary>
+            <param name="entityName"></param>
+            <param name="entitys"></param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdConfigurationLoader.ReadandProcessCRMConfig(System.String,System.String,System.String)">
+            <summary>
+            read the config from the server and parse it back to an entity structure. 
+            </summary>
+            <param name="fetchXML"></param>
+            <param name="entityName"></param>
+            <param name="entPrimaryIdfield"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdConfigurationLoader.ReadCRMConfig(System.String,System.Guid)">
+            <summary>
+            read the config from the server. 
+            </summary>
+            <param name="fetchXML"></param>
+            <param name="batchId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdConfigurationLoader.ProcessCRMConfig(System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.Dictionary{System.String,System.Object}},System.String,System.String)">
+            <summary>
+            read the config from the server and parse it back to an entity structure. 
+            </summary>
+            <param name="entityDataByFetchSearch"></param>
+            <param name="entityName"></param>
+            <param name="entPrimaryIdfield"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdConfigurationLoader.IsDeployedSolutionVersionOlder(System.String,System.String,System.String@,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.Dictionary{System.String,System.Object}})">
+            <summary>
+            Check Deployed Solution against required solution for this shell. 
+            </summary>
+            <param name="UniqueNameOfInstanceToSearchFor"></param>
+            <param name="baseVersion"></param>
+            <param name="deployedVersion"></param>
+            <param name="rlsts"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdConfigurationLoader.LoadUserTranslationTablesIfPresent(System.Collections.Generic.List{System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.Dictionary{System.String,System.Object}}},System.Int32@)">
+            <summary>
+            Gets the Language data from the server and caches that. 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdConfigurationLoader.ProcessDefaultConfigAuditAndDiagnosticsEntity(Microsoft.Xrm.Sdk.EntityCollection)">
+            <summary>
+            Load auditanddiagnostics settings of either user configuration or default configuration.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdConfigurationLoader.LoadAuditAndDiagnosticsEntity(Microsoft.Xrm.Sdk.EntityCollection)">
+            <summary>
+            Loads telemtry settings of given configuration.
+            </summary>
+            <param name="configEntityList"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdConfigurationLoader.LoadedFromCache">
+            <summary>
+            indicates if the data came from local cache or from the server. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdConfigurationLoader.UsdSolutionVesion">
+            <summary>
+            Indicates the version of USD installed on the connected server.
+            </summary>
+        </member>
+        <member name="E:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdConfigurationLoader.OnBeginLoadConfigurationFromServer">
+            <summary>
+            Raised when the read from CRM begins
+            </summary>
+        </member>
+        <member name="E:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdConfigurationLoader.OnUpdateProgressLoadConfigurationFromServer">
+            <summary>
+            raised when a progress update is raised. 
+            </summary>
+        </member>
+        <member name="E:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdConfigurationLoader.OnCompletedLoadConfigurationFromServer">
+            <summary>
+            Raised when the Load CRM process completes. 
+            </summary>
+        </member>
+        <member name="E:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.UsdConfigurationLoader.OnFailedLoadConfigurationFromServer">
+            <summary>
+            Raised when the Load CRM process Fails. 
+            </summary>
+        </member>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.USDConfigurationEntry">
+            <summary>
+            Describes an given Entity. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.USDConfigurationEntry.Entities">
+            <summary>
+            Entity Collection of results. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.USDConfigurationEntry.EntityName">
+            <summary>
+            Entity Name for the collection. 
+            </summary>
+        </member>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.USDConfigurationFetchXML">
+            <summary>
+            FetchXML storage class. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.USDConfigurationFetchXML.GetCacheVersionId">
+            <summary>
+            Fetch for current deployment version ID. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.USDConfigurationFetchXML.GetForms">
+            <summary>
+            fetch for all forms that are of a given type 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.USDConfigurationFetchXML.GetActiveOrderListOfRecords">
+            <summary>
+            Fetch for an ordered list of records. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.USDConfigurationFetchXML.GetActiveListOfRecords">
+            <summary>
+            Fetch for an unordered list of records. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.USDConfigurationFetchXML.GetOrderListOfRecords">
+            <summary>
+            Fetch for an list of records. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.USDConfigurationFetchXML.GetListOfRecords">
+            <summary>
+            Fetch for an unordered list of records. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.USDConfigurationFetchXML.GetCurrentUserInformaiton">
+            <summary>
+            Fetch the curent user inforamtion
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.USDConfigurationFetchXML.GetUsdLanguageModelByLCID">
+            <summary>
+            fetch Language model by LCID
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.USDConfigurationFetchXML.GetCurrentActiveUserSettingByName">
+            <summary>
+            fetch Current active user settings by name
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.USDConfigurationFetchXML.GetUserSettings">
+            <summary>
+            fetch user settings
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.USDConfigurationFetchXML.GetConfiguration">
+            <summary>
+            fetch configuration
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.USDConfigurationFetchXML.GetDefaultConfiguration">
+            <summary>
+            fetch default configuration
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.USDConfigurationFetchXML.ConfigurationLink">
+            <summary>
+            fetch configuration link
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.USDConfigurationFetchXML.AuditAndDiagnosticsConfigurationLink">
+            <summary>
+            fetch for auditanddiagnostics configuration link
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.USDConfigurationFetchXML.configurationLinkedEntities">
+            <summary>
+            fetch configuration for linked entities
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.USDConfigurationFetchXML.configurationLinkedTable">
+            <summary>
+            List of Linked Entities
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.USDConfigurationFetchXML.configurationLinkedId">
+            <summary>
+            list Linked entity Id's
+            </summary>
+        </member>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.DataLoader.LoadConfigurationEventArgs">
+            <summary>
+            Event Args structure used to response 
+            </summary>
+        </member>
+        <member name="T:Microsoft.Xrm.Tooling.Connector.CrmServiceClientExtensions">
+            <summary>
+            Crm Service Client Extnesion Methods
+            </summary>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Connector.CrmServiceClientExtensions.ConvertMultiResponseToEntity(Microsoft.Xrm.Tooling.Connector.CrmServiceClient,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.Dictionary{System.String,System.Object}})">
+            <summary>
+            Converts a multi response to a EntityCollection 
+            </summary>
+            <param name="value">Crm Service Client Instance</param>
+            <param name="entityName">name of the entity</param>
+            <param name="entityPrimaryId">entity id</param>
+            <param name="records">records</param>
+            <returns>Record Collection</returns>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Connector.CrmServiceClientExtensions.ConvertResponseToEntity(Microsoft.Xrm.Tooling.Connector.CrmServiceClient,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Converts a multi response to an Entity 
+            </summary>
+            <param name="value">Crm Service Client Instance</param>
+            <param name="entityName">name of the entity</param>
+            <param name="entityPrimaryId">entity id</param>
+            <param name="record">records</param>
+            <returns>Record Collection</returns>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Connector.CrmServiceClientExtensions.GetCRMRecordsForUSD(Microsoft.Xrm.Tooling.Connector.CrmServiceClient,System.String,System.Collections.Generic.List{Microsoft.Xrm.Tooling.Connector.CrmServiceClient.CrmSearchFilter},System.Collections.Generic.Dictionary{System.String,Microsoft.Xrm.Tooling.Connector.CrmServiceClient.LogicalSortOrder},System.Collections.Generic.List{System.String})">
+            <summary>
+            
+            </summary>
+            <param name="value">CrmServiceClient</param>
+            <param name="logicalName">entity logical name</param>
+            <param name="filters">filter applied</param>
+            <param name="sortList">list of sort options</param>
+            <param name="fieldList">list of fields</param>
+            <returns>list of records</returns>
+        </member>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Properties.Resources.AGENT_INFORMATION">
+            <summary>
+              Looks up a localized string similar to Agent Information.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Properties.Resources.CONNECTION_TIME_OUT">
+            <summary>
+              Looks up a localized string similar to EXCEPTION 0x33BC0005: Connection timed out while connecting to usdmp..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Properties.Resources.DISCONNECTED_DUE_TO_BROKEN_PIPE">
+            <summary>
+              Looks up a localized string similar to EXCEPTION 0x33BC0004: Disconnected due to broken pipe..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Properties.Resources.DISCONNECTED_DUE_TO_UNKNOWN_REASON">
+            <summary>
+              Looks up a localized string similar to EXCEPTION 0x33BC0006: Connection with usdmp is broken due to some unknown reason..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Properties.Resources.ENTITY_MAP">
+            <summary>
+              Looks up a localized string similar to Entity Map.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Properties.Resources.ERROR_CREATING_NAMED_PIPE">
+            <summary>
+              Looks up a localized string similar to EXCEPTION 0x33BC0003: Error creating named pipe..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Properties.Resources.ERROR_LAUNCHING_USDMP">
+            <summary>
+              Looks up a localized string similar to EXCEPTION 0x33BC0007: Error launching Usdmp..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Properties.Resources.FAILED_ENTITY_METADATA_SERVER_REQUIRED_FORUSD_ABORTING">
+            <summary>
+              Looks up a localized string similar to Failed to load entity metadata from server. This data is required for USD. Stopping the load..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Properties.Resources.FAILED_USD_CONFIGURATION_LOAD">
+            <summary>
+              Looks up a localized string similar to The configuration information couldn’t be loaded from the server. This data is required by USD, so the load process is stopping..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Properties.Resources.INITIAL_USD_CONFIGURATION_LOADED">
+            <summary>
+              Looks up a localized string similar to Initial USD Configuration loaded, duration:{0}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Properties.Resources.INITIALIZING_USD">
+            <summary>
+              Looks up a localized string similar to Initializing USD.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Properties.Resources.LOADING_USD_DATA_FROM_CACHE">
+            <summary>
+              Looks up a localized string similar to Loading USD data from the cache..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Properties.Resources.PROCESS_DATA">
+            <summary>
+              Looks up a localized string similar to Processing {0}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Properties.Resources.REQUESTING_FROM_SERVER">
+            <summary>
+              Looks up a localized string similar to Requesting {0} from the server..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Properties.Resources.SYSTEM_FORMS">
+            <summary>
+              Looks up a localized string similar to System Forms.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Properties.Resources.TRANSLATIONS_DATA">
+            <summary>
+              Looks up a localized string similar to Translations Data.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Properties.Resources.UNAUTHORIZED_ACCESS">
+            <summary>
+              Looks up a localized string similar to EXCEPTION 0x33BC0008: Usd is connected to some unauthorized process. Shutting down the usdmp..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Properties.Resources.USD_CONFIGURATION">
+            <summary>
+              Looks up a localized string similar to USD configuration information.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Properties.Resources.USD_SOLUTION_VERSION">
+            <summary>
+              Looks up a localized string similar to USD Solution Version.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Properties.Resources.USDMPEXE_NOT_FOUND">
+            <summary>
+              Looks up a localized string similar to EXCEPTION 0x33BC0001: Error during initialization. USDMP.exe is missing..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.Properties.Resources.USDMPEXE_SIGNATURE_INVALID">
+            <summary>
+              Looks up a localized string similar to EXCEPTION 0x33BC0002: Error during initialization. The monitoring process is invalid..
+            </summary>
+        </member>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.TraceLogger">
+            <summary>
+            Trace Class. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.TraceLogger._defaultTraceSourceName">
+            <summary>
+            DefaultTraceSourceName
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.TraceLogger.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="traceSourceName">Trace Source Name</param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.TraceLogger.ResetLastError">
+            <summary>
+            Reset the last Stored Error
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.TraceLogger.Log(System.String)">
+            <summary>
+            Log a Message as an Information event. 
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.TraceLogger.Log(System.String,System.Diagnostics.TraceEventType)">
+            <summary>
+            Log a Trace event 
+            </summary>
+            <param name="message"></param>
+            <param name="eventType"></param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.TraceLogger.Log(System.String,System.Diagnostics.TraceEventType,System.Exception)">
+            <summary>
+            Trace Log Method.
+            </summary>
+            <param name="message">Message to be logged</param>
+            <param name="eventType">Event Type</param>
+            <param name="exception">Exception Object</param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.TraceLogger.Log(System.Exception)">
+            <summary>
+            Log an error with an Exception
+            </summary>
+            <param name="exception">Exception Object</param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.TraceLogger.LogExceptionToFile(System.Exception,System.Text.StringBuilder,System.Int32)">
+            <summary>
+            Logs the error text to the stream
+            </summary>
+            <param name="objException">Exception to be written</param>
+            <param name="sw">Stream writer to use to write the exception</param>
+            <param name="level">level of the exception, this deals with inner exceptions</param>
+        </member>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.ProfileOperations">
+            <summary>
+            this class acts as an interface for UserProfile Operations. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.ProfileOperations._UserProfilePattern">
+            <summary>
+            Prefix format string for USD's User profile Information. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.ProfileOperations._UserCompressedExtention">
+            <summary>
+            Suffix for compressed profile directory. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.ProfileOperations._UsdAppFoldername">
+            <summary>
+            Folder name used by the path constructor to build the app director name for USD> 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.ProfileOperations._UserCacheObject">
+            <summary>
+            working cache object
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.ProfileOperations._logger">
+            <summary>
+            trace log endpoint
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.ProfileOperations._configFile">
+            <summary>
+            Local pointer to the File Info 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.ProfileOperations._UserProfileFileName">
+            <summary>
+            Formatted Cache File Name. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.ProfileOperations._profileServerHash">
+            <summary>
+            Field contains the hash key for the target server, used as part of the profile name. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.ProfileOperations._userIdHash">
+            <summary>
+            Hash value for the userID
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.ProfileOperations.#ctor(System.String,System.String,System.Guid,System.String,System.Boolean)">
+            <summary>
+            Creates an initializes the profile object.
+            </summary>
+            <param name="orgUri">Org being connected too</param>
+            <param name="orgUniqueName">Unique Name of the org</param>
+            <param name="userId">User Id</param>
+            <param name="cacheVersionId">VersionID of the cache</param>
+            <param name="enableCache">Is Cache Enabled at all</param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.ProfileOperations.CleanInValidCharacters(System.String)">
+            <summary>
+            Clean off any bad characters. 
+            </summary>
+            <param name="cacheVersionId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.ProfileOperations.CreateProfileHashKeyPrefix(System.String,System.String)">
+            <summary>
+            This method creates the profile hash Key prefix. 
+            </summary>
+            <param name="orgUri"></param>
+            <param name="orgUniqueName"></param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.ProfileOperations.ReadUserProfileConfig(System.IO.FileInfo)">
+            <summary>
+            Read User Profile Config. 
+            </summary>
+            <param name="configFile"></param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.ProfileOperations.ClearCacheObject">
+            <summary>
+            Forces the a clear and reset the cache object on net app reboot.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.ProfileOperations.SaveProfile">
+            <summary>
+            Saves the cache profile to disk
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.ProfileOperations.SerializeEntityMetadataCollection(System.Collections.Generic.List{Microsoft.Xrm.Sdk.Metadata.EntityMetadata})">
+            <summary>
+            Serialize and pack an Entity Metadata Collection
+            </summary>
+            <param name="metadataCollection"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.ProfileOperations.DeSerializeEntityMetadataCollection(System.String)">
+            <summary>
+            Creates an Entity Metadata object collection from a storage string. 
+            </summary>
+            <param name="metadataCollection"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.ProfileOperations.SerializeEntityCollection(System.Collections.Generic.List{Microsoft.Xrm.Sdk.EntityCollection})">
+            <summary>
+            Reads the EntityRecord Collection and Serialize's it to a string
+            </summary>
+            <param name="entityCollection"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.ProfileOperations.DeSerializeEntityCollection(System.String)">
+            <summary>
+            Creates an entity collection object from the Serialized data. 
+            </summary>
+            <param name="entityCollection"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.ProfileOperations.ReadProfileFromDisk(System.IO.FileInfo)">
+            <summary>
+            This reads the provide from disk 
+            </summary>
+            <param name="configFile">Configuration file path</param>
+            <returns>User Profile</returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.ProfileOperations.SaveProfileToDisk(System.String,System.String)">
+            <summary>
+            Save a file to disk..
+            </summary>
+            <param name="filePath"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.ProfileOperations.AddApplicationListToCache(System.Collections.Generic.List{Microsoft.Uii.Common.Entities.ApplicationRecord})">
+            <summary>
+            Adds application records to the cache
+            </summary>
+            <param name="apps"></param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.ProfileOperations.AddListenerTypesToCache(System.String,System.String)">
+             <summary>
+             Adds Listenertype records to the cache
+             </summary>
+             <param name="listenerType"></param>
+            <param name="listnerId"></param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.ProfileOperations.GetListenerTypesFromCache">
+            <summary>
+            Gets the Listeners from the cache if available. 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.ProfileOperations.AddNonHostedApplicationsListToCache(System.Collections.Generic.List{Microsoft.Uii.Common.Entities.NonHostedApplicationRecord})">
+            <summary>
+            Add non Hosted applications to cache. 
+            </summary>
+            <param name="nonHostedApps"></param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.ProfileOperations.GetApplicationRecordSFromCache">
+            <summary>
+            Gets the Applications from the cache if available. 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.ProfileOperations.GetNonHostedApplicationRecordsFromCache">
+            <summary>
+            Gets the NonHostedApplications from cache if available. 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.ProfileOperations.AddEntityMetadataToCache(System.Collections.Generic.List{Microsoft.Xrm.Sdk.Metadata.EntityMetadata})">
+            <summary>
+            Adds Entity Metadata Collection to cache. 
+            </summary>
+            <param name="metadata"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.ProfileOperations.GetEntityMetadataFromCache">
+            <summary>
+            Returns the full collection of Entity Metadata from cache. 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.ProfileOperations.GetAuditAndDiagnosticsConfigurationFromCache">
+            <summary>
+            Gets the auditanddiagnosticssetting settings records from the cache if available. 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.ProfileOperations.SetUsdLanguageTranslations(System.String,System.String,System.String)">
+            <summary>
+            This will set the translation nodes 
+            </summary>
+            <param name="orgLCID"></param>
+            <param name="userLCID"></param>
+            <param name="translatorXmlData"></param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.ProfileOperations.SetUsdSolutionComplianceAndVersion(System.Boolean,System.String)">
+            <summary>
+            Sets the compliance information for USD. 
+            </summary>
+            <param name="isUsdVersionCorrect"></param>
+            <param name="deployedUsdVersion"></param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.ProfileOperations.AddEntityCollectionToLocalCache(Microsoft.Xrm.Sdk.EntityCollection)">
+            <summary>
+            Add An Entity to the cacheQueue. 
+            </summary>
+            <param name="ecToAdd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.ProfileOperations.GetEntityCollectionFromCacheByName(System.String)">
+            <summary>
+            Returns an Entity Collection from the cache if it is present. 
+            </summary>
+            <param name="entityName">name of the entity you want from cache</param>
+            <returns>EntityCollection or Null.</returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.ProfileOperations.AddCustomDllToCache(System.String)">
+            <summary>
+            Adds custom dll entries to the cache
+            </summary>
+            <param name="customDll"></param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.ProfileOperations.GetCustomDllsInfoFromCache">
+            <summary>
+            Gets custom dlls info from the cache if available. 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.ProfileOperations.CacheVersionId">
+            <summary>
+            Version ID of the cache string
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.ProfileOperations.UsdUserProfileDirectoryAppPath">
+            <summary>
+            Path the USD User Profile Directory
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.ProfileOperations.isCachDisabled">
+            <summary>
+            If set to true, the cache will not be written to disk
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.ProfileOperations.IsUsdVersionCompliant">
+            <summary>
+            if the USD Version is compliant,  return true, else return false
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.ProfileOperations.UsdSolutionVersion">
+            <summary>
+            Returns the current version ID for the deployed USD version. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.ProfileOperations.isCacheAvailable">
+            <summary>
+            if try the cache object is present. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.ProfileOperations.UserLCID">
+            <summary>
+            Returns the user LCID
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.ProfileOperations.OrganizationLCID">
+            <summary>
+            Returns the Organization LCID
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.ProfileOperations.UsdLanguageFileForUser">
+            <summary>
+            Returns the XML for the language translation document. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.ProfileOperations.CrmEntityCollection">
+            <summary>
+            returns the CrmEntityCollection from cache. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.ProfileOperations.ImageCache">
+            <summary>
+            Return the image data cache object. 
+            </summary>
+        </member>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.UserProfile">
+            <summary>
+            this class will describe the user provide objects stored on disk and be Serializable. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.UserProfile.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.UserProfile.NonhostedAppRecs">
+            <summary>
+            Gets and sets Non Hosted Application records
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.UserProfile.ApplicationRecords">
+            <summary>
+            Array of application records. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.UserProfile.ListenerTypes">
+            <summary>
+            List of Listener types
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.UserProfile.CustomDllsInfo">
+            <summary>
+            Custom DLL's info
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.UserProfile.EntityCollectionSeralizedVersion">
+            <summary>
+            Private version of the Entity Collection. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.UserProfile.EntityMetadataSeralizedVersion">
+            <summary>
+            Serialized Version of CRM
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.UserProfile.AuditAndDiagnosticsConfigurationData">
+            <summary>
+            Represents user auditanddiagnosticssetting config
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.UserProfile.NonApplicationRecordsNative">
+            <summary>
+            Array of Nonhosted Applications
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.UserProfile.IsUsdSolutionCurrent">
+            <summary>
+            Flag that indicates if the USD Solution is current. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.UserProfile.UsdSolutionVersion">
+            <summary>
+            Version number of the USD Solution. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.UserProfile.CachedEntities">
+            <summary>
+            Array of entity objects that are being cached. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.UserProfile.UsdEntityMetadata">
+            <summary>
+            Entity Metadata.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.UserProfile.OrgBaseLCID">
+            <summary>
+            Organization Base LCID
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.UserProfile.UserBaseLCID">
+            <summary>
+            User base LCID
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.UserProfile.UsdUserLanguageTranslation">
+            <summary>
+            Language code File
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.UserProfile.ImageCache">
+            <summary>
+            Image Cache for Web resources downloaded from CRM
+            </summary>
+        </member>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.NonHostedApplrecordsSeralizable">
+            <summary>
+            Storage class for NonHosted applications as they do not have a default constructor. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.NonHostedApplrecordsSeralizable.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UserProfileManager.NonHostedApplrecordsSeralizable.#ctor(Microsoft.Uii.Common.Entities.NonHostedApplicationRecord)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="rec">Non Hosted Application Records</param>
+        </member>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UnzipStatus">
+            <summary>
+            UnZipping status.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UnzipStatus.Failure">
+            <summary>
+            unzipping is failed
+            </summary> 
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UnzipStatus.Success">
+            <summary>
+            unzipping is success
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.UnzipStatus.PackagePartsMissing">
+            <summary>
+            if wrong content type file is uploaded or entries in content type file is missed, then packageparts will be 0.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.ZipUtils">
+            <summary>
+            This class deals with Zip and unzip of files
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.ZipUtils.UnZipFiles(System.String,System.String)">
+            <summary>
+            Unzips a file to a directory 
+            </summary>
+            <param name="zipPathAndFile">File to Unzip</param>
+            <param name="outputFolder">where to unzip it too</param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.ZipUtils.UnZipFiles2(System.String,System.String)">
+            <summary>
+            Unzips a file to a directory and returns the unzipping status
+            </summary>
+            <param name="zipPathAndFile">File to Unzip</param>
+            <param name="outputFolder">where to unzip it too</param>
+            <returns>file Unzipping status </returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.ZipUtils.ZipFiles(System.String,System.String,System.Boolean)">
+            <summary>
+            Zips the Directory specified to the output Zip File. 
+            </summary>
+            <param name="directoryToAdd">Directory Name</param>
+            <param name="outputZipFile">Output Zip File Name</param>
+            <param name="flattenStructure">drops the path from the inbound data</param>
+            <returns>true on success, false on fail. </returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.ZipUtils.ZipFiles(System.Collections.Generic.List{System.String},System.String,System.Boolean)">
+            <summary>
+            Zips the requested files into the output ZipFile. 
+            </summary>
+            <param name="fileNames">List of File Name to Zip</param>
+            <param name="outputZipFile">Output Zip File</param>
+            <param name="flattenStructure">drops the path from the inbound data</param>
+            <returns>True on Success</returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.ZipUtils.ZipFiles(System.Collections.Generic.List{System.String},System.String,System.String,System.Boolean)">
+            <summary>
+            Internal method for creating the zip files. 
+            </summary>
+            <param name="fileNames"></param>
+            <param name="directoryToAdd"></param>
+            <param name="outputZipFile"></param>
+            <param name="flattenStructure">drops the path from the inbound data</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.ZipUtils.CopyStream(System.IO.Stream,System.IO.Stream)">
+            <summary>
+            Copies the source stream to the target stream
+            </summary>
+            <param name="source"></param>
+            <param name="target"></param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.ZipUtils.GetRelativeUri(System.String)">
+            <summary>
+            Converts a file path to a URI
+            </summary>
+            <param name="currentFile"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.CommonUtility.ZipUtils.RemoveAccents(System.String)">
+            <summary>
+            Cleans up the resulting Uri
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

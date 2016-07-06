@@ -1,0 +1,32 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:c1="http://schemas.componentone.com/wpf/C1Docking"
+             xmlns:c1Usd="clr-namespace:Microsoft.USD.ComponentLibrary.ComponentOne"            
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style TargetType="c1:C1DockGroup" x:Key="LeftC1DockGroupStyle" />
+    <Style TargetType="c1:C1DockGroup" x:Key="MainC1DockGroupStyle" />
+    <Style TargetType="c1Usd:C1USDTabBasePanel" x:Key="LeftC1USDTabBasePanelStyle" >
+        <Setter Property="DockMode" Value="Docked" />
+        <Setter Property="Dock" Value="Top" />
+        <Setter Property="CanUserHide" Value="False" />
+        <Setter Property="CanUserFloat" Value="True" />
+        <Setter Property="ShowHeader" Value="False" />
+        <Setter Property="TabItemShape" Value="Rectangle" />
+        <Setter Property="TabStripPlacement" Value="Top" />
+        <Setter Property="DockWidth" Value="50"></Setter>
+    </Style>
+    <Style TargetType="c1Usd:C1USDDockTabControl" x:Key="MainPanelC1USDTabBasePanelStyle">
+        <Setter Property="ShowSingleTab" Value="True" />
+        <Setter Property="DockMode" Value="Docked" />
+        <Setter Property="Dock" Value="Left" />
+        <Setter Property="CanUserHide" Value="False" />
+        <Setter Property="TabItemClose" Value="None" />
+        <Setter Property="ShowHeader" Value="False" />
+        <Setter Property="TabItemShape" Value="Rectangle" />
+        <Setter Property="TabStripPlacement" Value="Top" />
+        <Setter Property="CanUserFloat" Value="True" />
+    </Style>
+    <Style TargetType="c1Usd:C1UsdDockControl" x:Key="MainLayoutC1UsdDockControlStyle" />
+    <Style TargetType="c1Usd:C1USDDockTabItem" x:Key="MainPanelC1USDDockTabItemStyle" />
+    <Style TargetType="c1Usd:C1USDDockTabItem" x:Key="SessionExplorerPanelC1USDDockTabItemStyle" />
+    <Style TargetType="c1Usd:C1USDDockTabItem" x:Key="LeftPanel2PanelC1USDDockTabItemStyle" />
+</ResourceDictionary> 

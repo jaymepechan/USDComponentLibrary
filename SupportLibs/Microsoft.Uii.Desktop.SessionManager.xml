@@ -1,0 +1,261 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Uii.Desktop.SessionManager</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Uii.Desktop.SessionManager.AgentDesktopSession">
+            <summary>
+            This represents a single customer session within Desktop
+            An enumeration over a session give a set of IHostedApplications.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.SessionManager.AgentDesktopSession.#ctor(System.String,Microsoft.Uii.Desktop.Core.CustomerEntity)">
+            <summary>
+            Creates an Agent desktop Session object.
+            </summary>
+            <param name="name">Name of the Session</param>
+            <param name="customer">Customer Object that contains information about the customer that this session was created for.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.SessionManager.AgentDesktopSession.#ctor(System.String,Microsoft.Uii.Desktop.Core.CustomerEntity,System.Guid)">
+            <summary>
+            Creates an Agent desktop Session object.
+            </summary>
+            <param name="name">Name of the Session</param>
+            <param name="customer">Customer Object that contains information about the customer that this session was created for.</param>
+            <param name="sessionId">User Defined Session ID</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.SessionManager.AgentDesktopSession.#ctor(System.String,System.Int32,Microsoft.Uii.Desktop.Core.CustomerEntity,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Uii.Desktop.SessionManager.AgentDesktopSession"/> class.
+            </summary>
+            <param name="name">The name.</param>
+            <param name="callId">The call ID.</param>
+            <param name="customer">The customer.</param>
+            <param name="useContextProxy">if set to <c>true</c> [use context proxy].</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.SessionManager.AgentDesktopSession.GetCustomerID">
+            <summary>
+            This method is used to return the customer ID.
+            </summary>
+            <returns>The customer ID the customer exists otherwise an empty string.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.SessionManager.AgentDesktopSession.Save(System.Boolean)">
+            <summary>
+            Creates a Serialized Save Version of the Session and associated data in preperation for storage. 
+            </summary>
+            <param name="active">true if this session is active</param>
+            <returns>An XML string or null if there are no applications</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.SessionManager.AgentDesktopSession.Restore(System.String)">
+            <summary>
+            Restores the state of a session from the passed PackageSession Object.
+            </summary>
+            <param name="sessionInfoXml"></param>
+            <returns>true if this is an active session, false if not</returns> 
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.SessionManager.AgentDesktopSession.Customer">
+            <summary>
+            Customer Object that contains information about the customer that this session was created for.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.SessionManager.AgentDesktopSession.CtiCallRefId">
+            <summary>
+            Call Referance ID. This is the primary Call Referance ID that created this session.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.SessionManager.AgentDesktopSession.CtiCallType">
+            <summary>
+            This is the primary Type of call that describes this session, generally this is going to be Email / Voice / Chat
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.SessionManager.AgentDesktopSession.CtiCallRefIdChat">
+            <summary>
+            This is the Secondary ID Call Referance ID that identifies a second call assocated with the session.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.SessionManager.AgentDesktopSessions">
+            <summary>
+            The Sessions class is the class used to create and handle the individual AgentDesktopSessions.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.SessionManager.AgentDesktopSessions.#ctor(System.Boolean,System.Int32)">
+            <summary>
+            Initilizes the core Desktop Sessions Object
+            </summary>
+            <param name="useMultipleSessions">Boolean indicating if multiple sessions are allowed.</param>
+            <param name="maxNumberOfSessions">Sets the maximum number of sessions allowed.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.SessionManager.AgentDesktopSessions.#ctor(System.Boolean)">
+            <summary>
+            Initilizes the core Desktop Sessions Object
+            </summary>
+            <param name="useMultipleSessions">Boolean indicating if multiple sessions are allowed.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.SessionManager.AgentDesktopSessions.#ctor">
+            <summary>
+            Default constructor 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.SessionManager.AgentDesktopSessions.#ctor(System.Boolean,System.Int32,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Uii.Desktop.SessionManager.AgentDesktopSessions"/> class.
+            </summary>
+            <param name="useMultipleSessions">if set to <c>true</c> [use multiple sessions].</param>
+            <param name="maxNumberOfSessions">The max number of sessions.</param>
+            <param name="useContextProxy">if set to <c>true</c> [use context proxy].</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.SessionManager.AgentDesktopSessions.CreateSession(System.String,System.Int32,System.Object)">
+            <summary>
+            Creates a new Desktop Session Object
+            </summary>
+            <param name="name">Session name</param>
+            <param name="callId">Depreciated, set to -1</param>
+            <param name="customer">Customer Object that contains information about the customer that this session is being created for</param>		/// <returns>The session object created.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.SessionManager.AgentDesktopSessions.CreateSession(System.String,System.Int32,System.Object,System.Guid)">
+            <summary>
+            Creates a new Desktop Session Object
+            </summary>
+            <param name="name">Session name</param>
+            <param name="sessionId">Allows the Session Id to be set explicitly.</param>
+            <param name="callId">Depreciated, set to -1</param>
+            <param name="customer">Customer Object that contains information about the customer that this session is being created for</param>
+            <returns>The session object created.</returns>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.SessionManager.Properties.Constants">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.SessionManager.Properties.Constants.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.SessionManager.Properties.Constants.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.SessionManager.Properties.Constants.RESTORED_WORKFLOW">
+            <summary>
+              Looks up a localized string similar to restoredWorkflow.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.SessionManager.Properties.Constants.SESSION_ID">
+            <summary>
+              Looks up a localized string similar to &lt;Session ID=.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.SessionManager.Properties.Messages">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.SessionManager.Properties.Messages.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.SessionManager.Properties.Messages.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.SessionManager.Properties.Messages.DESKTOP_APP_LOAD_ERROR">
+            <summary>
+              Looks up a localized string similar to The saved session can&apos;t be restored..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.SessionManager.Properties.Messages.DESKTOP_APP_SAVE_ERROR">
+            <summary>
+              Looks up a localized string similar to DESKTOP_APP_SAVE_ERROR: The hosted application states couldn&apos;t be saved..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.SessionManager.Properties.Messages.DESKTOP_MODULE_NAME">
+            <summary>
+              Looks up a localized string similar to Agent Desktop.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.SessionManager.PackagedSession">
+            <summary>
+            This is the container for session that is being packaged for storage
+            this can be used as part of a session transfer or a Backup Recovery for Crash avoidance. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.SessionManager.PackagedSession.#ctor">
+            <summary>
+            Default Constructor 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.SessionManager.PackagedSession.Name">
+            <summary>
+            Name of the Session
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.SessionManager.PackagedSession.Id">
+            <summary>
+            ID of the Session
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.SessionManager.PackagedSession.Active">
+            <summary>
+            Is the Session Active at the time of save
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.SessionManager.PackagedSession.StartTime">
+            <summary>
+            Session Start Date Time Stamp
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.SessionManager.PackagedSession.CustomerRecord">
+            <summary>
+            Customer Container.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.SessionManager.PackagedSession.SessionContext">
+            <summary>
+            Current Session Context
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.SessionManager.PackagedSession.WorkflowConfig">
+            <summary>
+            Configuration of the Workflow
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.SessionManager.PackagedSession.PackagedControls">
+            <summary>
+            Hosted controls that were running at the time
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.SessionManager.PackagedSession.FocusedHostControlId">
+            <summary>
+            Focused control
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.SessionManager.PackagedHostedControlInfo">
+            <summary>
+            Hosted Control Information class
+            this is part of the Packaged Session class
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.SessionManager.PackagedHostedControlInfo.Name">
+            <summary>
+            Name of the Hosted Control
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.SessionManager.PackagedHostedControlInfo.Id">
+            <summary>
+            ID of the hosted Control
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.SessionManager.PackagedHostedControlInfo.State">
+            <summary>
+            State of the Hosted control. 
+            </summary>
+        </member>
+    </members>
+</doc>

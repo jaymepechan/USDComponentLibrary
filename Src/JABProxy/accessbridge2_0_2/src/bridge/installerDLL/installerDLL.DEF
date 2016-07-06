@@ -1,0 +1,18 @@
+;
+; @(#)installerDLL.DEF	1.2 05/09/19
+;
+; Copyright 1999 Sun Microsystems, Inc., 901 San Antonio Road,
+; Palo Alto, California, 94303, U.S.A. All rights reserved.
+;
+; This software is the proprietary information of Sun Microsystems,
+; Inc.  Use is subject to license terms.
+;
+;
+LIBRARY	installerDLL
+
+DESCRIPTION 'installerDLL.DLL
+HEAPSIZE	4096
+EXPORTS
+
+	runInstaller
+	runDeinstaller

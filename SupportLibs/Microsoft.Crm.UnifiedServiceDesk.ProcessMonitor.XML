@@ -1,0 +1,409 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>usdmp</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.MonitoringProcessExitCodes">
+            <summary>
+            Terminate codes of monitoring process.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.MonitoringProcessExitCodes.UsdTerminated">
+            <summary>
+            Usd process is closed/crashed.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.MonitoringProcessExitCodes.ConnectionWithUsdFailed">
+            <summary>
+            Failed to establish the connection with Usd process.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.MonitoringProcessExitCodes.InvalidCommandLineArgs">
+            <summary>
+            Incorrect commandline args.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.Logger">
+            <summary>
+            Consumes ILogger to log the error/information.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.Logger.LogError(System.String,System.String,System.String)">
+            <summary>
+            Logs error in text file.
+            </summary>
+            <param name="errorCode">string type.</param>
+            <param name="message">string type.</param>
+            <param name="additionalInfo">string type.</param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.Logger.LogInformation(System.String)">
+            <summary>
+            Logs information in text file.
+            </summary>
+            <param name="message">string type.</param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.Logger.LogException(System.String,System.Exception)">
+            <summary>
+            Logs exception in text file. 
+            </summary>
+            <param name="errorCode">string type.</param>
+            <param name="ex">Exception type.</param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.Logger.InitializeLogger">
+            <summary>
+            Initializes the logger object.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.Models.ProcessInstance">
+            <summary>
+            Encapsulates the handing of process object for monitoring.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.Models.ProcessInstance.#ctor(System.Int32)">
+            <summary>
+            .ctr
+            </summary>
+            <param name="processId">ProcessId as int.</param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.Models.ProcessInstance.#ctor(System.IntPtr)">
+            <summary>
+            .ctr
+            </summary>
+            <param name="shellHwnd">Shell window handle as IntPtr.</param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.Models.ProcessInstance.IsResponding">
+            <summary>
+            Checks if process is responding. 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.Models.ProcessInstance.Equals(System.Object)">
+            <summary>
+            Overridden Equals method.
+            </summary>
+            <param name="obj">object type.</param>
+            <returns>Boolean type.</returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.Models.ProcessInstance.Equals(Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.Models.ProcessInstance)">
+            <summary>
+            For object equality check. 
+            </summary>
+            <param name="other">ProcessInstance type.</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.Models.ProcessInstance.GetHashCode">
+            <summary>
+            Returns the hashcode for the the instance.
+            </summary>
+            <returns>int type.</returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.Models.ProcessInstance.Terminate">
+            <summary>
+            Terminates the process. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.Models.ProcessInstance.Dispose">
+            <summary>
+            Cleans up the process instance. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.Models.ProcessInstance.Process">
+            <summary>
+            Process object.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.Models.ProcessInstance.ProcessId">
+            <summary>
+            processId of the process.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.ProcessMonitor">
+            <summary>
+            Class responsible for monitoring IE processes hosted inside USD.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.ProcessMonitor.#ctor(System.Int32,Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.Models.ProcessInstance)">
+            <summary>
+            .ctr 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.ProcessMonitor.AddProcess(System.Int32)">
+            <summary>
+            Adds process to the list for  monitoring.
+            </summary>
+            <param name="processId">ProcessId as int.</param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.ProcessMonitor.AddProcess(System.IntPtr)">
+            <summary>
+            Adds new process in the monitoring list by shell window handle. 
+            </summary>
+            <param name="shellHwnd">Shell window handle as IntPtr.</param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.ProcessMonitor.RemoveProcess(System.IntPtr)">
+            <summary>
+            Removes process from the monitoring list.
+            </summary>
+            <param name="shellHwnd">Shell window handle as IntPtr.</param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.ProcessMonitor.RemoveProess(System.Int32)">
+            <summary>
+            Removes a process from the monitoring list. 
+            </summary>
+            <param name="processId">int type.</param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.ProcessMonitor.GetMainWindowHandle(System.Int32)">
+            <summary>
+            Returns the main window handle for the given process id. 
+            </summary>
+            <param name="processId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.ProcessMonitor.MonitorChildProcess(System.Object,System.Timers.ElapsedEventArgs)">
+            <summary>
+            Callback method for monitoring process timer.
+            </summary>
+            <param name="state">object type.</param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.ProcessMonitor.ResetTimer(System.Boolean)">
+            <summary>
+            Switches the timer between USD Process Monitoring and Child Process Monitoring.
+            </summary>
+            <param name="forUsdProcess">Boolean type.</param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.ProcessMonitor.MonitorUsdProcess(System.Object,System.Timers.ElapsedEventArgs)">
+            <summary>
+            Timer callback for USD Process Monitoring.
+            </summary>
+            <param name="state">object type. </param>
+            <param name="e">ElapsedEventArgs type</param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.ProcessMonitor.Dispose">
+            <summary>
+            Method to dispose of timer object and process instances. 
+            </summary> 
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.ProcessMonitor.Count">
+            <summary>
+            Count of processes currently it is monitoring.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.Program.Main(System.String[])">
+            <summary>
+            Entry point for the usdmp application. 
+            </summary>
+            <param name="args">array of strings. </param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.Program.Terminate(System.Int32)">
+            <summary>
+            Exits usdmp with specified exit code.
+            </summary>
+            <param name="exitCode">int type.</param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.Program.IsValidUsdProcess(System.Int32)">
+            <summary>
+            Validates if the given usdProcessId is valid.
+            </summary>
+            <param name="usdProcessId">Process processId of USD as integer.</param>
+            <returns>boolean</returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.Program.OnUsdProcessExit(System.Object,System.EventArgs)">
+            <summary>
+            Handles the USD process exit by terminating the usdmp. 
+            </summary>
+            <param name="sender">object type.</param>
+            <param name="e">EventArgs type.</param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.Program.SubscribeGlobalExceptionHandlers">
+            <summary>
+            Subscribes the events for global unhandled exceptions.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.Program.CurrentAppDomainUnhandledException(System.Object,System.UnhandledExceptionEventArgs)">
+            <summary>
+            Handles unhandled exceptions of current application domain by logging exception details.
+            </summary>
+            <param name="sender">object type.</param>
+            <param name="e">UnhandledExceptionEventArgs type. </param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.Program.TaskSchedulerUnobservedTaskException(System.Object,System.Threading.Tasks.UnobservedTaskExceptionEventArgs)">
+            <summary>
+            Handles unhandled exceptions of TaskSchedular. 
+            </summary>
+            <param name="sender">object type.</param>
+            <param name="e">UnobservedTaskExceptionEventArgs type.</param>
+        </member>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.Resources.ChildProcessTerminated">
+            <summary>
+              Looks up a localized string similar to Terminated non-responding process. ProcessName: {0}, ProcessId:{1}, ShellWindowHandle:{2}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.Resources.EstablishCommunication">
+            <summary>
+              Looks up a localized string similar to Communication channels established.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.Resources.FailedToFindUnresponsiveProcess">
+            <summary>
+              Looks up a localized string similar to Usd is found unresponsive. Failed to find a non-responsive child process..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.Resources.InvalidCommandLineArgs">
+            <summary>
+              Looks up a localized string similar to Invalid command line args..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.Resources.InvalidMessage">
+            <summary>
+              Looks up a localized string similar to Message with invalid value received..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.Resources.InvalidProcessId">
+            <summary>
+              Looks up a localized string similar to Invalid process id provided in commandline args..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.Resources.KillingProcess">
+            <summary>
+              Looks up a localized string similar to The process is still not responding. Will try killing the process..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.Resources.MessageReceivedForStartMonitoring">
+            <summary>
+              Looks up a localized string similar to Message received from USD process to start monitoring a process..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.Resources.MessageReceivedWithMonitoringFrequency">
+            <summary>
+              Looks up a localized string similar to Message received from Usd process with MonitoringFrequencyThreshold..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.Resources.MissingCommandLineArgs">
+            <summary>
+              Looks up a localized string similar to Missing the mandatory command line args..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.Resources.ProcessAdded">
+            <summary>
+              Looks up a localized string similar to Added process (ShellWindowHandle: {0}, ProcessId:{1}) to monitoring list..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.Resources.ProcessMonitorInitializing">
+            <summary>
+              Looks up a localized string similar to Initializing ProcessMonitor..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.Resources.ProcessRemoved">
+            <summary>
+              Looks up a localized string similar to Removed process (ShellWindowHandle: {0}, ProcessId:{1}) from the monitoring list..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.Resources.ProcessStart">
+            <summary>
+              Looks up a localized string similar to Monitoring Process started.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.Resources.ProcessTerminated">
+            <summary>
+              Looks up a localized string similar to Monitoring Process terminated with exit code {0} ..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.Resources.ReceivedMessage">
+            <summary>
+              Looks up a localized string similar to Message received from USD process..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.Resources.TimeoutExpired">
+            <summary>
+              Looks up a localized string similar to Timeout expired for the usd process to connect with usdmp..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.Resources.TimerSetForChildProcess">
+            <summary>
+              Looks up a localized string similar to Timer set for monitoring child processes..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.Resources.TimerSetForUsdMonitoring">
+            <summary>
+              Looks up a localized string similar to Timer set for monitoring Usd process.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.Resources.TryClosingProcess">
+            <summary>
+              Looks up a localized string similar to Sent close message to the non responding window..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.Resources.UnauthorizedAttempt">
+            <summary>
+              Looks up a localized string similar to Unauthorized process trying to connect to usdmp channel..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.Resources.UnknownExceptionInNamedPipeServer">
+            <summary>
+              Looks up a localized string similar to Unknown exception occurred in the namedpipeserver object..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.Resources.UsdMonitoringInitializing">
+            <summary>
+              Looks up a localized string similar to Initializing the UsdMonitor with Monitoring Frequency {0}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.Resources.UsdProcessNotRespondingAfterChildProcessTermination">
+            <summary>
+              Looks up a localized string similar to Usd process is still not responding even after killing the hung process..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.Resources.UsdProcessStartedRespondingAfterChildProcessTermination">
+            <summary>
+              Looks up a localized string similar to Usd process started responding back after terminating un-responsive child process..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.Resources.UsdProcessStartedRespondingBack">
+            <summary>
+              Looks up a localized string similar to Usd process started responding back. Not checking the child processes..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.Resources.UsdProcessTerminated">
+            <summary>
+              Looks up a localized string similar to USD process terminated. Terminating usdmp..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.Resources.UsdProcessUnresponsive">
+            <summary>
+              Looks up a localized string similar to Usd process found un-responsive..
+            </summary>
+        </member>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.UsdMonitor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.UsdMonitor.EstablishCommunicationChannels">
+            <summary>
+            Establish the named pipe connection.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.ProcessMonitor.UsdMonitor.InitializeMonitoring(System.Int32)">
+            <summary>
+            Initialize process monitoring job
+            </summary>
+        </member>
+    </members>
+</doc>

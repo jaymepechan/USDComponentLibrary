@@ -1,0 +1,356 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Crm.UnifiedServiceDesk.InteractionControl</name>
+    </assembly>
+    <members>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.InteractionControl.CrmUtilControl.CrmSvcAdapter">
+            <summary>
+             Crm Service adapter... 
+             Helper to set up an configure access to the CRM system 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.InteractionControl.CrmUtilControl.IsCRMAccessIntilized">
+            <summary>
+            Flag to check if the service Interface has been inited. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.InteractionControl.CrmUtilControl.LocalSessionManager">
+            <summary>
+             Local copy of the session manager. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.InteractionControl.CrmUtilControl.desktop">
+            <summary>
+            Desktop Commands Interface. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.InteractionControl.CrmUtilControl.WorkflowPollingTimer">
+            <summary>
+            Timer to manage workflow communications. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.InteractionControl.CrmUtilControl.WorkflowStatusQueue">
+            <summary>
+            Workflow Status Polling Queue. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.InteractionControl.CrmUtilControl.ActivityControlName">
+            <summary>
+            Name of the Hosted Control that will host Activites. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.InteractionControl.CrmUtilControl.GlobalActivityControl">
+            <summary>
+            Name of the hosted control that will host global activies. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.InteractionControl.CrmUtilControl.CRMTICKETID">
+            <summary>
+            Set anytime a ticket create request is run 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.InteractionControl.CrmUtilControl.#ctor(System.Guid,System.String,System.String)">
+            <summary>
+            CCF Contructor. 
+            </summary>
+            <param name="appID"></param>
+            <param name="appName"></param>
+            <param name="appInit"></param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.InteractionControl.CrmUtilControl.AddServiceToPool(System.Object)">
+            <summary>
+            Add an Instance the the IccSsoStoreEx
+            </summary>
+            <param name="oData"></param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.InteractionControl.CrmUtilControl.DoAction(Microsoft.Uii.Csr.RequestActionEventArgs)">
+            <summary>
+            Action Handler
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.InteractionControl.CrmUtilControl.DesktopLoadingComplete">
+            <summary>
+             Load Complete Alert
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.InteractionControl.CrmUtilControl.SetDesktopUserActionsAccess(Microsoft.Uii.Desktop.Core.IDesktopUserActions)">
+            <summary>
+            Desktop Pointer from the loader... 
+            </summary>
+            <param name="desktopaccess"></param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.InteractionControl.CrmUtilControl.DoCreateTroubleTicket(System.Object)">
+            <summary>
+            Create a new Trouble Ticket Request. 
+            </summary>
+            <param name="oParam"></param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.InteractionControl.CrmUtilControl.FireChangeContextTS(System.String,System.String)">
+            <summary>
+            Thread Safe Context set. 
+            </summary>
+            <param name="sKeyToSet"></param>
+            <param name="sValueToUpdate"></param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.InteractionControl.CrmUtilControl.DoCreateManagmentTicket(System.Object)">
+            <summary>
+            Create Management Ticket
+            </summary>
+            <param name="oParam"></param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.InteractionControl.CrmUtilControl.DoAddCustomerCareAuditEntry(System.Object)">
+            <summary>
+            Adds a customer care event activity to the History log of the account
+            </summary>
+            <param name="oParam">RequestActionEventArgs object</param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.InteractionControl.CrmUtilControl.DoOpenSessionFromActivity(System.Object)">
+            <summary>
+            Actually it will figure out what kind of thing it is to open it..
+            </summary>
+            <param name="oParam"></param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.InteractionControl.CrmUtilControl.InitCRMSvcOnStartup(System.Object)">
+            <summary>
+             Init CRM Service Interface.. 
+             This is a longer running action and requires a bit more work then I want to allocate in the startup process. 
+            </summary>
+            <param name="oParams"></param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.InteractionControl.CrmUtilControl.CreateTicket(System.Guid,System.Guid,System.Int32,System.Int32,System.String,System.String,System.String)">
+            <summary>
+            Create a New Ticket In CRM 
+            </summary>
+            <param name="guAccountID"></param>
+            <param name="guContactID"></param>
+            <param name="caseOrgin"></param>
+            <param name="castType"></param>
+            <param name="castTitle"></param>
+            <param name="description"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.InteractionControl.CrmUtilControl.GetCustomerIDsFromActivity(System.Guid,System.String,System.String@)">
+            <summary>
+            Identifies a customer Account based an Activity
+            </summary>
+            <param name="guActivtiyID">Activity Pointer in question</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.InteractionControl.CrmUtilControl.CreateActivity(System.String,System.String,System.Guid,System.String,System.String)">
+            <summary>
+            Creates an Activity in the System,  the type specified by the EntityNames Type. 
+            Fax , Letter , and Phone are supported. 
+            </summary>
+            <param name="subject"></param>
+            <param name="description"></param>
+            <param name="contactid"></param>
+            <param name="Type"></param>
+            <param name="entyType"> type of entity you want to create.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.InteractionControl.CrmUtilControl.GetReturnFieldsForPhone">
+            <summary>
+            Return fields for Phone 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.InteractionControl.CrmUtilControl.GetReturnFieldsForEmail">
+            <summary>
+            Return fields for Email
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.InteractionControl.CrmUtilControl.WorkflowPollingTimer_Elapsed(System.Object,System.Timers.ElapsedEventArgs)">
+            <summary>
+            Actions timmer.. checks the workfow Queue to see if thire is stuff to do . 
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.InteractionControl.CrmUtilControl.RunAsyncWorkflow(System.String,System.Guid,Microsoft.Crm.UnifiedServiceDesk.InteractionControl.CrmUtilControl.WorkflowStatusSequencer)">
+            <summary>
+            Run workflow and poll for rsponses. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.InteractionControl.CrmUtilControl.CheckStatusOfWorkflow(Microsoft.Crm.UnifiedServiceDesk.InteractionControl.CrmUtilControl.WorkflowStatusSequencer)">
+            <summary>
+            Get the current status of the workflow described in WFStat.
+            </summary>
+            <param name="wfStat"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.InteractionControl.CrmUtilControl.ProcessFinishedWorkflow(Microsoft.Crm.UnifiedServiceDesk.InteractionControl.CrmUtilControl.WorkflowStatusSequencer,System.Boolean)">
+            <summary>
+            Handel Completeing a WF activity 
+            </summary>
+            <param name="wfStat"></param>
+            <param name="bSuccess"></param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.InteractionControl.CrmUtilControl.SetStartupCrmInterface(Microsoft.Xrm.Tooling.Connector.CrmServiceClient)">
+            <summary>
+            this sets the CRM connection used during Startup of USD, if a separate connection is not specified in the connection prams. this object is what is used to establish the developer connection. 
+            </summary>
+            <param name="managementSvc"></param>
+        </member>
+        <member name="F:Microsoft.Crm.UnifiedServiceDesk.InteractionControl.CrmUtilControl.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.InteractionControl.CrmUtilControl.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.InteractionControl.CrmUtilControl.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.InteractionControl.CrmUtilControl.CrmReady">
+            <summary>
+            Flag indicating CRM is ready 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.InteractionControl.CrmUtilControl.CrmInterface">
+            <summary>
+             Pointer the the CRM WebServiceActions. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.InteractionControl.CrmUtilControl.IsListed">
+            <summary>
+             Do not list in the Session Explores. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.InteractionControl.CrmUtilControl.ConfigurationReader">
+            <summary>
+            Loads the Configuration Reader. 
+            </summary>
+        </member>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.InteractionControl.CrmUtilControl.WorkflowStatusSequencer">
+            <summary>
+            Container for WF Data to track
+            </summary>
+        </member>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.InteractionControl.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.InteractionControl.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.InteractionControl.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.InteractionControl.Properties.Resources.ACTIVITYTYPE_SET_CREATEACTIVITY_COMMAND">
+            <summary>
+              Looks up a localized string similar to The activity type must be set to use the createactivity command..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.InteractionControl.Properties.Resources.CCFCONTEXTKEY_SET_VALID_TO_DISPATCHQUEUE_COMMAND">
+            <summary>
+              Looks up a localized string similar to The contextkey must be set to a valid context key in UII to use the dispatchtoqueue command..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.InteractionControl.Properties.Resources.CONTEXT_KEY_NOT_FOUND">
+            <summary>
+              Looks up a localized string similar to The context key {0} was not found in the active context.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.InteractionControl.Properties.Resources.CONTEXTKEY_NOT_CONVERTED_GUID">
+            <summary>
+              Looks up a localized string similar to The context key {0} couldn&apos;t be converted to a GUID..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.InteractionControl.Properties.Resources.CONTEXTKEY_NOT_FOUND_ACTIVE_CONTEXT">
+            <summary>
+              Looks up a localized string similar to The context key {0} wasn&apos;t found in the active context..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.InteractionControl.Properties.Resources.CRMCONTEXTKEY_SET_VALID_REGARDING_ACTIVITY">
+            <summary>
+              Looks up a localized string similar to The contextkey must be set to a valid context key in UII to set the regarding of an activity..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.InteractionControl.Properties.Resources.CRMQUEUE_SET_TO_CRM_QUEUENAME_TO_DISPATCH_QUEUE">
+            <summary>
+              Looks up a localized string similar to The crmqueuename must be set to a CRM Queue name to use the dispatchtoqueue command..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.InteractionControl.Properties.Resources.CRMWORKFLOW_CONTEXTKEY_SETVALID_USE_RUNWORKFLOW_COMMAND">
+            <summary>
+              Looks up a localized string similar to The crmworkflowcontextkey must be set to a valid context key in UII to use the runworkflow command..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.InteractionControl.Properties.Resources.CRMWORKFLOWNAME_SET_CRM_WORKFLOWNAME_USE_WORKFLOW">
+            <summary>
+              Looks up a localized string similar to The crmworkflowname must be set to a CRM workflow name to use the runworkflow command..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.InteractionControl.Properties.Resources.DURATION">
+            <summary>
+              Looks up a localized string similar to Duration:.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.InteractionControl.Properties.Resources.END_TIME">
+            <summary>
+              Looks up a localized string similar to End Time:.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.InteractionControl.Properties.Resources.ONE">
+            <summary>
+              Looks up a localized string similar to {1}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.InteractionControl.Properties.Resources.REGARDING_ENTITY_MUST_SPECIFIED_CREATEACTIVITY_COMMAND">
+            <summary>
+              Looks up a localized string similar to The regarding entity type must be specified to use the createactivity command..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.InteractionControl.Properties.Resources.START_TIME">
+            <summary>
+              Looks up a localized string similar to Start Time:.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.InteractionControl.Properties.Resources.String1">
+            <summary>
+              Looks up a localized string similar to .
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.InteractionControl.Properties.Resources.SUBJECT_SPECIFIED_CREATEACTIVITY_COMMAND">
+            <summary>
+              Looks up a localized string similar to The subject must be specified to use the createactivity command..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.InteractionControl.Properties.Resources.THREE">
+            <summary>
+              Looks up a localized string similar to {3}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.InteractionControl.Properties.Resources.TWO">
+            <summary>
+              Looks up a localized string similar to {2}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.InteractionControl.Properties.Resources.WRAP_CODE">
+            <summary>
+              Looks up a localized string similar to WrapCode: {0}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.UnifiedServiceDesk.InteractionControl.Properties.Resources.ZERO">
+            <summary>
+              Looks up a localized string similar to {0}.
+            </summary>
+        </member>
+    </members>
+</doc>

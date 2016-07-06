@@ -1,0 +1,172 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Uii.Desktop.UI.Wpf</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Uii.Desktop.UI.Wpf.WpfDesktop">
+            <summary>
+            WPF Desktop Implementation
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.UI.Wpf.WpfDesktop.WpfRootDesktopForm">
+            <summary>
+            This is a pointer to the WPF Root Agent desktop
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.UI.Wpf.WpfDesktop.WpfApplicationsUiArray">
+            <summary>
+            Hosted Applications Array.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Wpf.WpfDesktop.#ctor(System.String,System.Windows.Window)">
+            <summary>
+            Constructs a new instance of the WpfDesktop Class.  This class is the core class for all operations for an IAD.  
+            </summary>
+            <param name="productName">Name of the product. this is used for exceptions and logging</param>
+            <param name="desktop">the Wpf Window used to display the desktop</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Wpf.WpfDesktop.InitializeUISpecificFunctionality">
+            <summary>
+            Overridden Template method 
+            to initialize WPF UI specific functionality
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Wpf.WpfDesktop.WpfRootDesktopForm_Loaded(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Desktop Loader init
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Wpf.WpfDesktop.RefreshUI">
+            <summary>
+            Overridden Template Method to refrest UI according to UI technology used
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Wpf.WpfDesktop.AddPanelsToList">
+            <summary>
+            Overridden Template Method which encapsulates UI specific functionality of adding WPF
+            Panels to a List
+            </summary>
+            <returns>List of wpf panels</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Wpf.WpfDesktop.GetChildren``1(System.Windows.DependencyObject)">
+            <summary>
+            Gets the list of panels from dependency object
+            </summary>
+            <typeparam name="IPanel">panel</typeparam>
+            <param name="reference">refered dependency object</param>
+            <returns>list of panels</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Wpf.WpfDesktop.LoadUserDefinedGlobalApps(Microsoft.Uii.Desktop.Core.GlobalInterfaces,System.Collections.Generic.List{Microsoft.Uii.Csr.IHostedApplication})">
+            <summary>
+            Called during the Initialization of Global Applications process.  
+            This method is called after all “known” Global Applications have been loaded into the CoreInterfaces Dictionary.
+            A developer can use this method to add Custom Interfaces to the CoreInterfaces applications list.
+            </summary>
+            <param name="coreInterfaces">List of Core Global Interfaces</param>
+            <param name="globalAppsList">List of all Global IHostedApplications</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Wpf.WpfDesktop.FocusedApplicationUpdated(Microsoft.Uii.Csr.IHostedApplication)">
+            <summary>
+            Called After has processed a SetFocus Event for a given application. 
+            </summary>
+            <param name="hostedApplication">IHostedApplication that is Active.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Wpf.WpfDesktop.DynamicApplicationCreated(System.String,Microsoft.Uii.Csr.IHostedApplication)">
+            <summary>
+            Called after a dynamic application load has been processed by Desktop, after the app has been created
+            </summary>
+            <param name="appName">Name of the Dynamic Application</param>
+            <param name="hostedApp">IHosted Application pointer to the Dynamic App</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Wpf.WpfDesktop.DynamicApplicationClosed(Microsoft.Uii.Csr.IHostedApplication)">
+            <summary>
+            Called after a dynamic Application event has been processed by Desktop, After the Final Close of the Application 
+            </summary>
+            <param name="hostedApplication">IHostedApplication that is being closed.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Wpf.WpfDesktop.AfterInitializeOfCoreInterfaces(Microsoft.Uii.Desktop.Core.GlobalInterfaces)">
+            <summary>
+            Called After Initialization of Core Interfaces is complete.
+            Use this menthod to do any futher initialization to the desktop that you choose
+            </summary>
+            <param name="interfaces">Array of Core Interfaces</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Wpf.WpfDesktop.AfterSessionShowEvent(Microsoft.Uii.Csr.Session)">
+            <summary>
+            Called After the Session Show Event completes
+            Use this to Update any custom data or UI component you choose.
+            </summary>
+            <param name="session"></param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Wpf.WpfDesktop.AfterAddSession(System.Boolean)">
+            <summary>
+             Called after a Session as been added or to the environment or updated via the AddSession process.
+             An update can occur if there is CTI event that adds information to an existing session.
+             </summary>
+             <param name="isGlobalSession">Flag indicating if the session is the global session</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Wpf.WpfDesktop.AfterSessionHideEvent(Microsoft.Uii.Csr.Session)">
+            <summary>
+            Called after the SessionHide Event is processed by Desktop
+            </summary>
+            <param name="session">Session that is being hidden</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Wpf.WpfDesktop.AfterWorkflowStartedEvent(Microsoft.Uii.Desktop.Core.WorkflowEventArgs)">
+            <summary>
+            Called After the Workflow Started Event is raised and processed by Desktop
+            </summary>
+            <param name="e">Workflow Arg elements.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Wpf.WpfDesktop.OnAddHostedApplicationToSession(Microsoft.Uii.Csr.IHostedApplication,Microsoft.Uii.Csr.Session,System.String)">
+            <summary>
+            Called during the Add Applications to a Session Loop
+            Will be called for each Application That is being added. 
+            </summary>
+            <param name="app">Hosted Application that is being added to the session</param>
+            <param name="session">Session Object that is being acted on</param>
+            <param name="sessionName">Name of the Session being acted on</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Wpf.WpfDesktop.AfterSessionCloseEvent(Microsoft.Uii.Csr.Session)">
+            <summary>
+            Called after the Session Close event is processed by Desktop
+            if you need to abort a session close, Override the Before Session Close Event.
+            </summary>
+            <param name="session">Session that was closed</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Wpf.WpfDesktop.AfterWorkflowStatusChange(Microsoft.Uii.Desktop.Core.WorkflowEventArgs)">
+            <summary>
+            Called After Desktop Completes proccessing on a Workflow Status Change Event
+            </summary>
+            <param name="e">WorkFlowArguements</param>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Wpf.WpfDesktop.AppsUI">
+            <summary>
+            Contains an array of all applications and panels currently available to the User Interface.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.UI.Wpf.Properties.Constants">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Wpf.Properties.Constants.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Wpf.Properties.Constants.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Wpf.Properties.Constants.DESKTOP_HIDDEN_PANEL_NAME">
+            <summary>
+              Looks up a localized string similar to hiddenpanel.
+            </summary>
+        </member>
+    </members>
+</doc>

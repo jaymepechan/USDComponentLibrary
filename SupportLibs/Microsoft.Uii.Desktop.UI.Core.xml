@@ -1,0 +1,1439 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Uii.Desktop.UI.Core</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Uii.Desktop.UI.Core.DesktopBase">
+            <summary>
+            DesktopBase Class is the anchor class for all Core functions. 
+            This class is responsible for the “plumbing” of a desktop.  This includes adding and removing sessions, managing notifications, the current view of applications, default operational behaviors for Workflow management in relationship to current application views, access to Service utility functions and methods and Loading and Login of an Agent Desktop.
+            This class provides override hooks to allow the end developer to intercept, take action, modify Core Desktop behavior.
+            
+            This class is not intended to be directly invoked. 
+            It is intended as a base class to be overridden by a custom desktop Implementation
+            The methods are intended to be overridden by a inheriting class and are call by the core system itself. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.UI.Core.DesktopBase.ICURRENTSESSIONVIEWER_LOADALLSESSIONS">
+            <summary>
+            this is the ACTION that is raised to the ICurrentSessionViewer Controls to order a Reload of all Sessions
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.UI.Core.DesktopBase.ICURRENTSESSIONVIEWER_FOCUSEAPPUPDATE">
+            <summary>
+            this is the ACTION that is raised to the ICurrentSessionViewer Controls to order Notify of an applcaition focus change.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.UI.Core.DesktopBase.globalInterfaces">
+            <summary>
+            this is a container for a list of Hosted Applications
+            Core Interfaces is a contianer to allow for access to specific interfaces rapid fasion, 
+            in order to avoid defining variables for each global hosted app.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.UI.Core.DesktopBase.ConfigReader">
+            <summary>
+            Configuration Value Reader.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.UI.Core.DesktopBase.ProductName">
+            <summary>
+            This contains the name of the product that this class is wired to. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.UI.Core.DesktopBase.StartingNewSession">
+            <summary>
+            Flag indicating that a session is starting up. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.UI.Core.DesktopBase.LastSavedSessionStorage">
+            <summary>
+            Container for the Last Saved Session in a serilized state. 
+            This is used as a check against the current session to prevent unnessessary Network traffic events.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.UI.Core.DesktopBase.DontBotherCertainOperations">
+            <summary>
+            Flag indicating that we need to skip house keeping for some setup actions
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.UI.Core.DesktopBase.nonHostedApps">
+            <summary>
+            List of Non Hosted Applications and their start up criteria 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.UI.Core.DesktopBase.ProcessIsolatedAppUiEvent">
+            <summary>
+            A ManualResetEvent to wait till AgentDesktop completes its processing before any UI operation
+            is done on the isolated application in order to synchronize the UI processing of
+            Agent Desktop window and isolated application's hosting form window.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.UI.Core.DesktopBase.CtiCallStateManager">
+            <summary>
+            Pointer to the Cti Call State Manager.  for Use as part of Session creation. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.UI.Core.DesktopBase.ctiAgentStateManager">
+            <summary>
+            Pointer to the Cti Agent State Manager.  for Use as part of Session creation. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.#ctor(System.String)">
+            <summary>
+            Constructs a new instance of the Desktop Class.  This class is the core class for all operations for an IAD.  
+            </summary>
+            <param name="productName">Name of the product. this is used for exceptions and logging</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.InitializeDesktop(Microsoft.Uii.Csr.Sessions)">
+            <summary>
+            This method begins the initializing process for the core system.  This is a threaded process that begins a series of events involved with loading the Agent Desktop Core system. See Remarks for details.
+            </summary>
+            <param name="sessionManager">Initialized Session Manager</param>
+            <remarks>
+            This method executes asynchronously.  Once initiated it connects to the parent desktops “Form_Loaded” event.  When that event is raised by the Desktop loading process the main loading process for the Desktop begins. 
+            To get the stats of this process,  Connect Event handlers to LoaderStatusUpdated, LoaderAppLoadingStatusUpdated and LoaderComplete.
+            </remarks>
+            <seealso cref="E:Microsoft.Uii.Desktop.UI.Core.DesktopBase.LoaderStatusUpdated"/>
+            <seealso cref="E:Microsoft.Uii.Desktop.UI.Core.DesktopBase.LoaderAppLoadingStatusUpdated"/>
+            <seealso cref="E:Microsoft.Uii.Desktop.UI.Core.DesktopBase.LoaderComplete"/>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.InitializeUISpecificFunctionality">
+            <summary>
+            Template methoc which must be implemented by derived classes
+            to initialize UI specific functionality
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.StartDesktopLoad">
+            <summary>
+            This method is called by the Form_loaded event on the main thread
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.CloseDesktop">
+            <summary>
+            This method is called by Form_Closing event on the main thread
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.GetApplicationAdapterFromIHostedApplication(Microsoft.Uii.Csr.IHostedApplication)">
+            <summary>
+            This method determines the hosted application  adapter for any given control or adapter in 
+            </summary>
+            <param name="app">IHostedApplication or other pointer type.</param>
+            <returns>Original object or Adapter Interface</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.AddPanel(Microsoft.Uii.Desktop.UI.Controls.IPanel)">
+            <summary>
+            Add a Panel to the platform.
+            This method will allow you to explicitly add a panel to the system.
+            </summary>
+            <param name="panel">Panel object to add</param>
+            <returns>True if Successfully added, False if not </returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.RemovePanel(Microsoft.Uii.Desktop.UI.Controls.IPanel)">
+            <summary>
+            Explicitly Removes a panel from the Desktop system.
+            </summary>
+            <param name="panel">Panel to remove</param>
+            <returns>True if Successful, False if not</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.AppExistsInUI(System.String)">
+            <summary>
+            Determines if an application is currently hosted in the UI by name
+            </summary>
+            <param name="applicationName">Name of the hosted application to search for</param>
+            <returns>true if found, false if not</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.GetApplicationByName(System.String)">
+            <summary>
+            Find and Return an IHostedApplication interface by HostedControlName
+            </summary>
+            <param name="hostedControlName">Name of the Hosted Control to Look for</param>
+            <returns>IHostedApplication or Null if not found.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.SetFocusOnApplication(System.String)">
+            <summary>
+            Sets focus to the specified application, by name, in the current UI
+            </summary>
+            <param name="applicationName">Name of the HostedControl</param>
+            <returns>True if it found and set, False if not</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.SetFocusOnApplication(System.Guid)">
+            <summary>
+            Sets focus to the specified application, by appId, in the current UI
+            </summary>
+            <param name="hostedApplicationId">id of the application to which focus need to be given </param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.GetCurrentWorkflowState">
+            <summary>
+            Returns the current workflow state, if any.
+            if no workflow is running, returns null.
+            </summary>
+            <remarks>
+            If more than one IWorkFlow HostedControl is Registered, this will return only the last control in the list
+            </remarks>
+            <returns>Running Workflow State or Null</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.GetMaxSessionsPermited">
+            <summary>
+            Returns the Max Number of Sessions that are permited in this configuration
+            This will check the local value of maxNumberOfSessions First, if it does not find that it will attempt to find it on the  Server in Options.
+            
+            Default return is 10.
+            </summary>
+            <returns>Number of Concurrent Sessions permited for a given desktop</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.SetEnableSettingForCorePanels(System.Boolean)">
+            <summary>
+            Limit user Interaction while Desktop is working
+            </summary>
+            <param name="enable">Enable or Disable Interation</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.RefreshUI">
+            <summary>
+            Template Method to refrest UI according to UI technology used
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.AddApplicationToUI(Microsoft.Uii.Csr.IHostedApplication)">
+            <summary>
+            Add a New Hosted Application to the UI
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.FocusIsolatedApplication(Microsoft.Uii.Csr.IHostedAppUICommand)">
+            <summary>
+            Calls the SetFocus() of the isolated hosted application proxy on a different
+            thread so that the UI operations across process boundaries can be synchronized.
+            </summary>
+            <param name="app">The AppUICommand of the app to be brought to focus</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.CallSetFocus(System.Object)">
+            <summary>
+            Calls the SetFocus() of the isolated hosted application after 
+            Agent Desktop is done with its processing and the UI control can be passed to
+            the hosted application.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.LoadUserDefinedGlobalApps(Microsoft.Uii.Desktop.Core.GlobalInterfaces,System.Collections.Generic.List{Microsoft.Uii.Csr.IHostedApplication})">
+            <summary>
+            Called during the Initialization of Global Applications process.  
+            This method is called after all “known” Global Applications have been loaded into the CoreInterfaces Dictionary.
+            A developer can use this method to add Custom Interfaces to the CoreInterfaces applications list.
+            </summary>
+            <param name="coreInterfaces">List of Core Global Interfaces</param>
+            <param name="globalAppsList">List of all Global IHostedApplications</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.FocusedApplicationUpdated(Microsoft.Uii.Csr.IHostedApplication)">
+            <summary>
+            Called After Desktop has processed a SetFocus Event for a given application. 
+            </summary>
+            <param name="hostedApplication">IHostedApplication that is Active.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.DynamicApplicationCreated(System.String,Microsoft.Uii.Csr.IHostedApplication)">
+            <summary>
+            Called after a dynamic application load has been processed by Desktop, after the app has been created
+            </summary>
+            <param name="appName">Name of the Dynamic Application</param>
+            <param name="hostedApp">IHosted Application pointer to the Dynamic App</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.DynamicApplicationClosed(Microsoft.Uii.Csr.IHostedApplication)">
+            <summary>
+            Called after a dynamic Application event has been processed by Desktop, After the Final Close of the Application 
+            </summary>
+            <param name="hostedApplication">IHostedApplication that is being closed.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.AfterInitializeOfCoreInterfaces(Microsoft.Uii.Desktop.Core.GlobalInterfaces)">
+            <summary>
+            Called After Initialization of Core Interfaces is complete.
+            Use this method to do any further initialization to the desktop that you choose
+            </summary>
+            <param name="interfaces">Array of Core Interfaces</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.AfterSessionShowEvent(Microsoft.Uii.Csr.Session)">
+            <summary>
+            Called After the Session Show Event completes
+            Use this to Update any custom data or UI component you choose.
+            </summary>
+            <param name="session">Active Agent Desktop session</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.AfterAddSession(System.Boolean)">
+            <summary>
+            Called after a Session as been added or to the environment or updated via the AddSession process.
+            An update can occur if there is CTI event that adds information to an existing session.
+            </summary>
+            <param name="isGlobalSession">Flag indicating if the session is the global session</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.AfterSessionHideEvent(Microsoft.Uii.Csr.Session)">
+            <summary>
+            Called after the SessionHide Event is processed by Desktop
+            </summary>
+            <param name="session">Session that is being hidden</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.AfterSessionCloseEvent(Microsoft.Uii.Csr.Session)">
+            <summary>
+            Called after the Session Close event is processed by desktop
+            if you need to abort a session close, Override the Before Session Close Event.
+            </summary>
+            <param name="session">Session that was closed</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.BeforeSessionCloseEvent(Microsoft.Uii.Csr.Session)">
+            <summary>
+            Called before the SessionClose Event is processed by Desktop
+            </summary>
+            <param name="session">Session that is being closed</param>
+            <returns>Return true to allow the session to close, false to abort the session close.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.BeforeDesktopClose(Microsoft.Uii.Desktop.UI.Core.DesktopCloseReason)">
+            <summary>
+            Called before the desktop close procedures begin.
+            return true to allow the desktop to close
+            </summary>
+            <param name="formClosingReason">Where the close request came from</param>
+            <returns>true allows the desktop to close, false does not</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.AfterWorkflowStatusChange(Microsoft.Uii.Desktop.Core.WorkflowEventArgs)">
+            <summary>
+            Called After Desktop Completes proccessing on a Workflow Status Change Event
+            </summary>
+            <param name="e">WorkFlowArguements</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.AfterWorkflowStartedEvent(Microsoft.Uii.Desktop.Core.WorkflowEventArgs)">
+            <summary>
+            Called After the Workflow Started Event is raised and processed by Desktop
+            </summary>
+            <param name="e">Workflow Arg elements.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.BeforeApplicationCreate(System.String,System.String)">
+            <summary>
+            Called before an Application is created to allow for the Init XML to be updated by the end devloper
+            </summary>
+            <param name="initializationXml">initilization XML</param>
+            <param name="applicationName">Name of the Application Acted on</param>
+            <returns>Update Init XML</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.OnAddHostedApplicationToSession(Microsoft.Uii.Csr.IHostedApplication,Microsoft.Uii.Csr.Session,System.String)">
+            <summary>
+            Called during the Add Applications to a Session Loop
+            Will be called for each Application That is being added. 
+            </summary>
+            <param name="app">Hosted Application that is being added to the session</param>
+            <param name="session">Session Object that is being acted on</param>
+            <param name="sessionName">Name of the Session being acted on</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.UserDefinedCommand(System.String,System.String)">
+            <summary>
+            User Overridable method, accessed by accepting a pointer to the desktop in your control, cast as IDesktopUserActions
+            </summary>
+            <param name="command">User defined Command name</param>
+            <param name="request">User defined Command data</param>
+            <returns>User defined value</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.FreeSessionExplorerAndWorkflow">
+            <summary>
+            For when closing down desktop.  This speeds it up by reducing the
+            number of events being fired since we won't need them.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.UpdateDynamicApplicationMenu(System.Boolean)">
+            <summary>
+            This is notifications point for apps that load Menue items.
+            </summary>
+            <param name="global">True if want only global dynamic applications or false for
+            all applications</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.SyncronizeISessionXWithActiveApplication(Microsoft.Uii.Csr.IHostedApplication)">
+            <summary>
+            Syncs and Updates the 
+            </summary>
+            <param name="iHostedApplication">Hosted Application that is now Current</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.LoadGlobalApps">
+            <summary>
+            Event raised by the Loader to indicate that loading is complete. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.AddInterfaceToGlobalInterfaces(Microsoft.Uii.Csr.IHostedApplication)">
+            <summary>
+            This takes a IHostedApplcation ( Hosted Control ) and breaks down the types that in that hosted control. 
+            </summary>
+            <param name="app">HostedApplcation To Look at. </param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.RemoveApplicationFromGlobalInterfaces(Microsoft.Uii.Csr.IHostedApplication)">
+            <summary>
+            Removes the application from global interfaces.
+            </summary>
+            <param name="app">HostedApplcation to be removed.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.InitializeCTISubSystem">
+            <summary>
+            Initalize and configure CTI
+            note, only one CTI adapter is supported per instance of the Desktop in this Implementation. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.IntilizeSessionControls(Microsoft.Uii.Csr.Session)">
+            <summary>
+            Initialization of CTI enable Consumers
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.UpdateSessionDataWithCTIInfo(Microsoft.Uii.Desktop.SessionManager.AgentDesktopSession,System.Guid)">
+            <summary>
+            Updates the Session with Relevant CTI Information
+            Called from AddSession
+            </summary>
+            <param name="session">Session to be updated</param>
+            <param name="callID">Call Id used to do the update</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.Desktop_NotifyLoadComplete">
+            <summary>
+             Handels any post loading processes.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.HostedControl_NotifyDesktopLoadingComplete(System.Object)">
+            <summary>
+            Fires a Method at each hosted control marked with IDesktopUserActionsConsumer to notify the control that desktop Loading is complete.
+            </summary>
+            <param name="oParam">IHostedApplication base object.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.InitializeCoreInterfaces">
+            <summary>
+            Does intial setup of the Session Exporer and Workflow Enabled hosted controls. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.ApplySavedState(System.String)">
+            <summary>
+            Workflow Driven Implementation:
+            Applies the saved state to the applications in process of session restoration.
+            </summary>
+            <param name="stateXml"></param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.AddWorkflowAppsToUI">
+            <summary>
+            Add currently running tagged global and non-global workflow apps back to the UI
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.RequiresApplicationHostUpdate(Microsoft.Uii.Desktop.Core.WorkflowData)">
+            <summary>
+            Workflow Driven Implementation:
+            Checks if the application host should be updated.
+            </summary>
+            <param name="workflow">Workflow object scanned for Hosted Application IDs to add.</param>
+            <returns>True if Apllications are loaded and ready.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.RemoveWorkflowAppsFromUI">
+            <summary>
+            Remove all the tagged global and tagged non-global applications from the UI
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.SaveSessions">
+            <summary>
+            Function to save the state of sessions for an agent
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.GetSessions">
+            <summary>
+            Reloads a Session
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.RefreshSession(Microsoft.Uii.Csr.Session)">
+            <summary>
+            Refreshes all the UI elements with the current session information.
+            Not to be used except when a lot has changed, such as reloading
+            a number of saved sessions or a session transfer.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.OpenSession(Microsoft.Uii.Desktop.Core.CustomerEntity,System.Guid)">
+            <summary>
+            Creates a Sessions in Desktop.
+            It will Create or open an existing session with customer data. 
+            </summary>
+            <param name="callID">Call ID of the CTI event that is requesting Session Creation, Can be NULL</param>
+            <param name="customer">Customer Data to Create this session with, Can Be NULL for Global Session ONLY</param>
+            <returns>Agent desktop Session</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.CloseSession">
+            <summary>
+            Closes the current active sesion.
+            </summary>
+            <returns>True if session closed</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.CloseSession(Microsoft.Uii.Csr.Session)">
+            <summary>
+            Closes either the currently active session of the session you specifiy
+            </summary>
+            <param name="sessionToClose">Session to close or Null</param>
+            <returns>True if session closed</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.LoadCursor(System.Runtime.InteropServices.HandleRef,System.Int32)">
+            <summary>
+            Win32 Api function to Load a cursor , used to load the busy cursor
+            </summary>
+            <param name="inst"></param>
+            <param name="iconId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.GetCursor">
+            <summary>
+            Win32 API function to Get the current cursor
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.SetCursor(System.Runtime.InteropServices.HandleRef)">
+            <summary>
+            Win32 Api Function to Set the cursor to a given cursor
+            </summary>
+            <param name="inst"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.AddSession(Microsoft.Uii.Desktop.Core.CustomerEntity,System.Guid)">
+            <summary>
+            Root Functions for Creating Sessions in Desktop, 
+            will Create or Link and existing session with customer data. 
+            </summary>
+            <param name="callID">Call ID of the CTI event that is requesting Session Creation, Can be NULL</param>
+            <param name="customer">Customer Data to Create this session with, Can Be NULL for Global Session ONLY</param>
+            <returns>Agent desktop Session</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.HideOrShowCTIControls(Microsoft.Uii.Desktop.SessionManager.AgentDesktopSession)">
+            <summary>
+            This will hide or show a chat or email control based on the state of the CTI enviroment.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.ProcessCTIRefIDOnAddSession(System.Guid,Microsoft.Uii.Desktop.SessionManager.AgentDesktopSession)">
+            <summary>
+            Populates the Session CallReferance and CalLType ID's
+            </summary>
+            <param name="callID">Call Referances ID</param>
+            <param name="session">Session to Act on</param>
+            <returns>Call Referance ID</returns>
+            <remarks> This is for New Session Setup of CTI info</remarks>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.GetContextManagerForCustomer(Microsoft.Uii.Desktop.Core.CustomerEntity)">
+            <summary>
+            Returns the IContextManager for a given Customer Object. 
+            </summary>
+            <param name="customer"></param>
+            <returns>IContext Manager or Null.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.GetTransferredSessionInfo">
+            <summary>
+            Gets (if any) information for a transferred session.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.CreateDynamicApplication(System.String)">
+            <summary>
+            Starts a Dynamic App.
+            </summary>
+            <param name="applicationName">Dynamic Application Name</param>
+            <returns>True if the application was created, false if it was already in the UI.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.CloseDynamicApplication(System.String)">
+            <summary>
+            Close the a dynamic application. 
+            </summary>
+            <param name="applicationName">Name of the application to Close</param>
+            <returns>true if successfull</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.SetContext(Microsoft.Uii.Desktop.Core.CustomerEntity,Microsoft.Uii.Desktop.Core.IContextManager)">
+            <summary>
+            Create the context for the hosted applications to use.
+            </summary>
+            <returns>returns the context GUID or an empty guid</returns>
+            <remarks>Post 1.02 patch - returns a guid since that's useful for
+            many of the engagement desktops.</remarks>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.Loader_LoaderComplete(System.Object,Microsoft.Uii.Desktop.UI.Core.DesktopInitAndLogOnEventArgs)">
+            <summary>
+            Raised by the Loader when the Complete Process is fired.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.Loader_LoaderStatusUpdated(System.Object,Microsoft.Uii.Desktop.UI.Core.DesktopLoaderStatusUpdateEventArgs)">
+            <summary>
+            Raised by the Loader when a status update event occures. 
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.AppsUI_SelectedAppChanged(System.Object,System.EventArgs)">
+            <summary>
+            Currently Selected App Changed. 
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.AppsUI_CloseApplicationClick(Microsoft.Uii.Csr.IHostedApplication)">
+            <summary>
+            Dynamic Applciation's Close event was raised.
+            </summary>
+            <param name="app">Hosted Application</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.AppHost_SessionChanged(System.Object,Microsoft.Uii.Csr.SessionControllerEventArgs)">
+            <summary>
+            Raised when a Session is changed
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.AppHost_SessionOpened(System.Object,Microsoft.Uii.Csr.SessionOpenControllerEventArgs)">
+            <summary>
+            Raised when a Session is Opened. 
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.AppHost_SessionClosed(System.Object,Microsoft.Uii.Csr.SessionControllerEventArgs)">
+            <summary>
+            Raised when a Session is closed. 
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.AppHost_RequestActionStatus(Microsoft.Uii.Csr.IHostedApplication,Microsoft.Uii.Csr.RequestActionEventArgs)">
+            <summary>
+            Handler for action errors in case they come from another thread
+            </summary>
+            <param name="app">Hosted Application</param>
+            <param name="args">Requested Action event args</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.AppHost_RequestApplicationCreation(Microsoft.Uii.Csr.IHostedApplication)">
+            <summary>
+            This starts a single hosted application.
+            Callable either directly or from a Session/AppHost event.
+            </summary>
+            <param name="app"></param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.AppHost_RequestApplicationClose(Microsoft.Uii.Csr.IHostedApplication)">
+            <summary>
+            This stops a single hosted application.
+            Callable either directly or from a AppHost event.
+            </summary>
+            <param name="app">Hosted Application</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.AppHost_RequestFocus(Microsoft.Uii.Csr.IHostedApplication)">
+            <summary>
+            Handle a request Focus Command. 
+            </summary>
+            <param name="app">Hosted Application</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.AppHost_CurrentContextChange(Microsoft.Uii.Csr.Context)">
+            <summary>
+            Processes a Context Update at the desktop level from a Componet event. 
+            simmilar to NotifyContextChange.
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.HandleContextChange(Microsoft.Uii.Csr.Context)">
+            <summary>
+            Handles the context change.
+            </summary>
+            <param name="context">The context.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.SessionManager_SessionShowEvent(Microsoft.Uii.Csr.Session)">
+            <summary>
+            Raised when the Session Show Event 
+            </summary>
+            <param name="session">Session that is being Shown</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.SessionManager_SessionHideEvent(Microsoft.Uii.Csr.Session)">
+            <summary>
+            Raised when a Session is Hidden
+            </summary>
+            <param name="session">Session that is being Hidden</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.SessionManager_SessionCloseEvent(Microsoft.Uii.Csr.Session)">
+            <summary>
+            Raised when a session is closed...
+            </summary>
+            <param name="session"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.iWorkFlowCtrl_WorkflowStatusChange(System.Object,Microsoft.Uii.Desktop.Core.WorkflowEventArgs)">
+            <summary>
+            Raised by the IWorkflow Controls when a Status change event is raised. 
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.iWorkFlowCtrl_WorkflowStarted(System.Object,Microsoft.Uii.Desktop.Core.WorkflowEventArgs)">
+            <summary>
+            Raised from the IWorkflow Controls when a work flow is started. 
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.iWorkFlowMgr_FocusHostedApp(System.Object,Microsoft.Uii.Desktop.Core.WorkflowEventArgs)">
+            <summary>
+            Focuse App Raised from the Workflow Manager
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.IsDynamicApplication(System.String)">
+            <summary>
+            Check if the application is a dynamic application by checking
+            the initialization string.
+            </summary>
+            <param name="applicationInitstring">The application initstring.</param>
+            <returns>
+            True if application is dynamic, false otherwise
+            </returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.iSessExplorer_SessionClosed(System.Object,System.EventArgs)">
+            <summary>
+            Session Closed raised from the a ISessionExplorer Control
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.Search_CustomerSearchResult(System.Object,Microsoft.Uii.Desktop.Core.SearchResultEventArgs)">
+            <summary>
+            Event Raised by the Search System to Add a New Session to the UI.
+            </summary>
+            <param name="sender"></param>
+            <param name="e">Search Interface Arguments, Customer and BoolFlag</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.StartHostedApplications">
+            <summary>
+            This creates the tabbed window interface and calls the application hosting
+            layer to start and place the applications the agent will use.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopBase.AddPanelsToList">
+            <summary>
+            Template Method which encapsulates UI specific functionality of adding 
+            Panels to a List
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.DesktopBase.SessionManager">
+            <summary>
+            Session Manager object
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.DesktopBase.NonHostedApps">
+            <summary>
+            List of Non Hosted Applications and their start up criteria 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.DesktopBase.GlobalInterfaces">
+            <summary>
+            this is a container for a list of Hosted Applications
+            Core Interfaces is a contianer to allow for access to specific interfaces rapid fasion, 
+            in order to avoid defining variables for each global hosted app.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.DesktopBase.CtiAgentStateManager">
+            <summary>
+            Pointer to the Cti Agent State Manager.  for Use as part of Session creation. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.DesktopBase.AgentId">
+            <summary>
+            User ID of the current Agent
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.DesktopBase.MaxNumberOfSessionsPermitted">
+            <summary>
+            Returns the Max Number of Sessions that are permitted in this configuration
+            This will check the local value of maxNumberOfSessions First, if it does not find that it will attempt to find it on the Server in Options.
+            
+            Default return is 10.
+            </summary>
+            <remarks>
+            This method looks in the local application configuration in the appsettings node for the key maxNumberOfSessions. If it is found, the number present is returned to the calling method, if not the method makes a call to the Configuration server to retrieved maxNumberOfSessions. On the configuration server this value is stored in the Options Node and is called maxNumberOfSessions.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.DesktopBase.AppHost">
+            <summary>
+            Application Host Container of the Active Session.
+            The Application Host Container Contains references to all current “inscope” hosted applications. It also provides several methods for accessing information about the applications and adding and removing them. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.DesktopBase.EnableSaveSession">
+            <summary>
+            Flag that indicates that Session Save Operations are permitted or not permitted. 
+            This is set based on Server Configuration.
+            This flag is used to determine if a session should be saved to the Server for backup or transfer.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.DesktopBase.ConfigurationReader">
+            <summary>
+            Configuration Reader.  This Reader provides access to the configuration system to pull data stored in either the local app.config or the Server’s Configuration database. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.DesktopBase.AppsUI">
+            <summary>
+            Contains an array of all applications and panels currently available to the User Interface.
+            </summary>
+        </member>
+        <member name="E:Microsoft.Uii.Desktop.UI.Core.DesktopBase.LoaderComplete">
+            <summary>
+            Raised by the Loading process when the loading process completes
+            </summary>
+        </member>
+        <member name="E:Microsoft.Uii.Desktop.UI.Core.DesktopBase.LoaderStatusUpdated">
+            <summary>
+            Raised by the Loading process when a general status event or message is raised to the client system
+            </summary>
+        </member>
+        <member name="E:Microsoft.Uii.Desktop.UI.Core.DesktopBase.LoaderAppLoadingStatusUpdated">
+            <summary>
+            Raised by the Add Application to UI Process.  This event is raised to notify the client system that an application is being loaded.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.UI.Core.DesktopCloseReason">
+            <summary>
+            Specifies the reason that a form was closed.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.UI.Core.DesktopCloseReason.None">
+            <summary>
+               The cause of the closure was not defined or could not be determined.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.UI.Core.DesktopCloseReason.WindowsShutdown">
+            <summary>
+            The operating system is closing all applications before shutting down.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.UI.Core.DesktopCloseReason.MdiFormClosing">
+            <summary>
+               The parent form of this multiple document interface (MDI) form is closing.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.UI.Core.DesktopCloseReason.UserClosing">
+            <summary>
+               The user is closing the form through the user interface (UI), for example
+                by clicking the Close button on the form window, selecting Close from the
+                window's control menu, or pressing ALT+F4.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.UI.Core.DesktopCloseReason.TaskManagerClosing">
+            <summary>
+            The Microsoft Windows Task Manager is closing the application.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.UI.Core.DesktopCloseReason.FormOwnerClosing">
+            <summary>
+            The owner form is closing.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.UI.Core.DesktopCloseReason.ApplicationExitCall">
+            <summary>
+            The System.Windows.Forms.Application.Exit() method of the System.Windows.Forms.Application
+                class was invoked.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.UI.Core.DesktopLoader">
+            <summary>
+            IAD Loader Class.
+            This class handels the loading opertations for Desktop
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.UI.Core.DesktopLoader.ConfigReader">
+            <summary>
+            Configuration Value Reader.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.UI.Core.DesktopLoader.desktopBase">
+            <summary>
+            Pointer to the Desktop base class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopLoader.#ctor(Microsoft.Uii.Common.ConfigurationValueReader,Microsoft.Uii.Desktop.UI.Core.DesktopBase)">
+            <summary>
+            Loads all infrastructure to setup and configure.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopLoader.LoadDesktop">
+            <summary>
+            this method should be called by the desktop Load event 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopLoader.DoLoginStep(Microsoft.Uii.Desktop.UI.Core.DesktopLoader.LoginSteps)">
+            <summary>
+            Root Director for the Login procedure 
+            </summary>
+            <param name="loginSteps">Step to Execute</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopLoader.RaiseCompletedEvent(System.Boolean)">
+            <summary>
+            Raised when the desktop completes loading. 
+            </summary>
+            <param name="isComplete"></param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopLoader.GetOptions">
+            <summary>
+            Reads the options from a web service.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopLoader.SetAuditFlag(System.String)">
+            <summary>
+            This method sets the audit flag based on the settings in the Config server or Local Config
+            </summary>
+            <param name="auditFlagName">Flag to Set</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopLoader.Login">
+            <summary>
+            Logs the agent into the system.
+            </summary>
+            <returns>true for success, false for failure</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopLoader.GetNonHostedApps">
+            <summary>
+            Get Non Hosted Applications list from the database configured.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopLoader.LoadNonHostedApplications(Microsoft.Uii.AifServices.IApplicationService)">
+            <summary>
+            Handles the Result from "Get Nonhosted Applications."
+            </summary>
+            <param name="applicationService"></param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopLoader.RaiseStatusUpdateEvent(System.String)">
+            <summary>
+            Raises a Status updated Event to Desktop
+            Usally used to set some visual indicator that status is being updated. 
+            </summary>
+            <param name="updateText">Text to Send to the client</param>
+        </member>
+        <member name="E:Microsoft.Uii.Desktop.UI.Core.DesktopLoader.LoaderComplete">
+            <summary>
+            Raised when the initial loading and login sequences complete.
+            </summary>
+        </member>
+        <member name="E:Microsoft.Uii.Desktop.UI.Core.DesktopLoader.LoaderStatusUpdated">
+            <summary>
+            Raised when a Status update is made 
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.UI.Core.DesktopLoader.LoginSteps">
+            <summary>
+            This is used to control the async login process. 
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.UI.Core.Properties.Constants">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Constants.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Constants.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Constants.AGENT_DESKTOP_VERSION">
+            <summary>
+              Looks up a localized string similar to 4.0.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Constants.APP_COMMANDLINE">
+            <summary>
+              Looks up a localized string similar to CommandLine.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Constants.APP_DEFAULTAPP">
+            <summary>
+              Looks up a localized string similar to DefaultApp.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Constants.APP_NAME">
+            <summary>
+              Looks up a localized string similar to Name.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Constants.APP_SETTING_MAXNOOF_SESSIONS">
+            <summary>
+              Looks up a localized string similar to maxNumberOfSessions.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Constants.APPLICATION_ID">
+            <summary>
+              Looks up a localized string similar to id.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Constants.APPLICATION_NODE">
+            <summary>
+              Looks up a localized string similar to descendant::Application.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Constants.APPLICATION_STATE">
+            <summary>
+              Looks up a localized string similar to State.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Constants.CTI_CALLTYPE">
+            <summary>
+              Looks up a localized string similar to CALLTYPE.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Constants.CTI_CHAT">
+            <summary>
+              Looks up a localized string similar to CHAT.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Constants.CTI_EMAIL">
+            <summary>
+              Looks up a localized string similar to EMAIL.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Constants.DEFAULT_SESSION_COUNT">
+            <summary>
+              Looks up a localized string similar to 10.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Constants.DESKTOP_HIDDEN_PANEL_NAME">
+            <summary>
+              Looks up a localized string similar to hiddenpanel.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Constants.INITIALIZE_DESKTOP">
+            <summary>
+              Looks up a localized string similar to Init DESKTOP.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Constants.LOADING_AGENT_DATA">
+            <summary>
+              Looks up a localized string similar to Loading Agent Data.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Constants.NON_HOSTED_APP_CONTRACT">
+            <summary>
+              Looks up a localized string similar to AgentDesktop_NonHostedApplications_NonHostedApplication.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Constants.OPTIONS_CONTRACT">
+            <summary>
+              Looks up a localized string similar to AgentDesktop_Options_Options.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Constants.REGISTER_CLIENT_CONTRACT">
+            <summary>
+              Looks up a localized string similar to Microsoft_Samples_HostedControlInterfaces_RegisterClient_RegisterClient.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Constants.ROW_NODE">
+            <summary>
+              Looks up a localized string similar to descendant::row.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Constants.UNKNOWN_APP_NAME">
+            <summary>
+              Looks up a localized string similar to Unknown.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.UI.Core.DesktopInitAndLogOnEventArgs">
+            <summary>
+            Container for login processor events.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopInitAndLogOnEventArgs.#ctor(System.Boolean)">
+            <summary>
+            Constructor for the InitAndLoginArgs Event Arguments. 
+            </summary>
+            <param name="isComplete">True if Login is complete.  false if not</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopInitAndLogOnEventArgs.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.DesktopInitAndLogOnEventArgs.Complete">
+            <summary>
+            Flag indicating the success or fail of the loading process.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.UI.Core.DesktopLoaderStatusUpdateEventArgs">
+            <summary>
+            Container for data from the LoaderStatusUpdate
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopLoaderStatusUpdateEventArgs.#ctor(System.String)">
+            <summary>
+            Constructor for the LoaderStatusUpdatedArgs Event args. Accepts the text of the message
+            </summary>
+            <param name="statusText"></param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.DesktopLoaderStatusUpdateEventArgs.#ctor">
+            <summary>
+            Default constructor 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.DesktopLoaderStatusUpdateEventArgs.StatusText">
+            <summary>
+            Text of the Message
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.UI.Core.Properties.Messages">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Messages.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Messages.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Messages.ADD_PANEL_DESKTOP">
+            <summary>
+              Looks up a localized string similar to A panel couldn&apos;t be added to the desktop..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Messages.CONFIGURATION_READER_ERROR">
+            <summary>
+              Looks up a localized string similar to The Configuration Reader isn&apos;t initialized..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Messages.DESKTOP_APP_RESTORE_ERROR">
+            <summary>
+              Looks up a localized string similar to DESKTOP_APP_RESTORE_ERROR: Unable to retrieve saved sessions..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Messages.DESKTOP_APP_SAVE_ERROR">
+            <summary>
+              Looks up a localized string similar to DESKTOP_APP_SAVE_ERROR: Unable to save the hosted application states..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Messages.DESKTOP_APPSTART_ERROR">
+            <summary>
+              Looks up a localized string similar to DESKTOP_APPCREATE_ERROR: Unable to start application:.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Messages.DESKTOP_ERR_COULDNOT_FIND_APPLICATION">
+            <summary>
+              Looks up a localized string similar to You don’t have access to this hosted application. Contact the system administrator..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Messages.DESKTOP_ERR_IN_LOAD">
+            <summary>
+              Looks up a localized string similar to DESKTOP_ERR_IN_LOAD: Error while loading Desktop..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Messages.DESKTOP_ERR_LOADING_APPLICATIONS">
+            <summary>
+              Looks up a localized string similar to DESKTOP_ERR_LOADING_APPLICATIONS: Error while loading applications. Desktop will now close..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Messages.DESKTOP_ERR_SETTING_CONTEXT_APP">
+            <summary>
+              Looks up a localized string similar to DESKTOP_ERR_SETTING_CONTEXT_APP: Failed to set the application context..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Messages.DESKTOP_ERR_UNABLE_CONNECT_SQL">
+            <summary>
+              Looks up a localized string similar to DESKTOP_ERR_UNABLE_CONNECT_SQL: Unable to connect to SQL database..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Messages.DESKTOP_IIS_ERROR">
+            <summary>
+              Looks up a localized string similar to DESKTOP_IIS_ERROR: Failed to connect to the web server.  Verify that you can connect to it..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Messages.DESKTOP_INIT_MISSINGSETTINGSOBJECT">
+            <summary>
+              Looks up a localized string similar to Settings must be set to the current application&apos;s settings object. Null isn&apos;t supported..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Messages.DESKTOP_MAXIMUM_SESSIONS_REACHED">
+            <summary>
+              Looks up a localized string similar to The maximum number of sessions has been reached..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Messages.DESKTOP_MESSAGE_BOX_CAPTION">
+            <summary>
+              Looks up a localized string similar to Customer Care - Agent Desktop.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Messages.DESKTOP_MODULE_NAME">
+            <summary>
+              Looks up a localized string similar to Agent Desktop.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Messages.DESKTOP_MSG_SQL_EXIST">
+            <summary>
+              Looks up a localized string similar to SQL Server can&apos;t be found..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Messages.DESKTOP_SHUTDOWN">
+            <summary>
+              Looks up a localized string similar to Error In Desktop Shutdown.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Messages.DESKTOP_TABAPP_ERROR">
+            <summary>
+              Looks up a localized string similar to DESKTOP_TABAPP_ERROR: Unable to get the application details from the selected tab..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Messages.DESKTOP_TABFOCUS_ERROR">
+            <summary>
+              Looks up a localized string similar to DESKTOP_TABFOCUS_ERROR: Failed to display the tab page of the selected application..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Messages.DESKTOP_UNABLE_TO_CLOSE_DYNAMIC_APP_DUE_TO_WORKFLOW">
+            <summary>
+              Looks up a localized string similar to This dynamic application can&apos;t be closed until the workflow is done or cancelled..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Messages.LOADER_APPCREATE_ERROR">
+            <summary>
+              Looks up a localized string similar to Unable to create global-hosted applications..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Messages.LOADER_CATALOG_GLOBAL_APPS">
+            <summary>
+              Looks up a localized string similar to Building Global App Catalog.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Messages.LOADER_COMPLETE">
+            <summary>
+              Looks up a localized string similar to READY.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Messages.LOADER_CTI_INIT">
+            <summary>
+              Looks up a localized string similar to Initializing Computer Telephony Subsystem.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Messages.LOADER_CTI_MISSING_DESKTOPMGR">
+            <summary>
+              Looks up a localized string similar to No CTI Desktop Manager found for CTI service.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Messages.LOADER_DATABASES_VERSION">
+            <summary>
+              Looks up a localized string similar to Databases Version:.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Messages.LOADER_DB_VERSION_MISMATCH_ERROR">
+            <summary>
+              Looks up a localized string similar to DESKTOP_DB_VERSION_MISMATCH_ERROR: The versions of Agent Desktop and the Databases are not same..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Messages.LOADER_DESKTOP_AGENT_DESKTOP_VERSION">
+            <summary>
+              Looks up a localized string similar to Agent Desktop Version:.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Messages.LOADER_DESKTOP_UNKNOWN_VERSION">
+            <summary>
+              Looks up a localized string similar to Unknown Version.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Messages.LOADER_DESKTOP_WEB_SERVICES_VERSION">
+            <summary>
+              Looks up a localized string similar to Web Services Version:.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Messages.LOADER_ERR_UNABLE_LOGIN">
+            <summary>
+              Looks up a localized string similar to DESKTOP_ERR_UNABLE_LOGIN: Unable to log on. Make sure your domain and user name are correctly configured in the system..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Messages.LOADER_ERR_UNABLE_TO_READ_OPTIONS">
+            <summary>
+              Looks up a localized string similar to DESKTOP_ERR_UNABLE_TO_READ_OPTIONS: Unable to read the options settings..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Messages.LOADER_GET_OPTIONS">
+            <summary>
+              Looks up a localized string similar to Setting initial configuration...
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Messages.LOADER_LOAD_NONHOSTEDAPP">
+            <summary>
+              Looks up a localized string similar to Loading non-hosted applications....
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Messages.LOADER_LOADNONHOSTEDAPP_ERROR">
+            <summary>
+              Looks up a localized string similar to Unable to load the non-hosted applications..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Messages.LOADER_LOGIN">
+            <summary>
+              Looks up a localized string similar to Logging in Agent ID….
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Messages.LOADER_PRIMARY_INIT_COMPLETE">
+            <summary>
+              Looks up a localized string similar to Initialization is complete..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Messages.LOADER_START_GLOBALSESSION">
+            <summary>
+              Looks up a localized string similar to Initializing the global session and starting global applications....
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Messages.LOADER_VALIDATE_DESKTOP">
+            <summary>
+              Looks up a localized string similar to Validating desktop versions….
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Messages.LOADER_VERSIONS_CANNOT_BE_RETRIVED">
+            <summary>
+              Looks up a localized string similar to The versions of the databases and the web services couldn&apos;t be retrieved..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Messages.LOADER_WS_VERSION_MISMATCH_ERROR">
+            <summary>
+              Looks up a localized string similar to The versions of Agent Desktop and the web services aren&apos;t the same..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Messages.NOT_ENABLE_LISTNER">
+            <summary>
+              Looks up a localized string similar to Cannot enable the Agent desktop Listener, See Inner Exception for Details.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Messages.REGISTER_CLIENT">
+            <summary>
+              Looks up a localized string similar to Exception in RegisterClient. Check inner exception for details..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Messages.REMOVE_PANEL_DESKTOP">
+            <summary>
+              Looks up a localized string similar to Unable to remove a panel from the desktop..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Messages.SESSION_EXPLORER_STR_WORKFLOW_PENDING_MSG1">
+            <summary>
+              Looks up a localized string similar to The workflow for this session is pending..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Messages.SESSION_EXPLORER_STR_WORKFLOW_PENDING_MSG2">
+            <summary>
+              Looks up a localized string similar to You have to complete the workflow steps before closing the session..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Messages.SESSION_TRANSFER">
+            <summary>
+              Looks up a localized string similar to Problem handling transferred session:.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Messages.UNABLE_TO_GET_AGENT_INFO">
+            <summary>
+              Looks up a localized string similar to Unable to get agent information..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Messages.UNREGISTER_CLIENT">
+            <summary>
+              Looks up a localized string similar to Exception in UnregisterClient. Check Inner Exception for details..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Messages.VERSION_DATA_NOT_FOUND">
+            <summary>
+              Looks up a localized string similar to No version data was found..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.Messages.WORKFLOW_STATE">
+            <summary>
+              Looks up a localized string similar to Exception in determining the workflow state: {0}.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.UI.Core.Properties.TraceMessages">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.TraceMessages.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.TraceMessages.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.TraceMessages.ADDING_PANEL">
+            <summary>
+              Looks up a localized string similar to &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; Adding Panel {0}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.TraceMessages.APPHOST_REQUEST_ACTION">
+            <summary>
+              Looks up a localized string similar to &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; APPHOST REQUEST ACTION STATUS RAISED\n\tTARGET APP: {0}\n\tACTION: {1}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.TraceMessages.APPHOST_SESSION_CHANGED">
+            <summary>
+              Looks up a localized string similar to &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; APPHOST SESSION CHANGED RAISED\n\tSessionID: {0}\n\tSessionName: {1}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.TraceMessages.APPHOST_SESSION_CLOSED">
+            <summary>
+              Looks up a localized string similar to &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; APPHOST SESSION CLOSE RAISED \n\tSessionID: {0}\n\tSessionName: {1}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.TraceMessages.APPHOST_SESSION_OPENED">
+            <summary>
+              Looks up a localized string similar to &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; APPHOST SESSION OPEND RAISED\n\tApplicationSessionID: {0}\n\tOverrideSessionID: {1}\n\tSessionID: {2}\n\tSessionName: {3}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.TraceMessages.DESKTOP_LOAD_COMPLETE">
+            <summary>
+              Looks up a localized string similar to &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;DESKTOP LOAD COMPLETE EVENT FIRED.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.TraceMessages.DESKTOP_SETCONTEXT">
+            <summary>
+              Looks up a localized string similar to IN DESKTOP CORE CALLING EXE DEFAULT ACTIONS IN DO SET CONTEXT.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.TraceMessages.DO_WORKFLOW_STARTED">
+            <summary>
+              Looks up a localized string similar to IN DESKTOP CORE CALLING EXE DEFAULT ACTIONS IN DO WORKFLOW STARTED.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.TraceMessages.FOUND_PANEL">
+            <summary>
+              Looks up a localized string similar to &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; Found {0} Panels.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Core.Properties.TraceMessages.LOADING_COMPLETE_HOSTED_CONTROL">
+            <summary>
+              Looks up a localized string similar to Loading Complete to Hosted Control - {1} - Failed - {0}.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.UI.Core.TopMostMessageBox">
+            <summary>
+            Displays a message box that can contain text, buttons, and symbols that inform and instruct the user. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.TopMostMessageBox.Show(System.String,System.String,System.Windows.Forms.MessageBoxButtons)">
+            <summary>
+            Displays a message box in front of the specified object and with the specified text, caption, and buttons.
+            </summary>
+            <param name="text">The text to display in the message box.</param>
+            <param name="caption">The text to display in the title bar of the message box.</param>
+            <param name="buttons">One of the <see cref="T:System.Windows.Forms.MessageBoxButtons"/> values that specifies which buttons to display in the message box.</param>
+            <returns>One of the <see cref="T:System.Windows.Forms.DialogResult"/> values.</returns>
+            <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">buttons is not a member of <see cref="T:System.Windows.Forms.MessageBoxButtons"/>.</exception>
+            <exception cref="T:System.InvalidOperationException">An attempt was made to display the <see cref="T:System.Windows.Forms.MessageBox"/> in a process that is not running in User Interactive mode. This is specified by the <see cref="P:System.Windows.Forms.SystemInformation.UserInteractive"/> property.</exception>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Core.TopMostMessageBox.Show(System.String,System.String,System.Windows.Forms.MessageBoxButtons,System.Windows.Forms.MessageBoxIcon)">
+            <summary>
+            Displays a message box in front of the specified object and with the specified text, caption, buttons, and icon.
+            </summary>
+            <param name="text">The text to display in the message box.</param>
+            <param name="caption">The text to display in the title bar of the message box.</param>
+            <param name="buttons">One of the <see cref="T:System.Windows.Forms.MessageBoxButtons"/> values that specifies which buttons to display in the message box.</param>
+            <param name="icon">One of the <see cref="T:System.Windows.Forms.MessageBoxIcon"/> values that specifies which icon to display in the message box.</param>
+            <returns>One of the <see cref="T:System.Windows.Forms.DialogResult"/> values.</returns>
+            <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">buttons is not a member of <see cref="T:System.Windows.Forms.MessageBoxButtons"/>.-or- icon is not a member of <see cref="T:System.Windows.Forms.MessageBoxIcon"/>.</exception>
+            <exception cref="T:System.InvalidOperationException">An attempt was made to display the <see cref="T:System.Windows.Forms.MessageBox"/> in a process that is not running in User Interactive mode. This is specified by the <see cref="P:System.Windows.Forms.SystemInformation.UserInteractive"/> property.</exception>
+        </member>
+    </members>
+</doc>

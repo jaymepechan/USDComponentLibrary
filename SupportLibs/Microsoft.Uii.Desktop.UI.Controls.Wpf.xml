@@ -1,0 +1,400 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Uii.Desktop.UI.Controls.Wpf</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Uii.Desktop.UI.Controls.Wpf.WpfDesktopApplicationUI">
+            <summary>
+            WpfDesktopApplicationUI separates the details of hosting applications and their UI's from the
+            layout of the agent desktop form.
+            
+            It keeps a collection of WpfPanels and exposes itself as a collection
+            of IHostedApplication objects.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.UI.Controls.Wpf.WpfDesktopApplicationUI.OpaquenessLevel">
+            <summary>
+            Level of opaqueness to use when a panel is not active.
+            </summary>
+            <remarks>Used only for WpfPanels with the UseOpacity property set to true</remarks>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.Wpf.WpfDesktopApplicationUI.EnableApplicationClose(System.Windows.Window,System.Boolean)">
+            <summary>
+            Added here by necessity --> should be in Win32Api or other helper class
+            not sure if this working for WPF...
+            </summary>
+            <param name="form">Window</param>
+            <param name="isEnable">True to enable</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.Wpf.WpfDesktopApplicationUI.GetFloatingPanelName(System.Object)">
+            <summary>
+            Returns a unique name for a new floating panel.
+            The name is based upon the application or control which is hosted in it.
+            </summary>
+            <param name="app">Hosted Application</param>
+            <returns>a name to use for a floating panel</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.Wpf.WpfDesktopApplicationUI.Form_ClosingNotAllowed(System.Object,System.ComponentModel.CancelEventArgs)">
+            <summary>
+            Used to block the manual closing of a floating hosted application.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.Wpf.WpfDesktopApplicationUI.Form_ClosingAllowed(System.Object,System.ComponentModel.CancelEventArgs)">
+            <summary>
+            Used to block the manual closing of a floating hosted application.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.Wpf.WpfDesktopApplicationUI.TopLevelWindow_GotFocus(System.Object,System.EventArgs)">
+            <summary>
+            Handles a floating hosted application getting the focus.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.Wpf.WpfDesktopApplicationUI.Form_Activated(System.Object,System.EventArgs)">
+            <summary>
+            Occurs when a form is activated, used for floating panels.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.Wpf.WpfDesktopApplicationUI.Form_LostFocus(System.Object,System.EventArgs)">
+            <summary>
+            Used if the designer wants to cause forms to become a bit transparent when
+            they lose focus.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.Wpf.WpfDesktopApplicationUI.NextPanel">
+            <summary>
+            Gets the panel after the one which has the current focus in the nterface.
+            If there is only one panel, it is always returned.
+            </summary>
+            <returns>Panel Instance</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.Wpf.WpfDesktopApplicationUI.SetRedraw(System.Boolean)">
+            <summary>
+            Enable/Disable redrawing of the hosted app panels to make the UI
+            look cleaner when redrawing many items.
+            </summary>
+            <param name="redraw">True to redraw UI</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.Wpf.WpfDesktopApplicationUI.BitmapSourceFromImage(System.Drawing.Icon)">
+            <summary>
+            Converts from System.Drawing.Image to BitmapSource for WPF use
+            </summary>
+            <param name="icon"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.Wpf.WpfDesktopApplicationUI.CreateFloatingPanel``1(System.Boolean,System.Boolean,System.String,System.Object,``0,System.String,System.Boolean)">
+            <summary>
+            Creates a new floating pfPanel for hosting controls or applications.
+            </summary>
+            <param name="captionUsed">True is application using caption</param>
+            <param name="toolWindow">True if this should use a tool caption</param>
+            <param name="panelName">Panel name.</param>
+            <param name="app">Application to connect to panel.</param>
+            <param name="icon">Icon for the panel.  If the app implements IHostedApplication2 or above the icon is pulled from the application.</param>
+            <param name="initializationXml">Extra info that may define how the window is created</param>
+            <returns>A control reference to the panel.</returns>
+            <param name="closeButton">True if application is closable</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.Wpf.WpfDesktopApplicationUI.AddApplication(System.String,System.Object,System.String,System.Boolean)">
+            <summary>
+            This adds a hosted application or any Windows Forms control to a 
+            panel.  The panelName is used to identify which panel if there are more
+            than one.
+            </summary>
+            <param name="panelName">Name of panel</param>
+            <param name="app">Hosted Application</param>
+            <param name="initializationXml">Extra XML that may define how to initialize this window</param>
+            <param name="closeButton">For dynamic application, can have option to provide a close
+            button or not</param>
+            <returns>Panel</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.Wpf.WpfDesktopApplicationUI.SelectApplication(System.Guid)">
+            <summary>
+            This selects the UI panel and control which is hosting the given application.
+            </summary>
+            <param name="id">The id of the app to select</param>
+            <returns>True if application selected</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.Wpf.WpfDesktopApplicationUI.RemoveApplication(System.Object)">
+            <summary>
+            Removes the passed in app from the UI, regardless of which panel it is in.
+            </summary>
+            <param name="app">Hosted Application</param>
+            <returns>true if the app was found and removed</returns>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Controls.Wpf.WpfDesktopApplicationUI.ActivePanel">
+            <summary>
+            This contains a reference to the panel which hosts the application currently
+            in use.  This panel may contain more than one application.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.UI.Controls.Wpf.WpfPanel">
+            <summary>
+            The UI element which hosts one or more hosted applications.
+            This can also host standard and custom windows controls.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.UI.Controls.Wpf.WpfPanel.tabControl">
+            <summary>
+            To show hosted application in a tab form.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.UI.Controls.Wpf.WpfPanel.deckControl">
+            <summary>
+            To show hosted application without a tab.
+            Used when there is only one application on the panel.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.Wpf.WpfPanel.#ctor">
+            <summary>
+            WpfPanel class construstor.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.Wpf.WpfPanel.RemovePanelToolbarFromDockingPanel">
+            <summary>
+            Remove toolbar from deckcontrol
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.Wpf.WpfPanel.RemoveButtonToolbarFromDockingPanel">
+            <summary>
+            Remove button toolbar from deckcontrol
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.Wpf.WpfPanel.AddToolbarToDockingPanel(System.Windows.Forms.Control)">
+            <summary>
+            Add toolbar to deckcontrol
+            </summary>  
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.Wpf.WpfPanel.AddButtonToolbarToDockingPanel(System.Object)">
+            <summary>
+            Add button toolbar to deckcontrol
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.Wpf.WpfPanel.CloseAppClickHandler(Microsoft.Uii.Csr.IHostedApplication)">
+            <summary>
+            Called whenever the user clicks to close an application.
+            </summary>
+            <param name="app">Hosted Application</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.Wpf.WpfPanel.BitmapSourceFromImage(System.Drawing.Image)">
+            <summary>
+            Converts from System.Drawing.Image to BitmapSource for WPF use
+            </summary>
+            <param name="img"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.Wpf.WpfPanel.AddApplicationToTabControl(System.Object,Microsoft.Uii.Desktop.UI.Controls.PanelCloser,System.Boolean)">
+            <summary>
+            Add the application to the TabControl
+            </summary>
+            <param name="child">The application to add</param>
+            <param name="bar">The PanelToolbar to add to the control.</param>
+            <param name="closeButton"></param>
+            <returns>The tab page</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.Wpf.WpfPanel.TabControl_SelectionChanged(System.Object,System.Windows.Controls.SelectionChangedEventArgs)">
+            <summary>
+            Code to handle Tab selected event
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.Wpf.WpfPanel.CloseButtonClickHandler(System.Object)">
+            <summary>
+            Event handler for when the close button is clicked on the ButtonToolbar
+            </summary>
+            <param name="application"></param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.Wpf.WpfPanel.IsApplicationOnPanel(System.Guid)">
+            <summary>
+            Checks if the passed id is an application on this WpfPanel.
+            </summary>
+            <param name="id">ID the application</param>
+            <returns>true if found on the panel</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.Wpf.WpfPanel.Add(System.Object,System.Boolean)">
+            <summary>
+            Adds a hosted application or a user WinForms control to the
+            Panel.  If there are currenlty no app on this panel, then add
+            to DeckControl.  Else if there are more than one app on this
+            panel, then add to TabControl.
+            </summary>
+            <param name="child">The control or hosted app to add to the panel</param>
+            <param name="closeButton">True if a close button is provided for closing dynamic
+            hosted application, false otherwise</param>
+            <returns>The tabpage from the TabControl if one is used or the DeckControl</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.Wpf.WpfPanel.Add(System.Object,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Adds a hosted application or a user WinForms control to the
+            Panel.  If there are currenlty no app on this panel, then add
+            to DeckControl.  Else if there are more than one app on this
+            panel, then add to TabControl.
+            </summary>
+            <param name="child">The control or hosted app to add to the panel</param>
+            <param name="initializationXml">An XML string for the application being added.
+            This is used when determining how the app will appear in the panel, for
+            instance, is there a toolbar.
+            </param>
+            <param name="useToolbar">True if a toolbar is used no mater what, false
+            if the xml string should be parsed to see if one is used.
+            </param>
+            <param name="closeButton">True if a close button is provided for closing
+            dynamic hosted application, false otherwise</param>
+            <returns>The tabpage from the TabControl if one is used or the DeckControl</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.Wpf.WpfPanel.Remove(System.Object)">
+            <summary>
+            Removes an application from the Panel.
+            </summary>
+            <param name="app">Hosted Application</param>
+            <returns>True if the app was removed, false if not found</returns>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Controls.Wpf.WpfPanel.UseOpacity">
+            <summary>
+            If true, the panel is made slightly transparent when it does not
+            have the focus.  Sometimes useful when you have lots of floating panels.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Controls.Wpf.WpfPanel.TabControl">
+            <summary>
+            Lets other class view and modify the tab pages in the 
+            TabControl under this panel.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Controls.Wpf.WpfPanel.DeckControl">
+            <summary>
+            Let other class view and modify the the hosted app
+            in the DeckControl under this panel.
+            </summary>
+        </member>
+        <member name="E:Microsoft.Uii.Desktop.UI.Controls.Wpf.WpfPanel.SelectedAppChanged">
+            <summary>
+            Used when a tab page is selected to pass the event back to the main UI code
+            </summary>
+        </member>
+        <member name="E:Microsoft.Uii.Desktop.UI.Controls.Wpf.WpfPanel.CloseApplicationClick">
+            <summary>
+            Used when close button is clicked on the application to pass the event
+            back to the main UI code.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Controls.Wpf.WpfPanel.Floating">
+            <summary>
+            Used to determine if this pane is floating or tied into the agent
+            desktop UI.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Controls.Wpf.WpfPanel.FloatingLocation">
+            <summary>
+            Used to save the last location for this panel in case its used again
+              When reused, a floating panel gets a new form and this form should be
+              placed in the same location as the previous one as the user expects it
+              to be.
+            This only is used for floating panes
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Controls.Wpf.WpfPanel.FloatingSize">
+            <summary>
+            Used to save the last size for this panel in case its used again
+              When reused, a floating panel gets a new form and this form should be
+              made the same size as the previous one as the user expects it
+              to be.
+            This only is used for floating panes
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.UI.Controls.Wpf.FloatingWpfWindow">
+            <summary>
+            Interaction logic for FloatingWpfWindow.xaml
+            </summary>
+            <summary>
+            FloatingWpfWindow
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.Wpf.FloatingWpfWindow.FormLoaded(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            The Event handler which is used to hook into the WndProc
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.Wpf.FloatingWpfWindow.WndProc(System.IntPtr,System.Int32,System.IntPtr,System.IntPtr,System.Boolean@)">
+            <summary>
+            The WndProc Method
+            </summary>
+            <param name="hwnd"></param>
+            <param name="msg"></param>
+            <param name="wParam"></param>
+            <param name="lParam"></param>
+            <param name="handled"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.Wpf.FloatingWpfWindow.#ctor">
+            <summary>
+            Public Constructor.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.UI.Controls.Wpf.FloatingWpfWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Controls.Wpf.FloatingWpfWindow.LogOffRequested">
+            <summary>
+            Indicates whether Desktop logOff is initiated by the User.
+            Set to true if LogOff message is received.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.UI.Controls.Wpf.Properties.Constants">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Controls.Wpf.Properties.Constants.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Controls.Wpf.Properties.Constants.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Controls.Wpf.Properties.Constants.DEFAULT_PANEL_NAME">
+            <summary>
+              Looks up a localized string similar to mainpanel.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Controls.Wpf.Properties.Constants.FLOATING_PANEL_NAME">
+            <summary>
+              Looks up a localized string similar to floating.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Controls.Wpf.Properties.Constants.FLOATING_PANEL_NAME1">
+            <summary>
+              Looks up a localized string similar to floatingtool.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Controls.Wpf.Properties.Constants.FLOATING_PANEL_NAME2">
+            <summary>
+              Looks up a localized string similar to floatingpanel.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.UI.Controls.Wpf.Properties.Constants.TOOLBAR_NODE">
+            <summary>
+              Looks up a localized string similar to descendant::toolbar.
+            </summary>
+        </member>
+    </members>
+</doc>

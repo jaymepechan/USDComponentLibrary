@@ -1,0 +1,176 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="Peter Korn">
+   <meta name="GENERATOR" content="Mozilla/4.61 [en] (Win98; I) [Netscape]">
+   <title>Swing compatibility table</title>
+</head>
+<body>
+<a href="http://java.sun.com"><img SRC="images/java_header.gif" ALT="The Source for Java - java.sun.com" NOSAVE BORDER=0 height=41 width=246 align=LEFT></a>
+<div align=right><font size=+3>JAVA ACCESSIBILITY UTILITIES</font></div>
+
+<div align=right><font size=+2>Compatibility table</font></div>
+
+<div align=right>Version 1.3</div>
+
+<hr NOSHADE WIDTH="100%">
+<center><!--- These are the Menu Items ---->[<a href="http://javaweb.eng/~korn/currentJaccessDocs/spec/index.html">Home</a>]
+[<a href="http://javaweb.eng/~korn/currentJaccessDocs/spec/what.html">What
+are they?</a>] [<a href="http://javaweb.eng/~korn/currentJaccessDocs/spec/guide.html">Overview
+of API Features</a>] [<a href="http://javaweb.eng/~korn/currentJaccessDocs/spec/api/com/sun/java/accessibility/util/package-summary.html">API
+Reference</a>]
+<br>[<a href="http://javaweb.eng/~korn/currentJaccessDocs/spec/FAQ.html">FAQ</a>]
+[<a href="http://javaweb.eng/~korn/currentJaccessDocs/spec/examples.html">Examples</a>]
+[<a href="http://javaweb.eng/~korn/currentJaccessDocs/spec/CHANGES.txt">Changes</a>]
+[<a href="http://javaweb.eng/~korn/currentJaccessDocs/spec/compatibility.html">Compatibility
+table</a>] [<a href="http://java.sun.com/products/jfc">JFC Home Page</a>]</center>
+
+<hr NOSHADE WIDTH="100%">
+<table BORDER CELLSPACING=3 CELLPADDING=3 >
+<caption>
+<h2>
+Java Accessibility Utilities compatibility table</h2>
+</caption>
+
+<tr>
+<td><b>Java VM</b></td>
+
+<td><b>Swing release</b></td>
+
+<td><b>Java Accessibility Utilities release</b></td>
+</tr>
+
+<tr>
+<td ROWSPAN="6">JDK 1.1.2 thru 1.1.8</td>
+
+<td>JFC 1.1 with Swing 1.0</td>
+
+<td>Java Accessibility Utilities 1.0</td>
+</tr>
+
+<tr>
+<td>JFC 1.1 with Swing 1.0.1</td>
+
+<td>Java Accessibility Utilities 1.0</td>
+</tr>
+
+<tr>
+<td>JFC 1.1 with Swing 1.0.2</td>
+
+<td>Java Accessibility Utilities 1.0</td>
+</tr>
+
+<tr>
+<td>JFC 1.1 with Swing 1.0.3</td>
+
+<td>Java Accessibility Utilities 1.0</td>
+</tr>
+
+<tr>
+<td>JFC 1.1 with Swing 1.1</td>
+
+<td>Java Accessibility Utilities 1.1<sup><a href="#note_1">1</a>,<a href="#note_2">2</a></sup></td>
+</tr>
+
+<tr>
+<td>JFC 1.1 with Swing 1.1.1</td>
+
+<td>Java Accessibility Utilities 1.1<sup><a href="#note_2">2</a></sup></td>
+</tr>
+
+<tr>
+<td>Java Plugin 1.1, 1.1.1</td>
+
+<td>bundled Swing</td>
+
+<td>not yet supported</td>
+</tr>
+
+<tr>
+<td>Java Plugin 1.1.2</td>
+
+<td>bundled Swing</td>
+
+<td>not fully supported<sup><a href="#note_3">3</a></sup></td>
+</tr>
+
+<tr>
+<td>JDK 1.2, 1.2.1, 1.2.2</td>
+
+<td>bundled Swing</td>
+
+<td>Java Accessibility Utilities 1.2.2<sup><a href="#note_1">1</a>,<a href="#note_2">2</a></sup></td>
+</tr>
+
+<tr>
+<td>JDK 1.3</td>
+
+<td>bundled Swing</td>
+
+<td>Java Accessibility Utilities 1.3<sup><a href="#note_5">5</a></sup></td>
+</tr>
+
+<tr>
+<td>internet browsers</td>
+
+<td>JFC 1.1 with Swing 1.0 thru 1.1 beta 3</td>
+
+<td>not yet supported<sup><a href="#note_4">4</a></sup></td>
+</tr>
+</table>
+
+<p>Compatibility notes:
+<ol>
+<li>
+<a NAME="note_1"></a>A new AccessibleState, TRANSIENT, was introduced in
+both Swing 1.1 and JDK 1.2.&nbsp; The AccessibilityMonitor example included
+with version 1.1 of the Java Accessibility Utilities uses this state, and
+so won't compile or run property with previous versions of Swing.</li>
+
+<li>
+<a NAME="note_2"></a>The package names of both the Java Accessibility API
+and the Swing user-interface classes changed in Swing version 1.1 beta
+3 and in JDK version 1.2.&nbsp; The Java Accessibility API went from 'com.sun.java.accessibility'
+to 'javax.accessibility', and Swing went from 'com.sun.java.swing' to 'javax.swing'.&nbsp;
+These changes bring the package naming in line with the Java Standard Extension
+naming conventions, and will be the same as in the final release of JDK
+1.2.</li>
+
+<li>
+<a NAME="note_3"></a>The Win32 version of the Java Plugin 1.1.2 (for Windows
+95, Windows 98, and Windows NT) works with the Java Accessibility Utilities
+1.0 for applets, but the Solaris version does not.&nbsp; Furthermore, one
+can update the version of Swing included with the Java Plugin to Swing
+1.1 beta 3 by replacing the swingall.jar file in the &lt;plugin>/lib directory
+with the swingall.jar file included in Swing 1.1 beta 3, at which time
+one should use Java Accessibility Utilities 1.1 beta 3 (as the package
+name for the Java Accessibility API will have changed from 'com.sun.java.accessibility'
+to 'javax.accessibility').</li>
+
+<li>
+<a NAME="note_4"></a>Accessibility support requires a feature of the Java
+Platform that is in the Sun reference implementations of the JDK versions
+1.1.x, but is not part of the formal platform specification of versions
+1.1.x.&nbsp; It is part of the JDK 1.2 platform specification.&nbsp; A
+forthcoming release of the Java Plugin will provide support for accessibility
+in existing browsers.</li>
+
+<li>
+<a NAME="note_5"></a>JDK 1.3 introduces several additions to the Java Accessibility
+API (notably AccessibleIcon, AccessibleTable, AccessibleRelation, and AccessibleRelationSet).&nbsp;
+The example programs that come with the Java Accessibility Utilities use
+these API additions, and so will not work with previous versions of Swing
+or the JDK.</li>
+</ol>
+<!---- END Main text Area ---->
+<hr SIZE=3 NOSHADE>
+<br><img SRC="images/javalogo52x88.gif" ALT="Java Logo" NOSAVE height=88 width=52 align=LEFT><font size=-1><a href="http://java.sun.com/share/copyright.html">Copyright&copy;
+</a>1995-99
+<a href="http://www.sun.com">Sun
+Microsystems, Inc. All Rights Reserved.</a></font>
+<br><font size=-1>To submit comments or suggestions about <a href="http://www.sun.com/access/index.html">Java
+Accessibility</a>, please send mail to <i><a href="mailto:access@sun.com">access@sun.com</a></i>.</font>
+<br><a href="http://www.sun.com"><img SRC="images/smi_logo.gif" ALT="Sun MicroSystems" NOSAVE BORDER=0 height=43 width=120 align=RIGHT></a>
+</body>
+</html>

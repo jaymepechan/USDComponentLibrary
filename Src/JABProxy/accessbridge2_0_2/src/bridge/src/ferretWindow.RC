@@ -1,0 +1,208 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "FerretResource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#define APSTUDIO_HIDDEN_SYMBOLS
+#include "windows.h"
+#undef APSTUDIO_HIDDEN_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+FERRETWINDOW DIALOG DISCARDABLE  160, 78, 294, 214
+STYLE WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_VISIBLE | WS_CAPTION | WS_SYSMENU | 
+    WS_THICKFRAME
+CAPTION "Java Ferret"
+MENU cFerretMenus
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        cFerretText,4,0,283,214,ES_MULTILINE | ES_AUTOVSCROLL | 
+                    ES_READONLY | WS_VSCROLL
+END
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "FerretResource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "#include ""windows.h""\r\n"
+    "#undef APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    "FERRETWINDOW", DIALOG
+    BEGIN
+        LEFTMARGIN, 4
+        RIGHTMARGIN, 287
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+cFerretMenus MENU DISCARDABLE 
+BEGIN
+    POPUP "File"
+    BEGIN
+        MENUITEM "AccessBridge DLL Loaded",     cAccessBridgeDLLLoaded
+        MENUITEM "Exit",                        cExitMenuItem
+    END
+    POPUP "UpdateSettings"
+    BEGIN
+        MENUITEM "Update from Mouse",           cUpdateFromMouseMenuItem
+        MENUITEM "Update with F2 (mouse HWND)", cUpdateWithF2Item
+        MENUITEM "Update with F1 (mouse point)", cUpdateWithF1Item
+    END
+    POPUP "JavaEvents"
+    BEGIN
+        MENUITEM "Track Java Shutdown Events",  cTrackShutdownMenuItem
+        MENUITEM "Track Mouse Events",          cTrackMouseMenuItem
+        MENUITEM "Track Focus Events",          cTrackFocusMenuItem
+        MENUITEM "Track Caret Events",          cTrackCaretMenuItem
+        MENUITEM SEPARATOR
+        MENUITEM "Track Menu Selected Events",  cTrackMenuSelectedMenuItem
+        MENUITEM "Track Menu Deselected Events", 
+                                                cTrackMenuDeselectedMenuItem
+        MENUITEM "Track Menu Canceled Events",  cTrackMenuCanceledItem
+        MENUITEM "Track Popup Visible Events",  cTrackPopupBecomeVisibleMenuItem
+
+        MENUITEM "Track Popup Inviible Events", cTrackPopupBecomeInvisibleMenuItem
+
+        MENUITEM "Track Popup Canceled Events", cTrackPopupCanceledItem
+    END
+    POPUP "AccessibilityEvents"
+    BEGIN
+        MENUITEM "Track Name Property Events",  cTrackPropertyNameItem
+        MENUITEM "Track Description Property Events", 
+                                                cTrackPropertyDescriptionItem
+
+        MENUITEM "Track State Property Events", cTrackPropertyStateItem
+        MENUITEM "Track Value Property Events", cTrackPropertyValueItem
+        MENUITEM "Track Selection Property Events", 
+                                                cTrackPropertySelectionItem
+        MENUITEM "Track Text Property Events",  cTrackPropertyTextItem
+        MENUITEM "Track Caret Property Events", cTrackPropertyCaretItem
+        MENUITEM "Track Visible Data Property Events", 
+                                                cTrackPropertyVisibleDataItem
+
+        MENUITEM "Track Child Property Events", cTrackPropertyChildItem
+        MENUITEM "Track Active Descendent Property Events", 
+                                                cTrackPropertyActiveDescendentItem
+
+        MENUITEM "Track Table Model Change Property Events", 
+                                                cTrackPropertyTableModelChangeItem
+
+    END
+END
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 2,0,6,0
+ PRODUCTVERSION 2,0,6,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "Comments", "AccessBridge 2.0.1\0"
+            VALUE "CompanyName", "Sun Microsystems\0"
+            VALUE "FileDescription", "JavaFerret\0"
+            VALUE "FileVersion", "2, 0, 6, 0\0"
+            VALUE "InternalName", "JavaFerret\0"
+            VALUE "LegalCopyright", "Copyright © 2006\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", "JavaFerret.exe\0"
+            VALUE "PrivateBuild", "\0"
+            VALUE "ProductName", "Sun Microsystems JavaFerret\0"
+            VALUE "ProductVersion", "2, 0, 6, 0\0"
+            VALUE "SpecialBuild", "\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+#endif    // !_MAC
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

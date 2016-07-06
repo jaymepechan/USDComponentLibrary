@@ -1,0 +1,431 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Uii.Common.TypeProvider</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Uii.Common.TypeProvider.Configuration.ConfiguredType">
+            <summary>
+            Represents configuration for a type provider
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.TypeProvider.Configuration.ConfiguredType.Name">
+            <summary>
+            Gets or sets the name of the configured type
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.TypeProvider.Configuration.ConfiguredType.Type">
+            <summary>
+            Gets or sets the type of the fallback TypeResolver, TypeLoader, and TypeActivator
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.TypeProvider.Configuration.ConfiguredType.TypeResolver">
+            <summary>
+            Gets or sets the type of TypeResolver
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.TypeProvider.Configuration.ConfiguredType.TypeLoader">
+            <summary>
+            Gets or sets the type of TypeLoader
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.TypeProvider.Configuration.ConfiguredType.TypeActivator">
+            <summary>
+            Gets or sets the type of TypeActivator
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Common.TypeProvider.Configuration.ConfiguredTypeCollection">
+            <summary>
+            A collection of ConfiguredType objects
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Common.TypeProvider.Configuration.ConfiguredTypeCollection.CreateNewElement">
+            <summary>
+            creates new elemenet
+            </summary>
+            <returns>Configured Type</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.TypeProvider.Configuration.ConfiguredTypeCollection.GetElementKey(System.Configuration.ConfigurationElement)">
+            <summary>
+            Get Element Key
+            </summary>
+            <param name="element"></param>
+            <returns>Element Name</returns>
+        </member>
+        <member name="T:Microsoft.Uii.Common.TypeProvider.Configuration.TypeProviderSection">
+            <summary>
+            Represents the type provider configuration section
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.TypeProvider.Configuration.TypeProviderSection.DefaultProvider">
+            <summary>
+            Designates one of the configured type providers as the default provider
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.TypeProvider.Configuration.TypeProviderSection.Types">
+            <summary>
+            Retrieves the collection of configured type providers
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Common.TypeProvider.DefaultTypeProvider">
+            <summary>
+            Provides a default implementation of all TypeProviders using .NET Framework standard methods
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Common.TypeProvider.ITypeResolver">
+            <summary>
+            ITypeResolver Interface. Resolvers must implement this interface
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Common.TypeProvider.ITypeResolver.ResolveTypeName(System.String,System.Object)">
+            <summary>
+            The method must resolve to a type name based on the name and context
+            </summary>
+            <param name="typeName">Type name</param>
+            <param name="typeContext">context</param>
+            <returns>Resolved type name</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.TypeProvider.ITypeResolver.ResolveAllTypeNames(System.String,System.Object)">
+            <summary>
+            Resolve all type names
+            </summary>
+            <param name="baseTypeName">baseType</param>
+            <param name="typeContext">context</param>
+            <returns>List of resolved types</returns>
+        </member>
+        <member name="T:Microsoft.Uii.Common.TypeProvider.ITypeLoader">
+            <summary>
+            Type provider Interface which get the type of the assembly, and assembly itself.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Common.TypeProvider.ITypeLoader.GetType(System.String)">
+            <summary>
+            Returns the specified Type.
+            </summary>
+            <param name="typeName">The name of the type to get.</param>
+            <returns>The System.Type with the specified name, if found; otherwise, null.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.TypeProvider.ITypeLoader.GetAssembly(System.String)">
+            <summary>
+            Returns the specified Assembly.
+            </summary>
+            <param name="assemblyName">The name of the assembly to get.</param>
+            <returns>The Assembly with the specified name, if found; otherwise, null.</returns>
+        </member>
+        <member name="T:Microsoft.Uii.Common.TypeProvider.ITypeActivator">
+            <summary>
+            Interface defining the Activator
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Common.TypeProvider.ITypeActivator.CreateInstance(System.Type)">
+            <summary>
+            Creates an instance of the specified type using the default constructor.
+            </summary>
+            <param name="type">The type of object to create.</param>
+            <returns>A reference to the newly created object.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.TypeProvider.ITypeActivator.CreateInstance(System.Type,System.Object[])">
+            <summary>
+            Creates an instance of the specified type using the constructor that best matches the specified parameters.
+            </summary>
+            <param name="type">The type of object to create.</param>
+            <param name="args">An array of arguments that match in number, order, and type the parameters of the
+            constructor to invoke.</param>
+            <returns>A reference to the newly created object.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.TypeProvider.DefaultTypeProvider.Microsoft#Uii#Common#TypeProvider#ITypeResolver#ResolveTypeName(System.String,System.Object)">
+            <summary>
+            Implements <see cref="M:Microsoft.Uii.Common.TypeProvider.ITypeResolver.ResolveTypeName(System.String,System.Object)"/> simply returning the same typeName passed as argument
+            </summary>
+            <param name="typeName"></param>
+            <param name="typeContext">An optional <paramref name="typeName"/> related context object </param>
+            <returns>The same value passed in <paramref name="typeName"/> argument</returns>
+        </member>
+        <member name="T:Microsoft.Uii.Common.TypeProvider.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.TypeProvider.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.TypeProvider.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.TypeProvider.Resources.TPV010_UNABLE_TO_RETRIEVE_TYPE">
+            <summary>
+              Looks up a localized string similar to TPV010: Unable to retrieve type {0}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.TypeProvider.Resources.TPV011_UNABLE_TO_CREATE_INSTANCE">
+            <summary>
+              Looks up a localized string similar to TPV011: Unable to create instance..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.TypeProvider.Resources.TPV012_UNABLE_TO_CREATE_INSTANCES">
+            <summary>
+              Looks up a localized string similar to TPV012: Unable to create instances of {0}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.TypeProvider.Resources.TPV013_UNABLE_TO_RESOLVE_IENUMERABLE">
+            <summary>
+              Looks up a localized string similar to TPV013: Unable to resolve IEnumerable&lt;TypeNameInfo&gt; of {0}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.TypeProvider.Resources.TPV014_UNABLE_TO_FIND_DEFAULT_TYPEPROVIDER">
+            <summary>
+              Looks up a localized string similar to TPV014: Unable to find named default type provider {0}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.TypeProvider.Resources.TPV015_DTP_UNABLE_TO_GET_ASSEMBLY">
+            <summary>
+              Looks up a localized string similar to TPV015: DefaultTypeProvider: Unable to load assembly {0}.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Common.TypeProvider.TypeInfo">
+            <summary>
+            Represents a resolved and loaded type (resolved, loaded, not activated).
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Common.TypeProvider.TypeInfo.#ctor(System.Type,Microsoft.Uii.Common.TypeProvider.ITypeActivator)">
+            <summary>
+            Constructor for TypeInfo
+            </summary>
+            <param name="type">type</param>
+            <param name="activator">The associated Activator</param>
+        </member>
+        <member name="P:Microsoft.Uii.Common.TypeProvider.TypeInfo.Type">
+            <summary>
+            Gets the Type.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.TypeProvider.TypeInfo.Activator">
+            <summary>
+            The associated Type Activator
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Common.TypeProvider.TypeNameInfo">
+            <summary>
+            Represents a resolved type (resolved, not loaded, not activated).
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Common.TypeProvider.TypeNameInfo.#ctor(System.String,Microsoft.Uii.Common.TypeProvider.ITypeLoader,Microsoft.Uii.Common.TypeProvider.ITypeActivator)">
+            <summary>
+            Constructor for the TypeNameInfo
+            </summary>
+            <param name="resolvedTypeName">Resolved Type Name</param>
+            <param name="loader">The associated type loader</param>
+            <param name="activator">The associated type activator</param>
+        </member>
+        <member name="P:Microsoft.Uii.Common.TypeProvider.TypeNameInfo.TypeName">
+            <summary>
+            The Type name
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.TypeProvider.TypeNameInfo.Loader">
+            <summary>
+            The associated loader
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.TypeProvider.TypeNameInfo.Activator">
+            <summary>
+            The associated Activator
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Common.TypeProvider.TypeProvider">
+            <summary>
+            Provides factory methods for retrieving Type definitions and creating Type instances
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Common.TypeProvider.TypeProvider.GetTypeNames(System.String,System.Object)">
+            <summary>
+            Returns a resolved and loaded enumerable type list from <paramref name="baseTypeName"/> and <paramref name="typeContext"/>.
+            </summary>
+            <param name="baseTypeName">Resolvable base type name</param>
+            <param name="typeContext">Optional type context to assist in type name resolution</param>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="baseTypeName"/> is null</exception>
+            <exception cref="T:Microsoft.Uii.Common.TypeProvider.TypeProviderException">Wraps underlying non-critical exceptions for convenient handling</exception>
+        </member>
+        <member name="M:Microsoft.Uii.Common.TypeProvider.TypeProvider.GetTypeNames(System.String)">
+            <summary>
+            GetTypeNames() overload synonymous with GetTypeNames(baseTypeName, null).
+            </summary>
+            <param name="baseTypeName">baseTypeName</param>
+            <returns>List of TypeNameInfo objects</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.TypeProvider.TypeProvider.GetTypeNameInfo(System.String,System.Object)">
+            <summary>
+            Resolves the type specified by the <paramref name="typeName"/> and <paramref name="typeContext"/> parameters.
+            </summary>
+            <param name="typeName">Resolvable type name</param>
+            <param name="typeContext">Optional type context to assist in type name resolution</param>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="typeName"/> is null</exception>
+            <exception cref="T:Microsoft.Uii.Common.TypeProvider.TypeProviderException">Wraps underlying non-critical exceptions for convenient handling</exception>
+            <returns>TypeNameInfo object</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.TypeProvider.TypeProvider.GetTypeInfo(Microsoft.Uii.Common.TypeProvider.TypeNameInfo)">
+            <summary>
+            Loads the resolved type specified by the typeNameInfo parameter.
+            </summary>
+            <param name="typeNameInfo">Resolved and loadable type</param>
+            <returns>TypeInfo Object</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.TypeProvider.TypeProvider.GetTypeInfo(System.String,System.Object)">
+            <summary>
+            GetTypeInfo() overload synonymous with GetType(GetTypeNameInfo(typeName, typeContext)).
+            </summary>
+            <param name="typeName">Type Name</param>
+            <param name="typeContext">Type Context</param>
+            <returns>TypeInfo object</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.TypeProvider.TypeProvider.GetTypeInfo(System.String)">
+            <summary>
+            GetTypeInfo() overload synonymous with GetType(typeName, null).
+            </summary>
+            <param name="typeName">Typename</param>
+            <returns>TypeInfo Object</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.TypeProvider.TypeProvider.CreateInstance(Microsoft.Uii.Common.TypeProvider.TypeInfo,System.Object[])">
+            <summary>
+            Creates an instance of the specified resolved and loaded type using the constructor
+            that best matches the specified parameters.
+            </summary>
+            <param name="typeInfo"></param>
+            <param name="args"></param>
+            <returns>Created instance</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.TypeProvider.TypeProvider.CreateInstance(System.String,System.Object)">
+            <summary>
+            CreateInstance() overload that also resolves and loads the type specified.
+            </summary>
+            <param name="typeName">Name of the type to create</param>
+            <param name="typeContext">Type context</param>
+            <returns>Created Instance</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.TypeProvider.TypeProvider.CreateInstance(System.String)">
+            <summary>
+            CreateInstance() overload synonymous with CreateInstance(typeName, null).
+            </summary>
+            <param name="typeName">Name of the type to create</param>
+            <returns>Created Instance</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.TypeProvider.TypeProvider.CreateInstance(Microsoft.Uii.Common.TypeProvider.TypeInfo)">
+            <summary>
+            CreateInstance() overload synonymous with CreateInstance(typeInfo, null).
+            </summary>
+            <param name="typeInfo">type info</param>
+            <returns>created instance</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.TypeProvider.TypeProvider.CreateInstance``1(Microsoft.Uii.Common.TypeProvider.TypeInfo,System.Object[])">
+            <summary>
+             CreateInstance() overload that also casts to the specified type parameter 
+            </summary>
+            <typeparam name="T">T</typeparam>
+            <param name="typeInfo">type info</param>
+            <param name="args">args</param>
+            <returns>created instance</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.TypeProvider.TypeProvider.CreateInstance``1(Microsoft.Uii.Common.TypeProvider.TypeInfo)">
+            <summary>
+            CreateInstance() overload that also casts to the specified type parameter. 
+            </summary>
+            <typeparam name="T">T</typeparam>
+            <param name="typeInfo">TypeInfo Object</param>
+            <returns>Created Instance</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.TypeProvider.TypeProvider.CreateInstance``1(System.String,System.Object)">
+            <summary>
+            CreateInstance overload that also resolves and loads the type specified.
+            </summary>
+            <typeparam name="T">T</typeparam>
+            <param name="typeName">Name of the type to create</param>
+            <param name="typeContext">Type Context</param>
+            <returns>Created Instance</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.TypeProvider.TypeProvider.CreateInstance``1(Microsoft.Uii.Common.TypeProvider.TypeNameInfo)">
+            <summary>
+            CreateInstance overload that also loads the specified resolved type.
+            </summary>
+            <typeparam name="T">T</typeparam>
+            <param name="typeNameInfo">TypeNameInfo object</param>
+            <returns>Created Instance</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.TypeProvider.TypeProvider.GetResourceStream(System.String,System.Object)">
+            <summary>
+            Get the resource stream from the path and context
+            </summary>
+            <param name="resourcePath">Resource Path</param>
+            <param name="typeContext">TypeContext</param>
+            <returns>Retrieved resource stream</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.TypeProvider.TypeProvider.CreateInstances``1(System.String,System.Object)">
+            <summary>
+            Creates an array of resolvable and loadable instances of the specified T type.
+            </summary>
+            <typeparam name="T">A cast to this type will be attempted after activation of each array member.</typeparam>
+            <param name="baseTypeName">Resolvable type base name</param>
+            <param name="baseTypeContext">Optional type context to assist in type name resolution</param>
+            <returns>An array of newly created objects of type T</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when baseTypeName is null</exception>
+            <exception cref="T:Microsoft.Uii.Common.TypeProvider.TypeProviderException">Wraps underlying non-critical exceptions for convenient handling</exception>
+        </member>
+        <member name="M:Microsoft.Uii.Common.TypeProvider.TypeProvider.CreateInstances``1(System.Collections.Generic.IEnumerable{Microsoft.Uii.Common.TypeProvider.TypeNameInfo})">
+            <summary>
+            Creates an array of loadable instances of the specified <typeparamref name="T"/> type.
+            </summary>
+            <typeparam name="T">T</typeparam>
+            <param name="typeNames">type name</param>
+            <returns>created objects</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.TypeProvider.TypeProvider.CreateInstances(System.String,System.Object)">
+            <summary>
+            CreateInstances() overload synonymous with CreateInstances(baseTypeName, baseTypeContext).
+            </summary>
+            <param name="baseTypeName">base type name</param>
+            <param name="baseTypeContext">base type context</param>
+            <returns>Created Instance</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.TypeProvider.TypeProvider.CreateInstances(System.Collections.Generic.IEnumerable{Microsoft.Uii.Common.TypeProvider.TypeNameInfo})">
+            <summary>
+            CreateInstances() overload synonymous with CreateInstances(typeNames).
+            </summary>
+            <param name="typeNames">List of type names for which instances have to be created</param>
+            <returns>Array containing the created instance</returns>
+        </member>
+        <member name="T:Microsoft.Uii.Common.TypeProvider.TypeProviderException">
+            <summary>
+            Custom exceptions that are thrown by the TypeProvider
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Common.TypeProvider.TypeProviderException.#ctor">
+            <summary>
+            Initializes the TypeProviderException Class
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Common.TypeProvider.TypeProviderException.#ctor(System.String)">
+            <summary>
+            Initializes the TypeProviderException Class
+            </summary>
+            <param name="message">Custom Message</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.TypeProvider.TypeProviderException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes the TypeProviderException Class
+            </summary>
+            <param name="message">Custom Message</param>
+            <param name="inner">Inner Exception</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.TypeProvider.TypeProviderException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes the TypeProviderException Class
+            </summary>
+            <param name="info">SerialzationInfo</param>
+            <param name="context">Context</param>
+        </member>
+    </members>
+</doc>

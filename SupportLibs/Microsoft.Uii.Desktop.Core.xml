@@ -1,0 +1,1299 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Uii.Desktop.Core</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Uii.Desktop.Core.AgentAndSessionData">
+            <summary>
+            Structure to maintain the Agent and the session IDs
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.AgentAndSessionData.#ctor">
+            <summary>
+            Public Constructor.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.AgentAndSessionData.SessionId">
+            <summary>
+            Get and set the SessionId
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.AgentAndSessionData.AgentId">
+            <summary>
+            Get and set the AgentId
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.Core.CustomerEntity">
+            <summary>
+             Default implementation of the ICustomer base Object for use by Agent Desktops
+             This class is utilized to describe a given customer or contact used as the subject of a Session
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.Core.ICustomer">
+            <summary>
+            Describes the Baseline Customer Interface 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.ICustomer.CustomerId">
+            <summary>
+            String version of the customer id
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.ICustomer.DesktopCustomer">
+            <summary>
+            Object containing the customer record itself.
+            </summary>
+            <remarks>
+            This allows a developer to create their own customer record type and process that record type within Desktop
+            </remarks>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.ICustomer.SerializedCustomer">
+            <summary>
+            Serialized Version of the customer object
+            </summary>
+            <remarks>
+            It is the developer’s responsibility to serialize the customer object and place it in this var. This var is what is used to rehydrate the session’s customer object when it is called for
+            </remarks>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.ICustomer.IsNewCustomer">
+            <summary>
+            Flag that indicates if a customer is a new customer
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.ICustomer.OriginatingSearchControl">
+            <summary>
+            Name of the Control that originated this request.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.ICustomer.TargetContextManagerControl">
+            <summary>
+            Name of the Control that is managing the Context setup and configuration
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.CustomerEntity.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.CustomerEntity.#ctor(System.String,System.Object,System.String,System.Boolean,System.String)">
+            <summary>
+            Extended Constructor, Allows the preloading of the Customer Object.
+            </summary>
+            <param name="customerId">String version of the customer id</param>
+            <param name="customer">Object containing the customer record itself, This must be serilazable object.</param>
+            <param name="originatingSearchControl">Name of the Hosted Control that Created the Customer Record. Context Commands will be sent to the Search Control for Processing.</param>
+            <param name="serializedCustomer">Serialized version of the customer record</param>
+            <param name="newCustomer">Flag that indicates if this is a new customer</param>
+            <remarks>
+            Special note on the Customer Object
+            This will allow a developer to create their own customer record type and process that record type within Desktop,  
+            The developer is required to handle serialization of the customer record into the serialized customer object parameter of the constructor.
+            
+            Customer ID.
+            The customer id is utilized by the session manager to identify a given session’s customer object. 
+            In the situation where customer search request is raised, this is the key element used to determine if the customer attached to the inbound search request is the same as a customer that is attached to a given session. 
+            
+            Originating Search Control.  
+            In this constructor, the originating search control is the name of the control that implements the <see cref="T:Microsoft.Uii.Desktop.Core.ICustomerSearch"/> interface AND also implements the <see cref="T:Microsoft.Uii.Desktop.Core.IContextManager"/> interface
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.CustomerEntity.#ctor(System.String,System.Object,System.String,System.Boolean,System.String,System.String)">
+            <summary>
+            Extended Constructor, Allows the preloading of the Customer Object.
+            </summary>
+            <param name="customerId">String version of the customer id</param>
+            <param name="customer">Object containing the customer record itself, This must be serilazable object.</param>
+            <param name="originatingSearchControl">Name of the Hosted Control that Created the Customer Record. Context Commands will be sent to the Search Control for Processing.</param>
+            <param name="targetContextControl">Name of the Hosted Control that will manage the Context for this Customer object</param>
+            <param name="serializedCustomer">Serialized version of the customer record</param>
+            <param name="newCustomer">Flag that indicates if this is a new customer</param>
+            <remarks>
+            Special note on the Customer Object
+            This will allow a developer to create their own customer record type and process that record type within Desktop,  
+            The developer is required to handle serialization of the customer record into the serialized customer object parameter of the constructor.
+            
+            Customer ID.
+            The customer id is utilized by the session manager to identify a given session’s customer object. 
+            In the situation where customer search request is raised, this is the key element used to determine if the customer attached to the inbound search request is the same as a customer that is attached to a given session. 
+            
+            Originating Search Control.  
+            The originating search control is the name of the control that implements the <see cref="T:Microsoft.Uii.Desktop.Core.ICustomerSearch"/> interface 
+            
+            Target Context Control.
+            The target Context Control is the name of the control that implements the <see cref="T:Microsoft.Uii.Desktop.Core.IContextManager"/> interface
+            </remarks>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.CustomerEntity.CustomerId">
+            <summary>
+            String version of the customer id
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.CustomerEntity.TargetContextManagerControl">
+            <summary>
+            Name of the Hosted control that will process the Context Commands.
+            This control must implement the <see cref="T:Microsoft.Uii.Desktop.Core.IContextManager"/> Interface.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.CustomerEntity.OriginatingSearchControl">
+            <summary>
+            Name of the hosted control that originated the customer record.
+            This control must implement the <see cref="T:Microsoft.Uii.Desktop.Core.ICustomerSearch"/> Interface.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.CustomerEntity.IsNewCustomer">
+            <summary>
+            Flag indicating that a customer record is "new" customer
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.CustomerEntity.SerializedCustomer">
+            <summary>
+            Serialized version of the customer object
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.CustomerEntity.DesktopCustomer">
+            <summary>
+            Object containing the customer record itself.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.Core.SessionLimitExceededException">
+            <summary>
+            Exception when there is an attempt to start a session when the maximum limit is reached
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.SessionLimitExceededException.#ctor(System.Int32)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="sessionLimit">Maximum number of sessions allowed</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.SessionLimitExceededException.#ctor(System.Int32,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="sessionLimit">Maximum nuymber of sessions allowed</param>
+            <param name="message">Message</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.SessionLimitExceededException.#ctor(System.Int32,System.String,System.Exception)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="sessionLimit">Maximum number of sessions allowed</param>
+            <param name="message">Message</param>
+            <param name="innerException">Inner Exception</param>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.SessionLimitExceededException.SessionLimit">
+            <summary>
+            Maximum number of session allowed
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.Core.Properties.Constants">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.Properties.Constants.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.Properties.Constants.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.Properties.Constants.DESCRIPTION">
+            <summary>
+              Looks up a localized string similar to Description.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.Properties.Constants.HOSTEDATTLICATION_ID">
+            <summary>
+              Looks up a localized string similar to HostedAppID.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.Properties.Constants.STEP_COMPLETE_VAL">
+            <summary>
+              Looks up a localized string similar to 1.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.Properties.Constants.STEP_NOT_COMPLETE_VAL">
+            <summary>
+              Looks up a localized string similar to 0.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.Properties.Constants.WORKFLOW_ACTION">
+            <summary>
+              Looks up a localized string similar to WorkflowAction.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.Properties.Constants.XML_SESSION">
+            <summary>
+              Looks up a localized string similar to Session.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.Properties.Constants.XML_SESSION_ID">
+            <summary>
+              Looks up a localized string similar to ID.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.Properties.Constants.XML_STEP">
+            <summary>
+              Looks up a localized string similar to Step.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.Properties.Constants.XML_STEP_COMPLETE">
+            <summary>
+              Looks up a localized string similar to Complete.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.Properties.Constants.XML_STEP_ID">
+            <summary>
+              Looks up a localized string similar to ID.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.Properties.Constants.XML_WORKFLOW">
+            <summary>
+              Looks up a localized string similar to Workflow.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.Properties.Constants.XML_WORKFLOW_FORCED">
+            <summary>
+              Looks up a localized string similar to Forced.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.Properties.Constants.XML_WORKFLOW_ID">
+            <summary>
+              Looks up a localized string similar to ID.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.Properties.Constants.XML_WORKFLOW_NAME">
+            <summary>
+              Looks up a localized string similar to Name.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.Properties.Constants.XML_WORKFLOW_STATUS">
+            <summary>
+              Looks up a localized string similar to Status.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.Properties.Constants.XML_XML">
+            <summary>
+              Looks up a localized string similar to XML.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.Core.DynamicApplicationItem">
+            <summary>
+            Describes a dynamic application item.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.DynamicApplicationItem.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.DynamicApplicationItem.#ctor(System.String,System.Boolean)">
+            <summary>
+            Creates a new instance of the dynamic application item
+            </summary>
+            <param name="dynamicApp">Name of the dynamic application item</param>
+            <param name="inUI">Is the application currently in the user interface</param>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.DynamicApplicationItem.DynamicAppControl">
+            <summary>
+            Name of the dynamic application item
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.DynamicApplicationItem.IsInUI">
+            <summary>
+            If the dynamic application is currently displayed in the user interface, true.  Otherwise false
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.Core.GlobalInterfaces">
+            <summary>
+            Defines Hostedcontrols and interfaces that are part of the global session.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.Core.GlobalInterfaces.interfaces">
+            <summary>
+            Dictionary of Interfaces available in the global session
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.GlobalInterfaces.#ctor">
+            <summary>
+            Instances the global interfaces directory for the Desktop Core system
+            For System use only
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.GlobalInterfaces.Add``1(System.String,System.Object)">
+            <summary>
+            Adds an Interface to the global interfaces collection by type
+            </summary>
+            <typeparam name="T">Type of interface to add</typeparam>
+            <param name="appName">Name of the application </param>
+            <param name="app">Application Object</param>
+            <returns>True on Success, false if not</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.GlobalInterfaces.GetApplications``1">
+            <summary>
+            Returns a Collection of Interfaces, filtered by the interface type
+            </summary>
+            <typeparam name="T">Interfaces</typeparam>
+            <returns>Collection of Interface</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.GlobalInterfaces.ContainsInterface(System.Type)">
+            <summary>
+            Determines if an interface type is resident in the global applications array
+            </summary>
+            <param name="interfaceType">Type of interface to look for</param>
+            <returns>True if found, false if not</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.GlobalInterfaces.Remove``1(System.String)">
+            <summary>
+            Removes the specified application from the global interfaces collection by type.
+            </summary>
+            <typeparam name="T">Type of interface.</typeparam>
+            <param name="applicationName">Name of the application.</param>
+            <returns>True on Success, false if not</returns>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.GlobalInterfaces.Item(System.Type)">
+            <summary>
+            Returns a Collection of Interfaces, filtered by the interface type
+            </summary>
+            <param name="interfaceType">Interface to filter on</param>
+            <returns>Returns a Collection of Interfaces, filtered by the interface type</returns>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.Core.GlobalInterfaces.InterfaceDictionary">
+            <summary>
+            Describes a Interface Type
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.Core.IContextManager">
+            <summary>
+            Describes a Hosted control that will provide Context Management functions.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.IContextManager.SetContext(Microsoft.Uii.Desktop.Core.CustomerEntity)">
+            <summary>
+            This method is called by Desktop during the initial creation of a session.
+            Use it to set the initial context based on customer information provided in the Customer Record
+            </summary>
+            <param name="customer">Customer Record</param>
+            <returns>Populated Context Object</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.IContextManager.GenerateSessionName(Microsoft.Uii.Desktop.Core.CustomerEntity)">
+            <summary>
+            This method is called by Desktop during the initial creation of a session.
+            This method is responsible for creating a session name for the Session.
+            </summary>
+            <param name="customer">Customer Record</param>
+            <returns>Session Name</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.IContextManager.RenewSession(Microsoft.Uii.Csr.Context)">
+            <summary>
+            This method is called by Desktop during a context update to the desktop. 
+            Use this method to determine if Desktop should refresh the session and all controls within the session. 
+            Note: Refreshing the session similar to loading a new session in regards to memory and processor time. Use with caution. 
+            </summary>
+            <param name="newContext">Updated Context</param>
+            <returns>True to renew the session and force updates to all objects, False if not.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.IContextManager.DesktopContextChange(Microsoft.Uii.Csr.Context)">
+            <summary>
+            This method is called by Desktop during a context update to the desktop. 
+            Use this method to update any session level objects you wish to access.  
+            Typically this is used to update the customer record in the Customer Object attached to the current session
+            </summary>
+            <param name="newContext">Updated Context</param>
+            <returns>If a Session update was made, return true.  Else return false.</returns>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.Core.ICustomerSearch">
+            <summary>
+            Used to identify a hosted control that implements the features necessary for providing Search features to Desktop
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.ICustomerSearch.DoSearch(System.String)">
+            <summary>
+            Called to execute a search command, where the data is of type string
+            </summary>
+            <param name="data">Search Paramaters</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.ICustomerSearch.DoSearch(Microsoft.Uii.Desktop.Core.CustomerEntity)">
+            <summary>
+            Called to execute a search command, where the data is an initialized class 
+            </summary>
+            <param name="customer">Populated Customer object</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.ICustomerSearch.DoSearchFromCtiRequest(System.String)">
+            <summary>
+            This method is used by the CTI system to handle a specialized CTI lookup request 
+            </summary>
+            <param name="data">Search Paramaters</param>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.ICustomerSearch.DisplayInQuickAccessSearchList">
+            <summary>
+            If true, this indicates that the search control should be accessible via a quick access display. 
+            Rendering of this display is up to the developer’s implementation of the integrated agent desktop 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.ICustomerSearch.QuickAccessSearchElementText">
+            <summary>
+            Text that the search control should be display if it is rendered in the quick access display.  
+            Rendering of this display is up to the developer’s implementation of the integrated agent desktop 
+            </summary>
+        </member>
+        <member name="E:Microsoft.Uii.Desktop.Core.ICustomerSearch.CustomerSearchResult">
+            <summary>
+            Raised by the search control to indicate a search has been completed. 
+            This event is consumed by the core Desktop system and is used to start a new session in the integrated agent desktop.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.Core.SearchResultEventArgs">
+            <summary>
+            Describes the data of a new search result event.  
+            This data is used to create a new session within the integrated agent desktop
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.SearchResultEventArgs.#ctor(Microsoft.Uii.Desktop.Core.CustomerEntity,System.Boolean,System.Guid)">
+            <summary>
+            Customer Search Result Event Args.
+            </summary>
+            <param name="customer">Customer Record</param>
+            <param name="isNewCustomer">Is Customer a New Customer</param>
+            <param name="ctiCallRefId">Call Referance ID that this customer search is assoicated with.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.SearchResultEventArgs.#ctor(Microsoft.Uii.Desktop.Core.CustomerEntity,System.Boolean)">
+            <summary>
+            Constructor for the Search Results event.  
+            This event is used to notify the result of a customer search operation to Desktop
+            </summary>
+            <param name="customer">Customer Record</param>
+            <param name="isNewCustomer">True if the customer is new, false if not</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.SearchResultEventArgs.#ctor">
+            <summary>
+            Constructor for the Search Results event.  
+            This event is used to notify the result of a customer search operation to Desktop
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.SearchResultEventArgs.DesktopCustomer">
+            <summary>
+            Initialized and populated Customer object.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.SearchResultEventArgs.IsNewCustomer">
+            <summary>
+            If this is a new customer, set true, else set false
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.SearchResultEventArgs.CtiCallRefId">
+            <summary>
+            CTI Support - Call Reference ID that is associated with this customer search.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.Core.IDesktopUserActions">
+            <summary>
+            This interface is mapped to the Desktop instance.  
+            This interface describes methods that a user control can invoke against the desktop
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.IDesktopUserActions.CreateDynamicApplication(System.String)">
+            <summary>
+            Attempt to create the dynamic application by the name provided
+            </summary>
+            <param name="applicationName">Name of the application to load</param>
+            <returns>true if successfull</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.IDesktopUserActions.CloseDynamicApplication(System.String)">
+            <summary>
+            Close the a dynamic application. 
+            </summary>
+            <param name="applicationName">Name of the application to Close</param>
+            <returns>true if successfull</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.IDesktopUserActions.SetFocusOnApplication(System.String)">
+            <summary>
+            Requests the desktop to set focus on the application requested. 
+            </summary>
+            <param name="applicationName">Name of the application to set focus on</param>
+            <returns>True if successfull</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.IDesktopUserActions.AppExistsInUI(System.String)">
+            <summary>
+            Determines if an application exists in the current display.
+            </summary>
+            <param name="applicationName">Name of application to search for</param>
+            <returns>True if found</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.IDesktopUserActions.GetCurrentWorkflowState">
+            <summary>
+            Returns the current workflow state, if any.
+            if no workflow is running, returns null.
+            </summary>
+            <remarks>
+            If more than one IWorkFlow HostedControl is Registered, this will return only the last control in the list
+            </remarks>
+            <returns>Running Workflow State or Null</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.IDesktopUserActions.OpenSession(Microsoft.Uii.Desktop.Core.CustomerEntity,System.Guid)">
+            <summary>
+            Creates a Sessions in Desktop.
+            It will Create or open an existing session with customer data. 
+            </summary>
+            <param name="callID">Call ID of the CTI event that is requesting Session Creation, Can be NULL</param>
+            <param name="customer">Customer Data to Create this session with, Can Be NULL for Global Session ONLY</param>
+            <returns>Agent desktop Session</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.IDesktopUserActions.CloseSession">
+            <summary>
+            Closes the current active sesion.
+            </summary>
+            <returns>True if the session close was successful, else false</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.IDesktopUserActions.CloseSession(Microsoft.Uii.Csr.Session)">
+            <summary>
+            Closed the Session Specified
+            </summary>
+            <param name="sessionToClose">Session to Close</param>
+            <returns>True if the session close was successful, else false</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.IDesktopUserActions.UserDefinedCommand(System.String,System.String)">
+            <summary>
+            User Defined command, allows the developer to pass commands to the desktop from a hosted control outside of the action system.
+            </summary>
+            <param name="command">Name of the command</param>
+            <param name="request">Command data</param>
+            <returns>User Defiend</returns>
+            <remarks>This is provided as an extendibility point for the IadUserActions Interface.  
+            Developers can implement their own commands within the desktop by overriding the <see cref="M:Microsoft.Uii.Desktop.Core.IDesktopUserActions.UserDefinedCommand(System.String,System.String)"/>  method and return string data. </remarks>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.Core.IDesktopUserActionsConsumer">
+            <summary>
+            Describes a Hosted control that will accept a pointer to the <see cref="T:Microsoft.Uii.Desktop.Core.IDesktopUserActionsConsumer"/> interface
+            </summary>
+            <seealso cref="T:Microsoft.Uii.Desktop.Core.IDesktopUserActionsConsumer"/>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.IDesktopUserActionsConsumer.SetDesktopUserActionsAccess(Microsoft.Uii.Desktop.Core.IDesktopUserActions)">
+            <summary>
+            Method used by the Desktop Loader to set a pointer to itself into the hosted control that implemented the <see cref="T:Microsoft.Uii.Desktop.Core.IDesktopUserActionsConsumer"/> interface
+            </summary>
+            <param name="desktopAccess">intilized IDesktopUserActions interface</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.IDesktopUserActionsConsumer.DesktopLoadingComplete">
+            <summary>
+            Raised when the desktop has completed loading
+            Note: this is raised on a separate thread from the main desktop ui thread.  
+            Any Actions taken need to be made thread safe by the developer.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.Core.ICurrentSessionViewer">
+            <summary>
+            Used to identify a hosted control that implements the features necessary for providing Session View features to Desktop
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.ICurrentSessionViewer.SessionViewerName">
+            <summary>
+            Name of the Session Viewer.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.Core.IDynamicAppViewManager">
+            <summary>
+            Describes a Hosted control that will render information about dynamic applications
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.IDynamicAppViewManager.UpdateDynamicAppDisplay(System.Collections.Generic.List{Microsoft.Uii.Desktop.Core.DynamicApplicationItem})">
+            <summary>
+            Used to notify a control that the dynamic applications list needs to be updated
+            </summary>
+            <param name="dynamicApps">List of Dynamic Applications</param>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.Core.INonHostedAppManager">
+            <summary>
+            Describes a Hosted control that will accept information about Non Hosted Applications
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.INonHostedAppManager.NonHostedApplicationItems">
+            <summary>
+            Array of NonHosted Applications. 
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.Core.ISessionExplorer">
+            <summary>
+            Describes a Hosted control that will act as a Session Explorer.  
+            Used to allow SessionExplorer hosted control interact with the Agent Desktop more directly.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.ISessionExplorer.ControlRefresh">
+            <summary>
+            Forces the control to invalidate its client area and immediately redraw itself and any child controls.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.ISessionExplorer.FocusOnApplication(Microsoft.Uii.Csr.IHostedApplication)">
+            <summary>
+            Select the given application's node in the treeview
+            </summary>
+            <param name="appWithFocus">Application to focus on</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.ISessionExplorer.RefreshView">
+            <summary>
+            Complete redraw of the session explorer UI.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.ISessionExplorer.AddSession(Microsoft.Uii.Csr.Session,System.Boolean)">
+            <summary>
+            Adds the session to the tree control if its not already there
+            </summary>
+            <param name="session">The current active session</param>
+            <param name="selected">True if it is selected</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.ISessionExplorer.RemoveSession(Microsoft.Uii.Csr.Session)">
+            <summary>
+            Removes a session from the session explorer tree.
+            </summary>
+            <param name="session">The current active session</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.ISessionExplorer.RemoveWorkflowApplicationNodes(Microsoft.Uii.Csr.Session)">
+            <summary>
+            Remove the applications for a session from the SessionExplorerControl
+            </summary>
+            <param name="session">The current active session</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.ISessionExplorer.AddWorkflowApplicationNodes(Microsoft.Uii.Csr.Session,System.Boolean)">
+            <summary>
+            Adds the application nodes back to sessionexplorer
+            </summary>
+            <param name="session">The current active session</param>
+            <param name="selected">True if it is selected</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.ISessionExplorer.AddApplicationNode(Microsoft.Uii.Csr.Session,Microsoft.Uii.Csr.IHostedApplication)">
+            <summary>
+            Add a single application node.  If the application is global then will add
+            for all session, else will add only for the active session passed in.
+            </summary>
+            <param name="session">The current active session</param>
+            <param name="app">The application to add</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.ISessionExplorer.RemoveApplicationNode(Microsoft.Uii.Csr.Session,Microsoft.Uii.Csr.IHostedApplication)">
+            <summary>
+            Remove a single application node from the session explorer.  If the application is
+            global then will remove for all session, else will remove only for the active session
+            passed in.
+            </summary>
+            <param name="session">The current active session</param>
+            <param name="app">The application to remove</param>
+        </member>
+        <member name="E:Microsoft.Uii.Desktop.Core.ISessionExplorer.SEHostedAppSelected">
+            <summary>
+            Event for when a hosted app is selected
+            </summary>
+        </member>
+        <member name="E:Microsoft.Uii.Desktop.Core.ISessionExplorer.SessionClosed">
+            <summary>
+            Event for when a session is closed
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.ISessionExplorer.AppsUI">
+            <summary>
+            Set the AppsUI value
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.ISessionExplorer.IsControlVisible">
+            <summary>
+            Get or set the value indicating wheather the control is displayed
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.ISessionExplorer.ControlHeight">
+            <summary>
+            Get of set the height of the control
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.Core.SessionExplorerEventHandler">
+            <summary>
+            Session explorer event handler.
+            </summary>
+            <param name="sender">Sending object.</param>
+            <param name="e">EventArgs class.</param>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.Core.IWorkflow">
+            <summary>
+            Interface definition for IWorkflow
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.IWorkflow.WorkflowUpdate(System.Guid,System.Guid)">
+            <summary>
+            Call this function to refresh the workflow view.
+            </summary>
+            <param name="agentId">Agent ID</param>
+            <param name="sessionId">Session ID</param>
+            <returns>true if success else false</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.IWorkflow.IsWorkflowPending(System.Guid)">
+            <summary>
+            Is the workflow XML in the Session's Workflow string property a valid pending workflow?
+            </summary>
+            <param name="agentId">Agent ID</param>
+            <returns>true if a valid pending workflow is present,
+            else return false even in the case of errors</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.IWorkflow.Clear">
+            <summary>
+            This function is called from the desktop to clear the contents of the workflow.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.IWorkflow.StartWorkflowByIndex(System.Int32)">
+            <summary>
+            Start Workflow from index value of the available workflow combobox passed in
+            </summary>
+            <param name="index">index of the available workflow combobox</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.IWorkflow.StartWorkflowByName(System.String)">
+            <summary>
+            Start Workflow from the name of the workflow passed in  
+            </summary>
+            <param name="name">Name of workflow</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.IWorkflow.StartWorkflowById(System.Guid)">
+            <summary>
+            Start Workflow from the ID of the workflow passed in
+            </summary>
+            <param name="workflowId">ID of the workflow</param>
+        </member>
+        <member name="E:Microsoft.Uii.Desktop.Core.IWorkflow.WorkflowStatusChange">
+            <summary>
+            this event will be raised when a workflow becomes active and when a workflow is completed/canceled.
+            </summary>
+        </member>
+        <member name="E:Microsoft.Uii.Desktop.Core.IWorkflow.WorkflowStarted">
+            <summary>
+            Required a new event which can properly notify the desktop that
+            a workflow is started.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.IWorkflow.WorkflowNotStarted">
+            <summary>
+            Returns a boolean value indicating whether workflow has started or not
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.IWorkflow.IsControlEnabled">
+            <summary>
+            Gets or Set value indicating whether the control can respond to user interaction
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.IWorkflow.IsControlVisible">
+            <summary>
+            Gets or Sets value indicating whether the control is displayed.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.IWorkflow.CurrentWorkflow">
+            <summary>
+            Get the current workflow that is active.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.IWorkflow.IsForced">
+            <summary>
+            Returns a boolean value indicating whether workflow is forced or not
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.Core.IWorkflowManager">
+            <summary>
+            Interface definition for IWorkflowManager
+            </summary>
+        </member>
+        <member name="E:Microsoft.Uii.Desktop.Core.IWorkflowManager.FocusHostedApp">
+            <summary>
+            this event will be raised when a hosted application has to be brought to focus.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.Core.Properties.Messages">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.Properties.Messages.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.Properties.Messages.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.Properties.Messages.APP_PARAMETER_TYPE_EXCEPTION">
+            <summary>
+              Looks up a localized string similar to App parameter isn&apos;t of type &quot;{0}&quot;..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.Properties.Messages.NONHOSTED_APP_ERROR">
+            <summary>
+              Looks up a localized string similar to The system can&apos;t find the specified file..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.Properties.Messages.SESSION_ID_SessionId">
+            <summary>
+              Looks up a localized string similar to Session  ID.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.Properties.Messages.SESSION_LIMIT_EXCEEDED">
+            <summary>
+              Looks up a localized string similar to The maximum session limit was exceeded..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.Properties.Messages.WORKFLOW_CANCEL_CONFIRM">
+            <summary>
+              Looks up a localized string similar to Are you sure you want to cancel the workflow?.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.Properties.Messages.WORKFLOW_COMPLETE_STEP">
+            <summary>
+              Looks up a localized string similar to Complete all the steps to finish the workflow..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.Properties.Messages.WORKFLOW_DATA_STRUCTURES_WORKFLOW_DATA_ERR_SESSIONID_INVALID">
+            <summary>
+              Looks up a localized string similar to WORKFLOW_DATA_STRUCTURES_WORKFLOW_DATA_ERR_SESSIONID_INVALID: The session ID is invalid..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.Properties.Messages.WORKFLOW_DATA_STRUCTURES_WORKFLOW_DATA_ERR_SET_WORKFLOW_DATA">
+            <summary>
+              Looks up a localized string similar to WORKFLOW_DATA_STRUCTURES_WORKFLOW_DATA_ERR_SET_WORKFLOW_DATA: There is a problem in the XML content of a workflow..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.Properties.Messages.WORKFLOW_DATA_STRUCTURES_WORKFLOW_DATA_ERR_SET_WORKFLOW_STEPS_DATA">
+            <summary>
+              Looks up a localized string similar to WORKFLOW_DATA_STRUCTURES_WORKFLOW_DATA_ERR_SET_WORKFLOW_STEPS_DATA: There is a problem in the XML content of a workflow&apos;s steps..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.Properties.Messages.WORKFLOW_DATA_STRUCTURES_WORKFLOW_DATA_ERR_WORKFLOW_DATA_IN_XML">
+            <summary>
+              Looks up a localized string similar to WORKFLOW_DATA_STRUCTURES_WORKFLOW_DATA_ERR_WORKFLOW_DATA_IN_XML: The formation of workflow XML failed..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.Properties.Messages.WORKFLOW_DATA_STRUCTURES_WORKFLOW_DATA_SET_PENDING_WORKFLOW_DATA">
+            <summary>
+              Looks up a localized string similar to WORKFLOW_DATA_STRUCTURES_WORKFLOW_DATA_SET_PENDING_WORKFLOW_DATA: There is a problem in the steps&apos; data of the pending workflow..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.Properties.Messages.WORKFLOW_DATA_STRUCTURES_WORKFLOW_DATA_SET_PENDING_WORKFLOW_DATA_SET_TO_FIRST_STEP">
+            <summary>
+              Looks up a localized string similar to WORKFLOW_DATA_STRUCTURES_WORKFLOW_DATA_SET_PENDING_WORKFLOW_DATA_SET_TO_FIRST_STEP: There is a problem in the XML content of a workflow&apos;s steps. The first step of the workflow will be set as the active step..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.Properties.Messages.WORKFLOW_DATA_STRUCTURES_WORKFLOW_DATA_STATUS_INVALID">
+            <summary>
+              Looks up a localized string similar to WORKFLOW_DATA_STRUCTURES_WORKFLOW_DATA_STATUS_INVALID: The workflow status  isn&apos;t valid..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.Properties.Messages.WORKFLOW_DATA_STRUCTURES_WORKFLOW_STEP_ERR_SET_STEP_DATA">
+            <summary>
+              Looks up a localized string similar to WORKFLOW_DATA_STRUCTURES_WORKFLOW_STEP_ERR_SET_STEP_DATA: There is a problem in the XML content of a workflow..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.Properties.Messages.WORKFLOW_ERR_AGENTID_SESSIONID_NULL">
+            <summary>
+              Looks up a localized string similar to WORKFLOW_ERR_AGENTID_SESSIONID_NULL: Either the Agent ID or the Session ID is null..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.Properties.Messages.WORKFLOW_ERR_GET_INTELLIGENT_WORKFLOW_ID">
+            <summary>
+              Looks up a localized string similar to WORKFLOW_ERR_GET_INTELLIGENT_WORKFLOW_ID: Failed to get the intelligent workflow..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.Properties.Messages.WORKFLOW_ERR_GET_PENDING_WORKFLOW">
+            <summary>
+              Looks up a localized string similar to WORKFLOW_ERR_GET_PENDING_WORKFLOW: There was a problem in getting the pending workflow content..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.Properties.Messages.WORKFLOW_ERR_GET_WORKFLOWS">
+            <summary>
+              Looks up a localized string similar to WORKFLOW_ERR_GET_WORKFLOWS: There was a problem in obtaining the available workflows for the Agent..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.Properties.Messages.WORKFLOW_ERR_LISTVIEW_UPDATE">
+            <summary>
+              Looks up a localized string similar to WORKFLOW_ERR_LISTVIEW_UPDATE: There was a problem in updating the list view of the workflow..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.Properties.Messages.WORKFLOW_ERR_PENDING_WORKFLOW_ID">
+             <summary>
+               Looks up a localized string similar to &quot;WORKFLOW_ERR_PENDING_WORKFLOW_ID: The pending workflow of this session isn&apos;t available.
+            Please contact the system administrator.&quot;.
+             </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.Properties.Messages.WORKFLOW_ERR_SAVE_ACTIVE_WORKFLOW">
+            <summary>
+              Looks up a localized string similar to WORKFLOW_ERR_SAVE_ACTIVE_WORKFLOW: The Save Workflow web method caused the problem..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.Properties.Messages.WORKFLOW_ERR_SET_WORKFLOW_DATA_FROM_XML">
+            <summary>
+              Looks up a localized string similar to WORKFLOW_ERR_SET_WORKFLOW_DATA_FROM_XML: There is a problem in the XML content of the available workflow..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.Properties.Messages.WORKFLOW_ERR_TRANSFER_WORKFLOW_FAILED">
+            <summary>
+              Looks up a localized string similar to WORKFLOW_ERR_TRANSFER_WORKFLOW_FAILED: There is a problem in transferring the workflow from Session ID {0} to Session ID {1}..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.Properties.Messages.WORKFLOW_ERR_UPDATING_COMBO">
+            <summary>
+              Looks up a localized string similar to WORKFLOW_ERR_UPDATING_COMBO: There is a problem updating the workflow combo box..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.Properties.Messages.WORKFLOW_GET_WORKFLOW_STEPS">
+            <summary>
+              Looks up a localized string similar to There is a problem in the XML content of a workflow&apos;s steps or in setting the active workflow..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.Properties.Messages.WORKFLOW_LBL_HELP_CONTENT">
+            <summary>
+              Looks up a localized string similar to A workflow is a series of steps that helps an agent do a task associated with a customer..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.Properties.Messages.WORKFLOW_LOGGING_INFO_NO_ACCESS_TO_STEPS">
+             <summary>
+               Looks up a localized string similar to &quot;The agent doesn&apos;t have access to the hosted applications corresponding to the following steps of the selected workflow.
+            &quot;.
+             </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.Properties.Messages.WORKFLOW_LOGGING_INFO_NO_ACCESS_TO_WORKFLOWS">
+            <summary>
+              Looks up a localized string similar to The agent doesn&apos;t have access to any workflows. Contact the system administrator..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.Properties.Messages.WORKFLOW_MSGBOX_NO_ACCESS_TO_STEPS_ASK_PART1">
+             <summary>
+               Looks up a localized string similar to &quot;You don&apos;t have access to the hosted applications corresponding to the following steps of the selected workflow.
+            &quot;.
+             </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.Properties.Messages.WORKFLOW_MSGBOX_NO_ACCESS_TO_STEPS_ASK_PART2">
+             <summary>
+               Looks up a localized string similar to 
+            Do you wish to continue?.
+             </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.Properties.Messages.WORKFLOW_STATUS_nWorkflowStatus">
+            <summary>
+              Looks up a localized string similar to Workflow Status.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.Properties.Messages.WORKFLOW_STEP_COLLECTION_OUTOFINDEX">
+            <summary>
+              Looks up a localized string similar to Index Out of range.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.Core.NonHostedApplications">
+            <summary>
+            NonHosted Applications Data Array.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.NonHostedApplications.#ctor">
+            <summary>
+            default constructor to set up and init the NonHostedApplications class. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.NonHostedApplications.NonHostedApplicationItems">
+            <summary>
+            List of Non Hosted Application Items that are currently managed. 
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.Core.NonHostedApplicationItem">
+            <summary>
+            Describes a Non Hosted Application 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.NonHostedApplicationItem.Launch">
+            <summary>
+            Invokes the Command to launch the non hosted app.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.NonHostedApplicationItem.DisplayName">
+            <summary>
+            Name of the NonHosted Application
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.NonHostedApplicationItem.CommandLine">
+            <summary>
+            Command line to invoke the NonHosted Application 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.NonHostedApplicationItem.IsDefaultApplication">
+            <summary>
+            Identifies an Application as the Default App.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.Core.WorkflowEventHandler">
+            <summary>
+            Declaration of a delegate for the Workflow events
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.Core.WorkflowStatus">
+            <summary>
+            if WorkflowStatus is 1, a workflow is made active. If the WorkflowStatus is 0, a workflow is complete. If the WorkflowStatus is 2, a workflow is canceled.
+            workflow web service
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.Core.WorkflowStatus.Active">
+            <summary>
+            Workflow is active
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.Core.WorkflowStatus.Complete">
+            <summary>
+            Workflow is complete
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.Core.WorkflowStatus.Cancel">
+            <summary>
+            Workflow is cancel
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.Core.WorkflowStatus.Restored">
+            <summary>
+            Workflow is restored
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.Core.WorkflowEventArgs">
+            <summary>
+            Workflow Event Args
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.WorkflowEventArgs.SessionId">
+            <summary>
+            Get or set the Session ID.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.WorkflowEventArgs.WorkflowStatus">
+            <summary>
+            Get or set the workflow status
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.WorkflowEventArgs.ApplicationId">
+            <summary>
+            Get or set the Application ID
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.WorkflowEventArgs.CurrentWorkflow">
+             <summary>
+            Workflow Driven Implementation: 
+            Required by the handlers to know the current workflow and its data.
+             </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.Core.WorkflowData">
+            <summary>
+            Class to maintain workflow
+            
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.WorkflowData.#ctor">
+            <summary>
+            Default Public Constructor
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.WorkflowData.ReturnACopy">
+            <summary>
+            creates a copy of workflow
+            </summary>
+            <returns>copy of workflow</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.WorkflowData.SetWorkflowData(System.String)">
+            <summary>
+            Set the workflow content from the XML to the data structure.
+            </summary>
+            <param name="workflowDataXml">workflow content in XML.</param>
+            <returns>true if successful and false if failed.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.WorkflowData.SetWorkflowStepsData(System.String)">
+            <summary>
+            Sets the workflow steps' content from the XML to the data structure.
+            </summary>
+            <param name="workflowStepsXml">steps' content in the form of XML</param>
+            <returns>true if successful and false if failed.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.WorkflowData.AreAllStepsComplete">
+            <summary>
+            Checks if each of the step is marked complete.
+            </summary>
+            <returns>true if all are complete, else false</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.WorkflowData.GetStepByStepId(System.Guid)">
+            <summary>
+            Gets the step by step id
+            </summary>
+            <param name="stepId">Workflow step id</param>
+            <returns>Workflow step</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.WorkflowData.GetStepByIndex(System.Int32)">
+            <summary>
+            Gets the step by index
+            </summary>
+            <param name="stepIndex">Workflow step index</param>
+            <returns>Workflow step</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.WorkflowData.WorkflowDataInXml(System.Guid,System.Int32,System.Guid)">
+            This function used to be in in the Microsoft.Uii.Samples.HostedControlInterfaces as part of
+            WorkflowData class. In the WfWorkflowControl this has been refactored out and replaced with
+            a Serialization function
+            <summary>
+            Forms an XML of the workflow content.
+            </summary>
+            <param name="sessionId">Active Session ID</param>
+            <param name="workflowStatus">Workflow Status</param>
+            <param name="activatedStepId">Active Workflow step ID</param>
+            <returns>true is successful else false</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.WorkflowData.SetPendingWorkflowData(System.String,System.Boolean)">
+            <summary>
+            This function used to be in in the Microsoft.Uii.Samples.HostedControlInterfaces as part of
+            WorkflowData class. In the WfWorkflowControl this has been refactored out and replaced with
+            a Serialization function
+            </summary>
+            <param name="pendingWorkflowData">Pending workflow xml</param>
+            <param name="showError">Flag saying if any errors are to be displayed or not</param>
+            <returns>True for success else false</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.WorkflowData.SetPendingWorkflowData(System.String)">
+            <summary>
+            set the pending workflow
+            </summary>
+            <param name="pendingWorkflowData">Pending workflow xml</param>
+            <returns>true if success else false</returns>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.WorkflowData.WorkflowId">
+            <summary>
+            Get and set the workflowId.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.WorkflowData.ActiveStepId">
+            <summary>
+            Get and set the activeStepId
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.WorkflowData.IsForced">
+            <summary>
+            Returns a boolean value indicating whether workflow is forced or not
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.WorkflowData.WorkflowName">
+            <summary>
+            Get and set the name for the workflow
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.WorkflowData.Steps">
+            <summary>
+            Returns a WorkflowStepArray which can be serialized/deserialized
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.Core.WorkflowStep">
+            <summary>
+            Structure to maintain a workflow step
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.WorkflowStep.#ctor">
+            <summary>
+            Public Constructor.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.WorkflowStep.SetStepData(System.String)">
+            <summary>
+            Deserialize workflowstep data
+            </summary>
+            <param name="stepDataXml">Workflow Step Data</param>
+            <returns>True if able to serialize</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.WorkflowStep.ReturnACopy">
+            <summary>
+            Create a copy of workflow step
+            </summary>
+            <returns>Copy of workflow step</returns>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.WorkflowStep.WorkflowStepId">
+            <summary>
+            Get and set the Workflowstepid
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.WorkflowStep.HostedApplicationId">
+            <summary>
+            Get and set the Id of the HostedApplicationId that maps to the WorkflowStep
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.WorkflowStep.IsStepComplete">
+            <summary>
+            Get and set whether a step is complete
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.WorkflowStep.WorkflowStepName">
+            <summary>
+            Get and set the name of WorkflowStep
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.WorkflowStep.WorkflowStepDescription">
+            <summary>
+            Gets and sets the description of this workflow step
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.WorkflowStep.WorkflowStepAction">
+            <summary>
+            Gets and sets the action for the workflow step
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Desktop.Core.WorkflowStepCollection">
+            <summary>
+            WorkflowStepArray serves to allow XmlSerializer to serialize/deserialize the WorkflowStepArray
+            A class that implements ICollection must have certain public properties
+            see MSDN documentation for XmlSerializer for more information
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Desktop.Core.WorkflowStepCollection.collectionName">
+            <summary>
+            Name of the workflow step collection.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.WorkflowStepCollection.CopyTo(System.Array,System.Int32)">
+             <summary>
+             Public to allow serialization/deserialization
+             </summary>
+            <param name="index">Workflow index</param>
+            <param name="array">Workflow array</param>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.WorkflowStepCollection.GetEnumerator">
+            <summary>
+            Public to allow serialization/deserialization
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Desktop.Core.WorkflowStepCollection.Add(Microsoft.Uii.Desktop.Core.WorkflowStep)">
+            <summary>
+            Public to allow serialization/deserialization
+            </summary>
+            <param name="step">Workflow Step</param>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.WorkflowStepCollection.CollectionName">
+            <summary>
+            Collection Name
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.WorkflowStepCollection.Item(System.Int32)">
+            <summary>
+            Public Item indexed property to allow serialization/deserialization
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.WorkflowStepCollection.Count">
+            <summary>
+            Public to allow serialization/deserialization
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.WorkflowStepCollection.SyncRoot">
+            <summary>
+            Public to allow serialization/deserialization
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Desktop.Core.WorkflowStepCollection.IsSynchronized">
+            <summary>
+            Public to allow serialization/deserialization
+            </summary>
+        </member>
+    </members>
+</doc>

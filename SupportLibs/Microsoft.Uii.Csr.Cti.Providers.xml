@@ -1,0 +1,1726 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Uii.Csr.Cti.Providers</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider">
+            <summary>
+            This represents a single active call.  A call within the local phone system will
+            be represented by a call object on each of the line objects that are in the call.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.Instance">
+            <summary>
+            Creates an instance of the provider based on the configuration data.
+            </summary>
+            <returns>The actualized Call object</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.#ctor">
+            <summary>
+            The empty constructor exists for serialization purposes.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.#ctor(System.String)">
+            <summary>
+            Provider constructor.
+            </summary>
+            <param name="initializer">Not used...</param>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.demoFeatures">
+            <summary>
+            Call Features public property
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.Initialize(System.String,System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            The initialize method to set local variables.
+            </summary>
+            <param name="name">The name of the provider.</param>
+            <param name="configValue">A NameValueCollection of attributes, currently not used.</param>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.id">
+            <summary>
+            ID used to uniquely identify the call.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.demoParties">
+            <summary>
+            Demo Parties
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.demoCalledNumber">
+            <summary>
+            Called number
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.CallStateText(Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.CallState)">
+            <summary>
+            Returns a localized string for each value in the CallState enumeration
+            </summary>
+            <param name="callState">Call State</param>
+            <returns>String describing the call state.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.TextRepOfCallState(Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.CallState)">
+            <summary>
+            Returns a localized string for each value in the CallState enumeration
+            </summary>
+            <param name="callState">Call State</param>
+            <returns>String describing the call state.</returns>
+            <remarks>
+            This was renamed to fit with the other names in the classes
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.Init(Microsoft.Uii.Csr.Cti.Providers.TelephonyProvider,Microsoft.Uii.Csr.Cti.Providers.LineClassProvider,System.Int32)">
+            <summary>
+            The init of the Call class.
+            </summary>
+            <param name="cti">The actualized Telephony object</param>
+            <param name="line">The actualized line object</param>
+            <param name="callID">The ID of the call.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.OnHold">
+            <summary>
+            Returns true if the call is in any of the hold states.
+            </summary>
+            <returns>true if the call is in any of the hold states</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.CanAnswer">
+            <summary>
+            Check the call if it can answer
+            </summary>
+            <returns>Boolean indicating if the call can answer.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.CanHangup">
+            <summary>
+            Check the call if it can hangup
+            </summary>
+            <returns>Boolean indicating if the call can hangup.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.CanHold">
+            <summary>
+            Check the call if it can hold
+            </summary>
+            <returns>Boolean indicating if the call can unhold.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.CanUnhold">
+            <summary>
+            Check the call if it can unhold
+            </summary>
+            <returns>Boolean indicating if the call can unhold.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.CanTransfer">
+            <summary>
+            Check the call if it can transfer
+            </summary>
+            <returns>Boolean indicating if the call can transfer.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.CanConference">
+            <summary>
+            Check the call if it can conference
+            </summary>
+            <returns>Boolean indicating if the call can conference.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.Answer">
+            <summary>
+            Answer the call.
+            </summary>
+            <returns>Integer indicating success or failure.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.Hold">
+            <summary>
+            Hold the call.
+            </summary>
+            <returns>Integer indicating success or failure.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.Unhold">
+            <summary>
+            Un-hold the call.
+            </summary>
+            <returns>Integer indicating success or failure.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.Hangup">
+            <summary>
+            Hangup the call.
+            </summary>
+            <returns>Integer indicating success or failure.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.Transfer(System.String)">
+            <summary>
+            Transfer the call to the number given.
+            </summary>
+            <param name="numberToTransferTo">Number to Transfer</param>
+            <returns>Integer indicating success or failure.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.TransferInit(System.String)">
+            <summary>
+            First half of two-step (warm) transfer.  First call is on hold and new call
+            is made.
+            </summary>
+            <param name="numberToTransferTo">Number to Transfer</param>
+            <returns>Negative for an error</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.TransferComplete">
+            <summary>
+            First half of two-step (warm) transfer.  First call is on hold and new call
+            is made.
+            </summary>
+            <returns>Negative for an error</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.TransferCancel">
+            <summary>
+            Cancels a two step transfer that has completed the first step but
+            not the second.
+            </summary>
+            <returns>negative for error</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.Conference(Microsoft.Uii.Csr.Cti.Providers.CallClassProvider)">
+            <summary>
+            Setup an conference with the call.
+            </summary>
+            <param name="callToConferenceInto">The actualized call with which to conference.</param>
+            <returns>negative for error</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.ConferenceInit(System.String)">
+            <summary>
+            First half of a two step conference call.  Puts original call on hold
+            and makes second call.
+            </summary>
+            <param name="addParty">Add Party</param>
+            <returns>negative for failure</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.ConferenceComplete">
+            <summary>
+            Second half of a two step conference call.  Joins the two calls
+            together.
+            </summary>
+            <returns>negative for failure</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.ConferenceCancel">
+            <summary>
+            Cancels a two step conference call that is thru the first step but
+            not joined yet.
+            </summary>
+            <returns>negative for failure</returns>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.ProviderName">
+            <summary>
+            The name of the provider.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.demoState">
+            <summary>
+            The Call State
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.LineID">
+            <summary>
+            A Guid indicating the Line ID.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.ID">
+            <summary>
+            A Guid indicating the ID.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.Line">
+            <summary>
+            The actualized Line class object.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.Cti">
+            <summary>
+            The actualized telephony object.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.UserTag">
+            <summary>
+            This is so a user can attach any string they need to the call for
+            later reference.  A name from a database lookup is one example.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.Started">
+            <summary>
+            So we can tell how long the call has been around (local not in overal system)
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.CallID">
+            <summary>
+             This exists so a unique string can be used to id the call.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.Parties">
+            <summary>
+            A list of the parties.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.CallerNumber">
+            <summary>
+            The caller's number.
+            </summary>
+            <remarks>Historically this returned the same thing as Parties does.
+            TODO: fix this in the two activeX controls (or better yet change to interop code)
+            to do this the appropriate way.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.CalledNumber">
+            <summary>
+            The number called.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.State">
+            <summary>
+            The state of the call.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.Features">
+            <summary>
+            Return the CallFeatures enumeration.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider._CanAnswer">
+            <summary>
+            Check the call if it can answer, the property version of
+            CanAnswer method.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider._CanHangup">
+            <summary>
+            Check the call if it can hangup, the property version of
+            CanHangup method.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider._CanHold">
+            <summary>
+            Check the call if it can hold, the property version of
+            Canhold method.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider._CanUnhold">
+            <summary>
+            Check the call if it can unhold, the property version of
+            CanUnhold method.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider._CanTransfer">
+            <summary>
+            Check the call if it can transfer, the property version of
+            CanTransfer method.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider._CanConference">
+            <summary>
+            Check the call if it can conference, the property version of
+            CanConference method.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.CallState">
+            <summary>
+            The current state of the call.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.CallState.None">
+            <summary>
+            No current state
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.CallState.Accepted">
+            <summary>
+            Call Accepted
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.CallState.Busy">
+            <summary>
+            Call is busy
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.CallState.Conferenced">
+            <summary>
+            Call is conferenced
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.CallState.Connected">
+            <summary>
+            Call is completed
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.CallState.Dialing">
+            <summary>
+            Call is dialing
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.CallState.Dialtone">
+            <summary>
+            Call is at dialtone
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.CallState.Disconnected">
+            <summary>
+            Call is disconnected
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.CallState.Idle">
+            <summary>
+            Call is idle
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.CallState.Incoming_Call">
+            <summary>
+            Call has incoming call (Offering in TAPI lingo)
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.CallState.Hold">
+            <summary>
+            Call is on hold
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.CallState.OnHoldPendingConference">
+            <summary>
+            Call is waiting for a conference
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.CallState.OnHoldPendingTransfer">
+            <summary>
+            Call is waiting to transfer
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.CallState.Proceeding">
+            <summary>
+            Call is proceeding
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.CallState.Ringing">
+            <summary>
+            Call is ringing (Ringback in TAPI lingo)
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.CallState.Special">
+            <summary>
+            Call is at a special state
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.CallState.Unknown">
+            <summary>
+            Call in in an unknown state
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.CallFeatures">
+            <summary>
+            These are the possible actions that can be performed on a
+            call at a given time.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.CallFeatures.Accept">
+            <summary>
+            Can accept a call
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.CallFeatures.AddToConf">
+            <summary>
+            Can conference a call
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.CallFeatures.Answer">
+            <summary>
+            Can answer a call
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.CallFeatures.BlindTransfer">
+            <summary>
+            Can blindly transfer
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.CallFeatures.CompleteCall">
+            <summary>
+            Can complete a call
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.CallFeatures.CompleteTransfer">
+            <summary>
+            Can complete a transfer
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.CallFeatures.Dial">
+            <summary>
+            Can dial
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.CallFeatures.Drop">
+            <summary>
+            Can drop a call
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.CallFeatures.GatherDigits">
+            <summary>
+            Can gather digits
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.CallFeatures.GenerateDigits">
+            <summary>
+            Can generate digits
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.CallFeatures.GenerateTone">
+            <summary>
+            Can generate a tone
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.CallFeatures.Hold">
+            <summary>
+            Can hold a call
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.CallFeatures.MonitorDigits">
+            <summary>
+            Can monitor digits
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.CallFeatures.MonitorMedia">
+            <summary>
+            Can monitor media
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.CallFeatures.MonitorTones">
+            <summary>
+            Can monitor tones
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.CallFeatures.Park">
+            <summary>
+            Can park a call
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.CallFeatures.PrepareAddConf">
+            <summary>
+            Can prepare to conference a call
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.CallFeatures.Redirect">
+            <summary>
+            Can redirect a call
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.CallFeatures.RemoveFromConf">
+            <summary>
+            Can remove from a conference
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.CallFeatures.SecureCall">
+            <summary>
+            Can secure a call
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.CallFeatures.SendUserUser">
+            <summary>
+            Can send to a user
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.CallFeatures.SetCallParams">
+            <summary>
+            Can set call parameters
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.CallFeatures.SetMediaControl">
+            <summary>
+            Can set media control
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.CallFeatures.SetTerminal">
+            <summary>
+            Can set terminal
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.CallFeatures.SetupConf">
+            <summary>
+            Can setup a conference
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.CallFeatures.SetupTransfer">
+            <summary>
+            Can setup transfer
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.CallFeatures.SwapHold">
+            <summary>
+            Can swap hold
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.CallFeatures.Unhold">
+            <summary>
+            Can un-hold
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.CallFeatures.ReleaseUserUserInfo">
+            <summary>
+            Can release user information
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Csr.Cti.Providers.CallsClassProvider">
+            <summary>
+            This class exists to allow users to enumerate over lines with the foreach operator
+            or with for ( int i = 0;... ) syntax.  Either way, you're looking into an array
+            of calls.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CallsClassProvider.Instance">
+            <summary>
+            Creates an instance of the provider based on the configuration data.
+            </summary>
+            <returns>The actualized Calls object</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CallsClassProvider.#ctor">
+            <summary>
+            The empty constructor exists for serialization purposes.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CallsClassProvider.#ctor(System.String)">
+            <summary>
+            Provider constructor.
+            </summary>
+            <param name="initializer">Not used....</param>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CallsClassProvider.Initialize(System.String,System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            The initialize method to set local variables.
+            </summary>
+            <param name="name">The name of the provider.</param>
+            <param name="configValue">A NameValueCollection of attributes, currently not used.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CallsClassProvider.Init(Microsoft.Uii.Csr.Cti.Providers.TelephonyProvider,Microsoft.Uii.Csr.Cti.Providers.LineClassProvider)">
+            <summary>
+            The init of the Calls class.
+            </summary>
+            <param name="cti">The actualized Telephony object</param>
+            <param name="line">The actualized line object</param>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CallsClassProvider.AddCall(Microsoft.Uii.Csr.Cti.Providers.CallClassProvider)">
+            <summary>
+            Add a call to the Calls collection
+            </summary>
+            <param name="call">The actualized call object</param>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CallsClassProvider.RemoveCall(Microsoft.Uii.Csr.Cti.Providers.CallClassProvider)">
+            <summary>
+            Remove a call from the Calls collection
+            </summary>
+            <param name="call">The actualized call object</param>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CallsClassProvider.Add(System.Object)">
+            <summary>
+            Needed for compiling within a web service to fulfill IEnumable
+            </summary>
+            <param name="o">The line object to add.</param>
+            <returns>The index at which the value has been added.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CallsClassProvider.GetEnumerator">
+            <summary>
+            Returns an enumerator that can iterate through the Lines
+            </summary>
+            <returns>The call class enumerator</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CallsClassProvider.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Implement the GetEnumerator() method:
+            </summary>
+            <returns>The Lines class (as IEnumerator)</returns>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.CallsClassProvider.ProviderName">
+            <summary>
+            The name of the provider.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.CallsClassProvider.Item(System.Int32)">
+            <summary>
+            Allow actualized Call objects to be indexed and returned.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.CallsClassProvider.Length">
+            <summary>
+            The number of calls
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Csr.Cti.Providers.CallsClassProvider.CallsClassEnumerator">
+            <summary>
+            Declare the enumerator and implement the IEnumerator interface
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CallsClassProvider.CallsClassEnumerator.#ctor(Microsoft.Uii.Csr.Cti.Providers.CallsClassProvider)">
+            <summary>
+            The constructor of the CallsClassEnumerator class.
+            </summary>
+            <param name="collection">The collestion of calls (via the actualized Calls class).</param>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CallsClassProvider.CallsClassEnumerator.Reset">
+            <summary>
+            The method to reset the calls class enumerator
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CallsClassProvider.CallsClassEnumerator.MoveNext">
+            <summary>
+            The method to move to the next line in the calls class collection.
+            </summary>
+            <returns>Returns boolean indicating if the move was successful.</returns>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.CallsClassProvider.CallsClassEnumerator.Current">
+            <summary>
+            Return the current actualized Call class object.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.CallsClassProvider.CallsClassEnumerator.System#Collections#IEnumerator#Current">
+            <summary>
+            The current property on the IEnumerator interface
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Csr.Cti.Providers.CtiHandler">
+            <summary>
+            This class contains properties and methods concerned to CTI
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Csr.Cti.Providers.ICti">
+            <summary>
+            The Cti interface to expose the standard set of 
+            methods and properties for Cti.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.ICti.GetActiveCall">
+            <summary>
+            Return the active call, null if no call is active.
+            </summary>
+            <returns>Returns the active call, or null.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.ICti.GetCall(System.Int32)">
+            <summary>
+            Returns the Call for a given callID
+            </summary>
+            <param name="CallID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.ICti.GetCalls">
+            <summary>
+            Return all the calls 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.ICti.GetNumberOfCalls">
+            <summary>
+            Get the number of calls
+            </summary>
+            <returns>Number of calls</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.ICti.FindTheLongestCall">
+            <summary>
+            Find the longest call
+            </summary>
+            <returns>Longest call</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.ICti.LengthOfCall(Microsoft.Uii.Csr.Cti.Providers.CallClassProvider)">
+            <summary>
+            Find the length of the call passed in
+            </summary>
+            <param name="Call"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.ICti.Hold(System.Boolean)">
+            <summary>
+            Hold the current call
+            </summary>
+            <param name="OnHold"></param>
+            <returns>Return true or false based on success of holding call.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.ICti.OnThePhone">
+            <summary>
+            Return whether or not someone is on the phone.
+            </summary>
+            <returns>Returns true or false.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.ICti.HangUp(System.Int32)">
+            <summary>
+            Hang up the current call.
+            </summary>
+            <param name="CallID">The Call ID</param>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.ICti.CanHangUp(System.Int32)">
+            <summary>
+            Can the current call be hung up
+            </summary>
+            <param name="CallID">The call id</param>
+            <returns>A boolean indicating if a hangup can occur.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.ICti.Unhold(System.Int32)">
+            <summary>
+            Take the current call off hold.
+            </summary>
+            <returns>Returns true or false based on success.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.ICti.CanUnhold(System.Int32)">
+            <summary>
+            Can we take the current call off hold?
+            </summary>
+            <param name="CallID">The call id</param>
+            <returns>A boolean indicating if a the can un-hold.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.ICti.CleanUp">
+            <summary>
+            Clean up resources.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.ICti.HaveCalls">
+            <summary>
+            Return whether or not we have one or more calls
+            </summary>
+            <returns>A boolean indicating if a calls exists.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.ICti.InitializeCti">
+            <summary>
+            Creates an intances of the TelephonyProvider
+            </summary>
+            <returns>The actualized Telephony object</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.ICti.InitializeLine(System.String)">
+            <summary>
+            Intialize and return the line of the agentNumber passed in
+            </summary>
+            <returns>The actualized line object</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.ICti.InitializeRemoteTelephonyProcess(System.String)">
+            <summary>
+            Need to start the .Net Remote process that does the telephony functions
+            If its already started, it will detect so and exit and leave the running one
+            alone.
+            </summary>
+            <param name="application">The application name</param>
+            <returns>The process object of the remote telephony</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.ICti.Init(Microsoft.Uii.Csr.Cti.Providers.TelephonyProvider.CtiType)">
+            <summary>
+            For backwards compatibility (originally used for TAPI and demos)
+            </summary>
+            <param name="type">The type of telephony API to use (no longer used, the provider pattern defines the type).</param>
+            <returns>A boolean indicating success or failure</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.ICti.Init(Microsoft.Uii.Csr.Cti.Providers.TelephonyProvider.CtiType,System.String,System.String)">
+            <summary>
+            For backwards compatibility (originally used for Avaya TSAPI)
+            </summary>
+            <param name="type">The type of telephony API to use (no longer used, the provider pattern defines the type).</param>
+            <param name="user">The user id</param>
+            <param name="password">The password</param>
+            <returns>A boolean indicating success or failure</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.ICti.Init(Microsoft.Uii.Csr.Cti.Providers.TelephonyProvider.CtiType,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            For use in installations using the Avaya SoftPhone product.
+            </summary>
+            <param name="type">The type of telephony API to use (no longer used, the provider pattern defines the type).</param>
+            <param name="user">The user id</param>
+            <param name="password">The password</param>
+            <param name="agentID">The agent id</param>
+            <param name="agentPassword">The agent password.</param>
+            <param name="agentNumber">The agent number</param>
+            <returns>A boolean indicating success or failure</returns>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.ICti.Cti">
+            <summary>
+            Get or set Cti
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.ICti.RemoteTelephonyProcess">
+            <summary>
+            Get RemoteTelephonyProcess
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.ICti.CtiLine">
+            <summary>
+            Get or set the Cti Line for this instance
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CtiHandler.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CtiHandler.InitializeCti">
+            <summary>
+            Creates an intances of the TelephonyProvider
+            </summary>
+            <returns>Telephony provider instance</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CtiHandler.InitializeLine(System.String)">
+            <summary>
+            Intialize and return the line of the agentNumber passed in
+            </summary>
+            <param name="AgentNumber">Agent's number</param>
+            <returns>Returns the LineClasProvider</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CtiHandler.InitializeRemoteTelephonyProcess(System.String)">
+            <summary>
+            Need to start the .Net Remote process that does the telephony functions
+            If its already started, it will detect so and exit and leave the running one
+            alone.
+            </summary>
+            <param name="App">App to start</param>
+            <returns>Remote Telephony porcess</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CtiHandler.Init(Microsoft.Uii.Csr.Cti.Providers.TelephonyProvider.CtiType)">
+            <summary>
+            For backwards compatibility (originally used for TAPI and demos)
+            </summary>
+            <param name="type">The type of telephony API to use (no longer used, the provider pattern defines the type).</param>
+            <returns>A boolean indicating success or failure</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CtiHandler.Init(Microsoft.Uii.Csr.Cti.Providers.TelephonyProvider.CtiType,System.String,System.String)">
+            <summary>
+            For backwards compatibility (originally used for Avaya TSAPI)
+            </summary>
+            <param name="type">The type of telephony API to use (no longer used, the provider pattern defines the type).</param>
+            <param name="user">The user id</param>
+            <param name="password">The password</param>
+            <returns>A boolean indicating success or failure</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CtiHandler.Init(Microsoft.Uii.Csr.Cti.Providers.TelephonyProvider.CtiType,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            For use in installations using the Avaya SoftPhone product.
+            </summary>
+            <param name="type">The type of telephony API to use (no longer used, the provider pattern defines the type).</param>
+            <param name="user">The user id</param>
+            <param name="password">The password</param>
+            <param name="agentID">The agent id</param>
+            <param name="agentPassword">The agent password.</param>
+            <param name="agentNumber">The agent number</param>
+            <returns>A boolean indicating success or failure</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CtiHandler.GetActiveCall">
+            <summary>
+            Return the active call, null if no call is active.
+            </summary>
+            <returns>Returns the actualized active call, or null.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CtiHandler.GetCalls">
+            <summary>
+            Return all the calls 
+            </summary>
+            <returns>The actualized calls object</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CtiHandler.GetCall(System.Int32)">
+            <summary>
+            Returns the Call for a given callID
+            </summary>
+            <param name="CallID">The call ID</param>
+            <returns>The actualized Call object</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CtiHandler.GetNumberOfCalls">
+            <summary>
+            return the number of calls
+            </summary>
+            <returns>The number of calls</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CtiHandler.CanUnhold(System.Int32)">
+            <summary>
+            Indicates whether the call can be Unhold or not.
+            </summary>
+            <param name="CallID">The call id</param>
+            <returns>A boolean indicating if a the can un-hold.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CtiHandler.CanHangUp(System.Int32)">
+            <summary>
+            Can the current call be hung up
+            </summary>
+            <param name="CallID">The call id</param>
+            <returns>A boolean indicating if a hangup can occur.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CtiHandler.Unhold(System.Int32)">
+            <summary>
+            Take the current call off hold.
+            </summary>
+            <param name="CallID">The Call Id</param>
+            <returns>Returns true or false based on success.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CtiHandler.HangUp(System.Int32)">
+            <summary>
+            Hang up the current call.
+            </summary>
+            <param name="CallID">The Call ID</param>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CtiHandler.Hold(System.Boolean)">
+            <summary>
+            Hold the current call
+            </summary>
+            <param name="OnHold"></param>
+            <returns>Return true or false based on success of holding call.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CtiHandler.FindTheLongestCall">
+            <summary>
+            Find the longest call
+            </summary>
+            <returns>The actualized call that is the longest otherwise null.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CtiHandler.LengthOfCall(Microsoft.Uii.Csr.Cti.Providers.CallClassProvider)">
+            <summary>
+            Find the length of the call passed in
+            </summary>
+            <param name="Call">An actualized call object to review</param>
+            <returns>The length of the call as a string, 0 otherwise</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CtiHandler.HaveCalls">
+            <summary>
+            Return whether or not we have one or more calls
+            </summary>
+            <returns>A boolean indicating if there are calls.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CtiHandler.OnThePhone">
+            <summary>
+            Return whether or not someone is on the phone.
+            </summary>
+            <returns>Returns true or false.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CtiHandler.CleanUp">
+            <summary>
+            Clean up resources.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.CtiHandler.Cti">
+            <summary>
+            The actualized telephony class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.CtiHandler.RemoteTelephonyProcess">
+            <summary>
+            The remote telephony process
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.CtiHandler.CtiLine">
+            <summary>
+            The Line for this instance
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Csr.Cti.Providers.LineClassProvider">
+            <summary>
+            Represents a single line in a phone system.
+            </summary>
+            <remarks>
+            This class should be abstract but while integrating it with the CTI web service
+            there were problems.  Do not use this class directly.
+            </remarks>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.LineClassProvider.features">
+            <summary>
+            Features
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.LineClassProvider.maxParties">
+            <summary>
+            Maximum parties
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.LineClassProvider._name">
+            <summary>
+            Line name
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.LineClassProvider.providerInfo">
+            <summary>
+            Provider information
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.LineClassProvider.switchInfo">
+            <summary>
+            Switch information
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.LineClassProvider.id">
+            <summary>
+            Unique Identifier
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.LineClassProvider.syncLock">
+            <summary>
+            Lock synchronization object
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.LineClassProvider.Instance">
+            <summary>
+            Creates an instance of the provider based on the configuration data.
+            </summary>
+            <returns>
+            An instance of the actualized line class.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.LineClassProvider.Initialize(System.String,System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            The initialize method to set local variables.
+            </summary>
+            <param name="name">The name of the provider.</param>
+            <param name="configValue">A NameValueCollection of attributes, currently not used.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.LineClassProvider.#ctor">
+            <summary>
+            The empty constructor exists for serialization purposes.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.LineClassProvider.#ctor(System.String)">
+            <summary>
+            Provider constructor
+            </summary>
+            <param name="initializer">Not used...</param>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.LineClassProvider.Init(Microsoft.Uii.Csr.Cti.Providers.TelephonyProvider,System.Int32,Microsoft.Uii.Csr.Cti.Providers.TelephonyProvider.CtiType)">
+            <summary>
+            The init of the Line class.
+            </summary>
+            <param name="cti">The actualized Telephony object</param>
+            <param name="devID">The Dev ID</param>
+            <param name="type">The Telephony type </param>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.LineClassProvider.Open">
+            <summary>
+            Open the line.
+            </summary>
+            <returns>Indicator showing if the open was successful, 0 otherwise.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.LineClassProvider.Close">
+            <summary>
+            Close the line.
+            </summary>
+            <returns>Indicator showing if the close was successful, 0 otherwise.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.LineClassProvider.removeNonDigits(System.String)">
+            <summary>
+            Remove anything from a string that is not a digit.
+            Also ensure the number is not too large
+            </summary>
+            <param name="number">The phone number to scan.</param>
+            <returns>The cleaned up phone number.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.LineClassProvider.MakeCall(System.String,System.Int32)">
+            <summary>
+            Make the call to the phone number given.
+            </summary>
+            <param name="called">The phone number to call.</param>
+            <param name="forceTollCall">An indicator telling the method if it should force a toll call.</param>
+            <returns>The actualized call object, null otherwise.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.LineClassProvider.Pickup(System.String)">
+            <summary>
+            Answer a call on someone else's phone but take it on your phone.
+            </summary>
+            <param name="ringing">The phone to answer</param>
+            <returns>
+            Indicator showing if the pickup was successful, 0 otherwise.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.LineClassProvider.GetActiveCall">
+            <summary>
+            Return the first call found in the list which is active
+            </summary>
+            <returns>The actualized call object that is active, null otherwise</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.LineClassProvider.GetCall(System.Int32)">
+            <summary>
+            Returns the call for a given callID.
+            </summary>
+            <param name="callID"></param>
+            <returns>The actualized call object for the given ID, null otherwise.</returns>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.LineClassProvider.openReferenceCount">
+            <summary>
+            Open reference count
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.LineClassProvider.DevID">
+            <summary>
+            Dev ID
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.LineClassProvider.ProviderName">
+            <summary>
+            The name of the provider.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.LineClassProvider.Calls">
+            <summary>
+            The actualized Calls object
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.LineClassProvider.Cti">
+            <summary>
+            The actualized telephony object
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.LineClassProvider.Type">
+            <summary>
+            Telephony type
+            </summary>
+            <remarks>No longer needed due to provider pattern</remarks>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.LineClassProvider.LineID">
+            <summary>
+            Line ID
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.LineClassProvider.ID">
+            <summary>
+            Unique Identifier
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.LineClassProvider.Name">
+            <summary>
+            Line name
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.LineClassProvider.ProviderInfo">
+            <summary>
+            Provider information
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.LineClassProvider.SwitchInfo">
+            <summary>
+            Switch information
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.LineClassProvider.Features">
+            <summary>
+            Features
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.LineClassProvider.MaxParties">
+            <summary>
+            Maximum parties
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.LineClassProvider.Monitors">
+            <summary>
+            List of monitors
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.LineClassProvider.Opened">
+            <summary>
+            Indicates if the line is opened or not.
+            </summary>
+            <returns>A boolean indicating if the line is already open.</returns>
+        </member>
+        <member name="T:Microsoft.Uii.Csr.Cti.Providers.LinesClassProvider">
+            <summary>
+            This class exists to allow users to enumerate over lines with the foreach operator
+            or with for ( int i = 0;... ) syntax.  Either way, you're looking into an array
+            of line devices.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.LinesClassProvider.Instance">
+            <summary>
+            Creates an instance of the provider based on the configuration data.
+            </summary>
+            <returns>The actualized Lines object</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.LinesClassProvider.#ctor">
+            <summary>
+            The empty constructor exists for serialization purposes.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.LinesClassProvider.#ctor(System.String)">
+            <summary>
+            Provider constructor.
+            </summary>
+            <param name="initializer">Not used...</param>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.LinesClassProvider.Initialize(System.String,System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            The initialize method to set local variables.
+            </summary>
+            <param name="name">The name of the provider.</param>
+            <param name="configValue">A NameValueCollection of attributes, currently not used.</param>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.LinesClassProvider.Lines">
+            <summary>
+            List of lines
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.LinesClassProvider.Init(Microsoft.Uii.Csr.Cti.Providers.TelephonyProvider,Microsoft.Uii.Csr.Cti.Providers.TelephonyProvider.CtiType)">
+            <summary>
+            The init of the Line class.
+            </summary>
+            <param name="cti">The actualized Telephony object</param>
+            <param name="type">The Telephony type </param>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.LinesClassProvider.Add(System.Object)">
+            <summary>
+            Needed for compiling within a web service to fulfill IEnumable
+            </summary>
+            <param name="o">The line object to add.</param>
+            <returns>The index at which the value has been added.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.LinesClassProvider.GetEnumerator">
+            <summary>
+            Returns an enumerator that can iterate through the Lines
+            </summary>
+            <returns>The line class enumerator</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.LinesClassProvider.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Implement the GetEnumerator() method:
+            </summary>
+            <returns>The Lines class (as IEnumerator)</returns>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.LinesClassProvider.ProviderName">
+            <summary>
+            The name of the provider.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.LinesClassProvider.DevCount">
+            <summary>
+            Dev Count
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.LinesClassProvider.Cti">
+            <summary>
+            The actualized telephony object.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.LinesClassProvider.Length">
+            <summary>
+            The number of lines
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.LinesClassProvider.Item(System.Int32)">
+            <summary>
+            Allow actualized Line objects to be indexed and returned.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Csr.Cti.Providers.LinesClassProvider.LinesClassEnumerator">
+            <summary>
+            Declare the enumerator and implement the IEnumerator interface
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.LinesClassProvider.LinesClassEnumerator.#ctor(Microsoft.Uii.Csr.Cti.Providers.LinesClassProvider)">
+            <summary>
+            The constructor of the LinesClassEnumerator class.
+            </summary>
+            <param name="collection">The collestion of lines (via the actualized Lines class).</param>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.LinesClassProvider.LinesClassEnumerator.Reset">
+            <summary>
+            The method to reset the lines class enumerator
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.LinesClassProvider.LinesClassEnumerator.MoveNext">
+            <summary>
+            The method to move to the next line in the lines class collection.
+            </summary>
+            <returns>Returns boolean indicating if the move was successful.</returns>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.LinesClassProvider.LinesClassEnumerator.Current">
+            <summary>
+            Return the current actualized Line class object.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.LinesClassProvider.LinesClassEnumerator.System#Collections#IEnumerator#Current">
+            <summary>
+            The current property on the IEnumerator interface
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Csr.Cti.Providers.Strings">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.Strings.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.Strings.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.Strings.LineNotExists">
+            <summary>
+              Looks up a localized string similar to Line does not exist.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.Strings.TELEPHONE_ERR_TRANSFER_NUMBER_NULL">
+            <summary>
+              Looks up a localized string similar to The transfer number should not be null..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.Strings.TELEPHONY_CALLCLASS_CALLSTATE_ACCEPTED">
+            <summary>
+              Looks up a localized string similar to Accepted.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.Strings.TELEPHONY_CALLCLASS_CALLSTATE_BUSY">
+            <summary>
+              Looks up a localized string similar to Busy.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.Strings.TELEPHONY_CALLCLASS_CALLSTATE_CONFERENCED">
+            <summary>
+              Looks up a localized string similar to On Conference.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.Strings.TELEPHONY_CALLCLASS_CALLSTATE_CONNECTED">
+            <summary>
+              Looks up a localized string similar to Connected.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.Strings.TELEPHONY_CALLCLASS_CALLSTATE_DIALING">
+            <summary>
+              Looks up a localized string similar to Dialing.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.Strings.TELEPHONY_CALLCLASS_CALLSTATE_DIALTONE">
+            <summary>
+              Looks up a localized string similar to Dial Tone.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.Strings.TELEPHONY_CALLCLASS_CALLSTATE_DISCONNECTED">
+            <summary>
+              Looks up a localized string similar to Disconnected.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.Strings.TELEPHONY_CALLCLASS_CALLSTATE_HOLD">
+            <summary>
+              Looks up a localized string similar to Hold.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.Strings.TELEPHONY_CALLCLASS_CALLSTATE_IDLE">
+            <summary>
+              Looks up a localized string similar to Idle.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.Strings.TELEPHONY_CALLCLASS_CALLSTATE_INCOMINGCALL">
+            <summary>
+              Looks up a localized string similar to Incoming Call.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.Strings.TELEPHONY_CALLCLASS_CALLSTATE_NONE">
+            <summary>
+              Looks up a localized string similar to None.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.Strings.TELEPHONY_CALLCLASS_CALLSTATE_ONHOLDPENDINGCONFERENCE">
+            <summary>
+              Looks up a localized string similar to On Hold to Conference.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.Strings.TELEPHONY_CALLCLASS_CALLSTATE_ONHOLDPENDINGTRANSFER">
+            <summary>
+              Looks up a localized string similar to On Hold to Transfer.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.Strings.TELEPHONY_CALLCLASS_CALLSTATE_PROCEEDING">
+            <summary>
+              Looks up a localized string similar to Proceeding.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.Strings.TELEPHONY_CALLCLASS_CALLSTATE_RINGING">
+            <summary>
+              Looks up a localized string similar to Ringing.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.Strings.TELEPHONY_CALLCLASS_CALLSTATE_SPECIAL">
+            <summary>
+              Looks up a localized string similar to Special State.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.Strings.TELEPHONY_CALLCLASS_CALLSTATE_UNKNOWN">
+            <summary>
+              Looks up a localized string similar to Unknown.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.Strings.TELEPHONY_CALLSCLASS_CALL_NO_LONGER_EXISTS">
+            <summary>
+              Looks up a localized string similar to This call no longer exists..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.Strings.TELEPHONY_CONFERENCE_NOT_IMPLEMENTED">
+            <summary>
+              Looks up a localized string similar to Conference is not yet implemented..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.Strings.TELEPHONY_ERR_CALL_CANNOT_BE_ANSWERED">
+            <summary>
+              Looks up a localized string similar to Call cannot be answered - current state is:.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.Strings.TELEPHONY_ERR_CALL_CANNOT_BE_PLACED_ON_HOLD">
+            <summary>
+              Looks up a localized string similar to Call cannot be placed on hold - current state is:.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.Strings.TELEPHONY_ERR_CALL_NOT_ON_HOLD">
+            <summary>
+              Looks up a localized string similar to Call is not on hold - current state is:.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.Strings.TELEPHONY_ERR_CONFERENCE_NUMBER_NULL">
+            <summary>
+              Looks up a localized string similar to The conference number should not be null..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.Strings.TELEPHONY_ERR_UNABLE_TO_HANDLE_EVENT">
+            <summary>
+              Looks up a localized string similar to Unable to handle event.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.Strings.TELEPHONY_LINE_CLASS_DEMO_TELEPHONY_SWITCH">
+            <summary>
+              Looks up a localized string similar to Demo Telephony Switch.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.Strings.TELEPHONY_LINECLASS_DEMO_TELEPHONY_PROVIDER">
+            <summary>
+              Looks up a localized string similar to Demo Telephony Provider.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.Strings.TELEPHONY_LINECLASS_ERR_NUMBER_NULL">
+            <summary>
+              Looks up a localized string similar to Telephony: The number to dial should not be null..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.Strings.TELEPHONY_LINECLASS_MAKECALL_NUMBER_NULL">
+            <summary>
+              Looks up a localized string similar to The MakeCall number should not be null..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.Strings.TELEPHONY_LINECLASS_PICKUP_NUMBER_NULL">
+            <summary>
+              Looks up a localized string similar to The pickup number should not be null..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.Strings.TELEPHONY_LINESCLASS_ERR_LINE_DOES_NOT_EXIST">
+            <summary>
+              Looks up a localized string similar to The requested line does not exist..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.Strings.UnableHandleEvent">
+            <summary>
+              Looks up a localized string similar to Unable to handle Event..
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Csr.Cti.Providers.CallEventHandler">
+            <summary>
+            Call event handler delegate
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Csr.Cti.Providers.TelephonyProvider">
+            <summary>
+            The class for the primary part of the Telephony system.
+            </summary>
+            <remarks>
+            This class should be abstract but while integrating it with the CTI web service
+            there were problems.  Do not use this class directly.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.TelephonyProvider.Instance">
+            <summary>
+            Creates an instance of the provider based on the configuration data.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.TelephonyProvider.#ctor">
+            <summary>
+            The empty constructor exists for serialization purposes.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.TelephonyProvider.#ctor(System.String)">
+            <summary>
+            Provider constructor.
+            </summary>
+            <param name="initializer">The connection string</param>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.TelephonyProvider.Initialize(System.String,System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            The initialize method to set local variables.
+            </summary>
+            <param name="name">The name of the provider.</param>
+            <param name="configValue">A NameValueCollection of attributes, currently not used.</param>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.TelephonyProvider.ID">
+            <summary>
+            Unique Identifier
+            </summary>
+            <remarks>For use with web services</remarks>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.TelephonyProvider.alreadyInited">
+            <summary>
+            Already initialized indicator
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.TelephonyProvider.Init(Microsoft.Uii.Csr.Cti.Providers.TelephonyProvider.CtiType)">
+            <summary>
+            For backwards compatibility (used for TAPI and demos)
+            </summary>
+            <param name="type">The type of telephony API to use.</param>
+            <returns>Boolean indicating success or failure.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.TelephonyProvider.Init(Microsoft.Uii.Csr.Cti.Providers.TelephonyProvider.CtiType,System.String,System.String)">
+            <summary>
+            For backwards compatibility (used for Avaya TSAPI)
+            </summary>
+            <param name="type">The type of telephony API to use.</param>
+            <param name="user">User ID</param>
+            <param name="password">Password</param>
+            <returns>Boolean indicating success or failure.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.TelephonyProvider.Init(Microsoft.Uii.Csr.Cti.Providers.TelephonyProvider.CtiType,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            For use in installations using the Avaya SoftPhone product.
+            </summary>
+            <param name="type">The type of telephony API to use.</param>
+            <param name="user">User ID</param>
+            <param name="password">Password</param>
+            <param name="agentID">Agent ID</param>
+            <param name="agentPassword">Agent Password</param>
+            <param name="agentNumber">Agent number</param>
+            <returns>Boolean indicating success or failure.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.TelephonyProvider.CloseTelephony">
+            <summary>
+            Close resources used for telephony.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.TelephonyProvider.Cti_CallChanged(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Call Change event
+            </summary>
+            <param name="devID">Dev ID</param>
+            <param name="callID">Call ID</param>
+            <param name="callState">State of the call.</param>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.TelephonyProvider.ProviderName">
+            <summary>
+            Provider name
+            </summary>
+        </member>
+        <member name="E:Microsoft.Uii.Csr.Cti.Providers.TelephonyProvider.CallChanged">
+            <summary>
+            Call changed event
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.TelephonyProvider.Lines">
+            <summary>
+            Actualized lines object
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.TelephonyProvider.EventQueue">
+            <summary>
+            Queue for provider
+            </summary>
+            <remarks>Used with web service</remarks>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.TelephonyProvider.UserName">
+            <summary>
+            The user's name
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.TelephonyProvider.Password">
+            <summary>
+            The password for the telephony
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.TelephonyProvider.AgentID">
+            <summary>
+            The agent's id
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.TelephonyProvider.AgentIDPassword">
+            <summary>
+            The agent's ID Password
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.TelephonyProvider.Debug">
+            <summary>
+            Tells the ocx files to dump their actions to 
+            a file for debugging.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.TelephonyProvider.AlreadyInited">
+            <summary>
+            Boolean indicating if the system has already been INIT'd
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.TelephonyProvider.UsedByAWebService">
+            <summary>
+            Boolean indicating if the system is being used by a web service
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Csr.Cti.Providers.TelephonyProvider.CtiType">
+            <summary>
+            The following is so each line can specify what type of CTI is used
+            with it.  Initially all the lines will have the same type, but in the future,
+            some lines may be TAPI while others might be TSAPI or RTC.
+            </summary>
+            <remarks>With the provider pattern added to the telephony system, the
+            type is no longer decided through this enum and the parameters,
+            but through configuration.  For backward compatibility it has been
+            left in.</remarks>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.TelephonyProvider.CtiType.None">
+            <summary>
+            No type
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.TelephonyProvider.CtiType.Demo">
+            <summary>
+            Demo
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.TelephonyProvider.CtiType.TAPI">
+            <summary>
+            TAPI
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.TelephonyProvider.CtiType.TSAPI">
+            <summary>
+            TSAPI
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.TelephonyProvider.CtiType.RTC">
+            <summary>
+            Real time communication
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Cti.Providers.TelephonyProvider.CtiType.AvayaIC">
+            <summary>
+            Avaya
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Csr.Cti.Providers.CallEventArgs">
+            <summary>
+            CallEventArgs is the classes containing call information.
+            </summary>
+            <remarks>
+            The argument passed within an event to the sink using the telephony class.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CallEventArgs.#ctor">
+            <summary>
+            Constructor for the CallEventArgs class
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Cti.Providers.CallEventArgs.#ctor(Microsoft.Uii.Csr.Cti.Providers.CallClassProvider,Microsoft.Uii.Csr.Cti.Providers.CallClassProvider.CallState,System.Boolean)">
+            <summary>
+            The CallEventArgs constructor with parameters.
+            </summary>
+            <param name="call">The object representing the The callclass provider.</param>
+            <param name="state">The state of the call.</param>
+            <param name="isNewCall">An indicator telling the system if it is a new call.</param>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.CallEventArgs.Call">
+            <summary>
+            The CallClassProvider object reference
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.CallEventArgs.State">
+            <summary>
+            The state of the call
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Cti.Providers.CallEventArgs.IsNewCall">
+            <summary>
+            An indicator telling the system if the call is new.
+            </summary>
+        </member>
+    </members>
+</doc>

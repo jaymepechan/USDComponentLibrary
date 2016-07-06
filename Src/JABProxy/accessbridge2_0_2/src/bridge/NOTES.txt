@@ -1,0 +1,196 @@
+==============================================
+
+Notes on evaluating the Java (TM) Access Bridge 
+
+for the Microsoft Windows Operating System
+
+==============================================
+
+
+
+This file aims to help you give us meaningful feedback. It has these
+
+sections:
+
+
+
+Known Problems
+
+        Lists problems we are working on.
+
+
+
+Tips on usage
+
+        Tips on how to best use the AccessBridge
+
+
+
+How to Give Feedback
+
+        The e-mail address to use, and what to put in bug reports.
+
+
+
+--------------
+
+KNOWN PROBLEMS
+
+--------------
+
+
+
+The installer assumes the Program Files directory is located on the c:
+
+drive. When this is changed via an environment variable, you must
+
+do a manual install of the Java Access Bridge.
+
+
+
+Registering, unregistering, then registering again for various of the
+
+menus events will cause you to receive duplicate copies of the event.
+
+
+
+You will not receive MenuCanceled (or PopupMenuCanceled) events.  To
+
+determine that a menu has closed, look for MenuDeselected events.
+
+
+
+GetAccessibleAt() may fail if you are querying for a coordinate other
+
+than the mouse coordinate.  This bug in the Java Development Kit is 
+
+fixed in Java 2 SDK 1.3.
+
+
+
+If you are using a version of JAWS for Windows up to and including 
+
+version 3.70.47 with Java2 SDK 1.3, you must not configure JFW to load 
+
+as a service under Windows NT.  That combination will cause crashes.
+
+
+
+Java Access Bridge v2.0.1 does not run with Java applications written 
+
+with JDK 1.1.8.  To enable access to these applications, use the Java 
+
+Access Bridge v1.0.2.
+
+
+
+-------------
+
+TIPS ON USAGE
+
+-------------
+
+
+
+Use State PropertyChange events to determine changes in menu item selection
+
+(e.g. when the user arrows up/down within a menu).
+
+
+
+Use ActiveDescendent PropertyChange events to determine changes in the
+
+selected cell of a table.
+
+
+
+Use the AccessibleValue support and Value PropertyChange events to track
+
+the values of things like sliders, scroll bars, etc.
+
+
+
+Use the AccessibleSelection support to determine which items are selected
+
+in a List, Table, etc.  This is more efficient than enumerating all of the 
+
+children and examining their StateSet to see if 'Selected' is among them.
+
+
+
+--------------------
+
+HOW TO GIVE FEEDBACK
+
+--------------------
+
+
+
+Please send your feedback to this e-mail address:
+
+
+
+        access@sun.com
+
+
+
+If you've found a bug, you can help us greatly by including the
+
+following information in your e-mail:
+
+
+
+- A program or code snippet that shows the problem.
+
+
+
+- The platform you're using.
+
+
+
+- The setting of your CLASSPATH environment variable (if you are using
+
+  JDK 1.1)
+
+
+
+- A JavaVM backtrace, if appropriate.  This will tell us what the portion
+
+  of the Access Bridge that is running inside the JavaVM is doing when the
+
+  bug occurs. To generate a backtrace, do this:
+
+  
+
+  1. Go to the shell window in which you entered the 'java' command.
+
+
+
+  2. Make sure it has the keyboard focus and that the interpreter
+
+     ('java' command) isn't a background process.
+
+
+
+  3. Enter the appropriate character:
+
+
+
+         Control-\              (Solaris)
+
+         Control-Break          (Win 95/NT)
+
+
+
+  4. Text will be displayed in the window.  Please put a copy of it into 
+
+     your e-mail.
+
+
+
+
+
+*As used in this document, the terms "Java virtual machine" or "JVM" mean 
+
+a virtual machine for the Java platform.
+

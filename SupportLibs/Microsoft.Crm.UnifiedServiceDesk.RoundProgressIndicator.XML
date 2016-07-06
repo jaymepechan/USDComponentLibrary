@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Crm.UnifiedServiceDesk.RoundProgressIndicator</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.RoundProgressIndicator.ChatIndicator">
+            <summary>
+            Interaction logic for ChatIndicator.xaml
+            </summary>
+            <summary>
+            ChatIndicator
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.RoundProgressIndicator.ChatIndicator.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.RoundProgressIndicator.ChatIndicator.WaitCustomer">
+            <summary>
+            Set status to waiting on Customer
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.RoundProgressIndicator.ChatIndicator.WaitAgent">
+            <summary>
+            Set status to waiting on Agent
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.RoundProgressIndicator.ChatIndicator.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.RoundProgressIndicator.MainControl">
+            <summary>
+            Interaction logic for MainControl.xaml
+            </summary>
+            <summary>
+            MainControl
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.RoundProgressIndicator.MainControl.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.RoundProgressIndicator.MainControl.ResetIndicator">
+            <summary>
+            Interaction logic for ResetIndicator
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.RoundProgressIndicator.MainControl.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.RoundProgressIndicator.OutlookNotification">
+            <summary>
+            Interaction logic for OutlookNotification.xaml
+            </summary>
+            <summary>
+            OutlookNotification
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.RoundProgressIndicator.OutlookNotification.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.RoundProgressIndicator.OutlookNotification.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+    </members>
+</doc>

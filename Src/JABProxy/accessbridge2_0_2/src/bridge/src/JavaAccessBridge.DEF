@@ -1,0 +1,45 @@
+;
+; @(#)JavaAccessBridge.DEF	1.13 05/03/21
+;
+; Copyright 2005 Sun Microsystems, Inc., 901 San Antonio Road,
+; Palo Alto, California, 94303, U.S.A. All rights reserved.
+;
+; This software is the proprietary information of Sun Microsystems,
+; Inc.  Use is subject to license terms.
+;
+;
+LIBRARY	JAVAACCESSBRIDGE
+
+DESCRIPTION 'JAVAACCESSBRIDGE.DLL '
+HEAPSIZE	4096
+EXPORTS
+			Java_com_sun_java_accessibility_AccessBridge_run
+
+			Java_com_sun_java_accessibility_AccessBridge_javaShutdown
+			Java_com_sun_java_accessibility_AccessBridge_focusGained
+			Java_com_sun_java_accessibility_AccessBridge_focusLost
+            Java_com_sun_java_accessibility_AccessBridge_caretUpdate
+            Java_com_sun_java_accessibility_AccessBridge_mouseClicked
+            Java_com_sun_java_accessibility_AccessBridge_mouseEntered
+            Java_com_sun_java_accessibility_AccessBridge_mouseExited
+            Java_com_sun_java_accessibility_AccessBridge_mousePressed
+            Java_com_sun_java_accessibility_AccessBridge_mouseReleased
+            Java_com_sun_java_accessibility_AccessBridge_menuCanceled
+            Java_com_sun_java_accessibility_AccessBridge_menuDeselected
+            Java_com_sun_java_accessibility_AccessBridge_menuSelected
+            Java_com_sun_java_accessibility_AccessBridge_popupMenuCanceled
+            Java_com_sun_java_accessibility_AccessBridge_popupMenuWillBecomeInvisible
+            Java_com_sun_java_accessibility_AccessBridge_popupMenuWillBecomeVisible
+
+            Java_com_sun_java_accessibility_AccessBridge_propertyCaretChange
+            Java_com_sun_java_accessibility_AccessBridge_propertyDescriptionChange
+            Java_com_sun_java_accessibility_AccessBridge_propertyNameChange
+            Java_com_sun_java_accessibility_AccessBridge_propertySelectionChange
+            Java_com_sun_java_accessibility_AccessBridge_propertyStateChange
+            Java_com_sun_java_accessibility_AccessBridge_propertyTextChange
+            Java_com_sun_java_accessibility_AccessBridge_propertyValueChange
+            Java_com_sun_java_accessibility_AccessBridge_propertyVisibleDataChange
+            Java_com_sun_java_accessibility_AccessBridge_propertyChildChange
+            Java_com_sun_java_accessibility_AccessBridge_propertyActiveDescendentChange
+
+            Java_com_sun_java_accessibility_AccessBridge_propertyTableModelChange

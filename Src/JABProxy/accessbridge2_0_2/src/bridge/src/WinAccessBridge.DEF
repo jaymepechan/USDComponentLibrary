@@ -1,0 +1,139 @@
+;
+; @(#)WinAccessBridge.DEF	1.23 05/08/22
+;
+; Copyright 2005 Sun Microsystems, Inc., 901 San Antonio Road,
+; Palo Alto, California, 94303, U.S.A. All rights reserved.
+;
+; This software is the proprietary information of Sun Microsystems,
+; Inc.  Use is subject to license terms.
+;
+;
+LIBRARY	WINDOWSACCESSBRIDGE
+
+DESCRIPTION 'WINDOWSACCESSBRIDGE.DLL
+HEAPSIZE	4096
+EXPORTS
+
+	addJavaEventNotification
+    	removeJavaEventNotification
+    	addAccessibilityEventNotification
+    	removeAccessibilityEventNotification
+
+	Windows_run
+
+        getAccessibleTableInfo
+        getAccessibleTableCellInfo
+
+        getAccessibleTableRowHeader
+        getAccessibleTableColumnHeader
+
+        getAccessibleTableRowDescription
+        getAccessibleTableColumnDescription
+
+        isAccessibleTableRowSelected
+        isAccessibleTableColumnSelected
+
+        getAccessibleTableColumnSelectionCount
+        getAccessibleTableRowSelectionCount
+
+        getAccessibleTableColumnSelections
+        getAccessibleTableRowSelections
+
+        getAccessibleTableRow
+        getAccessibleTableColumn
+        getAccessibleTableIndex
+
+        getAccessibleRelationSet
+
+	getAccessibleHypertext
+        activateAccessibleHyperlink
+	getAccessibleHyperlinkCount
+	getAccessibleHypertextExt
+	getAccessibleHypertextLinkIndex
+	getAccessibleHyperlink
+	
+	getAccessibleKeyBindings
+	getAccessibleIcons
+	getAccessibleActions
+	doAccessibleActions
+
+        setTextContents
+	getParentWithRole
+	getParentWithRoleElseRoot
+	getTopLevelObject
+	getObjectDepth
+	getActiveDescendent
+
+	getVirtualAccessibleName
+	requestFocus
+	selectTextRange
+        getTextAttributesInRange
+	getVisibleChildrenCount
+	getVisibleChildren
+	setCaretPosition
+	getCaretLocation
+
+	getEventsWaiting
+
+	releaseJavaObject
+	getVersionInfo
+
+	isJavaWindow
+        isSameObject
+        getAccessibleContextFromHWND
+	getHWNDFromAccessibleContext
+    
+        getAccessibleContextAt
+	getAccessibleContextWithFocus
+	getAccessibleContextInfo
+        getAccessibleChildFromContext
+        getAccessibleParentFromContext
+
+	getAccessibleTextInfo
+	getAccessibleTextItems
+	getAccessibleTextSelectionInfo
+	getAccessibleTextAttributes
+	getAccessibleTextRect
+        getAccessibleTextLineBounds
+        getAccessibleTextRange
+
+        getCurrentAccessibleValueFromContext
+        getMaximumAccessibleValueFromContext
+        getMinimumAccessibleValueFromContext
+            
+        addAccessibleSelectionFromContext
+        clearAccessibleSelectionFromContext
+        getAccessibleSelectionFromContext
+        getAccessibleSelectionCountFromContext
+        isAccessibleChildSelectedFromContext
+        removeAccessibleSelectionFromContext
+        selectAllAccessibleSelectionFromContext
+
+        setPropertyChangeFP
+        setJavaShutdownFP
+        setFocusGainedFP
+        setFocusLostFP
+        setCaretUpdateFP
+        setMouseClickedFP
+        setMouseEnteredFP
+        setMouseExitedFP
+        setMousePressedFP
+        setMouseReleasedFP
+        setMenuCanceledFP
+        setMenuDeselectedFP
+        setMenuSelectedFP
+        setPopupMenuCanceledFP
+        setPopupMenuWillBecomeInvisibleFP
+        setPopupMenuWillBecomeVisibleFP
+
+        setPropertyNameChangeFP
+	setPropertyDescriptionChangeFP
+        setPropertyStateChangeFP
+	setPropertyValueChangeFP
+	setPropertySelectionChangeFP
+        setPropertyTextChangeFP
+        setPropertyCaretChangeFP
+        setPropertyVisibleDataChangeFP
+        setPropertyChildChangeFP
+        setPropertyActiveDescendentChangeFP
+        setPropertyTableModelChangeFP

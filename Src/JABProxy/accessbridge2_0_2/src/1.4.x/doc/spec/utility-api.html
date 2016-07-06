@@ -1,0 +1,146 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.5 [en] (WinNT; I) [Netscape]">
+   <meta name="Author" content="Willie Walker">
+   <title>Java Accessibility Utilities:  Explanation of the Utilities</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#0000EE" vlink="#551A8B" alink="#FF0000">
+<a href="http://java.sun.com"><img SRC="images/java_header.gif" ALT="The Source for Java - java.sun.com" NOSAVE BORDER=0  align=LEFT></a>
+<div align=right><font size=+3>JAVA ACCESSIBILITY UTILITIES</font></div>
+
+<div align=right><font size=+2>The Utility Classes</font></div>
+
+<div align=right>Version 1.3</div>
+<!--- These are the Menu Items ---->
+<hr NOSHADE WIDTH="100%">
+<center>[<a href="index.html">Home</a>] [<a href="what.html">What is it?</a>]
+[<a href="guide.html">Overview of Features</a>] [<a href="api/com/sun/java/accessibility/util/package-summary.html">API
+Reference</a>]
+<br>[<a href="FAQ.html">FAQ</a>] [<a href="examples.html">Examples</a>]
+[<a href="../CHANGES.txt">Changes</a>] [<a href="compatibility.html">Compatibility
+table</a>] [<a href="http://java.sun.com/products/jfc">JFC Home Page</a>]</center>
+
+<hr NOSHADE WIDTH="100%">
+<br><b><font size=+2>Explanation of the Java Accessibility Utilities&nbsp;</font></b>
+<hr NOSHADE %>
+<br>The Java Accessibility Utilities are delivered by Sun as a separately
+downloadable package for use by assistive technology vendors in their products
+which provide access to Java applications running in a Java Virtual Machine.
+This package provides the necessary support for assistive technologies
+to locate and query user interface objects inside a Java application running
+in a Java Virtual Machine. It also provides support for installing "event
+listeners" into these objects. These event listeners allow objects to learn
+about specific evens occurring in other objects using the peer-to-peer
+approach defined by the delegation event model introduced in JDK1.1.
+<p>This package is still in active development, and is not as fully defined
+as the Java Accessibility API. This package is made up of the following
+major pieces:
+<h3>
+Key information about the Java Application(s)</h3>
+This package contains methods for retrieving key information about the
+Java application(s) running in the Java Virtual Machine. This support provides
+a list of the top-level windows of all of the Java applications, an event
+listener architecture to be informed when top level windows appear (and
+disappear), and means for locating the window that has the input focus,
+locating the mouse position, and inserting events into the system event
+queue. In order to provide this support immediately for the JDK1.1 environments,
+Sun took advantage of an implementation detail in the Sun reference implementation
+of the JDK. In the Sun implementation, the system-wide EventQueue can be
+replaced with an alternate one. The Java Accessibility Utilities provide
+an alternate system EventQueue in the class EventQueueMonitor that implements
+the functionality described previously.
+<h3>
+Automatic Loading of Assistive Technologies</h3>
+In order for an assistive technology to work with a Java application, it
+needs to be loaded into the same Java Virtual Machine as the Java application
+it is providing access to. This is done by extending the class libraries
+to look for a special configuration line in the awt.properties file specifying
+a list of assistive technology classes to load. This support is in the
+class EventQueueMonitor, which is a replacement for the system event queue.&nbsp;
+As stated above, the EventQueueMonitor implementation is dependent upon
+specific details of the Sun reference implementation of the JDK1.1 Java
+Virtual Machine, and not on the formal specification. Because of this,
+automatic loading of assistive technologies may not work in all JDK1.1
+environments.&nbsp; The automatic loading of assistive technologies is
+part of the JDK1.2 specification, however, so this support will be in all
+Java Virtual Machines that support JDK1.2.
+<h3>
+Event Support</h3>
+The Java Accessibility Utilities include three classes for monitoring events
+in the Java Virtual Machine. The first class, AWTEventMonitor, provides
+a way to monitor all AWT events in all AWT components running in the Java
+Virtual Machine. This class essentially provides system-wide monitoring
+of AWT events, registering an individual listener for each AWT event type
+on each AWT component that supports that type of listener. Thus, an assistive
+technology can register a "Focused listener" with AWTEventMonitor, which
+will in turn register a "Focused listener" with each and every AWT component
+in each and every Java application in the Java Virtual Machine. Those individual
+listeners will funnel the events they hear about to the assistive technology
+that registered the listener with AWTEventMonitor in the first place. Thus,
+whenever a component gains or loses focus (e.g. the user hits the TAB key),
+the assistive technology will be notified.
+<p>The second class, SwingEventMonitor, extends AWTEventMonitor to provide
+additional support for monitoring the Swing events supported by the Swing
+components.&nbsp; Since SwingEventMonitor extends AWTEventMonitor, there
+is no need to use both classes if you are using SwingEventMonitor in your
+assistive technology.
+<p>The third class, AccessibilityEventMonitor, provides support for property
+change events on Accessible objects.&nbsp; When an assisitive technology
+requests notification of Accessible property change events using AccessibilityEventMonitor,
+the AccessibilityEventMonitor will automatically register Accessible property
+change listeners on all the components.&nbsp; In addition, it will detect
+when components are added and removed from the component hierarchy and
+add and remove the property change listeners accordingly.&nbsp; When an
+Accessible property change occurs in any of the components, the AccessibilityEventMonitor
+will notify the assistive technology.
+<h3>
+AWT Translators</h3>
+With the release of the <a href="http://java.sun.com/products/jfc">Java
+Foundation Classes</a> (JFC), many developers who were using the AWT to
+build the user interfaces of their Java applications will switch to the
+new Swing classes in the JFC. Many will also update their existing AWT
+programs to Swing. Still, a significant number of Java applications will
+remain using some AWT components for displaying their user interfaces.
+The Java Accessibility Utilities contain a set of classes which implement
+the Java Accessibility API on behalf of AWT components -- in effect translating
+for them!&nbsp; These translators work in concert with the support for
+finding Accessible components in the first place, which is part of the
+EventQueueMonitor method getAccessibleAt.&nbsp; If the object at that location
+isn't an actual instance of an Accessible, the getAccessibleAt method looks
+for a Translator that will implement the Accessible interface on behalf
+of that component.
+<p>Like much of the rest of the Java Accessibility support, the translator
+architecture is completely extensible. Any programmer can create a translator.
+As long as the user's environment is configured properly, the Java Accessibility
+utility classes will automatically find the new translator and engage it.
+This means that both mainstream developers and assistive technology vendors
+can create and distribute new Accessible Translators, making formerly inaccessible
+user interface components accessible in the process.
+<h3>
+Sample Source Code</h3>
+In addition to the utility classes and translator architecture, the Java
+Accessibility Utilties includes several example assistive technology programs.
+The example programs include programs that monitor AWT and Swing events,
+a program that fully exercises the Java Accessibility API for the component
+underneath the mouse, and a program that traverses the component hierarchy,
+displaying the entire hierarchy in tree view.
+<p>
+<hr SIZE=3 NOSHADE>
+<ul>
+<address>
+<img SRC="images/javalogo52x88.gif" ALT="Java Logo" NOSAVE  align=LEFT><font size=-1><a href="http://java.sun.com/share/copyright.html">Copyright&copy;
+</a>1995-99
+<a href="http://www.sun.com">Sun Microsystems, Inc. All Rights Reserved.</a></font></address>
+
+<address>
+<font size=-1>To submit comments or suggestions about <a href="http://www.sun.com/access/index.html">Java
+Accessibility</a>, please send mail to <i><a href="mailto:access@sun.com">access@sun.com</a></i>.</font></address>
+
+<br>&nbsp;
+<p>&nbsp;
+<p><a href="http://www.sun.com"><img SRC="images/smi_logo.gif" ALT="Sun MicroSystems" NOSAVE BORDER=0 height=43 width=120 align=RIGHT></a></ul>
+
+</body>
+</html>

@@ -1,0 +1,183 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Uii.Common.Providers</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Uii.Common.Providers.Configuration.ProviderConfiguration">
+            <summary>
+            This class holds the configuration data for providers.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Providers.Configuration.ProviderConfiguration.GetProvider(System.String)">
+            <summary>
+            Returns the named provider, if found
+            <param name="name">Provider name</param>
+            <returns>Provider</returns>
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Providers.Configuration.ProviderConfiguration.GetConfig(System.String)">
+            <summary>
+            Returns configuration settings for a user-defined provider configuration section.
+            </summary>
+            <param name="sectionName">The configuration section to read.</param>
+            <returns>The provider configuration settings for sectionName.</returns>
+            <exception cref="T:System.Configuration.ConfigurationErrorsException">Thrown when no configuration is found.</exception>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Providers.Configuration.ProviderConfiguration.LoadValuesFromConfigurationXml(System.Xml.XmlNode)">
+            <summary>
+            Loads values from the configuration Xml node.
+            </summary>
+            <param name="node">The XmlNode that contains the configuration information 
+            from the configuration file. Provides direct access to the XML contents 
+            of the configuration section.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Providers.Configuration.ProviderConfiguration.GetProviders(System.Xml.XmlNode)">
+            <summary>
+            Gets the provider definitions from providers node.
+            </summary>
+            <param name="node">The XmlNode that contains the configuration information 
+            from the configuration file. Provides direct access to the XML contents 
+            of the configuration section.
+            </param>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Providers.Configuration.ProviderConfiguration.DefaultProvider">
+            <summary>
+            The default provider name.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Providers.Configuration.ProviderConfiguration.Providers">
+            <summary>
+            The collection of providers.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Common.Providers.Configuration.Provider">
+            <summary>
+            Contains information about entries in the providers section for a particular provider's 
+            configuration
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Providers.Configuration.Provider.#ctor(System.Xml.XmlAttributeCollection)">
+            <summary>
+            Constructs the provider instance based on the collection of Xml attributes 
+            in its configuration node.
+            </summary>
+            <param name="attributes">The Xml attributes of the provider defintion.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Providers.Configuration.Provider.CreateInstance(System.Object[])">
+            <summary>
+            Returns an instantiated instance of the configured listener type
+            </summary>
+            <param name="args">An array of arguments that match in number, order, and type the parameters of the
+            constructor to invoke (can be null.)</param>
+            <returns>Created Provider Instance</returns>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Providers.Configuration.Provider.Name">
+            <summary>
+            The name of the provider defintion.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Providers.Configuration.Provider.Type">
+            <summary>
+            The type name of the provider definition.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Providers.Configuration.Provider.Attributes">
+            <summary>
+            The attributes of the provider definitions.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Common.Providers.Configuration.ProviderConfigurationHandler">
+            <summary>
+            This class is the configuration section handler for UII providers. It 
+            implements the IConfigurationSectionHandler interface as required by all 
+            configuration section handlers
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Providers.Configuration.ProviderConfigurationHandler.Create(System.Object,System.Object,System.Xml.XmlNode)">
+            <summary>
+            Implements IConfigurationSectionHandler to parse the Xml node of the 
+            configuration section. The actual parsing of the Xml is delegated to 
+            ProviderConfiguration. LoadValuesFromConfigurationXml method. The 
+            returned object is added to the configuration collection and is 
+            accessed by ConfigurationSettings.GetConfig method.
+            </summary>
+            <param name="parent">The configuration settings in a corresponding 
+            parent configuration section. Not used.</param>
+            <param name="context">An HttpConfigurationContext when Create is 
+            called from the ASP.NET configuration system. Otherwise, this parameter 
+            is reserved and is a null reference. Not used.</param>
+            <param name="node">The XmlNode that contains the configuration information 
+            from the configuration file. Provides direct access to the XML contents 
+            of the configuration section.</param>
+            <returns>A ProviderConfiguration object.</returns>
+        </member>
+        <member name="T:Microsoft.Uii.Common.Providers.ProviderBase">
+            <summary>
+            The base class of all UII providers. It allows applications to work with providers in a generic manner. 
+            It forces implementation details of UII providers and it providers an efficient way to get the 
+            constructorInfo of the provider so a provider instance can be created.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Providers.ProviderBase.Initialize(System.String,System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            Initialize the provider's name and other properties based on the configuration values.
+            </summary>
+            <param name="name">The name of the provider.</param>
+            <param name="configValue">The collection of Xml attributes in the configuration node.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Providers.ProviderBase.GetProvider(System.String)">
+            <summary>
+            Retrieve the Provider record corresponding to the specified configuration section name.
+            </summary>
+            <param name="sectionName">Specified configuration section name</param>
+            <returns>The Provider object</returns>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Providers.ProviderBase.Tag">
+            <summary>
+            Gets or sets user-defined data associated with the object.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Providers.ProviderBase.ProviderName">
+            <summary>
+            The name of the provider.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Common.Providers.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Providers.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Providers.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Providers.Resources.PRV0100_CONFIGWEBSVC_ACCESS_ERROR">
+            <summary>
+              Looks up a localized string similar to PRV0100: Error encountered while attempting to access the configuration web service. (Remove the &quot;ConfigurationArea&quot; AppSettings key to disable.).
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Providers.Resources.PRV0101_CONFIGWEBSRV_DESER_ERROR">
+            <summary>
+              Looks up a localized string similar to PRV0101: Error encountered while attempting to deserialize configuration data from configuration web service..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Providers.Resources.PRV0102_INVALIDOP">
+            <summary>
+              Looks up a localized string similar to Error encountered while attempting provider configuration operation: {0}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Providers.Resources.PRV0103_UnableToLoadProviderExceptionMessage">
+            <summary>
+              Looks up a localized string similar to PRV0103: Unable to load provider.
+            </summary>
+        </member>
+    </members>
+</doc>

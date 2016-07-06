@@ -1,0 +1,127 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.5 [en] (WinNT; I) [Netscape]">
+   <meta name="Author" content="Peter Korn">
+   <title>Java Accessibility Documentation:  Linker Example</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#0000EE" vlink="#551A8B" alink="#FF0000">
+<a href="http://java.sun.com"><img SRC="images/java_header.gif" ALT="The Source for Java - java.sun.com" NOSAVE BORDER=0  align=LEFT></a>
+<div align=right><font size=+3>JAVA ACCESSIBILITY</font></div>
+
+<div align=right><font size=+2>Linker Example</font></div>
+
+<div align=right>Version 1.3</div>
+
+<hr NOSHADE WIDTH="100%">
+<center><!--- These are the Menu Items ---->[<a href="index.html">Home</a>]
+[<a href="what.html">What are they?</a>] [<a href="guide.html">Overview
+of API Features</a>] [<a href="api/com/sun/java/accessibility/util/package-summary.html">API
+Reference</a>]
+<br>[<a href="FAQ.html">FAQ</a>] [<a href="examples.html">Examples</a>]
+[<a href="../CHANGES.txt">Changes</a>] [<a href="compatibility.html">Compatibility
+table</a>] [<a href="http://java.sun.com/products/jfc">JFC Home Page</a>]</center>
+
+<hr NOSHADE WIDTH="100%"><!--- End menu Items ---->
+<p>Linker captures the Accessible hypertext information contained in the
+object underneath the mouse (the user the presses the F1 key), and displays
+a list of the the Accessible hyperlinks within that object in a table.
+Selecting one of the links and clicking "Activate Selected Link" will cause
+the hypertext object to follow the link selected (to update the display,
+move the mouse over the object and press F1 again).
+<p><img SRC="images/Linker.gif" ALT="Snap shot of Linker in action." NOSAVE >
+<h3>
+Preparing to Run Linker with JDK1.1:</h3>
+To run AccessibilityMonitor with JDK1.1, you need to have obtained and
+installed <a href="http://java.sun.com/products/jfc/index.html">JFC 1.1
+with Swing 1.1</a> and <a href="http://java.sun.com/products/jdk/1.1/">JDK1.1.6</a>.&nbsp;
+In addition, you need to be using the Java Accessibility Utilities Version
+1.1.
+<p>The Linker class is in the <tt>examples/Linker</tt> directory included
+with this release of the Java Accessibility Utilities (click <a href="../examples/Linker/Linker.java">here</a>
+to view the source). The compiled classes of Linker are also included in
+the <tt>jaccess-examples.jar</tt> file includes with this release.&nbsp;
+Before you can run Linker, you need to set up your environment appropriately
+by following these instructions:
+<blockquote>
+<li>
+Add the <tt>jaccess.jar</tt> and <tt>jaccess-examples.jar</tt> files to
+your CLASSPATH environment variable.</li>
+
+<li>
+Modify your <tt>$JDKHOME/lib/awt.properties</tt> file to include the following
+lines:</li>
+
+<blockquote>
+<pre>AWT.EventQueueClass=com.sun.java.accessibility.util.EventQueueMonitor
+AWT.assistive_technologies=Linker</pre>
+</blockquote>
+</blockquote>
+After you follow these instructions, you should be ready to run Linker.&nbsp;
+If you did not set up your CLASSPATH correctly you might get one of the
+following errors when running a Java<sup><font size=-2>TM</font></sup>
+application:
+<pre>Failed loading com.sun.java.accessibility.util.EventQueueMonitor:&nbsp;
+java.lang.ClassNotFoundException:&nbsp;
+com.sun.java.accessibility.util.EventQueueMonitor</pre>
+
+<pre>Error trying to newInstance Linker java.lang.ClassNotFoundException:&nbsp;
+Linker</pre>
+The first error means the <tt>jaccess.jar</tt> file is not in your CLASSPATH,
+and the second means the <tt>jaccess-examples.jar</tt> file is not in your
+CLASSPATH.
+<h3>
+Preparing to Run Linker with JDK1.2 or later:</h3>
+To run Linker with JDK1.2 or later you need to have obtained and installed
+<a href="http://java.sun.com/products/jdk/1.2">JDK1.2</a> or later.&nbsp;
+In addition, you need to be using the Java Accessibility Utilities Version
+1.2 or later..
+<p>The Linker class is in the <tt>examples/Linker</tt> directory included
+with this release of the Java Accessibility Utilities (click <a href="../examples/Linker/Linker.java">here</a>
+to view the source). Before you can run it, you need to set up your environment
+appropriately by following these instructions:
+<blockquote>
+<li>
+Copy <tt>jaccess.jar</tt> and <tt>jaccess-examples.jar</tt> to the <tt>$JDKHOME/jre/lib/ext</tt>
+directory under your JDK1.2 or later installation.</li>
+
+<li>
+Modify (create one if it doesn't exist) your <tt>$JDKHOME/jre/lib/accessibility.properties</tt>
+file to include the following line:</li>
+
+<blockquote>
+<pre>assistive_technologies=Linker</pre>
+</blockquote>
+</blockquote>
+After you follow these instructions, you should be ready to run Linker.
+<h3>
+Running Linker with JDK1.1, JDK1.2 or later:</h3>
+By following the instructions above, Linker will automatically be started
+any time you start a Java application. For example, you can run the SwingSet
+demo that comes as part of the demonstration applications for Swing.
+<h3>
+Using Linker:</h3>
+Move your mouse over an object which contains hypertext, and press the
+F1 key. Linker will query the object via the AccessibleHypertext interface,
+and display a table containing all of the AccessibleHyperlinks within that
+object. Some AccessibleHyperlink objects (e.g. client-side image maps)
+may contain more than one link action. Selecting a link in the table and
+pressing "Activate Selected Link" will cause the first link action of the
+selected link to be activated. To cause the table to be updated to contain
+the new hypertext information at the followed link, press F1 again while
+the mouse is over the object.
+<br><!---- END Main text Area ---->
+<hr SIZE=3 NOSHADE>
+<address>
+<img SRC="images/javalogo52x88.gif" ALT="Java Logo" NOSAVE  align=LEFT><font size=-1><a href="http://java.sun.com/share/copyright.html">Copyright&copy;
+</a>1995-99&nbsp;
+<a href="http://www.sun.com">Sun Microsystems, Inc. All Rights Reserved.</a></font></address>
+
+<address>
+<font size=-1>To submit comments or suggestions about <a href="http://www.sun.com/access/index.html">Java
+Accessibility</a>, please send mail to <i><a href="mailto:access@sun.com">access@sun.com</a></i>.</font></address>
+
+<br><a href="http://www.sun.com"><img SRC="images/smi_logo.gif" ALT="Sun MicroSystems" NOSAVE BORDER=0  align=RIGHT></a>
+</body>
+</html>

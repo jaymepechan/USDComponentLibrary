@@ -1,0 +1,2015 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Uii.Csr.Win32Api</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Uii.Csr.Win32API">
+            <summary>
+            Wrapper class over Win32 Native methods
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.TTS_ALWAYSTIP">
+            <summary>
+            declaring public constant
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.TTS_NOPREFIX">
+            <summary>
+            declaring public constant
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.TTS_BALLOON">
+            <summary>
+            declaring public constant
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.WS_POPUP">
+            <summary>
+            declaring public constant
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.TTF_SUBCLASS">
+            <summary>
+            declaring public constant
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.TTF_TRANSPARENT">
+            <summary>
+            declaring public constant
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.TTF_CENTERTIP">
+            <summary>
+            declaring public constant
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.TTF_LEFTTIP">
+            <summary>
+            declaring public constant
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.TTM_ADDTOOL">
+            <summary>
+            declaring public constant
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.TTM_SETTIPBKCOLOR">
+            <summary>
+            declaring public constant
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.TTM_SETTIPTEXTCOLOR">
+            <summary>
+            declaring public constant
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.TTM_WINDOWFROMPOINT">
+            <summary>
+            declaring public constant
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.WIN95_CLASSES">
+            <summary>
+            declaring public constant
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.SWP_NOSIZE">
+            <summary>
+            declaring public constant
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.SWP_NOMOVE">
+            <summary>
+            declaring public constant
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.SWP_NOACTIVATE">
+            <summary>
+            declaring public constant
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.SWP_HIDEWINDOW">
+            <summary>
+            declaring public constant
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.SWP_SHOWWINDOW">
+            <summary>
+            declaring public constant
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.SM_CYCAPTION">
+            <summary>
+            declaring public contant
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.GW_HWNDFIRST">
+            <summary>
+            declaring public contant
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.GW_HWNDLAST">
+            <summary>
+            declaring public contant
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.GW_HWNDNEXT">
+            <summary>
+            declaring public contant
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.GW_HWNDPREV">
+            <summary>
+            declaring public contant
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.GW_OWNER">
+            <summary>
+            declaring public contant
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.GW_CHILD">
+            <summary>
+            declaring public contant
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.BM_GETCHECK">
+            <summary>
+            declaring public contant
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.BM_SETCHECK">
+            <summary>
+            declaring public contant
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.BM_GETSTATE">
+            <summary>
+            declaring public contant
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.BM_SETSTATE">
+            <summary>
+            declaring public contant
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.BM_SETSTYLE">
+            <summary>
+            declaring public contant
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.BM_CLICK">
+            <summary>
+            declaring public contant
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.BM_GETIMAGE">
+            <summary>
+            declaring public contant
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.BM_SETIMAGE">
+            <summary>
+            declaring public contant
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.BST_UNCHECKED">
+            <summary>
+            declaring public contant
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.BST_CHECKED">
+            <summary>
+            declaring public contant
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.BST_INDETERMINATE">
+            <summary>
+            declaring public contant
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.BST_PUSHED">
+            <summary>
+            declaring public contant
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.BST_FOCUS">
+            <summary>
+            declaring public contant
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.HWND_TOP">
+            <summary>
+            declaring public constant
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.HWND_TOPMOST">
+            <summary>
+            declaring public constant
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.HWND_BOTTOM">
+            <summary>
+            declaring public constant
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.HWND_NOTTOPMOST">
+            <summary>
+            declaring public constant
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.GetClientRect(System.IntPtr,Microsoft.Uii.Csr.Win32API.RECT@)">
+            <summary>
+            GetClientRect
+            </summary>
+            <param name="hWnd"></param>
+            <param name="lpRect"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.GetWindowRect(System.IntPtr,Microsoft.Uii.Csr.Win32API.RECT@)">
+            <summary>
+            GetWindowRect
+            </summary>
+            <param name="hWnd"></param>
+            <param name="lpRect"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.GetWindowThreadProcessId(System.IntPtr,System.IntPtr@)">
+            <summary>
+            GetWindowThreadProcessId
+            </summary>
+            <param name="hWnd"></param>
+            <param name="lpdwProcessId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.ScreenToClient(System.IntPtr,Microsoft.Uii.Csr.Win32API.POINT@)">
+            <summary>
+            ScreenToClient
+            </summary>
+            <param name="hWnd"></param>
+            <param name="pt"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.FindWindow(System.String,System.String)">
+            <summary>
+            FindWindow
+            </summary>
+            <param name="lpClassName"></param>
+            <param name="lpWindowName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.FindWindowEx(System.IntPtr,System.IntPtr,System.String,System.String)">
+            <summary>
+            FindWindowEx
+            </summary>
+            <param name="hwndParent"></param>
+            <param name="hwndChildAfter"></param>
+            <param name="lpszClass"></param>
+            <param name="lpszWindow"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.EnumChildWindows(System.IntPtr,System.Delegate,System.IntPtr)">
+            <summary>
+            EnumChildWindows
+            </summary>
+            <param name="hWndParent"></param>
+            <param name="lpEnumFunc"></param>
+            <param name="lParam"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.EnumWindows(System.Delegate,System.Int32)">
+            <summary>
+            EnumWindows
+            </summary>
+            <param name="lpEnumFunc"></param>
+            <param name="lParam"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.SendMessage(System.IntPtr,System.Int32,System.Int32,Microsoft.Uii.Csr.Win32API.TOOLINFO@)">
+            <summary>
+            For message sending
+            </summary>
+            <param name="hWnd"></param>
+            <param name="Msg"></param>
+            <param name="wParam"></param>
+            <param name="lParam"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.SendMessage(System.IntPtr,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            SendMessage
+            </summary>
+            <param name="hWnd"></param>
+            <param name="Msg"></param>
+            <param name="wParam"></param>
+            <param name="lParam"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.SendMessage(System.IntPtr,System.Int32,System.Int32,System.String)">
+            <summary>
+            SendMessage
+            </summary>
+            <param name="hWnd"></param>
+            <param name="Msg"></param>
+            <param name="wParam"></param>
+            <param name="lParam"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.SendMessage(System.IntPtr,System.Int32,System.Int32,System.Text.StringBuilder)">
+            <summary>
+            SendMessage
+            </summary>
+            <param name="hWnd"></param>
+            <param name="Msg"></param>
+            <param name="wParam"></param>
+            <param name="lParam"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.SendMessage(System.IntPtr,System.Int32,System.Int32,System.IntPtr)">
+            <summary>
+            SendMessage
+            </summary>
+            <param name="hWnd"></param>
+            <param name="Msg"></param>
+            <param name="wParam"></param>
+            <param name="lParam"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.SendMessage(System.IntPtr,System.UInt32,System.Int32,System.Int32)">
+            <summary>
+            SendMessage
+            </summary>
+            <param name="hWnd"></param>
+            <param name="Msg"></param>
+            <param name="wParam"></param>
+            <param name="lParam"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.PostMessage(System.IntPtr,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            PostMessage
+            </summary>
+            <param name="hWnd"></param>
+            <param name="Msg"></param>
+            <param name="wParam"></param>
+            <param name="lParam"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.SetWindowPos(System.IntPtr,System.IntPtr,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            for setting windows Position
+            </summary>
+            <param name="hWnd"></param>
+            <param name="hWndInsertAfter"></param>
+            <param name="X"></param>
+            <param name="Y"></param>
+            <param name="cx"></param>
+            <param name="cy"></param>
+            <param name="uFlags"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.SetParent(System.IntPtr,System.IntPtr)">
+            <summary>
+            SetParent
+            </summary>
+            <param name="child"></param>
+            <param name="newParent"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.GetWindowLong(System.IntPtr,Microsoft.Uii.Csr.Win32API.WindowLongType)">
+            <summary>
+            GetWindowLong
+            </summary>
+            <param name="hWnd"></param>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.SetWindowLong(System.IntPtr,Microsoft.Uii.Csr.Win32API.WindowLongType,System.UInt32)">
+            <summary>
+            SetWindowLong
+            </summary>
+            <param name="hWnd"></param>
+            <param name="type"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.GetSystemMetrics(System.Int32)">
+            <summary>
+            GetSystemMetrics
+            </summary>
+            <param name="flag"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.MoveWindow(System.IntPtr,System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            MoveWindow
+            </summary>
+            <param name="hWnd"></param>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="cx"></param>
+            <param name="cy"></param>
+            <param name="repaint"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.RegisterWindowMessage(System.String)">
+            <summary>
+            RegisterWindowMessage
+            </summary>
+            <param name="msg"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.ObjectFromLresult(System.UIntPtr,System.Guid,System.IntPtr)">
+            <summary>
+            Retrives the specified IID object from the Lresult value.
+            </summary>
+            <param name="lResult"></param>
+            <param name="refiid"></param>
+            <param name="wParam"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.GetWindow(System.IntPtr,System.Int32)">
+            <summary>
+            GetWindow
+            </summary>
+            <param name="hwnd"></param>
+            <param name="flag"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.GetDesktopWindow">
+            <summary>
+            GetDesktopWindow
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.GetParent(System.IntPtr)">
+            <summary>
+            GetParent
+            </summary>
+            <param name="hwnd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.GetTopWindow(System.IntPtr)">
+            <summary>
+            GetTopWindow
+            </summary>
+            <param name="hwnd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.WindowFromPoint(System.Drawing.Point)">
+            <summary>
+            WindowFromPoint
+            </summary>
+            <param name="pt"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.ClientToScreen(System.IntPtr,Microsoft.Uii.Csr.Win32API.POINT@)">
+            <summary>
+            ClientToScreen
+            </summary>
+            <param name="hwnd"></param>
+            <param name="lpPoint"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.GetCursorPos(Microsoft.Uii.Csr.Win32API.POINT@)">
+            <summary>
+            GetCursorPos
+            </summary>
+            <param name="lpPoint"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.TerminateProcess(System.IntPtr,System.UInt32)">
+            <summary>
+            TerminateProcess
+            </summary>
+            <param name="hProcess"></param>
+            <param name="uExitCode"></param>
+            <returns></returns>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.IID_IHTMLDocument">
+            <summary>
+            IID_IHTMLDocument
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.IID_IWebBrowserApp">
+            <summary>
+            IID_IWebBrowserApp
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.IID_IWebBrowser2">
+            <summary>
+            IID_IWebBrowser2
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.IID_ShellBrowser">
+            <summary>
+            IID_ShellBrowser
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.IID_IOleWindow">
+            <summary>
+            IID_IOleWindow
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.SendMessageTimeout(System.IntPtr,System.UInt32,System.UIntPtr,System.IntPtr,Microsoft.Uii.Csr.Win32API.SendMessageTimeoutFlags,System.UInt32,System.UIntPtr@)">
+            <summary>
+            SendMessageTimeout
+            </summary>
+            <param name="hWnd"></param>
+            <param name="Msg"></param>
+            <param name="wParam"></param>
+            <param name="lParam"></param>
+            <param name="fuFlags"></param>
+            <param name="uTimeout"></param>
+            <param name="lpdwResult"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.FindWindowByText(System.IntPtr,System.String)">
+            <summary>
+            Returns the window handle that has text matching what is passed.
+            This is recursive but first it checks all windows at the current level
+            before recursing.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.FindWindowByPosition(System.IntPtr,System.Drawing.Point)">
+            <summary>
+            Find the window whose upper left corner matches the position given.
+            This recurses through all child windows and their children looking for the
+            matching window.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.FindWindowByID(System.IntPtr,System.Int32)">
+            <summary>
+            Find the window whose upper left corner matches the position given.
+            This recurses through all child windows and their children looking for the
+            matching window.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.SetCheck(System.IntPtr,System.Int32)">
+            <summary>
+            SetCheck
+            </summary>
+            <param name="hwnd"></param>
+            <param name="check"></param>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.GetWindowText(System.IntPtr,System.Text.StringBuilder,System.Int32)">
+            <summary>
+            Interop to base Windows OS call to get windows text.
+            This is limited to getting any text for the current process or the
+            caption for a control from other processes.  In other words, you can
+            read the text of a button in any process but you can't read the text of
+            an editbox in another process.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.GetWindowText(System.IntPtr)">
+            <summary>
+            A 'friendly' way to get the window's text.
+            This is limited to getting any text for the current process or the
+            caption for a control from other processes.  In other words, you can
+            read the text of a button in any process but you can't read the text of
+            an editbox in another process.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.GetWindowTextAny(System.IntPtr)">
+            <summary>
+            A 'friendly' way to get the window's text.  This works with any control in
+            any process.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.SetWindowTextAny(System.IntPtr,System.String)">
+            <summary>
+             This is used to set the window text for controls in another process.
+            SetWindowText() only works within the same process.
+            </summary>
+            <param name="hwnd"></param>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.SetWindowTextA(System.IntPtr,System.String)">
+            <summary>
+            SetWindowTextA
+            </summary>
+            <param name="hwnd"></param>
+            <param name="lpString"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.GetDlgCtrlID(System.IntPtr)">
+            <summary>
+            GetDlgCtrlID
+            </summary>
+            <param name="hwnd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.GetTickCount">
+            <summary>
+            To help wait for a number of milliseconds
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.MessageBeep(System.UInt32)">
+            <summary>
+            MessageBeep
+            </summary>
+            <param name="uType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.GetSystemMenu(System.IntPtr,System.Int32)">
+            <summary>
+            For working with System Menus (under the upper-left hand controlbox)
+            </summary>
+            <param name="hwnd"></param>
+            <param name="bRevert"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.RemoveMenu(System.IntPtr,System.Int32,System.Int32)">
+            <summary>
+            RemoveMenu
+            </summary>
+            <param name="menuHwnd"></param>
+            <param name="position"></param>
+            <param name="flags"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.EnableApplicationClose(System.Windows.Forms.Form,System.Boolean)">
+            <summary>
+            This gets a handle to the system menu, what you see when you click the
+            controlbox in the upper left corner of the app.  It then disables
+            the close command on the menu which also disables the 'x' on the
+            top right side of the window.
+            
+            EnableApplicationClose(false);// disables the form's 'x' button
+            EnableApplicationClose(true); // allows the app to be close with the x button
+            </summary>
+            <param name="form">The form whose controlbox is being affected.</param>
+            <param name="val">true if enabling, false if disabling</param>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.SetRedraw(System.IntPtr,System.Boolean)">
+            <summary>
+            Turns on (or off) the redrawing of a control when it changes.
+            After turning redraw on, you still need to force a redraw.
+            This only works with true Win32 controls.
+            </summary>
+            <param name="hWnd">handle of window to affect</param>
+            <param name="redraw">true to permit redraw, false to block</param>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.SetFocus(System.IntPtr)">
+            <summary>
+            Posts a request to make the given window have the focus.  Delayed
+            compared to using SendMessage.
+            </summary>
+            <param name="hWnd"></param>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.ExtractIconA(System.Int32,System.String,System.Int32)">
+            <summary>
+            Reads an icon from an executable or DLL file
+            </summary>
+            <param name="hInst"></param>
+            <param name="lpszExeFileName"></param>
+            <param name="nIconIndex"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.ExtractIcon(System.Int32,System.String,System.Int32)">
+            <summary>
+            ExtractIcon
+            </summary>
+            <param name="hInst"></param>
+            <param name="lpszExeFileName"></param>
+            <param name="nIconIndex"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.DestroyIcon(System.IntPtr)">
+            <summary>
+            DestroyIcon
+            </summary>
+            <param name="hIcon"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.ShowWindow(System.IntPtr,Microsoft.Uii.Csr.Win32API.ShowWindowValues)">
+            <summary>
+            Cause a window's visible state to change.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.ShowWindowAsync(System.IntPtr,Microsoft.Uii.Csr.Win32API.ShowWindowValues)">
+            <summary>
+            Cause a window's visible state to change asynchronously.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.CloseWindow(System.IntPtr)">
+            <summary>
+            Requests that a window or application close itself.
+            </summary>
+            <param name="hWnd"></param>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.RealGetWindowClass(System.IntPtr,System.Text.StringBuilder,System.UInt32)">
+            <summary>
+            The RealGetWindowClass function retrieves a string that specifies the window type.
+            </summary>
+            <param name="hwnd" type="IntPtr">[in] Handle to the window whose type will be retrieved.</param>
+            <param name="pszType" type="StringBuilder">[out] Pointer to a string that receives the window type.</param>
+            <param name="cchType" type="uint">[in] Specifies the length of the StringBuilder buffer pointed to by the pszType parameter.</param>
+            <returns>
+            If the function succeeds, the return value is the number of TCHAR copied to the specified buffer.
+            If the function fails, the return value is zero. To get extended error information, call GetLastError.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.CreateWindowEx(System.Int32,System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.IntPtr,System.IntPtr,System.IntPtr,System.Object)">
+            <summary>
+            Creates an overlapped, pop-up, or child window with an extended window style; otherwise, this function is identical to the CreateWindow function. 
+            For more information about creating a window and for full descriptions of the other parameters of CreateWindowEx see CreateWindow
+            </summary>
+            <param name="dwExStyle">The extended window style of the window being created. For a list of possible values,see Extended Window Styles.</param>
+            <param name="lpszClassName">A null-terminated string or a class atom created by a previous call to the RegisterClass or RegisterClassEx function. The atom must be in the low-order word of lpClassName; the high-order word must be zero. If lpClassName is a string, it specifies the window class name. The class name can be any name registered with RegisterClass or RegisterClassEx, provided that the module that registers the class is also the module that creates the window. The class name can also be any of the predefined system class names. </param>
+            <param name="lpszWindowName">The window name. If the window style specifies a title bar, the window title pointed to by lpWindowName is displayed in the title bar. When using CreateWindow to create controls, such as buttons, check boxes, and static controls, use lpWindowName to specify the text of the control. When creating a static control with the SS_ICON style, use lpWindowName to specify the icon name or identifier. To specify an identifier, use the syntax "#num". </param>
+            <param name="style"></param>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="width"></param>
+            <param name="height"></param>
+            <param name="hwndParent"></param>
+            <param name="hMenu"></param>
+            <param name="hInst"></param>
+            <param name="pvParam"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.DestroyWindow(System.IntPtr)">
+            <summary>
+            Destroys the specified window. The function sends WM_DESTROY and WM_NCDESTROY messages to the window to deactivate it and remove the keyboard focus from it. 
+            The function also destroys the window's menu, flushes the thread message queue, destroys timers, removes clipboard ownership, and breaks the clipboard viewer chain (if the window is at the top of the viewer chain).
+            </summary>
+            <param name="hwnd">A handle to the window to be destroyed. </param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.PeekMessage(Microsoft.Uii.Csr.Win32API.Message@,System.IntPtr,System.UInt32,System.UInt32,System.UInt32)">
+            <summary>
+            Dispatches incoming sent messages, checks the thread message queue for a posted message, and retrieves the message (if any exist).
+            </summary>
+            <param name="lpMsg"></param>
+            <param name="hWnd"></param>
+            <param name="wMsgFilterMin"></param>
+            <param name="wMsgFilterMax"></param>
+            <param name="wRemoveMsg"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.ShellExecuteEx(Microsoft.Uii.Csr.Win32API.SHELLEXECUTEINFO@)">
+            <summary>
+            Performs an operation on a specified file.
+            </summary>
+            <param name="lpExecInfo">A pointer to a SHELLEXECUTEINFO structure that contains and receives information about the application being executed.</param>
+            <returns>Returns TRUE if successful; otherwise, FALSE.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.ShellExecute(System.IntPtr,System.String,System.String,System.String,System.String,Microsoft.Uii.Csr.Win32API.ShowCommands)">
+            <summary>
+            Performs an operation on a specified file.
+            </summary>
+            <param name="hwnd">A handle to the parent window used for displaying a UI or error messages.</param>
+            <param name="lpOperation">A pointer to a null-terminated string, referred to in this case as a verb, that specifies the action to be performed.</param>
+            <param name="lpFile">A pointer to a null-terminated string that specifies the file or object on which to execute the specified verb.</param>
+            <param name="lpParameters">If lpFile specifies an executable file, this parameter is a pointer to a null-terminated string that specifies the parameters to be passed to the application.</param>
+            <param name="lpDirectory">A pointer to a null-terminated string that specifies the default (working) directory for the action.</param>
+            <param name="nShowCmd">The flags that specify how an application is to be displayed when it is opened.</param>
+            <returns>If the function succeeds, it returns a value greater than 32. If the function fails, it returns an error value that indicates the cause of the failure.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.GetClassName(System.IntPtr,System.Text.StringBuilder,System.Int32)">
+            <summary>
+            Retrieves the name of the class to which the specified window belongs. 
+            </summary>
+            <param name="hWnd"></param>
+            <param name="lpClassName"></param>
+            <param name="nMaxCount"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.GetWindow(System.Runtime.InteropServices.HandleRef,System.Int32)">
+            <summary>
+            Retrieves a handle to a window that has the specified relationship (Z-Order or owner) to the specified window. 
+            </summary>
+            <param name="hWnd"></param>
+            <param name="uCmd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.IsHungAppWindow(System.IntPtr)">
+            <summary>
+            Check if window is accessable 
+            </summary>
+            <param name="hWnd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.IsWindow(System.IntPtr)">
+            <summary>
+            Check Is the Handle associated to a window.
+            </summary>
+            <param name="hWnd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.AttachThreadInput(System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Attaches the input processing mechanism of one thread to that of another thread.
+            </summary>
+            <param name="idAttach"></param>
+            <param name="idAttachTo"></param>
+            <param name="fAttach"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.GetNamedPipeClientProcessId(System.IntPtr,System.UInt32@)">
+            <summary>
+            To Fetch the connected client process id.
+            </summary>
+            <param name="pipe">Pipe handle as IntPtr.</param>
+            <param name="clientProcessId">Client process id as uint. </param>
+            <returns>bool.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32API.GetNamedPipeServerProcessId(System.IntPtr,System.UInt32@)">
+            <summary>
+            To Fetch the connected server process id.
+            </summary>
+            <param name="pipe">Pipe handle as IntPtr.</param>
+            <param name="clientProcessId">Server process id as uint. </param>
+            <returns>bool.</returns>
+        </member>
+        <member name="T:Microsoft.Uii.Csr.Win32API.StandardMessage">
+            <summary>
+            Windows standard Message enumeration values 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.StandardMessage.WM_COMMAND">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.StandardMessage.WM_CREATE">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.StandardMessage.WM_DESTROY">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.StandardMessage.WM_MOVE">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.StandardMessage.WM_SIZE">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.StandardMessage.WM_ACTIVATE">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.StandardMessage.WM_SETFOCUS">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.StandardMessage.WM_KILLFOCUS">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.StandardMessage.WM_ENABLE">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.StandardMessage.WM_SETREDRAW">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.StandardMessage.WM_SETTEXT">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.StandardMessage.WM_GETTEXT">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.StandardMessage.WM_GETTEXTLENGTH">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.StandardMessage.WM_PAINT">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.StandardMessage.WM_CLOSE">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.StandardMessage.WM_QUERYENDSESSION">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.StandardMessage.WM_QUERYOPEN">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.StandardMessage.WM_ENDSESSION">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.StandardMessage.WM_QUIT">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.StandardMessage.WM_ERASEBKGND">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.StandardMessage.WM_SYSCOLORCHANGE">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.StandardMessage.WM_SHOWWINDOW">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.StandardMessage.WM_WININICHANGE">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.StandardMessage.WM_SETTINGCHANGE">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.StandardMessage.WM_DEVMODECHANGE">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.StandardMessage.WM_ACTIVATEAPP">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.StandardMessage.WM_FONTCHANGE">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.StandardMessage.WM_TIMECHANGE">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.StandardMessage.WM_CANCELMODE">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.StandardMessage.WM_SETCURSOR">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.StandardMessage.WM_MOUSEACTIVATE">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.StandardMessage.WM_CHILDACTIVATE">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.StandardMessage.WM_QUEUESYNC">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.StandardMessage.WM_GETMINMAXINFO">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.StandardMessage.WM_SETHOTKEY">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.StandardMessage.WM_GETHOTKEY">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.StandardMessage.WM_WINDOWPOSCHANGING">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.StandardMessage.WM_WINDOWPOSCHANGED">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Csr.Win32API.RECT">
+            <summary>
+            Structure representing Rectagle.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.RECT.left">
+            <summary>
+            left
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.RECT.top">
+            <summary>
+            top
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.RECT.right">
+            <summary>
+            right
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.RECT.bottom">
+            <summary>
+            bottom
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Win32API.RECT.Width">
+            <summary>
+            width
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Win32API.RECT.Height">
+            <summary>
+            Height
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Csr.Win32API.POINT">
+            <summary>
+            Structure representing point.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.POINT.x">
+            <summary>
+            x
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.POINT.y">
+            <summary>
+            y
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Csr.Win32API.TOOLINFO">
+            <summary>
+            TOOLINFO
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Csr.Win32API.WindowStyles">
+            <summary>
+            Window Styles enumeration
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.WindowStyles.WS_OVERLAPPED">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.WindowStyles.WS_POPUP">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.WindowStyles.WS_CHILD">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.WindowStyles.WS_MINIMIZE">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.WindowStyles.WS_VISIBLE">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.WindowStyles.WS_DISABLED">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.WindowStyles.WS_CLIPSIBLINGS">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.WindowStyles.WS_CLIPCHILDREN">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.WindowStyles.WS_MAXIMIZE">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.WindowStyles.WS_CAPTION">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.WindowStyles.WS_BORDER">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.WindowStyles.WS_DLGFRAME">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.WindowStyles.WS_VSCROLL">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.WindowStyles.WS_HSCROLL">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.WindowStyles.WS_SYSMENU">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.WindowStyles.WS_THICKFRAME">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.WindowStyles.WS_GROUP">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.WindowStyles.WS_TABSTOP">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.WindowStyles.WS_MINIMIZEBOX">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.WindowStyles.WS_MAXIMIZEBOX">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Csr.Win32API.WindowLongType">
+            <summary>
+            enumeration for window types. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.WindowLongType.GWL_WNDPROC">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.WindowLongType.GWL_HINSTANCE">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.WindowLongType.GWL_HWNDPARENT">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.WindowLongType.GWL_STYLE">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.WindowLongType.GWL_EXSTYLE">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.WindowLongType.GWL_USERDATA">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.WindowLongType.GWL_ID">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Csr.Win32API.SendMessageTimeoutFlags">
+            <summary>
+            SendMessageTimeoutFlags
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.SendMessageTimeoutFlags.SMTO_NORMAL">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.SendMessageTimeoutFlags.SMTO_BLOCK">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.SendMessageTimeoutFlags.SMTO_ABORTIFHUNG">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.SendMessageTimeoutFlags.SMTO_NOTIMEOUTIFNOTHUNG">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Csr.Win32API.ShowWindowValues">
+            <summary>
+            ShowWindowValues has been deprecated, please use ShowCommands instead.
+            Values used for the ShowWindow() command to control the visibilty
+            of a window.
+            </summary>
+            [TODO :- Uncomment the below]
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.ShowWindowValues.SW_HIDE">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.ShowWindowValues.SW_SHOWNORMAL">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.ShowWindowValues.SW_NORMAL">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.ShowWindowValues.SW_SHOWMINIMIZED">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.ShowWindowValues.SW_SHOWMAXIMIZED">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.ShowWindowValues.SW_MAXIMIZE">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.ShowWindowValues.SW_SHOWNOACTIVATE">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.ShowWindowValues.SW_SHOW">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.ShowWindowValues.SW_MINIMIZE">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.ShowWindowValues.SW_SHOWMINNOACTIVE">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.ShowWindowValues.SW_SHOWNA">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.ShowWindowValues.SW_RESTORE">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.ShowWindowValues.SW_SHOWDEFAULT">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.ShowWindowValues.SW_FORCEMINIMIZE">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.ShowWindowValues.SW_MAX">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Csr.Win32API.SHELLEXECUTEINFO">
+            <summary>
+            Contains information used by ShellExecuteEx.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.SHELLEXECUTEINFO.cbSize">
+            <summary>
+            Required. The size of this structure, in bytes.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.SHELLEXECUTEINFO.fMask">
+            <summary>
+            Flags that indicate the content and validity of the other structure members
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.SHELLEXECUTEINFO.hwnd">
+            <summary>
+            Optional. A handle to the parent window, used to display any message boxes that the system might produce while executing this function.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.SHELLEXECUTEINFO.lpVerb">
+            <summary>
+            A string, referred to as a verb, that specifies the action to be performed.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.SHELLEXECUTEINFO.lpFile">
+            <summary>
+            The address of a null-terminated string that specifies the name of the file or
+            object on which ShellExecuteEx will perform the action specified by the lpVerb parameter.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.SHELLEXECUTEINFO.lpParameters">
+            <summary>
+            Optional. The address of a null-terminated string that contains the application parameters.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.SHELLEXECUTEINFO.lpDirectory">
+            <summary>
+            Optional. The address of a null-terminated string that specifies the name of the working directory.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.SHELLEXECUTEINFO.nShow">
+            <summary>
+            Required. Flags that specify how an application is to be shown when it is opened;
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.SHELLEXECUTEINFO.hInstApp">
+            <summary>
+            If SEE_MASK_NOCLOSEPROCESS is set and the ShellExecuteEx call succeeds, it sets this member to a value greater than 32.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.SHELLEXECUTEINFO.lpIDList">
+            <summary>
+            The address of an absolute ITEMIDLIST structure (PCIDLIST_ABSOLUTE) to contain an item identifier list that uniquely identifies the file to execute.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.SHELLEXECUTEINFO.lpClass">
+            <summary>
+            The address of a null-terminated string.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.SHELLEXECUTEINFO.hkeyClass">
+            <summary>
+            A handle to the registry key for the file type.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.SHELLEXECUTEINFO.dwHotKey">
+            <summary>
+            A keyboard shortcut to associate with the application.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.SHELLEXECUTEINFO.hIcon">
+            <summary>
+            A handle to the icon for the file type.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.SHELLEXECUTEINFO.hProcess">
+            <summary>
+            A handle to the newly started application.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Csr.Win32API.SetWindowPosFlags">
+            <summary>
+            Set Window Position Flags
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.SetWindowPosFlags.SWP_ASYNCWINDOWPOS">
+            <summary>
+                If the calling thread and the thread that owns the window are attached to different input queues, the system posts the request to the thread that owns the window. This prevents the calling thread from blocking its execution while other threads process the request.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.SetWindowPosFlags.SWP_DEFERERASE">
+            <summary>
+                Prevents generation of the WM_SYNCPAINT message.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.SetWindowPosFlags.SWP_DRAWFRAME">
+            <summary>
+                Draws a frame (defined in the window's class description) around the window.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.SetWindowPosFlags.SWP_FRAMECHANGED">
+            <summary>
+                Applies new frame styles set using the SetWindowLong function. Sends a WM_NCCALCSIZE message to the window, even if the window's size is not being changed. If this flag is not specified, WM_NCCALCSIZE is sent only when the window's size is being changed.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.SetWindowPosFlags.SWP_HIDEWINDOW">
+            <summary>
+                Hides the window.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.SetWindowPosFlags.SWP_NOACTIVATE">
+            <summary>
+                Does not activate the window. If this flag is not set, the window is activated and moved to the top of either the topmost or non-topmost group (depending on the setting of the hWndInsertAfter parameter).
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.SetWindowPosFlags.SWP_NOCOPYBITS">
+            <summary>
+                Discards the entire contents of the client area. If this flag is not specified, the valid contents of the client area are saved and copied back into the client area after the window is sized or repositioned.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.SetWindowPosFlags.SWP_NOMOVE">
+            <summary>
+                Retains the current position (ignores X and Y parameters).
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.SetWindowPosFlags.SWP_NOOWNERZORDER">
+            <summary>
+                Does not change the owner window's position in the Z order.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.SetWindowPosFlags.SWP_NOREDRAW">
+            <summary>
+                Does not redraw changes. If this flag is set, no repainting of any kind occurs. This applies to the client area, the nonclient area (including the title bar and scroll bars), and any part of the parent window uncovered as a result of the window being moved. When this flag is set, the application must explicitly invalidate or redraw any parts of the window and parent window that need redrawing.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.SetWindowPosFlags.SWP_NOREPOSITION">
+            <summary>
+                Same as the SWP_NOOWNERZORDER flag.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.SetWindowPosFlags.SWP_NOSENDCHANGING">
+            <summary>
+                Prevents the window from receiving the WM_WINDOWPOSCHANGING message.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.SetWindowPosFlags.SWP_NOSIZE">
+            <summary>
+                Retains the current size (ignores the cx and cy parameters).
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.SetWindowPosFlags.SWP_NOZORDER">
+            <summary>
+                Retains the current Z order (ignores the hWndInsertAfter parameter).
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.SetWindowPosFlags.SWP_SHOWWINDOW">
+            <summary>
+                Displays the window.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Csr.Win32API.ShowCommands">
+            <summary>
+            Values used for the ShowWindow() command to control the visibilty
+            of a window.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.ShowCommands.SW_HIDE">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.ShowCommands.SW_SHOWNORMAL">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.ShowCommands.SW_NORMAL">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.ShowCommands.SW_SHOWMINIMIZED">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.ShowCommands.SW_SHOWMAXIMIZED">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.ShowCommands.SW_MAXIMIZE">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.ShowCommands.SW_SHOWNOACTIVATE">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.ShowCommands.SW_SHOW">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.ShowCommands.SW_MINIMIZE">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.ShowCommands.SW_SHOWMINNOACTIVE">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.ShowCommands.SW_SHOWNA">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.ShowCommands.SW_RESTORE">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.ShowCommands.SW_SHOWDEFAULT">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.ShowCommands.SW_FORCEMINIMIZE">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.ShowCommands.SW_MAX">
+            <summary>
+            declaring public enum
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Csr.Win32API.ShellExecuteMaskFlags">
+            <summary>
+            Flags that indicate the content and validity of the other structure members.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.ShellExecuteMaskFlags.SEE_MASK_DEFAULT">
+            <summary>
+            Use default values.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.ShellExecuteMaskFlags.SEE_MASK_CLASSNAME">
+            <summary>
+            Use the class name given by the lpClass member. If both SEE_MASK_CLASSKEY and SEE_MASK_CLASSNAME are set, the class key is used.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.ShellExecuteMaskFlags.SEE_MASK_CLASSKEY">
+            <summary>
+            Use the class key given by the hkeyClass member. If both SEE_MASK_CLASSKEY and SEE_MASK_CLASSNAME are set, the class key is used.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.ShellExecuteMaskFlags.SEE_MASK_IDLIST">
+            <summary>
+            Use the item identifier list given by the lpIDList member. The lpIDList member must point to an ITEMIDLIST structure.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.ShellExecuteMaskFlags.SEE_MASK_INVOKEIDLIST">
+            <summary>
+            Use the IContextMenu interface of the selected item's shortcut menu handler. 
+            Use either lpFile to identify the item by its file system path or lpIDList to identify the item by its PIDL. 
+            This flag allows applications to use ShellExecuteEx to invoke verbs from shortcut menu extensions instead of the static verbs listed in the registry.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.ShellExecuteMaskFlags.SEE_MASK_HOTKEY">
+            <summary>
+            Use the keyboard shortcut given by the dwHotKey member.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.ShellExecuteMaskFlags.SEE_MASK_NOCLOSEPROCESS">
+            <summary>
+            Use to indicate that the hProcess member receives the process handle. 
+            This handle is typically used to allow an application to find out when a process created with ShellExecuteEx terminates.
+            In some cases, such as when execution is satisfied through a DDE conversation, no handle will be returned. 
+            The calling application is responsible for closing the handle when it is no longer needed.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.ShellExecuteMaskFlags.SEE_MASK_CONNECTNETDRV">
+            <summary>
+            Validate the share and connect to a drive letter. 
+            This enables reconnection of disconnected network drives. The lpFile member is a UNC path of a file on a network.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.ShellExecuteMaskFlags.SEE_MASK_NOASYNC">
+            <summary>
+            Wait for the execute operation to complete before returning.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.ShellExecuteMaskFlags.SEE_MASK_DOENVSUBST">
+            <summary>
+            Expand any environment variables specified in the string given by the lpDirectory or lpFile member.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.ShellExecuteMaskFlags.SEE_MASK_FLAG_NO_UI">
+            <summary>
+            Do not display an error message box if an error occurs.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.ShellExecuteMaskFlags.SEE_MASK_UNICODE">
+            <summary>
+            Use this flag to indicate a Unicode application.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.ShellExecuteMaskFlags.SEE_MASK_NO_CONSOLE">
+            <summary>
+            Use to inherit the parent's console for the new process instead of having it create a new console.
+            It is the opposite of using a CREATE_NEW_CONSOLE flag with CreateProcess.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.ShellExecuteMaskFlags.SEE_MASK_ASYNCOK">
+            <summary>
+            Not used.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.ShellExecuteMaskFlags.SEE_MASK_HMONITOR">
+            <summary>
+            Use this flag when specifying a monitor on multi-monitor systems. 
+            The monitor is specified in the hMonitor member. 
+            This flag cannot be combined with SEE_MASK_ICON.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.ShellExecuteMaskFlags.SEE_MASK_NOZONECHECKS">
+            <summary>
+            Introduced in Windows XP. Do not perform a zone check.
+            This flag allows ShellExecuteEx to bypass zone checking put into place by IAttachmentExecute.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.ShellExecuteMaskFlags.SEE_MASK_NOQUERYCLASSSTORE">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.ShellExecuteMaskFlags.SEE_MASK_WAITFORINPUTIDLE">
+            <summary>
+            After the new process is created, wait for the process to become idle before returning, with a one minute timeout.
+            See WaitForInputIdle for more details.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.ShellExecuteMaskFlags.SEE_MASK_FLAG_LOG_USAGE">
+            <summary>
+            Introduced in Windows XP. Keep track of the number of times this application has been launched. 
+            Applications with sufficiently high counts appear in the Start Menu's list of most frequently used programs.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.ShellExecuteMaskFlags.SEE_MASK_FLAG_HINST_IS_SITE">
+            <summary>
+            Introduced in Windows 8. The hInstApp member is used to specify the IUnknown of an object that implements IServiceProvider. 
+            This object will be used as a site pointer.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Csr.Win32API.Message">
+            <summary>
+            Native message strcture
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.Message.handle">
+            <summary>
+            handle
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.Message.msg">
+            <summary>
+            message
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.Message.wParam">
+            <summary>
+            wparam
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.Message.lParam">
+            <summary>
+            lparam
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.Message.time">
+            <summary>
+            uint
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32API.Message.p">
+            <summary>
+            drawing point
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Csr.Win32Api.WindowFinder">
+            <summary>
+            A utility class that uses a similar algorithm as Process.MainWindowHandle with the added
+            provision that class, text can be provided to select another window.
+            Also especially noticable on Vista, it can take a little time before application windows
+            become visible, hence the acquisitionTimeout loop.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32Api.WindowFinder.#ctor(System.String,System.String,System.Int32)">
+            <summary>
+            Initializes a new instance of the Microsoft.Uii.Csr.Win32Api.WindowFinder class with the specified parameters.
+            </summary>
+            <param name="altWindowClass">null to avoid matching on class</param>
+            <param name="altWindowText">null to avoid matching on caption</param>
+            <param name="limitToPid">limit FindWindow to windows on process id (pid), use 0 to search all windows on all active pids</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32Api.WindowFinder.FindWindow(System.Int32,System.Boolean)">
+            <summary>
+            Starts the search for the top window with the designated class and caption text.
+            </summary>
+            <param name="acquisitionTimeout">A duration limit (in milliseconds) on the window search.</param>
+            <param name="pumpMessagesWhileWaiting">True to pump windows messages while waiting for target window to appear.</param>
+            <returns>A window handle of the found window (or zero if not found.)</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32Api.WindowFinder.FindWindow(System.Int32,System.Boolean,System.Int32)">
+            <summary>
+            Starts the search for the top window with the designated class and caption text.
+            </summary>
+            <param name="acquisitionTimeout">A duration limit (in milliseconds) on the window search.</param>
+            <param name="pumpMessagesWhileWaiting">True to pump windows messages while waiting for target window to appear.</param>
+            <param name="extraData">An parameter passed to calls of the EnumWindowsCallback virtual method during the window search.</param>
+            <returns>A window handle of the found window (or zero if not found.)</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32Api.WindowFinder.GetProcessIdOfWindow(System.Runtime.InteropServices.HandleRef)">
+            <summary>
+            Utility method returning the process id corresponding to the specified window.
+            </summary>
+            <param name="window">A window to find the corresponding pid for.</param>
+            <returns>A process id of the process that owns the specified window.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32Api.WindowFinder.EnumWindowsCallback(System.IntPtr,System.IntPtr)">
+            <summary>
+            Called during FindWindow() for each enumerated window to determine whether the current window is the target.
+            Override to provide custom criteria.
+            </summary>
+            <param name="hWnd">The current enumerated window.</param>
+            <param name="extraData">The extraData parameter provided during the call to FindWindow().</param>
+            <returns>True to continue enumeration, false to stop.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32Api.WindowFinder.GetWindowText(System.IntPtr)">
+            <summary>
+            GetWindowText
+            </summary>
+            <param name="hWnd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32Api.WindowFinder.GetWindowClass(System.IntPtr)">
+            <summary>
+            GetWindowClass
+            </summary>
+            <param name="hWnd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32Api.WindowFinder.IsWindowOwned(System.IntPtr)">
+            <summary>
+            IsWindowOwned
+            </summary>
+            <param name="hWnd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32Api.WindowFinder.IsWindowInvisible(System.IntPtr)">
+            <summary>
+            IsWindowInvisible
+            </summary>
+            <param name="hWnd"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.Uii.Csr.Win32Api.WindowMonitor">
+            <summary>
+            Internal class supporting the public WindowPositioner class.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Csr.Win32Api.WindowParenter">
+            <summary>
+            A utility class that transforms the childToBeWindow top window into a child window of parentWindow.
+            Original configuration is reverted when class is Disposed.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32Api.WindowParenter.#ctor(System.Runtime.InteropServices.HandleRef,System.Runtime.InteropServices.HandleRef)">
+            <summary>
+            Initializes a new instance of the Microsoft.Uii.Csr.Win32Api.WindowParenter class with the specified parameters.
+            </summary>
+            <param name="parentWindow">Handle to the parent window</param>
+            <param name="childToBeWindow">Handle to the window to be parented</param>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32Api.WindowParenter.#ctor(System.Runtime.InteropServices.HandleRef,System.Runtime.InteropServices.HandleRef,System.Boolean,System.Boolean)">
+            <summary>
+            Initializes a new instance of the Microsoft.Uii.Csr.Win32Api.WindowParenter class with the specified parameters..
+            </summary>
+            <param name="parentWindow">Handle to the parent window</param>
+            <param name="childToBeWindow">Handle to the window to be parented</param>
+            <param name="showWin32Menu">when true, will not set the child style on <paramref name="childToBeWindow"/> to allow any Win32 menu to appear</param>
+            <param name="noMessagePump">true for non-window applications</param>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32Api.WindowParenter.Dispose">
+            <summary>
+            Reverts childToBeWindow to its original state.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32Api.WindowParenter.UpdateChildSize">
+            <summary>
+            Updates the size of the child window if the parent window has been resized.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32Api.WindowParenter.RestoreIfMinimized">
+            <summary>
+            RestoreIfMinimized
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Csr.Win32Api.WindowPositioner">
+            <summary>
+            A utility class that moves and sizes PositionedTopWindow over Monitored Window such as to make
+            PositionedTopWindow appear as a child window of Monitored Window.
+            Original configuration is reverted when class is Disposed.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32Api.WindowPositioner.isAppActivated">
+            <summary>
+            isAppActivated
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Csr.Win32Api.WindowPositioner.isActivated">
+            <summary>
+            isActivated
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32Api.WindowPositioner.#ctor(System.Runtime.InteropServices.HandleRef,System.Runtime.InteropServices.HandleRef,System.Boolean)">
+            <summary>
+            Initializes a new instance of the Microsoft.Uii.Csr.Win32Api.WindowPositioner class with the specified parameters.
+            </summary>
+            <param name="monitoredWindow"></param>
+            <param name="positionedTopWindow"></param>
+            <param name="attachThreadInput"></param>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32Api.WindowPositioner.#ctor(System.Runtime.InteropServices.HandleRef,System.Runtime.InteropServices.HandleRef,System.Runtime.InteropServices.HandleRef,System.Boolean)">
+            <summary>
+            Initializes a new instance of the Microsoft.Uii.Csr.Win32Api.WindowPositioner class with the specified parameters.
+            </summary>
+            <param name="monitoredWindow"></param>
+            <param name="positionedTopWindow"></param>
+            <param name="shellWindow"></param>
+            <param name="attachThreadInput"></param>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32Api.WindowPositioner.Dispose">
+            <summary>
+            Dispose
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32Api.WindowPositioner.Activate">
+            <summary>
+            Transitions PositionedTopWindow to the activated state (updates size, position, z-order.)
+            Does NOT change the visibility state of PositionedTopWindow.
+            Updates WindowShapshot.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32Api.WindowPositioner.Activate2">
+            <summary>
+            Activate2
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32Api.WindowPositioner.Activate(System.Boolean)">
+            <summary>
+            Transitions PositionedTopWindow to the activated state checks the Winproccall to reduce the flickering (updates size, position, z-order.)
+            Does NOT change the visibility state of PositionedTopWindow.
+            Updates WindowShapshot.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32Api.WindowPositioner.Activate(System.Int32,System.Int32)">
+            <summary>
+            Transitions PositionedTopWindow to the activated state at left, top co-oridnates specified (updates size, position, z-order.)
+            Does NOT change the visibility state of PositionedTopWindow.
+            Updates WindowShapshot.
+            </summary>
+            <param name="left">left coordinate of the window</param>
+            <param name="top">top coordinate of the window</param>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32Api.WindowPositioner.Deactivate">
+            <summary>
+            Transitions PositionedTopWindow to the deactivated state.
+            Does NOT change the visibility state of PositionedTopWindow.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32Api.WindowPositioner.Deactivate(System.Int32,System.Int32)">
+            <summary>
+            Transitions PositionedTopWindow to the deactivated state. at left, top co-oridnates specified
+            Does NOT change the visibility state of PositionedTopWindow.
+            </summary>
+            <param name="left">left coordinate of the window</param>
+            <param name="top">top coordinate of the window</param>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32Api.WindowPositioner.ShowWindow">
+            <summary>
+            Shows PositionedTopWindow.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32Api.WindowPositioner.ShowWindow(System.Int32,System.Int32)">
+            <summary>
+            Shows PositionedTopWindow at left, top co-oridnates specified
+            </summary>
+            <param name="left">left coordinate of the window</param>
+            <param name="top">top coordinate of the window</param>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32Api.WindowPositioner.HideWindow">
+            <summary>
+            Hides PositionedTopWindow.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32Api.WindowPositioner.HideWindow(System.Int32,System.Int32)">
+            <summary>
+            Hides PositionedTopWindow at left, top co-oridnates specified.
+            </summary>
+            <param name="left">left coordinate of the window</param>
+            <param name="top">top coordinate of the window</param>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32Api.WindowPositioner.RestoreIfMinimized">
+            <summary>
+            Restores PositionedTopWindow.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32Api.WindowPositioner.RemoveFromTaskbar">
+            <summary>
+            Removes the PositionedTopWindow from the Windows taskbar.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32Api.WindowPositioner.RemoveFrameAndCaption">
+            <summary>
+            Removes the Frame and Caption from the PositionedTopWindow.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32Api.WindowPositioner.RemoveSizingControls">
+            <summary>
+            Remove the Sizing controls for the Window
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32Api.WindowPositioner.RemoveSystemMenu">
+            <summary>
+            Removes the system menu (prevents closing, sizing, moving) from PositionedTopWindow.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32Api.WindowPositioner.RemoveSizingMenu">
+            <summary>
+            Removes the system menu (prevents sizing, moving) from PositionedTopWindow.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Csr.Win32Api.WindowPositioner.WindowSnapshot">
+            <summary>
+            Snapshot bitmap of the PositionedTopWindow updated on every Deactivate().
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Csr.Win32Api.WindowSnapshot">
+            <summary>
+            A utility that maintains a bitmap of monitoredWindow.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32Api.WindowSnapshot.#ctor(System.Runtime.InteropServices.HandleRef)">
+            <summary>
+            Initializes a new instance of the Microsoft.Uii.Csr.Win32Api.WindowSnapshot class.
+            </summary>
+            <param name="monitoredWindow">A window capture bitmap snapshots of.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32Api.WindowSnapshot.Dispose">
+            <summary>
+            Dispose
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32Api.WindowSnapshot.Update">
+            <summary>
+            Update the snapshot bitmap of the bound Monitored Window.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Csr.Win32Api.WindowSnapshot.PaintTo(System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            Paints the cached snapshot bitmap to the specified graphics context.
+            </summary>
+            <param name="e"></param>
+        </member>
+    </members>
+</doc>

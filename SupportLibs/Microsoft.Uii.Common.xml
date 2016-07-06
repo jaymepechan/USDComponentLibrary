@@ -1,0 +1,2332 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Uii.Common</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Uii.Common.IAuditLogger">
+            <summary>
+            Interface for Audit logging
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Common.IAuditLogger.GetAuditFlag(System.String)">
+            <summary>
+             Retrieves the value for the specified audit flag.
+            </summary>
+            <param name="auditFlagName">Arbitrary audit flag identifier</param>
+            <returns>flag value (0 = logging off, 1 = logging on</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.IAuditLogger.SetAuditFlag(System.String,System.String)">
+            <summary>
+            Sets the value for the specified audit flag.
+            </summary>
+            <param name="auditFlagName">Arbitrary audit flag identifier</param>
+            <param name="auditFlagValue">0 = turn off logging, 1 = turn on logging</param>	
+        </member>
+        <member name="M:Microsoft.Uii.Common.IAuditLogger.Log(System.String,Microsoft.Uii.Common.Entities.LogData)">
+            <summary>
+            Logs the messages to the database using the AuditLog web service asynchronously.
+            Caching done based on the NoCache property.
+            Message will be logged only if GetAuditFlag(auditFlagName) returns non-zero.
+            Use SetAuditFlag(auditFlagName) to set.
+            </summary>
+            <param name="auditFlagName">Arbitrary audit flag identifier</param>
+            <param name="logData">Audit log record where ToString() will be used to extract contents</param>
+        </member>
+        <member name="P:Microsoft.Uii.Common.IAuditLogger.CacheMaxSize">
+            <summary>
+            Maximum size of the the Audit Log cache.
+            Size change will take effect on next Log() call.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.IAuditLogger.NoCache">
+            <summary>
+            Indicates whether audit messages to be cached or not.
+            If true, no caching happens and all the messages will be
+            logged immediately. If false, messages are cached and
+            flushed to underlaying thing when the cache limit reached or certain
+            events happen such as session close.
+            </summary>				
+        </member>
+        <member name="T:Microsoft.Uii.Common.IDiagnosticLogger">
+            <summary>
+            The logging class used by UII that implements a listening system to allow multiple listeners to hook in and log messages.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Common.IDiagnosticLogger.Error(System.String,System.String,System.Exception)">
+            <summary>
+            This is used to display messages that represent a problem.
+            It only displays when the TraceSwitch is assigned TraceError.
+            It takes the string passed in and sends it to any trace listener.
+            It also will display it in a list control if one has been made available or in the various logs.
+            </summary>
+            <param name="appName">Name to give for the application.</param>
+            <param name="message">The message to place in the log.</param>
+            <param name="exception">The exception used in writing out the error.</param>
+            <exception cref="T:System.Configuration.ConfigurationErrorsException">Configuration-related exceptions are wrapped in this common exception type.</exception>
+            <exception cref="T:System.InvalidOperationException">Logging listeners are not permitted to call methods of the Logging class.</exception>
+        </member>
+        <member name="M:Microsoft.Uii.Common.IDiagnosticLogger.Error(System.String,System.String,System.Object[])">
+            <summary>
+            This is used to display messages that represent a problem.
+            It only displays when the TraceSwitch is assigned TraceError.
+            It takes the string passed in and sends it to any trace listener.
+            It also will display it in a list control if one has been made available or in the various logs.
+            </summary>
+            <param name="appName">Nmae to give for the application</param>
+            <param name="format">String format for the message to be placed in the log</param>
+            <param name="parameters">Parameters to be substituted into the stirng format.</param>
+            <exception cref="T:System.Configuration.ConfigurationErrorsException">Configuration-related exceptions are wrapped in this common exception type.</exception>
+            <exception cref="T:System.InvalidOperationException">Logging listeners are not permitted to call methods of the Logging class.</exception>
+        </member>
+        <member name="M:Microsoft.Uii.Common.IDiagnosticLogger.Info(System.String,System.String,System.Object[])">
+            <summary>
+            This is used to display messages that are useful, but do not represent a problem.
+            It only displays when the TraceSwitch is assigned TraceInfo.
+            It takes the string passed in and sends it to any trace listener.
+            It also will display it in a list control if one has been made available or in the various logs.
+            </summary>
+            <param name="appName">Name to give for the application.</param>
+            <param name="format">String format of the message.</param>
+            <param name="parameters">Parameters to be substituted into the string format.</param>
+            <exception cref="T:System.Configuration.ConfigurationErrorsException">Configuration-related exceptions are wrapped in this common exception type.</exception>
+            <exception cref="T:System.InvalidOperationException">Logging listeners are not permitted to call methods of the Logging class.</exception>
+        </member>
+        <member name="M:Microsoft.Uii.Common.IDiagnosticLogger.Trace(System.String)">
+            <summary>
+            This is used to display messages for debugging but not normal operation.
+            It only displays when the TraceSwitch is assigned TraceVerbose.
+            It takes the string passed in and sends it to any trace listener.
+            It also will display it in a list control if one has been made available or in the various logs.
+            </summary>
+            <param name="message">The message to write out to the trace.</param>
+            <exception cref="T:System.Configuration.ConfigurationErrorsException">Configuration-related exceptions are wrapped in this common exception type.</exception>
+            <exception cref="T:System.InvalidOperationException">Logging listeners are not permitted to call methods of the Logging class.</exception>
+        </member>
+        <member name="M:Microsoft.Uii.Common.IDiagnosticLogger.Trace(System.String,System.String,System.Object[])">
+            <summary>
+            This is used to display messages for debugging but not normal operation.
+            It only displays when the TraceSwitch is assigned TraceVerbose.
+            It takes the string passed in and sends it to any trace listener.
+            It also will display it in a list control if one has been made available or in the various logs.
+            </summary>
+            <param name="appName">Name to give for the application.</param>
+            <param name="format">String format of the message.</param>
+            <param name="parameters">Parameters to be substituted into the string format.</param>
+            <exception cref="T:System.Configuration.ConfigurationErrorsException">Configuration-related exceptions are wrapped in this common exception type.</exception>
+            <exception cref="T:System.InvalidOperationException">Logging listeners are not permitted to call methods of the Logging class.</exception>
+        </member>
+        <member name="M:Microsoft.Uii.Common.IDiagnosticLogger.TryInitialize">
+            <summary>
+            Provides for the explicit initialization of logging listeners, rather than defering to first use of the Logging class.
+            Use of this method is not required.
+            </summary>
+            <exception cref="T:System.Configuration.ConfigurationErrorsException">Configuration-related exceptions are wrapped in this common exception type.</exception>
+        </member>
+        <member name="M:Microsoft.Uii.Common.IDiagnosticLogger.Warn(System.String,System.String)">
+            <summary>
+            This is used to display messages that may represent a problem.
+            It only displays when the TraceSwitch is assigned TraceWarning.
+            It takes the string passed in and sends it to any trace listener.
+            It also will display it in a list control if one has been made available or in the various logs.
+            </summary>
+            <param name="appName">Name to give for the application.</param>
+            <param name="message">The message to place in the log.</param>
+            <exception cref="T:System.Configuration.ConfigurationErrorsException">Configuration-related exceptions are wrapped in this common exception type.</exception>
+            <exception cref="T:System.InvalidOperationException">Logging listeners are not permitted to call methods of the Logging class.</exception>
+        </member>
+        <member name="M:Microsoft.Uii.Common.IDiagnosticLogger.Warn(System.String,System.String,System.Object[])">
+            <summary>
+            This is used to display messages that may represent a problem.
+            It only displays when the TraceSwitch is assigned TraceWarning.
+            It takes the string passed in and sends it to any trace listener.
+            It also will display it in a list control if one has been made available or in the various logs.
+            </summary>
+            <param name="appName">Name to give for the application</param>
+            <param name="format">String format of the message</param>
+            <param name="parameters">Parameters to be substituted into the string format</param>
+            <exception cref="T:System.Configuration.ConfigurationErrorsException">Configuration-related exceptions are wrapped in this common exception type.</exception>
+            <exception cref="T:System.InvalidOperationException">Logging listeners are not permitted to call methods of the Logging class.</exception>
+        </member>
+        <member name="P:Microsoft.Uii.Common.IDiagnosticLogger.ErrorCount">
+            <summary>
+            Gets or sets the error count. (Incremented by every call to one of the Error() overloads.)
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.IDiagnosticLogger.ShowErrors">
+            <summary>
+            If set to true, then all Logging.Error() messages will be displayed in a messagebox.
+            The default is false.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.IDiagnosticLogger.TraceSwitchLevel">
+            <summary>
+            Level of the TraceSwitch("Microsoft.Uii.Common.Logging").
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Common.PerfLogger">
+            <summary>
+            Static Class to use for Performance Logging.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Common.PerfLogger.Add(Microsoft.Uii.Common.PerfRecord)">
+            <summary>
+            Add a PerfRecord
+            </summary>
+            <param name="perfRecord">perf record to add.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.PerfLogger.Flush">
+            <summary>
+            Flushes the current buffer of perf records.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Common.PerfLogger.RefreshListeners(System.Diagnostics.TraceListener)">
+            <summary>
+            Refresh Listeners of underlying TraceSource.
+            </summary>
+            <param name="listener">System.Diagnostics.TraceListener</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.PerfLogger.SetTraceSourceSwitch(System.Diagnostics.SourceLevels)">
+            <summary>
+            Set switch level for underlying TraceSource.
+            </summary>
+            <param name="traceSourceSwitch">System.Diagnostics.SourceLevels</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.PerfLogger.FlushData(System.String)">
+            <summary>
+            Performs data flush to the underlying stream.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Common.PerfLogger.LogData(System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            To create a Perf record by underlying trace source.
+            </summary>
+            <param name="perfMarkers">Marker to uniquely identify this perf record</param>
+            <param name="args">Additional data to log along with perf record.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.PerfLogger.Close">
+            <summary>
+            Closes the trace source and performs the cleanup.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.PerfLogger.TraceSourceName">
+            <summary>
+            Name of underlying TraceSource.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Common.PerfMarkers">
+            <summary>
+            This class contains the names of various performance markers used in USD code.
+            Any new marker(s) introduced in future needs to be added over here.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.PerfMarkers.UII_SESSION_CREATE">
+            <summary>
+            Logged when session is created
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.PerfMarkers.UII_SESSION_CLOSE">
+            <summary>
+            Session load start.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.PerfMarkers.UII_SESSION_LOAD">
+            <summary>
+            Logged when Session load is starting
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.PerfMarkers.UII_HOSTED_APP_LOAD">
+            <summary>
+            Logged when browser load completed.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.PerfMarkers.UII_HOSTED_WEB_APP">
+            <summary>
+            Logged when Hosted Web Application is starting
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.PerfMarkers.UII_HOSTED_WEB_APP_PAGE_LOAD">
+            <summary>
+            Logged when Hosted Web Application Page load is starting
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.PerfMarkers.UII_EXTERNAL_APP">
+            <summary>
+            Logged when Hosted Web Application is starting
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.PerfMarkers.UII_HOSTED_CONTROL_DOACTION">
+            <summary>
+            Logged when Hosted Control doaction fires
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.PerfMarkers.UII_HOSTED_WPFCONTROL_ACTION">
+             <summary>
+            Logged when  Hosted wpf Control action fires
+             </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Common.PerfRecord">
+            <summary>
+            Perf Record Data Structure
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.PerfRecord.Identifier">
+            <summary>
+            PerfMarker_Indetifier
+            Indentifier - guid or any uniqe string
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.PerfRecord.TimeStamp">
+            <summary>
+            Logging datetime
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.PerfRecord.Data">
+            <summary>
+            Additional Information
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Common.PerfSettings">
+            <summary>
+            Performance logging internal setting constants
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Common.PerfTraceListener">
+            <summary>
+            Perf trace listener
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Common.PerfTraceListener.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Common.PerfTraceListener.#ctor(System.String)">
+            <summary>
+            Parameterized Constructor
+            </summary>
+            <param name="fileName">Name of the file where perf records to be logged</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.PerfTraceListener.Write(System.String)">
+            <summary>
+            Write Method
+            </summary>
+            <param name="message">Message to be written</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.PerfTraceListener.WriteLine(System.String)">
+            <summary>
+            WriteLine method
+            </summary>
+            <param name="message">Message to be written</param>
+        </member>
+        <member name="T:Microsoft.Uii.Common.PerfTraceSource">
+            <summary>
+            Performance trace source implemeting System.Diagnostics.TraceSource
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Common.PerfTraceSource.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="name">Name of TraceSource</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.PerfTraceSource.GetSupportedAttributes">
+            <summary>
+            GetSupportedAttributes
+            </summary>
+            <returns>String Array</returns>
+        </member>
+        <member name="T:Microsoft.Uii.Common.Entities.ActionRecord">
+            <summary>
+            This class implements the custom entity UII Action.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Entities.ActionRecord.Id">
+            <summary>
+            Gets or sets the actionid.
+            </summary>
+            <value>The actionid.</value>
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Entities.ActionRecord.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>The name of UII Action.</value>
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Entities.ActionRecord.Disabled">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:Microsoft.Uii.Common.Entities.ActionRecord"/> is disabled.
+            </summary>
+            <value><c>true</c> if disabled; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Entities.ActionRecord.InitString">
+            <summary>
+            Gets or sets the init string.
+            </summary>
+            <value>The init string.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Entities.ActionRecord.InitstringDoc">
+             <summary>
+            Gets or sets the value of initstring.
+             </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Common.Entities.ApplicationRecord">
+            <summary>
+            This class implements the entity for Application
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.Entities.ApplicationRecord.actions">
+            <summary>
+            actions list
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Entities.ApplicationRecord.#ctor">
+            <summary>
+            Initializes a new instance of the Application class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Entities.ApplicationRecord.AppInitString">
+            <summary>
+            Gets or sets App init string
+            </summary>
+            <value>The app init string.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Entities.ApplicationRecord.ApplicationType">
+            <summary>
+            Gets or sets the type.
+            </summary>
+            <value>The type of application.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Entities.ApplicationRecord.Id">
+            <summary>
+            Gets or sets the ID.
+            </summary>
+            <value>Hosted application ID.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Entities.ApplicationRecord.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>The name of UII Application.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Entities.ApplicationRecord.Actions">
+            <summary>
+            Gets the actions.
+            </summary>
+            <value>The actions.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Entities.ApplicationRecord.Disabled">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:Microsoft.Uii.Common.Entities.ApplicationRecord"/> is disabled.
+            </summary>
+            <value><c>true</c> if disabled; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="T:Microsoft.Uii.Common.Entities.ActivityId">
+            <summary>
+            ID of the activity performed.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.Entities.ActivityId.Logon">
+            <summary>
+            Login method of Agent Desktop.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.Entities.ActivityId.LogOff">
+            <summary>
+            Dispose method of Agent Desktop.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.Entities.ActivityId.HostedAppChange">
+            <summary>
+            Switching of Hosted application.
+            panel_SelectedIndexChanged()
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.Entities.ActivityId.SessionStart">
+            <summary>
+            Marks the session start in doLookupCommand.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.Entities.ActivityId.SessionClose">
+            <summary>
+            Session Close
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.Entities.ActivityId.SessionChange">
+            <summary>
+            Changing of the session
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.Entities.ActivityId.AgentState">
+            <summary>
+            Change of agent state.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.Entities.ActivityId.Action">
+            <summary>
+            UII Action performed.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.Entities.ActivityId.WorkflowStart">
+            <summary>
+            Start of the work flow.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.Entities.ActivityId.WorkflowEnd">
+            <summary>
+            End of the work flow.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Common.Entities.AuditType">
+            <summary>
+            Audit message type groups the priorities of similar events at one place.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.Entities.AuditType.Login">
+            <summary>
+            Login (Login, LogOff)
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.Entities.AuditType.Session">
+            <summary>
+            Session (Start, Change, Close)
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.Entities.AuditType.AgentState">
+            <summary>
+            Agent State change (Ready, Busy, Away)
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.Entities.AuditType.HostedApplication">
+            <summary>
+            Hosted applications (HostedAppChange)
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.Entities.AuditType.Action">
+            <summary>
+            Action Performed.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.Entities.AuditType.WorkFlow">
+            <summary>
+            WorkFlow (Start, End)
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.Entities.AuditType.NonHostedApplication">
+            <summary>
+            Nonhosted application's priority.(NonHostedApplicationStart, NonHostedApplicationClose)
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Common.Entities.LogData">
+            <summary>
+            Data structure representing the audit event log message.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Entities.LogData.#ctor">
+            <summary>
+            Default empty constructor for the LogData class.
+            </summary>
+            <example>
+            LogData logData = new LogData();
+            logData.ActivityID = ActivityID.SessionChange;
+            logData.UniversalCurrentTime = DateTime.UtcNow;
+            </example>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Entities.LogData.#ctor(Microsoft.Uii.Common.Entities.ActivityId,System.DateTime)">
+            <summary>
+            Contructor for LogData taking in preparation parameters.
+            </summary>
+            <param name="activityId">ID of the activity performed.</param>
+            <param name="universalCurrentTime">Time of the audit message as Universally Coordinated time.</param>
+            <example>
+            LogData logData = new LogData(ActivityID.SessionChange, DateTime.UtcNow);
+            </example>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Entities.LogData.#ctor(Microsoft.Uii.Common.Entities.ActivityId)">
+            <summary>
+            Contructor for LogData taking in preparation parameters, defaults to the current UTC date/time.
+            </summary>
+            <param name="activityId">ID of the activity performed.</param>
+            <example>
+            LogData logData = new LogData(ActivityID.SessionChange);
+            </example>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Entities.LogData.Reset">
+            <summary>
+            Resets the Activity Data and non-static members of LogData object.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Entities.LogData.ToString">
+            <summary>
+            Returns the XML representation for the LogData object.
+            Extenders will need to provide a custom implementation.
+            </summary>
+            <returns>XML representation for the LogData object</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Entities.LogData.GetLogData">
+            <summary>
+            Returns the XML representation for the LogData object.
+            Log Data XML includes addtional data elements.
+            </summary>
+            <returns>XML representation for the LogData object</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Entities.LogData.AddElement(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+             Add additional elements to the log data
+            </summary>
+            <param name="elements"></param>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Entities.LogData.CustomerId">
+            <summary>
+            ID of the Customer currently being served.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Entities.LogData.ApplicationId">
+            <summary>
+            ID of the current application having focus.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Entities.LogData.ClientTimeZone">
+            <summary>
+            Time difference in seconds between time configured on the 
+            agent desktop machine and UTC.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Entities.LogData.UniversalCurrentTime">
+            <summary>
+            Time of the audit message as Universally Coordinated time.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Entities.LogData.ActivityId">
+            <summary>
+            Audit Log assigned Activity ID.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Entities.LogData.TargetApplication">
+            <summary>
+            The Target Application on which the action is fired.
+            This can be '*' indicating that action is fired on all the applications. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Entities.LogData.Action">
+            <summary>
+            Name of the UII Action performed on Hosted Application.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Entities.LogData.ActionData">
+            <summary>
+            Data of the UII Action performed on Hosted Application.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Entities.LogData.ContextId">
+            <summary>
+            Applicable context identifier.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Entities.LogData.MachineName">
+            <summary>
+            Name of the machine from which audit messages are generated.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Entities.LogData.WorkflowId">
+            <summary>
+            Workflow for which auditing is done.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Entities.LogData.WorkflowActiveStepId">
+            <summary>
+            Active workflow active step ID.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Entities.LogData.WorkflowStatus">
+            <summary>
+            WorkFlow completion status. Done or Cancel.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Entities.LogData.AgentState">
+            <summary>
+            Agent state.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Common.Entities.NonHostedApplicationRecord">
+            <summary>
+            This class implements entity for Non Hosted Application
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Entities.NonHostedApplicationRecord.#ctor(System.String,System.String,System.Boolean)">
+            <summary>
+            Initializes a new instance of the name class.
+            </summary>
+            <param name="name">The name of the option.</param>
+            <param name="commandLine">The command Line of the option.</param>
+            <param name="isDefaultApp">Is default Application</param>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Entities.NonHostedApplicationRecord.Name">
+            <summary>
+            Name of Non Hosted Application
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Entities.NonHostedApplicationRecord.CommandLine">
+            <summary>
+            Command Line Argument for the application
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Entities.NonHostedApplicationRecord.IsDefaultApplication">
+            <summary>
+            Is this the default non hosted application
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Common.Entities.OptionRecord">
+            <summary>
+            This class implements the custom entity OptionRecord
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Entities.OptionRecord.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Uii.Common.Entities.OptionRecord"/> class.
+            </summary>
+            <param name="name">The name of the option.</param>
+            <param name="value">The value of the option.</param>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Entities.OptionRecord.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>The name of the setting.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Entities.OptionRecord.Value">
+            <summary>
+            Gets or sets the value.
+            </summary>
+            <value>The value.</value>
+        </member>
+        <member name="T:Microsoft.Uii.Common.Entities.SessionTransferRecord">
+            <summary>
+            Class representing the Session Transfer record that is used when a session needs to be transfered between agents
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Entities.SessionTransferRecord.ToAgentId">
+            <summary>
+            Agent to whom the session is transfered
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Entities.SessionTransferRecord.FromAgentId">
+            <summary>
+            The agent who transfers the session
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Entities.SessionTransferRecord.SessionTransferId">
+            <summary>
+            Unique identifier for the Session Trasnfer data
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Entities.SessionTransferRecord.Name">
+            <summary>
+            Gets or sets Name
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Entities.SessionTransferRecord.FromPhoneNumber">
+            <summary>
+            Number from which the session is transfered
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Entities.SessionTransferRecord.SessionInfo">
+            <summary>
+            Data containing session info
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Common.Entities.WorkflowRecord">
+            <summary>
+            This class is a representation of the UII Workflow entity. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Entities.WorkflowRecord.Id">
+            <summary>
+            Gets or sets Id.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Entities.WorkflowRecord.Name">
+            <summary>
+            Gets or sets Name.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Entities.WorkflowRecord.IsForced">
+            <summary>
+            Gets or sets IsForced
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Entities.WorkflowRecord.Description">
+            <summary>
+            Gets or sets Description
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Common.Entities.WorkflowStepRecord">
+            <summary>
+            Represents a step in a workflow
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Entities.WorkflowStepRecord.Id">
+            <summary>
+            Unique identifier for the workflow step. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Entities.WorkflowStepRecord.Name">
+            <summary>
+            Name of the workflow step
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Entities.WorkflowStepRecord.ActionName">
+            <summary>
+            Action attached to the workflow step
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Entities.WorkflowStepRecord.HostedApplicationId">
+            <summary>
+            Application attached to the workflow step
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Entities.WorkflowStepRecord.Description">
+            <summary>
+            Description of the step
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Common.GeneralFunctions">
+            <summary>
+            This class consists of general functions used to retrieve data from XML,
+            checking for numeric validation, etc.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.GeneralFunctions.EventLogEventSourceName">
+            <summary>
+            EventLog source for UII
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Common.GeneralFunctions.Serialize(System.Object)">
+            <summary>
+            Serialize the object passed in returning an xml string.
+            </summary>
+            <param name="serialize">The object to serialize.</param>
+            <returns>The serialized object as string (XML).</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.GeneralFunctions.Serialize``1(``0)">
+            <summary>
+            Serialize the object passed in returning an xml string.
+            </summary>
+            <typeparam name="TType">The generic type used to serialize.</typeparam>
+            <param name="serializeObject">The object to serialize.</param>
+            <returns>The serialized object as string (XML).</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.GeneralFunctions.Deserialize(System.String,System.Type)">
+            <summary>
+            Deserialize the XML string into an object of type passed in.
+            </summary>
+            <param name="deserializeString">The serialized (XML) object.</param>
+            <param name="type">The object type to which to deserialize.</param>
+            <returns>The deserialized object.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.GeneralFunctions.Deserialize``1(System.String)">
+            <summary>
+            Deserialize an XML string into an object of type passed in.
+            </summary>
+            <typeparam name="TType">The generic type used to deserialize.</typeparam>
+            <param name="deserializeString">The serialized (XML) object.</param>
+            <returns>The deserialized object.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.GeneralFunctions.CanDeserialize``1(System.String)">
+            <summary>
+            Checks whether a string can be deserialized to an object of specified type.
+            </summary>
+            <typeparam name="TType">The generic type used to deserialize.</typeparam>
+            <param name="deserializeString">The serialized (XML) object.</param>
+            <returns>True if string can be deserialized</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.GeneralFunctions.GetXmlNodeValue(System.String,System.String)">
+            <summary>
+            This static method gets the node value of given xpath 
+            by loading the given XML.
+            </summary>
+            <param name="xml">The xml string.</param>
+            <param name="xpath">The XPath to query.</param>
+            <returns>Response string.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.GeneralFunctions.GetXmlNodeText(System.String,System.String)">
+            <summary>
+            This static method gets the node value of given xpath 
+            by loading the given XML.
+            </summary>
+            <param name="xml">The xml string.</param>
+            <param name="xpath">The XPath to query.</param>
+            <returns>Response string.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.GeneralFunctions.IsNumeric(System.String)">
+            <summary>
+            This method returns returns true if the given string is found to be
+            numeric.
+            </summary>
+            <param name="input">The value to check if numeric.</param>
+            <returns>A boolean indicating if the input in numeric, false otherwise.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.GeneralFunctions.GetValueFromReader(System.Data.SqlClient.SqlDataReader,System.Int32)">
+            <summary>
+            This method returns the value of the indexed field in the reader.
+            </summary>
+            <param name="reader">The SQL data reader.</param>
+            <param name="index">The index of the item to fetch.</param>
+            <returns>Data value from reader.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.GeneralFunctions.GetValueFromReader(System.Data.SqlClient.SqlDataReader,System.String)">
+            <summary>
+            This method returns the value of the through its field name.
+            </summary>
+            <param name="reader">The SQL data reader.</param>
+            <param name="fieldName">The field name whose value to fetch.</param>
+            <returns>string value of the field's value.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.GeneralFunctions.IsInitialInstance">
+            <summary>
+            The following ensures only one copy of the executing application is running at a time.
+            </summary>
+            <returns>A boolean true indiciating is the this is the initial instance.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.GeneralFunctions.EncryptStringToBytes(System.String,System.Byte[],System.Byte[])">
+            <summary>
+            This method encrypts the given text using symmetric Rijndael algorithm.
+            </summary>
+            <param name="plainText">string to be encrypted</param>
+            <param name="Key">value of the key to be used for encryption</param>
+            <param name="IV">Initialization Vector to be used for encryption</param>
+            <returns>byte array represented encrypted text.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.GeneralFunctions.DecryptStringFromBytes(System.Byte[],System.Byte[],System.Byte[])">
+            <summary>
+             This method decrypts the given text using symmetric Rijndael algorithm.
+            </summary>
+            <param name="cipherText">text to be decrypted</param>
+            <param name="Key">value of the key to be used for decryption</param>
+            <param name="IV">Initialization Vector to be used for decryption</param>
+            <returns>string representing decypted form of cipherText</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.GeneralFunctions.EscapeXml(System.String)">
+            <summary>
+            Escapes Xml metacharacters
+            </summary>
+            <param name="content">unescaped input</param>
+            <returns>escaped input</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.GeneralFunctions.UnEscapeXml(System.String)">
+            <summary>
+            Unescapes Xml metacharacters
+            </summary>
+            <param name="content">escaped input</param>
+            <returns>unescaped input</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.GeneralFunctions.WriteToApplicationEventLog(System.String,System.Diagnostics.EventLogEntryType)">
+            <summary>
+            This private helper method is used to write to the application event log.
+            The intended purpose is to use this as a "last resort" for logging when some failure
+            prevents from writing to listeners. 
+            </summary>
+            <param name="message">Message to log</param>
+            <param name="type">Log Type</param>
+        </member>
+        <member name="T:Microsoft.Uii.Common.GeneralFunctions.ConfigurationType">
+            <summary>
+            Enumeration of Configuration types.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.GeneralFunctions.ConfigurationType.Provider">
+            <summary>
+            Returns enumerator Provider which has the value 0
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.GeneralFunctions.ConfigurationType.Listener">
+            <summary>
+            Returns enumerator Listener which has the value 1
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.GeneralFunctions.ConfigurationType.URL">
+            <summary>
+            Returns enumerator Url which has the value 2
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Common.Guard">
+            <summary>
+            A helper class for standard validations.
+            </summary>
+            <remarks>
+            This class is an internal class; it exposes static methods which are used to 
+            guard against null object, null string or empty string.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Guard.ArgumentNotNull(System.Object,System.String)">
+            <summary>
+            Checks an argument to ensure it isn't null
+            </summary>
+            <param name="argumentValue">The argument value to check.</param>
+            <param name="argumentName">The name of the argument.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Guard.ArgumentNotNullOrEmptyString(System.String,System.String)">
+            <summary>
+            Checks a string argument to ensure it isn't null or empty
+            </summary>
+            <param name="argumentValue">The argument value to check.</param>
+            <param name="argumentName">The name of the argument.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Guard.GuidNotEmpty(System.Guid,System.String)">
+            <summary>
+            GUIDs the not empty.
+            </summary>
+            <param name="argumentValue">The argument value.</param>
+            <param name="argumentName">Name of the argument.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Guard.ValidateUri(System.Uri,System.String)">
+            <summary>
+            Checks a URI argument to ensure it is valid.
+            </summary>
+            <param name="argumentValue">The argument value.</param>
+            <param name="argumentName">Name of the argument.</param>
+        </member>
+        <member name="T:Microsoft.Uii.Common.IContext">
+            <summary>
+            Interface for common UII context class def
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Common.IContext.Clear">
+            <summary>
+            Clears the context
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Common.IContext.SetContext(System.String)">
+            <summary>
+            Set the context to the context string
+            </summary>
+            <param name="contextInformation"></param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.IContext.GetContext">
+            <summary>
+            Get the XML context string from the Context.
+            </summary>
+            <returns>Returns the XML string from the Context.</returns>
+        </member>
+        <member name="P:Microsoft.Uii.Common.IContext.ContextInformation">
+            <summary>
+            String representation of the context
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.IContext.Count">
+            <summary>
+            Number of items in collection
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.IContext.Item(System.String)">
+            <summary>
+            Index accessor
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.Uii.Common.AdapterAppInitString">
+            <summary>
+            This class provides the definition for AdapterAppInitString
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Common.AppInitStringBase">
+            <summary>
+            This class provides the definition for AppInitStringBase
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Common.InitString">
+            <summary>
+            Init String.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.InitString.initStringXmlDoc">
+            <summary>
+            init string Xml document
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Common.InitString.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Uii.Common.InitString"/> class.
+            </summary>
+            <param name="xml">The XML path.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.InitString.#ctor">
+            <summary>
+            Prevents a default instance of the <see cref="T:Microsoft.Uii.Common.InitString"/> class from being created.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Common.InitString.ToString">
+            <summary>
+            Returns the Initstring as a formatted Xml string
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.InitString.Load(System.String)">
+            <summary>
+            Load internal XML document from the specified file.
+            </summary>
+            <param name="fileName">The filename.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.InitString.Load(Microsoft.Uii.Common.InitString)">
+            <summary>
+            Load internal XML document from the specified InitString.
+            </summary>
+            <param name="initstring">The initstring.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.InitString.LoadXml(System.String)">
+            <summary>
+            Load internal XML document from the specified string.
+            </summary>
+            <param name="xml">The XML path.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.InitString.Save(System.String)">
+            <summary>
+            Save internal XML document to the specified file.
+            </summary>
+            <param name="fileName">The filename.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.InitString.GetNodeInnerText(System.Xml.XmlNode)">
+            <summary>
+            Returns InnerText of specified node.
+            </summary>
+            <param name="node">The xml node </param>
+            <returns>Inner Text of specified node.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.InitString.GetNodeInnerTextBool(System.Xml.XmlNode,System.Boolean)">
+            <summary>
+            Returns boolean-interpreted value of InnerText of specified node, returns defaultValue if interpretation fails.
+            </summary>
+            <param name="node">The node specified.</param>
+            <param name="defaultValue">if set to <c>true</c> [default value].</param>
+            <returns>bbolean-interpretes value of innertext</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.InitString.ParseTypeAssembly(System.String,System.String@,System.String@)">
+            <summary>
+            Parses the type assembly.
+            </summary>
+            <param name="typeNameAssemblyName">Name of the type name assembly.</param>
+            <param name="typeName">Name of the type.</param>
+            <param name="assemblyName">Name of the assembly.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.InitString.FormatTypeAssembly(System.String,System.String)">
+            <summary>
+            Formats the type assembly.
+            </summary>
+            <param name="typeName">Name of the type.</param>
+            <param name="assemblyName">Name of the assembly.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.InitString.Validate">
+            <summary>
+            Throw exceptions in overridden implementations to signal initstring validation failure
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Common.InitString.OnLoad">
+            <summary>
+            Called when [load].
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Common.InitString.GetNode(System.Xml.XmlNode,System.String)">
+            <summary>
+            Returns first named node under parentNode, or null if does not exist.
+            </summary>
+            <param name="parentNode">The parent node.</param>
+            <param name="childTagName">Name of the child tag.</param>
+            <returns>Xml node element</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.InitString.GetOrCreateNode(System.Xml.XmlNode,System.String)">
+            <summary>
+            Returns first named node under parentNode, or creates one if it does not exist.
+            </summary>
+            <param name="parentNode">The parent node.</param>
+            <param name="childTagName">Name of the child tag.</param>
+            <returns>returns XML Node</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.InitString.GetOrCreateNode(System.Xml.XmlNode,System.String,System.String)">
+            <summary>
+            Returns first named node under parentNode, or creates one under specified xpath if it does not exist.
+            </summary>
+            <param name="parentNode">The parent node.</param>
+            <param name="childTagName">Name of the child tag.</param>
+            <param name="insertUnderXPath">The insert under X path.</param>
+            <returns>returns Xml Node</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.InitString.GetAttributeNode(System.Xml.XmlNode,System.String)">
+            <summary>
+            Returns named attribute node under parentNode.
+            </summary>
+            <param name="parentNode">The parent node.</param>
+            <param name="childName">Name of the child.</param>
+            <returns>named attribute node under parent node</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.InitString.GetOrCreateAttributeNode(System.Xml.XmlNode,System.String)">
+            <summary>
+            Returns named attribute node under parentNode, or create one if it does not exist.
+            </summary>
+            <param name="parentNode">The parent node.</param>
+            <param name="childName">Name of the child.</param>
+            <returns>named attribute node under parent Node</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.InitString.Exists(System.Xml.XmlNode,System.String)">
+            <summary>
+            Determines whether node specified by xpath is found under parentNode.
+            </summary>
+            <param name="parentNode">The parent node.</param>
+            <param name="xPath">The xpath.</param>
+            <returns>true if exists, else false.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.InitString.RemoveNode(System.Xml.XmlNode,System.String)">
+            <summary>
+            Removes the first named node under parentNode.
+            </summary>
+            <param name="parentNode">The parent node.</param>
+            <param name="childTagName">Name of the child tag.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.InitString.GetAttributeNode(System.Xml.XmlNode,System.String,System.Boolean)">
+            <summary>
+            Gets the attribute node.
+            </summary>
+            <param name="parentNode">The parent node.</param>
+            <param name="name">The name of  the node.</param>
+            <param name="createIfNotFound">if set to <c>true</c> [create if not found].</param>
+            <returns>attribute Node</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.InitString.GetNode(System.Xml.XmlNode,System.String,System.Boolean,System.String)">
+            <summary>
+            Gets the node.
+            </summary>
+            <param name="parentNode">The parent node.</param>
+            <param name="name">The name of the node.</param>
+            <param name="createIfNotFound">if set to <c>true</c> [create if not found].</param>
+            <param name="insertAfterXPath">The insert after X path.</param>
+            <returns>returns the Xml Node</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.InitString.OutputXml(System.Xml.Formatting)">
+            <summary>
+            Outputs the XML.
+            </summary>
+            <param name="formatting">The formatting.</param>
+            <returns>the output XML</returns>
+        </member>
+        <member name="P:Microsoft.Uii.Common.InitString.FormattedXml">
+            <summary>
+            Gets the formatted XML.
+            </summary>
+            <value>The formatted XML.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.InitString.UnformattedXml">
+            <summary>
+            Gets the unformatted XML.
+            </summary>
+            <value>The unformatted XML.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.InitString.XmlDocument">
+            <summary>
+            Gets or sets the XML document.
+            </summary>
+            <value>The XML document.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.InitString.RootNode">
+            <summary>
+            Gets the root node in the initstring XML document.
+            </summary>
+            <value>The root node.</value>
+        </member>
+        <member name="M:Microsoft.Uii.Common.AppInitStringBase.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Uii.Common.AppInitStringBase"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Common.AppInitStringBase.InferApplicationType(Microsoft.Uii.Common.InitString)">
+            <summary>
+            Infers the type of the application.
+            </summary>
+            <param name="initstring">The initstring.</param>
+            <returns>application Type</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.AppInitStringBase.InferApplicationType(System.String)">
+            <summary>
+            Infers the type of the application.
+            </summary>
+            <param name="initstring">The initstring.</param>
+            <returns>applicaton Type</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.AppInitStringBase.InferApplicationType(System.Xml.XmlDocument)">
+            <summary>
+            Infers the type of the application.
+            </summary>
+            <param name="initstring">The initstring.</param>
+            <returns>application type</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.AppInitStringBase.CreateAppInitStringType(System.Int32)">
+            <summary>
+            Creates the type of the app init string.
+            </summary>
+            <param name="applicationTypeId">The application type id.</param>
+            <returns>app Init string</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.AppInitStringBase.ConvertToDifferentAppInitStringType(System.Int32)">
+            <summary>
+            Converts the type of to different app init string.
+            </summary>
+            <param name="applicationTypeId">The application type id.</param>
+            <returns>App init string</returns>
+        </member>
+        <member name="P:Microsoft.Uii.Common.AppInitStringBase.Global">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:Microsoft.Uii.Common.AppInitStringBase"/> is global.
+            </summary>
+            <value><c>true</c> if global; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.AppInitStringBase.WorkflowDependent">
+            <summary>
+            Gets or sets a value indicating whether [workflow dependent].
+            </summary>
+            <value><c>true</c> if [workflow dependent]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.AppInitStringBase.Dynamic">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:Microsoft.Uii.Common.AppInitStringBase"/> is dynamic.
+            </summary>
+            <value><c>true</c> if dynamic; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.AppInitStringBase.DynamicShowInToolBar">
+            <summary>
+            Gets or sets a value indicating whether [dynamic show in tool bar].
+            </summary>
+            <value>
+                <c>true</c> if [dynamic show in tool bar]; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.AppInitStringBase.DynamicCanClose">
+            <summary>
+            Gets or sets a value indicating whether [dynamic can close].
+            </summary>
+            <value><c>true</c> if [dynamic can close]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.AppInitStringBase.OptimumSize">
+            <summary>
+            Gets or sets the optimum size.
+            </summary>
+            <value>The optimum size.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.AppInitStringBase.MinimumSize">
+            <summary>
+            Gets or sets the minimum size.
+            </summary>
+            <value>The minimum size.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.AppInitStringBase.ExtensionsXml">
+            <summary>
+            Gets or Sets the Extensions xml
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.AppInitStringBase.DisplayGroup">
+            <summary>
+            Gets or sets the display group.
+            </summary>
+            <value>The display group.</value>
+        </member>
+        <member name="F:Microsoft.Uii.Common.AdapterAppInitString.ddaCollection">
+            <summary>
+            Data Driven Adapter collection.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.AdapterAppInitString.adapterModeInternal">
+            <summary>
+            adapterModeInternal property is used to cache the setting chosen by user. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Common.AdapterAppInitString.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Uii.Common.AdapterAppInitString"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Common.AdapterAppInitString.GetControlsNode(System.Xml.XmlNode)">
+            <summary>
+            Gets the DataDrivenAdapterBindings\Controls node.
+            </summary>
+            <param name="parentNode">The parent node.</param>
+            <returns>The DataDrivenAdapterBindings\Controls node.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.AdapterAppInitString.GetTypeNode(System.Xml.XmlNode)">
+            <summary>
+            Gets the DataDrivenAdapterBindings\Type node.
+            </summary>
+            <param name="parentNode">The parent node.</param>
+            <returns>The DataDrivenAdapterBindings\Type node.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.AdapterAppInitString.LoadAdapterXml(System.String)">
+            <summary>
+            Loads the Automation Xml into the initstring object
+            </summary>
+            <param name="adapterXml">Xml data containing the automation xml</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.AdapterAppInitString.OnLoad">
+            <summary>
+            Called when [load].
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.AdapterAppInitString.AdapterMode">
+            <summary>
+            Gets or sets the adapter mode.
+            </summary>
+            <value>The adapter mode.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.AdapterAppInitString.UseNoAdapter">
+            <summary>
+            Gets or sets a value indicating whether [use no adapter].
+            </summary>
+            <value><c>true</c> if [use no adapter]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.AdapterAppInitString.UseAutomationAdapter">
+            <summary>
+            Gets or sets a value indicating whether [use automation adapter].
+            </summary>
+            <value>
+                <c>true</c> if [use automation adapter]; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.AdapterAppInitString.LegacyAdapterType">
+            <summary>
+            Gets or sets the type of the legacy adapter.
+            </summary>
+            <value>The type of the legacy adapter.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.AdapterAppInitString.DataDrivenAdapterType">
+            <summary>
+            Gets or sets the type of the data driven adapter.
+            [Editor(typeof(UIDdaStyleTypeAssemblyEditor), typeof(UITypeEditor))]
+            </summary>
+            <value>The type of the data driven adapter.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.AdapterAppInitString.DataDrivenAdapterControlBindings">
+            <summary>
+            Gets the data driven adapter control bindings.
+            </summary>
+            <value>The data driven adapter control bindings.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.AdapterAppInitString.DataDrivenAdapterBindingsCollection">
+            <summary>
+            Gets the data driven adapter control bindings collection.
+            </summary>
+            <value>The data driven adapter control bindings collection.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.AdapterAppInitString.Controls">
+            <summary>
+            Gets control names in all DDA.
+            </summary>
+            <value>Control names in all DDA.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.AdapterAppInitString.DdaCollection">
+            <summary>
+            Gets the Data Driven Adapter collection.
+            </summary>
+            <value>The Data Driven Adapter collection.</value>
+        </member>
+        <member name="T:Microsoft.Uii.Common.AdapterAppInitString.AdapterModeType">
+            <summary>
+            Adapter mode type
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.AdapterAppInitString.AdapterModeType.None">
+            <summary>
+            None Specified
+            </summary>  
+        </member>
+        <member name="F:Microsoft.Uii.Common.AdapterAppInitString.AdapterModeType.AutomationAdapter">
+            <summary>
+            Automation Adapter
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.AdapterAppInitString.AdapterModeType.LegacyAdapter">
+            <summary>
+            Legacy Adapter
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Common.ApplicationType">
+            <summary>
+            Application Types Enumeration
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.ApplicationType.HostedControl">
+            <summary>
+            Hosted Control
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.ApplicationType.WebHosted">
+            <summary>
+            Web Hosted
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.ApplicationType.ExternalHosted">
+            <summary>
+            Exterenal Hosted
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.ApplicationType.RemoteHosted">
+            <summary>
+            Remote hosted
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Common.ControlCollection">
+            <summary>
+            Control Collection class
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.ControlCollection.controls">
+            <summary>
+            list of controls
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.ControlCollection.controlBindings">
+            <summary>
+            Adapter control bindings.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.ControlCollection.initString">
+            <summary>
+            Adapter init string.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Common.ControlCollection.#ctor(Microsoft.Uii.Common.AdapterAppInitString,System.Xml.XmlElement)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Uii.Common.ControlCollection"/> class.
+            </summary>
+            <param name="initString">The init string.</param>
+            <param name="controlBindings">Adapter control bindings.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.ControlCollection.IndexOf(Microsoft.Uii.Common.ControlElement)">
+            <summary>
+            Determines the index of a specific item in the <see cref="T:System.Collections.Generic.IList`1"/>.
+            </summary>
+            <param name="item">The object to locate in the <see cref="T:System.Collections.Generic.IList`1"/>.</param>
+            <returns>
+            The index of <paramref name="item"/> if found in the list; otherwise, -1.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.ControlCollection.Insert(System.Int32,Microsoft.Uii.Common.ControlElement)">
+            <summary>
+            Inserts an item to the <see cref="T:System.Collections.Generic.IList`1"/> at the specified index.
+            </summary>
+            <param name="index">The zero-based index at which <paramref name="item"/> should be inserted.</param>
+            <param name="item">The object to insert into the <see cref="T:System.Collections.Generic.IList`1"/>.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+                <paramref name="index"/> is not a valid index in the <see cref="T:System.Collections.Generic.IList`1"/>.
+            </exception>
+            <exception cref="T:System.NotSupportedException">
+            The <see cref="T:System.Collections.Generic.IList`1"/> is read-only.
+            </exception>
+        </member>
+        <member name="M:Microsoft.Uii.Common.ControlCollection.RemoveAt(System.Int32)">
+            <summary>
+            Removes the <see cref="T:System.Collections.Generic.IList`1"/> item at the specified index.
+            </summary>
+            <param name="index">The zero-based index of the item to remove.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+                <paramref name="index"/> is not a valid index in the <see cref="T:System.Collections.Generic.IList`1"/>.
+            </exception>
+            <exception cref="T:System.NotSupportedException">
+            The <see cref="T:System.Collections.Generic.IList`1"/> is read-only.
+            </exception>
+        </member>
+        <member name="M:Microsoft.Uii.Common.ControlCollection.Add(Microsoft.Uii.Common.ControlElement)">
+            <summary>
+            Adds an item to the <see cref="T:System.Collections.Generic.ICollection`1"/>.
+            </summary>
+            <param name="item">The object to add to the <see cref="T:System.Collections.Generic.ICollection`1"/>.</param>
+            <exception cref="T:System.NotSupportedException">
+            The <see cref="T:System.Collections.Generic.ICollection`1"/> is read-only.
+            </exception>
+        </member>
+        <member name="M:Microsoft.Uii.Common.ControlCollection.Clear">
+            <summary>
+            Removes all items from the <see cref="T:System.Collections.Generic.ICollection`1"/>.
+            </summary>
+            <exception cref="T:System.NotSupportedException">
+            The <see cref="T:System.Collections.Generic.ICollection`1"/> is read-only.
+            </exception>
+        </member>
+        <member name="M:Microsoft.Uii.Common.ControlCollection.Contains(Microsoft.Uii.Common.ControlElement)">
+            <summary>
+            Determines whether the <see cref="T:System.Collections.Generic.ICollection`1"/> contains a specific value.
+            </summary>
+            <param name="item">The object to locate in the <see cref="T:System.Collections.Generic.ICollection`1"/>.</param>
+            <returns>
+            true if <paramref name="item"/> is found in the <see cref="T:System.Collections.Generic.ICollection`1"/>; otherwise, false.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.ControlCollection.CopyTo(Microsoft.Uii.Common.ControlElement[],System.Int32)">
+            <summary>
+            Copies the elements of the <see cref="T:System.Collections.Generic.ICollection`1"/> to an <see cref="T:System.Array"/>, starting at a particular <see cref="T:System.Array"/> index.
+            </summary>
+            <param name="array">The one-dimensional <see cref="T:System.Array"/> that is the destination of the elements copied from <see cref="T:System.Collections.Generic.ICollection`1"/>. The <see cref="T:System.Array"/> must have zero-based indexing.</param>
+            <param name="arrayIndex">The zero-based index in <paramref name="array"/> at which copying begins.</param>
+            <exception cref="T:System.ArgumentNullException">
+                <paramref name="array"/> is null.
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+                <paramref name="arrayIndex"/> is less than 0.
+            </exception>
+            <exception cref="T:System.ArgumentException">
+                <paramref name="array"/> is multidimensional.
+            -or-
+            <paramref name="arrayIndex"/> is equal to or greater than the length of <paramref name="array"/>.
+            -or-
+            The number of elements in the source <see cref="T:System.Collections.Generic.ICollection`1"/> is greater than the available space from <paramref name="arrayIndex"/> to the end of the destination <paramref name="array"/>.
+            -or-
+            </exception>
+        </member>
+        <member name="M:Microsoft.Uii.Common.ControlCollection.Remove(Microsoft.Uii.Common.ControlElement)">
+            <summary>
+            Removes the first occurrence of a specific object from the <see cref="T:System.Collections.Generic.ICollection`1"/>.
+            </summary>
+            <param name="item">The object to remove from the <see cref="T:System.Collections.Generic.ICollection`1"/>.</param>
+            <returns>
+            true if <paramref name="item"/> was successfully removed from the <see cref="T:System.Collections.Generic.ICollection`1"/>; otherwise, false. This method also returns false if <paramref name="item"/> is not found in the original <see cref="T:System.Collections.Generic.ICollection`1"/>.
+            </returns>
+            <exception cref="T:System.NotSupportedException">
+            The <see cref="T:System.Collections.Generic.ICollection`1"/> is read-only.
+            </exception>
+        </member>
+        <member name="M:Microsoft.Uii.Common.ControlCollection.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the collection.
+            </summary>
+            <returns>
+            A <see cref="T:System.Collections.Generic.IEnumerator`1"/> that can be used to iterate through the collection.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.ControlCollection.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through a collection.
+            </summary>
+            <returns>
+            An <see cref="T:System.Collections.IEnumerator"/> object that can be used to iterate through the collection.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.ControlCollection.Contains(System.String)">
+            <summary>
+            Determines whether [contains] [the specified control name].
+            </summary>
+            <param name="controlName">Name of the control.</param>
+            <returns>
+                <c>true</c> if [contains] [the specified control name]; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.ControlCollection.Refresh">
+            <summary>
+            Refreshes this instance.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.ControlCollection.Item(System.Int32)">
+            <summary>
+            Gets or sets the controlElement at the specified index.
+            </summary>
+            <param name="index">indexer for the control</param>
+            <value></value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.ControlCollection.Item(System.String)">
+            <summary>
+            Gets the controlElement with the specified name.
+            </summary>
+            <param name="name">indexer for the control</param>
+            <value></value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.ControlCollection.Count">
+            <summary>
+            Gets the number of elements contained in the <see cref="T:System.Collections.Generic.ICollection`1"/>.
+            </summary>
+            <value></value>
+            <returns>
+            The number of elements contained in the <see cref="T:System.Collections.Generic.ICollection`1"/>.
+            </returns>
+        </member>
+        <member name="P:Microsoft.Uii.Common.ControlCollection.IsReadOnly">
+            <summary>
+            Gets a value indicating whether the <see cref="T:System.Collections.Generic.ICollection`1"/> is read-only.
+            </summary>
+            <value></value>
+            <returns>true if the <see cref="T:System.Collections.Generic.ICollection`1"/> is read-only; otherwise, false.
+            </returns>
+        </member>
+        <member name="T:Microsoft.Uii.Common.ControlElement">
+            <summary>
+            control element class
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.ControlElement.binding">
+            <summary>
+            binding element
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.ControlElement.bounds">
+            <summary>
+            Rectangle bounds
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.ControlElement.selected">
+            <summary>
+            selection made
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Common.ControlElement.#ctor(System.Xml.XmlElement)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Uii.Common.ControlElement"/> class.
+            </summary>
+            <param name="binding">The binding.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.ControlElement.SetBinding(System.Xml.XmlElement)">
+            <summary>
+            Sets the binding.
+            </summary>
+            <param name="xmlBinding">The binding.</param>
+        </member>
+        <member name="P:Microsoft.Uii.Common.ControlElement.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>The name of the control element.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.ControlElement.ControlType">
+            <summary>
+            Gets or sets the type of the control.
+            </summary>
+            <value>The type of the control.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.ControlElement.Binding">
+            <summary>
+            Gets the binding.
+            </summary>
+            <value>The binding.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.ControlElement.Bounds">
+            <summary>
+            Gets or sets the bounds.
+            </summary>
+            <value>The bounds.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.ControlElement.Selected">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:Microsoft.Uii.Common.ControlElement"/> is selected.
+            </summary>
+            <value><c>true</c> if selected; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="T:Microsoft.Uii.Common.DdaBindings">
+            <summary>
+            Data Driven Adapter bindings class.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.DdaBindings.initString">
+            <summary>
+            Adapter init string.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.DdaBindings.prefix">
+            <summary>
+            The DDA prefix.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.DdaBindings.type">
+            <summary>
+            The DDA type.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.DdaBindings.adapterBindings">
+            <summary>
+            The DataDrivenAdapterBindings node element.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.DdaBindings.controls">
+            <summary>
+            The Controls node element.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.DdaBindings.controlCollection">
+            <summary>
+            The ControlCollection.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Common.DdaBindings.RemoveWhitespace(System.String)">
+            <summary>
+            Removes all whitespace characters in the provided <paramref name="text"/>.
+            </summary>
+            <param name="text">The text.</param>
+            <returns>A string with all whitespace characters removed.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.DdaBindings.#ctor(Microsoft.Uii.Common.AdapterAppInitString,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Uii.Common.DdaBindings"/> class.
+            </summary>
+            <param name="initString">The init string.</param>
+            <param name="prefix">The prefix.</param>
+            <param name="type">The type.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.DdaBindings.#ctor(Microsoft.Uii.Common.AdapterAppInitString,System.Xml.XmlElement)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Uii.Common.DdaBindings"/> class.
+            </summary>
+            <param name="initString">The init string.</param>
+            <param name="adapterBindings">The adapter bindings (DataDrivenAdapterBindings node).</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.DdaBindings.Add(Microsoft.Uii.Common.ControlElement)">
+            <summary>
+            Adds the specified item to ControlCollection.
+            </summary>
+            <param name="item">The ControlElement.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.DdaBindings.Refresh">
+            <summary>
+            Refreshes this instance.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.DdaBindings.ControlCollection">
+            <summary>
+            Gets the control collection.
+            </summary>
+            <value>The control collection.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.DdaBindings.AdapterBindings">
+            <summary>
+            Gets the adapter bindings.
+            </summary>
+            <value>The adapter bindings (DataDrivenAdapterBindings node).</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.DdaBindings.Prefix">
+            <summary>
+            Gets the prefix.
+            </summary>
+            <value>The prefix.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.DdaBindings.Type">
+            <summary>
+            Gets the DDA type.
+            </summary>
+            <value>The DDA type.</value>
+        </member>
+        <member name="T:Microsoft.Uii.Common.DdaCollection">
+            <summary>
+            Data Driven Adapter bindings collection class.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.DdaCollection.ddaCollection">
+            <summary>
+            Dictionary of ControlCollection.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.DdaCollection.initString">
+            <summary>
+            Adapter init string.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.DdaCollection.adapterBindingsCollection">
+            <summary>
+            The DataDrivenAdapterBindingsCollection node.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Common.DdaCollection.#ctor(Microsoft.Uii.Common.AdapterAppInitString)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Uii.Common.DdaCollection"/> class.
+            </summary>
+            <param name="initString">Adapter init string.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.DdaCollection.Contains(System.String)">
+            <summary>
+            Determines whether [contains] [the specified prefix].
+            </summary>
+            <param name="prefix">The prefix.</param>
+            <returns>
+            	<c>true</c> if [contains] [the specified prefix]; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.DdaCollection.Add(System.String,Microsoft.Uii.Common.DdaBindings)">
+            <summary>
+            Adds the specified DdaBindings to DDA Collection.
+            </summary>
+            <param name="prefix">The prefix.</param>
+            <param name="item">The DdaBindings item.</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.DdaCollection.Refresh">
+            <summary>
+            Refreshes this instance.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Common.DdaCollection.GetDdaByType(System.String)">
+            <summary>
+            Gets the DDA element by type.
+            </summary>
+            <param name="type">The type.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.DdaCollection.GetEnumerator">
+            <summary>
+            Gets the enumerator.
+            </summary>
+            <returns>An Enumerator of type DdaBindings.</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.DdaCollection.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through a collection.
+            </summary>
+            <returns>
+            An <see cref="T:System.Collections.IEnumerator"/> object that can be used to iterate through the collection.
+            </returns>
+        </member>
+        <member name="P:Microsoft.Uii.Common.DdaCollection.Item(System.Int32)">
+            <summary>
+            Gets the <see cref="T:Microsoft.Uii.Common.DdaBindings"/> at the specified index.
+            </summary>
+            <value>The <see cref="T:Microsoft.Uii.Common.DdaBindings"/>.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.DdaCollection.Item(System.String)">
+            <summary>
+            Gets the <see cref="T:Microsoft.Uii.Common.DdaBindings"/> with the specified prefix.
+            </summary>
+            <value>The <see cref="T:Microsoft.Uii.Common.DdaBindings"/>.</value>
+        </member>
+        <member name="T:Microsoft.Uii.Common.AlternateTopLevelWindowType">
+            <summary>
+            Alternate top level window type
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.AlternateTopLevelWindowType.None">
+            <summary>
+            None specified
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.AlternateTopLevelWindowType.UseVB6TopLevelWindow">
+            <summary>
+            use VB6 top level window
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.AlternateTopLevelWindowType.UseFindWindow">
+            <summary>
+            Use Find Window
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Common.HostInsideType">
+            <summary>
+            Host inside type
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.HostInsideType.HostOutside">
+            <summary>
+            host floating 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.HostInsideType.UseSetParent">
+            <summary>
+            use Set Parent
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.HostInsideType.UseDynamicPositioning">
+            <summary>
+            use Dynamic positioning
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Common.ExternalApplicationAppInitString">
+            <summary>
+            External Application init string
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.ExternalApplicationAppInitString.alternateTopLevelWindowInternal">
+            <summary>
+            alternate Top Level Window Internal
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.ExternalApplicationAppInitString.InteropAssemblyUrl">
+            <summary>
+            Gets or sets the interop assembly URL.
+            [Editor(typeof(UIFilenameEditor), typeof(UITypeEditor))]
+            </summary>
+            <value>The interop assembly URL.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.ExternalApplicationAppInitString.InteropAssemblyArguments">
+            <summary>
+            Gets or sets the interop assembly arguments.
+            </summary>
+            <value>The interop assembly arguments.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.ExternalApplicationAppInitString.InteropAssemblyWorkingDirectory">
+            <summary>
+            Gets or sets the interop assembly working directory.
+            [Editor(typeof(UIFolderEditor), typeof(UITypeEditor))]
+            </summary>
+            <value>The interop assembly working directory.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.ExternalApplicationAppInitString.HostInside">
+            <summary>
+            Gets or sets a value indicating whether [host inside].
+            </summary>
+            <value><c>true</c> if [host inside]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.ExternalApplicationAppInitString.HostOnTop">
+            <summary>
+            Gets or sets a value indicating whether [host on top].
+            </summary>
+            <value><c>true</c> if [host on top]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.ExternalApplicationAppInitString.AttachThreadInput">
+            <summary>
+            Gets or sets a value indicating whether [attach thread input].
+            </summary>
+            <value><c>true</c> if [attach thread input]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.ExternalApplicationAppInitString.RetainSystemMenu">
+            <summary>
+            Gets or sets a value indicating whether [retain system menu].
+            </summary>
+            <value><c>true</c> if [retain system menu]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.ExternalApplicationAppInitString.RetainFrameAndCaption">
+            <summary>
+            Gets or sets a value indicating whether [retain frame and caption].
+            </summary>
+            <value>
+                <c>true</c> if [retain frame and caption]; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.ExternalApplicationAppInitString.RetainOnTaskbar">
+            <summary>
+            Gets or sets a value indicating whether [retain on task bar].
+            </summary>
+            <value><c>true</c> if [retain on task bar]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.ExternalApplicationAppInitString.RestoreIfMinimized">
+            <summary>
+            Gets or sets a value indicating whether [restore if minimized].
+            </summary>
+            <value><c>true</c> if [restore if minimized]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.ExternalApplicationAppInitString.RemoveSizingMenu">
+            <summary>
+            Gets or sets a value indicating whether [remove sizing menu].
+            </summary>
+            <value><c>true</c> if [remove sizing menu]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.ExternalApplicationAppInitString.RemoveSizingControls">
+            <summary>
+            Gets or sets a value indicating whether [remove sizing controls].
+            </summary>
+            <value>
+            	<c>true</c> if [remove sizing controls]; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.ExternalApplicationAppInitString.ShowMenu">
+            <summary>
+            Gets or sets a value indicating whether [show menu].
+            </summary>
+            <value><c>true</c> if [show menu]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.ExternalApplicationAppInitString.NoMessagePump">
+            <summary>
+            Gets or sets a value indicating whether [no message pump].
+            </summary>
+            <value><c>true</c> if [no message pump]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.ExternalApplicationAppInitString.AcquisitionTimeout">
+            <summary>
+            Gets or sets the acquisition timeout.
+            </summary>
+            <value>The acquisition timeout.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.ExternalApplicationAppInitString.AlternateTopLevelWindow">
+            <summary>
+            Gets or sets the alternate top level window.
+            </summary>
+            <value>The alternate top level window.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.ExternalApplicationAppInitString.HostingMethod">
+            <summary>
+            Gets or sets the hosting method.
+            </summary>
+            <value>The hosting method.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.ExternalApplicationAppInitString.AlternateTopLevelWindowCaption">
+            <summary>
+            Gets or sets the alternate top level window caption.
+            </summary>
+            <value>The alternate top level window caption.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.ExternalApplicationAppInitString.AlternateTopLevelWindowClass">
+            <summary>
+            Gets or sets the alternate top level window class.
+            </summary>
+            <value>The alternate top level window class.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.ExternalApplicationAppInitString.LimitToProcessId">
+            <summary>
+            Gets or sets a value indicating whether [limit to process id].
+            </summary>
+            <value><c>true</c> if [limit to process id]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.ExternalApplicationAppInitString.ManageHosting">
+            <summary>
+            Gets or sets a value indicating whether [dynamic can close].
+            </summary>
+            <value><c>true</c> if [dynamic can close]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="T:Microsoft.Uii.Common.HostedControlAppInitString">
+            <summary>
+            Hosted Control App Init string
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.HostedControlAppInitString.AssemblyInfoType">
+            <summary>
+            Gets or sets the type of the assembly info.
+            [Editor(typeof(UIAdapterStyleTypeAssemblyEditor), typeof(UITypeEditor))]
+            </summary>
+            <value>The type of the assembly info.</value>
+        </member>
+        <member name="T:Microsoft.Uii.Common.HostedWebApplicationAppInitString">
+            <summary>
+            Hosted Web Application App Init String
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.HostedWebApplicationAppInitString.HomepageUrl">
+            <summary>
+            Gets or sets the home page URL.
+            </summary>
+            <value>The home page URL.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.HostedWebApplicationAppInitString.UseToolBar">
+            <summary>
+            Gets or sets a value indicating whether [use toolbar].
+            </summary>
+            <value><c>true</c> if [use toolbar]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.HostedWebApplicationAppInitString.UseNewBrowserProcess">
+            <summary>
+            Gets or sets a value indicating whether [use new browser process].
+            </summary>
+            <value>
+                <c>true</c> if [use new browser process]; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.HostedWebApplicationAppInitString.HostInside">
+            <summary>
+            Gets or sets a value indicating whether [host inside].
+            </summary>
+            <value><c>true</c> if [host inside]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.HostedWebApplicationAppInitString.HostOnTop">
+            <summary>
+            Gets or sets a value indicating whether [host on top].
+            </summary>
+            <value><c>true</c> if [host on top]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.HostedWebApplicationAppInitString.HostingMethod">
+            <summary>
+            Gets or sets the hosting method.
+            </summary>
+            <value>The hosting method.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.HostedWebApplicationAppInitString.ManagePopups">
+            <summary>
+            Gets or sets a value indicating whether [dynamic can close].
+            </summary>
+            <value><c>true</c> if [dynamic can close]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="T:Microsoft.Uii.Common.RemoteAppInitString">
+            <summary>
+            Class representing a Remote Hosted Application Initialization string
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.RemoteAppInitString.alternateTopLevelWindowInternal">
+            <summary>
+            alternate Top Level Window Internal
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.RemoteAppInitString.AcquisitionTimeout">
+            <summary>
+            Gets or sets the acquisition timeout.
+            </summary>
+            <value>The acquisition timeout.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.RemoteAppInitString.IcaFileName">
+            <summary>
+            Gets or sets the Ica file path.       
+            </summary>
+            <value>The Ica file path.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.RemoteAppInitString.AlternateTopLevelWindowClass">
+            <summary>
+            Gets or sets the alternate top level window class.
+            </summary>
+            <value>The alternate top level window class.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.RemoteAppInitString.AlternateTopLevelWindow">
+            <summary>
+            Gets or sets the alternate top level window.
+            </summary>
+            <value>The alternate top level window.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.RemoteAppInitString.ProcessAcquisitionAttempts">
+            <summary>
+            Gets or sets the Process acquisition attempts.
+            </summary>
+            <value>The Process acquisition attempts.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.RemoteAppInitString.AlternateTopLevelWindowCaption">
+            <summary>
+            Gets or sets the alternate top level window caption.
+            </summary>
+            <value>The alternate top level window caption.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.RemoteAppInitString.ProcessAcquisitionDelay">
+            <summary>
+            Gets or sets the Process acquisition delay.
+            </summary>
+            <value>The Process acquisition delay.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.RemoteAppInitString.ProcessAcquisitionFileName">
+            <summary>
+            Gets or sets the Process acquisition filename.
+            </summary>
+            <value>The Process acquisition filename.</value>
+        </member>
+        <member name="P:Microsoft.Uii.Common.RemoteAppInitString.LimitToProcessId">
+            <summary>
+            Gets or sets a value indicating whether [limit to process id].
+            </summary>
+            <value><c>true</c> if [limit to process id]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="T:Microsoft.Uii.Common.WorkflowStringBuilder">
+            <summary>
+            Used for building an xml representation for the Workflow data.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Common.WorkflowStringBuilder.GetWorkflowNames(System.Collections.Generic.List{Microsoft.Uii.Common.Entities.WorkflowRecord})">
+            <summary>
+            Gets the workflow records avialable to build worflow init string
+            </summary>
+            <param name="workflowList"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.WorkflowStringBuilder.GetWorkflowSteps(System.Guid,System.Collections.Generic.List{Microsoft.Uii.Common.Entities.WorkflowStepRecord})">
+            <summary>
+            Gets the workflowsteps availabe to build the initstring
+            </summary>
+            <param name="workflowId"></param>
+            <param name="workflowSteps"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.WorkflowStringBuilder.XmlStartNode(System.String)">
+            <summary>
+            To create the xml start node
+            </summary>
+            <param name="strNodeName">node name</param>
+            <returns>start node</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.WorkflowStringBuilder.XmlEndNode(System.String)">
+            <summary>
+            To create xml end node
+            </summary>
+            <param name="strNodeName">node name</param>
+            <returns>end node</returns>
+        </member>
+        <member name="T:Microsoft.Uii.Common.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Resources.COM0100_NOCONFIG">
+            <summary>
+              Looks up a localized string similar to COM0100: No configuration settings were found for {0}..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Resources.COM0101_CONFIGWEBSVC_ACCESS_ERROR">
+            <summary>
+              Looks up a localized string similar to COM0101: An error occurred while attempting to access the configuration web service. (To disable, remove the &quot;ConfigurationArea&quot; AppSettings key.).
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Resources.COM0102_CONFIGWEBSRV_DESER_ERROR">
+            <summary>
+              Looks up a localized string similar to COM0102: An error occurred while attempting to deserialize configuration data from the configuration web service..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Resources.DefaultDDAPrefix">
+            <summary>
+              Looks up a localized string similar to DDA_Prefix.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Resources.ERROR_DuplicatePrefix">
+            <summary>
+              Looks up a localized string similar to Another data driven adapter with the same prefix already exists..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Resources.NoDefaultProvider">
+            <summary>
+              Looks up a localized string similar to PP001: A proxy provider hasn&apos;t been specified..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Resources.NoProvider">
+            <summary>
+              Looks up a localized string similar to PP004: A proxy provider couldn&apos;t be determined..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Resources.ProviderIncorrectType">
+            <summary>
+              Looks up a localized string similar to PP003: The provider parameter must be of type ProxyProviderBase..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Resources.ProviderNull">
+            <summary>
+              Looks up a localized string similar to PP002: The provider parameter can&apos;t be null..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Resources.UnsupportedAutomationElement">
+            <summary>
+              Looks up a localized string similar to Unsupported XmlElement for Automation XML: {0}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Resources.UriFormatExceptionMessage">
+            <summary>
+              Looks up a localized string similar to Invalid Uri: {0}.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Common.Utils">
+            <summary>
+            Utility class containing methods used in other classes
+            </summary>
+        </member>
+        <member name="F:Microsoft.Uii.Common.Utils.PREFIX_SEPARATOR">
+            <summary>
+            Separator used to separate prefix and control name.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Utils.GetCredentials">
+            <summary>
+            Retrieves the default credentials for the current user
+            </summary>
+            <returns>An ICredentials interface contains the result</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Utils.IsCriticalException(System.Exception)">
+            <summary>
+            Returns true for exceptions that should never be suppressed
+            </summary>
+            <param name="ex">The exception</param>
+        </member>
+        <member name="M:Microsoft.Uii.Common.Utils.ApplyEnvironmentVarSubstitution(System.String)">
+            <summary>
+            Applies .cmd-script-style environment variable substitution,
+            using the collection of variables retrieved from Environment.GetEnvironmentVariables().
+            </summary>
+            <param name="input">string containing zero or more specified environment variables (syntax: %variable%)</param>
+            <returns>updated input string with matching environment variables replaced</returns>
+        </member>
+    </members>
+</doc>

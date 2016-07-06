@@ -1,0 +1,10 @@
+﻿Build started 9/11/2015 3:03:58 PM.
+     1>Project "C:\DEVELOPMENT\USD\Microsoft.USD.ComponentLibrary\JABProxy\JABProxy.vcxproj" on node 2 (Build target(s)).
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(368,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+     1>Link:
+         JABProxy.vcxproj -> C:\DEVELOPMENT\USD\Microsoft.USD.ComponentLibrary\JABProxy\..\..\..\USD Bin\JABProxy.dll
+     1>Done Building Project "C:\DEVELOPMENT\USD\Microsoft.USD.ComponentLibrary\JABProxy\JABProxy.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.07

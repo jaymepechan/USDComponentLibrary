@@ -1,0 +1,212 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Uii.Practices.CompositeUI.Windows</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Practices.CompositeUI.Windows.IFrameworkElementActivationService">
+            <summary>
+            An activation service for <see cref="T:System.Windows.FrameworkElement"/>s.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Practices.CompositeUI.Windows.Activation.FrameworkElementActivationService">
+            <summary>
+            An implementation of <see cref="T:Microsoft.Practices.CompositeUI.Windows.IFrameworkElementActivationService"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Practices.CompositeUI.Windows.Activation.FrameworkElementActivationService.WorkItem">
+            <summary>
+            The <see cref="P:Microsoft.Practices.CompositeUI.Windows.Activation.FrameworkElementActivationService.WorkItem"/> where this service lives.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Practices.CompositeUI.Windows.Activation.FrameworkElementActivationStrategy">
+            <summary>
+            Implements a <see cref="T:Microsoft.Practices.ObjectBuilder.BuilderStrategy"/> for <see cref="T:System.Windows.FrameworkElement"/>s.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Practices.CompositeUI.Windows.ApplicationShellApplication`2">
+            <summary>
+            Extends <see cref="T:Microsoft.Practices.CompositeUI.Windows.WindowsApplication`2"/> to support WPF applications that use a WPF <see cref="T:System.Windows.Application"/>
+            instance as their shell.
+            </summary>
+            <typeparam name="TWorkItem">
+            The work item type.
+            </typeparam>
+            <typeparam name="TShell">
+            The shell type.
+            </typeparam>
+        </member>
+        <member name="T:Microsoft.Practices.CompositeUI.Windows.WindowsApplication`2">
+            <summary>
+            Extends <see cref="T:Microsoft.Practices.CompositeUI.CabShellApplication`2"/> to support shell-based applications that use Windows
+            Presentation Foundation.
+            </summary>
+            <typeparam name="TWorkItem">
+            The type of the root application work item.
+            </typeparam>
+            <typeparam name="TShell">
+            The type for the shell to use.
+            </typeparam>
+        </member>
+        <member name="M:Microsoft.Practices.CompositeUI.Windows.WindowsApplication`2.#ctor">
+            <summary>
+            Initializes an instance of the <see cref="T:Microsoft.Practices.CompositeUI.Windows.WindowsApplication`2"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Practices.CompositeUI.Windows.WindowsApplication`2.AddBuilderStrategies(Microsoft.Practices.ObjectBuilder.Builder)">
+            <summary>
+            Adds Windows specific strategies to the builder.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Practices.CompositeUI.Windows.WindowsApplication`2.AddServices">
+            <summary>
+            See <see cref="M:Microsoft.Practices.CompositeUI.CabApplication`1.AddServices"/>
+            </summary>
+        </member>
+        <member name="M:Microsoft.Practices.CompositeUI.Windows.WindowsApplication`2.AfterShellCreated">
+            <summary>
+            See <see cref="M:Microsoft.Practices.CompositeUI.CabShellApplication`2.AfterShellCreated"/>
+            </summary>
+        </member>
+        <member name="T:Microsoft.Practices.CompositeUI.Windows.BuilderStrategies.FrameworkElementSmartPartStrategy">
+            <summary>
+            Implements a <see cref="T:Microsoft.Practices.ObjectBuilder.BuilderStrategy"/> for <see cref="T:System.Windows.FrameworkElement"/> smart parts.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Practices.CompositeUI.Windows.BuilderStrategies.WindowsServiceStrategy">
+            <summary>
+            Implements a <see cref="T:Microsoft.Practices.ObjectBuilder.BuilderStrategy"/> to ensure work items have the correct services added to them.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Practices.CompositeUI.Windows.FrameworkElementCommandAdapter">
+            <summary>
+            Adapts between a WPF <see cref="T:System.Windows.FrameworkElement"/> and a CAB <see cref="T:Microsoft.Practices.CompositeUI.Commands.Command"/>.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Practices.CompositeUI.Windows.SmartPartPlaceholder">
+            <summary>
+            Implements a placeholder for smart parts in a WPF application.
+            </summary>
+        </member>
+        <member name="E:Microsoft.Practices.CompositeUI.Windows.SmartPartPlaceholder.SmartPartShown">
+            <summary>
+            Fires when a smartpart is shown in the placeholder.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Practices.CompositeUI.Windows.SmartPartPlaceholder.SmartPart">
+            <summary>
+            Gets or sets a reference to the smartpart after it has been added.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Practices.CompositeUI.Windows.SmartPartPlaceholder.SmartPartName">
+            <summary>
+            Gets or sets the name of SmartPart that will be placed in the placeholder.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Practices.CompositeUI.Windows.TabPosition">
+            <summary>
+            Specifies the position of the tab page on a <see cref="!:TabWorkspace"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Practices.CompositeUI.Windows.TabPosition.Beginning">
+            <summary>
+            Place tab page at begining.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Practices.CompositeUI.Windows.TabPosition.End">
+            <summary>
+            Place tab page at end.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Practices.CompositeUI.Windows.TabSmartPartInfo">
+            <summary>
+            A <see cref="T:Microsoft.Practices.CompositeUI.SmartParts.SmartPartInfo"/> that describes how a specific smartpart will be shown in a tab workspace.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Practices.CompositeUI.Windows.TabSmartPartInfo.ActivateTab">
+            <summary>
+            Specifies whether the tab will get focus when shown.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Practices.CompositeUI.Windows.TabSmartPartInfo.Position">
+            <summary>
+            Specifies the position of the tab page.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Practices.CompositeUI.Windows.UIElements.ItemsControlUIAdapter">
+            <summary>
+            Implements a <see cref="!:UIElementAdapter"/> for <see cref="T:System.Windows.FrameworkElement"/>s.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Practices.CompositeUI.Windows.UIElements.ItemsControlUIAdapterFactory">
+            <summary>
+            Implements <see cref="T:Microsoft.Practices.CompositeUI.UIElements.IUIElementAdapterFactory"/> for WPF applications.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Practices.CompositeUI.Windows.Visualizer.VisualizerWindow">
+            <summary>
+            Interaction logic for VisualizerWindow.xaml
+            </summary>
+            <summary>
+            VisualizerWindow
+            </summary>
+        </member>
+        <member name="M:Microsoft.Practices.CompositeUI.Windows.Visualizer.VisualizerWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Microsoft.Practices.CompositeUI.Windows.WindowShellApplication`2">
+            <summary>
+            Extends <see cref="T:Microsoft.Practices.CompositeUI.Windows.WindowsApplication`2"/> to support an application which uses a Windows Presentation
+            Foundation <see cref="T:System.Windows.Window"/> as its shell.
+            </summary>
+            <typeparam name="TWorkItem">
+            The type of the root application work item.
+            </typeparam>
+            <typeparam name="TShell">
+            The type for the shell to use.
+            </typeparam>
+        </member>
+        <member name="M:Microsoft.Practices.CompositeUI.Windows.WindowShellApplication`2.Start">
+            <summary>
+            Calls <see cref="M:System.Windows.Application.Run(System.Windows.Window)"/> to start the application.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Practices.CompositeUI.Windows.WindowSmartPartInfo">
+            <summary>
+            A <see cref="T:Microsoft.Practices.CompositeUI.SmartParts.SmartPartInfo"/> that describes how a specific smartpart will be shown in a window workspace.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Practices.CompositeUI.Windows.WindowSmartPartInfo.Modal">
+            <summary>
+            Whether the window should be shown modally.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Practices.CompositeUI.Windows.Workspaces.DeckWorkspace">
+            <summary>
+            Implements a workspace that displays smart parts in a "deck".
+            </summary>
+        </member>
+        <member name="T:Microsoft.Practices.CompositeUI.Windows.Workspaces.TabWorkspace">
+            <summary>
+            Implements a workspace that shows smartparts in a <see cref="T:System.Windows.Controls.TabControl"/>.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Practices.CompositeUI.Windows.Workspaces.WindowWorkspace">
+            <summary>
+            Implements a Workspace that shows smartparts in wbuil   indows.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Practices.CompositeUI.Windows.Workspaces.ZoneWorkspace">
+            <summary>
+            Implements a workspace that displays smart parts in specific zones.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Practices.CompositeUI.Windows.ZoneSmartPartInfo">
+            <summary>
+            A <see cref="T:Microsoft.Practices.CompositeUI.SmartParts.SmartPartInfo"/> that describes how a specific smartpart will be shown in a zone workspace.
+            </summary>
+        </member>
+    </members>
+</doc>

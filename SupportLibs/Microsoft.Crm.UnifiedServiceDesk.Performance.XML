@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Crm.UnifiedServiceDesk.Performance</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.Performance.PerfMarkerLogger">
+            <summary>
+            This is a static class that can be used to log the perf markers.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.Performance.PerfMarkerLogger.FlushData(System.String)">
+            <summary>
+            Performs data flush to the underlying stream.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.Performance.PerfMarkerLogger.LogData(System.String)">
+            <summary>
+            Performs logging of perf marker with a given Id.
+            </summary>
+            <param name="id">Id of the marker</param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.Performance.PerfMarkerLogger.LogData(System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Logs a given perf marker along with extra information provided as args
+            </summary>
+            <param name="id">Id of the marker</param>
+            <param name="args">Extra information</param>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.Performance.PerfMarkerLogger.Flush">
+            <summary>
+            Flushes the current buffer of perf records.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.UnifiedServiceDesk.Performance.PerfMarkerLogger.Close">
+            <summary>
+            Closes the trace source and performs the cleanup.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.Performance.PerfConstants">
+            <summary>
+            This class contains the names of various performance markers used in USD code.
+            Any new marker(s) introduced in future needs to be added over here.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Crm.UnifiedServiceDesk.Performance.PerfTraceListener">
+            <summary>
+            Perf trace listener
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,237 @@
+
+
+(rough) spec for how the AccessBridge works.
+===========================================
+
+
+AT initialization
+-----------------
+  A. Windows AT .EXE launches
+  B. Windows AT calls AccessBridgeInit glue
+       1. AccessBridgeInit glue calls LoadLibrary(WindowsAccessBridge.DLL)
+	   2. AccessBridgeInit glue locates all of the DLL entry points, sets
+	      up internal data structures so all additional glue works
+	   3. AccessBridgeInit glue calls initWindow of DLL
+	        a. initWindow creates the dialog window (HWND)
+		    b. initWindow broadcasts WM_COPYDATA message announcing it exists
+
+  C. In turn, all JavaAccessBridge.DLLs get announcement
+       1. JavaAccessBridge.DLL receives WM_COPYDATA message and processes it
+	   2. JavaAccessBridge.DLL creates appropriate data structures to track 
+	      the new Windows AT, as represented by this instance of the
+	 	  WindowsAccessBridge.DLL
+	   3. JavaAccessBridge.DLL sends message directly to WindowsAccessBridge.DLL,
+	      "welcoming it to the neighborhood" (informing it of our existance)
+
+  D. WindowsAccessBridge.DLL receives the JavaAccessBridge.DLLs "welcomes"
+       1. WindowsAccessBridge.DLL receives WM_COPYDATA message and processes it
+	   2. WindowsAccessBridge.DLL creates appropriate data structures to track
+	      the newly discovered Java VM as represented by this instance of the
+		  JavaAccessBridge.DLL
+**	   3. The WindowsAccessBridge.DLL creates a memory-mapped file for communication
+	      with the JavaAccessBridge.DLL, and sends a WM_COPYDATA message with
+		  the filename.
+	   4. If, for some odd reason, by this time the Windows AT has asked for 
+	      certain events to be tracked, WindowsAccessBridge.DLL registers for
+		  them with the newly discovered Java VM via the JavaAccessBridge.DLL
+
+  E. The JavaAccessBridge.DLL receives the WindowsAccessBridge memory-mapped filename
+	   1. JavaAccessBridge.DLL opens and maps the memory-mapped file
+
+
+
+
+VM initialization
+-----------------
+  A. Java application launches
+  B. JavaVM's Toolkit (in JDK 1.2) or EventQueueMonitor (in JDK 1.1 w/Access Utils)
+     locates and loads all assistive technology classes into the VM
+  C. AccessBridge.class is located and loaded
+  D. AccessBridge.class loads JavaAccessBridge.DLL, calls it's Java_AccessBridge_run
+     routine (via JNI)
+       1. JavaAccessBridge.DLL sets up entry points into the JavaVM, both for
+	      the Java thread and the Windows thread (when processing WM_COPY_DATA 
+		  messages sent from Windows AT)
+	   2. JavaAccessBridge.DLL creates it's dialog window (HWND)
+	   3. JavaAccessBridge.DLL broadcasts WM_COPY_DATA message announcing it exists
+
+  E. In turn, all WindowsAccessBridge.DLLs get announcement
+       1. WindowsAccessBridge.DLL receives WM_COPY_DATA message and processes it
+	   2. WindowsAccessBridge.DLL creates appropriate data structures to track 
+	      the new Java VM, as represented by this instance of the
+	 	  JavaAccessBridge.DLL
+	   3. WindowsAccessBridge.DLL sends message directly to JavaAccessBridge.DLL,
+	      "welcoming it to the neighborhood" (informing it of our existance)
+	   4. The WindowsAccessBridge.DLL creates a memory-mapped file for communication
+	      with the JavaAccessBridge.DLL, and sends a WM_COPYDATA message with
+		  the filename.
+	   5. WindowsAccessBridge.DLL sends message direclty to JavaAccessBridge.DLL,
+	      registering listeners for all events that it's Windows AT master is
+		  interested in
+
+  D. JavaAccessBridge.DLL receives the WindowsAccessBridge.DLLs "welcomes"
+       1. JavaAccessBridge.DLL receives WM_COPY_DATA message and processes it
+	   2. JavaAccessBridge.DLL creates appropriate data structures to track
+	      the newly discovered Windows AT as repreented by this instance of the
+		  WindowsAccessBridge.DLL
+
+
+
+Event Registration
+------------------
+  A. Windows AT calls AccessBridgeInit glue, sets a non-zero FP for some event
+       1. AccessBridgeInit glue sets that FP to be called when events come in
+	   2. AccessBridgeInit glue calls appropriate set*EventFP of WindowsAccessBridge.DLL
+	        a. WindowsAccessBridge.DLL walks through list of JavaAccessBridge.DLLs,
+			   sending WM_COPY_DATA message to each in turn telling them to 
+			   sent it events of the appropriate type
+
+  B. In turn, all JavaAccessBridge.DLLs get the message
+       1. JavaAccessBridge.DLL receives WM_COPY_DATA message and processes it
+	   2. JavaAccessBridge.DLL finds the particular data structure representing this
+	      Windows AT, and marks that that Windows AT wants events of this type 
+	   3. JavaAccessBridge.DLL checks to see if it's already getting events of
+	      that type (for some other Windows AT).  If not, it asks its
+		  AccessBridge.java to send them to it.
+
+
+
+Event Unregistration
+--------------------
+  A. Windows AT calls AccessBridgeInit glue, sets a zero FP for some event
+       1. AccessBridgeInit glue sets the FP to be called when events come in to NULL
+	   2. AccessBridgeInit glue calls appropriate set*EventFP of WindowsAccessBridge.DLL
+	        a. WindowsAccessBridge.DLL walks through list of JavaAccessBridge.DLLs,
+			   sending WM_COPY_DATA message to each in turn telling them to stop 
+			   sening it events of the appropriate type
+
+  B. In turn, all JavaAccessBridge.DLLs get the message
+       1. JavaAccessBridge.DLL receives WM_COPY_DATA message and processes it
+	   2. JavaAccessBridge.DLL finds the particular data structure representing this
+	      Windows AT, and marks that that Windows AT as no longer wanting events of 
+		  this type 
+	   3. JavaAccessBridge.DLL checks to see if any other Windows AT wants events of
+	      that type.  If not, it asks its AccessBridge.java to stop sending them to it.
+
+
+
+Event Firing
+------------
+  A. An event occurs in a Java application that an AccessBridge.java is listening for
+     (via SwingEventMonitor or JavaEventMonitor).
+       1. AccessBridge.java calls the native fire method for that event in 
+	      JavaAccessBridge.DLL
+	        a. JavaAccessBridge.DLL walks through its list of Windows AT data 
+			   structures.  For each Windows AT that it has marked as being
+			   interested in these types of events, it sends a WM_COPY_DATA
+			   message with the contents of the event to each interested
+			   WindowsAccessBridge.DLL, in each case making a global
+			   (and locked) reference to the jobjects that make up the event contents
+			   for each Windows AT interested in the event.
+
+			   [[[FIXME]]] right now there is only one global reference made; we
+			               need to make one for each interested AT!!!
+
+  B. In turn, all WindowsAccessBridge.DLLs get the message
+       1. WindowsAccessBridge.DLL receives WM_COPY_DATA message and processes it
+	   2. WindowsAccessBridge.DLL calls the appropriate function pointer that was
+	      registered with it by the Windows AT.
+
+		  [[[FIXME]]] need to at this point call back and release the jobjects if
+		              for some reason (that shouldn't happen) the FP is null; otherwise
+					  we'll get memory leaks
+
+	        a. The Windows AT receives the event through the call to its 
+			   event handler function pointer, and then makes calls back into
+			   the AccessBridge glue to get information about the various jobjects
+			   passed in containing event information (e.g. GetAccessibleContextInfo()
+			   on the AccessibleContext jobject which was the source of the event)
+
+
+
+Getting AccessibleContext information
+-------------------------------------
+
+
+*** Use RegisterWindowMessage("AccessBridge_Rendesvous_Messages"); (or some such)
+*** to get a system-unique messageID to use for our broadcast messages!
+
+
+
+If we use PostMessage for initial rendesvous, then ATs can't immediately start
+asking questions after Init() returns (or, rather, they can; they just won't
+get answers 'till things are synced up).  Perhaps we need a "new JavaVM arrived"
+callback into the AT (complete with JVM cookies)?  Also a "JavaVM went away"
+as well...
+
+
+[Java starts]
+  1. Java-> PostMessage(Java-hi) broadcast: "I'm here!" (call returns)
+  2. Windows each immediately go to [Handshake] below
+  3. When done with handshake, Windows may then go to 
+     [Windows sets event mask info] below in order to tell this
+     new JavaVM which events it cares about
+
+[Windows starts]
+  1. Windows-> PostMessage(Windows-hi) broadcast: "I'm here!" (call returns)
+  2. Javas each PostMessage(Java-hi) directly back to Windows (call returns)
+  3. Windows each immediately go to [Handshake] below
+
+     Note: Windows has already returned to the AT well before this time;
+     right after it called PostMessage in (1) above.  All calls that the
+     AT may make of it (e.g. "get AC from HWND") will fail until it
+     has finished with it's handshaking below.  Perhaps it would make
+     sense to have the AT register callbacks for things like "JavaVM
+     appeared", so it knew when there was something it could do...
+
+[Handshake & memory-mapped file setup]
+  1. Windows-> SendMessage(WM_COPYDATA) to Java: memory-mapped filename
+       -> Java sets it up, places "OK" in it, and returns
+		     -> Windows reads "OK" and knows all is right (or not...)
+                (or this could be part of SendMessage return value)
+  2. Sometimes (if Windows was already running) Windows will at this
+     point goto [Windows sets event mask info] below
+
+
+
+[Java fires an event]
+  1. Java-> SendMessage(WM_COPYDATA) to Windows: an event happened
+       -> Windows puts info on queue, PostMessage to self to deal with it
+          (queue is locked with semaphores for re-entrancy)
+  2. Windows gets PostMessage from self, de-queues info, deals with it:
+     generally it will call back into the AT with the event jobjects,
+	 which will immediately turn around and call into the Windows DLL 
+	 to [Windows asks questions]  below immediately
+
+[Windows asks questions]
+  1. Windows-> SendMessage(MMF) to Java: gimme some info
+       -> Java fill MMF with answers and returns from SendMessage()
+
+[Windows sets event mask info]
+  1. Windows-> SendMessage(WM_COPYDATA) to Java: here's the new event mask
+       -> Java updates event mask for this Windows AT
+	   Note: because we're just sending an event mask, we could use
+	   the lParam of a PostMessage()!
+
+  Note: potential problem - if AT is in the middle of making calls into
+        the AccessBridge (e.g. enumerating all HWNDs and building a tree
+		of the Java UI objects like Monkey does) at the same moment that
+		an event is fired from Java, then we can get two threads 
+		contenting for the MMF region.  Not sure how to deal with this
+		(unless we use PostMessage() rather than event callbacks into the
+		AT to let it know about events; I'd rather not do that...).
+		Perhaps this can be a post-CSUN issue (certainly post DR2), as
+		it shouldn't come up very much...
+
+
+[Java exits]
+  1. Java-> SendMessage(Bye!) to each Windows: "I'm gone!" (call returns)
+  2. Java closes memory-mapped file
+  3. Windows closes memory-mapped file
+
+[Windows exits]
+  1. Windows-> SendMessage(Bye!) to each Java: "I'm gone!" (call returns)
+  2. Windows closes memory-mapped file
+  3. Java closes memory-mapped file
+  4. Java updates event mask info
+

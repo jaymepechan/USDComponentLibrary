@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Uii.Common.Configuration</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Uii.Common.ConfigurationValueReader">
+            <summary>
+            Configuration Value reader helper class to read values from either the configuration file
+            or the Configuration details object.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Common.ConfigurationValueReader.#ctor">
+            <summary>
+            A ConfigurationValueReader Constructor.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Uii.Common.ConfigurationValueReader.ReadAppSettings(System.String)">
+            <summary>
+            This method reads from the appSettings of the config file or the configuration web service.
+            </summary>
+            <param name="key">The key to attempt to read.</param>
+            <returns>The value read from either the config or the web service</returns>
+        </member>
+        <member name="M:Microsoft.Uii.Common.ConfigurationValueReader.ReadSection(System.String,System.Configuration.IConfigurationSectionHandler)">
+            <summary>
+            This method reads from a specific section of the config file or the configuration web service.
+            </summary>
+            <param name="sectionName">The name of the section to attempt to read</param>
+            <param name="configSectionHandler">configSectionHandler object</param>
+            <returns>Configuration object</returns>
+            <exception cref="T:System.Configuration.ConfigurationErrorsException">Thrown when no configuration is found from either the config file or the web service.</exception>
+        </member>
+        <member name="M:Microsoft.Uii.Common.ConfigurationValueReader.ConfigurationReader">
+            <summary>
+            Gets the ConfigurationValueReader object.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Uii.Common.Configuration.Strings">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Configuration.Strings.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Configuration.Strings.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Uii.Common.Configuration.Strings.COM0100_NOCONFIG">
+            <summary>
+              Looks up a localized string similar to Configuration settings not found for section = .
+            </summary>
+        </member>
+    </members>
+</doc>

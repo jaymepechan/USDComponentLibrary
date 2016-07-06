@@ -1,0 +1,169 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Xrm.Tooling.Ui.Resources</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Usd.Common.Ui.Library.Resources.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Usd.Common.Ui.Library.Resources.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Usd.Common.Ui.Library.Resources.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Xrm.Tooling.Ui.Resources.SortAdorner">
+            <summary>
+            Creates a Adorner to indicate sort direction. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Ui.Resources.SortAdorner.#ctor(System.Windows.UIElement,System.ComponentModel.ListSortDirection)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="element">UI Element type.</param>
+            <param name="dir">Sorting Direction.</param>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Ui.Resources.SortAdorner.OnRender(System.Windows.Media.DrawingContext)">
+            <summary>
+            // Override the OnRender call to change the Drawing visual type.
+            </summary>
+            <param name="drawingContext">visual content drawing type.</param>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Ui.Resources.SortAdorner.Direction">
+            <summary>
+            Gets or Sets Sort Direction.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Xrm.Tooling.Ui.Resources.controlButtons">
+            <summary>
+            Interaction logic for controlButtons.xaml
+            </summary>
+            <summary>
+            controlButtons
+            </summary>
+        </member>
+        <member name="F:Microsoft.Xrm.Tooling.Ui.Resources.controlButtons._parent">
+            <summary>
+            The parent Window of the control.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Ui.Resources.controlButtons.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Xrm.Tooling.Ui.Resources.controlButtons"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Ui.Resources.controlButtons.CaptionButtonsLoaded(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Event when the control is loaded.
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="e">The <see cref="T:System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Ui.Resources.controlButtons.CloseButtonClick(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Action on the button to close the window.
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="e">The <see cref="T:System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Ui.Resources.controlButtons.RestoreButtonClick(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Changes the view of the window (maximized or normal).
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="e">The <see cref="T:System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Ui.Resources.controlButtons.MinimizeButtonClick(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Minimizes the Window.
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="e">The <see cref="T:System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Ui.Resources.controlButtons.GetTopParent">
+            <summary>
+            Gets the top parent (Window).
+            </summary>
+            <returns>The parent Window.</returns>
+        </member>
+        <member name="F:Microsoft.Xrm.Tooling.Ui.Resources.controlButtons.MarginButtonProperty">
+            <summary>
+            The dependency property for the Margin between the buttons.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Xrm.Tooling.Ui.Resources.controlButtons.TypeProperty">
+            <summary>
+            The dependency property for the Margin between the buttons.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Ui.Resources.controlButtons.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Ui.Resources.controlButtons.MarginButton">
+            <summary>
+            Gets or sets the margin button.
+            </summary>
+            <value>The margin button.</value>
+        </member>
+        <member name="P:Microsoft.Xrm.Tooling.Ui.Resources.controlButtons.Type">
+            <summary>
+            Gets or sets the visibility of the buttons.
+            </summary>
+            <value>The visible buttons.</value>
+        </member>
+        <member name="T:Microsoft.Xrm.Tooling.Ui.Resources.controlButtons.CaptionType">
+            <summary>
+            Enum of the types of caption buttons
+            </summary>
+        </member>
+        <member name="F:Microsoft.Xrm.Tooling.Ui.Resources.controlButtons.CaptionType.Full">
+            <summary>
+            All the buttons
+            </summary>
+        </member>
+        <member name="F:Microsoft.Xrm.Tooling.Ui.Resources.controlButtons.CaptionType.Close">
+            <summary>
+            Only the close button
+            </summary>
+        </member>
+        <member name="F:Microsoft.Xrm.Tooling.Ui.Resources.controlButtons.CaptionType.ReduceClose">
+            <summary>
+            Reduce and close buttons
+            </summary>
+        </member>
+        <member name="T:Microsoft.Xrm.Tooling.Ui.Resources.WindowResourceDictionary">
+            <summary>
+            WindowResourceDictionary
+            </summary>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Ui.Resources.WindowResourceDictionary.WindowTopBar_MouseDown(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+            <summary>
+            Mouse down event handler for the window top bar
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Ui.Resources.WindowResourceDictionary.GetCurrentActiveWindow">
+            <summary>
+            This method can be used to get the handle to the currently active window
+            </summary>
+            <returns>Currently active window.</returns>
+        </member>
+        <member name="M:Microsoft.Xrm.Tooling.Ui.Resources.WindowResourceDictionary.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,10 @@
+# @(#)config	1.16 01/06/20
+# GNUmakefile config file for JDK 1.4
+
+RELEASE_DIR=jaccess-1.4
+RELEASE_FILE=jaccess-1.4
+
+ifeq ($(JDK_HOME),)
+JDK_HOME = /usr/local/java/jdk1.4/solsparc
+endif
+

@@ -1,0 +1,371 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9040B016-AFC0-4F87-9961-5DD3E8E712E7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.USD.ComponentLibrary</RootNamespace>
+    <AssemblyName>Microsoft.USD.ComponentLibrary</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\USD Bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\Release\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AxWFICALib">
+      <HintPath>..\..\..\CRM2016SDK\UII\Bin\UII\Cirtix Server Component\AxWFICALib.dll</HintPath>
+    </Reference>
+    <Reference Include="microsoft.crm.sdk.proxy, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SupportLibs\microsoft.crm.sdk.proxy.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Crm.UnifiedServiceDesk.BaseControl">
+      <HintPath>..\SupportLibs\Microsoft.Crm.UnifiedServiceDesk.BaseControl.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Crm.UnifiedServiceDesk.CommonUtility">
+      <HintPath>..\SupportLibs\Microsoft.Crm.UnifiedServiceDesk.CommonUtility.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Crm.UnifiedServiceDesk.Dynamics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\USD Bin\Microsoft.Crm.UnifiedServiceDesk.Dynamics.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Crm.UnifiedServiceDesk.GenericListener, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SupportLibs\Microsoft.Crm.UnifiedServiceDesk.GenericListener.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Crm.UnifiedServiceDesk.Performance, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SupportLibs\Microsoft.Crm.UnifiedServiceDesk.Performance.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Crm.UnifiedServiceDesk.RoundProgressIndicator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SupportLibs\Microsoft.Crm.UnifiedServiceDesk.RoundProgressIndicator.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.mshtml, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\SupportLibs\Microsoft.mshtml.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Uii.AifServices">
+      <HintPath>..\SupportLibs\Microsoft.Uii.AifServices.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Uii.Common">
+      <HintPath>..\SupportLibs\Microsoft.Uii.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Uii.Common.Configuration, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SupportLibs\Microsoft.Uii.Common.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Uii.Common.Logging, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SupportLibs\Microsoft.Uii.Common.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Uii.Csr.Browser.Web, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SupportLibs\Microsoft.Uii.Csr.Browser.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Uii.Csr.CitrixIntegration">
+      <HintPath>..\..\..\CRM2016SDK\UII\Bin\UII\Cirtix Server Component\Microsoft.Uii.Csr.CitrixIntegration.exe</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Uii.Csr.Core">
+      <HintPath>..\SupportLibs\Microsoft.Uii.Csr.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Uii.Csr.Win32Api, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SupportLibs\Microsoft.Uii.Csr.Win32Api.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Uii.Desktop.Core, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SupportLibs\Microsoft.Uii.Desktop.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Uii.Desktop.Cti.Core, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SupportLibs\Microsoft.Uii.Desktop.Cti.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Uii.Desktop.SessionManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SupportLibs\Microsoft.Uii.Desktop.SessionManager.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Uii.Desktop.UI.Controls">
+      <HintPath>..\SupportLibs\Microsoft.Uii.Desktop.UI.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Uii.Desktop.UI.Controls.Wpf">
+      <HintPath>..\SupportLibs\Microsoft.Uii.Desktop.UI.Controls.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Uii.Desktop.UI.Core">
+      <HintPath>..\SupportLibs\Microsoft.Uii.Desktop.UI.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Uii.Desktop.UI.Wpf">
+      <HintPath>..\SupportLibs\Microsoft.Uii.Desktop.UI.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Uii.HostedApplicationToolkit.AutomationHosting">
+      <HintPath>..\SupportLibs\Microsoft.Uii.HostedApplicationToolkit.AutomationHosting.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter">
+      <HintPath>..\SupportLibs\Microsoft.Uii.HostedApplicationToolkit.DataDrivenAdapter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Uii.Practices.CompositeUI">
+      <HintPath>..\SupportLibs\Microsoft.Uii.Practices.CompositeUI.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Uii.Practices.CompositeUI.Windows">
+      <HintPath>..\SupportLibs\Microsoft.Uii.Practices.CompositeUI.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Uii.Practices.ObjectBuilder, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SupportLibs\Microsoft.Uii.Practices.ObjectBuilder.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.Windows.Shell, Version=3.5.41019.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SupportLibs\Microsoft.Windows.Shell.dll</HintPath>
+    </Reference>
+    <Reference Include="microsoft.xrm.sdk">
+      <HintPath>..\SupportLibs\microsoft.xrm.sdk.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xrm.Sdk.Deployment, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SupportLibs\Microsoft.Xrm.Sdk.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="microsoft.xrm.sdk.workflow, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Xrm.Tooling.Connector, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SupportLibs\Microsoft.Xrm.Tooling.Connector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xrm.Tooling.Ui.Styles, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\USD Bin\Microsoft.Xrm.Tooling.Ui.Styles.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xrm.Tooling.WebResourceUtility, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SupportLibs\Microsoft.Xrm.Tooling.WebResourceUtility.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="PresentationFramework.Classic" />
+    <Reference Include="PresentationFramework.Luna" />
+    <Reference Include="RibbonControlsLibrary, Version=4.0.0.11019, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SupportLibs\RibbonControlsLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Activities.Presentation" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UnifiedServiceDesk, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\USD Bin\UnifiedServiceDesk.exe</HintPath>
+    </Reference>
+    <Reference Include="WFICALib">
+      <HintPath>..\..\..\CRM2016SDK\UII\Bin\UII\Cirtix Server Component\WFICALib.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Adapters\AppAttachForm\AppAttachForm.xaml.cs">
+      <DependentUpon>AppAttachForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Adapters\AppAttachForm\ApplicationVisualViewer\ApplicationVisualViewer.xaml.cs">
+      <DependentUpon>ApplicationVisualViewer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Adapters\AppAttachForm\ApplicationVisualViewer\JavaTreeViewModel.cs" />
+    <Compile Include="Adapters\AppAttachForm\ApplicationVisualViewer\JavaWindow.cs" />
+    <Compile Include="Adapters\AppAttachForm\ApplicationVisualViewer\JavaWindowViewModel.cs" />
+    <Compile Include="Adapters\AppAttachForm\DPHandler.cs" />
+    <Compile Include="Adapters\AppAttachForm\WindowMonitor.cs" />
+    <Compile Include="Adapters\FloatingBrowser\ChromeBrowser.cs" />
+    <Compile Include="Adapters\Citrix\CitrixPortalApplicationHostedControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Adapters\DemoImageViewer\DemoImageViewer.xaml.cs">
+      <DependentUpon>DemoImageViewer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Adapters\Email\MultiEmailAttachment.xaml.cs">
+      <DependentUpon>MultiEmailAttachment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Adapters\ExternalListener\ExternalListener.cs" />
+    <Compile Include="Adapters\ExternalListener\WebRequest.cs" />
+    <Compile Include="Adapters\FloatingBrowser\FloatingBrowser.cs" />
+    <Compile Include="Adapters\FloatingBrowser\FloatingCRMPage.cs" />
+    <Compile Include="Adapters\FormViewer\FormViewer.xaml.cs">
+      <DependentUpon>FormViewer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Adapters\HATBase.cs" />
+    <Compile Include="Adapters\Hllapi\EhllapiWrapper.cs" />
+    <Compile Include="Adapters\Hllapi\Hllapi.xaml.cs">
+      <DependentUpon>Hllapi.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Adapters\Hllapi\HllapiWrapper.cs" />
+    <Compile Include="Adapters\Java\JavaAccEventListener.cs" />
+    <Compile Include="Adapters\Java\JavaAccHelperMethods.cs" />
+    <Compile Include="Adapters\Java\JavaAccNativeMethods.cs" />
+    <Compile Include="Adapters\Java\JavaDDA.cs" />
+    <Compile Include="Adapters\Java\JavaDDAAdapterConstants.cs" />
+    <Compile Include="Adapters\Java\Win32HelperMethods.cs" />
+    <Compile Include="Adapters\Java\Win32NativeMethods.cs" />
+    <Compile Include="Adapters\MCSBrowser\Events\BeforeNavigate2EventArgs.cs" />
+    <Compile Include="Adapters\MCSBrowser\Events\BeforeNavigateEventArgs.cs" />
+    <Compile Include="Adapters\MCSBrowser\Events\BrowserExtendedNavigatingEventArgs.cs" />
+    <Compile Include="Adapters\MCSBrowser\Events\BrowserExtendedNewWindowEventArgs.cs" />
+    <Compile Include="Adapters\MCSBrowser\Events\BrowserObjectAppearedEventArgs.cs" />
+    <Compile Include="Adapters\MCSBrowser\Events\CachePurger.cs" />
+    <Compile Include="Adapters\MCSBrowser\Events\CancelEventArgs.cs" />
+    <Compile Include="Adapters\MCSBrowser\Events\CommandStateChangeEventArgs.cs" />
+    <Compile Include="Adapters\MCSBrowser\Events\DocumentCompleteEventArgs.cs" />
+    <Compile Include="Adapters\MCSBrowser\Events\FileDownloadEventArgs.cs" />
+    <Compile Include="Adapters\MCSBrowser\Events\HtmlEventProxy.cs" />
+    <Compile Include="Adapters\MCSBrowser\Events\IBrowserCallback.cs" />
+    <Compile Include="Adapters\MCSBrowser\Events\NativeMethods.cs" />
+    <Compile Include="Adapters\MCSBrowser\Events\NavigateComplete2EventArgs.cs" />
+    <Compile Include="Adapters\MCSBrowser\Events\NavigateCompleteEventArgs.cs" />
+    <Compile Include="Adapters\MCSBrowser\Events\NavigateErrorEventArgs.cs" />
+    <Compile Include="Adapters\MCSBrowser\Events\NewWindow3EventArgs.cs" />
+    <Compile Include="Adapters\MCSBrowser\Events\NewWindowEventArgs.cs" />
+    <Compile Include="Adapters\MCSBrowser\Events\OnFullScreenEventArgs.cs" />
+    <Compile Include="Adapters\MCSBrowser\Events\OnMenuBarEventArgs.cs" />
+    <Compile Include="Adapters\MCSBrowser\Events\OnStatusBarEventArgs.cs" />
+    <Compile Include="Adapters\MCSBrowser\Events\OnTheaterModeEventArgs.cs" />
+    <Compile Include="Adapters\MCSBrowser\Events\OnToolBarEventArgs.cs" />
+    <Compile Include="Adapters\MCSBrowser\Events\OnVisibleEventArgs.cs" />
+    <Compile Include="Adapters\MCSBrowser\Events\PrintTemplateInstantiationEventArgs.cs" />
+    <Compile Include="Adapters\MCSBrowser\Events\PrintTemplateTeardownEventArgs.cs" />
+    <Compile Include="Adapters\MCSBrowser\Events\PrivacyImpactedStateChangeEventArgs.cs" />
+    <Compile Include="Adapters\MCSBrowser\Events\ProgressChangeEventArgs.cs" />
+    <Compile Include="Adapters\MCSBrowser\Events\PropertyChangeEventArgs.cs" />
+    <Compile Include="Adapters\MCSBrowser\Events\SetPhishingFilterStatusEventArgs.cs" />
+    <Compile Include="Adapters\MCSBrowser\Events\SetSecureLockIconEventArgs.cs" />
+    <Compile Include="Adapters\MCSBrowser\Events\StatusTextChangeEventArgs.cs" />
+    <Compile Include="Adapters\MCSBrowser\Events\TitleChangeEventArgs.cs" />
+    <Compile Include="Adapters\MCSBrowser\Events\UpdatePageStatusEventArgs.cs" />
+    <Compile Include="Adapters\MCSBrowser\Events\ValidationErrorService.cs" />
+    <Compile Include="Adapters\MCSBrowser\Events\WebBrowserEvent.cs" />
+    <Compile Include="Adapters\MCSBrowser\Events\WebBrowserEventSink.cs" />
+    <Compile Include="Adapters\MCSBrowser\Events\WebBrowserNavigatedEventArgs.cs" />
+    <Compile Include="Adapters\MCSBrowser\Events\WindowClosingEventArgs.cs" />
+    <Compile Include="Adapters\MCSBrowser\Events\WindowSetHeightEventArgs.cs" />
+    <Compile Include="Adapters\MCSBrowser\Events\WindowSetLeftEventArgs.cs" />
+    <Compile Include="Adapters\MCSBrowser\Events\WindowSetResizableEventArgs.cs" />
+    <Compile Include="Adapters\MCSBrowser\Events\WindowSetTopEventArgs.cs" />
+    <Compile Include="Adapters\MCSBrowser\Events\WindowSetWidthEventArgs.cs" />
+    <Compile Include="Adapters\MCSBrowser\Events\WindowStateChangedEventArgs.cs" />
+    <Compile Include="Adapters\MCSBrowser\MCSBrowser.xaml.cs">
+      <DependentUpon>MCSBrowser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Adapters\MCSBrowser\MCSBrowserCache.xaml.cs">
+      <DependentUpon>MCSBrowserCache.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Adapters\MCSBrowser\MCSWebBrowser.cs" />
+    <Compile Include="Adapters\NotifyIcon\NotifyIcon.cs" />
+    <Compile Include="Adapters\Parature\ChatSessionHandler.cs" />
+    <Compile Include="Adapters\SessionDropDown\SessionDropDown.xaml.cs">
+      <DependentUpon>SessionDropDown.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Adapters\SetParentBase.cs" />
+    <Compile Include="Controller.cs" />
+    <Compile Include="MicrosoftBase.cs" />
+    <Compile Include="Panels\FloatingWindow.cs" />
+    <Compile Include="Panels\PopupPanel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\AppBar.cs" />
+    <Compile Include="Utilities\CRMCachingImageConverter.cs" />
+    <Compile Include="Utilities\Glass.cs" />
+    <Compile Include="Utilities\ImageCache.cs" />
+    <Compile Include="Utilities\Win32.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\SendInstantMessage_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Adapters\AppAttachForm\AppAttachForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Adapters\AppAttachForm\ApplicationVisualViewer\ApplicationVisualViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Adapters\DemoImageViewer\DemoImageViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Adapters\Email\MultiEmailAttachment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Adapters\FormViewer\FormViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Adapters\Hllapi\Hllapi.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Adapters\MCSBrowser\MCSBrowser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Adapters\MCSBrowser\MCSBrowserCache.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Adapters\SessionDropDown\SessionDropDown.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\icoCRM.ico" />
+    <EmbeddedResource Include="Resources\CRMResourceMerge.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Adapters\MCSBrowser\EventHook2013.js" />
+    <EmbeddedResource Include="Adapters\MCSBrowser\CRMScrape.js" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

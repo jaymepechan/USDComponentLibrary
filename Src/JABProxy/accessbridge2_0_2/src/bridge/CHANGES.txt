@@ -1,0 +1,533 @@
+
+
+===============================
+
+Changes to the Java (TM) Access Bridge for the Microsoft Windows 
+
+Operating System
+
+v2.0.1
+
+===============================
+
+
+-------------------
+
+changes since 2.0
+
+-------------------
+
+EventQueueMonitor no longer registers as a mouse motion listener. 
+The Access Bridge does not forward mouse motion events to assistive
+technologies, so the listener is not needed. In addition, the listener
+can interfer with 2-D rendering in some applications.
+
+
+-------------------
+
+changes since 1.2
+
+-------------------
+
+
+
+6345393 ZoomText 9 freezes on StarOffice 8 Calc
+
+
+
+6348633 Installer needs to specify Java classpath for AccessBridgeTester.class
+
+
+
+6348640 Installer testing for wrong return value from GetExitCodeProcess
+
+
+
+6348638 Installer loops when seaching some drives for JVMs
+
+
+
+6244301 setTextContents should do a wide character copy
+
+
+
+5106770 Deadlock in SwingSet2 source code page
+
+
+
+6244305 Need a method to get the current caret position
+
+
+
+6244307 getActiveDescendant returning wrong new active descendant
+
+
+
+6244314 Stack overflow fault in getTextAttributesInRange
+
+
+
+6244325 slow response time with long lines in getTextAttributesInRange 
+
+
+
+5082687 Descendant events not sent when JAWS started before Java app
+
+
+
+5082693 AccessBridge should provide a developers kit
+
+
+
+4944757 requestFocus method needed
+
+
+
+4944758 selectTextRange method needed
+
+
+
+4944761 getTextAttributes betweem two indices method needed
+
+
+
+4944762 getVisibleChildren for list-like components needed
+
+
+
+5091944 Provide a work-around for getCurrentAccessibleComponent bug 
+
+in AccessibleJTable
+
+
+
+4973853 getTopLevelWindow for dialog returns window containing dialog
+
+
+
+5033733 add Java application vendor registry path for AccessBridge 
+
+installer
+
+
+
+5033729 add command-line JVM path list for installer
+
+
+
+5030365 AccessibleHypertext getLinkIndex and getLink methods needed
+
+
+
+5030358 Extended functions needed that specify start and end indices
+
+
+
+5030352 getAccessibleKeyBindings does not return keyboard shortcuts
+
+
+
+5030348 getActiveDescendant functions incorrectly
+
+
+
+5030345 tree node in active descendant events contains wrong parent
+
+
+
+5030336 Functions need to perform array bounds checking
+
+
+
+5030330 Need to use JNIEnv::NewString instead of JNIEnv::NewStringUTF
+
+
+
+5097815 AccessBridge needs to special-case Oracle pivot tables
+
+
+
+2108631 need to work around AccessibleJTable bug with null table headers
+
+
+
+5082690 AccessibleExtendedTable methods should work for all tables
+
+
+
+5036404 jaccess-examples.jar should be bundled with the AccessBridge
+
+
+
+5033796 JavaFerret and JavaMonkey should log results to a file
+
+
+
+5033741 AccessBridge installer should get JVM locations from the registry
+
+
+
+4944770 setCaretPosition method needed
+
+
+
+4945809 Search drives option fails in Access Bridge installer
+
+
+
+4935207 AccessBridge upgrade fails when JAWS is running
+
+
+
+4916682 AccessBridge needs to implement AccessibleName policy
+
+
+
+4847321 Modify JavaMonkey API panel to be invocable from a node context menu
+
+
+
+4837618 1.0.3 installer goes into endless loop
+
+
+
+4498994 Installer uninstalls other assistive technologies
+
+
+
+
+
+-------------------
+
+changes since 1.1
+
+-------------------
+
+
+
+Fixed 5033012 - Need to work around AccessibleJTable bug with null 
+
+table headers
+
+
+
+
+
+-------------------
+
+changes since 1.0.4
+
+-------------------
+
+
+
+Fixed 4848213 - AccessBridge needs method to map a vmID and
+
+AccessibleContext to a Windows HWND
+
+
+
+Fixed 4916677 - AccessBridge needs to implement AccessibleIcon
+
+
+
+Fixed 4916674 - AccessBridge needs to implement getAccessibleKeyBindings
+
+
+
+Fixed 4916669 - AccessBridge needs to implement AccessibleHypertext
+
+
+
+Fixed 4916688 - AccessBridge needs to implement AccessibleAction
+
+
+
+Fixed 4929679 - NoClassDefFoundError loading AccessibleExtendedTable
+
+using JDK 1.3.1
+
+
+
+Fixed 4888613 - AccessBridge.getAccessibleStatesStringFromContext_en_US
+
+throws ArrayIndexOutofBoundsException
+
+
+
+Fixed 4938856 - AccessBridge needs method to set editable text contents
+
+
+
+Fixed 4938861 - No focus gained event for component with focus when 
+
+JOptionPane is shown
+
+
+
+
+
+-------------------
+
+changes since 1.0.3
+
+-------------------
+
+
+
+Fixed Bug ID 4766647 - AccessBridge should export JNI call IsSameObject
+
+
+
+Fixed Bug ID 4870051 - Number of AccessibleRelations in a set needs 
+
+to increased
+
+
+
+Fixed Bug ID 4807231 - Document bug and workaround uninstalling 
+
+other assistive technologies
+
+
+
+Fixed Bug ID 4847313 - Fix regression to returning screen 
+
+coordinates in getAccessibleIndexAtPointFromContext
+
+
+
+Fixed Bug ID 4847318 - JavaMonkey and JavaFerret should not pass 
+
+(0,0) to GetAccessibleTextInfo
+
+
+
+Fixed Bug ID 4847311 - Implement separation of popup and document 
+
+windows
+
+
+
+Fixed Bug ID 4860503 - deleting SendMemoryIPCLock causes AT to crash.
+
+This bug occurs when running two or more Java applications with
+
+the AccessBridge loaded and then terminating one of the Java applications.
+
+One of the remaining applications attempts to acquire the deleted lock
+
+and crashes.
+
+
+
+Updated installer to install on JDK 1.4.x.
+
+
+
+
+
+-------------------
+
+changes since 1.0.2
+
+-------------------
+
+Fixed Bug ID 4751833 - monitoring all EventQueues incompatible with
+
+Java Web Start
+
+
+
+Fixed Bug ID 4766654 - AccessibilityEventMonitor expects wrong object
+
+in child events
+
+
+
+Fixed Bug ID 4772337 - ClassCastException in processFocusGained
+
+
+
+Fixed Bug ID 4789074 - Allow instances of Accessible in CHILD_PROPERTY
+
+events
+
+
+
+Fixed Bug ID 4789078 - Adding listeners to newly opened windows should
+
+be done synchronously
+
+
+
+Fixed Bug ID 4789081 - Coordinates of GetAccessibleTextInfo don't get
+
+translated to local coordinates
+
+
+
+Added support for AccessibleExtendedTable and AccessibleRelationSet
+
+
+
+Updated installer to install on JDK 1.4.0 and 1.4.1.
+
+
+
+Fixed bug causing assistive technologies to crash when
+
+the Java application exited.
+
+
+
+Added support for JAWT.DLL which maps between Java
+
+components and native window handles.
+
+
+
+Fixed Bug ID 4408524 - GetAccessibleTextRect() returns bogus
+
+values for carets at the edge of a line
+
+
+
+Fixed Bug ID 4432541 - GetAccessibleTextRange() call 
+
+returning null string
+
+
+
+Fixed Bug ID 4504245 - The Access Bridge 1.0.1 Installer 
+
+source code contains errors
+
+
+
+Fixed Bug ID 4587391 - NullPointerException thrown by AccessBridge 
+
+when assistive technology started
+
+
+
+Fixed Bug ID 4436960 - Getting text info for the last 
+
+char of a text field fails (Notepad is test)
+
+
+
+Fixed Bug ID 4494888 - Calls that take a vmID (esp. ReleaseJavaObject) 
+
+should exit gracefully
+
+
+
+Fixed Bug ID 4322676 - Various text-related calls should protect 
+
+against bogus input values
+
+
+
+
+
+-------------------
+
+changes since 1.0.1
+
+-------------------
+
+
+
+Fixed a regression with retrieval of ranges of text with
+
+the GetAccessibleTextRange() call.  This problem resulted
+
+in the JAWS for Windows screen reader being unable to 
+
+read the contents of editable text components, as JAWS used
+
+the GetAccessibleTextRange() call to retrieve text from
+
+editable text components.
+
+
+
+Fixed bug ID 4516111 - JAWS doesn't read Swing apps under 
+
+JDK 1.4
+
+
+
+Fixed bug ID 4408524 - GetAccessibleTextRect() returns bogus 
+
+values for carets at the edge of a line
+
+
+
+Added fixes to the installer to work with JDK 1.3.1_01 and 1.4.
+
+
+
+
+
+-----------------
+
+changes since 1.0
+
+-----------------
+
+
+
+Fixed crash when calling shutdownAccessBridge() from the Windows
+
+assistive technology when it was not itself exiting (e.g. for
+
+cases such as temporarily unloading the Java Access Bridge
+
+during Windows desktop switches).
+
+
+
+Fixed menu timing problem with Java 2 SDK 1.3 (which caused
+
+the Java Access Bridge data stream to become corrupted if it
+
+was generating AccessibleState events when the user arrowed
+
+between menus).
+
+
+
+Modified the Installer so that the "Install" button is 
+
+only active when a JVM* is selected to install into.  Also 
+
+added an "Install in All" button which will install the
+
+Java Access Bridge into all of the Java VMs shown in the
+
+dialog box.
+
+
+
+Fixed problem with using AWT components in a Java 2 SDK 1.3
+
+environment (the Java Accessibility implementation is only
+
+partial on AWT in SDK 1.3, and can legally return null in
+
+a number of cases).
+
+
+
+The bounding rectangle returned for characters through the
+
+call: GetAccessibleTextRect() is now in global coordinates.
+
+
+
+*As used in this document, the terms "Java virtual machine" or 
+
+"JVM" mean a virtual machine for the Java platform.
+

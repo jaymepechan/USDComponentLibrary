@@ -1,0 +1,105 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.5 [en] (WinNT; I) [Netscape]">
+   <meta name="Author" content="Willie Walker">
+   <title>Java Accessibility:  The Pluggable Look and Feel</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#0000EE" vlink="#551A8B" alink="#FF0000">
+<a href="http://java.sun.com"><img SRC="images/java_header.gif" ALT="The Source for Java - java.sun.com" NOSAVE BORDER=0  align=LEFT></a>
+<div align=right><font size=+3>JAVA ACCESSIBILITY</font></div>
+
+<div align=right><font size=+2>The Pluggable Look And Feel</font></div>
+<!--- These are the Menu Items ---->
+<hr NOSHADE WIDTH="100%">
+<center>[<a href="index.html">Home</a>] [<a href="what.html">What is it?</a>]
+[<a href="guide.html">Overview of Features</a>] [<a href="api/com/sun/java/accessibility/util/package-summary.html">API
+Reference</a>]
+<br>[<a href="FAQ.html">FAQ</a>] [<a href="examples.html">Examples</a>]
+[<a href="../CHANGES.txt">Changes</a>] [<a href="compatibility.html">Compatibility
+table</a>] [<a href="http://java.sun.com/products/jfc">JFC Home Page</a>]</center>
+
+<hr NOSHADE WIDTH="100%">
+<br><b><font size=+2>Explanation of the Pluggable Look and Feel</font></b>
+<br>
+<hr NOSHADE WIDTH="100%">
+<br>The <a href="http://java.sun.com/products/jfc">Java<sup><font size=-2>TM</font></sup>
+Foundation Classes</a> "Swing" user interface building blocks are designed
+around a Pluggable Look and Feel architecture that allows us for the first
+time to get away from interpreting the visual manifestations, and instead
+"plug in" a non-visual manifestation. This architecture separates the expression
+of the user interface from the underlying structure and data on a component-by-component
+basis. This is accomplished by separating the user interface of the component
+from the "model" of the component (the structure which encapsulates the
+state and information that the user interface portion presents to the user).
+<p>Prior to the Pluggable Look and Feel, the non-mainstream user had two
+options: specialized software closely tailored to their non-mainstream
+modality (e.g. a talking web browser), or a specialized access application
+(e.g. a screen reader) which interpreted and re-presented the visual presentation
+of mainstream applications. With the <a href="http://java.sun.com/products/jfc">Java
+Foundation Classes</a> and Swing, we now have a third option:&nbsp; direct
+presentation in non-mainstream modalities of mainstream applications.
+<h3>
+How the Swing classes provide a Pluggable Look and Feel</h3>
+For each component in Swing, there are actually (at least) five Java programming
+language objects that are needed to make that Swing component pluggable.
+These are: the component itself (e.g., a button); the Java programming
+language interface that defines the user interface (e.g., the button's
+UI); a default implementation of that user interface (e.g., the Basic Button);
+a Java programming language interface that defines the model of the component
+(e.g., the Button model); and finally, a default implementation of that
+model (e.g., the Swing Button model).
+<p>For most uses of a given Swing component (e.g., a Button), the programmer
+doesn't need to know or care about any Swing object other than the first
+of the five listed above. The programmer simply creates a new instance
+of the first object of the five, and writes code to interact with it. The
+others are created automatically based upon the settings on the user's
+machine. By default, the choice of which user interface and model to use
+is made in the user's preferences files, where an entire "factory" of user-interfaces
+and models is specified by the user.
+<h3>
+What Swing provides</h3>
+In order to make it easy to migrate from the user interface classes in
+the AWT to the new Swing user interface classes, Swing provides a parallel
+set of user interface classes to those in AWT. Each Swing class that has
+a parallel in the AWT bears a name that is identical to the AWT name, except
+that the letter "J" is prepended to it. Otherwise, each parallel user interface
+object contains a superset of the public methods and variables of the corresponding
+AWT class. There are roughly 55 user interface building blocks in Swing,
+including the common items such as buttons, check boxes, radio buttons,
+combo boxes, menus, and labels, as well more sophisticated items such as
+tooltips, tabbed panes, tree views, table views, editable text fields,
+HTML editors, a Color Chooser, a Money Chooser, etc. Each of these Swing
+user interface classes fully supports the Pluggable Look and Feel architecture.
+<h3>
+Providing Direct Accessibility in Swing</h3>
+In order to get direct access to a Swing program via a non-mainstream modality
+(e.g., audio, Braille, etc.), the user would need a factory containing
+a set of user interface classes installed on their system for each of the
+Swing classes listed above. Then the user would need to specify that this
+replacement set be used in the appropriate properties file. Finally, the
+user would need to run Swing programs that didn't explicitly bar the use
+of alternate user interface factories.
+<p>In setting this up, the user has three options: complete replacement
+of a mainstream user interface with their alternate one(s); having the
+mainstream interface and the alternate interface(s) working simultaneously
+(e.g., visual and audio) through the use of the special multi-plexing user
+interface factory supplied by Sun; or finally, by choosing on a component-by-component
+basis which user interface class to use.
+<br>
+<hr SIZE=3 NOSHADE>
+<address>
+<img SRC="images/javalogo52x88.gif" ALT="Java Logo" NOSAVE  align=LEFT><font size=-1><a href="http://java.sun.com/share/copyright.html">Copyright&copy;
+</a>1995-99
+<a href="http://www.sun.com">Sun Microsystems, Inc. All Rights Reserved.</a></font></address>
+
+<address>
+<font size=-1>To submit comments or suggestions about <a href="http://www.sun.com/access/index.html">Java
+Accessibility</a>, please send mail to <i><a href="mailto:access@sun.com">access@sun.com</a></i>.</font></address>
+
+<br>&nbsp;
+<p>&nbsp;
+<p><a href="http://www.sun.com"><img SRC="images/smi_logo.gif" ALT="Sun MicroSystems" NOSAVE BORDER=0 height=43 width=120 align=RIGHT></a>
+</body>
+</html>

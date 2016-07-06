@@ -1,0 +1,363 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DynamicsCrm.Structures</name>
+    </assembly>
+    <members>
+        <member name="T:DynamicsCrm.Structures.CustomerCreatePayload">
+            <summary/>
+        </member>
+        <member name="M:DynamicsCrm.Structures.CustomerCreatePayload.#ctor">
+            <summary/>
+        </member>
+        <member name="P:DynamicsCrm.Structures.CustomerCreatePayload.TargetCrmAccountId">
+            <summary/>
+        </member>
+        <member name="P:DynamicsCrm.Structures.CustomerCreatePayload.AccountToCreate">
+            <summary/>
+        </member>
+        <member name="P:DynamicsCrm.Structures.CustomerCreatePayload.ContactsToCreate">
+            <summary/>
+        </member>
+        <member name="T:DynamicsCrm.Structures.SspCrmAccount">
+            <summary/>
+        </member>
+        <member name="P:DynamicsCrm.Structures.SspCrmAccount.AccountName">
+            <summary/>
+        </member>
+        <member name="P:DynamicsCrm.Structures.SspCrmAccount.Address">
+            <summary/>
+        </member>
+        <member name="P:DynamicsCrm.Structures.SspCrmAccount.City">
+            <summary/>
+        </member>
+        <member name="P:DynamicsCrm.Structures.SspCrmAccount.Country">
+            <summary/>
+        </member>
+        <member name="P:DynamicsCrm.Structures.SspCrmAccount.State">
+            <summary/>
+        </member>
+        <member name="P:DynamicsCrm.Structures.SspCrmAccount.ZipCode">
+            <summary/>
+        </member>
+        <member name="P:DynamicsCrm.Structures.SspCrmAccount.PrimaryPhone">
+            <summary/>
+        </member>
+        <member name="P:DynamicsCrm.Structures.SspCrmAccount.Email">
+            <summary/>
+        </member>
+        <member name="P:DynamicsCrm.Structures.SspCrmAccount.CrmAccountId">
+            <summary/>
+        </member>
+        <member name="T:DynamicsCrm.Structures.SspCrmContact">
+            <summary/>
+        </member>
+        <member name="P:DynamicsCrm.Structures.SspCrmContact.CustomerId">
+            <summary/>
+        </member>
+        <member name="P:DynamicsCrm.Structures.SspCrmContact.UserName">
+            <summary>
+            SSP User Name
+            </summary>
+        </member>
+        <member name="P:DynamicsCrm.Structures.SspCrmContact.Password">
+            <summary>
+            SSP Password
+            </summary>
+        </member>
+        <member name="P:DynamicsCrm.Structures.SspCrmContact.Salutation">
+            <summary>
+            Saultation
+            </summary>
+        </member>
+        <member name="P:DynamicsCrm.Structures.SspCrmContact.FirstName">
+            <summary>
+            Contact First Name
+            </summary>
+        </member>
+        <member name="P:DynamicsCrm.Structures.SspCrmContact.LastName">
+            <summary>
+            Contact Last Name
+            </summary>
+        </member>
+        <member name="P:DynamicsCrm.Structures.SspCrmContact.HintAnswer">
+            <summary>
+            PassCode Answer
+            </summary>
+        </member>
+        <member name="P:DynamicsCrm.Structures.SspCrmContact.HintQuestion">
+            <summary>
+            PassCode Question
+            </summary>
+        </member>
+        <member name="P:DynamicsCrm.Structures.SspCrmContact.Phone">
+            <summary>
+            Primary Phone
+            </summary>
+        </member>
+        <member name="P:DynamicsCrm.Structures.SspCrmContact.PrimaryEmail">
+            <summary>
+            Primary Email
+            </summary>
+        </member>
+        <member name="P:DynamicsCrm.Structures.SspCrmContact.Mobile">
+            <summary>
+            Primary Mobile
+            </summary>
+        </member>
+        <member name="P:DynamicsCrm.Structures.SspCrmContact.Fax">
+            <summary>
+            Primary Fax
+            </summary>
+        </member>
+        <member name="P:DynamicsCrm.Structures.SspCrmContact.Address">
+            <summary>
+            Address for customer
+            </summary>
+        </member>
+        <member name="P:DynamicsCrm.Structures.SspCrmContact.City">
+            <summary>
+            City 
+            </summary>
+        </member>
+        <member name="P:DynamicsCrm.Structures.SspCrmContact.Country">
+            <summary>
+            Country 
+            </summary>
+        </member>
+        <member name="P:DynamicsCrm.Structures.SspCrmContact.State">
+            <summary>
+            State
+            </summary>
+        </member>
+        <member name="P:DynamicsCrm.Structures.SspCrmContact.ZipCode">
+            <summary>
+            Zip
+            </summary>
+        </member>
+        <member name="P:DynamicsCrm.Structures.SspCrmContact.CrmContactId">
+            <summary/>
+        </member>
+        <member name="T:DynamicsCrm.Structures.SecurityQuestionStruct">
+            <summary/>
+        </member>
+        <member name="P:DynamicsCrm.Structures.SecurityQuestionStruct.CustomerId">
+            <summary/>
+        </member>
+        <member name="P:DynamicsCrm.Structures.SecurityQuestionStruct.HintAnswer">
+            <summary>
+            PassCode Answer
+            </summary>
+        </member>
+        <member name="P:DynamicsCrm.Structures.SecurityQuestionStruct.HintQuestion">
+            <summary>
+            PassCode Question
+            </summary>
+        </member>
+        <member name="P:DynamicsCrm.Structures.SecurityQuestionStruct.CrmContactId">
+            <summary/>
+        </member>
+        <member name="T:DynamicsCrm.Structures.CreateTicketPayloadRequest">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DynamicsCrm.Structures.CreateTicketPayloadRequest.#ctor(System.String,System.String,System.Int32,System.Int32,System.Guid,System.Guid,System.String,System.String)">
+            <summary>
+            Creates a Ticket Payload Request object
+            This object is used as part of a request to create a CRM ticket from a hosted control within CCA
+            </summary>
+        </member>
+        <member name="M:DynamicsCrm.Structures.CreateTicketPayloadRequest.#ctor">
+            <summary/>
+        </member>
+        <member name="P:DynamicsCrm.Structures.CreateTicketPayloadRequest.CrmWorkflowName">
+            <summary>
+            if Present overrides all there behavior and forces the use of the specified workflow. 
+            </summary>
+        </member>
+        <member name="P:DynamicsCrm.Structures.CreateTicketPayloadRequest.Items">
+            <summary>
+            Items List
+            </summary>
+        </member>
+        <member name="P:DynamicsCrm.Structures.CreateTicketPayloadRequest.AccountId">
+            <summary>
+            Account ID to create Ticket against. 
+            </summary>
+        </member>
+        <member name="P:DynamicsCrm.Structures.CreateTicketPayloadRequest.ContactId">
+            <summary>
+            ContactID to create Ticket Against. 
+            </summary>
+        </member>
+        <member name="P:DynamicsCrm.Structures.CreateTicketPayloadRequest.CaseType">
+            <summary>
+            ID of the Case Type in CRM
+            </summary>
+        </member>
+        <member name="P:DynamicsCrm.Structures.CreateTicketPayloadRequest.CaseOrigin">
+            <summary>
+            ID of the Case Origin Type in CRM
+            </summary>
+        </member>
+        <member name="P:DynamicsCrm.Structures.CreateTicketPayloadRequest.Description">
+            <summary>
+            Trouble Ticket Description
+            </summary>
+        </member>
+        <member name="P:DynamicsCrm.Structures.CreateTicketPayloadRequest.CaseTitle">
+            <summary>
+            Title for Case
+            </summary>
+        </member>
+        <member name="P:DynamicsCrm.Structures.CreateTicketPayloadRequest.CaseSubject">
+            <summary>
+            Case Subject / Category
+            </summary>
+        </member>
+        <member name="T:DynamicsCrm.Structures.CreateTicketPayloadResponse">
+            <summary>
+            Response Object used to notify a control that a Ticket has been Created
+            </summary>
+        </member>
+        <member name="M:DynamicsCrm.Structures.CreateTicketPayloadResponse.#ctor(System.Guid,System.String)">
+            <summary>
+            Response Object used to notify a control that a Ticket has been Created
+            </summary>
+            <param name="newTicketId">Ticket Id if the newly created ticket or Guid.Empty</param>
+            <param name="errorDesc">If Error, a description of the error here</param>
+        </member>
+        <member name="M:DynamicsCrm.Structures.CreateTicketPayloadResponse.#ctor">
+            <summary>
+            Response Object used to notify a control that a Ticket has been Created
+            </summary>
+        </member>
+        <member name="P:DynamicsCrm.Structures.CreateTicketPayloadResponse.TicketId">
+            <summary/>
+        </member>
+        <member name="P:DynamicsCrm.Structures.CreateTicketPayloadResponse.Error">
+            <summary/>
+        </member>
+        <member name="T:DynamicsCrm.Structures.CreateTicketStatusResponse">
+            <summary>
+            Used as part of Monitoring a workflow request to CRM
+            </summary>
+        </member>
+        <member name="M:DynamicsCrm.Structures.CreateTicketStatusResponse.#ctor(System.Guid,System.String)">
+            <summary>
+            Used as part of Monitoring a workflow request to CRM
+            </summary>
+        </member>
+        <member name="M:DynamicsCrm.Structures.CreateTicketStatusResponse.#ctor">
+            <summary/>
+        </member>
+        <member name="P:DynamicsCrm.Structures.CreateTicketStatusResponse.StatusCode">
+            <summary>
+            Text version of the status that is running
+            </summary>
+        </member>
+        <member name="P:DynamicsCrm.Structures.CreateTicketStatusResponse.AsyncJobId">
+            <summary>
+            Job that is running the workflow. 
+            </summary>
+        </member>
+        <member name="T:DynamicsCrm.Structures.CreateActivityPayloadResponse">
+            <summary>
+            Response Object used to notify a control that a Ticket has been Created
+            </summary>
+        </member>
+        <member name="M:DynamicsCrm.Structures.CreateActivityPayloadResponse.#ctor(System.Guid,System.Int32,System.String)">
+            <summary>
+            Response Object used to notify a control that a Ticket has been Created
+            </summary>
+            <param name="newActivityId">Activity Id if the newly created Activity or Guid.Empty</param>
+            <param name="activityTypeCode">ETC of the activity type</param>
+            <param name="errorDescription">If Error, a description of the error here</param>
+        </member>
+        <member name="M:DynamicsCrm.Structures.CreateActivityPayloadResponse.#ctor">
+            <summary>
+            Response Object used to notify a control that a Ticket has been Created
+            </summary>
+        </member>
+        <member name="P:DynamicsCrm.Structures.CreateActivityPayloadResponse.ActivityId">
+            <summary/>
+        </member>
+        <member name="P:DynamicsCrm.Structures.CreateActivityPayloadResponse.ActivityTypeCode">
+            <summary/>
+        </member>
+        <member name="P:DynamicsCrm.Structures.CreateActivityPayloadResponse.Error">
+            <summary/>
+        </member>
+        <member name="T:DynamicsCrm.Structures.CreateCrmCtiTrackingPayloadRequest">
+            <summary>
+            Payload for a CTI Tracking Request. 
+            </summary>
+        </member>
+        <member name="M:DynamicsCrm.Structures.CreateCrmCtiTrackingPayloadRequest.#ctor(DynamicsCrm.Structures.CrmCtiTrackingType,System.String,System.Boolean,System.String,System.Guid,System.Guid,System.String)">
+            <summary/>
+        </member>
+        <member name="M:DynamicsCrm.Structures.CreateCrmCtiTrackingPayloadRequest.#ctor">
+            <summary/>
+        </member>
+        <member name="P:DynamicsCrm.Structures.CreateCrmCtiTrackingPayloadRequest.Description">
+            <summary/>
+        </member>
+        <member name="P:DynamicsCrm.Structures.CreateCrmCtiTrackingPayloadRequest.Title">
+            <summary/>
+        </member>
+        <member name="P:DynamicsCrm.Structures.CreateCrmCtiTrackingPayloadRequest.RegardingId">
+            <summary/>
+        </member>
+        <member name="P:DynamicsCrm.Structures.CreateCrmCtiTrackingPayloadRequest.CustomerId">
+            <summary/>
+        </member>
+        <member name="P:DynamicsCrm.Structures.CreateCrmCtiTrackingPayloadRequest.InboundCall">
+            <summary/>
+        </member>
+        <member name="P:DynamicsCrm.Structures.CreateCrmCtiTrackingPayloadRequest.TnCalled">
+            <summary/>
+        </member>
+        <member name="P:DynamicsCrm.Structures.CreateCrmCtiTrackingPayloadRequest.CallType">
+            <summary/>
+        </member>
+        <member name="P:DynamicsCrm.Structures.CreateCrmCtiTrackingPayloadRequest.Properties">
+            <summary/>
+        </member>
+        <member name="T:DynamicsCrm.Structures.CrmCtiTrackingType">
+            <summary>
+            Tracking types used by CRM to determing type of Record. 
+            </summary>
+        </member>
+        <member name="F:DynamicsCrm.Structures.CrmCtiTrackingType.Phone">
+            <summary/>
+        </member>
+        <member name="F:DynamicsCrm.Structures.CrmCtiTrackingType.Chat">
+            <summary/>
+        </member>
+        <member name="F:DynamicsCrm.Structures.CrmCtiTrackingType.Email">
+            <summary/>
+        </member>
+        <member name="T:DynamicsCrm.Structures.AdditionalPropertyItem">
+            <summary>
+            Property Item class for passing Property items
+            </summary>
+        </member>
+        <member name="M:DynamicsCrm.Structures.AdditionalPropertyItem.#ctor">
+            <summary/>
+        </member>
+        <member name="M:DynamicsCrm.Structures.AdditionalPropertyItem.#ctor(System.String,System.String)">
+            <summary>
+            Create a Property item
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+        </member>
+        <member name="P:DynamicsCrm.Structures.AdditionalPropertyItem.Key">
+            <summary/>
+        </member>
+        <member name="P:DynamicsCrm.Structures.AdditionalPropertyItem.Value">
+            <summary/>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Usd.Common.Utilities</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Usd.Common.Utilities.SignatureValidator">
+            <summary>
+            Compares the signing certificates of the two processes. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Usd.Common.Utilities.SignatureValidator.IsValidSignature(System.String)">
+            <summary>
+            Return if the signing certificates of the two processes are matching. 
+            </summary>
+            <param name="fileName">File name along with full path of the assembly. </param>
+            <returns>boolean.</returns>
+        </member>
+    </members>
+</doc>

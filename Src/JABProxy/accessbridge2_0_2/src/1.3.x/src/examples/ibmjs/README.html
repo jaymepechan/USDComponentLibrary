@@ -1,0 +1,306 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
+<title>Speech for Java</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<table border="0" cellpadding="3" width="100%" bgcolor="#0000FF">
+    <tr>
+        <td align="center"><font color="#FFFFFF" size="6"
+        face="Arial"><strong>Speech for Java v0.70</strong></font></td>
+    </tr>
+</table>
+
+<h4><font face="Arial">Overview</font></h4>
+
+<p><font face="Arial">Speech for Java is a Java programming
+interface for speech that gives Java application developers
+access to the </font><a href="http://www.ibm.com/viavoice/"><font
+face="Arial">IBM ViaVoice</font></a><font face="Arial"> speech
+technology. Speech for Java supports voice command recognition,
+dictation, and text-to-speech synthesis, based on the IBM
+ViaVoice technology.</font></p>
+
+<p><font face="Arial">Speech for Java is an alpha implementation
+of a core subset of the beta Java Speech API. The Java Speech API
+is a cross-platform Speech API that was developed by Sun
+Microsystems Inc. in collaboration with IBM and other industry
+speech technology companies. More information on the Java Speech
+API can be found at the </font><a
+href="http://java.sun.com/products/java-media/speech/"><font
+face="Arial">Java Speech API home page</font></a><font
+face="Arial">.</font></p>
+
+<h4><font face="Arial">Changes from version 0.6</font></h4>
+
+<p><font face="Arial">There have been some relatively minor
+changes to the API. The only change needed for the Hello program
+is that the RuleResult.getFinalRuleResult method has been
+removed; the FinalRuleResult object is now obtained from the
+RuleResult object by casting.</font></p>
+
+<p><font face="Arial">In addition, a tentative method for
+persistently registering vendor engines (such as the IBM ViaVoice
+synthesis and recognition engine) with the system has been
+defined. In version 0.6, because there was no such mechanism, we
+instead adopted the temporary expedient of hard-coding the IBM
+engine into the system classes. Because of this change in version
+0.7, it is now necessary to run an install script, found in
+install.bat, before running any Java Speech applications, in
+order to register the IBM engines with the system.</font></p>
+
+<h4><font face="Arial">Requirements</font></h4>
+
+<p><font face="Arial">In much the same way that Java
+implementations on Windows are built on top of the native Windows
+GUI capabilities, Speech for Java is built on top of the native
+speech recognition and synthesis capabilities in IBM ViaVoice.
+Thus Speech for Java requires installation of IBM ViaVoice Gold
+on your computer. ViaVoice is not provided as part of this
+package. You may find more information about ViaVoice at the </font><a
+href="http://www.software.ibm.com/viavoice"><font face="Arial">VoiceType
+/ ViaVoice Home Page</font></a><font face="Arial">.</font></p>
+
+<p><font face="Arial">Your computer should meet the minimum
+requirements for running IBM ViaVoice (166MHz Pentium or 150MHz
+Pentium with MMX, running Windows 95 with 32MB of memory or
+Windows NT with 48MB). The Speech for Java implementation will
+take advantage of any enrollment, dictation macros, and added
+words in your ViaVoice installation.</font></p>
+
+<p><font face="Arial">We have only tested Speech for Java on the
+JavaSoft JDK 1.1.5 version of Java. We recommed that you use this
+version if possible.</font></p>
+
+<h4><font face="Arial">Installation</font></h4>
+
+<p><font face="Arial">After unpacking the installation package to
+its own directory you should have the following files: </font></p>
+
+<blockquote>
+    <table border="0" cellpadding="2" bgcolor="#C0C0C0"
+    bordercolor="#FFFFFF">
+        <tr>
+            <td><font face="Arial">README.html</font></td>
+            <td>&nbsp;</td>
+            <td><font face="Arial">This file</font></td>
+        </tr>
+        <tr>
+            <td><font face="Arial">install.bat</font></td>
+            <td><font face="Arial"></font>&nbsp;</td>
+            <td><font face="Arial">Installation script</font></td>
+        </tr>
+        <tr>
+            <td><font face="Arial">lib\ibmjs.jar</font></td>
+            <td>&nbsp;</td>
+            <td><font face="Arial">The Java portion of the Speech
+            for Java implementation</font></td>
+        </tr>
+        <tr>
+            <td><font face="Arial">lib\ibm*.dll</font></td>
+            <td>&nbsp;</td>
+            <td><font face="Arial">The native portion of the
+            Speech for Java implementation </font></td>
+        </tr>
+        <tr>
+            <td><font face="Arial">hello\</font></td>
+            <td>&nbsp;</td>
+            <td><font face="Arial">The Hello sample application</font></td>
+        </tr>
+        <tr>
+            <td><font face="Arial">ref\</font></td>
+            <td>&nbsp;</td>
+            <td><font face="Arial">Java Speech API reference
+            documentation. See </font><a href="#ref"><font
+            face="Arial">index</font></a><font face="Arial">.</font></td>
+        </tr>
+    </table>
+</blockquote>
+
+<p><font face="Arial">Suppose you have unpacked the installation
+package to c:\ibmjs. You should</font></p>
+
+<ul>
+    <li><font face="Arial">modify your CLASSPATH variable to
+        include c:\ibmjs\lib\ibmjs.jar, and</font></li>
+    <li><font face="Arial">modify your PATH variable to include
+        the c:\ibmjs\lib directory</font></li>
+    <li><font face="Arial">from c:\ibmjs, execute install.bat to
+        register the IBM engines with the system.</font></li>
+</ul>
+
+<p><font face="Arial">Alternatively you may set these environment
+variables just before running the Java virtual machine, as
+illustrated by the hello.bat file in the hello directory. Also,
+if you neglect to run install.bat, hello.bat will also register
+the IBM engines with the system.</font></p>
+
+<h4><font face="Arial">Using the Hello sample</font></h4>
+
+<p><font face="Arial">Note: the following description is written
+assuming that your language is English. The Hello program also
+now supports French and German. Look at the corresponding
+hello*.gram and res*.properties files to find the equivalent
+instructions for other languages.</font></p>
+
+<p><font face="Arial">Note: the Hello program requires a
+full-duplex sound card and driver. Some older sound cards and
+older drivers don't support simultaneous audio output (synthesis)
+and audio input (recognition). For some notes on working around
+this problem, please see the </font><a
+href="http://www.alphaWorks.ibm.com/context/communityXchange"><font
+face="Arial">Community eXchange</font></a><font face="Arial">
+section of the alphaWorks site.</font></p>
+
+<p><font face="Arial">To test your installation, open a command
+prompt, cd to the hello directory, and run the hello batch file.
+This will set the PATH and CLASSPATH variables, and start the
+Hello program. The program will start out by saying &quot;Hello
+human, my name is Computer, what is your name?&quot; At this
+point the program is in command mode, and you may say one of the
+following: </font></p>
+
+<blockquote>
+    <table border="0" bgcolor="#C0C0C0">
+        <tr>
+            <th align="left"><font face="Arial">You say</font></th>
+            <td>&nbsp;</td>
+            <th align="left"><font face="Arial">Program does</font></th>
+        </tr>
+        <tr>
+            <td><font face="Arial">&quot;My name is <em>first
+            last&quot;</em></font></td>
+            <td>&nbsp;</td>
+            <td><font face="Arial">Says &quot;Hello <em>first
+            last</em>&quot;</font></td>
+        </tr>
+        <tr>
+            <td><font face="Arial">&quot;Goodbye&quot;</font></td>
+            <td>&nbsp;</td>
+            <td><font face="Arial">Says &quot;Bye now&quot; and
+            exits</font></td>
+        </tr>
+        <tr>
+            <td><font face="Arial">&quot;Repeat after me&quot;</font></td>
+            <td>&nbsp;</td>
+            <td><font face="Arial">Enters dictation mode</font></td>
+        </tr>
+        <tr>
+            <td><font face="Arial">&quot;That's all&quot;</font></td>
+            <td>&nbsp;</td>
+            <td><font face="Arial">Leaves dictation mode and
+            repeats what you said </font></td>
+        </tr>
+    </table>
+</blockquote>
+
+<p><font face="Arial">Note that since this is just a simple
+example, the Hello application has a very limited range of <em>first</em>
+and <em>last</em> names that it understands. You can look at the
+appropriate hello*.gram file to see which names it knows. </font></p>
+
+<p><font face="Arial">You may add your own name by modifying
+hello.gram and then restarting the Hello program. To add your own
+name, follow the pattern that you see in hello.gram. For example,
+if your name is John Doe, try adding a line that says &quot;|
+John {John}&quot; to the rule for &lt;first&gt;, and similarly
+for &lt;last&gt;. You should now be able to say &quot;My name is
+John Doe&quot; and get an appropriate response. </font></p>
+
+<p><font face="Arial">The part in curly brackets in hello.gram is
+a tag. Tags are general-purpose mechanism of the Java Speech
+Grammar Format (JSGF); in this sample it is used to determine how
+the computer says your name. Try modifying the tag for your name
+and restarting the hello program, and see what the computer says
+when you say &quot;My name is ...&quot;. </font></p>
+
+<p><font face="Arial">While in command mode, you can say
+&quot;Repeat after me&quot;, at which point the computer will
+enter dictation mode and say &quot;I'm listening&quot;. You may
+now dictate any text you like and finish by saying &quot;That's
+all&quot;, at which point the program will repeat what you said
+and go back into command mode. </font></p>
+
+<h4><a name="ref"></a><font face="Arial">For more information</font></h4>
+
+<p><font face="Arial">The source of the Hello program is included
+to help you understand the basics of writing a speech application
+using the Speech for Java. The following reference documentation
+is also provided:</font></p>
+
+<ul>
+    <li><a href="ref/guide/index.html"><font face="Arial">Java
+        Speech API Programmer's Guide [0.7 beta]</font></a></li>
+    <li><a href="ref/api/packages.html"><font face="Arial">Java
+        Speech API Specification [0.7 beta]</font></a></li>
+    <li><a href="ref/JSML/index.html"><font face="Arial">Java
+        Speech Markup Language Specification [0.5 beta]</font></a></li>
+    <li><a href="ref/JSGF/index.html"><font face="Arial">Java
+        Speech Grammar Format Specification [0.6 beta]</font></a></li>
+</ul>
+
+<p><font face="Arial">The Programmer's Guide is probably the best
+starting point. These documents represent the state of the Java
+Speech API specification at the time this version of Speech for
+Java was released. For more information and news about the Java
+Speech API you may refer to the </font><a
+href="http://java.sun.com/products/java-media/speech/"><font
+face="Arial">Java Speech API Home Page</font></a><font
+face="Arial">.</font></p>
+
+<h4><font face="Arial">Notes on the Speech for Java
+implementation</font></h4>
+
+<p><font face="Arial">Speech for Java is an alpha implementation
+of a core subset of the beta Java Speech API. A number of methods
+and interfaces are not yet implemented, including the following:</font></p>
+
+<table border="0" bgcolor="#C0C0C0">
+    <tr>
+        <td valign="top" nowrap><font size="1" face="Arial">DictationGrammar.removeWord<br>
+        DictationGrammar.listAddedWords<br>
+        DictationGrammar.listRemovedWords<br>
+        DictationGrammar.setContext<br>
+        DictationResult.correctResult<br>
+        DictationResult.isCorrectionInfoAvailable<br>
+        DictationResult.releaseCorrectionInfo<br>
+        Grammar.getFinalizePauseForCommit<br>
+        Grammar.setFinalizePauseForCommit<br>
+        Recognizer.getAudioManager<br>
+        Recognizer.readVendorGrammar<br>
+        Recognizer.writeVendorGrammar<br>
+        </font></td>
+        <td valign="top" nowrap><font size="1" face="Arial">Recognizer.getEngineAttributes<br>
+        Recognizer.readVendorResult<br>
+        Recognizer.writeVendorResult<br>
+        Recognizer.forceFinalize<br>
+        Result.isAudioAvailable<br>
+        Result.releaseAudio<br>
+        ResultToken.getStartTime<br>
+        ResultToken.getEndTime<br>
+        RuleGrammar.ruleForJSGF<br>
+        RuleGrammar.removeImport<br>
+        RuleGrammar.listImports</font></td>
+        <td valign="top" nowrap><font size="1" face="Arial">Synthesizer.deallocate<br>
+        Synthesizer.reset<br>
+        Synthesizer.cancel<br>
+        Synthesizer.resume<br>
+        Synthesizer.pause<br>
+        Synthesizer.isPaused<br>
+        Synthesizer.addEngineListener<br>
+        Synthesizer.removeEngineListener<br>
+        Synthesizer.getAudioManager<br>
+        Synthesizer.getVocabManager<br>
+        Synthesizer.getEngineAttributes<br>
+        </font></td>
+    </tr>
+</table>
+
+<p>&nbsp;</p>
+</body>
+</html>
