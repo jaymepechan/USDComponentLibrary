@@ -111,8 +111,6 @@ namespace Microsoft.USD.ComponentLibrary
                 saveInGlobalSession = bool.Parse(global);
 
             OrganizationRequest orgReq = new OrganizationRequest(actionName);
-            //new CrmDataTypeWrapper(data, CrmFieldType.Raw)
-            //orgReq.Parameters.Add("myInboundParam", "inboundValue");
             foreach (KeyValuePair<string, string> pair in parms)
             {
                 object data = GetCRMEntityValue(pair.Value);
