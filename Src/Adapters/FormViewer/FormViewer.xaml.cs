@@ -23,13 +23,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Uii.Csr;
 
 namespace Microsoft.USD.ComponentLibrary
 {
     /// <summary>
     /// Interaction logic for FormViewer.xaml
     /// </summary>
-    public partial class FormViewer : DynamicsBaseHostedControl
+    public partial class FormViewer : MicrosoftBase
     {
         public FormViewer(Guid appID, string appName, string initString)
             : base(appID, appName, initString)
@@ -38,49 +39,48 @@ namespace Microsoft.USD.ComponentLibrary
             PopulateToolbars(ProgrammableToolbarTray);
         }
 
-        protected override void DoAction(Uii.Csr.RequestActionEventArgs args)
+        protected override void DesktopReady()
         {
-            if (args.Action.Equals("ShowForm", StringComparison.InvariantCultureIgnoreCase))
-            {
-                List<KeyValuePair<string, string>> lines = Utility.SplitLines(args.Data, CurrentContext, localSession);
-                string formname = Utility.GetAndRemoveParameter(lines, "name");
-                ShowForm(formname);
-                return;
-            }
-            else if (args.Action.Equals("ReadForm", StringComparison.InvariantCultureIgnoreCase))
-            {
-                List<KeyValuePair<string, string>> lines = Utility.SplitLines(args.Data, CurrentContext, localSession);
-                string clear = Utility.GetAndRemoveParameter(lines, "clear");
-                bool clearBool = false;
-                if (!String.IsNullOrEmpty(clear) && bool.TryParse(clear, out clearBool) && clearBool == true)
-                {
-                    DynamicsCustomerRecord customerRecord = (DynamicsCustomerRecord)localSession.Customer.DesktopCustomer;
-                    customerRecord.ClearReplaceableParameter(this.ApplicationName);
-                }
-                ReadForm();
-                return;
-            }
-            else if (args.Action.Equals("ClearData", StringComparison.InvariantCultureIgnoreCase))
+            base.DesktopReady();
+
+            RegisterAction("ShowForm", ShowForm);
+            RegisterAction("ReadForm", ReadForm);
+            RegisterAction("ClearData", ClearData);
+        }
+
+        private void ClearData(RequestActionEventArgs args)
+        {
+            DynamicsCustomerRecord customerRecord = (DynamicsCustomerRecord)localSession.Customer.DesktopCustomer;
+            customerRecord.ClearReplaceableParameter(this.ApplicationName);
+        }
+
+        private void ReadForm(RequestActionEventArgs args)
+        {
+            List<KeyValuePair<string, string>> lines = Utility.SplitLines(args.Data, CurrentContext, localSession);
+            string clear = Utility.GetAndRemoveParameter(lines, "clear");
+            bool clearBool = false;
+            if (!String.IsNullOrEmpty(clear) && bool.TryParse(clear, out clearBool) && clearBool == true)
             {
                 DynamicsCustomerRecord customerRecord = (DynamicsCustomerRecord)localSession.Customer.DesktopCustomer;
                 customerRecord.ClearReplaceableParameter(this.ApplicationName);
-                return;
             }
-            base.DoAction(args);
+            ReadForm();
         }
 
-        private void ShowForm(string formname)
+        private void ShowForm(RequestActionEventArgs args)
         {
+            List<KeyValuePair<string, string>> lines = Utility.SplitLines(args.Data, CurrentContext, localSession);
+            string formname = Utility.GetAndRemoveParameter(lines, "name");
             try
             {
                 ParserContext pc = new ParserContext();
                 pc.XmlnsDictionary.Add("", "http://schemas.microsoft.com/winfx/2006/xaml/presentation");
-                Entity theform = base.CRMWindowRouter.usdForms.Where(a => a.Attributes["mcs_name"].ToString().Equals(formname)).FirstOrDefault();
+                Entity theform = base.CRMWindowRouter.usdForms.Where(a => a.Attributes["msdyusd_name"].ToString().Equals(formname)).FirstOrDefault();
                 if (theform != null)
                 {
                     using (System.IO.MemoryStream ms = new System.IO.MemoryStream())
                     {
-                        string replacedDisplay = Utility.GetContextReplacedString(theform.Attributes["mcs_markup"].ToString(), CurrentContext, localSession);
+                        string replacedDisplay = Utility.GetContextReplacedString(theform.Attributes["msdyusd_markup"].ToString(), CurrentContext, localSession);
                         if (Utility.IsAllReplacementValuesReplaced(replacedDisplay))
                         {
                             byte[] displayData = System.Text.ASCIIEncoding.Unicode.GetBytes(replacedDisplay);

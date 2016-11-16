@@ -33,6 +33,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Media;
 using Microsoft.Uii.Desktop.UI.Controls;
 using Microsoft.Crm.UnifiedServiceDesk.Dynamics.EntitySearch;
+using System.Web;
+using System.Globalization;
 
 namespace Microsoft.USD.ComponentLibrary
 {
@@ -89,11 +91,92 @@ namespace Microsoft.USD.ComponentLibrary
                 RegisterAction("ApplyCRMTheme", ApplyCRMTheme);
                 RegisterAction("Alert", Alert);
                 RegisterAction("DoSearch", DoSearchAction);
-
-
+                RegisterAction("EvaluateJavascript", EvaluateJavascriptAction);
+                RegisterAction("ExecuteAction", ExecuteAction);
             }
             catch
             {   // ignore errors
+            }
+        }
+
+        private void ExecuteAction(RequestActionEventArgs args)
+        {
+            List<KeyValuePair<string, string>> parms = Utility.SplitLines(args.Data, CurrentContext, localSessionManager);
+            string actionName = Utility.GetAndRemoveParameter(parms, "Name");
+            string logMessageTag = Utility.GetAndRemoveParameter(parms, "logMessageTag");
+            string global = Utility.GetAndRemoveParameter(parms, "global");
+            string paramname = Utility.GetAndRemoveParameter(parms, "paramname");
+            bool saveInGlobalSession = false;
+            if (!String.IsNullOrEmpty(global))
+                saveInGlobalSession = bool.Parse(global);
+
+            OrganizationRequest orgReq = new OrganizationRequest(actionName);
+            //new CrmDataTypeWrapper(data, CrmFieldType.Raw)
+            //orgReq.Parameters.Add("myInboundParam", "inboundValue");
+            foreach (KeyValuePair<string, string> pair in parms)
+            {
+                object data = GetCRMEntityValue(pair.Value);
+                orgReq.Parameters.Add(pair.Key, data);
+            }
+
+            OrganizationResponse resp1 = null;
+            if (String.IsNullOrEmpty(logMessageTag))
+                resp1 = _client.CrmInterface.Execute(orgReq);
+            else
+                resp1 = _client.CrmInterface.ExecuteCrmOrganizationRequest(orgReq, logMessageTag);
+
+            if (resp1 != null)
+            {
+                string responseName = resp1.ResponseName;
+                if (String.IsNullOrEmpty(paramname))
+                    paramname = responseName;
+                Dictionary<string, CRMApplicationData> appData = new Dictionary<string, CRMApplicationData>();
+                foreach (string p in resp1.Results.Keys)
+                {
+                    object obj = resp1.Results[p];
+                    appData.Add(p, UsdEntityDescription(p, obj));
+                }
+
+                if (saveInGlobalSession)
+                {
+                    ((DynamicsCustomerRecord)((AgentDesktopSession)localSessionManager.GlobalSession).Customer.DesktopCustomer).MergeReplacementParameter(paramname, appData, true);
+                }
+                else
+                {
+                    ((DynamicsCustomerRecord)((AgentDesktopSession)localSessionManager.ActiveSession).Customer.DesktopCustomer).MergeReplacementParameter(paramname, appData, true);
+                }
+                try
+                {
+                    // CURRENTLY BUGGED FOR GLOBAL CONTROLS
+                    //ICRMCustomerSearch CRMCustomerSearch = AifServiceContainer.Instance.GetService<ICRMCustomerSearch>();
+                    //CRMCustomerSearch.CheckUpdateContact(); // notify the system about the updated replacement parameter
+
+                    // WORKAROUND FOR ABOVE BUG
+                    Context c = ((AgentDesktopSession)localSessionManager.ActiveSession).AppHost.GetContext();
+                    Context context = new Context(c.GetContext());
+                    if (((AgentDesktopSession)localSessionManager.ActiveSession).Customer == null)
+                        return;
+                    context["ForceChange"] = Guid.NewGuid().ToString();
+                    FireChangeContext(new ContextEventArgs(context));
+                }
+                catch
+                {
+                }
+
+                if (appData.Count > 0)
+                    args.ActionReturnValue = appData.Values.First().value;
+            }
+        }
+
+        private void EvaluateJavascriptAction(RequestActionEventArgs args)
+        {
+            string scriptRun = Utility.GetContextReplacedString(args.Data, CurrentContext, localSession);
+            if (Utility.IsAllReplacementValuesReplaced(scriptRun))
+            {
+                object Result = Microsoft.Crm.UnifiedServiceDesk.Dynamics.Utilities.Javascript.EvaluateScript(scriptRun, false);
+                if (Result == null)
+                    return;
+                args.ActionReturnValue = Result.ToString();
             }
         }
 
@@ -363,6 +446,7 @@ namespace Microsoft.USD.ComponentLibrary
                 throw (new Exception("Failed to CloseOpportunity requested. Some values were not understood"));
             }
             Guid ret = _client.CrmInterface.CloseOpportunity(entityguid1, updateData, opportunityStatusCode);
+            
             if (ret != null)
                 args.ActionReturnValue = ret.ToString();
         }
@@ -520,7 +604,6 @@ namespace Microsoft.USD.ComponentLibrary
         }
 
         void LookupQueueItem(Uii.Csr.RequestActionEventArgs args)
-        // TEMPORARY WORKAROUND FOR BUG IN USD - CONNECT BUG ID # 1037233
         {
             #region GetQueueItem
 
@@ -537,7 +620,6 @@ namespace Microsoft.USD.ComponentLibrary
             Guid guId = Guid.Empty;
             if (Guid.TryParse(id, out guId))
             {
-                // ::NOT WORKING:: ( that's cause matt wasn't thinking when he wrote this part. ... ) 
                 Dictionary<string, string> searchParam = new Dictionary<string, string>();
                 searchParam.Add("objectid", guId.ToString());
                 var results = _client.CrmInterface.GetEntityDataBySearchParams("queueitem", searchParam, CrmServiceClient.LogicalSearchOperator.None, null);
@@ -658,12 +740,12 @@ namespace Microsoft.USD.ComponentLibrary
             if (!String.IsNullOrEmpty(spageCookie))
                 pageCookie = spageCookie;
 
-            string fetchXml = Utility.RemainderParameter(lines);
             string sessionId = Utility.GetAndRemoveParameter(lines, "sessionid");
             if (String.IsNullOrEmpty(sessionId))
                 sessionId = localSessionManager.ActiveSession.SessionId.ToString();
             Session session = localSessionManager.GetSession(Guid.Parse(sessionId));
 
+            string fetchXml = Utility.RemainderParameter(lines);
             fetchXml = Utility.GetContextReplacedString(fetchXml, CurrentContext, localSession);
             if (Utility.IsAllReplacementValuesReplaced(fetchXml))
             {
@@ -1164,6 +1246,82 @@ namespace Microsoft.USD.ComponentLibrary
                 return null;
             }
             return value;
+        }
+
+        internal static CRMApplicationData UsdEntityDescription(string crmObjName, Object crmObj)
+        {
+            if (crmObj.GetType().Name == "EntityReference")
+            {
+                //transactioncurrencyid:lookup:transactioncurrency,%7B25C269A4-A05C-E011-B859-00155DAAA605%7D,US%20Dollar&
+                string val = HttpUtility.UrlEncode(((EntityReference)crmObj).LogicalName) + "," +
+                HttpUtility.UrlEncode(((EntityReference)crmObj).Id.ToString()) + "," +
+                HttpUtility.UrlEncode(((EntityReference)crmObj).Name);
+                return new CRMApplicationData() { name = crmObjName, type = "lookup", value = val };
+            }
+            else if (crmObj.GetType().Name == "EntityCollection")
+            {
+                //Dictionary<string, int> participantCount = new Dictionary<string, int>();
+                //foreach (Entity e in ((EntityCollection)crmObj).Entities)
+                //{
+                //    try
+                //    {
+                //        string participationtypemask = e.FormattedValues["participationtypemask"];
+                //        if (!participantCount.ContainsKey(participationtypemask))
+                //            participantCount.Add(participationtypemask, 0);
+                //        int participantNum = participantCount[participationtypemask]++;
+                //        EntityReference er = (EntityReference)e.Attributes["partyid"];
+                //        string val = HttpUtility.UrlEncode(er.LogicalName) + "," +
+                //        HttpUtility.UrlEncode(er.Id.ToString()) + "," +
+                //        HttpUtility.UrlEncode(er.Name);
+                //        appdataList.Add(participationtypemask + "_" + participantNum.ToString(CultureInfo.InvariantCulture), new CRMApplicationData() { name = participationtypemask + "_" + participantNum.ToString(CultureInfo.InvariantCulture), type = "lookup", value = val });
+
+                //        if (key != participationtypemask)
+                //        {
+                //            if (!participantCount.ContainsKey(key))
+                //                participantCount.Add(key, 0);
+                //            participantNum = participantCount[key]++;
+                //            appdataList.Add(key + "_" + participantNum.ToString(CultureInfo.InvariantCulture), new CRMApplicationData() { name = key + "_" + participantNum.ToString(CultureInfo.InvariantCulture), type = "lookup", value = val });
+                //        }
+                //    }
+                //    catch (Exception ex)
+                //    {
+                //        DynamicsLogger.Logger.Log(string.Format(CultureInfo.InvariantCulture, "Error parsing {0} of type {1}\r\n{2}", key, "EntityCollection", ex.Message));
+                //    }
+                //}
+                return null;
+            }
+            else if (crmObj.GetType().Name == "OptionSetValue")
+            {
+                string valueText = ((OptionSetValue)crmObj).Value.ToString(CultureInfo.InvariantCulture) + ",";
+                valueText = valueText.Replace("\r", "\\r").Replace("\n", "\\n"); // escape newlines
+                return new CRMApplicationData() { name = crmObjName, type = crmObj.GetType().Name, value = valueText };
+            }
+            else if (crmObj.GetType().Name == "Money")
+            {
+                string valueText = ((Money)crmObj).Value.ToString(CultureInfo.InvariantCulture);
+                valueText = valueText.Replace("\r", "\\r").Replace("\n", "\\n"); // escape newlines
+                return new CRMApplicationData() { name = crmObjName, type = crmObj.GetType().Name, value = valueText };
+            }
+            else if (crmObj.GetType().Name == "DateTime")
+            {
+                string valueText = ((DateTime)crmObj).ToLocalTime().ToString();
+                return new CRMApplicationData() { name = crmObjName, type = crmObj.GetType().Name, value = valueText };
+            }
+            else if (crmObj.GetType().Name == "AliasedValue")
+            {
+                CRMApplicationData dataParams = new CRMApplicationData
+                {
+                    name = ((Microsoft.Xrm.Sdk.AliasedValue)crmObj).EntityLogicalName + "." + ((Microsoft.Xrm.Sdk.AliasedValue)crmObj).AttributeLogicalName,
+                    type = crmObj.GetType().Name,
+                    value = ((Microsoft.Xrm.Sdk.AliasedValue)crmObj).Value.ToString()
+                };
+                return dataParams;
+            }
+            else
+            {
+                string valueText = crmObj.ToString();
+                return new CRMApplicationData() { name = crmObjName, type = crmObj.GetType().Name, value = valueText };
+            }
         }
 
         void Alert(Uii.Csr.RequestActionEventArgs args)

@@ -21,7 +21,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\USD Bin\</OutputPath>
+    <OutputPath>..\..\..\USD\2.1.1.608\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -178,6 +178,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Management" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml" />
@@ -291,6 +292,9 @@
       <DependentUpon>MCSBrowserCache.xaml</DependentUpon>
     </Compile>
     <Compile Include="Adapters\MCSBrowser\MCSWebBrowser.cs" />
+    <Compile Include="Adapters\Notifications\MarqueeText.xaml.cs">
+      <DependentUpon>MarqueeText.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Adapters\NotifyIcon\NotifyIcon.cs" />
     <Compile Include="Adapters\Parature\ChatSessionHandler.cs" />
     <Compile Include="Adapters\SessionDropDown\SessionDropDown.xaml.cs">
@@ -344,6 +348,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Adapters\Notifications\MarqueeText.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Adapters\SessionDropDown\SessionDropDown.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -360,6 +368,7 @@
     <EmbeddedResource Include="Adapters\MCSBrowser\EventHook2013.js" />
     <EmbeddedResource Include="Adapters\MCSBrowser\CRMScrape.js" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -56,6 +56,8 @@ namespace Microsoft.USD.ComponentLibrary
             RegisterAction("AddMenuItem", AddMenuItem);
             RegisterAction("ResetMenu", ResetMenu);
             RegisterAction("ExitApplication", ExitApplication);
+
+            System.Windows.Application.Current.MainWindow.WindowStyle = WindowStyle.None;
         }
 
         public override void Close()
@@ -116,11 +118,14 @@ namespace Microsoft.USD.ComponentLibrary
 
         private void ShowTrayIcon(RequestActionEventArgs args)
         {
-            notifyIcon = new NotifyIcon();
-            Stream s = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream(@"Microsoft.USD.ComponentLibrary.Resources.icoCRM.ico");
-            notifyIcon.Icon = new System.Drawing.Icon(s);
-            notifyIcon.ContextMenu = contextMenu;
-            notifyIcon.DoubleClick += NotifyIcon_DoubleClick;
+            if (notifyIcon == null)
+            {
+                notifyIcon = new NotifyIcon();
+                Stream s = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream(@"Microsoft.USD.ComponentLibrary.Resources.icoCRM.ico");
+                notifyIcon.Icon = new System.Drawing.Icon(s);
+                notifyIcon.ContextMenu = contextMenu;
+                notifyIcon.DoubleClick += NotifyIcon_DoubleClick;
+            }
             notifyIcon.Visible = true;
         }
 

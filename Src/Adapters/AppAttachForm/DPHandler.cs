@@ -25,6 +25,7 @@ namespace Microsoft.USD.ComponentLibrary.Adapters.AppAttachForm
         private bool _InputQueuesAttached;
         private long _LastSnapshotTick;
         private readonly HandleRef _MonitoredWindow;
+        private readonly WindowsFormsHost _MonitoredWindowHost;
         private readonly HandleRef _PositionedTopWindow;
         private readonly WindowMonitor _WindowMonitor;
         private const int GWL_EXSTYLE = -20;
@@ -75,6 +76,7 @@ namespace Microsoft.USD.ComponentLibrary.Adapters.AppAttachForm
             {
                 throw new ArgumentOutOfRangeException("positionedTopWindow");
             }
+            this._MonitoredWindowHost = monitoredWindow;
             this._MonitoredWindow = new HandleRef(this, monitoredWindow.Handle);
             this._PositionedTopWindow = positionedTopWindow;
             SetWindowLong(this._PositionedTopWindow, -8, this._MonitoredWindow.Handle.ToInt32());
@@ -251,7 +253,7 @@ namespace Microsoft.USD.ComponentLibrary.Adapters.AppAttachForm
 
         void FocusOutside()
         {
-            FrameworkElement elem = this._MonitoredWindow.Wrapper as FrameworkElement;
+            FrameworkElement elem = this._MonitoredWindowHost as FrameworkElement;
             while (!(elem is Crm.UnifiedServiceDesk.Dynamics.PanelLayouts.IUSDPanel) && elem.Parent != null)
                 elem = elem.Parent as FrameworkElement;
             if (elem != null)

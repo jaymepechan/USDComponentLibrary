@@ -217,6 +217,11 @@ namespace Microsoft.USD.ComponentLibrary.Adapters
 
         protected void DetachWindow()
         {
+            if (hostingMode == WindowHostingMode.SETPARENT)
+            {
+                SetParent(win.Handle, IntPtr.Zero);
+                NativeMethods.SetWindowLong(win.Handle, NativeMethods.WinUserConstant.GWL_STYLE, oldWindowStyle);
+            }
             if (_WindowParenter != null)
             {
                 _WindowParenter.Dispose();
@@ -307,7 +312,7 @@ namespace Microsoft.USD.ComponentLibrary.Adapters
                 }
             });
         }
-
+        uint oldWindowStyle = 0;
         private void ParentWindow()
         {
             LogWriter.Log("ParentWindow", TraceEventType.Verbose);
@@ -360,6 +365,7 @@ namespace Microsoft.USD.ComponentLibrary.Adapters
                             // WS_POPUP     0x80000000L
                             // WS_CHILD     0x40000000L
                             uint dwNewLong = NativeMethods.GetWindowLong(win.Handle, NativeMethods.WinUserConstant.GWL_STYLE);
+                            oldWindowStyle = dwNewLong;
                             dwNewLong ^= 0x80000000;
                             dwNewLong |= 0x40000000;
                             NativeMethods.SetWindowLong(win.Handle, NativeMethods.WinUserConstant.GWL_STYLE, dwNewLong);

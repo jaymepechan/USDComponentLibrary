@@ -1,0 +1,33 @@
+C:\PublicGIT\USD Bin\Microsoft.USD.ComponentLibrary.dll
+C:\PublicGIT\USD Bin\Microsoft.USD.ComponentLibrary.pdb
+C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Microsoft.USD.ComponentLibrary.csprojResolveAssemblyReference.cache
+C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Adapters\DemoImageViewer\DemoImageViewer.baml
+C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Adapters\FormViewer\FormViewer.baml
+C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Adapters\MCSBrowser\MCSBrowser.baml
+C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Adapters\MCSBrowser\MCSBrowserCache.baml
+C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Adapters\SessionDropDown\SessionDropDown.baml
+C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Adapters\AppAttachForm\AppAttachForm.g.cs
+C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Adapters\AppAttachForm\ApplicationVisualViewer\ApplicationVisualViewer.g.cs
+C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Adapters\DemoImageViewer\DemoImageViewer.g.cs
+C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Adapters\Email\MultiEmailAttachment.g.cs
+C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Adapters\FormViewer\FormViewer.g.cs
+C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Adapters\Hllapi\Hllapi.g.cs
+C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Adapters\MCSBrowser\MCSBrowser.g.cs
+C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Adapters\MCSBrowser\MCSBrowserCache.g.cs
+C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Adapters\SessionDropDown\SessionDropDown.g.cs
+C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Microsoft.USD.ComponentLibrary_MarkupCompile.cache
+C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Microsoft.USD.ComponentLibrary_MarkupCompile.lref
+C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Adapters\AppAttachForm\AppAttachForm.baml
+C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Adapters\AppAttachForm\ApplicationVisualViewer\ApplicationVisualViewer.baml
+C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Adapters\Email\MultiEmailAttachment.baml
+C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Adapters\Hllapi\Hllapi.baml
+C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Microsoft.USD.ComponentLibrary.g.resources
+C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Microsoft.USD.ComponentLibrary.dll
+C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Microsoft.USD.ComponentLibrary.pdb
+C:\USD\2.1.0.556 - ComponentLibrary\Microsoft.USD.ComponentLibrary.dll
+C:\USD\2.1.0.556 - ComponentLibrary\Microsoft.USD.ComponentLibrary.pdb
+C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Adapters\Notifications\MarqueeText.baml
+C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Adapters\Notifications\MarqueeText.g.cs
+C:\USD\2.1.1.608\Microsoft.USD.ComponentLibrary.dll
+C:\USD\2.1.1.608\Microsoft.USD.ComponentLibrary.pdb
