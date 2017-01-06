@@ -31,3 +31,5 @@ C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Adapters\Notifications\MarqueeTex
 C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Adapters\Notifications\MarqueeText.g.cs
 C:\USD\2.1.1.608\Microsoft.USD.ComponentLibrary.dll
 C:\USD\2.1.1.608\Microsoft.USD.ComponentLibrary.pdb
+C:\USD\2.2.0.775\Microsoft.USD.ComponentLibrary.dll
+C:\USD\2.2.0.775\Microsoft.USD.ComponentLibrary.pdb

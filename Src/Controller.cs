@@ -35,6 +35,7 @@ using Microsoft.Uii.Desktop.UI.Controls;
 using Microsoft.Crm.UnifiedServiceDesk.Dynamics.EntitySearch;
 using System.Web;
 using System.Globalization;
+using System.Windows.Interop;
 
 namespace Microsoft.USD.ComponentLibrary
 {
@@ -93,11 +94,64 @@ namespace Microsoft.USD.ComponentLibrary
                 RegisterAction("DoSearch", DoSearchAction);
                 RegisterAction("EvaluateJavascript", EvaluateJavascriptAction);
                 RegisterAction("ExecuteAction", ExecuteAction);
+                RegisterAction("DisableClose", DisableClose);
+                RegisterAction("EnableClose", EnableClose);
             }
             catch
             {   // ignore errors
             }
         }
+
+        [DllImport("User32.dll")]
+        private static extern uint GetClassLong(IntPtr hwnd, int nIndex);
+
+        [DllImport("User32.dll")]
+        private static extern uint SetClassLong(IntPtr hwnd, int nIndex, uint dwNewLong);
+        private const int GCL_STYLE = -26;
+        private const uint CS_NOCLOSE = 0x0200;
+
+
+        public const int SC_CLOSE = 0xF060;
+        public const int MF_BYCOMMAND = 0;
+        public const int MF_ENABLED = 0;
+        public const int MF_GRAYED = 1;
+
+        [DllImport("user32.dll")]
+        public static extern IntPtr GetSystemMenu(IntPtr hWnd, bool revert);
+
+        [DllImport("user32.dll")]
+        public static extern int EnableMenuItem(IntPtr hMenu, int IDEnableItem, int enable);
+
+
+        private void EnableClose(RequestActionEventArgs args)
+        {
+            Window w = Application.Current.MainWindow;
+            var hwnd = new WindowInteropHelper(w).Handle;
+            var style = GetClassLong(hwnd, GCL_STYLE);
+            SetClassLong(hwnd, GCL_STYLE, style & ~CS_NOCLOSE);
+            SetCloseButton(true, hwnd);
+        }
+
+        private void DisableClose(RequestActionEventArgs args)
+        {
+            Window w = Application.Current.MainWindow;
+            var hwnd = new WindowInteropHelper(w).Handle;
+            var style = GetClassLong(hwnd, GCL_STYLE);
+            SetClassLong(hwnd, GCL_STYLE, style | CS_NOCLOSE);
+            SetCloseButton(false, hwnd);
+        }
+
+        // If "enable" is true, the close button will be enabled (the default state).
+        // If "enable" is false, the Close button will be disabled.
+        void SetCloseButton(bool enable, IntPtr hwnd)
+        {
+            IntPtr hMenu = GetSystemMenu(hwnd, false);
+            if (hMenu != IntPtr.Zero)
+            {
+                EnableMenuItem(hMenu, SC_CLOSE, MF_BYCOMMAND | (enable ? MF_ENABLED : MF_GRAYED));
+            }
+        }
+
 
         private void ExecuteAction(RequestActionEventArgs args)
         {
