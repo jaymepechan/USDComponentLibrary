@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 
-10-51497641
+12363229346
 
-901161322720
+921631183871
 114668250616
-Adapters\AppAttachForm\AppAttachForm.xaml;Adapters\AppAttachForm\ApplicationVisualViewer\ApplicationVisualViewer.xaml;Adapters\DemoImageViewer\DemoImageViewer.xaml;Adapters\Email\MultiEmailAttachment.xaml;Adapters\FormViewer\FormViewer.xaml;Adapters\Hllapi\Hllapi.xaml;Adapters\MCSBrowser\MCSBrowser.xaml;Adapters\MCSBrowser\MCSBrowserCache.xaml;Adapters\Notifications\MarqueeText.xaml;Adapters\SessionDropDown\SessionDropDown.xaml;
+Adapters\AppAttachForm\AppAttachForm.xaml;Adapters\AppAttachForm\ApplicationVisualViewer\ApplicationVisualViewer.xaml;Adapters\DemoImageViewer\DemoImageViewer.xaml;Adapters\Email\MultiEmailAttachment.xaml;Adapters\FormViewer\FormViewer.xaml;Adapters\Hllapi\Hllapi.xaml;Adapters\MCSBrowser\MCSBrowser.xaml;Adapters\MCSBrowser\MCSBrowserCache.xaml;Adapters\Notifications\MarqueeText.xaml;Adapters\Notifications\Notification.xaml;Adapters\Notifications\OutlookNotification.xaml;Adapters\SessionDropDown\SessionDropDown.xaml;
 
 False
 

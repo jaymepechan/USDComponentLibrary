@@ -1,0 +1,89 @@
+﻿<Window x:Class="Microsoft.USD.ComponentLibrary.Adapters.Notifications.OutlookNotification"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Local="clr-namespace:Microsoft.USD.ComponentLibrary"
+        xmlns:stringRes="clr-namespace:Microsoft.Crm.UnifiedServiceDesk.Dynamics.Properties"
+             xmlns:USD="clr-namespace:Microsoft.Crm.UnifiedServiceDesk.Dynamics;assembly=Microsoft.Crm.UnifiedServiceDesk.Dynamics"
+        Title="Activity Reminder" Height="325" Width="564" WindowStyle="None" IsEnabled="True">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Microsoft.Xrm.Tooling.Ui.Styles;component/Resources/Button/Styles.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Microsoft.Xrm.Tooling.Ui.Styles;component/Resources/Window/Styles.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Microsoft.Xrm.Tooling.Ui.Styles;component/Resources/ListView/Styles.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Microsoft.Xrm.Tooling.Ui.Styles;component/Resources/Combobox/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid Margin="0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.7*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <StackPanel></StackPanel>
+        <ListView Name="ReminderList" Margin="8" Grid.ColumnSpan="5" GridViewColumnHeader.Click="GridViewColumnHeaderClickedHandler" Loaded="listViewReminderList_Loaded" Width="548">
+            <ListView.Resources>
+                <DataTemplate x:Key="IconTemplate">
+                    <Image Grid.Column="0" Source="{Binding IconUrl}" Width="16" Height="16"  />
+                </DataTemplate>
+                <DataTemplate x:Key="OutlookItemTemplate">
+                    <TextBlock Text="{Binding Path=subject}" x:Name="SubjectTextBlock" Grid.Column="1"/>
+                    <DataTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="SubjectTextBlock" Property="TextBlock.TextDecorations" Value="Underline"/>
+                        </Trigger>
+                    </DataTemplate.Triggers>
+                </DataTemplate>
+                <Style TargetType="ListViewItem" BasedOn="{StaticResource {x:Type ListViewItem}}">
+                    <EventSetter Event="MouseDoubleClick" Handler="ReminderList_MouseDoubleClick" />
+                </Style>
+            </ListView.Resources>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn CellTemplate="{StaticResource IconTemplate}" Width="40">
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Tag="IconUrl" Content=""/>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+                    <GridViewColumn CellTemplate="{StaticResource OutlookItemTemplate}" Width="300" >
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Tag="subject" Content="SUBJECT" x:Name="SubjectColumn"/>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+                    <GridViewColumn x:Name="dueColumn" DisplayMemberBinding="{Binding due}" Width="190" >
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Tag="due" Content="DUE" x:Name="DueColumn"/>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button x:Name="OpenItemBtn" Content="OPEN" Grid.Column="3" Grid.Row="1" Padding="2" Click="OpenItem_Click" Margin="5,0,5,0"/>
+        <Button x:Name="DismissItem" Content="DISMISS" Grid.Column="4" Grid.Row="1" Padding="2" Margin="3,0,8,0" Click="Dismiss_Click" />
+        <Grid Grid.Row="2" Grid.ColumnSpan="5" Background="#f8f8f8">
+            <TextBlock x:Name="ClickSnoozeText" Text="Click snooze to remind" Grid.Row="2" Grid.ColumnSpan="5" Margin="7,4,4,4" />
+        </Grid>
+        <Grid Grid.Row="3" Background="#f8f8f8" Grid.ColumnSpan="5" Margin="7,0,0,5">
+            <ComboBox Name="SnoozeCombo" Width="250px" HorizontalAlignment="Left">
+                <ComboBoxItem Content="5 minutes" IsSelected="True" Tag="5" />
+                <ComboBoxItem Content="10 minutes" Tag="10" />
+                <ComboBoxItem Content="15 minutes" Tag="15" />
+                <ComboBoxItem Content="30 minutes" Tag="30" />
+                <ComboBoxItem Content="1 hour" Tag="60" />
+                <ComboBoxItem Content="2 hours" OverridesDefaultStyle="False" Tag="120" />
+                <ComboBoxItem Content="4 hours" Tag="240" />
+            </ComboBox>
+        </Grid>
+        <Button x:Name="SnoozeBtn" Content="SNOOZE" Grid.Column="1" Grid.Row="3" Padding="2" Margin="60,0,0,5" Click="Snooze_Click" HorizontalAlignment="Left"/>
+        <Button x:Name="DismissAllBtn" Content="DISMISS ALL" Grid.Column="4" Grid.Row="3" Padding="2" Click="DismissAll_Click"  Margin="3,0,8,5"/>
+    </Grid>
+</Window>

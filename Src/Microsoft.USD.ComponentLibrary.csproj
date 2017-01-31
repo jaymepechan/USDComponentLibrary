@@ -295,6 +295,12 @@
     <Compile Include="Adapters\Notifications\MarqueeText.xaml.cs">
       <DependentUpon>MarqueeText.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Adapters\Notifications\Notification.xaml.cs">
+      <DependentUpon>Notification.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Adapters\Notifications\OutlookNotification.xaml.cs">
+      <DependentUpon>OutlookNotification.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Adapters\NotifyIcon\NotifyIcon.cs" />
     <Compile Include="Adapters\Parature\ChatSessionHandler.cs" />
     <Compile Include="Adapters\SessionDropDown\SessionDropDown.xaml.cs">
@@ -349,6 +355,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Adapters\Notifications\MarqueeText.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Adapters\Notifications\Notification.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Adapters\Notifications\OutlookNotification.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

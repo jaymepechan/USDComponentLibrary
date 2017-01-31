@@ -6,4 +6,6 @@ FC:\PublicGIT\USDComponentLibrary\Src\Adapters\Email\MultiEmailAttachment.xaml;;
 FC:\PublicGIT\USDComponentLibrary\Src\Adapters\FormViewer\FormViewer.xaml;;
 FC:\PublicGIT\USDComponentLibrary\Src\Adapters\Hllapi\Hllapi.xaml;;
 FC:\PublicGIT\USDComponentLibrary\Src\Adapters\Notifications\MarqueeText.xaml;;
+FC:\PublicGIT\USDComponentLibrary\Src\Adapters\Notifications\Notification.xaml;;
+FC:\PublicGIT\USDComponentLibrary\Src\Adapters\Notifications\OutlookNotification.xaml;;
 

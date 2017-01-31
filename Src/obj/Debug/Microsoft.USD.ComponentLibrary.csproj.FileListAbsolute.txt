@@ -33,3 +33,7 @@ C:\USD\2.1.1.608\Microsoft.USD.ComponentLibrary.dll
 C:\USD\2.1.1.608\Microsoft.USD.ComponentLibrary.pdb
 C:\USD\2.2.0.775\Microsoft.USD.ComponentLibrary.dll
 C:\USD\2.2.0.775\Microsoft.USD.ComponentLibrary.pdb
+C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Adapters\Notifications\Notification.g.cs
+C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Adapters\Notifications\OutlookNotification.g.cs
+C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Adapters\Notifications\Notification.baml
+C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Adapters\Notifications\OutlookNotification.baml
