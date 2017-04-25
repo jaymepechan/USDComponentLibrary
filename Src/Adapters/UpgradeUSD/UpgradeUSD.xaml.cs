@@ -58,6 +58,7 @@ namespace Microsoft.USD.ComponentLibrary
             {
                 if (fileVersion.ToString() == versionExpectedString)
                 {
+                    versionParams.Add("Result", "OK");
                     FireEvent("VersionCheckEqual", versionParams);
                 }
                 else if (versionComponents.Length == 4 && (
@@ -66,24 +67,30 @@ namespace Microsoft.USD.ComponentLibrary
                     || fileVersion.Build > int.Parse(versionComponents[2])
                     || fileVersion.Revision > int.Parse(versionComponents[3])))
                 {
+                    versionParams.Add("Result", "NEWER");
                     FireEvent("VersionCheckNewer", versionParams);
                 }
                 else
                 {
+                    versionParams.Add("Result", "OLD");
                     FireEvent("VersionCheckOlder", versionParams);
                 }
+                FireEvent("VersionCheckComplete", versionParams);
             }
             catch (ArgumentNullException)
             {
                 FireEvent("VersionCheckUnknown", versionParams);
+                FireEvent("VersionCheckComplete", versionParams);
             }
             catch (FormatException)
             {
                 FireEvent("VersionCheckUnknown", versionParams);
+                FireEvent("VersionCheckComplete", versionParams);
             }
             catch (OverflowException)
             {
                 FireEvent("VersionCheckUnknown", versionParams);
+                FireEvent("VersionCheckComplete", versionParams);
             }
             catch
             {
