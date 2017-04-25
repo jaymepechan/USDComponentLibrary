@@ -307,6 +307,9 @@
       <DependentUpon>SessionDropDown.xaml</DependentUpon>
     </Compile>
     <Compile Include="Adapters\SetParentBase.cs" />
+    <Compile Include="Adapters\UpgradeUSD\UpgradeUSD.xaml.cs">
+      <DependentUpon>UpgradeUSD.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controller.cs" />
     <Compile Include="MicrosoftBase.cs" />
     <Compile Include="Panels\FloatingWindow.cs" />
@@ -367,6 +370,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Adapters\SessionDropDown\SessionDropDown.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Adapters\UpgradeUSD\UpgradeUSD.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
