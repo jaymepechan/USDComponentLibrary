@@ -36,5 +36,6 @@ C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Adapters\Notifications\Notificati
 C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Adapters\Notifications\OutlookNotification.g.cs
 C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Adapters\Notifications\Notification.baml
 C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Adapters\Notifications\OutlookNotification.baml
-C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Adapters\UpgradeUSD\UpgradeUSD.g.cs
-C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Adapters\UpgradeUSD\UpgradeUSD.baml
+C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Microsoft.USD.ComponentLibrary.csprojResolveAssemblyReference.cache
+C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Adapters\UpgradeUSD\SystemRequirements.g.cs
+C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Adapters\UpgradeUSD\SystemRequirements.baml

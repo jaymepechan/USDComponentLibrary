@@ -88,9 +88,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\SupportLibs\Microsoft.Uii.Csr.Browser.Web.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Uii.Csr.CitrixIntegration">
-      <HintPath>..\..\..\CRM2016SDK\UII\Bin\UII\Cirtix Server Component\Microsoft.Uii.Csr.CitrixIntegration.exe</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Uii.Csr.Core">
       <HintPath>..\SupportLibs\Microsoft.Uii.Csr.Core.dll</HintPath>
     </Reference>
@@ -211,9 +208,6 @@
     <Compile Include="Adapters\AppAttachForm\DPHandler.cs" />
     <Compile Include="Adapters\AppAttachForm\WindowMonitor.cs" />
     <Compile Include="Adapters\FloatingBrowser\ChromeBrowser.cs" />
-    <Compile Include="Adapters\Citrix\CitrixPortalApplicationHostedControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Include="Adapters\DemoImageViewer\DemoImageViewer.xaml.cs">
       <DependentUpon>DemoImageViewer.xaml</DependentUpon>
     </Compile>
@@ -307,8 +301,8 @@
       <DependentUpon>SessionDropDown.xaml</DependentUpon>
     </Compile>
     <Compile Include="Adapters\SetParentBase.cs" />
-    <Compile Include="Adapters\UpgradeUSD\UpgradeUSD.xaml.cs">
-      <DependentUpon>UpgradeUSD.xaml</DependentUpon>
+    <Compile Include="Adapters\UpgradeUSD\SystemRequirements.xaml.cs">
+      <DependentUpon>SystemRequirements.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controller.cs" />
     <Compile Include="MicrosoftBase.cs" />
@@ -373,7 +367,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Adapters\UpgradeUSD\UpgradeUSD.xaml">
+    <Page Include="Adapters\UpgradeUSD\SystemRequirements.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -389,7 +383,9 @@
     <EmbeddedResource Include="Adapters\MCSBrowser\EventHook2013.js" />
     <EmbeddedResource Include="Adapters\MCSBrowser\CRMScrape.js" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Adapters\Citrix\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

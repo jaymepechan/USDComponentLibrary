@@ -96,9 +96,35 @@ namespace Microsoft.USD.ComponentLibrary
                 RegisterAction("ExecuteAction", ExecuteAction);
                 RegisterAction("DisableClose", DisableClose);
                 RegisterAction("EnableClose", EnableClose);
+                RegisterAction("BlurControl", BlurControl);
+                RegisterAction("UnblurControl", UnblurControl);
             }
             catch
             {   // ignore errors
+            }
+        }
+
+        private void UnblurControl(RequestActionEventArgs args)
+        {
+            List<KeyValuePair<string, string>> parms = Utility.SplitLines(args.Data, CurrentContext, localSessionManager);
+            string appName = Utility.GetAndRemoveParameter(parms, "appname");
+            System.Windows.Media.Effects.BlurEffect objBlur = new System.Windows.Media.Effects.BlurEffect();
+            IHostedApplication app = GetApp(appName);
+            if (app != null && app is FrameworkElement)
+            {
+                ((FrameworkElement)app).Effect = null;
+            }
+        }
+
+        private void BlurControl(RequestActionEventArgs args)
+        {
+            List<KeyValuePair<string, string>> parms = Utility.SplitLines(args.Data, CurrentContext, localSessionManager);
+            string appName = Utility.GetAndRemoveParameter(parms, "appname");
+            System.Windows.Media.Effects.BlurEffect objBlur = new System.Windows.Media.Effects.BlurEffect();
+            IHostedApplication app = GetApp(appName);
+            if (app != null && app is FrameworkElement)
+            {
+                ((FrameworkElement)app).Effect = objBlur;
             }
         }
 
