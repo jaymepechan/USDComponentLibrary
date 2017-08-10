@@ -21,7 +21,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\USD\2.2.0.775\</OutputPath>
+    <OutputPath>..\..\..\USD\2.2.2.806\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -36,6 +36,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Accessibility" />
     <Reference Include="AxWFICALib">
       <HintPath>..\..\..\CRM2016SDK\UII\Bin\UII\Cirtix Server Component\AxWFICALib.dll</HintPath>
     </Reference>
@@ -184,6 +185,8 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationClient" />
+    <Reference Include="UIAutomationTypes" />
     <Reference Include="UnifiedServiceDesk, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\USD Bin\UnifiedServiceDesk.exe</HintPath>
@@ -199,14 +202,31 @@
     <Compile Include="Adapters\AppAttachForm\AppAttachForm.xaml.cs">
       <DependentUpon>AppAttachForm.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Adapters\AppAttachForm\ApplicationVisualViewer\ApplicationVisualViewer.xaml.cs">
+    <Compile Include="Adapters\Automation\ApplicationVisualViewer\ApplicationVisualViewer.xaml.cs">
       <DependentUpon>ApplicationVisualViewer.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Adapters\AppAttachForm\ApplicationVisualViewer\JavaTreeViewModel.cs" />
-    <Compile Include="Adapters\AppAttachForm\ApplicationVisualViewer\JavaWindow.cs" />
-    <Compile Include="Adapters\AppAttachForm\ApplicationVisualViewer\JavaWindowViewModel.cs" />
+    <Compile Include="Adapters\Automation\ApplicationVisualViewer\JavaTreeViewModel.cs" />
+    <Compile Include="Adapters\Automation\ApplicationVisualViewer\JavaWindow.cs" />
+    <Compile Include="Adapters\Automation\ApplicationVisualViewer\JavaWindowViewModel.cs" />
     <Compile Include="Adapters\AppAttachForm\DPHandler.cs" />
     <Compile Include="Adapters\AppAttachForm\WindowMonitor.cs" />
+    <Compile Include="Adapters\Automation\AutomationControl.cs" />
+    <Compile Include="Adapters\Automation\AutomationEventArgsMapping.cs" />
+    <Compile Include="Adapters\Automation\AutomationThreadParams.cs" />
+    <Compile Include="Adapters\Automation\DataDrivenAdapterException.cs" />
+    <Compile Include="Adapters\Automation\IUSDAutomation.cs" />
+    <Compile Include="Adapters\Automation\JavaAutomation.cs" />
+    <Compile Include="Adapters\Automation\OleAccNativeMethods.cs" />
+    <Compile Include="Adapters\Automation\OleAccHelperMethods.cs" />
+    <Compile Include="Adapters\Automation\OperationType.cs" />
+    <Compile Include="Adapters\Automation\UIAHelperMethods.cs" />
+    <Compile Include="Adapters\Automation\UIAutomation.cs" />
+    <Compile Include="Adapters\Automation\UIVisualViewer\UITreeViewModel.cs" />
+    <Compile Include="Adapters\Automation\UIVisualViewer\UIVisualViewer.xaml.cs">
+      <DependentUpon>UIVisualViewer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Adapters\Automation\UIVisualViewer\UIWindow.cs" />
+    <Compile Include="Adapters\Automation\UIVisualViewer\UIWindowViewModel.cs" />
     <Compile Include="Adapters\FloatingBrowser\ChromeBrowser.cs" />
     <Compile Include="Adapters\DemoImageViewer\DemoImageViewer.xaml.cs">
       <DependentUpon>DemoImageViewer.xaml</DependentUpon>
@@ -227,13 +247,12 @@
       <DependentUpon>Hllapi.xaml</DependentUpon>
     </Compile>
     <Compile Include="Adapters\Hllapi\HllapiWrapper.cs" />
-    <Compile Include="Adapters\Java\JavaAccEventListener.cs" />
-    <Compile Include="Adapters\Java\JavaAccHelperMethods.cs" />
-    <Compile Include="Adapters\Java\JavaAccNativeMethods.cs" />
-    <Compile Include="Adapters\Java\JavaDDA.cs" />
-    <Compile Include="Adapters\Java\JavaDDAAdapterConstants.cs" />
-    <Compile Include="Adapters\Java\Win32HelperMethods.cs" />
-    <Compile Include="Adapters\Java\Win32NativeMethods.cs" />
+    <Compile Include="Adapters\Automation\JavaAccEventListener.cs" />
+    <Compile Include="Adapters\Automation\JavaAccHelperMethods.cs" />
+    <Compile Include="Adapters\Automation\JavaAccNativeMethods.cs" />
+    <Compile Include="Adapters\Automation\JavaDDAAdapterConstants.cs" />
+    <Compile Include="Adapters\Automation\Win32HelperMethods.cs" />
+    <Compile Include="Adapters\Automation\Win32NativeMethods.cs" />
     <Compile Include="Adapters\MCSBrowser\Events\BeforeNavigate2EventArgs.cs" />
     <Compile Include="Adapters\MCSBrowser\Events\BeforeNavigateEventArgs.cs" />
     <Compile Include="Adapters\MCSBrowser\Events\BrowserExtendedNavigatingEventArgs.cs" />
@@ -323,7 +342,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Adapters\AppAttachForm\ApplicationVisualViewer\ApplicationVisualViewer.xaml">
+    <Page Include="Adapters\Automation\ApplicationVisualViewer\ApplicationVisualViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Adapters\Automation\UIVisualViewer\UIVisualViewer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

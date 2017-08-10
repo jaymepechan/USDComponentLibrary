@@ -6,7 +6,6 @@ C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Adapters\MCSBrowser\MCSBrowser.ba
 C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Adapters\MCSBrowser\MCSBrowserCache.baml
 C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Adapters\SessionDropDown\SessionDropDown.baml
 C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Adapters\AppAttachForm\AppAttachForm.g.cs
-C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Adapters\AppAttachForm\ApplicationVisualViewer\ApplicationVisualViewer.g.cs
 C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Adapters\DemoImageViewer\DemoImageViewer.g.cs
 C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Adapters\Email\MultiEmailAttachment.g.cs
 C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Adapters\FormViewer\FormViewer.g.cs
@@ -18,7 +17,6 @@ C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Microsoft.USD.ComponentLibrary_MarkupCompile.cache
 C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Microsoft.USD.ComponentLibrary_MarkupCompile.lref
 C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Adapters\AppAttachForm\AppAttachForm.baml
-C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Adapters\AppAttachForm\ApplicationVisualViewer\ApplicationVisualViewer.baml
 C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Adapters\Email\MultiEmailAttachment.baml
 C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Adapters\Hllapi\Hllapi.baml
 C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Microsoft.USD.ComponentLibrary.g.resources
@@ -36,6 +34,12 @@ C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Adapters\Notifications\Notificati
 C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Adapters\Notifications\OutlookNotification.g.cs
 C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Adapters\Notifications\Notification.baml
 C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Adapters\Notifications\OutlookNotification.baml
-C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Microsoft.USD.ComponentLibrary.csprojResolveAssemblyReference.cache
 C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Adapters\UpgradeUSD\SystemRequirements.g.cs
 C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Adapters\UpgradeUSD\SystemRequirements.baml
+C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Adapters\Automation\ApplicationVisualViewer\ApplicationVisualViewer.g.cs
+C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Adapters\Automation\UIVisualViewer\UIVisualViewer.g.cs
+C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Adapters\Automation\ApplicationVisualViewer\ApplicationVisualViewer.baml
+C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Adapters\Automation\UIVisualViewer\UIVisualViewer.baml
+C:\PublicGIT\USDComponentLibrary\Src\obj\Debug\Microsoft.USD.ComponentLibrary.csprojResolveAssemblyReference.cache
+C:\USD\2.2.2.806\Microsoft.USD.ComponentLibrary.dll
+C:\USD\2.2.2.806\Microsoft.USD.ComponentLibrary.pdb

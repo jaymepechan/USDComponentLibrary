@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 
-13-207157679
+14686610252
 
-96-2010985796
-621825163176
-Adapters\AppAttachForm\AppAttachForm.xaml;Adapters\AppAttachForm\ApplicationVisualViewer\ApplicationVisualViewer.xaml;Adapters\DemoImageViewer\DemoImageViewer.xaml;Adapters\Email\MultiEmailAttachment.xaml;Adapters\FormViewer\FormViewer.xaml;Adapters\Hllapi\Hllapi.xaml;Adapters\MCSBrowser\MCSBrowser.xaml;Adapters\MCSBrowser\MCSBrowserCache.xaml;Adapters\Notifications\MarqueeText.xaml;Adapters\Notifications\Notification.xaml;Adapters\Notifications\OutlookNotification.xaml;Adapters\SessionDropDown\SessionDropDown.xaml;Adapters\UpgradeUSD\SystemRequirements.xaml;
+110-754909918
+65-1202549089
+Adapters\AppAttachForm\AppAttachForm.xaml;Adapters\Automation\ApplicationVisualViewer\ApplicationVisualViewer.xaml;Adapters\Automation\UIVisualViewer\UIVisualViewer.xaml;Adapters\DemoImageViewer\DemoImageViewer.xaml;Adapters\Email\MultiEmailAttachment.xaml;Adapters\FormViewer\FormViewer.xaml;Adapters\Hllapi\Hllapi.xaml;Adapters\MCSBrowser\MCSBrowser.xaml;Adapters\MCSBrowser\MCSBrowserCache.xaml;Adapters\Notifications\MarqueeText.xaml;Adapters\Notifications\Notification.xaml;Adapters\Notifications\OutlookNotification.xaml;Adapters\SessionDropDown\SessionDropDown.xaml;Adapters\UpgradeUSD\SystemRequirements.xaml;
 
 False
 
